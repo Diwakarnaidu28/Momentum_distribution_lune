@@ -1,0 +1,442 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%\documentclass[referee,sn-basic]{sn-jnl}% referee option is meant for double line spacing
+%%=======================================================%%
+%% to print line numbers in the margin use lineno option %%
+%%=======================================================%%
+
+%%\documentclass[lineno,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+%%======================================================%%
+%% to compile with pdflatex/xelatex use pdflatex option %%
+%%======================================================%%
+
+%%\documentclass[pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+
+%%Note: the following reference styles support Namedate and Numbered referencing. By default the style follows the most common style. To switch between the options you can add or remove Numbered in the optional parenthesis. 
+%%The option is available for: sn-basic.bst, sn-vancouver.bst, sn-chicago.bst, sn-mathphys.bst. %  
+ 
+%%\documentclass[sn-nature]{sn-jnl}% Style for submissions to Nature Portfolio journals
+%%\documentclass[sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+\documentclass[sn-mathphys,Numbered]{sn-jnl}% Math and Physical Sciences Reference Style
+%%\documentclass[sn-aps]{sn-jnl}% American Physical Society (APS) Reference Style
+%%\documentclass[sn-vancouver,Numbered]{sn-jnl}% Vancouver Reference Style
+%%\documentclass[sn-apa]{sn-jnl}% APA Reference Style 
+%%\documentclass[sn-chicago]{sn-jnl}% Chicago-based Humanities Reference Style
+%%\documentclass[default]{sn-jnl}% Default
+%%\documentclass[default,iicol]{sn-jnl}% Default with double column layout
+
+%%%% Standard Packages
+%%<additional latex packages if required can be included here>
+\usepackage{amsmath, amssymb, amsfonts, physics, braket, hhline, dsfont, mathtools, cancel, bigints}
+\usepackage{pgfplots, subcaption, floatrow, footnote, adjustbox,float,fancyvrb}
+\usepackage{graphicx, grffile, epsfig, listings,romannum, hyperref}
+\usepackage{verbatim}
+\usepackage{textcomp}
+\usepackage{pdfpages}
+\usepackage{accents}
+\usepackage{tikz-cd}
+\usepackage{multirow}%
+\usepackage{amsthm}%
+\usepackage{mathrsfs}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\pgfplotsset{compat=1.9}
+\usetikzlibrary{shapes, arrows.meta, positioning, shapes.geometric}
+\usepackage[capitalise]{cleveref}
+%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareMathOperator{\R}{\mathbb{R}}
+\DeclareMathOperator{\C}{\mathbb{C}}
+\DeclareMathOperator{\N}{\mathbb{N}}
+
+\DeclareMathOperator{\QQ}{\mathcal{Q}}
+\DeclareMathOperator{\HH}{\mathcal{H}}
+\DeclareMathOperator{\LL}{\mathcal{L}}
+\DeclareMathOperator{\KK}{\mathcal{K}}
+
+\DeclareMathOperator{\SH}{\mathscr{H}}
+\DeclareMathOperator{\Psis}{\Psi^*}
+\newcommand{\bint}{\bigintssss}
+\newcommand\Item[1][]{%
+  \ifx\relax#1\relax  \item \else \item[#1] \fi
+  \abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THEOREMSTYLES
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{remark}[theorem]{Remark}
+
+% UNNUMBERED VERSIONS
+\theoremstyle{plain}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem*{proposition*}{Proposition}
+
+
+\theoremstyle{definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem*{problem*}{Problem}
+\newtheorem*{assumption*}{Assumption}
+\newtheorem*{example*}{Example}
+
+\theoremstyle{remark}
+\newtheorem*{claim*}{Claim}
+\newtheorem*{remark*}{Remark}
+%%\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
+%% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title[Article Title]{Occupation Density}
+
+%%=============================================================%%
+%% Prefix	-> \pfx{Dr}
+%% GivenName	-> \fnm{Joergen W.}
+%% Particle	-> \spfx{van der} -> surname prefix
+%% FamilyName	-> \sur{Ploeg}
+%% Suffix	-> \sfx{IV}
+%% NatureName	-> \tanm{Poet Laureate} -> Title after name
+%% Degrees	-> \dgr{MSc, PhD}
+%% \author*[1,2]{\pfx{Dr} \fnm{Joergen W.} \spfx{van der} \sur{Ploeg} \sfx{IV} \tanm{Poet Laureate} 
+%%                 \dgr{MSc, PhD}}\email{iauthor@gmail.com}
+%%=============================================================%%
+
+%\author[1]{\fnm{Niels} \sur{Benedikter}}\email{niels.benedikter@unimi.it}
+
+%\author[1]{\fnm{Diwakar} \sur{Naidu}}\email{diwakar.naidu@unimi.it}
+%\equalcont{These authors contributed equally to this work.}
+
+%\author[1,2]{\fnm{Third} \sur{Author}}\email{iiiauthor@gmail.com}
+%\equalcont{These authors contributed equally to this work.}
+
+%\affil[1]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{100190}, \state{State}, \country{Country}}}
+
+%\affil[2]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{10587}, \state{State}, \country{Country}}}
+
+%\affil[3]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{610101}, \state{State}, \country{Country}}}
+
+%%==================================%%
+%% sample for unstructured abstract %%
+%%==================================%%
+
+\abstract{The }
+
+%%================================%%
+%% Sample for structured abstract %%
+%%================================%%
+
+% \abstract{\textbf{Purpose:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+% 
+% \textbf{Methods:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+% 
+% \textbf{Results:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+% 
+% \textbf{Conclusion:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.}
+
+\keywords{keyword1, Keyword2, Keyword3, Keyword4}
+
+%%\pacs[JEL Classification]{D8, H51}
+
+%%\pacs[MSC Classification]{35A01, 65L10, 65L12, 65L20, 65L70}
+
+\maketitle
+
+\section{Introduction}\label{sec1}
+ 
+
+\section{Computations}\label{sec2}
+Consider a trial state $\Psi_{trial}$ such that $\braket{\Psi_{trial},H\Psi_{trial}} = E_{HF} + E_{RPA}+ o(\hbar) $, where $E_{HF}$ is the Hartree-Fock energy and $E_{RPA}$ is the correlation energy from RPA.
+
+We need to calculate $\braket{\Psi_{trial},a^*_la_l\Psi_{trial}},\, l\in\mathbb{Z}^3$. Here the trial state $\Psi_{trial}= Re^k\Omega$, where 
+\begin{equation}
+    \Omega = \frac{1}{\sqrt{N!}}\text{det}\left(\frac{1}{(2\pi)^{3/2}}e^{ik_j\cdot x_i}\right)^N_{j,i=1}.
+\end{equation}
+Then we have
+\begin{align}
+    \braket{\Psi_{trial},a^*_la_l\Psi_{trial}} &= \braket{\Psi_{trial},a^*_la_l\Psi_{trial}} 
+\end{align}
+We define the pair operators as
+\begin{align}
+    b_p(k) &= a_{p-k}a_{p}\\
+    b^*_p(k) &= a^*_{p}a^*_{p-k}
+\end{align}
+\begin{lemma}[Quasi-Bosonic commutation relation]
+   \begin{align}
+       [b_{p}(k),b_{q}(l)] &= [b^*_{p}(k),b^*_{q}(l)] = 0\\
+       [b_{p}(k),b^*_{q}(l)] &= \delta_{p,q}\delta(k,l) - \epsilon_{p,q}(k,l),
+   \end{align} where $\epsilon_{p,q}(k,l) = \left(\delta_{p,q}a^*_{q-l}a_{p-k} + \delta_{p-k,q-l}a^*_{q}a_{p}\right)$ 
+    \end{lemma}
+\begin{proof}
+    \begin{align}
+        [b_{p}(k),b^*_{q}(l)] &= [a_{p-k}a_{p},a^*_{q}a^*_{q-l}]\\
+        &= a_{p-k}[a_p,a^*_{q}a^*_{q-l}] + [a_{p-k},a^*_{q}a^*_{q-l}]a_{p}\\
+        &= a_{p-k}\left\{a_p,a^*_{q}\right\}a^*_{q-l} - a_{p-k}a^*_{q}\{a_{p},a^*_{q-l}\}\nonumber \\ &+ \{a_{p-k},a^*_q\}a^*_{q-l}a_{p} - a^*_{q}\{a_{p-k},a^*_{q-l}\}a_{p}\\
+        &=\delta_{p,q}a_{p-k}a^*_{q-l} + \delta_{p-k,q-l}a^*_{q}a_{p}\\
+        &= \delta_{p,q}\delta(k,l)-\left(\delta_{p,q}a^*_{q-l}a_{p-k} + \delta_{p-k,q-l}a^*_{q}a_{p}\right)
+    \end{align}
+Here, we denote the error term as $\epsilon_{p,q}(k,l) = \left(\delta_{p,q}a^*_{q-l}a_{p-k} + \delta_{p-k,q-l}a^*_{q}a_{p}\right)$ 
+\end{proof}
+We have $T_1 = e^{\mathcal{K}}$, where 
+\begin{equation}
+\mathcal{K} = \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left(b_r(l)b_{-s}(-l)-b^*_{-s}(-l)b^*_{r}(l)\right)
+\end{equation}
+\begin{lemma}[Commutator between $\mathcal{K} $ and pair operators]
+\begin{align}
+    [\mathcal{K}, b_p(k)] &=\sum\limits_{r\in L_{k}}K(k)_{r,p}b^*_{r}(k) + \mathcal{E}^*_{p}(k)\label{eq:13} \\
+    [\mathcal{K}, b^*_p(k)] &=\sum\limits_{r\in L_{k}}K(k)_{p,r}b_{r}(k) + \mathcal{E}_{p}(k)\label{eq:14},
+\end{align}
+    where, 
+\begin{align}
+    \mathcal{E}^*_{p}(k) &= \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left\{\epsilon_{p,s}(k,l),b^*_{-r}(-l)\right\}\\
+    \mathcal{E}_{p}(k) &= \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left\{\epsilon_{p,s}(k,l),b_{-r}(-l)\right\} 
+\end{align}
+\end{lemma}
+\begin{proof}
+    We start with
+    \begin{align}
+        [\mathcal{K}, b_p(k)] &=\left[\frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left(b_r(l)b_{-s}(-l)-b^*_{-s}(-l)b^*_{r}(l)\right),b_p(k)\right]\nonumber\\
+        &=\frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left[\left(b_r(l)b_{-s}(-l)-b^*_{-s}(-l)b^*_{r}(l)\right),b_p(k)\right]\nonumber\\
+        &=\frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left[\left(-b^*_{-s}(-l)b^*_{r}(l)\right),b_p(k)\right]\nonumber\\
+        &=\frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left(b^*_{-s}(-l)\left[b_p(k),b^*_{r}(l)\right] + \left[b_p(k),b^*_{-s}(-l)\right]b^*_{r}(l) \right)
+    \end{align}
+    Substituting $l\rightarrow -l, r\rightarrow -r $ and $ s\rightarrow -s$ in the first term above, we get
+    \begin{align}
+        &\phantom{=}\frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(-l)_{-r,-s}\left(b^*_{s}(l)\left[b_p(k),b^*_{-r}(-l)\right]\right) \nonumber\\
+        &+\frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left( \left[b_p(k),b^*_{-s}(-l)\right]b^*_{r}(l) \right)\nonumber\\
+        &=\frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left(b^*_{s}(l)\left[b_p(k),b^*_{-r}(-l)\right] + \left[b_p(k),b^*_{-s}(-l)\right]b^*_{r}(l) \right)\nonumber\\
+        &= \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left\{\left[b_p(k),b^*_{-s}(-l)\right],b^*_{r}(l) \right\}\nonumber\\
+        &= \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left\{(\delta_{p,-s}\delta(k,-l) + \epsilon_{p,-s}(k,-l)),b^*_{r}(l) \right\}\nonumber\\
+        &= \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left\{(\delta_{p,-s}\delta(k,-l),b^*_{r}(l) \right\} + \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left\{\epsilon_{p,-s}(k,-l)),b^*_{r}(l) \right\}\nonumber\\
+        &=\sum\limits_{r\in L_{-k}}K(-k)_{r,-p}b^*_r(-k) + \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left\{\epsilon_{p,-s}(k,-l)),b^*_{r}(l) \right\}\nonumber
+    \end{align}
+    Similarly we substitute $l\rightarrow -l, r\rightarrow -r $ and $ s\rightarrow -s$ in the second term above. 
+    \begin{equation}
+        \sum\limits_{r\in L_{-k}}K(-k)_{r,-p}b^*_r(-k) + \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left\{\epsilon_{p,s}(k,l)),b^*_{-r}(-l) \right\}
+    \end{equation}
+    We denote the second (error) term above by \begin{equation}
+        \mathcal{E}^*_p(k)= \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left\{\epsilon_{p,s}(k,l)),b^*_{-r}(-l) \right\}
+    \end{equation}
+    and we get
+    \begin{align}
+        &\phantom{=}\sum\limits_{r\in L_{-k}}K(-k)_{r,-p}b^*_r(-k) + \mathcal{E}^*_p(k)\nonumber\\
+        &=\sum\limits_{-r\in L_{k}}K(-k)_{-r,-p}b^*_{-r}(-k) + \mathcal{E}^*_p(k)\nonumber
+    \end{align}
+    Again substituting, $-k\rightarrow k, -r\rightarrow r $ and $ -p\rightarrow p$ in the first term above, we get
+    \begin{equation}
+        \sum\limits_{r\in L_{k}}K(k)_{r,p}b^*_{r}(k) + \mathcal{E}^*_p(k)
+    \end{equation}
+    Similarly, one can prove the other statement for $[\mathcal{K}, b^*_p(k)]$.
+\end{proof}
+Next we define the quadratic operators as 
+\begin{align}
+    Q_1(A_k)&=\sum\limits_{p,q \in L_{k}}A(k)_{p,q} \left(b^*_p(k)b_{q}(k)+b_{p}(k)b^*_{q}(k)\right)\\
+    Q_2(B_k)&=  \sum\limits_{p,q \in L_{k}}B(k)_{p,q} \left(b^*_p(k)b^*_{q}(k)+b_{p}(k)b_{q}(k)\right)
+\end{align}
+\begin{lemma}[Commutator between $\mathcal{K} $ and the quadratic operators]
+\begin{align}
+    [\mathcal{K}, Q_1(A_k)] &= Q_2(\{K_k,A_k\}) + E_{Q_1}(A_k)\\
+    [\mathcal{K}, Q_2(B_k)] &= Q_1(\{K_k,B_k\}) + E_{Q_2}(B_k)
+\end{align}
+ where,
+ \begin{align}
+     E_{Q_1}(A_k)&= \sum\limits_{p,q\in L_k}A(k)_{p,q}\left(\mathcal{E}_p(k)b_q(k)+b_p(k)\mathcal{E}_q(k) +b^*_p(k)\mathcal{E}^*_q(k) +\mathcal{E}^*_p(k)b^*_q(k)\right)\\
+     E_{Q_2}(B_k)&= \sum\limits_{p,q\in L_k}B(k)_{p,q}\left(\mathcal{E}_p(k)b^*_q(k)+b^*_p(k)\mathcal{E}_q(k) +b_p(k)\mathcal{E}^*_q(k) +\mathcal{E}^*_p(k)b_q(k)\right)
+ \end{align}
+\end{lemma}
+\begin{proof}
+We begin with
+\begin{align}
+    [\mathcal{K}, Q_2(B_k)]&=  \left[\mathcal{K}, \sum\limits_{p,q \in L_{k}}B(k)_{p,q} \left(b^*_p(k)b^*_{q}(k)+b_{p}(k)b_{q}(k)\right)\right]\nonumber\\
+    &=\sum\limits_{p,q \in L_{k}}B(k)_{p,q}\left[\mathcal{K},  \left(b^*_p(k)b^*_{q}(k)+b_{p}(k)b_{q}(k)\right)\right]\nonumber\\
+    &=\sum\limits_{p,q \in L_{k}}B(k)_{p,q}\left([\mathcal{K}, b^*_p(k)b^*_{q}(k)]+[\mathcal{K},b_{p}(k)b_{q}(k)]\right)\nonumber\\
+    &=\sum\limits_{p,q \in L_{k}}B(k)_{p,q}\left([\mathcal{K}, b^*_p(k)]b^*_{q}(k) + b^*_p(k)[\mathcal{K}, b^*_{q}(k)]\right.\nonumber\\
+    &+\left.[\mathcal{K},b_{p}(k)]b_{q}(k) + b_{p}(k)[\mathcal{K},b_{q}(k)]\right)\nonumber\\
+\end{align}
+Now we use the commutation relation from \eqref{eq:13} and \eqref{eq:14} to get
+\begin{align}
+    &\phantom{=}\sum\limits_{p,q \in L_{k}}B(k)_{p,q}\left(\left(\sum\limits_{r\in L_{k}}K(k)_{p,r}b_{r}(k) + \mathcal{E}_{p}(k)\right)b^*_{q}(k) + b^*_p(k)\left(\sum\limits_{r\in L_{k}}K(k)_{q,r}b_{r}(k) + \mathcal{E}_{q}(k)\right)\right.\nonumber\\
+    &+\left.\left(\sum\limits_{r\in L_{k}}K(k)_{r,p}b^*_{r}(k) + \mathcal{E}^*_{p}(k)\right)b_{q}(k) + b_{p}(k)\left(\sum\limits_{r\in L_{k}}K(k)_{r,q}b^*_{r}(k) + \mathcal{E}^*_{q}(k)\right)\right)\nonumber\\
+    &=\sum\limits_{p,q,r \in L_{k}}B(k)_{p,q}\left(K(k)_{p,r}b_{r}(k)b^*_{q}(k) + b^*_p(k)K(k)_{q,r}b_{r}(k) + 
+    K(k)_{r,p}b^*_{r}(k) b_{q}(k) + b_{p}(k)K(k)_{r,q}b^*_{r}(k) \right)\nonumber\\
+    &+\sum\limits_{p,q\in L_k}B(k)_{p,q}\left(\mathcal{E}_p(k)b^*_q(k)+b^*_p(k)\mathcal{E}_q(k) +b_p(k)\mathcal{E}^*_q(k) +\mathcal{E}^*_p(k)b_q(k)\right).
+\end{align}
+Nest, we denote the second sum term as the error: $E_{Q_2}(B_k)$ and we arrive at
+\begin{align}
+    \sum\limits_{p,q,r \in L_{k}}B(k)_{p,q}\left(K(k)_{p,r}b_{r}(k)b^*_{q}(k) \right.&+\left. b^*_p(k)K(k)_{q,r}b_{r}(k)\right. \nonumber\\
+    +\left. K(k)_{r,p}b^*_{r}(k) b_{q}(k)\right. &+\left. b_{p}(k)K(k)_{r,q}b^*_{r}(k) \right) + E_{Q_2}(B_k).\label{eq:1000} 
+\end{align}
+Next we remove the duplicate index and write it in a condensed way
+\begin{align}
+    \sum\limits_{p,q,r \in L_{k}}B(k)_{p,q}\left(K(k)_{p,r}b_{r}(k)b^*_{q}(k) \right.&+\left. b^*_p(k)K(k)_{q,r}b_{r}(k)\right. \nonumber\\
+    +\left. K(k)_{r,p}b^*_{r}(k) b_{q}(k)\right. &+\left. b_{p}(k)K(k)_{r,q}b^*_{r}(k) \right) + E_{Q_2}(B_k)\\
+    = \sum\limits_{p,q \in L_{k}} \left(\{K_k,B_k\}_{p,q}b_{p}(k)b^*_{q}(k) \right.&+\left. \{K_k,B_k\}_{p,q}b^*_{p}(k) b_{q}(k)\right) + E_{Q_2}(B_k)\\
+    = \sum\limits_{p,q \in L_{k}}\{K_k,B_k\}_{p,q} \left(b_{p}(k)b^*_{q}(k) \right.&+\left.b^*_{p}(k) b_{q}(k)\right) + E_{Q_2}(B_k)\\
+    = Q_1(\{K_k,B_k\}) + E_{Q_2}(B_k).
+\end{align}
+Similarly one can prove $[\mathcal{K}, Q_1(A_k)]$.
+\end{proof}
+\subsection{Transformation of quadratic operators}
+We begin with $T^*_1Q_!(A_K)T_1$ and apply Duhamel's formula, 
+\begin{align}
+    T^*_1Q_1(A_K)T_1 &= Q_1(A_k) + \bint\limits_0^1 \frac{d}{d\lambda}\left(T^*_{\lambda}Q_1(A_k)T_{\lambda}\right)d\lambda\label{eq:25}\\
+    &=Q_1(A_k) + \bint\limits_0^1 T^*_{\lambda}[\mathcal{K},Q_1(A_k)]T_{\lambda}d\lambda.\label{eq:26}
+\end{align}
+Then from the lemma above, we get
+\begin{align}
+    \eqref{eq:26}&= Q_1(A_k) + \bint\limits_0^1 T^*_{\lambda}(Q_2(\{K_k,A_k\}) + E_{Q_1}(K_k,A_k))T_{\lambda}d\lambda\label{eq:27}\\
+    &= Q_1(A_k) + \bint\limits_0^1 T^*_{\lambda}(Q_2(\{K_k,A_k\})T_{\lambda}d\lambda + \bint\limits_0^1 T^*_{\lambda}E_{Q_1}(K_k,A_k))T_{\lambda}d\lambda\label{eq:28}
+\end{align}
+\begin{lemma}[Action of $T_\lambda$ on quadratic operators]\label{lem:4}
+    
+    \begin{align}
+        T^*_{\lambda}Q_1(A_K)T_{\lambda} &=Q_1(A_k) + \bint\limits_0^{\lambda} T^*_{\lambda'}(Q_2(\{K_k,A_k\})T_{\lambda'}d\lambda' + \bint\limits_0^{\lambda} T^*_{\lambda'}E_{Q_1}(K_k,A_k))T_{\lambda'}d\lambda'\label{eq:29}\\
+        T^*_{\lambda}Q_2(A_K)T_{\lambda} &= Q_2(A_k) + \bint\limits_0^{\lambda} T^*_{\lambda'}(Q_1(\{K_k,A_k\})T_{\lambda'}d\lambda' + \bint\limits_0^{\lambda} T^*_{\lambda'}E_{Q_2}(K_k,A_k))T_{\lambda'}d\lambda'\label{eq:30}
+    \end{align}
+\end{lemma}
+\begin{proof}
+    We prove the above by using the Duhamel's formula, redoing the above computation \eqref{eq:25} through \eqref{eq:28}.
+\end{proof}
+\begin{proposition}[Action of $T_1$ on $Q_1(A_k)$]
+
+\begin{align}
+    T^*_1Q_1(A_K)T_1 &= Q_1\left(\sum\limits_{m\geq0}\frac{\Theta^{2m}_K(A_k)}{(2m)!}\right) + Q_2\left(\sum\limits_{m\geq0}\frac{\Theta^{2m+1}_K(A_k)}{(2m+1)!}\right) \nonumber\\
+        &+\bint\limits_0^1\bint\limits_0^\lambda\ldots \bint\limits_0^{\lambda_{n-1}} T^*_{\lambda_n}(Q_{\sigma(n)}(\Theta^n_K(A_k))T_{\lambda_n}d\lambda_n\ldots d\lambda_1 d\lambda + \sum\limits_{i=1}^{n}E_i
+    \end{align}
+    where $\sigma(n) = \begin{cases}
+        1 &\text{for n even}\\
+        2 &\text{for n odd}.
+    \end{cases}$. 
+\end{proposition}
+\begin{proof}
+    We have, from \eqref{eq:28},
+    \begin{equation}
+        T^*_1Q_1(A_K)T_1 = Q_1(A_k) + \bint\limits_0^1 T^*_{\lambda}(Q_2(\{K_k,A_k\})T_{\lambda}d\lambda + \bint\limits_0^1 T^*_{\lambda}E_{Q_1}(K_k,A_k))T_{\lambda}d\lambda\label{eq:32}
+    \end{equation}
+    We use \eqref{eq:30} from Lemma \ref{lem:4} above to arrive at
+    \begin{align}
+        \eqref{eq:32} &= Q_1(A_k) + \frac{1}{1!}Q_2(\{K_k,A_k\}) +\bint\limits_0^1\bint\limits_0^\lambda T^*_{\lambda_1}(Q_1(\{K_k,\{K_k,A_k\}\})T_{\lambda_1}d\lambda_1 d\lambda \nonumber\\&+ \bint\limits_0^1\bint\limits_0^\lambda T^*_{\lambda_1}(E_{Q_2}(K_k,\{K_k,A_k\})T_{\lambda_1}d\lambda_1 d\lambda +\bint\limits_0^1 T^*_{\lambda}E_{Q_1}(K_k,A_k))T_{\lambda}d\lambda\label{eq:33}.
+    \end{align}
+    Next we use \eqref{eq:29} from Lemma \ref{lem:4}
+    \begin{align}
+        \eqref{eq:33} &= Q_1(A_k) + \frac{1}{1!}Q_2(\{K_k,A_k\})+ \frac{1}{2!}Q_1(\{K_k,\{K_k,A_k\}\}) \nonumber\\
+        &+\bint\limits_0^1\bint\limits_0^\lambda \bint\limits_0^{\lambda_1} T^*_{\lambda_2}(Q_2(\{K_k,\{K_k,\{K_k,A_k\}\}\})T_{\lambda_2}d\lambda_2d\lambda_1 d\lambda \nonumber\\
+        &+\bint\limits_0^1\bint\limits_0^\lambda \bint\limits_0^{\lambda_1} T^*_{\lambda_2}E_{Q_1}(K_k,\{K_k,\{K_k,A_k\}\})T_{\lambda_2}d\lambda_2d\lambda_1 d\lambda \nonumber\\
+        &+ \bint\limits_0^1\bint\limits_0^\lambda T^*_{\lambda_1}E_{Q_2}(K_k,\{K_k,A_k\})T_{\lambda_1}d\lambda_1 d\lambda +\bint\limits_0^1 T^*_{\lambda}E_{Q_1}(K_k,A_k)T_{\lambda}d\lambda\label{eq:34}.
+    \end{align}
+    For our convenience, we introduce the following notation for writing the nested anti-commutators 
+    \begin{equation}
+        \Theta^n_K(A_k) = \underbrace{\{K_k,\{\ldots,\{K_k}_\textrm{n times},A_k\}\ldots\}\}\\
+    \end{equation}
+    with
+    \begin{equation}
+        \Theta^0_K(A_k) = A_k.
+    \end{equation}
+    We also introduce another notation for the error terms 
+    \begin{equation}
+    E_n(K_k, A_k) =     
+        \begin{cases}
+        \bint\limits_{\Delta^{2n}}T^*_{\lambda}E_{Q_1}\left(\Theta^{2n}_{K}(A_k),K_k\right)T_{\lambda}d\lambda & \text{for n even}\\
+        \bint\limits_{\Delta^{2n-1}}T^*_{\lambda}E_{Q_2}\left(\Theta^{2n-1}_{K}(A_k),K_k\right)T_{\lambda}d\lambda & \text{for n odd}
+        \end{cases}.
+    \end{equation}
+    Then after multiple interations we arrive at
+    \begin{align}
+        T^*_1Q_1(A_K)T_1 &=  Q_1(\Theta^0_K(A_k)) + \frac{1}{1!}Q_2(\Theta^1_K(A_k))+ \frac{1}{2!}Q_1(\Theta^2_K(A_k)) \nonumber\\
+        &+ \frac{1}{3!}Q_1(\Theta^3_K(A_k)) + \ldots \nonumber \\
+        &+\bint\limits_0^1\bint\limits_0^\lambda\ldots \bint\limits_0^{\lambda_{n-1}} T^*_{\lambda_n}(Q_{\sigma(n)}(\Theta^n_K(A_k))T_{\lambda_n}d\lambda_n\ldots d\lambda_1 d\lambda \nonumber\\
+        &+ E_n(K_k, A_k) + E_{n-1}(K_k, A_k)+\dots+E_1(K_k, A_k)\\
+        &= Q_1\left(\sum\limits_{m\geq0}\frac{\Theta^{2m}_K(A_k)}{(2m)!}\right) + Q_2\left(\sum\limits_{m\geq0}\frac{\Theta^{2m+1}_K(A_k)}{(2m+1)!}\right) \nonumber\\
+        &+\bint\limits_0^1\bint\limits_0^\lambda\ldots \bint\limits_0^{\lambda_{n-1}} T^*_{\lambda_n}(Q_{\sigma(n)}(\Theta^n_K(A_k))T_{\lambda_n}d\lambda_n\ldots d\lambda_1 d\lambda + \sum\limits_{i=1}^{n}E_i(K_k, A_k)
+    \end{align}
+    where $\sigma(n) = \begin{cases}
+        1 &\text{for n even}\\
+        2 &\text{for n odd}.
+    \end{cases}$.
+\end{proof}
+%\section{This is an example for first level head---section head}\label{sec3}
+%\subsection{This is an example for second level head---subsection head}\label{subsec2}
+%\subsubsection{This is an example for third level head---subsubsection head}\label{subsubsec2}
+%\section{Equations}\label{sec4}
+%Notice the use of \verb+\nonumber+ in the align environment at the end of each line, except the last, so as not to produce equation numbers on lines where no equation numbers are required. The \verb+\label{}+ command should only be used at the last line of an align environment where \verb+\nonumber+ is not used.
+
+%\begin{theorem}[Theorem subhead]\label{thm1}
+%\end{theorem}
+
+%\begin{proposition}
+%\end{proposition}
+
+%\begin{example}
+%\end{example}
+
+%\begin{remark}
+%\end{remark}
+
+
+%\begin{definition}[Definition sub head]
+%\end{definition}
+
+%\begin{proof}
+
+%\end{proof}
+
+%\begin{proof}[Proof of Theorem~{\upshape\ref{thm1}}]
+%\end{proof}
+\section{Error bounds}
+\begin{definition}
+    \begin{align}
+        \Xi_\lambda(k) &\coloneq \expval{T_\lambda\Omega, a^*_ka_kT_\lambda\Omega}\\
+        \Xi_\lambda &\coloneq \sup\limits_{k}\expval{T_\lambda\Omega, a^*_ka_kT_\lambda\Omega}
+    \end{align}
+\end{definition}
+\begin{lemma}
+    \begin{equation}
+    \expval{T_\lambda\Omega, E_n(K_k,A_k)T_\lambda\Omega}\leq e^{||k||} \Xi_\lambda  
+    \end{equation}
+    
+\end{lemma}
+
+%\begin{appendices}
+
+%\section{Section title of first appendix}\label{secA1}
+
+
+%\end{appendices}
+
+
+\bibliography{sn-bibliography}% common bib file
+%% if required, the content of .bbl file can be included here once bbl is generated
+%%\input sn-article.bbl
+
+
+\end{document}
