@@ -25,9 +25,9 @@
 %%Note: the following reference styles support Namedate and Numbered referencing. By default the style follows the most common style. To switch between the options you can add or remove Numbered in the optional parenthesis. 
 %%The option is available for: sn-basic.bst, sn-vancouver.bst, sn-chicago.bst, sn-mathphys.bst. %  
  
-%%\documentclass[sn-nature]{sn-jnl}% Style for submissions to Nature Portfolio journals
+%%\documentclass[sn-nature]{sn-jnl}% Style for submisstotalions to Nature Portfolio journals
 %%\documentclass[sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
-\documentclass[sn-mathphys,Numbered]{sn-jnl}% Math and Physical Sciences Reference Style
+\documentclass[sn-mathphys,Numbered, a4paper ,nocrop]{sn-jnl}% Math and Physical Sciences Reference Style
 %%\documentclass[sn-aps]{sn-jnl}% American Physical Society (APS) Reference Style
 %%\documentclass[sn-vancouver,Numbered]{sn-jnl}% Vancouver Reference Style
 %%\documentclass[sn-apa]{sn-jnl}% APA Reference Style 
@@ -37,7 +37,8 @@
 
 %%%% Standard Packages
 %%<additional latex packages if required can be included here>
-\usepackage{amsmath, amssymb, amsfonts, physics, braket, hhline, dsfont, mathtools, cancel, bigints}
+\usepackage{amsmath, amssymb, amsfonts, physics, braket, hhline, mathtools, cancel, bigints,eufrak,geometry}
+\geometry{total={210mm,297mm},bottom={40mm},}
 \usepackage{pgfplots, subcaption, floatrow, footnote, adjustbox,float,fancyvrb}
 \usepackage{graphicx, grffile, epsfig, listings,romannum, hyperref}
 \usepackage{verbatim}
@@ -64,6 +65,8 @@
 \DeclareMathOperator{\R}{\mathbb{R}}
 \DeclareMathOperator{\C}{\mathbb{C}}
 \DeclareMathOperator{\N}{\mathbb{N}}
+\DeclareMathOperator{\Z}{\mathbb{Z}}
+\DeclareMathOperator{\T}{\mathbb{T}}
 
 \DeclareMathOperator{\QQ}{\mathcal{Q}}
 \DeclareMathOperator{\HH}{\mathcal{H}}
@@ -76,6 +79,18 @@
 \newcommand\Item[1][]{%
   \ifx\relax#1\relax  \item \else \item[#1] \fi
   \abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\dg}{^\dagger}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\eva}[1]{\left\langle #1 \right\rangle}
+\newcommand{\bracket}[2]{\left\langle #1 | #2 \right\rangle}
+\renewcommand{\det}[1]{\mathrm{det}\left( #1 \right)}
+\newcommand{\del}[1]{\frac{\partial}{\partial #1}}
+\newcommand{\fulld}[1]{\frac{d}{d #1}}
+\newcommand{\fulldd}[2]{\frac{d #1}{d #2}}
+\newcommand{\dell}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\delltwo}[2]{\frac{\partial^2 #1}{\partial #2 ^2}}  
+\newcommand{\com}[1]{\left[ #1 \right]}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % THEOREMSTYLES
 \theoremstyle{plain}
@@ -173,143 +188,260 @@
 \maketitle
 
 \section{Introduction}\label{sec1}
- 
-
-\section{Computations}\label{sec2}
-Consider a trial state $\Psi_{trial}$ such that $\braket{\Psi_{trial},H\Psi_{trial}} = E_{HF} + E_{RPA}+ o(\hbar) $, where $E_{HF}$ is the Hartree-Fock energy and $E_{RPA}$ is the correlation energy from RPA.
-
-We need to calculate $\braket{\Psi_{trial},a^*_la_l\Psi_{trial}},\, l\in\mathbb{Z}^3$. Here the trial state $\Psi_{trial}= Re^k\Omega$, where 
+We consider a quantum system of N spinless fermionic particles on $\mathbb{T}\coloneq [0,2\pi]^3$. The system is described by the Hamiltonian
 \begin{equation}
-    \Omega = \frac{1}{\sqrt{N!}}\text{det}\left(\frac{1}{(2\pi)^{3/2}}e^{ik_j\cdot x_i}\right)^N_{j,i=1}.
+    H = -\hbar^2\sum\limits_{j=1}^{N}\Delta_{x_j} + \lambda\!\!\!\sum\limits_{1\leq i < j \leq N } V(x_i - x_j)
 \end{equation}
+acting on the wave functions in the anti-symmetric tensor product $L^2_a(\T^{3N}) = \bigwedge_{i=1}^N L^2_a(\T^3)$.
+We want to find the occupation density in the asymptotic limit when $N\rightarrow\infty$ in the \textit{mean-field scaling regime} i.e. we set
+\begin{equation}
+    \hbar\coloneq N^{-\frac{1}{3}}, \quad\text{and}\quad \lambda \coloneq N^{-1}
+\end{equation}
+
+
+
 Then we have
 \begin{align}
-    \braket{\Psi_{trial},a^*_la_l\Psi_{trial}} &= \braket{\Psi_{trial},a^*_la_l\Psi_{trial}} 
+    \eva{\Psi_{trial},n_q\Psi_{trial}} &= \eva{\Psi_{trial},a^*_qa_q\Psi_{trial}} 
 \end{align}
+
+\section{Computations}\label{sec2}
+
+Consider a trial state $\Psi_{trial}$ such that $\braket{\Psi_{trial},H\Psi_{trial}} = E_{HF} + E_{RPA}+ o(\hbar) $, where $E_{HF}$ is the Hartree-Fock energy and $E_{RPA}$ is the correlation energy from RPA.
+
+We need to calculate $\braket{\Psi_{trial},a^*_la_l\Psi_{trial}},\, l\in\mathbb{Z}^3$. (\textcolor{red}{Correct all $l$s to $\ell$}) Here the trial state $\Psi_{trial}= Re^k\Omega$, where 
+\begin{equation}
+    R\Omega = \frac{1}{\sqrt{N!}}\text{det}\left(\frac{1}{(2\pi)^{3/2}}e^{ik_j\cdot x_i}\right)^N_{j,i=1}.
+\end{equation}
+is the Slater determinant of all plane waves with $N$ different momenta $k_j \in \Z^3$.
+We have the Fermi ball i.e. states filling up all the momenta up to Fermi momentum as
+\begin{equation}
+    B_F\coloneq\left\{k\in \Z^3 : |k|\leq k_F\right\}
+\end{equation}
+for some $k_F>0$ and we define its complement as 
+\begin{equation}
+    B_F^c=\Z^3\backslash B_F
+\end{equation}
+Similarly we define a set of momenta which are outside the Fermi ball but are constrained to be a certain distance away from the Fermi ball as 
+\begin{equation}
+    L_q\coloneq \{p :p\in B_F^c \cap (B_F + k)\}
+\end{equation}
+with the following symmetry $L_{-k}=-L_k \quad\forall k \in \Z^3$.
+
 We define the pair operators as
 \begin{align}
     b_p(k) &= a_{p-k}a_{p}\\
     b^*_p(k) &= a^*_{p}a^*_{p-k}
 \end{align}
+for $p\in L_k$
 \begin{lemma}[Quasi-Bosonic commutation relation]
    \begin{align}
-       [b_{p}(k),b_{q}(l)] &= [b^*_{p}(k),b^*_{q}(l)] = 0\\
-       [b_{p}(k),b^*_{q}(l)] &= \delta_{p,q}\delta(k,l) - \epsilon_{p,q}(k,l),
-   \end{align} where $\epsilon_{p,q}(k,l) = \left(\delta_{p,q}a^*_{q-l}a_{p-k} + \delta_{p-k,q-l}a^*_{q}a_{p}\right)$ 
+       [b_{p}(k),b_{q}(\ell)] &= [b^*_{p}(k),b^*_{q}(\ell)] = 0\\
+       [b_{p}(k),b^*_{q}(\ell)] &= \delta_{p,q}\delta_{k,l} + \epsilon_{p,q}(k,l),
+   \end{align} where $\epsilon_{p,q}(k,l) = -\left(\delta_{p,q}a^*_{q-l}a_{p-k} + \delta_{p-k,q-l}a^*_{q}a_{p}\right)$ 
     \end{lemma}
 \begin{proof}
     \begin{align}
-        [b_{p}(k),b^*_{q}(l)] &= [a_{p-k}a_{p},a^*_{q}a^*_{q-l}]\\
+        [b_{p}(k),b^*_{q}(\ell)] &= [a_{p-k}a_{p},a^*_{q}a^*_{q-l}]\\
         &= a_{p-k}[a_p,a^*_{q}a^*_{q-l}] + [a_{p-k},a^*_{q}a^*_{q-l}]a_{p}\\
         &= a_{p-k}\left\{a_p,a^*_{q}\right\}a^*_{q-l} - a_{p-k}a^*_{q}\{a_{p},a^*_{q-l}\}\nonumber \\ &+ \{a_{p-k},a^*_q\}a^*_{q-l}a_{p} - a^*_{q}\{a_{p-k},a^*_{q-l}\}a_{p}\\
         &=\delta_{p,q}a_{p-k}a^*_{q-l} + \delta_{p-k,q-l}a^*_{q}a_{p}\\
-        &= \delta_{p,q}\delta(k,l)-\left(\delta_{p,q}a^*_{q-l}a_{p-k} + \delta_{p-k,q-l}a^*_{q}a_{p}\right)
+        &= \delta_{p,q}\delta_{k,l}-\left(\delta_{p,q}a^*_{q-l}a_{p-k} + \delta_{p-k,q-l}a^*_{q}a_{p}\right)
     \end{align}
-Here, we denote the error term as $\epsilon_{p,q}(k,l) = \left(\delta_{p,q}a^*_{q-l}a_{p-k} + \delta_{p-k,q-l}a^*_{q}a_{p}\right)$ 
+Here, we denote the error term as $\epsilon_{p,q}(k,l) = -\left(\delta_{p,q}a^*_{q-l}a_{p-k} + \delta_{p-k,q-l}a^*_{q}a_{p}\right)$ with $\epsilon_{p,p}(k,k)\geq 0$
 \end{proof}
-We have $T_1 = e^{\mathcal{K}}$, where 
+Before we more on we write some more commutation relation in order to facilitate further computations.
+\begin{lemma}[Commutation relation between $a^\sharp_p$,\footnote{Here $\sharp = \{\;,*\} $} and $n_q$]
+    \begin{align}
+        \com{n_q,a^*_p} &= \delta_{q.p}a^*_p\\
+        \com{n_q,a_p} &= -\delta_{q.p}a_p
+    \end{align}
+\end{lemma} 
+\begin{proof}
+    \begin{align}
+        \com{n_q,a^*_p} &= \com{a^*_qa_q,a^*_p}\\
+        &=a^*_qa_qa^*_p - a^*_pa^*_qa_q\\
+        &= a^*_q\delta_{qp}- a^*_qa^*_pa_q - a^*_pa^*_qa_q\\
+        &=\delta_{q,p}a^*_p
+    \end{align}
+    Here the second step follows from CAR for the fermionic creation and annihilation operators.
+    
+For the second commutation relation, we observe that 
+    \begin{equation}
+        \com{n_q,a_p}= -\com{n_q,a^*_p}^*
+    \end{equation}
+Hence the commutation relation holds
+\end{proof}
+\begin{lemma}[Commutation relation between $b^\sharp_p$ and $n_q$]
+    \begin{align}
+        \com{n_q,b^*_p(k)} &= \left(\delta_{q.p}+\delta_{q.p-k}\right)b^*_p(k)\\
+        \com{n_q,b_p(k)} &= -\left(\delta_{q.p}+\delta_{q.p-k}\right)b_p(k)
+    \end{align}
+\end{lemma} 
+\begin{proof}
+To be filled in    
+\end{proof}
+
+Consider a set of symmetric operator $K(\ell):\ell^2(L_l)\rightarrow \ell^2(L_l), l \in \Z^3_*$. Then we define the associated Bogoliubov kernel $\mathcal{K}:\HH_N\rightarrow\HH_N $ by
 \begin{equation}
-\mathcal{K} = \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left(b_r(l)b_{-s}(-l)-b^*_{-s}(-l)b^*_{r}(l)\right)
+\mathcal{K} = \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(\ell)_{r,s}\left(b_r(\ell)b_{-s}(-\ell)-b^*_{-s}(-\ell)b^*_{r}(\ell)\right)
 \end{equation}
+Next we define the transformation $T = e^{\mathcal{K}} $ which is a unitary due the fact that $\mathcal{K}$ is anti-unitary i.e. $\mathcal{K}=-\mathcal{K}^* $.
+
+For further convenience, we write the following commutation relation.
 \begin{lemma}[Commutator between $\mathcal{K} $ and pair operators]
 \begin{align}
-    [\mathcal{K}, b_p(k)] &=\sum\limits_{r\in L_{k}}K(k)_{r,p}b^*_{r}(k) + \mathcal{E}^*_{p}(k)\label{eq:13} \\
-    [\mathcal{K}, b^*_p(k)] &=\sum\limits_{r\in L_{k}}K(k)_{p,r}b_{r}(k) + \mathcal{E}_{p}(k)\label{eq:14},
+    [\mathcal{K}, b^*_p(k)] &=\sum\limits_{s\in L_{k}}K(k)_{p,s}b_{-s}(-k) + \mathcal{E}_{p}(k)\label{eq:13} \\
+    [\mathcal{K}, b_p(k)] &=\sum\limits_{s\in L_{k}}K(k)_{p,s}b^*_{-s}(-k) + \left(\mathcal{E}_{p}(k)\right)^*\label{eq:14},
 \end{align}
     where, 
-\begin{align}
-    \mathcal{E}^*_{p}(k) &= \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left\{\epsilon_{p,s}(k,l),b^*_{-r}(-l)\right\}\\
-    \mathcal{E}_{p}(k) &= \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left\{\epsilon_{p,s}(k,l),b_{-r}(-l)\right\} 
-\end{align}
+\begin{equation}
+    \mathcal{E}_{p}(k) = \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(\ell)_{r,s}\left\{b_{r}(\ell),\epsilon_{-s,p}(k,-l)\right\} 
+\end{equation}
 \end{lemma}
 \begin{proof}
-    We start with
-    \begin{align}
-        [\mathcal{K}, b_p(k)] &=\left[\frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left(b_r(l)b_{-s}(-l)-b^*_{-s}(-l)b^*_{r}(l)\right),b_p(k)\right]\nonumber\\
-        &=\frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left[\left(b_r(l)b_{-s}(-l)-b^*_{-s}(-l)b^*_{r}(l)\right),b_p(k)\right]\nonumber\\
-        &=\frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left[\left(-b^*_{-s}(-l)b^*_{r}(l)\right),b_p(k)\right]\nonumber\\
-        &=\frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left(b^*_{-s}(-l)\left[b_p(k),b^*_{r}(l)\right] + \left[b_p(k),b^*_{-s}(-l)\right]b^*_{r}(l) \right)
-    \end{align}
-    Substituting $l\rightarrow -l, r\rightarrow -r $ and $ s\rightarrow -s$ in the first term above, we get
-    \begin{align}
-        &\phantom{=}\frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(-l)_{-r,-s}\left(b^*_{s}(l)\left[b_p(k),b^*_{-r}(-l)\right]\right) \nonumber\\
-        &+\frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left( \left[b_p(k),b^*_{-s}(-l)\right]b^*_{r}(l) \right)\nonumber\\
-        &=\frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left(b^*_{s}(l)\left[b_p(k),b^*_{-r}(-l)\right] + \left[b_p(k),b^*_{-s}(-l)\right]b^*_{r}(l) \right)\nonumber\\
-        &= \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left\{\left[b_p(k),b^*_{-s}(-l)\right],b^*_{r}(l) \right\}\nonumber\\
-        &= \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left\{(\delta_{p,-s}\delta(k,-l) + \epsilon_{p,-s}(k,-l)),b^*_{r}(l) \right\}\nonumber\\
-        &= \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left\{(\delta_{p,-s}\delta(k,-l),b^*_{r}(l) \right\} + \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left\{\epsilon_{p,-s}(k,-l)),b^*_{r}(l) \right\}\nonumber\\
-        &=\sum\limits_{r\in L_{-k}}K(-k)_{r,-p}b^*_r(-k) + \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left\{\epsilon_{p,-s}(k,-l)),b^*_{r}(l) \right\}\nonumber
-    \end{align}
-    Similarly we substitute $l\rightarrow -l, r\rightarrow -r $ and $ s\rightarrow -s$ in the second term above. 
-    \begin{equation}
-        \sum\limits_{r\in L_{-k}}K(-k)_{r,-p}b^*_r(-k) + \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left\{\epsilon_{p,s}(k,l)),b^*_{-r}(-l) \right\}
-    \end{equation}
-    We denote the second (error) term above by \begin{equation}
-        \mathcal{E}^*_p(k)= \frac{1}{2}\sum\limits_{l\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_l}K(l)_{r,s}\left\{\epsilon_{p,s}(k,l)),b^*_{-r}(-l) \right\}
-    \end{equation}
-    and we get
-    \begin{align}
-        &\phantom{=}\sum\limits_{r\in L_{-k}}K(-k)_{r,-p}b^*_r(-k) + \mathcal{E}^*_p(k)\nonumber\\
-        &=\sum\limits_{-r\in L_{k}}K(-k)_{-r,-p}b^*_{-r}(-k) + \mathcal{E}^*_p(k)\nonumber
-    \end{align}
-    Again substituting, $-k\rightarrow k, -r\rightarrow r $ and $ -p\rightarrow p$ in the first term above, we get
-    \begin{equation}
-        \sum\limits_{r\in L_{k}}K(k)_{r,p}b^*_{r}(k) + \mathcal{E}^*_p(k)
-    \end{equation}
-    Similarly, one can prove the other statement for $[\mathcal{K}, b^*_p(k)]$.
+   to be filled in
 \end{proof}
-Next we define the quadratic operators as 
-\begin{align}
-    Q_1(A_k)&=\sum\limits_{p,q \in L_{k}}A(k)_{p,q} \left(b^*_p(k)b_{q}(k)+b_{p}(k)b^*_{q}(k)\right)\\
-    Q_2(B_k)&=  \sum\limits_{p,q \in L_{k}}B(k)_{p,q} \left(b^*_p(k)b^*_{q}(k)+b_{p}(k)b_{q}(k)\right)
+Before we begin the evaluation, we define .
+
+\textbf{Symmetry transformation} Symmetry transformation is a unitary transformation $\mathfrak{R}:\mathcal{F}\rightarrow \mathcal{F}$ defined by its action as
+\begin{equation}
+    \mathfrak{R}: a^*_{k_1}\ldots a^*_{k_n}\Omega \mapsto a^*_{-k_1}\ldots a^*_{-k_n}\Omega 
+\end{equation}
+while leaving the vacuum state invariant.
+
+\begin{lemma}\label{lem:symtransformation}
+    For the symmetry transformation $\mathfrak{R}$ and the almost bosonic Bogoliubov transformation $T$, we have
+    \begin{equation}
+        \mathfrak{R}T\Omega = T\Omega
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    to be filled in
+\end{proof}
+Next we define the quadratic operator as 
+\begin{definition}
+For $l \in \Z^3_*$
+\begin{align} 
+    Q_1(A(\ell))&\coloneq  \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{l}}A(\ell)_{r,s} \left(b^*_r(\ell)b_{s}(\ell)+b^*_{s}(\ell)b_{r}(\ell)\right)\label{eq:Q1}\\ 
+    Q_2(A(\ell))&\coloneq  \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{l}}A(\ell)_{r,s} \left(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell)\right)\label{eq:Q2}
 \end{align}
+    
+\end{definition}
+
+Then motivated by Lemma \ref{lem:symtransformation}, we evaluate $\eva{\Omega, T_1^*\half\left(n_q+n_{-q}\right)T_1\Omega}$.\newline 
+
+\textbf{Evaluation of the expectation value}
+\begin{lemma}
+For $q \in B_F^c$, we define the projection operator, projecting to momentum $q$ and $-q$, $ (\Delta^q)_{m,s}\coloneq -\half(\delta_{m,q}\delta_{m,s}+\delta_{m,-q}\delta_{m.s})$ and we get
+\begin{equation}\label{eq: mainexp}
+    \eva{\Omega, T_1^*\half\left(n_q+n_{-q}\right)T_1\Omega} =
+\end{equation}   
+\end{lemma}
+\begin{proof}
+We start by applying Duhamel's formula to RHS of (\ref{eq: mainexp}) and we have
+\begin{align}
+    &\half\left(\eva{\Omega,\left(n_q+n_{-q}\right)\Omega} + \bint\limits_0^1 d\lambda  \left(\fulld{\lambda}\eva{\Omega, T_\lambda^*\left(n_q+n_{-q}\right)T_\lambda\Omega} \right)\right)\\
+    &=\half\bint\limits_0^1 d\lambda  \left(\eva{\Omega, T_\lambda^*(-\mathcal{K})\left(n_q+n_{-q}\right)T_\lambda+T_\lambda^*\left(n_q+n_{-q}\right)(\mathcal{K})T_\lambda\Omega} \right)\\
+    &= \half\bint\limits_0^1 d\lambda  \eva{\Omega, T_\lambda^*[\left(n_q+n_{-q}\right),\mathcal{K}]T_\lambda\Omega}\label{eq:halfexp}.
+\end{align}
+Next using the definition of $\mathcal{K}$, we write the expression for the commutator.
+\begin{alignat}{2}
+    \left[n_q,\mathcal{K}\right]&= \half\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}K(\ell)_{r,s}\left[a^*_q a_q, \left(b_r(\ell)b_{-s}(-\ell)-b^*_{-s}(-\ell)b^*_{r}(\ell)\right)\right]\\
+    &= \half\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}K(\ell)_{r,s} \begin{aligned}[t]
+         \bigg(&\left[a^*_q a_q, b_r(\ell)\right]b_{-s}(-\ell) + b_{r}(\ell)\left[a^*_q a_q, b_{-s}(-\ell)\right]\\  - &\left[a^*_q a_q,b^*_{-s}(-\ell)\right]b^*_{r}(\ell) +b^*_{-s}(-\ell)\left[a^*_q a_q,b^*_{r}(\ell)\right]\bigg)
+    \end{aligned}\\
+    &=\half\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}K(\ell)_{r,s}\begin{aligned}[t] \bigg(&(-1)\left(\delta_{q.r}+\delta_{q.r-\ell}+\delta_{q,-s}+\delta_{q,-s+\ell}\right)\\\times&\left(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell)\right)\bigg)
+    \end{aligned}
+\end{alignat}    
+ Now, since $q \in B_F^c$, $\delta_{q.r-\ell}=\delta_{q,-s+\ell}=0$, we have
+ \begin{equation}\label{eq:nqcommuteK}
+     \left[n_q,\mathcal{K}\right]= \half\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}} \!\! K(\ell)_{r,s} \bigg(\!(-1)\!\left(\delta_{q.r}+\delta_{q,-s}\right)\!\left(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell)\right)\!\!\bigg)
+ \end{equation}
+Similarly for $\left[n_q,\mathcal{K}\right]$, we get
+\begin{equation}\label{eq:n-qcommuteK}
+    \left[n_{-q},\mathcal{K}\right]= \half\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}} \!\! K(\ell)_{r,s} \bigg(\!(-1)\!\left(\delta_{-q.r}+\delta_{-q,-s}\right)\!\left(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell)\right)\!\!\bigg)
+\end{equation}
+Next we substitute commutators (\ref{eq:nqcommuteK}) and (\ref{eq:n-qcommuteK}) in (\ref{eq:halfexp}),
+\begin{alignat}{2}
+    (\ref{eq:halfexp}) &= \half\bint\limits_0^1 d\lambda\begin{aligned}[t]
+     \Bigg<\Omega,T_\lambda^*\bigg( \half\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}} K(\ell)_{r,s} &\Big((-1)(\delta_{q.r}+\delta_{q,-s}+\delta_{-q.r}+\delta_{-q,-s})\\ &   \times(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell))\Big)\bigg)T_\lambda\Omega\Bigg> 
+    \end{aligned}\nonumber\\
+    &= \half\bint\limits_0^1 \!\!d\lambda\begin{aligned}[t]
+     \Bigg<\Omega,T_\lambda^*\bigg( \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}} (-\half)&\Big(\underbrace{K(\ell)_{r,s} (\delta_{q.r}+\delta_{q,-s}+\delta_{-q.r}+\delta_{-q,-s})}_{\text{interpret as matrix product}}\\ &   \times(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell))\Big)\bigg)T_\lambda\Omega\Bigg> 
+    \end{aligned}\\
+    &= \half\bint\limits_0^1 \!\!d\lambda\begin{aligned}[t]
+     &\Bigg<\Omega,T_\lambda^*\bigg( \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\Big(K(\ell)_{r,m} (-\half)\underbrace{(\delta_{m,q}\delta_{m,s}+\delta_{m,-q}\delta_{m.s})}_{\text{(a)}}\\ &  + (-\half)\underbrace{(\delta_{r,q}\delta_{r,m}+\delta_{r,-q}\delta_{r.m})}_{\text{(b)}}K(\ell)_{m,s} \Big)(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell))\bigg)T_\lambda\Omega\Bigg>\label{eq:momentumfix} 
+    \end{aligned}
+\end{alignat}
+Next, we observe that (a) and (b) are projection of a momentum ($r$ or $s \in L_\ell$) to momentum $q$ and $-q$.
+We then arrive at
+\begin{alignat}{2}
+    (\ref{eq:momentumfix}) &=  \half\bint\limits_0^1 d\lambda\begin{aligned}[t]
+     \bigg<\Omega,T_\lambda^*\bigg( \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}&\Big(K(\ell)_{r,m}\Delta^q_{m,s}  +\Delta^q_{r,m} K(\ell)_{m,s} \Big)\\&(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell))\bigg)T_\lambda\Omega\bigg>
+    \end{aligned}\\
+    &= \half\bint\limits_0^1 \!\!d\lambda\begin{aligned}[t]
+     \bigg<\Omega,T_\lambda^*\bigg( \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}&\Big(K(\ell)_{r,m}\Delta^q_{m,s}  +\Delta^q_{r,m} K(\ell)_{m,s} \Big)\\&(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell))\bigg)T_\lambda\Omega\bigg> 
+    \end{aligned}\\
+    &= \half\bint\limits_0^1 \!\!d\lambda
+     \bigg<\Omega,T_\lambda^*\bigg( \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\Big\{K(\ell),\Delta^q\Big\}_{r,s}(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell))\bigg)T_\lambda\Omega\bigg>\label{eq:anticomKDelta} 
+\end{alignat}
+Using the definition of $Q_2$, \eqref{eq:Q2}, we arrive at 
+\begin{equation}
+    (\ref{eq:anticomKDelta}) = \half\bint\limits_0^1 \!\!d\lambda
+     \bigg<\Omega,T_\lambda^* Q_2 \Big(\big\{K(\ell),\Delta^q\big\} \Big)T_\lambda\Omega\bigg>
+\end{equation} \end{proof}
+\newpage
+
 \begin{lemma}[Commutator between $\mathcal{K} $ and the quadratic operators]
 \begin{align}
-    [\mathcal{K}, Q_1(A_k)] &= Q_2(\{K_k,A_k\}) + E_{Q_1}(A_k)\\
-    [\mathcal{K}, Q_2(B_k)] &= Q_1(\{K_k,B_k\}) + E_{Q_2}(B_k)
+    [ Q_1(A(\ell)),\mathcal{K}] &= Q_2(\{K(\ell),A(\ell)\}) + E_{Q_1}(A(\ell)) \\
+    [ Q_2(B(\ell)),\mathcal{K}] &= Q_1(\{K(\ell),B(\ell)\}) + E_{Q_2}(B(\ell))
 \end{align}
  where,
- \begin{align}
-     E_{Q_1}(A_k)&= \sum\limits_{p,q\in L_k}A(k)_{p,q}\left(\mathcal{E}_p(k)b_q(k)+b_p(k)\mathcal{E}_q(k) +b^*_p(k)\mathcal{E}^*_q(k) +\mathcal{E}^*_p(k)b^*_q(k)\right)\\
-     E_{Q_2}(B_k)&= \sum\limits_{p,q\in L_k}B(k)_{p,q}\left(\mathcal{E}_p(k)b^*_q(k)+b^*_p(k)\mathcal{E}_q(k) +b_p(k)\mathcal{E}^*_q(k) +\mathcal{E}^*_p(k)b_q(k)\right)
- \end{align}
+\begin{align}
+     E_{Q_1}(A(\ell))&=-\left( b_r(\ell)\mathcal{E}^*_{-s}(-\ell)+\mathcal{E}_{r}(\ell)b_{-s}(\ell) + \mathcal{E}_{-s}(-\ell)b^*_{r}(\ell) + b^*_{-s}(-\ell)\mathcal{E}^*_{r}(\ell) \right)\\
+     E_{Q_2}(B(\ell))&=-\left( b^*_r(\ell)\mathcal{E}^*_{-s}(-\ell)+\mathcal{E}_{r}(\ell)b_{-s}(\ell) + \mathcal{E}_{-s}(-\ell)b_{r}(\ell) + b^*_{-s}(-\ell)\mathcal{E}^*_{r}(\ell) \right)
+\end{align}
 \end{lemma}
 \begin{proof}
-We begin with
-\begin{align}
-    [\mathcal{K}, Q_2(B_k)]&=  \left[\mathcal{K}, \sum\limits_{p,q \in L_{k}}B(k)_{p,q} \left(b^*_p(k)b^*_{q}(k)+b_{p}(k)b_{q}(k)\right)\right]\nonumber\\
-    &=\sum\limits_{p,q \in L_{k}}B(k)_{p,q}\left[\mathcal{K},  \left(b^*_p(k)b^*_{q}(k)+b_{p}(k)b_{q}(k)\right)\right]\nonumber\\
-    &=\sum\limits_{p,q \in L_{k}}B(k)_{p,q}\left([\mathcal{K}, b^*_p(k)b^*_{q}(k)]+[\mathcal{K},b_{p}(k)b_{q}(k)]\right)\nonumber\\
-    &=\sum\limits_{p,q \in L_{k}}B(k)_{p,q}\left([\mathcal{K}, b^*_p(k)]b^*_{q}(k) + b^*_p(k)[\mathcal{K}, b^*_{q}(k)]\right.\nonumber\\
-    &+\left.[\mathcal{K},b_{p}(k)]b_{q}(k) + b_{p}(k)[\mathcal{K},b_{q}(k)]\right)\nonumber\\
-\end{align}
-Now we use the commutation relation from \eqref{eq:13} and \eqref{eq:14} to get
-\begin{align}
-    &\phantom{=}\sum\limits_{p,q \in L_{k}}B(k)_{p,q}\left(\left(\sum\limits_{r\in L_{k}}K(k)_{p,r}b_{r}(k) + \mathcal{E}_{p}(k)\right)b^*_{q}(k) + b^*_p(k)\left(\sum\limits_{r\in L_{k}}K(k)_{q,r}b_{r}(k) + \mathcal{E}_{q}(k)\right)\right.\nonumber\\
-    &+\left.\left(\sum\limits_{r\in L_{k}}K(k)_{r,p}b^*_{r}(k) + \mathcal{E}^*_{p}(k)\right)b_{q}(k) + b_{p}(k)\left(\sum\limits_{r\in L_{k}}K(k)_{r,q}b^*_{r}(k) + \mathcal{E}^*_{q}(k)\right)\right)\nonumber\\
-    &=\sum\limits_{p,q,r \in L_{k}}B(k)_{p,q}\left(K(k)_{p,r}b_{r}(k)b^*_{q}(k) + b^*_p(k)K(k)_{q,r}b_{r}(k) + 
-    K(k)_{r,p}b^*_{r}(k) b_{q}(k) + b_{p}(k)K(k)_{r,q}b^*_{r}(k) \right)\nonumber\\
-    &+\sum\limits_{p,q\in L_k}B(k)_{p,q}\left(\mathcal{E}_p(k)b^*_q(k)+b^*_p(k)\mathcal{E}_q(k) +b_p(k)\mathcal{E}^*_q(k) +\mathcal{E}^*_p(k)b_q(k)\right).
-\end{align}
-Nest, we denote the second sum term as the error: $E_{Q_2}(B_k)$ and we arrive at
-\begin{align}
-    \sum\limits_{p,q,r \in L_{k}}B(k)_{p,q}\left(K(k)_{p,r}b_{r}(k)b^*_{q}(k) \right.&+\left. b^*_p(k)K(k)_{q,r}b_{r}(k)\right. \nonumber\\
-    +\left. K(k)_{r,p}b^*_{r}(k) b_{q}(k)\right. &+\left. b_{p}(k)K(k)_{r,q}b^*_{r}(k) \right) + E_{Q_2}(B_k).\label{eq:1000} 
-\end{align}
-Next we remove the duplicate index and write it in a condensed way
-\begin{align}
-    \sum\limits_{p,q,r \in L_{k}}B(k)_{p,q}\left(K(k)_{p,r}b_{r}(k)b^*_{q}(k) \right.&+\left. b^*_p(k)K(k)_{q,r}b_{r}(k)\right. \nonumber\\
-    +\left. K(k)_{r,p}b^*_{r}(k) b_{q}(k)\right. &+\left. b_{p}(k)K(k)_{r,q}b^*_{r}(k) \right) + E_{Q_2}(B_k)\\
-    = \sum\limits_{p,q \in L_{k}} \left(\{K_k,B_k\}_{p,q}b_{p}(k)b^*_{q}(k) \right.&+\left. \{K_k,B_k\}_{p,q}b^*_{p}(k) b_{q}(k)\right) + E_{Q_2}(B_k)\\
-    = \sum\limits_{p,q \in L_{k}}\{K_k,B_k\}_{p,q} \left(b_{p}(k)b^*_{q}(k) \right.&+\left.b^*_{p}(k) b_{q}(k)\right) + E_{Q_2}(B_k)\\
-    = Q_1(\{K_k,B_k\}) + E_{Q_2}(B_k).
-\end{align}
+We begin with $[ Q_2(B_k),\mathcal{K}]$.\newline
+\textcolor{red}{Some error in the indices}
+%\begin{align}
+ %   [ Q_2(B_k),\mathcal{K}]&=  \left[\mathcal{K},  \sum\limits_{\ell \in \Z^3_*}\sum\limits_{p,q \in L_{k}}B(k)_{p,q} \left(b^*_p(k)b^*_{q}(k)+b_{p}(k)b_{q}(k)\right)\right]\nonumber\\
+ %   &= \sum\limits_{\ell \in \Z^3_*}\sum\limits_{p,q \in L_{k}}B(k)_{p,q}\left[\mathcal{K},  \left(b^*_p(k)b^*_{q}(k)+b_{p}(k)b_{q}(k)\right)\right]\nonumber\\
+ %   &= \sum\limits_{\ell \in \Z^3_*}\sum\limits_{p,q \in L_{k}}B(k)_{p,q}\left([\mathcal{K}, b^*_p(k)b^*_{q}(k)]+[\mathcal{K},b_{p}(k)b_{q}(k)]\right)\nonumber\\
+ %   &= \sum\limits_{\ell \in \Z^3_*}\sum\limits_{p,q \in L_{k}}B(k)_{p,q}\left([\mathcal{K}, b^*_p(k)]b^*_{q}(k) + b^*_p(k)[\mathcal{K}, b^*_{q}(k)]\right.\nonumber\\
+  %  &+\left.[\mathcal{K},b_{p}(k)]b_{q}(k) + b_{p}(k)[\mathcal{K},b_{q}(k)]\right)\nonumber\\
+%\end{align}
+%Now we use the commutation relation from \eqref{eq:13} and \eqref{eq:14} to get
+%\begin{align}
+ %   &\phantom{=} \sum\limits_{\ell \in \Z^3_*}\sum\limits_{p,q \in L_{k}}B(k)_{p,q}\left(\left(\sum\limits_{r\in L_{k}}K(k)_{p,r}b_{-r}(-k) + \mathcal{E}_{p}(k)\right)b^*_{q}(k) + b^*_p(k)\left(\sum\limits_{r\in L_{k}}K(k)_{q,r}b_{-r}(-k) + \mathcal{E}_{q}(k)\right)\right.\nonumber\\
+  %  &+\left.\left(\sum\limits_{r\in L_{k}}K(k)_{r,p}b^*_{-r}(-k) + \mathcal{E}^*_{p}(k)\right)b_{q}(k) + b_{p}(k)\left(\sum\limits_{r\in L_{k}}K(k)_{r,q}b^*_{-r}(-k) + \mathcal{E}^*_{q}(k)\right)\right)\nonumber\\
+   % &=\sum\limits_{\ell \in \Z^3_*}\sum\limits_{p,q,r \in L_{k}}B(k)_{p,q}\begin{aligned}[t]&\left(K(k)_{p,r}b_{-r}(-k)b^*_{q}(k) + b^*_p(k)K(k)_{q,r}b_{-r}(-k) \right.\\&\left.+ 
+   % K(k)_{r,p}b^*_{-r}(-k) b_{q}(k) + b_{p}(k)K(k)_{r,q}b^*_{-r}(-k) \right)\nonumber\end{aligned}\\
+   % &+\sum\limits_{\ell \in \Z^3_*}\sum\limits_{p,q\in L_k}B(k)_{p,q}\left(\mathcal{E}_p(k)b^*_q(k)+b^*_p(k)\mathcal{E}_q(k) +b_p(k)\mathcal{E}^*_q(k) +\mathcal{E}^*_p(k)b_q(k)\right).
+%\end{align}
+%Nest, we denote the second sum term as the error: $E_{Q_2}(B_k)$ and we arrive at
+%\begin{align}
+ %   \sum\limits_{\ell \in \Z^3_*}\sum\limits_{p,q,r \in L_{k}}B(k)_{p,q}\left(K(k)_{p,r}b_{-r}(-k)b^*_{q}(k) \right.&+\left. b^*_p(k)K(k)_{q,r}b_{r}(k)\right. \nonumber\\
+  %  +\left. K(k)_{r,p}b^*_{r}(k) b_{q}(k)\right. &+\left. b_{p}(k)K(k)_{r,q}b^*_{r}(k) \right) + E_{Q_2}(B_k).\label{eq:1000} 
+%\end{align}
+%Next we remove the duplicate index and write it in a condensed way
+%\begin{align}
+ %   \sum\limits_{\ell \in \Z^3_*}\sum\limits_{p,q,r \in L_{k}}B(k)_{p,q}\left(K(k)_{p,r}b_{r}(k)b^*_{q}(k) \right.&+\left. b^*_p(k)K(k)_{q,r}b_{r}(k)\right. \nonumber\\
+ %   +\left. K(k)_{r,p}b^*_{r}(k) b_{q}(k)\right. &+\left. b_{p}(k)K(k)_{r,q}b^*_{r}(k) \right) + E_{Q_2}(B_k)\\
+ %   = \sum\limits_{\ell \in \Z^3_*}\sum\limits_{p,q \in L_{k}} \left(\{K_k,B_k\}_{p,q}b_{p}(k)b^*_{q}(k) \right.&+\left. \{K_k,B_k\}_{p,q}b^*_{p}(k) b_{q}(k)\right) + E_{Q_2}(B_k)\\
+  %  =\sum\limits_{\ell \in \Z^3_*} \sum\limits_{p,q \in L_{k}}\{K_k,B_k\}_{p,q} \left(b_{p}(k)b^*_{q}(k) \right.&+\left.b^*_{p}(k) b_{q}(k)\right) + E_{Q_2}(B_k)\\
+   % = Q_1(\{K_k,B_k\}) + E_{Q_2}(B_k).
+%\end{align}
+
 Similarly one can prove $[\mathcal{K}, Q_1(A_k)]$.
 \end{proof}
 \subsection{Transformation of quadratic operators}
-We begin with $T^*_1Q_!(A_K)T_1$ and apply Duhamel's formula, 
+We begin with $T^*_1Q_!(A(\ell))T_1$ and apply Duhamel's formula, 
 \begin{align}
-    T^*_1Q_1(A_K)T_1 &= Q_1(A_k) + \bint\limits_0^1 \frac{d}{d\lambda}\left(T^*_{\lambda}Q_1(A_k)T_{\lambda}\right)d\lambda\label{eq:25}\\
+    T^*_1Q_1(A(\ell))T_1 &= Q_1(A(\ell)) + \bint\limits_0^1 \frac{d}{d\lambda}\left(T^*_{\lambda}Q_1(A(\ell))T_{\lambda}\right)d\lambda\label{eq:25}\\
     &=Q_1(A_k) + \bint\limits_0^1 T^*_{\lambda}[\mathcal{K},Q_1(A_k)]T_{\lambda}d\lambda.\label{eq:26}
 \end{align}
 Then from the lemma above, we get
@@ -320,18 +452,23 @@ Then from the lemma above, we get
 \begin{lemma}[Action of $T_\lambda$ on quadratic operators]\label{lem:4}
     
     \begin{align}
-        T^*_{\lambda}Q_1(A_K)T_{\lambda} &=Q_1(A_k) + \bint\limits_0^{\lambda} T^*_{\lambda'}(Q_2(\{K_k,A_k\})T_{\lambda'}d\lambda' + \bint\limits_0^{\lambda} T^*_{\lambda'}E_{Q_1}(K_k,A_k))T_{\lambda'}d\lambda'\label{eq:29}\\
-        T^*_{\lambda}Q_2(A_K)T_{\lambda} &= Q_2(A_k) + \bint\limits_0^{\lambda} T^*_{\lambda'}(Q_1(\{K_k,A_k\})T_{\lambda'}d\lambda' + \bint\limits_0^{\lambda} T^*_{\lambda'}E_{Q_2}(K_k,A_k))T_{\lambda'}d\lambda'\label{eq:30}
+        T^*_{\lambda}Q_1(A_K)T_{\lambda} 
+        &=Q_1(A_k) + \bint\limits_0^{\lambda} T^*_{\lambda'}(Q_2(\{K_k,A_k\})T_{\lambda'}d\lambda' + \bint\limits_0^{\lambda} T^*_{\lambda'}E_{Q_1}(K_k,A_k))T_{\lambda'}d\lambda'\label{eq:29}\\
+        T^*_{\lambda}Q_2(A_K)T_{\lambda} 
+        &= Q_2(A_k) + \bint\limits_0^{\lambda} T^*_{\lambda'}(Q_1(\{K_k,A_k\})T_{\lambda'}d\lambda' + \bint\limits_0^{\lambda} T^*_{\lambda'}E_{Q_2}(K_k,A_k))T_{\lambda'}d\lambda'\\
+        &+ 
+        \bint\limits_0^{\lambda} T^*_{\lambda'}\epsilon(\ell)T_{\lambda'}d\lambda'\label{eq:30}
     \end{align}
 \end{lemma}
 \begin{proof}
     We prove the above by using the Duhamel's formula, redoing the above computation \eqref{eq:25} through \eqref{eq:28}.
 \end{proof}
-\begin{proposition}[Action of $T_1$ on $Q_1(A_k)$]
+\begin{proposition}[Action of $T_1$ on $Q_2(A_k)$]
 
 \begin{align}
-    T^*_1Q_1(A_K)T_1 &= Q_1\left(\sum\limits_{m\geq0}\frac{\Theta^{2m}_K(A_k)}{(2m)!}\right) + Q_2\left(\sum\limits_{m\geq0}\frac{\Theta^{2m+1}_K(A_k)}{(2m+1)!}\right) \nonumber\\
-        &+\bint\limits_0^1\bint\limits_0^\lambda\ldots \bint\limits_0^{\lambda_{n-1}} T^*_{\lambda_n}(Q_{\sigma(n)}(\Theta^n_K(A_k))T_{\lambda_n}d\lambda_n\ldots d\lambda_1 d\lambda + \sum\limits_{i=1}^{n}E_i
+    T^*_1Q_2(A_K)T_1 &= Q_2\left(\sum\limits_{m\geq0}\frac{\Theta^{2m}_K(A_k)}{(2m)!}\right) + Q_1\left(\sum\limits_{m\geq0}\frac{\Theta^{2m+1}_K(A_k)}{(2m+1)!}\right) \nonumber\\
+        &+\bint\limits_0^1\bint\limits_0^\lambda\ldots \bint\limits_0^{\lambda_{n-1}} T^*_{\lambda_n}(Q_{\sigma(n)}(\Theta^n_K(A_k))T_{\lambda_n}d\lambda_n\ldots d\lambda_1 d\lambda\\ &+ 
+        \sum\limits_{n\geq0}\bint\limits_0^{\lambda}\bint\limits_0^{\lambda_1}\cdots\bint\limits_0^{\lambda_2n+1} T^*_{\lambda}\Theta^n_K(\epsilon(\ell))T_{\lambda}d\lambda d\lambda_1\ldots d\lambda_{2n+1} +\sum\limits_{i=1}^{n}E_i
     \end{align}
     where $\sigma(n) = \begin{cases}
         1 &\text{for n even}\\
@@ -356,7 +493,7 @@ Then from the lemma above, we get
     \end{align}
     For our convenience, we introduce the following notation for writing the nested anti-commutators 
     \begin{equation}
-        \Theta^n_K(A_k) = \underbrace{\{K_k,\{\ldots,\{K_k}_\textrm{n times},A_k\}\ldots\}\}\\
+        \Theta^n_K(A(\ell)) = \underbrace{\{K(\ell),\{\ldots,\{K(\ell)}_\textrm{n times},A(\ell)\}\ldots\}\}\\
     \end{equation}
     with
     \begin{equation}
@@ -364,10 +501,10 @@ Then from the lemma above, we get
     \end{equation}
     We also introduce another notation for the error terms 
     \begin{equation}
-    E_n(K_k, A_k) =     
+    E_n(K(\ell), A(\ell)) =     
         \begin{cases}
-        \bint\limits_{\Delta^{2n}}T^*_{\lambda}E_{Q_1}\left(\Theta^{2n}_{K}(A_k),K_k\right)T_{\lambda}d\lambda & \text{for n even}\\
-        \bint\limits_{\Delta^{2n-1}}T^*_{\lambda}E_{Q_2}\left(\Theta^{2n-1}_{K}(A_k),K_k\right)T_{\lambda}d\lambda & \text{for n odd}
+        \bint\limits_{\Delta^{2n}}T^*_{\lambda}E_{Q_1}\left(\Theta^{2n}_{K}(A(\ell)),K(\ell)\right)T_{\lambda}d\lambda & \text{for n even}\\
+        \bint\limits_{\Delta^{2n-1}}T^*_{\lambda}E_{Q_2}\left(\Theta^{2n-1}_{K}(A(\ell)),K(\ell)\right)T_{\lambda}d\lambda & \text{for n odd}
         \end{cases}.
     \end{equation}
     Then after multiple interations we arrive at
@@ -384,6 +521,14 @@ Then from the lemma above, we get
         2 &\text{for n odd}.
     \end{cases}$.
 \end{proof}
+\begin{proposition}[Final Expansion]
+\textcolor{red}{Change $A_K$ by $\Delta$}
+\begin{align}
+    \eva{\Omega, T_1^*\left(n_q+n_{-q}\right)T_1\Omega} &= \Bigg<\Omega,\bigg(Q_2\left(\sum\limits_{m\geq0}\frac{\Theta^{2m}_K(A_k)}{(2m)!}\right) + Q_1\left(\sum\limits_{m\geq0}\frac{\Theta^{2m+1}_K(A_k)}{(2m+1)!}\right) \nonumber\\
+        &+\left.\bint\limits_0^1\bint\limits_0^\lambda\ldots \bint\limits_0^{\lambda_{n-1}} T^*_{\lambda_n}(Q_{\sigma(n)}(\Theta^n_K(A_k))T_{\lambda_n}d\lambda_n\ldots d\lambda_1 d\lambda\right.\\ &+ \sum\limits_{n\geq0}\bint\limits_0^{\lambda}\bint\limits_0^{\lambda_1}\cdots\bint\limits_0^{\lambda_2n+1} T^*_{\lambda}\Theta^n_K(\epsilon(\ell))T_{\lambda}d\lambda d\lambda_1\ldots d\lambda_{2n+1} +\sum\limits_{i=1}^{n}E_i\bigg)\Omega\Bigg>
+\end{align}
+    
+\end{proposition}
 %\section{This is an example for first level head---section head}\label{sec3}
 %\subsection{This is an example for second level head---subsection head}\label{subsec2}
 %\subsubsection{This is an example for third level head---subsubsection head}\label{subsubsec2}
