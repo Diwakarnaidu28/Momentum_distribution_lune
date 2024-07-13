@@ -304,7 +304,7 @@ Consider a set of symmetric operator $K(\ell):\ell^2(L_\ell)\rightarrow \ell^2(L
 \begin{equation}
 \mathcal{K} = \frac{1}{2}\sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell}K(\ell)_{r,s}\left(b_r(\ell)b_{-s}(-\ell)-b^*_{-s}(-\ell)b^*_{r}(\ell)\right)
 \end{equation}
-Next, we define the Bogoliubov transformation $T = e^{\mathcal{K}} $ which is a unitary due the fact that $\mathcal{K}$ is anti-unitary i.e. $\mathcal{K}=-\mathcal{K}^* $.
+Next, we define the Bogoliubov transformation $T = e^{\mathcal{K}} $ which is a unitary due the fact that $\mathcal{K}$ is anti-unitary i.e. $\mathcal{K}=-\mathcal{K}^* $.\newline
 %\begin{lemma}[Commutator between $\mathcal{K} $ and number operators]
 %    For $q\in \Z^3_*$,
 %    \begin{align}
@@ -359,6 +359,179 @@ We start with the first commutation relation.
    \end{align}
    Here, we observe (\ref{eq:errbK}) $=  \mathcal{E}_{p}(k) $.
 \end{proof}
+Next we define the quadratic operator as 
+\begin{definition}
+For $l \in \Z^3_*$
+\begin{align} 
+    Q_1(A(\ell))&\coloneq  -\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s} \left(b^*_r(\ell)b_{s}(\ell)+b^*_{s}(\ell)b_{r}(\ell)\right)\label{eq:Q1}\\ 
+    Q_2(A(\ell))&\coloneq  \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s} \left(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell)\right)\label{eq:Q2}
+\end{align}
+    
+\end{definition}
+
+\begin{lemma}[Commutator between $\mathcal{K} $ and $Q_1$]
+    \begin{equation}
+        [ Q_1(A(\ell)),\mathcal{K}] = Q_2(\{A(\ell),K(\ell)\}) + E_{Q_1}(A(\ell))
+    \end{equation}
+ where,
+ \begin{equation}
+     E_{Q_1}(A(\ell))=-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(\big\{\mathcal{E}^*_{r}(\ell),b^*_{s}(\ell)\big\} + \big\{\mathcal{E}_{r}(\ell),b_{s}(\ell)\big\}\Big). 
+ \end{equation}
+\end{lemma}
+\begin{proof}We begin with $[ Q_1(A(\ell)),\mathcal{K}]$.
+    \begin{alignat}{2}
+        [ Q_1(A(\ell)),\mathcal{K}] &= -\left[\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(b^*_{r}(\ell)b_{s}(\ell) + b^*_{s}(\ell)b_{r}(\ell)\Big),\mathcal{K}\right]\\
+        &=-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\left[\Big(b^*_{r}(\ell)b_{s}(\ell) + b^*_{s}(\ell)b_{r}(\ell)\Big),\mathcal{K}\right]\\
+        &=-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]
+            \Big(&b^*_{r}(\ell)\left[b_{s}(\ell),\mathcal{K}\right] +\left[b^*_{r}(\ell),\mathcal{K}\right]b_{s}(\ell)\\ + &b^*_{s}(\ell)\left[b_{r}(\ell),\mathcal{K}\right]+ \left[b^*_{s}(\ell),\mathcal{K}\right]b_{r}(\ell)\Big)
+        \end{aligned}\label{eq:Q1K1}
+    \end{alignat}
+    Now we use the commutation relation \eqref{eq:13} and \eqref{eq:14} to get
+\begin{alignat}{2}
+    (\ref{eq:Q1K1})&=-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]
+        &\Bigg(b^*_{r}(\ell)\Bigg(-\sum\limits_{s'\in L_{\ell}}K(\ell)_{s,s'}b^*_{-s'}(-\ell) + \mathcal{E}^*_{s}(\ell)\Bigg)\\ &+ \left(-\sum\limits_{s'\in L_{\ell}}K(\ell)_{r,s'}b_{-s'}(-\ell) + \mathcal{E}_{r}(\ell)\right)b_{s}(\ell)\\&+ b^*_{s}(\ell)\left(-\sum\limits_{s'\in L_{\ell}}K(\ell)_{r,s'}b^*_{-s'}(-\ell) + \mathcal{E}^*_{r}(\ell)\right)\\ &+ \left(-\sum\limits_{s'\in L_{\ell}}K(\ell)_{s,s'}b^*_{-s'}(-\ell) + \mathcal{E}_{s}(\ell)\right)b_{r}(\ell) \Bigg)        
+    \end{aligned}\\
+    &=\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]
+        \Big(&K(\ell)_{s,s'}b^*_{r}(\ell)b^*_{-s'}(-\ell) -b^*_{r}(\ell) \mathcal{E}^*_{s}(\ell)\\ + &K(\ell)_{r,s'}b_{-s'}(-\ell)b_{s}(\ell) - \mathcal{E}_{r}(\ell)b_{s}(\ell)\\+& K(\ell)_{r,s'}b^*_{s}(\ell)b^*_{-s'}(-\ell) - b^*_{s}(\ell)\mathcal{E}^*_{r}(\ell)\\ + &K(\ell)_{s,s'}b_{-s'}(-\ell)b_{r}(\ell) - \mathcal{E}_{s}(\ell)b_{r}(\ell) \Big) 
+    \end{aligned}\\
+    &=\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]
+        \Big(&K(\ell)_{s,s'}\big(b^*_{r}(\ell)b^*_{-s'}(-\ell)+b_{-s'}(-\ell)b_{r}(\ell)\big)\\ + &K(\ell)_{r,s'}\big(b^*_{s'}(\ell)b^*_{-s'}(-\ell) +b_{-s'}(-\ell)b_{s}(\ell) \big)\Big) 
+    \end{aligned}\nonumber\\
+    &-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(b^*_{r}(\ell)\mathcal{E}^*_{s}(\ell) + \mathcal{E}_{r}(\ell)b_{s}(\ell) + b^*_{s}(\ell)\mathcal{E}^*_{r}(\ell) + \mathcal{E}_{s}(\ell)b_{r}(\ell)\Big).\label{eq:Q1Kerr_not_con}
+\end{alignat}
+Now we represent the second sum in (\ref{eq:Q1Kerr_not_con}) as $E_{Q_1}(A(\ell))$. Furthermore, we exchange $r$ and $s$ in first and fourth term of second sum in (\ref{eq:Q1Kerr_not_con}) and we have
+\begin{align}
+    E_{Q_1}(A(\ell))&= -\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(b^*_{s}(\ell)\mathcal{E}^*_{r}(\ell) + \mathcal{E}_{r}(\ell)b_{s}(\ell) + b^*_{s}(\ell)\mathcal{E}^*_{r}(\ell) + \mathcal{E}_{r}(\ell)b_{s}(\ell)\Big)\\
+    &= -\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(\big\{\mathcal{E}^*_{r}(\ell),b^*_{s}(\ell)\big\} + \big\{\mathcal{E}_{r}(\ell),b_{s}(\ell)\big\}\Big).
+\end{align}
+Continuing with (\ref{eq:Q1Kerr_not_con}) while having the error $E_{Q_1}(A(\ell))$.
+\begin{align}
+    (\ref{eq:Q1Kerr_not_con}) = \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s}
+        \Big(&K(\ell)_{s,s'}\big(b^*_{r}(\ell)b^*_{-s'}(-\ell)+b_{-s'}(-\ell)b_{r}(\ell)\big)\nonumber\\ + &K(\ell)_{r,s'}\big(b^*_{s}(\ell)b^*_{-s'}(-\ell) +b_{-s'}(-\ell)b_{s}(\ell) \big)\Big) + E_{Q_1}(A(\ell))\\
+        =\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s}
+        \Big(&K(\ell)_{s,s'}\big(b^*_{-s'}(-\ell)b^*_{r}(\ell)+b_{r}(\ell)b_{-s'}(-\ell)\big)\nonumber\\ + &K(\ell)_{r,s'}\big(b^*_{s}(\ell)b^*_{-s'}(-\ell) +b_{-s'}(-\ell)b_{s}(\ell) \big)\Big) + E_{Q_1}(A(\ell))\label{eq:Q1Knoiden}
+\end{align}
+
+Then we do a sequence of identifications on the second term, first we exchange $s$ and $s'$ 
+\begin{equation}
+    \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s'}K(\ell)_{r,s}\big(b^*_{s'}(\ell)b^*_{-s}(-\ell)+b_{-s}(-\ell)b_{s'}(\ell) \big).
+\end{equation}
+Next we exchange $r$ and $s$ and arrive at
+\begin{equation}
+    \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{s,s'}K(\ell)_{s,r}\big(b^*_{s'}(\ell)b^*_{-r}(-\ell) +b_{-r}(-\ell)b_{s'}(\ell)\big).
+\end{equation}
+Finally we reflect all the momenta (i.e. $\ell\rightarrow -\ell,r\rightarrow -r,s\rightarrow -s,s'\rightarrow -s'$) and it gives us
+\begin{equation}\label{eq:Q1kalliden}
+    \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{s,s'}K(\ell)_{s,r}\big(b^*_{-s'}(-\ell)b^*_{r}(\ell) +b_{r}(\ell)b_{-s'}(-\ell)\big).
+\end{equation}
+Then substituting (\ref{eq:Q1kalliden}) in (\ref{eq:Q1Knoiden}) and interpreting the two terms as a matrix product, we arrive at
+\begin{align}
+    (\ref{eq:Q1Knoiden}) &= \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}\big\{A(\ell), K(\ell)\big\}_{r,s}\big(b_{r}(\ell)b_{-s}(-\ell)+b^*_{r}(\ell)b^*_{-s}(-\ell)  \big) + E_{Q_1}(A(\ell))\\
+    &= Q_2\left(\big\{A(\ell), K(\ell)\big\}\right) + E_{Q_1}(A(\ell)).
+\end{align}
+\end{proof}
+
+\begin{lemma}[Commutator between $\mathcal{K} $ and $Q_2$]
+\begin{equation}
+    [ Q_2(A(\ell)),\mathcal{K}] = Q_1\left(\Big\{A(\ell)_
+        ,K(\ell)\Big\}\right)-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r \in L_{\ell}}\Big\{A(\ell)_
+        ,K(\ell)\Big\}_{r,r} + E_{Q_2}(A(l)) 
+\end{equation}
+ where,
+\begin{equation}
+    E_{Q_2}(A(l)) =\begin{aligned}[t]
+        \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}&\Big(A(\ell)_{r,s}\big(\big\{\mathcal{E}^*_{r}(\ell), b_{-s}(-\ell)\big\} + \big\{\mathcal{E}_r(l), b^*_{-s}(-l)\big\}\big)\\&-\big\{A(\ell)_,K(\ell)\big\}_{r,s}\epsilon_{r,s}(\ell,\ell)\Big)
+    \end{aligned} .  
+\end{equation}
+\end{lemma}
+\begin{proof}
+We begin with $[ Q_2(A(\ell)),\mathcal{K}]$.
+\begin{alignat}{2}
+    [Q_2(A(\ell)),\mathcal{K}] &= \left[\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(b_{r}(\ell)b_{-s}(-\ell) + b^*_{-s}(-\ell)b^*_{r}(\ell)\Big),\mathcal{K}\right]\\
+    &= \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\left[\Big(b_{r}(\ell)b_{-s}(-\ell) + b^*_{-s}(-\ell)b^*_{r}(\ell)\Big),\mathcal{K}\right]\\
+    &= \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]
+        &\Big(b_{r}(\ell)[b_{-s}(-\ell),\mathcal{K}] + [b_{r}(\ell),\mathcal{K}]b_{-s}(-\ell)\\&+ b^*_{-s}(-\ell)[b^*_{r}(\ell),\mathcal{K}] + [b^*_{-s}(-\ell),\mathcal{K}]b^*_{r}(\ell) \Big)
+    \end{aligned}\label{eq:Q2K1}
+\end{alignat}
+Now we use the commutation relation \eqref{eq:13} and \eqref{eq:14} to get
+\begin{equation}
+    (\ref{eq:Q2K1})=\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]
+        &\Bigg(b_{r}(\ell)\Bigg(-\sum\limits_{s'\in L_{-\ell}}K(-\ell)_{-s,s'}b^*_{-s'}(\ell) + \mathcal{E}^*_{-s}(-\ell)\Bigg)\\ &+ \left(-\sum\limits_{s'\in L_{\ell}}K(\ell)_{r,s'}b^*_{-s'}(-\ell) + \mathcal{E}^*_{r}(\ell)\right)b_{-s}(-\ell)\\&+ b^*_{-s}(-\ell)\left(-\sum\limits_{s'\in L_{\ell}}K(\ell)_{r,s'}b_{-s'}(-\ell) + \mathcal{E}_{r}(\ell)\right)\\ &+ \left(-\sum\limits_{s'\in L_{-\ell}}K(-\ell)_{-s,s'}b_{-s'}(\ell) + \mathcal{E}_{-s}(-\ell)\right)b^*_{r}(\ell) \Bigg)
+    \end{aligned}
+\end{equation}
+Next we do the identification $s'\rightarrow -s'$ and then use the symmetry $K(\ell)_{r,s} = K(-\ell)_{-r,-s}$ in the first and fourth term in order to bring all the sum over the new index $s'$ to the same lune
+\begin{alignat}{2}
+    &-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]
+        &\Bigg(b_{r}(\ell)\Big(K(\ell)_{s,s'}b^*_{s'}(\ell) - \mathcal{E}^*_{-s}(-\ell)\Big)\\ &+ \Big(K(\ell)_{r,s'}b^*_{-s'}(-\ell) - \mathcal{E}^*_{r}(\ell)\Big)b_{-s}(-\ell)\\&+ b^*_{-s}(-\ell)\Big(K(\ell)_{r,s'}b_{-s'}(-\ell) - \mathcal{E}_{r}(\ell)\Big)\\ &+ \Big(K(\ell)_{s,s'}b_{s'}(\ell) - \mathcal{E}_{-s}(-\ell)\Big)b^*_{r}(\ell) \Bigg)
+    \end{aligned}\\
+    = &-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]
+        \Big(&K(\ell)_{s,s'}b_{r}(\ell)b^*_{s'}(\ell) - b_{r}(\ell) \mathcal{E}^*_{-s}(-\ell)\\ + &K(\ell)_{r,s'}b^*_{-s'}(-\ell)b_{-s}(-\ell) - \mathcal{E}^*_{r}(\ell)b_{-s}(-\ell)\\+& K(\ell)_{r,s'}b^*_{-s}(-\ell)b_{-s'}(-\ell) -b^*_{-s}(-\ell) \mathcal{E}_{r}(\ell)\\ + &K(\ell)_{s,s'}b_{s'}(\ell)b^*_{r}(\ell) - \mathcal{E}_{-s}(-\ell)b^*_{r}(\ell) \Big)
+    \end{aligned}\\
+     =&-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]
+        \Big(&K(\ell)_{s,s'}b_{r}(\ell)b^*_{s'}(\ell)  + K(\ell)_{r,s'}b^*_{-s'}(-\ell)b_{-s}(-\ell) \\+& K(\ell)_{r,s'}b^*_{-s}(-\ell)b_{-s'}(-\ell) + K(\ell)_{s,s'}b_{s'}(\ell)b^*_{r}(\ell)\Big)
+        \end{aligned}\nonumber\\
+    &+\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]\Big(&b_{r}(\ell) \mathcal{E}^*_{-s}(-\ell) +\mathcal{E}^*_{r}(\ell)b_{-s}(-\ell) \\+&b^*_{-s}(-\ell) \mathcal{E}_{r}(\ell)+ \mathcal{E}_{-s}(-\ell)b^*_{r}(\ell) \Big)\end{aligned}.\label{eq:unrefcomerrq2k}
+\end{alignat}
+Here we represent the second sum (in (\ref{eq:unrefcomerrq2k})) as $\tilde{E}_{Q_2}(A(\ell))$, the commutation error, which can be further written as
+\begin{equation}
+    \tilde E_{Q_2}(A(\ell)) = \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big( \mathcal{E}^*_{r}(\ell)b_{-s}(-\ell) +b^*_{-s}(-\ell) \mathcal{E}_{r}(\ell)+b_{r}(\ell) \mathcal{E}^*_{-s}(-\ell)+ \mathcal{E}_{-s}(-\ell)b^*_{r}(\ell) \Big)\label{eq:Q2Kerr_no_mod}
+\end{equation}
+Then in the last two terms, we exchange the indices $r$ and $s$ and reflect all the momenta (i.e. $\ell\rightarrow -\ell,r\rightarrow -r,s\rightarrow -s$) to get
+\begin{align}
+    (\ref{eq:Q2Kerr_no_mod})&=\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big( \mathcal{E}^*_{r}(\ell)b_{-s}(-\ell) +b^*_{-s}(-\ell) \mathcal{E}_{r}(\ell)+b_{-s}(-\ell) \mathcal{E}^*_{r}(\ell)+ \mathcal{E}_{r}(\ell)b^*_{-s}(-\ell) \Big)\\
+    &=\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(\big\{\mathcal{E}^*_{r}(\ell), b_{-s}(-\ell)\big\} + \big\{\mathcal{E}_r(l), b^*_{-s}(-l)\big\}\Big).
+\end{align}
+Now we substitute this $\tilde E_{Q_2}(A(\ell)) $ in (\ref{eq:unrefcomerrq2k}) to have
+\begin{align}
+    (\ref{eq:unrefcomerrq2k})=&-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s}
+        K(\ell)_{s,s'}\big(b_{r}(\ell)b^*_{s'}(\ell)+b_{s'}(\ell)b^*_{r}(\ell) \big)\nonumber\\ &-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s} K(\ell)_{r,s'}\big(b^*_{-s'}(-\ell)b_{-s}(-\ell) + b^*_{-s}(-\ell)b_{-s'}(-\ell)\big) + E_{Q_2}(A(\ell)).\label{eq:comwitherr}
+\end{align}
+Next we reflect all the momenta (i.e. $\ell\rightarrow -\ell,r\rightarrow -r,s\rightarrow -s,s'\rightarrow -s'$) in the second sum of (\ref{eq:comwitherr}) to have
+\begin{align}
+   -\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s} K(\ell)_{r,s'}\big(b^*_{s'}(\ell)b_{s}(\ell) + b^*_{s}(\ell)b_{s'}(\ell)\big).
+\end{align}
+Then we do a sequence of identifications on the second term, first we exchange $s$ and $s'$ 
+\begin{equation}
+   -\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s'} K(\ell)_{r,s}\big(b^*_{s}(\ell)b_{s'}(\ell) + b^*_{s'}(\ell)b_{s}(\ell)\big).
+\end{equation}
+Next, we exchange $s$ and $r$ to arrive at
+\begin{equation}\label{eq:comQ2kalliden}
+   -\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{s,s'} K(\ell)_{r,s}\big(b^*_{r}(\ell)b_{s'}(\ell) + b^*_{s'}(\ell)b_{r}(\ell)\big).
+\end{equation}
+Then substituting (\ref{eq:comQ2kalliden}) in (\ref{eq:comwitherr}) to arrive at
+\begin{align}
+    (\ref{eq:comwitherr})=&-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s}
+        K(\ell)_{s,s'}b_{r}(\ell)b^*_{s'}(\ell)+\underbrace{A(\ell)_{r,s}
+        K(\ell)_{s,s'}b_{s'}(\ell)b^*_{r}(\ell)}_{\text{(a)}}\nonumber\\ &-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{s,s'} K(\ell)_{r,s}b^*_{r}(\ell)b_{s'}(\ell) + \underbrace{A(\ell)_{r,s}
+        K(\ell)_{s,s'}b^*_{s'}(\ell)b_{r}(\ell)}_{\text{(b)}} + \tilde E_{Q_2}(A(\ell)).\label{eq:Q2k_before_anticom}
+\end{align}
+And finally to interpret the terms as a matrix product, we exchange $r$ and $s'$ in terms (a) and (b) above to have 
+\begin{alignat}{2}
+    (\ref{eq:Q2k_before_anticom}) = &-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\Big\{A(\ell)_
+        ,K(\ell)\Big\}_{r,s}\big(b^*_{r}(\ell)b_{s}(\ell)+b_{r}(\ell)b^*_{s}(\ell) \big)\nonumber +\tilde E_{Q_2}(A(\ell))\\
+        = &-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\Big\{A(\ell)_
+        ,K(\ell)\Big\}_{r,s}\begin{aligned}[t]
+            &\big(b^*_{r}(\ell)b_{s}(\ell)+b^*_{s}(\ell)b_{r}(\ell) + \delta_{r,s}\delta_{\ell,\ell} \\&+ \epsilon_{r,s}(\ell,\ell) \big) +\tilde E_{Q_2}(A(\ell))
+        \end{aligned}\\
+        =&\phantom{-} Q_1\left(\Big\{A(\ell)_
+        ,K(\ell)\Big\}\right)-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r \in L_{\ell}}\Big\{A(\ell)_
+        ,K(\ell)\Big\}_{r,r}\nonumber\\
+        &-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\Big\{A(\ell)_,K(\ell)\Big\}_{r,s}\epsilon_{r,s}(\ell,\ell)  +\tilde E_{Q_2}(A(\ell)).\label{eq:Q2Kbigerr}
+\end{alignat}
+And we define $E_{Q_2}(A(l))$ as the total error from the commutation, which can be succinctly written as 
+\begin{equation}
+    E_{Q_2}(A(l)) =\begin{aligned}[t]
+        \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}&\Big(A(\ell)_{r,s}\big(\big\{\mathcal{E}^*_{r}(\ell), b_{-s}(-\ell)\big\} + \big\{\mathcal{E}_r(l), b^*_{-s}(-l)\big\}\big)\\&-\big\{A(\ell)_,K(\ell)\big\}_{r,s}\epsilon_{r,s}(\ell,\ell)\Big)
+    \end{aligned} .  
+\end{equation}
+Then, we have 
+\begin{equation}
+    (\ref{eq:Q2Kbigerr}) = Q_1\left(\Big\{A(\ell)_
+        ,K(\ell)\Big\}\right)-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r \in L_{\ell}}\Big\{A(\ell)_
+        ,K(\ell)\Big\}_{r,r} + E_{Q_2}(A(l)) 
+\end{equation}
+\end{proof}
+
 Before we begin the evaluation, we define
 
 \textbf{Symmetry transformation} Symmetry transformation is a unitary transformation $\mathfrak{R}:\mathcal{F}\rightarrow \mathcal{F}$ defined by its action as
@@ -385,15 +558,7 @@ From this lemma we observe that
 \end{equation}
 And hence motivated by Lemma \ref{lem:symtransformation}, we evaluate $\eva{\Omega, T_1^*\half\left(n_q+n_{-q}\right)T_1\Omega}$.\newline 
 
-Next we define the quadratic operator as 
-\begin{definition}
-For $l \in \Z^3_*$
-\begin{align} 
-    Q_1(A(\ell))&\coloneq  -\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s} \left(b^*_r(\ell)b_{s}(\ell)+b_{r}(\ell)b^*_{s}(\ell)\right)\label{eq:Q1}\\ 
-    Q_2(A(\ell))&\coloneq  \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s} \left(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell)\right)\label{eq:Q2}
-\end{align}
-    
-\end{definition}
+
 
  
 \textbf{Evaluation of the expectation value}
@@ -455,143 +620,7 @@ Using the definition of $Q_2$, \eqref{eq:Q2}, we arrive at
     (\ref{eq:anticomKDelta}) = \half\bint\limits_0^1 \!\!d\lambda
      \bigg<\Omega,T_\lambda^* Q_2 \Big(\big\{K(\ell),\Delta^q\big\} \Big)T_\lambda\Omega\bigg>
 \end{equation} \end{proof}
-\begin{lemma}[Commutator between $\mathcal{K} $ and $Q_1$]
-    \begin{equation}
-        [ Q_1(A(\ell)),\mathcal{K}] = Q_2(\{A(\ell),K(\ell)\}) + E_{Q_1}(A(\ell))
-    \end{equation}
- where,
- \begin{equation}
-     E_{Q_1}(A(\ell))=-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(\big\{\mathcal{E}^*_{r}(\ell),b^*_{s}(\ell)\big\} + \big\{\mathcal{E}_{r}(\ell),b_{s}(\ell)\big\}\Big). 
- \end{equation}
-\end{lemma}
-\begin{proof}We begin with $[ Q_1(A(\ell)),\mathcal{K}]$.
-    \begin{alignat}{2}
-        [ Q_1(A(\ell)),\mathcal{K}] &= -\left[\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(b^*_{r}(\ell)b_{s}(\ell) + b_{r}(\ell)b^*_{s}(\ell)\Big),\mathcal{K}\right]\\
-        &=-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\left[\Big(b^*_{r}(\ell)b_{s}(\ell) + b_{r}(\ell)b^*_{s}(\ell)\Big),\mathcal{K}\right]\\
-        &=-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]
-            \Big(&b^*_{r}(\ell)\left[b_{s}(\ell),\mathcal{K}\right] +\left[b^*_{r}(\ell),\mathcal{K}\right]b_{s}(\ell)\\ + &b_{r}(\ell)\left[b^*_{s}(\ell),\mathcal{K}\right]+ \left[b_{r}(\ell),\mathcal{K}\right]b^*_{s}(\ell)\Big)
-        \end{aligned}\label{eq:Q1K1}
-    \end{alignat}
-    Now we use the commutation relation \eqref{eq:13} and \eqref{eq:14} to get
-\begin{alignat}{2}
-    (\ref{eq:Q2K1})&=-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]
-        &\Bigg(b^*_{r}(\ell)\Bigg(-\sum\limits_{s'\in L_{\ell}}K(\ell)_{s,s'}b^*_{-s'}(-\ell) + \mathcal{E}^*_{s}(\ell)\Bigg)\\ &+ \left(-\sum\limits_{s'\in L_{\ell}}K(\ell)_{r,s'}b_{-s'}(-\ell) + \mathcal{E}_{r}(\ell)\right)b_{s}(\ell)\\&+ b_{r}(\ell)\left(-\sum\limits_{s'\in L_{\ell}}K(\ell)_{s,s'}b_{-s'}(-\ell) + \mathcal{E}_{s}(\ell)\right)\\ &+ \left(-\sum\limits_{s'\in L_{\ell}}K(\ell)_{r,s'}b^*_{-s'}(-\ell) + \mathcal{E}^*_{r}(\ell)\right)b^*_{s}(\ell) \Bigg)        
-    \end{aligned}\\
-    &=\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]
-        \Big(&K(\ell)_{s,s'}b^*_{r}(\ell)b^*_{-s'}(-\ell) -b^*_{r}(\ell) \mathcal{E}^*_{s}(\ell)\\ + &K(\ell)_{r,s'}b_{-s'}(-\ell)b_{s}(\ell) - \mathcal{E}_{r}(\ell)b_{s}(\ell)\\+& K(\ell)_{s,s'}b_{r}(\ell)b_{-s'}(-\ell) - b_{r}(\ell)\mathcal{E}_{s}(\ell)\\ + &K(\ell)_{r,s'}b^*_{-s'}(-\ell)b^*_{s}(\ell) - \mathcal{E}^*_{r}(\ell)b^*_{s}(\ell) \Big) 
-    \end{aligned}\\
-    &=\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]
-        \Big(&K(\ell)_{s,s'}\big(b^*_{r}(\ell)b^*_{-s'}(-\ell)+b_{r}(\ell)b_{-s'}(-\ell)\big)\\ + &K(\ell)_{r,s'}\big(b_{-s'}(-\ell)b_{s}(\ell)+b^*_{-s'}(-\ell)b^*_{s}(\ell) \big)\Big) 
-    \end{aligned}\nonumber\\
-    &-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(b^*_{r}(\ell)\mathcal{E}^*_{s}(\ell) + \mathcal{E}_{r}(\ell)b_{s}(\ell) + b_{r}(\ell)\mathcal{E}_{s}(\ell) + \mathcal{E}^*_{r}(\ell)b^*_{s}(\ell)\Big).\label{eq:Q1Kerr_not_con}
-\end{alignat}
-Now we represent the second sum in (\ref{eq:Q1Kerr_not_con}) as $E_{Q_1}(A(\ell))$. Furthermore, we exchange $r$ and $s$ in first and third term of second sum in (\ref{eq:Q1Kerr_not_con}) and we have
-\begin{align}
-    E_{Q_1}(A(\ell))&= -\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(b^*_{s}(\ell)\mathcal{E}^*_{r}(\ell) + \mathcal{E}_{r}(\ell)b_{s}(\ell) + b_{s}(\ell)\mathcal{E}_{r}(\ell) + \mathcal{E}^*_{r}(\ell)b^*_{s}(\ell)\Big)\\
-    &= -\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(\big\{\mathcal{E}^*_{r}(\ell),b^*_{s}(\ell)\big\} + \big\{\mathcal{E}_{r}(\ell),b_{s}(\ell)\big\}\Big).
-\end{align}
-Continuing with (\ref{eq:Q1Kerr_not_con}) while having the error $E_{Q_1}(A(\ell))$.
-\begin{align}
-    (\ref{eq:Q1Kerr_not_con}) = \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s}
-        \Big(&K(\ell)_{s,s'}\big(b^*_{r}(\ell)b^*_{-s'}(-\ell)+b_{r}(\ell)b_{-s'}(-\ell)\big)\nonumber\\ + &K(\ell)_{r,s'}\big(b_{-s'}(-\ell)b_{s}(\ell)+b^*_{-s'}(-\ell)b^*_{s}(\ell) \big)\Big) + E_{Q_1}(A(\ell))\label{eq:Q1Knoiden}
-\end{align}
-Then we do a sequence of identifications on the second term, first we exchange $s$ and $s'$ 
-\begin{equation}
-    \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s'}K(\ell)_{r,s}\big(b_{-s}(-\ell)b_{s'}(\ell)+b^*_{-s}(-\ell)b^*_{s'}(\ell) \big)\Big).
-\end{equation}
-Next we exchange $r$ and $s$ and arrive at
-\begin{equation}
-    \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{s,s'}K(\ell)_{s,r}\big(b_{-r}(-\ell)b_{s'}(\ell)+b^*_{-r}(-\ell)b^*_{s'}(\ell) \big)\Big).
-\end{equation}
-Finally we reflect all the momenta (i.e. $\ell\rightarrow -\ell,r\rightarrow -r,s\rightarrow -s,s'\rightarrow -s'$) and it gives us
-\begin{equation}\label{eq:Q1kalliden}
-    \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{s,s'}K(\ell)_{s,r}\big(b_{r}(\ell)b_{-s'}(-\ell)+b^*_{r}(\ell)b^*_{-s'}(-\ell) \big)\Big).
-\end{equation}
-Then substituting (\ref{eq:Q1kalliden}) in (\ref{eq:Q1Knoiden}) and interpreting the two terms as a matrix product, we arrive at
-\begin{align}
-    (\ref{eq:Q1Knoiden}) &= \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}\big\{A(\ell), K(\ell)\big\}_{r,s}\big(b_{r}(\ell)b_{-s}(-\ell)+b^*_{r}(\ell)b^*_{-s}(-\ell)  \big) + E_{Q_1}(A(\ell))\\
-    &= Q_2\left(\big\{A(\ell), K(\ell)\big\}\right) + E_{Q_1}(A(\ell)).
-\end{align}
-\end{proof}
 
-\begin{lemma}[Commutator between $\mathcal{K} $ and $Q_2$]
-\begin{equation}
-    [ Q_2(A(\ell)),\mathcal{K}] = Q_1(\{A(\ell),K(\ell)\}) + E_{Q_2}(A(\ell))
-\end{equation}
- where,
-\begin{equation}
-     E_{Q_2}(A(\ell))=\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(\big\{\mathcal{E}^*_{r}(\ell), b_{-s}(-\ell)\big\} + \big\{\mathcal{E}_r(l), b^*_{-s}(-l)\big\}\Big)
-\end{equation}
-\end{lemma}
-\begin{proof}
-We begin with $[ Q_2(A(\ell)),\mathcal{K}]$.
-\begin{alignat}{2}
-    [Q_2(A(\ell)),\mathcal{K}] &= \left[\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(b_{r}(\ell)b_{-s}(-\ell) + b^*_{-s}(-\ell)b^*_{r}(\ell)\Big),\mathcal{K}\right]\\
-    &= \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\left[\Big(b_{r}(\ell)b_{-s}(-\ell) + b^*_{-s}(-\ell)b^*_{r}(\ell)\Big),\mathcal{K}\right]\\
-    &= \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]
-        &\Big(b_{r}(\ell)[b_{-s}(-\ell),\mathcal{K}] + [b_{r}(\ell),\mathcal{K}]b_{-s}(-\ell)\\&+ b^*_{-s}(-\ell)[b^*_{r}(\ell),\mathcal{K}] + [b^*_{-s}(-\ell),\mathcal{K}]b^*_{r}(\ell) \Big)
-    \end{aligned}\label{eq:Q2K1}
-\end{alignat}
-Now we use the commutation relation \eqref{eq:13} and \eqref{eq:14} to get
-\begin{equation}
-    (\ref{eq:Q2K1})=\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]
-        &\Bigg(b_{r}(\ell)\Bigg(-\sum\limits_{s'\in L_{-\ell}}K(-\ell)_{-s,s'}b^*_{-s'}(\ell) + \mathcal{E}^*_{-s}(-\ell)\Bigg)\\ &+ \left(-\sum\limits_{s'\in L_{\ell}}K(\ell)_{r,s'}b^*_{-s'}(-\ell) + \mathcal{E}^*_{r}(\ell)\right)b_{-s}(-\ell)\\&+ b^*_{-s}(-\ell)\left(-\sum\limits_{s'\in L_{\ell}}K(\ell)_{r,s'}b_{-s'}(-\ell) + \mathcal{E}_{r}(\ell)\right)\\ &+ \left(-\sum\limits_{s'\in L_{-\ell}}K(-\ell)_{-s,s'}b_{-s'}(\ell) + \mathcal{E}_{-s}(-\ell)\right)b^*_{r}(\ell) \Bigg)
-    \end{aligned}
-\end{equation}
-Next we do the identification $s'\rightarrow -s'$ and then use the symmetry $K(\ell)_{r,s} = K(-\ell)_{-r,-s}$ in the first and fourth term in order to bring all the sum over the new index $s'$ to the same lune
-\begin{alignat}{2}
-    &-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]
-        &\Bigg(b_{r}(\ell)\Big(K(\ell)_{s,s'}b^*_{s'}(\ell) - \mathcal{E}^*_{-s}(-\ell)\Big)\\ &+ \Big(K(\ell)_{r,s'}b^*_{-s'}(-\ell) - \mathcal{E}^*_{r}(\ell)\Big)b_{-s}(-\ell)\\&+ b^*_{-s}(-\ell)\Big(K(\ell)_{r,s'}b_{-s'}(-\ell) - \mathcal{E}_{r}(\ell)\Big)\\ &+ \Big(K(\ell)_{s,s'}b_{s'}(\ell) - \mathcal{E}_{-s}(-\ell)\Big)b^*_{r}(\ell) \Bigg)
-    \end{aligned}\\
-    = &-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]
-        \Big(&K(\ell)_{s,s'}b_{r}(\ell)b^*_{s'}(\ell) - b_{r}(\ell) \mathcal{E}^*_{-s}(-\ell)\\ + &K(\ell)_{r,s'}b^*_{-s'}(-\ell)b_{-s}(-\ell) - \mathcal{E}^*_{r}(\ell)b_{-s}(-\ell)\\+& K(\ell)_{r,s'}b^*_{-s}(-\ell)b_{-s'}(-\ell) -b^*_{-s}(-\ell) \mathcal{E}_{r}(\ell)\\ + &K(\ell)_{s,s'}b_{s'}(\ell)b^*_{r}(\ell) - \mathcal{E}_{-s}(-\ell)b^*_{r}(\ell) \Big)
-    \end{aligned}\\
-     =&-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]
-        \Big(&K(\ell)_{s,s'}b_{r}(\ell)b^*_{s'}(\ell)  + K(\ell)_{r,s'}b^*_{-s'}(-\ell)b_{-s}(-\ell) \\+& K(\ell)_{r,s'}b^*_{-s}(-\ell)b_{-s'}(-\ell) + K(\ell)_{s,s'}b_{s'}(\ell)b^*_{r}(\ell)\Big)
-        \end{aligned}\nonumber\\
-    &+\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\begin{aligned}[t]\Big(&b_{r}(\ell) \mathcal{E}^*_{-s}(-\ell) +\mathcal{E}^*_{r}(\ell)b_{-s}(-\ell) \\+&b^*_{-s}(-\ell) \mathcal{E}_{r}(\ell)+ \mathcal{E}_{-s}(-\ell)b^*_{r}(\ell) \Big)\end{aligned}.\label{eq:unrefcomerrq2k}
-\end{alignat}
-Here we represent the second sum (in (\ref{eq:unrefcomerrq2k})) as $E_{Q_2}(A(\ell))$, the commutation error, which can be further written as
-\begin{equation}
-    E_{Q_2}(A(\ell)) = \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big( \mathcal{E}^*_{r}(\ell)b_{-s}(-\ell) +b^*_{-s}(-\ell) \mathcal{E}_{r}(\ell)+b_{r}(\ell) \mathcal{E}^*_{-s}(-\ell)+ \mathcal{E}_{-s}(-\ell)b^*_{r}(\ell) \Big)\label{eq:Q2Kerr_no_mod}
-\end{equation}
-Then in the last two terms, we exchange the indices $r$ and $s$ and reflect all the momenta (i.e. $\ell\rightarrow -\ell,r\rightarrow -r,s\rightarrow -s$) to get
-\begin{align}
-    (\ref{eq:Q2Kerr_no_mod})&=\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big( \mathcal{E}^*_{r}(\ell)b_{-s}(-\ell) +b^*_{-s}(-\ell) \mathcal{E}_{r}(\ell)+b_{-s}(-\ell) \mathcal{E}^*_{r}(\ell)+ \mathcal{E}_{r}(\ell)b^*_{-s}(-\ell) \Big)\\
-    &=\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(\big\{\mathcal{E}^*_{r}(\ell), b_{-s}(-\ell)\big\} + \big\{\mathcal{E}_r(l), b^*_{-s}(-l)\big\}\Big).
-\end{align}
-Now we substitute this $E_{Q_2} $ in (\ref{eq:unrefcomerrq2k}) to have
-\begin{align}
-    (\ref{eq:unrefcomerrq2k})=&-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s}
-        K(\ell)_{s,s'}\big(b_{r}(\ell)b^*_{s'}(\ell)+b_{s'}(\ell)b^*_{r}(\ell) \big)\nonumber\\ &-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s} K(\ell)_{r,s'}\big(b^*_{-s'}(-\ell)b_{-s}(-\ell) + b^*_{-s}(-\ell)b_{-s'}(-\ell)\big) + E_{Q_2}(A(\ell)).\label{eq:comwitherr}
-\end{align}
-Next we reflect all the momenta (i.e. $\ell\rightarrow -\ell,r\rightarrow -r,s\rightarrow -s,s'\rightarrow -s'$) in the second sum of (\ref{eq:comwitherr}) to have
-\begin{align}
-   -\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s} K(\ell)_{r,s'}\big(b^*_{s'}(\ell)b_{s}(\ell) + b^*_{s}(\ell)b_{s'}(\ell)\big).
-\end{align}
-Then we do a sequence of identifications on the second term, first we exchange $s$ and $s'$ 
-\begin{equation}
-   -\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s'} K(\ell)_{r,s}\big(b^*_{s}(\ell)b_{s'}(\ell) + b^*_{s'}(\ell)b_{s}(\ell)\big).
-\end{equation}
-Next, we exchange $s$ and $r$ to arrive at
-\begin{equation}\label{eq:comQ2kalliden}
-   -\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{s,s'} K(\ell)_{r,s}\big(b^*_{r}(\ell)b_{s'}(\ell) + b^*_{s'}(\ell)b_{r}(\ell)\big).
-\end{equation}
-Then substituting (\ref{eq:comQ2kalliden}) in (\ref{eq:comwitherr}) to arrive at
-\begin{align}
-    (\ref{eq:comwitherr})=&-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{r,s}
-        K(\ell)_{s,s'}b_{r}(\ell)b^*_{s'}(\ell)+\underbrace{A(\ell)_{r,s}
-        K(\ell)_{s,s'}b_{s'}(\ell)b^*_{r}(\ell)}_{\text{(a)}}\nonumber\\ &-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}A(\ell)_{s,s'} K(\ell)_{r,s}b^*_{r}(\ell)b_{s'}(\ell) + \underbrace{A(\ell)_{r,s}
-        K(\ell)_{s,s'}b^*_{s'}(\ell)b_{r}(\ell)}_{\text{(b)}} + E_{Q_2}.\label{eq:Q2k_before_anticom}
-\end{align}
-And finally to interpret the terms as a matrix product, we exchange $r$ and $s'$ in terms (a) and (b) above to have 
-\begin{align}
-    (\ref{eq:Q2k_before_anticom}) = &-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,s' \in L_{\ell}}\Big\{A(\ell)_
-        ,K(\ell)\Big\}_{r,s}\big(b^*_{r}(\ell)b_{s}(\ell)+b_{r}(\ell)b^*_{s}(\ell) \big)\nonumber + E_{Q_2}(A(\ell))\\
-        &= Q_1\left(\Big\{A(\ell)_
-        ,K(\ell)\Big\}\right) + E_{Q_2}(A(\ell)).
-\end{align}
-\end{proof}
 \newpage
 \subsection{Transformation of quadratic operators}
 We begin with $T^*_1Q_!(A(\ell))T_1$ and apply Duhamel's formula, 
