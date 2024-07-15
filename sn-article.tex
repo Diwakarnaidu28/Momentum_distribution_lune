@@ -39,7 +39,7 @@
 %%<additional latex packages if required can be included here>
 \usepackage{amsmath, amssymb, amsfonts, physics, braket, hhline, mathtools, cancel, bigints,eufrak,geometry}
 \geometry{total={210mm,297mm},bottom={40mm},}
-\usepackage{pgfplots, subcaption, floatrow, footnote, adjustbox,float,fancyvrb}
+\usepackage{pgfplots, subcaption, floatrow, footnote, adjustbox,float,fancyvrb, todonotes}
 \usepackage{graphicx, grffile, epsfig, listings,romannum, hyperref}
 \usepackage{verbatim}
 \usepackage{textcomp}
@@ -195,16 +195,17 @@ We consider a quantum system of N spinless fermionic particles on $\mathbb{T}\co
 acting on the wave functions in the anti-symmetric tensor product $L^2_a(\T^{3N}) = \bigwedge_{i=1}^N L^2_a(\T^3)$.
 We want to find the occupation density in the asymptotic limit when $N\rightarrow\infty$ in the \textit{mean-field scaling regime} i.e. we set
 \begin{equation}
-    \hbar\coloneq N^{-\frac{1}{3}}, \quad\text{and}\quad \lambda \coloneq N^{-1}
+    \hbar\coloneq N^{-\frac{1}{3}}, \quad\text{and}\quad \lambda \coloneq N^{-1}.
 \end{equation}
 
 
 
 Then we have
 \begin{align}
-    \eva{\Psi_{trial},n_q\Psi_{trial}} &= \eva{\Psi_{trial},a^*_qa_q\Psi_{trial}} 
+    \eva{\Psi_{\text{trial}},n_q\Psi_{\text{trial}}} &= \eva{\Psi_{\text{trial}},a^*_qa_q\Psi_{\text{trial}}} .
 \end{align}
 
+\textcolor{red}{Complete the introduction}
 %\section{Construction of Trial state}\label{sec:construction}
 
 
@@ -233,14 +234,14 @@ with the following symmetry $L_{-k}=-L_k \quad\forall k \in \Z^3$.
 
 We define the pair operators as\textcolor{red}{Write proper definition of the pair operators}
 \begin{align}
-    b_p(k) &= a_{p-k}a_{p}\\
+    b_p(k) &= a_{p-k}a_{p}\,,\\
     b^*_p(k) &= a^*_{p}a^*_{p-k}
 \end{align}
-for $p\in L_k$\newline
+for $p\in L_k$.\newline
 
-\begin{lemma}[Quasi-Bosonic commutation relation]
+\begin{lemma}[Quasi-Bosonic commutation relations]
    \begin{align}
-       [b_{p}(k),b_{q}(\ell)] &= [b^*_{p}(k),b^*_{q}(\ell)] = 0\\
+       [b_{p}(k),b_{q}(\ell)] &= [b^*_{p}(k),b^*_{q}(\ell)] = 0\,,\\
        [b_{p}(k),b^*_{q}(\ell)] &= \delta_{p,q}\delta_{k,\ell} + \epsilon_{p,q}(k,\ell),
    \end{align} where $\epsilon_{p,q}(k,\ell) = -\left(\delta_{p,q}a^*_{q-\ell}a_{p-k} + \delta_{p-k,q-\ell}a^*_{q}a_{p}\right)$ 
     \end{lemma}
@@ -705,7 +706,7 @@ Similarly, we can prove the operator identity for $Q_1(A(\ell))$ using Duhamel's
 \end{proof}
 \begin{proposition}[Final Expansion]
 \begin{align}
-    \half\eva{\Omega, T_1^*\left(n_q+n_{-q}\right)T_1\Omega} &=\half\Bigg(-\sum\limits_{\ell\in \Z^3_*}\Bigg(\sum\limits_{n\geq1}\frac{\lambda^{2n-1}}{(2n-1)!}\text{tr} \big(\Theta^{2n}_{K(\ell)}(\Delta^q)\big)\Bigg)\nonumber \\&+\bigg<\Omega, \bigg(Q_2\left(\sum\limits_{n\geq1}\frac{\Theta^{2n-1}_{K(\ell)}(\Delta^q)}{(2n-1)!}\right) + Q_1\left(\sum\limits_{n\geq1}\frac{\Theta^{2n}_{K(\ell)}(\Delta^q)}{(2n)!}\right) + \sum\limits_{n\geq1} E_n(A(\ell)) \nonumber\\
+    \half\eva{\Omega, T_1^*\left(n_q+n_{-q}\right)T_1\Omega} &=\half\Bigg(-\sum\limits_{\ell\in \Z^3_*}\Bigg(\sum\limits_{n\geq1}\frac{1}{(2n)!}\text{tr} \big(\Theta^{2n}_{K(\ell)}(\Delta^q)\big)\Bigg)\nonumber \\&+\bigg<\Omega, \bigg(Q_2\left(\sum\limits_{n\geq1}\frac{\Theta^{2n-1}_{K(\ell)}(\Delta^q)}{(2n-1)!}\right) + Q_1\left(\sum\limits_{n\geq1}\frac{\Theta^{2n}_{K(\ell)}(\Delta^q)}{(2n)!}\right) + \sum\limits_{n\geq1} E_n(A(\ell)) \nonumber\\
         &+\bint\limits_0^\lambda \bint\limits_0^{\lambda_1} \cdots \bint\limits_0^{\lambda_{n-1}}d\lambda_1\cdots d\lambda_n \Big( T^*_{\lambda_n}Q_{\sigma(n)}(\Theta^{n+1}_{K(\ell)}(\Delta^q)T_{\lambda_n}\Big)\Bigg)\Omega\bigg>\Bigg)
 \end{align}
 where $\Theta^n_{K(\ell)}$ is defined above, $\sigma(n) = \begin{cases}
@@ -743,7 +744,7 @@ where $\Theta^n_{K(\ell)}$ is defined above, $\sigma(n) = \begin{cases}
     We use the definition of the error terms provided above. Then 
     
     \begin{align}
-        (\ref{eq:exp_w/o_err})&=\half\Bigg(-\frac{\lambda}{1!}\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K(\ell),\{K(\ell),\Delta^q\}\big\}_{r,r}\nonumber \\ &- \frac{\lambda^3}{3!}\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K(\ell),\big\{K(\ell),\big\{K(\ell),\{K(\ell),\Delta^q\}\big\}\big\}\big\}_{r,r} - \cdots  \nonumber\\
+        (\ref{eq:exp_w/o_err})&=\half\Bigg(-\frac{1}{2!}\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K(\ell),\{K(\ell),\Delta^q\}\big\}_{r,r}\nonumber \\ &- \frac{1}{4!}\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K(\ell),\big\{K(\ell),\big\{K(\ell),\{K(\ell),\Delta^q\}\big\}\big\}\big\}_{r,r} - \cdots  \nonumber\\
         &+\bigg<\Omega, \bigg( \frac{1}{1!} Q_2(\Theta^1_{K(\ell)}(\Delta^q)) + \frac{1}{2!}Q_1(\Theta^2_{K(\ell)}(\Delta^q))+ \frac{1}{3!}Q_2(\Theta^3_{K(\ell)}(\Delta^q) +\cdots\nonumber\\
         &+ \sum\limits_{n\geq1} E_n(A(\ell)) \nonumber\\
         &+\bint\limits_0^\lambda \bint\limits_0^{\lambda_1} \cdots \bint\limits_0^{\lambda_{n-1}}d\lambda_1\cdots d\lambda_n \Big( T^*_{\lambda_n}(Q_{\sigma(n)}(\Theta^{n+1}_{K(\ell)}(\Delta^q)T_{\lambda_n}\Big)\Bigg)\Omega\bigg>\Bigg)
