@@ -245,7 +245,7 @@
     text={160mm,216mm},
     marginparsep=5mm,
     marginparwidth=12mm,
-    bindingoffset=6mm,
+    bindingoffset=0mm,
     footskip=10.13mm,twocolumn]{geometry}%
 %
 \renewcommand\footnoterule{%
@@ -265,7 +265,7 @@
     text={31pc,194.25mm},
     marginparsep=5mm,
     marginparwidth=12mm,
-    bindingoffset=6mm,
+    bindingoffset=0mm,
     footskip=10mm]{geometry}
 %
     \setlength\maxdepth{0pt}%
