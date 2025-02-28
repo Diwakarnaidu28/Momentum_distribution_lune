@@ -70,7 +70,7 @@
 \newif\if@Numbered@refstyle\global\@Numbered@refstylefalse% Namedate
 
 \newif\if@Spr@basic@refstyle\global\@Spr@basic@refstylefalse% 1.Basic Springer Nature Reference Style/Chemistry Reference Style -> sn-basic.bst
-\newif\if@Mathphys@refstyle\global\@Mathphys@refstylefalse% 2.Math and Physical Sciences Reference Style -> sn-mathphys.bst
+\newif\if@Mathphys@refstyle\global\@Mathphys@refstylefalse % 2.Math and Physical Sciences Reference Style -> sn-mathphys.bst
 \newif\if@APS@refstyle\global\@APS@refstylefalse% 3.American Physical Society (APS) Reference Style -> sn-APS.bst
 \newif\if@Vancouver@refstyle\global\@Vancouver@refstylefalse% 4.Vancouver Reference Style -> sn-vancouver.bst
 \newif\if@APA@refstyle\global\@APA@refstylefalse% 5.APA-based Social Sciences/Psychology Reference Style -> sn-apacite.bst
@@ -79,13 +79,13 @@
 \newif\if@Default@refstyle\global\@Default@refstylefalse% 8. default reference style - no bib/bst required
 
 %% Template Options
-\DeclareOption{a4paper}{\PassOptionsToPackage{a4}{crop}}
-\DeclareOption{a3paper}{\PassOptionsToClass{a3paper}{article}\PassOptionsToPackage{a3}{crop}}
-\DeclareOption{centre}{\PassOptionsToPackage{center}{crop}}
-\DeclareOption{crop}{\PassOptionsToPackage{frame}{crop}\global\@cropmarksontrue}
+\DeclareOption{a4paper}{\PassOptionsToPackage{a4}{nocrop}}
+\DeclareOption{a3paper}{\PassOptionsToClass{a3paper}{article}\PassOptionsToPackage{a3}{nocrop}}
+\DeclareOption{centre}{\PassOptionsToPackage{center}{nocrop}}
+\DeclareOption{crop}{\PassOptionsToPackage{frame}{off}{crop}\global\@cropmarksontrue}
 \DeclareOption{nocrop}{\PassOptionsToPackage{off}{crop}\global\@cropmarksontrue}
-\DeclareOption{info}{\PassOptionsToPackage{info}{crop}}
-\DeclareOption{noinfo}{\PassOptionsToPackage{noinfo}{crop}}
+\DeclareOption{info}{\PassOptionsToPackage{info}{nocrop}}
+\DeclareOption{noinfo}{\PassOptionsToPackage{noinfo}{nocrop}}
 
 %% Classfile Options
 \DeclareOption{oneside}{\@twosidefalse \@mparswitchfalse}
@@ -93,7 +93,7 @@
 \DeclareOption{draft}{\setlength\overfullrule{5pt}}
 \DeclareOption{titlepage}{\@titlepagetrue}
 \DeclareOption{notitlepage}{\@titlepagefalse}
-\DeclareOption{onecolumn}{\@twocolumnfalse}
+\DeclareOption{onecolumn}{\@twocolumnfalse, nocrop}
 \DeclareOption{twocolumn}{\@twocolumntrue}
 \DeclareOption{openbib}{\let\if@openbib\iftrue}
 \DeclareOption{pagegrid}{\global\pagebodytrue}%
@@ -256,24 +256,23 @@
 \else%
 %% For single column used smallcond design trim and page size %%
 \RequirePackage[%
-    reversemp,
     paperwidth=210mm,
     paperheight=297mm,
     top={26mm},
-    headheight={5.5pt},
-    headsep={5.6mm},
-    text={31pc,194.25mm},
-    marginparsep=5mm,
-    marginparwidth=12mm,
-    bindingoffset=0mm,
+    %headheight={5.5pt},
+    %headsep={5.6mm},
+    %text={31pc,194.25mm},
+    %marginparsep=5mm,
+    %marginparwidth=12mm,
+    %bindingoffset=0mm,
     footskip=10mm]{geometry}
 %
     \setlength\maxdepth{0pt}%
-    \setlength\columnsep{5mm}%
-    \setlength{\marginparsep}{5mm}%
-    \setlength{\marginparwidth}{12mm}%
-    \setlength\footnotesep{5.75\p@}%
-    \setlength{\skip\footins}{8\p@ \@plus 4\p@ \@minus 0\p@}%
+    %\setlength\columnsep{5mm}%
+    %\setlength{\marginparsep}{5mm}%
+    %\setlength{\marginparwidth}{12mm}%
+    %\setlength\footnotesep{5.75\p@}%
+    %\setlength{\skip\footins}{8\p@ \@plus 4\p@ \@minus 0\p@}%
 %
 \renewcommand\footnoterule{%
   \kern3\p@%

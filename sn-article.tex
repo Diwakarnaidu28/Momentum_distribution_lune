@@ -27,7 +27,8 @@
  
 %%\documentclass[sn-nature]{sn-jnl}% Style for submisstotalions to Nature Portfolio journals
 %%\documentclass[sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
-\documentclass[sn-mathphys, Numbered , a4paper ,nocrop]{sn-jnl}% Math and Physical Sciences Reference Style
+\documentclass[sn-mathphys, Numbered ,a4paper]{sn-jnl}% Math and Physical Sciences Reference Style
+
 %%\documentclass[sn-aps]{sn-jnl}% American Physical Society (APS) Reference Style
 %%\documentclass[sn-vancouver,Numbered]{sn-jnl}% Vancouver Reference Style
 %%\documentclass[sn-apa]{sn-jnl}% APA Reference Style 
@@ -35,20 +36,21 @@
 %%\documentclass[default]{sn-jnl}% Default
 %%\documentclass[default,iicol]{sn-jnl}% Default with double column layout
 
+
 %%%% Standard Packages
 %%<additional latex packages if required can be included here>
 \usepackage{amsmath, amssymb, amsfonts, physics, braket, hhline, mathtools, cancel, bigints,eufrak,geometry}
-\geometry{reversemp,
+\geometry{
     paperwidth=210mm,
     paperheight=297mm,
-    top={26mm},
+    top={27mm},
     headheight={12pt},
-    headsep={5.15mm},
-    text={160mm,231mm},
-    marginparsep=5mm,
-    marginparwidth=12mm,
-    bindingoffset=0mm,
-    footskip=10.13mm}
+    headsep={5mm},
+    text={160mm,236mm},
+    marginparsep=0mm,
+    marginparwidth=0mm,
+    %footskip=10.13mm
+    left={25mm}}
 \usepackage{pgfplots, subcaption, floatrow, footnote, adjustbox,float,fancyvrb, todonotes, colonequals}
 \usepackage{graphicx, grffile, epsfig, listings, hyperref}
 \usepackage{verbatim, dsfont, accents}
@@ -63,7 +65,7 @@
 \usepackage{xcolor}%
 \usepackage{textcomp}%
 \usepackage{manyfoot}%
-\usepackage{booktabs}%
+
 \usepackage{algorithm}%
 \usepackage{algorithmicx}%
 \usepackage{algpseudocode}%
@@ -148,6 +150,7 @@
 
 \begin{document}
 \setlength{\parindent}{0pt}
+
 \title[Article Title]{Occupation Density}
 
 %%=============================================================%%
@@ -220,7 +223,7 @@ Then we have
     \eva{\Psi_{\text{trial}},n_q\Psi_{\text{trial}}} &= \eva{\Psi_{\text{trial}},a^*_qa_q\Psi_{\text{trial}}} .
 \end{align}
 
-\textcolor{red}{Complete the introduction}
+\textcolor{red}{Complete the introduction, creation annihilation operators and commutation relations, Bogoliubov transformation, density of lunes}
 %\section{Construction of Trial state}\label{sec:construction}
 
 
@@ -811,12 +814,11 @@ For $q \in B^c_{\mathrm{F}}$ and the vacuum state $\Omega \in \HH_N$, we have
     The proof follows from Proposition \ref{prop:finopid} and Lemma \ref{lem:evaquad}.
 \end{proof}
 
+\textcolor{red}{Section on matrix element bounds}
+
 \section{Error Bounds}\label{subsec3}
 
-We bound the head term next, and to begin we start by establishing certain necessary bounds.
-\begin{lemma}[Bounds on fermionic crea/anni operators]
-\textcolor{red}{Put it in the introduction}    
-\end{lemma}
+We bound the head term next, and to begin we start by establishing certain necessary bounds.    
 \begin{lemma}[Bounds on Pair Operators]\label{lem:pairest}
     Let $k \in \Z^3_*$ and $p \in L_k$, then
     \begin{equation}\label{eq:estopb}
@@ -964,9 +966,9 @@ For $q \in B^c_{\mathrm{F}}$, we have the following bound
 \end{proposition}
 \begin{proof}
     We first look at the case $n$ even.
-    We begin with the R.H.S. of the above expression and use the the estimate from Lemma \ref{lem:estQ2} to get
+    We begin with the L.H.S. of the above expression and use the the estimate from Lemma \ref{lem:estQ2} to get
     \begin{equation}
-      \mathrm{R.H.S.\,of\,} (\ref{eq:headest})   
+      \mathrm{L.H.S.\,of\,} (\ref{eq:headest})   
         \leq  \abs{\bint\limits_{\Delta^{n}_1}\di^n\underline{\lambda} \norm{\Theta^{n+1}_{K}(P^q)}_{\mathrm{HS}} \eva{\Omega,\Big( T^*_{\lambda_n}(\NN +1) T_{\lambda_n}\Big)\Omega}} 
     \end{equation}
     Then using Lemma \ref{lem:multicommest} we get
@@ -1017,6 +1019,10 @@ In this section we bound the bosonization errors. Before we start with the estim
         \Xi_\lambda(q) &\coloneq \expval{T_\lambda\Omega, a^*_qa_qT_\lambda\Omega}\\
         \Xi_\lambda &\coloneq \sup\limits_{q \in L_k}\expval{T_\lambda\Omega, a^*_qa_qT_\lambda\Omega}.
     \end{align}
+    and we also denote
+    \begin{equation}
+         \Xi_\lambda^{\half} \coloneq \sup\limits_{q \in L_k}\norm{n_q T_\lambda\Omega}
+    \end{equation}
 \end{definition}
 
 To bound the bosonization error in (\ref{eq:inftylimexp}), we start by bounding the expectation value of each of the $E_{Q_{\sigma(m)}}$. We spell out the two different error terms \eqref{eq:errKQ1} and \eqref{eq:errKQ2} depending on the iteration step $m$ and for a symmetric operator $A$.
@@ -1049,7 +1055,7 @@ For the error term with one anti-commutator, we normal order it as follows
 The normal ordering for the term with two anti-commutator is a bit involved.
 We begin with 
 \begin{equation}
-    \big\{\{a^*_{r+1-\ell_1}a_{r-\ell}, b^*_{-s_1}(-\ell_1)\},b_{-s}(-\ell)\big\} = \{a^*_{r_1-\ell_1}a_{r-\ell}, b^*_{-s_1}(-\ell_1)\}b_{-s}(-\ell) +b_{-s}(-\ell)\{a^*_{r_1-\ell_1}a_{r-\ell}, b^*_{-s_1}(-\ell_1)\}.
+    \big\{\{a^*_{r_1-\ell_1}a_{r-\ell}, b^*_{-s_1}(-\ell_1)\},b_{-s}(-\ell)\big\} =  b_{-s}(-\ell)\{a^*_{r_1-\ell_1}a_{r-\ell}, b^*_{-s_1}(-\ell_1)\} + \{a^*_{r_1-\ell_1}a_{r-\ell}, b^*_{-s_1}(-\ell_1)\}b_{-s}(-\ell).
 \end{equation}
 From \eqref{eq:no1com}, we have the normal ordering of the second term. We normal order the first term as
 \begin{align}
@@ -1066,7 +1072,7 @@ From \eqref{eq:no1com}, we have the normal ordering of the second term. We norma
 \end{align}
 Then we have
 \begin{align}
-    &\big\{b_{-s}(-\ell),\{a^*_{r_1-\ell_1}a_{r-\ell}, b^*_{-s_1}(-\ell_1)\}\big\}\nonumber\\
+    &\big\{\{a^*_{r_1-\ell_1}a_{r-\ell}, b^*_{-s_1}(-\ell_1)\},b_{-s}(-\ell)\big\}\nonumber\\
     &=4a^*_{r_1-\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{r-\ell} + 2a^*_{r_1-\ell_1}[b_{-s}(-\ell),b^*_{-s_1}(-\ell_1)]a_{r-\ell}\nonumber\\ 
     &\quad + a^*_{r_1-\ell_1}[a^*_{r-\ell}, b_{-s_1}(-\ell_1)]^*b_{-s}(-\ell) + 2a^*_{r_1-\ell_1}\big[b_{-s}(-\ell),[a^*_{r-\ell}, b_{-s_1}(-\ell_1)]^*\big]\nonumber\\
     &\quad + 2b^*_{-s_1}(-\ell_1)[b_{-s}(-\ell),a^*_{r_1-\ell_1}]a_{r-\ell} +2\big[[b_{-s}(-\ell),a^*_{r_1-\ell_1}]^*,b_{-s_1}(-\ell_1)\big]^*a_{r-\ell}\nonumber\\
@@ -1079,10 +1085,10 @@ And with the definition of the commutation error we see that each of the error t
     E_{Q_1}(A) &= 
     \sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}} A(\ell)_{r,s}K(\ell_1)_{r,s_1}
     \begin{aligned}[t]
-        &\Big( 2a^*_{r-\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1)a_{r-\ell} \\ &+ b^*_{s}(\ell) a^*_{r-\ell_1}[b_{-s_1}(-\ell_1),a^*_{r-\ell}]^*\Big) + \mathrm{h.c.}
+        &\Big( 2a^*_{r-\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1)a_{r-\ell} \\ &+ b^*_{s}(\ell) a^*_{r-\ell_1}[b_{-s_1}(-\ell_1),a^*_{r-\ell}]^*+ \mathrm{h.c.} \Big)
     \end{aligned}\nonumber\\
     &\quad +\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s \in (L_{\ell}-\ell),s_1\in (L_{\ell_1}-\ell_1)}}\!\!\!\!\!\!\!\!\!\begin{aligned}[t] A(\ell)_{r+\ell,s+\ell}&K(\ell_1)_{r+\ell_1,s_1+\ell_1}
-    \Big( 2a^*_{r+\ell_1}b^*_{s+\ell}(\ell) b^*_{-s_1-\ell_1}(-\ell_1) a_{r+\ell}\nonumber \\ &+ b^*_{s+\ell}(\ell) a^*_{r+\ell_1}[b_{-s_1-\ell_1}(-\ell_1),a^*_{r+\ell}]^*\Big) + \mathrm{h.c.}
+    \Big( 2a^*_{r+\ell_1}b^*_{s+\ell}(\ell) b^*_{-s_1-\ell_1}(-\ell_1) a_{r+\ell}\nonumber \\ &+ b^*_{s+\ell}(\ell) a^*_{r+\ell_1}[b_{-s_1-\ell_1}(-\ell_1),a^*_{r+\ell}]^*+ \mathrm{h.c.} \Big)
     \end{aligned}\\
 \end{alignat}
 and
@@ -1093,17 +1099,46 @@ and
     &+ 2a^*_{r-\ell_1}[b_{-s}(-\ell),b^*_{-s_1}(-\ell_1)]a_{r-\ell}+ a^*_{r-\ell_1}[a^*_{r-\ell}, b_{-s_1}(-\ell_1)]^*b_{-s}(-\ell)\nonumber\\
     &+ 2a^*_{r-\ell_1}\big[b_{-s}(-\ell),[a^*_{r-\ell}, b_{-s_1}(-\ell_1)]^*\big] + 2b^*_{-s_1}(-\ell_1)[b_{-s}(-\ell),a^*_{r-\ell_1}]a_{r-\ell} \nonumber\\
     &+2\big[[b_{-s}(-\ell),a^*_{r-\ell_1}]^*,b_{-s_1}(-\ell_1)\big]^*a_{r-\ell}- [a^*_{r-\ell}, b_{-s_1}(-\ell_1)]^*[b_{-s}(-\ell),a^*_{r-\ell_1}] \nonumber\\
-    &+ \big\{ [b_{-s}(-\ell),a^*_{r-\ell_1}],[a^*_{r-\ell}, b_{-s_1}(-\ell_1)]^*\big\} \Big) + \mathrm{h.c.}    
+    &+ \big\{ [b_{-s}(-\ell),a^*_{r-\ell_1}],[a^*_{r-\ell}, b_{-s_1}(-\ell_1)]^*\big\} + \mathrm{h.c.} \Big)    
     \end{aligned}\\
-    &\quad -\!\!\!\sum\limits_{\ell,\ell_1 \in \Z^3_*}\begin{aligned}[t]&\sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s \in (L_{\ell}-\ell),s_1\in (L_{\ell_1}-\ell_1)}}\!\!\!\!\!\!\begin{aligned}[t] A(\ell)_{r+\ell,s+\ell} K(\ell_1)_{r+\ell_1,s_1+\ell_1} &\Big(4a^*_{r+\ell_1}b^*_{-s_1-\ell_1}(-\ell_1)b_{-s-\ell}(-\ell)a_{r+\ell} \nonumber\\ 
-    &+ 2a^*_{r+\ell_1}[b_{-s-\ell}(-\ell),b^*_{-s_1-\ell_1}(-\ell_1)]a_{r+\ell}\nonumber\\
+    &\quad -\!\!\!\sum\limits_{\ell,\ell_1 \in \Z^3_*}\begin{aligned}[t]&\sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1}}}\!\!\!\!\!\!\begin{aligned}[t] A(\ell)_{r+\ell,s+\ell} K(\ell_1)_{r+\ell_1,s_1+\ell_1} &\Big(4a^*_{r+\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{r+\ell} \nonumber\\ 
+    &+ 2a^*_{r+\ell_1}[b_{-s}(-\ell),b^*_{-s_1}(-\ell_1)]a_{r+\ell}\nonumber\\
     \end{aligned}\\
-    &+ a^*_{r+\ell_1}[a^*_{r+\ell}, b_{-s_1-\ell_1}(-\ell_1)]^*b_{-s-\ell}(-\ell)+ 2a^*_{r+\ell_1}\big[b_{-s-\ell}(-\ell),[a^*_{r+\ell}, b_{-s_1-\ell_1}(-\ell_1)]^*\big] \nonumber\\
-    &+ 2b^*_{-s_1-\ell_1}(-\ell_1)[b_{-s-\ell}(-\ell),a^*_{r+\ell_1}]a_{r+\ell} +2\big[[b_{-s-\ell}(-\ell),a^*_{r+\ell_1}]^*,b_{-s_1-\ell_1}(-\ell_1)\big]^*a_{r+\ell} \nonumber\\
-    &- [a^*_{r+\ell}, b_{-s_1-\ell_1}(-\ell_1)]^*[b_{-s-\ell}(-\ell),a^*_{r+\ell_1}] + \big\{ [b_{-s-\ell}(-\ell),a^*_{r+\ell_1}],[a^*_{r+\ell}, b_{-s_1-\ell_1}(-\ell_1)]^*\big\} \Big) + \mathrm{h.c.}    
+    &+ a^*_{r+\ell_1}[a^*_{r+\ell}, b_{-s_1}(-\ell_1)]^*b_{-s}(-\ell)+ 2a^*_{r+\ell_1}\big[b_{-s}(-\ell),[a^*_{r+\ell}, b_{-s_1}(-\ell_1)]^*\big] \nonumber\\
+    &+ 2b^*_{-s_1}(-\ell_1)[b_{-s}(-\ell),a^*_{r+\ell_1}]a_{r+\ell} +2\big[[b_{-s}(-\ell),a^*_{r+\ell_1}]^*,b_{-s_1}(-\ell_1)\big]^*a_{r+\ell} \nonumber\\
+    &- [a^*_{r+\ell}, b_{-s_1}(-\ell_1)]^*[b_{-s}(-\ell),a^*_{r+\ell_1}] + \big\{ [b_{-s}(-\ell),a^*_{r+\ell_1}],[a^*_{r+\ell}, b_{-s_1}(-\ell_1)]^*\big\} + \mathrm{h.c.} \Big)    
     \end{aligned}\\
     &\phantom{=\;} -2\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\big\{ A(\ell)_,K(\ell)\big\}_{r,s}\epsilon_{r,s}(\ell,\ell).
 \end{alignat}
+In all the commutators above we see two different momenta $p,q \in B_F$ and $p,q \in B^c_F$ in the fermionic creation and annihilation operators. We can resolve these commutators as 
+\begin{align}
+ [b_{-s_1}(-\ell_1), a^*_{p}]^* = [a_{-s_1+\ell_1}a_{-s_1}, a^*_{p}]^* &=\left(a_{-s_1+\ell_1}\{a_{-s_1}, a^*_{p}\}-\{a_{-s_1+\ell_1}, a^*_{p}\}a_{-s_1} \right)^*\\ 
+    &=\begin{cases}
+        -\delta_{-s_1+\ell_1,p}a^*_{-s_1} \quad\text{for}\quad p \in B_F\\
+         \delta_{-s_1,p}a^*_{-s_1+\ell_1} \quad\text{for}\quad p \in B^c_F\\
+    \end{cases}
+\end{align}
+Similarly
+\begin{align}
+    [b_{-s}(-\ell), a^*_{p}] &= 
+    \begin{cases}
+        -\delta_{-s+\ell,p}a_{-s} \quad\text{for}\quad p \in B_F\\
+         \delta_{-s,p}a_{-s+\ell} \quad\text{for}\quad p \in B^c_F\\
+    \end{cases}\\
+    \left[b_{-s}(-\ell), [a^*_{p},b_{-s_1}(-\ell_1)]^*\right]&=\begin{cases}
+        \delta_{-s_1+\ell_1,p}\delta_{s,s_1}a_{-s+\ell} \quad\text{for}\quad p \in B_F\\
+        \delta_{-s_1,p}\delta_{s-\ell,s_1-\ell_1}a_{-s} \quad\text{for}\quad p \in B^c_F\\
+    \end{cases}\\
+    \left[ [b_{-s}(-\ell), a^*_{p}]^*, b_{-s_1}(-\ell_1) \right]^* &=\begin{cases}
+        \delta_{-s+\ell,p}\delta_{s,s_1}a^*_{-s_1+\ell_1} \quad\text{for}\quad p \in B_F\\
+        \delta_{-s,p}\delta_{-s+\ell,-s_1+\ell_1}a^*_{-s_1} \quad\text{for}\quad p \in B^c_F\\
+    \end{cases}\\
+    [a^*_{p},b_{-s_1}(-\ell_1)]^*[b_{-s}(-\ell), a^*_{q}] &= \begin{cases}
+        -\delta_{-s_1+\ell_1,p}\delta_{-s+\ell,q}a^*_{-s_1}a_{-s} \quad\text{for}\quad p,q \in B_F\\
+         -\delta_{-s_1,p}\delta_{-s,q}a^*_{-s_1+\ell_1}a_{-s+\ell} \quad\text{for}\quad p,q \in B^c_F\\
+    \end{cases}
+\end{align}
+In the last commutation relation both $p,q$ are simultaneously either in $B_F$ or $B_F^c$.
 
 Now for any iteration step $m$, we insert the operator $A= \Theta^m_K(P^q)(\ell)$ simultaneously using the definition of $P^q$. We decompose the nested m-fold nested anti commutator, $\Theta^m_K(P^q)(\ell)$,  as
 \begin{equation}
@@ -1135,87 +1170,73 @@ When we explicitly put $P^q$, we get the following decomposition of the error te
  %   &-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\Theta^{m+1}_K(P^q)_{r,s}\epsilon_{r,s}(\ell,\ell)
  %\end{alignat}
   We write the terms with all the details mentioned above to better present their structure.
-  \newpage
 \begin{alignat}{2}
     &E_{Q_1}(\Theta^m_K(P^q)) =\nonumber\\ 
-    &-{\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r \in             L_{\ell}\cap  L_{\ell_1}\\s_1\in L_{\ell_1}}}\!\!\!\mathds{1}_{L_\ell}      (q) K^{m}_{r,q}(\ell)K_{r,s_1}(\ell_1)\begin{aligned}[t]
-        &\Big( 2a^*_{r-\ell_1}b^*_{q}(\ell) b^*_{-s_1}(-\ell_1)a_{r-\ell} \\ &+ b^*_{q}(\ell) a^*_{r-\ell_1}[b_{-s_1}(-\ell_1),a^*_{r-\ell}]^*\Big) + \mathrm{h.c.}
-        \end{aligned}\nonumber}\\
-    &-\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r \in              (L_{\ell}-\ell) \cap  (L_{\ell_1}-\ell_1)\\s_1\in (L_{\ell_1}-              \ell_1)}} \!\!\!\!\! \mathds{1}_{L_\ell}(q)                                 \begin{aligned}[t]K^{m}_{r+\ell,q}(\ell)
-        K_{r+\ell_1,s_1+\ell_1}(\ell_1) &\Big( 2a^*_{r+\ell_1}b^*_{q}(\ell) b^*_{-s_1-\ell_1}(-\ell_1) a_{r+\ell}\nonumber \\ &+ b^*_{q}(\ell) a^*_{r+\ell_1}[b_{-s_1-\ell_1}(-\ell_1),a^*_{r+\ell}]^*\Big) + \mathrm{h.c.}
-        \end{aligned}\nonumber\\
+    &-{\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r \in L_{\ell}\cap  L_{\ell_1}\\s_1\in L_{\ell_1}}}\!\!\!\mathds{1}_{L_\ell}      (q) K^{m}_{r,q}(\ell)K_{r,s_1}(\ell_1)\Big( 2a^*_{r-\ell_1}b^*_{q}(\ell) b^*_{-s_1}(-\ell_1)a_{r-\ell} -\delta_{-s_1+\ell_1,r-\ell} b^*_{q}(\ell) a^*_{r-\ell_1}a^*_{-s_1}\Big)
+       \nonumber}\\
+    &-\sum\limits_{\ell, \ell_1\in \Z^3_*}\!\!\sum\limits_{\substack{r \in              (L_{\ell}-\ell)\\\phantom{r\in} \cap\\\phantom{r\in}  (L_{\ell_1}-\ell_1)\\s_1\in L_{\ell_1}}} \!\!\!\! \mathds{1}_{L_\ell}(q)                      K^{m}_{r+\ell,q}(\ell)
+        K_{r+\ell_1,s_1}(\ell_1)\Big( 2a^*_{r+\ell_1}b^*_{q}(\ell) b^*_{-s_1}(-\ell_1) a_{r+\ell} +  \delta_{-s_1,r+\ell} b^*_{q}(\ell) a^*_{r+\ell_1}a^*_{-s_1+\ell_1}\Big)
+        \nonumber\\
     &-\sum\limits_{\ell, \ell_1\in \Z^3_*}\!\!
-        \sum\limits_{\substack{r\in L_{\ell}\cap L_{\ell_1}\\s \in L_{\ell}, s_1\in L_{\ell_1}}}\!\!\!\!\!\mathds{1}_{L_\ell}(q)\bigg(\sum_{j=1}^{m-1}K^{m-j}_{r,q}(\ell)K^{j}_{q,s}(\ell)\bigg)K_{r,s_1}(\ell_1)\begin{aligned}[t]&\Big( 2a^*_{r-\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1)a_{r-\ell} \\ &+ b^*_{s}(\ell) a^*_{r-\ell_1}[b_{-s_1}(-\ell_1),a^*_{r-\ell}]^*\Big) + \mathrm{h.c.}
+        \sum\limits_{\substack{r\in L_{\ell}\cap L_{\ell_1}\\s \in L_{\ell}, s_1\in L_{\ell_1}}} \!\!\!\!\!\! \mathds{1}_{L_\ell}(q)\begin{aligned}[t] \bigg(\sum_{j=1}^{m-1}K^{m-j}_{r,q}(\ell&)K^{j}_{q,s}(\ell)\bigg)K_{r,s_1}(\ell_1)\times\\&\times\!\Big( 2a^*_{r-\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1)a_{r-\ell} -\delta_{-s_1+\ell_1,r-\ell} b^*_{s}(\ell) a^*_{r-\ell_1}a^*_{-s_1}\Big)
         \end{aligned}\nonumber\\
-    &-\sum\limits_{\ell, \ell_1\in \Z^3_*}\!\!
-        \sum\limits_{\substack{r \in (L_{\ell}-\ell) \cap  (L_{\ell_1}-\ell_1)\\s\in (L_{\ell}-\ell),s_1\in (L_{\ell_1}-\ell_1)}}\!\!\begin{aligned}[t] \mathds{1}_{L_\ell}(q)\bigg(\sum_{j=1}^{m-1}&K^{m-j}_{r+\ell,q}(\ell)K^{j}_{q,s+\ell}(\ell)\bigg) 
-        K_{r+\ell_1,s_1+\ell_1}(\ell_1)\times\\ \times&\Big( 2a^*_{r+\ell_1}b^*_{s+\ell}(\ell) b^*_{-s_1-\ell_1}(-\ell_1) a_{r+\ell}\nonumber \\ &+ b^*_{s+\ell}(\ell) a^*_{r+\ell_1}[b_{-s_1-\ell_1}(-\ell_1),a^*_{r+\ell}]^*\Big) + \mathrm{h.c.}
+    &- \sum\limits_{\ell, \ell_1\in \Z^3_*}\!\! \sum\limits_{ \substack{r \in         (L_{\ell}-\ell) \\ \phantom{r\in} \cap\\\phantom{r\in}(L_{\ell_1}-\ell_1)     \\ s \in L_{\ell},s_1\in L_{\ell_1}}}\!\!\!\!\!\!\mathds{1}_{L_\ell}(q)       \begin{aligned}[t] \bigg(\sum_{j=1}^{m-1} K^{m-j}_{r+\ell,q}(\ell&)           K^{j}_{q,s}(\ell)\bigg) K_{r+\ell_1,s_1}(\ell_1) \times \\ &\times\!\Big(     2a^*_{r+\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r+\ell} + \delta_{-      s_1,r+\ell} b^*_{s}(\ell) a^*_{r+\ell_1}a^*_{-s_1+\ell_1}\Big)
         \end{aligned}\nonumber\\
-    &- \sum\limits_{\ell, \ell_1\in \Z^3_*}\!\sum\limits_{\substack{s \in           L_{\ell}\\s_1\in L_{\ell_1}}}\!\!\!\!                                       \mathds{1}_{L_\ell}(q) \mathds{1}_{L_{\ell_1}}\!(q) K^{m}_{q,s}(\ell)       K_{q,s_1} (\ell_1)\begin{aligned}[t]  
-        &\Big( 2a^*_{q-\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1)a_{q-\ell} \\ &+ b^*_{s}(\ell) a^*_{q-\ell_1}[b_{-s_1}(-\ell_1),a^*_{q-\ell}]^*\Big) + \mathrm{h.c.}
-        \end{aligned}\nonumber\\
-    &-\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{s \in              (L_{\ell}-\ell) \\ s_1 \in (L_{\ell_1}-\ell_1)}} \!\!\!\!\!                 \begin{aligned}[t]  \mathds{1}_{(L_\ell-\ell)}(q)                           \mathds{1}_{(L_{\ell_1}-\ell_1)}(q&) K^{m}_{q+\ell,s+\ell}(\ell)            K_{q+\ell_1,s_1+\ell_1}(\ell_1)
-        \times \\ \times &\Big( 2a^*_{q+\ell_1}b^*_{s+\ell}(\ell) b^*_{-s_1-\ell_1}(-\ell_1) a_{q+\ell}\nonumber \\ &+ b^*_{s+\ell}(\ell) a^*_{q+\ell_1}[b_{-s_1-\ell_1}(-\ell_1),a^*_{q+\ell}]^*\Big) + \mathrm{h.c.}
-        \end{aligned}\nonumber\\
-    &+ (q\rightarrow-q)\nonumber\\
-    &\quad\equalscolon \sum\limits_{i=1}^2 (\mathrm{I})_i +(\mathrm{II})_i +(\mathrm{III})_i + (\mathrm{IV})_i +(\mathrm{V})_i +(\mathrm{VI})_i\nonumber.
+    &- \sum\limits_{\ell, \ell_1\in \Z^3_*} \!\quad \sum\limits_{ \substack{s \in     L_{\ell} \\ s_1\in L_{\ell_1}}} \mathds{1}_{L_\ell}(q)                        \mathds{1}_{L_{\ell_1}}(q) K^{m}_{q,s}(\ell) K_{q,s_1}(\ell_1) \Big(          2a^*_{q-\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{q-\ell} - \delta_{-      s_1+\ell_1,q-\ell} b^*_{s}(\ell) a^*_{q-\ell_1} a^*_{-s_1}                  \Big)\nonumber\\
+    &-\sum\limits_{\ell, \ell_1\in \Z^3_*}  \!\quad                      
+        \sum\limits_{\substack{s \in L_{\ell} \\ s_1 \in L_{\ell_1}}}\!\,  \mathds{1}_{L_\ell}(q) \mathds{1}_{L_{\ell_1}}(q) K^{m}_{q,s}(\ell) K_{q,s_1}(\ell_1)\Big( 2a^*_{q} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{q}\nonumber + \delta_{-s_1,q} b^*_{s}(\ell) a^*_{q}a^*_{-s_1+\ell_1}\Big)
+        \nonumber\\
+    &+\mathrm{h.c.} + (q\rightarrow-q) \quad\equalscolon \sum\limits_{i=1}^{6}\sum\limits_{j=1}^{2} E_{Q_1}^{\,i,j}\nonumber.
 \end{alignat}
-\textcolor{red}{should I push the non overlapping momenta back?}\\
-and\newpage
+and
 \begin{alignat}{2}
     &2E_{Q_2}(\Theta^m_K(P^q)) =\nonumber\\ 
-    &-{\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r \in             L_{\ell}\cap  L_{\ell_1}\\s_1\in L_{\ell_1}}}\!\!\!\begin{aligned}[t]
-        \mathds{1}_{L_\ell}&(q) K^{m}_{r,q}(\ell)K_{r,s_1}(\ell_1)\Big(4a^*_{r-\ell_1}b^*_{-s_1}(-\ell_1)b_{-q}(-\ell)a_{r-\ell} \nonumber\\ 
-        &+ 2a^*_{r-\ell_1}[b_{-q}(-\ell),b^*_{-s_1}(-\ell_1)]a_{r-\ell}+ a^*_{r-\ell_1}[a^*_{r-\ell}, b_{-s_1}(-\ell_1)]^*b_{-q}(-\ell)\nonumber\\
-        &+ 2a^*_{r-\ell_1}\big[b_{-q}(-\ell),[a^*_{r-\ell}, b_{-s_1}(-\ell_1)]^*\big] + 2b^*_{-s_1}(-\ell_1)[b_{-q}(-\ell),a^*_{r-\ell_1}]a_{r-\ell} \nonumber\\
-        &+2\big[ [ b_{-q}(-\ell) , a^*_{r-\ell_1}]^* , b_{-s_1}(-\ell_1) \big]^* a_{r-\ell} - [a^*_{r-\ell} , b_{-s_1}(-\ell_1) ]^* [ b_{-q}(-\ell) , a^*_{r-\ell_1} ] \nonumber\\
-        &+ \big\{ [b_{-q}(-\ell),a^*_{r-\ell_1}],[a^*_{r-\ell}, b_{-s_1}(-\ell_1)]^*\big\} \Big) + \mathrm{h.c.} 
+    &-{\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r \in             L_{\ell}\cap  L_{\ell_1}\\s_1\in L_{\ell_1}}}\begin{aligned}[t]\!\!
+        \mathds{1}_{L_\ell}&(q) K^{m}_{r,q}(\ell)K_{r,s_1}(\ell_1)\Big(4a^*_{r-\ell_1}b^*_{-s_1}(-\ell_1)b_{-q}(-\ell)a_{r-\ell} + 2a^*_{r-\ell_1}[b_{-q}(-\ell),b^*_{-s_1}(-\ell_1)]a_{r-\ell}\nonumber\\ 
+        &-\delta_{-s_1+\ell_1,r-\ell} a^*_{r-\ell_1}a^*_{-s_1}b_{-q}(-\ell)+ 2\delta_{-s_1+\ell_1,r-\ell}\delta_{q,s_1}a^*_{r-\ell_1}a_{-q+\ell} \nonumber\\
+        &+ 2\delta_{-q+\ell,r-\ell_1}b^*_{-s_1}(-\ell_1)a_{-q}a_{r-\ell} +2\delta_{-q+\ell,r-\ell_1}\delta_{q,s_1}a^*_{-s_1+\ell_1} a_{r-\ell} \nonumber\\
+        &+ \delta_{s_1+\ell_1,r-\ell}\delta_{-q+\ell,r-\ell_1}a^*_{-s_1}a_{-q} + \big\{ [b_{-q}(-\ell),a^*_{r-\ell_1}],[a^*_{r-\ell}, b_{-s_1}(-\ell_1)]^*\big\} \Big) 
         \end{aligned}\nonumber}\\
-    &-\sum\limits_{\ell, \ell_1\in \Z^3_*}\begin{aligned}[t]
-        &\sum\limits_{\substack{r \in (L_{\ell}-\ell) \cap  (L_{\ell_1}-\ell_1)\\s_1\in (L_{\ell_1}-              \ell_1)}}\!\!\!\!\!\begin{aligned}[t]\mathds{1}_{L_\ell}(q)                 K^{m}_{r+\ell,q}(\ell)
-        K_{r+\ell_1,s_1+\ell_1}(\ell_1)&\Big(4a^*_{r+\ell_1}b^*_{-s_1-\ell_1}(-\ell_1)b_{-q-\ell}(-\ell)a_{r+\ell} \nonumber\\ 
-        &+ 2a^*_{r+\ell_1}[b_{-q-\ell}(-\ell),b^*_{-s_1-\ell_1}(-\ell_1)]a_{r+\ell}\nonumber\\
-        \end{aligned}\\
-        &+ a^*_{r+\ell_1}[a^*_{r+\ell}, b_{-s_1-\ell_1}(-\ell_1)]^*b_{-q-\ell}(-\ell)+ 2a^*_{r+\ell_1}\big[b_{-q-\ell}(-\ell),[a^*_{r+\ell}, b_{-s_1-\ell_1}(-\ell_1)]^*\big] \nonumber\\
-        &+ 2b^*_{-s_1-\ell_1}(-\ell_1)[b_{-q-\ell}(-\ell),a^*_{r+\ell_1}]a_{r+\ell} +2\big[[b_{-q-\ell}(-\ell),a^*_{r+\ell_1}]^*,b_{-s_1-\ell_1}(-\ell_1)\big]^*a_{r+\ell} \nonumber\\
-        &- [a^*_{r+\ell}, b_{-s_1-\ell_1}(-\ell_1)]^*[b_{-q-\ell}(-\ell),a^*_{r+\ell_1}] + \big\{ [b_{-q-\ell}(-\ell),a^*_{r+\ell_1}],[a^*_{r+\ell}, b_{-s_1-\ell_1}(-\ell_1)]^*\big\} \Big) + \mathrm{h.c.}
+    &-\sum\limits_{\ell, \ell_1\in \Z^3_*}\!
+        \sum\limits_{\substack{r \in (L_{\ell}-\ell)\\ \phantom{r\in}\cap \\\phantom{r\in} (L_{\ell_1}-\ell_1)\\s_1\in L_{\ell_1}}}\begin{aligned}[t]\!\!\!\!\mathds{1}_{L_\ell}&(q) K^{m}_{r+\ell,q}(\ell) K_{r+\ell_1,s_1}(\ell_1) \Big(4a^*_{r+\ell_1}b^*_{-s_1}(-\ell_1)b_{-q}(-\ell)a_{r+\ell} \nonumber\\ 
+        &+ 2a^*_{r+\ell_1}[b_{-q}(-\ell),b^*_{-s_1}(-\ell_1)]a_{r+\ell}- \delta_{-s_1, r+\ell}a^*_{r+\ell_1}a^*_{-s_1+\ell_1}b_{-q}(-\ell)\nonumber\\
+        &+ 2\delta_{-s_1,r+\ell}\delta_{q-\ell,s_1-\ell_1}a^*_{r+\ell_1}a_{-q} + 2\delta_{-q,r+\ell}b^*_{-s_1}(-\ell_1)a_{-q+\ell}a_{r+\ell}\nonumber\\
+        & +2\delta_{-q,r+\ell_1}\delta_{-q+\ell,-s_1+\ell_1}a^*_{-s_1}a_{r+\ell} + \delta_{-s_1,r_\ell}\delta_{-q,r+\ell_1}a^*_{-s_1+\ell_1}a_{-s+\ell}\nonumber\\
+        &+ \big\{ [b_{-q}(-\ell),a^*_{r+\ell_1}],[a^*_{r+\ell}, b_{-s_1}(-\ell_1)]^*\big\} \Big)
+        \end{aligned}\nonumber\\
+    &-\sum\limits_{\ell, \ell_1\in \Z^3_*}\!
+        \sum\limits_{\substack{r\in L_{\ell}\cap L_{\ell_1}\\s \in L_{\ell}, s_1\in L_{\ell_1}}}\begin{aligned}[t]\!\!\!\!\!\!\mathds{1}_{L_\ell}
+        &(q)\bigg(\sum_{j=1}^{m-1}K^{m-j}_{r,q}(\ell)K^{j}_{q,s}(\ell)\bigg)K_{r,s_1}(\ell_1)\Big(4a^*_{r-\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{r-\ell} \nonumber\\ 
+        &+ 2a^*_{r-\ell_1}[b_{-s}(-\ell),b^*_{-s_1}(-\ell_1)]a_{r-\ell}-\delta_{-s_1+\ell_1,r-\ell} a^*_{r-\ell_1}a^*_{-s_1}b_{-s}(-\ell)\nonumber\\
+        &+ 2\delta_{-s_1+\ell_1,r-\ell}\delta_{s,s_1}a^*_{r-\ell_1}a_{-s+\ell} + 2\delta_{-s+\ell,r-\ell_1}b^*_{-s_1}(-\ell_1)a_{-s}a_{r-\ell} \nonumber\\
+        &+2\delta_{-s+\ell,r-\ell_1}\delta_{s,s_1}a^*_{-s_1+\ell_1} a_{r-\ell} + \delta_{s_1+\ell_1,r-\ell}\delta_{-s+\ell,r-\ell_1}a^*_{-s_1}a_{-s} \nonumber\\
+        &+ \big\{ [b_{-s}(-\ell),a^*_{r-\ell_1}],[a^*_{r-\ell}, b_{-s_1}(-\ell_1)]^*\big\} \Big) 
         \end{aligned}\nonumber\\
     &-\sum\limits_{\ell, \ell_1\in \Z^3_*}\!\!
-        \sum\limits_{\substack{r\in L_{\ell}\cap L_{\ell_1}\\s \in L_{\ell}, s_1\in L_{\ell_1}}}\!\!\!\!\!\begin{aligned}[t]\mathds{1}_{L_\ell}
-        &(q)\bigg(\sum_{j=1}^{m-1}K^{m-j}_{r,q}(\ell)K^{j}_{q,s}(\ell)\bigg)K_{r,s_1}(\ell_1)\Big(4a^*_{r-\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{r-\ell} \nonumber\\ 
-    &+ 2a^*_{r-\ell_1}[b_{-s}(-\ell),b^*_{-s_1}(-\ell_1)]a_{r-\ell}+ a^*_{r-\ell_1}[a^*_{r-\ell}, b_{-s_1}(-\ell_1)]^*b_{-s}(-\ell)\nonumber\\
-    &+ 2a^*_{r-\ell_1}\big[b_{-s}(-\ell),[a^*_{r-\ell}, b_{-s_1}(-\ell_1)]^*\big] + 2b^*_{-s_1}(-\ell_1)[b_{-s}(-\ell),a^*_{r-\ell_1}]a_{r-\ell} \nonumber\\
-    &+2\big[[b_{-s}(-\ell),a^*_{r-\ell_1}]^*,b_{-s_1}(-\ell_1)\big]^*a_{r-\ell}- [a^*_{r-\ell}, b_{-s_1}(-\ell_1)]^*[b_{-s}(-\ell),a^*_{r-\ell_1}] \nonumber\\
-    &+ \big\{ [b_{-s}(-\ell),a^*_{r-\ell_1}],[a^*_{r-\ell}, b_{-s_1}(-\ell_1)]^*\big\} \Big) + \mathrm{h.c.}
+        \sum\limits_{\substack{r \in (L_{\ell}-\ell) \\ \phantom{r\in} \cap \\ \phantom{r\in}  (L_{\ell_1}-\ell_1)\\s\in L_{\ell},s_1\in L_{\ell_1}}}\begin{aligned}[t]\!\!\!\!\!\mathds{1}_{L_\ell}&(q)\bigg(\sum_{j=1}^{m-1}K^{m-j}_{r+\ell,q}(\ell)K^{j}_{q,s}(\ell)\bigg) 
+        K_{r+\ell_1,s_1}(\ell_1) \Big(4a^*_{r+\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{r+\ell} \nonumber\\
+        &+ 2a^*_{r+\ell_1}[b_{-s}(-\ell),b^*_{-s_1}(-\ell_1)]a_{r+\ell}- \delta_{-s_1, r+\ell}a^*_{r+\ell_1}a^*_{-s_1+\ell_1}b_{-s}(-\ell)\nonumber\\
+        &+ 2\delta_{-s_1,r+\ell}\delta_{s-\ell,s_1-\ell_1}a^*_{r+\ell_1}a_{-s} + 2\delta_{-s,r+\ell}b^*_{-s_1}(-\ell_1)a_{-s+\ell}a_{r+\ell} \nonumber\\
+        &+2\delta_{-s,r+\ell_1}\delta_{-s+\ell,-s_1+\ell_1}a^*_{-s_1}a_{r+\ell} + \delta_{-s_1,r_\ell}\delta_{-s,r+\ell_1}a^*_{-s_1+\ell_1}a_{-s+\ell}\nonumber\\
+        &+ \big\{ [b_{-s}(-\ell),a^*_{r+\ell_1}],[a^*_{r+\ell}, b_{-s_1}(-\ell_1)]^*\big\} \Big)
         \end{aligned}\nonumber\\
-    &-\sum\limits_{\ell, \ell_1\in \Z^3_*}\!\!\begin{aligned}[t] &
-        \sum\limits_{\substack{r \in (L_{\ell}-\ell) \cap  (L_{\ell_1}-\ell_1)\\s\in (L_{\ell}-\ell),s_1\in (L_{\ell_1}-\ell_1)}}\!\!\begin{aligned}[t]\mathds{1}_{L_\ell}&(q)\bigg(\sum_{j=1}^{m-1}K^{m-j}_{r+\ell,q}(\ell)K^{j}_{q,s+\ell}(\ell)\bigg) 
-        K_{r+\ell_1,s_1+\ell_1}(\ell_1)\times\\\times &\Big(4a^*_{r+\ell_1}b^*_{-s_1-\ell_1}(-\ell_1)b_{-s-\ell}(-\ell)a_{r+\ell}  
-    + 2a^*_{r+\ell_1}[b_{-s-\ell}(-\ell),b^*_{-s_1-\ell_1}(-\ell_1)]a_{r+\ell}\nonumber\\
-    \end{aligned}\\
-    &+ a^*_{r+\ell_1}[a^*_{r+\ell}, b_{-s_1-\ell_1}(-\ell_1)]^*b_{-s-\ell}(-\ell)+ 2a^*_{r+\ell_1}\big[b_{-s-\ell}(-\ell),[a^*_{r+\ell}, b_{-s_1-\ell_1}(-\ell_1)]^*\big] \nonumber\\
-    &+ 2b^*_{-s_1-\ell_1}(-\ell_1)[b_{-s-\ell}(-\ell),a^*_{r+\ell_1}]a_{r+\ell} +2\big[[b_{-s-\ell}(-\ell),a^*_{r+\ell_1}]^*,b_{-s_1-\ell_1}(-\ell_1)\big]^*a_{r+\ell} \nonumber\\
-    &- [a^*_{r+\ell}, b_{-s_1-\ell_1}(-\ell_1)]^*[b_{-s-\ell}(-\ell),a^*_{r+\ell_1}] + \big\{ [b_{-s-\ell}(-\ell),a^*_{r+\ell_1}],[a^*_{r+\ell}, b_{-s_1-\ell_1}(-\ell_1)]^*\big\} \Big) + \mathrm{h.c.}
+    &- \sum\limits_{\ell, \ell_1\in \Z^3_*}\!\quad\sum\limits_{\substack{s \in        L_{\ell}\\s_1\in L_{\ell_1}}}\begin{aligned}[t]\,                             \mathds{1}_{L_\ell}&(q) \mathds{1}_{L_{\ell_1}}(q) K^{m}_{q,s}(\ell)          K_{q,s_1}(\ell_1) \Big( 4a^*_{q-\ell_1} b^*_{-s_1}(-\ell_1) b_{-s}(-\ell)     a_{q-\ell} \nonumber\\ 
+        &+ 2a^*_{q-\ell_1}[b_{-s}(-\ell),b^*_{-s_1}(-\ell_1)]a_{q-\ell}-\delta_{-s_1+\ell_1,q-\ell} a^*_{q-\ell_1}a^*_{-s_1}b_{-s}(-\ell)\nonumber\\
+        &+ 2\delta_{-s_1+\ell_1,q-\ell}\delta_{s,s_1}a^*_{q-\ell_1}a_{-s+\ell} + 2\delta_{-s+\ell,q-\ell_1}b^*_{-s_1}(-\ell_1)a_{-s}a_{q-\ell} \nonumber\\
+        &+2\delta_{-s+\ell,q-\ell_1}\delta_{s,s_1}a^*_{-s_1+\ell_1} a_{q-\ell} + \delta_{s_1+\ell_1,q-\ell}\delta_{-s+\ell,q-\ell_1}a^*_{-s_1}a_{-s} \nonumber\\
+        &+ \big\{ [b_{-s}(-\ell),a^*_{q-\ell_1}],[a^*_{q-\ell}, b_{-s_1}(-\ell_1)]^*\big\} \Big) 
         \end{aligned}\nonumber\\
-    &- \sum\limits_{\ell, \ell_1\in \Z^3_*}\!\sum\limits_{\substack{s \in           L_{\ell}\\s_1\in L_{\ell_1}}}\!\!\!\!\begin{aligned}[t]                     \mathds{1}_{L_\ell}(q) \mathds{1}_{L_{\ell_1}}\!&(q) K^{m}_{q,s}(\ell)       K_{q,s_1} (\ell_1)\Big(4a^*_{q-\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{q-\ell} \nonumber\\ 
-    &+ 2a^*_{q-\ell_1}[b_{-s}(-\ell),b^*_{-s_1}(-\ell_1)]a_{q-\ell}+ a^*_{q-\ell_1}[a^*_{q-\ell}, b_{-s_1}(-\ell_1)]^*b_{-s}(-\ell)\nonumber\\
-    &+ 2a^*_{q-\ell_1}\big[b_{-s}(-\ell),[a^*_{q-\ell}, b_{-s_1}(-\ell_1)]^*\big] + 2b^*_{-s_1}(-\ell_1)[b_{-s}(-\ell),a^*_{q-\ell_1}]a_{q-\ell} \nonumber\\
-    &+2\big[[b_{-s}(-\ell),a^*_{q-\ell_1}]^*,b_{-s_1}(-\ell_1)\big]^*a_{q-\ell}- [a^*_{q-\ell}, b_{-s_1}(-\ell_1)]^*[b_{-s}(-\ell),a^*_{q-\ell_1}] \nonumber\\
-    &+ \big\{ [b_{-s}(-\ell),a^*_{q-\ell_1}],[a^*_{q-\ell}, b_{-s_1}(-\ell_1)]^*\big\} \Big) + \mathrm{h.c.}
+    &-\sum\limits_{\ell, \ell_1\in \Z^3_*}\!\quad\sum\limits_{\substack{s \in L_{\ell}\\     s_1 \in L_{\ell_1}}} \begin{aligned}[t]\, \mathds{1}_{L_\ell}&       (q) \mathds{1}_{L_{\ell_1}}(q) K^{m}_{q,s}(\ell) K_{q,s_1}        (\ell_1) \Big(4a^*_{q}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{q}       \nonumber\\ 
+        &+ 2a^*_{q}[b_{-s}(-\ell),b^*_{-s_1}(-\ell_1)]a_{q}- \delta_{-s_1, q}a^*_{q}a^*_{-s_1+\ell_1}b_{-s}(-\ell) \nonumber\\
+        &+ 2\delta_{-s_1,q}\delta_{s-\ell,s_1-\ell_1}a^*_{q}a_{-s} + 2\delta_{-s,q}b^*_{-s_1}(-\ell_1)a_{-s+\ell}a_{q} \nonumber\\
+        &+2\delta_{-s,q}\delta_{-s+\ell,-s_1+\ell_1}a^*_{-s_1}a_{q} + \delta_{-s_1,q_\ell}\delta_{-s,q}a^*_{-s_1+\ell_1}a_{-s+\ell} \nonumber\\
+        &+ \big\{ [b_{-s}(-\ell),a^*_{q}],[a^*_{q}, b_{-s_1}(-\ell_1)]^*\big\} \Big)
         \end{aligned}\nonumber\\
-    &-\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{s \in              (L_{\ell}-\ell) \\ s_1 \in (L_{\ell_1}-\ell_1)}} \!\!\!\!\!                 \begin{aligned}[t]  &\mathds{1}_{(L_\ell-\ell)}(q)                           \mathds{1}_{(L_{\ell_1}-\ell_1)}(q)\begin{aligned}[t] K^{m}_{q+\ell,s+\ell}(\ell)           & K_{q+\ell_1,s_1+\ell_1}(\ell_1)
-        \Big(4a^*_{r+\ell_1}b^*_{-s_1-\ell_1}(-\ell_1)b_{-s-\ell}(-\ell)a_{r+\ell} \nonumber\\ 
-    &+ 2a^*_{r+\ell_1}[b_{-s-\ell}(-\ell),b^*_{-s_1-\ell_1}(-\ell_1)]a_{r+\ell}\nonumber\\
-    \end{aligned}\\
-    &+ a^*_{r+\ell_1}[a^*_{r+\ell}, b_{-s_1-\ell_1}(-\ell_1)]^*b_{-s-\ell}(-\ell)+ 2a^*_{r+\ell_1}\big[b_{-s-\ell}(-\ell),[a^*_{r+\ell}, b_{-s_1-\ell_1}(-\ell_1)]^*\big] \nonumber\\
-    &+ 2b^*_{-s_1-\ell_1}(-\ell_1)[b_{-s-\ell}(-\ell),a^*_{r+\ell_1}]a_{r+\ell} +2\big[[b_{-s-\ell}(-\ell),a^*_{r+\ell_1}]^*,b_{-s_1-\ell_1}(-\ell_1)\big]^*a_{r+\ell} \nonumber\\
-    &- [a^*_{r+\ell}, b_{-s_1-\ell_1}(-\ell_1)]^*[b_{-s-\ell}(-\ell),a^*_{r+\ell_1}] + \big\{ [b_{-s-\ell}(-\ell),a^*_{r+\ell_1}],[a^*_{r+\ell}, b_{-s_1-\ell_1}(-\ell_1)]^*\big\} \Big) + \mathrm{h.c.}
-        \end{aligned}\nonumber\\
-    &+ (q\rightarrow-q)\nonumber\\
-    &-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\Theta^{m+1}_K(P^q)_{r,s}\epsilon_{r,s}(\ell,\ell)\nonumber\\
-    &\equalscolon \sum\limits_{i=1}^{20}(\mathrm{A})_i +(\mathrm{B})_i +(\mathrm{C})_i +(\mathrm{D})\nonumber.
+    &+\mathrm{h.c.} + (q\rightarrow-q)\nonumber\\
+    &-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\Theta^{m+1}_K(P^q)_{r,s}\epsilon_{r,s}(\ell,\ell)
+    \equalscolon \sum\limits_{i=1}^{6}\sum\limits_{j=1}^{8} E_{Q_2}^{\,i,j}\nonumber + E_{Q_2}^{\, 7}.
  \end{alignat}
-with all the terms $(\mathrm{I})_i,(\mathrm{II})_i,(\mathrm{III})_i,(\mathrm{A})_i,(\mathrm{B})_i,(\mathrm{C})_i$ have the contributions from both $q$ and $-q$. As evident from the normal ordering, the first term (the leading error contribution), i.e.,  $(\mathrm{I})_1,(\mathrm{II})_1,(\mathrm{III})_1,(\mathrm{A})_1,(\mathrm{B})_1,(\mathrm{C})_1$ coming from $E_{Q_1}$ and $E_{Q_2}$ have six fermionic operators each.
+with all the terms $E_{Q_1}^{i,j}, E_{Q_2}^{i,j}$ and $E{Q_2}^{7}$ having the contributions from both $q$ and $-q$ momenta. These terms either have six, four, two or no fermionic operator. Next we bound these error terms and in order to do so we have the following estimates. As evident from the normal ordering, the first term, i.e.,  $E_{Q_1}^{i,1}, E_{Q_2}^{i,1}$ have six fermionic operators each. These estimates are not exhaust all the error terms but present the technique required to bound them all.
 
 
 \begin{lemma}
@@ -1227,15 +1248,15 @@ For any $\psi \in \HH_N$, we have
 \end{align}
 \end{lemma}
 \begin{proof}
-We start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pairest} on the R.H.S. of (\ref{eq:headboserra})
+We start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pairest} on the L.H.S. of (\ref{eq:headboserra})
 \begin{align}
-    &=\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell \cap L_{\ell_1}}\abs{\eva{\big(K^{m}_{r,q}(\ell)b_{q}(\ell)\big) a_{r-\ell}(\NN+1)^{\alpha}(\NN+1)^{-\alpha} \psi, \bigg( \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1}b^*_{-s_1}(-\ell_1) \bigg) a_{r-\ell_1} \psi }}\nonumber\\
-    &=\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell \cap L_{\ell_1}}\abs{\eva{\big(K^{m}_{r,q}(\ell)b_{q}(\ell)\big) a_{r-\ell}(\NN+1)^{-\alpha} \psi, \bigg( \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1}b^*_{-s_1}(-\ell_1) \bigg) a_{r-\ell_1}(\NN+5)^{\alpha} \psi }}\nonumber\\
-    &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell \cap L_{\ell_1}}\norm{\big(K^{m}_{r,q}(\ell)b_{q}(\ell)\big) a_{r-\ell} (\NN+1)^{-\alpha}\psi}\norm {\bigg( \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1}b^*_{-s_1}(-\ell_1) \bigg) a_{r-\ell_1} (\NN+5)^{\alpha}\psi }\nonumber\\
-    &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell} \norm{\big(K^{m}_{r,q}(\ell)b_{q}(\ell)\big) a_{r-\ell} (\NN+1)^{-\alpha} \psi}\bigg( \sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{r,s_1}}^2 \bigg)^\half \norm {\left(\NN+1\right)^\half a_{r-\ell_1} (\NN+5)^{\alpha} \psi }\nonumber\\
-    &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K(\ell_1)}_{\mathrm{max},2} \sum\limits_{r \in L_\ell} \norm{\big(K^{m}_{r,q}(\ell)b_{q}(\ell)\big) a_{r-\ell} (\NN+1)^{-\alpha} \psi} \norm { a_{r-\ell_1}\NN^\half (\NN+5)^{\alpha} \psi }\nonumber\\
-    &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K(\ell)}_{\mathrm{max}}\norm{K(\ell_1)}_{\mathrm{max},2} \sum\limits_{r \in L_\ell} \norm{\big(b_{q}(\ell)\big) a_{r-\ell} (\NN+1)^{-\alpha} \psi} \norm { a_{r-\ell_1}\NN^\half (\NN+5)^{\alpha} \psi }\nonumber\\
-    &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K(\ell)}_{\mathrm{max}}\norm{K(\ell_1)}_{\mathrm{max},2} \Bigg(\sum\limits_{r \in L_\ell} \norm{ a_{r-\ell}b_{q}(\ell) (\NN+1)^{-\alpha} \psi}^2\Bigg)^\half\Bigg( \sum\limits_{r \in L_\ell} \norm { a_{r-\ell_1}\NN^\half (\NN+5)^{\alpha} \psi }^2\Bigg)^\half\nonumber\\
+    &=\sum\limits_{\ell,\ell_1 \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell \cap L_{\ell_1}}\abs{\eva{\big(K^{m}_{r,q}(\ell)b_{q}(\ell)\big) a_{r-\ell}(\NN+1)^{\alpha}(\NN+1)^{-\alpha} \psi, \bigg( \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1}b^*_{-s_1}(-\ell_1) \bigg) a_{r-\ell_1} \psi }}\nonumber\\
+    &=\sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell \cap L_{\ell_1}}\abs{\eva{\big(K^{m}_{r,q}(\ell)b_{q}(\ell)\big) a_{r-\ell}(\NN+1)^{-\alpha} \psi, \bigg( \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1}b^*_{-s_1}(-\ell_1) \bigg) a_{r-\ell_1}(\NN+5)^{\alpha} \psi }}\nonumber\\
+    &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell \cap L_{\ell_1}}\norm{\big(K^{m}_{r,q}(\ell)b_{q}(\ell)\big) a_{r-\ell} (\NN+1)^{-\alpha}\psi}\norm {\bigg( \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1}b^*_{-s_1}(-\ell_1) \bigg) a_{r-\ell_1} (\NN+5)^{\alpha}\psi }\nonumber\\
+    &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell} \norm{\big(K^{m}_{r,q}(\ell)b_{q}(\ell)\big) a_{r-\ell} (\NN+1)^{-\alpha} \psi}\bigg( \sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{r,s_1}}^2 \bigg)^\half \norm {\left(\NN+1\right)^\half a_{r-\ell_1} (\NN+5)^{\alpha} \psi }\nonumber\\
+    &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\mathds{1}_{L_\ell}(q) \norm{K(\ell_1)}_{\mathrm{max},2} \sum\limits_{r \in L_\ell} \norm{\big(K^{m}_{r,q}(\ell)b_{q}(\ell)\big) a_{r-\ell} (\NN+1)^{-\alpha} \psi} \norm { a_{r-\ell_1}\NN^\half (\NN+5)^{\alpha} \psi }\nonumber\\
+    &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K^{m}(\ell)}_{\mathrm{max}}\norm{K(\ell_1)}_{\mathrm{max},2} \sum\limits_{r \in L_\ell} \norm{\big(b_{q}(\ell)\big) a_{r-\ell} (\NN+1)^{-\alpha} \psi} \norm { a_{r-\ell_1}\NN^\half (\NN+5)^{\alpha} \psi }\nonumber\\
+    &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K^{m}(\ell)}_{\mathrm{max}}\norm{K(\ell_1)}_{\mathrm{max},2} \Bigg(\sum\limits_{r \in L_\ell} \norm{ a_{r-\ell}b_{q}(\ell) (\NN+1)^{-\alpha} \psi}^2\Bigg)^\half\!\!\Bigg( \sum\limits_{r \in L_\ell} \norm { a_{r-\ell_1}\NN^\half (\NN+5)^{\alpha} \psi }^2\Bigg)^\half\nonumber\\
     \end{align}
     For $\alpha = \half$, we have
     \begin{align}
@@ -1244,38 +1265,129 @@ We start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alp
     \end{align}
 \end{proof}
 
-Proceeding in a similar manner we also have the following bound.
+%Proceeding in a similar manner we also have the following bound.
+
+%\begin{lemma}
+%For any $\psi \in \HH_N$, we have
+%\begin{align}
+%     &\abs{\eva{\psi,\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell \cap L_{\ell_1}}(q) a^*_{q-\ell} 
+%     \bigg(\sum\limits_{
+%     s\in L_\ell}K^{m}_{q,s}(\ell)b^*_{s}(\ell)\bigg) \bigg( \sum\limits_{s_1 \in L_{\ell_1}} K_{q,s_1}(\ell_1)b^*_{-s_1}(-\ell_1) \bigg) a_{q-\ell_1} \psi }}\nonumber\\
+%     &\leq  C \sup\limits_{q \in L_\ell} \norm{n_{q}^{\half} \psi} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}}\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max},2} \Bigg)  \norm { (\NN+1)^{\frac{3}{2}} \psi } \label{eq:headboserrc}
+%\end{align}
+%\end{lemma}
 
 \begin{lemma}
 For any $\psi \in \HH_N$, we have
 \begin{align}
-     &\abs{\eva{\psi,\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell \cap L_{\ell_1}}(q) a^*_{q-\ell} 
-     \bigg(\sum\limits_{
-     s\in L_\ell}K^{m}_{q,s}(\ell)b^*_{s}(\ell)\bigg) \bigg( \sum\limits_{s_1 \in L_{\ell_1}} K_{q,s_1}(\ell_1)b^*_{-s_1}(-\ell_1) \bigg) a_{q-\ell_1} \psi }}\nonumber\\
-     &\leq  C \sup\limits_{q \in L_\ell} \norm{n_{q}^{\half} \psi} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}}\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max},2} \Bigg)  \norm { (\NN+1)^{\frac{3}{2}} \psi } \label{eq:headboserrc}
-\end{align}
-\end{lemma}
-
-Next, we consider the (B)/(II) term
-
-\begin{lemma}
-For any $\psi \in \HH_N$, we have
-\begin{align}
-     &\abs{\eva{\psi,\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{\substack{r,s \in L_{\ell}\\r_1,s_1\in L_{\ell_1}}}  a^*_{r-\ell}
-     \Bigg(\sum_{j=1}^{m-1}K^{m-j}(\ell)_{r,q}K^{j}(\ell)_{q,s}b^*_{s}(\ell)\Bigg)  K(\ell_1)_{r_1,s_1}b^*_{-s_1}(-\ell_1) a_{r_1-\ell_1} \psi }}\nonumber\\
+     &\abs{\eva{\psi,\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{\substack{r,s \in L_{\ell}\\r_1,s_1\in L_{\ell_1}}}  \Bigg(\sum_{j=1}^{m-1}K^{m-j}(\ell)_{r,q}K^{j}(\ell)_{q,s}\Bigg) a^*_{r-\ell}
+     b^*_{s}(\ell)  K(\ell_1)_{r_1,s_1}b^*_{-s_1}(-\ell_1) a_{r_1-\ell_1} \psi }}\nonumber\\
      &\leq C \sup\limits_{q \in L_\ell} \norm{n_{q}^{\half} \psi}\Bigg(\sum_{j=1}^{m-1}\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max},2} \Bigg) \norm { (\NN+1)^{\frac{3}{2}} \psi }   \label{eq:headboserrb}
 \end{align}
 \end{lemma}
 \begin{proof}
-    We begin with the R.H.S. of \eqref{eq:headboserrb}, which is 
-    \begin{align}
-        &= \sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{\substack{r,s \in L_{\ell}\\r_1,s_1\in L_{\ell_1}}} \sum_{j=1}^{m-1} \abs{\eva{\psi,  a^*_{r-\ell} \Bigg(K^{m-j}(\ell)_{r,q}K^{j}(\ell)_{q,s}b^*_{s}(\ell)\Bigg)  K(\ell_1)_{r_1,s_1}b^*_{-s_1}(-\ell_1) a_{r_1-\ell_1} \psi }}\nonumber\\
-        &= \sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{\substack{r,s \in L_{\ell}\\r_1,s_1\in L_{\ell_1}}} \sum_{j=1}^{m-1} \abs{\eva{  \Big(K^{m-j}(\ell)_{r,q}K^{j}(\ell)_{q,s}b_{s}(\ell)\Big) a_{r-\ell}(\NN+1)^{\alpha}(\NN+1)^{-\alpha}\psi,  K(\ell_1)_{r_1,s_1}b^*_{-s_1}(-\ell_1) a_{r_1-\ell_1} \psi }}\nonumber\\
-        &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum_{j=1}^{m-1} \sum\limits_{r,s \in L_{\ell}}  \norm{  \Big(K^{m-j}(\ell)_{r,q}K^{j}(\ell)_{q,s}b_{s}(\ell)\Big) a_{r-\ell}(\NN+1)^{\alpha}\psi}\sum\limits_{r_1,s_1\in L_{\ell_1}}\norm{
-        K(\ell_1)_{r_1,s_1}b^*_{-s_1}(-\ell_1) a_{r_1-\ell_1} (\NN+5)^{-\alpha}\psi }\nonumber\\
+    We begin with the L.H.S. of \eqref{eq:headboserrb}, which is 
+    \begin{alignat}{2}
+        &= \sum_{j=1}^{m-1}\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{\substack{r,s \in L_{\ell}\\r_1,s_1\in L_{\ell_1}}}  \abs{\eva{\psi, K^{m-j}_{r,q}(\ell)  a^*_{r-\ell} K^{j}_{q,s}(\ell)b^*_{s}(\ell) K(\ell_1)_{r_1,s_1}b^*_{-s_1}(-\ell_1) a_{r_1-\ell_1} \psi }}\nonumber\\
+        &= \sum_{j=1}^{m-1}\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{\substack{r,s \in L_{\ell}\\r_1,s_1\in L_{\ell_1}}}  \abs{\eva{ K^{j}_{q,s}(\ell)b_{s}(\ell)  K^{m-j}_{r,q}(\ell)a_{r-\ell}(\NN+1)^{\alpha}(\NN+1)^{-\alpha}\psi,  K(\ell_1)_{r_1,s_1}b^*_{-s_1}(-\ell_1) a_{r_1-\ell_1} \psi }}\nonumber\\
+        &\leq \sum_{j=1}^{m-1} \sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) 
+        \begin{aligned}[t]
+        &  \norm{ \left(\sum\limits_{s \in L_{\ell}}K^{j}_{q,s}(\ell)b_{s}(\ell)\right) \left(\sum\limits_{r \in L_{\ell}}K^{m-j}_{r,q}(\ell)a_{r-\ell}\right)(\NN+1)^{\alpha}\psi}\times\nonumber\\&\times
+        \sum\limits_{r_1\in L_{\ell_1}}\norm{ \left(\sum\limits_{s_1\in L_{\ell_1}}K(\ell_1)_{r_1,s_1} b^*_{-s_1}(-\ell_1)\right) a_{r_1-\ell_1} (\NN+5)^{-\alpha} \psi }\nonumber\\    
+        \end{aligned}\nonumber\\
         &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*}  \mathds{1}_{L_\ell}(q) \sum_{j=1}^{m-1} \sum\limits_{r,s \in L_{\ell}}  \norm{  \Big(K^{m-j}(\ell)_{r,q}K^{j}(\ell)_{q,s}b_{s}(\ell)\Big) a_{r-\ell}(\NN+1)^{\alpha}\psi}\sum\limits_{r_1,s_1\in L_{\ell_1}}\norm{
         K(\ell_1)_{r_1,s_1}b^*_{-s_1}(-\ell_1) a_{r_1-\ell_1} (\NN+5)^{-\alpha}\psi }\nonumber\\
+    \end{alignat}
+\end{proof}
+
+\begin{lemma}
+    For any $\psi \in \HH_N$, we have
+    \begin{align}
+        &\abs{\eva{\psi,  \sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r \in L_{\ell}\cap  L_{\ell_1}\\s_1\in L_{\ell_1}}}\!\!\!\mathds{1}_{L_\ell}      (q) K^{m}_{r,q}(\ell)K_{r,s_1}(\ell_1)\delta_{-s_1+\ell_1,r-\ell} b^*_{q}(\ell) a^*_{r-\ell_1}a^*_{-s_1} \psi}} \nonumber\\ &\leq C
     \end{align}
+\end{lemma}
+\begin{proof}
+    We start by
+\end{proof}
+
+\begin{lemma}
+    For any $\psi \in \HH_N$, we have
+    \begin{align}
+        &\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+    \end{align}
+\end{lemma}
+\begin{proof}
+    We start by
+\end{proof}
+
+\begin{lemma}
+    For any $\psi \in \HH_N$, we have
+    \begin{align}
+        &\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+    \end{align}
+\end{lemma}
+\begin{proof}
+    We start by
+\end{proof}
+
+\begin{lemma}
+    For any $\psi \in \HH_N$, we have
+    \begin{align}
+        &\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+    \end{align}
+\end{lemma}
+\begin{proof}
+    We start by
+\end{proof}
+
+\begin{lemma}
+    For any $\psi \in \HH_N$, we have
+    \begin{align}
+        &\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+    \end{align}
+\end{lemma}
+\begin{proof}
+    We start by
+\end{proof}
+
+\begin{lemma}
+    For any $\psi \in \HH_N$, we have
+    \begin{align}
+        &\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+    \end{align}
+\end{lemma}
+\begin{proof}
+    We start by
+\end{proof}
+
+\begin{lemma}
+    For any $\psi \in \HH_N$, we have
+    \begin{align}
+        &\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+    \end{align}
+\end{lemma}
+\begin{proof}
+    We start by
+\end{proof}
+
+\begin{lemma}
+    For any $\psi \in \HH_N$, we have
+    \begin{align}
+        &\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+    \end{align}
+\end{lemma}
+\begin{proof}
+    We start by
+\end{proof}
+
+\begin{lemma}
+    For any $\psi \in \HH_N$, we have
+    \begin{align}
+        &\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+    \end{align}
+\end{lemma}
+\begin{proof}
+    We start by
 \end{proof}
 
 As for the (D) term, we consider the full term all at once.
