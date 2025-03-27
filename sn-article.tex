@@ -1037,7 +1037,7 @@ By substituting the definition of $\mathcal{E}_p(k)$ from \eqref{eq:commerrKb}, 
     &\phantom{=\;} -\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\big\{ A(\ell)_,K(\ell)\big\}_{r,s}\epsilon_{r,s}(\ell,\ell).
 \end{alignat}
 
-We also normal order all the fermionic operators appearing in the error terms above. We have two combination of fermionic operators, i.e., one with only one anti-commutator and the other with two anti-commutators. To begin with the normal ordering, we only consider the first term of $\epsilon_{r,r_1}(\ell, \ell_1)$ which is $ a^*_{r_1-\ell_1}a_{r-\ell}$. Also when using these identities, we have to take the deltas associated with the quasi-bosonic commutation error into consideration.
+When we substitute the definition of $\epsilon_{r,s}(\ell,k)$, we have that the error terms are not normal ordered. We then normal order all the fermionic operators appearing in the error terms above. We have two combinations of fermionic operators, i.e., one with only one anti-commutator and the other with two anti-commutators. To begin with the normal ordering, we only consider the first term of $\epsilon_{r,r_1}(\ell, \ell_1)$ which is $ a^*_{r_1-\ell_1}a_{r-\ell}$. Also when using these identities, we have to take the deltas associated with the quasi-bosonic commutation error into consideration.
 
 For the error term with one anti-commutator, we normal order it as follows
 \begin{align}
@@ -1075,11 +1075,11 @@ Then we have
 \end{align}
 Then one can proceed in a similar manner to normal order the second term, i.e. $\delta_{p-k,q-\ell}a^*_{q}a_{p}$, of $\epsilon_{r,r_1}(\ell, \ell_1)$. In all the commutators above we see two different momenta $p,q \in \Z^3_*$ in the fermionic creation and annihilation operators. We can resolve these commutators depending on whether $p,q$ are in $B_{F}$ or $B_{F}^c$ as 
 \begin{align}
-	[b_{-s_1}(-\ell_1), a^*_{p}]^* = [a_{-s_1+\ell_1}a_{-s_1}, a^*_{p}]^* &=\left(a_{-s_1+\ell_1}\{a_{-s_1}, a^*_{p}\}-\{a_{-s_1+\ell_1}, a^*_{p}\}a_{-s_1} \right)^*\\ 
+	[b_{-s_1}(-\ell_1), a^*_{p}]^* = [a_{-s_1+\ell_1}a_{-s_1}, a^*_{p}]^* &=\left(a_{-s_1+\ell_1}\{a_{-s_1}, a^*_{p}\}-\{a_{-s_1+\ell_1}, a^*_{p}\}a_{-s_1} \right)^*\nonumber\\ 
 	&=\begin{cases}
 		-\delta_{-s_1+\ell_1,p}a^*_{-s_1} \quad\text{for}\quad p \in B_F\\
 		\delta_{-s_1,p}a^*_{-s_1+\ell_1} \quad\text{for}\quad p \in B^c_F\\
-	\end{cases}\,.
+	\end{cases}\label{eq:comm1}\,.
 \end{align}
 Similarly
 \begin{align}
@@ -1087,24 +1087,25 @@ Similarly
 	\begin{cases}
 		-\delta_{-s+\ell,p}a_{-s} \quad\text{for}\quad p \in B_F\\
 		\delta_{-s,p}a_{-s+\ell} \quad\text{for}\quad p \in B^c_F\\
-	\end{cases}\\
+	\end{cases}\label{eq:comm2}\\
 	\left[b_{-s}(-\ell), [b_{-s_1}(-\ell_1),a^*_{p}]^*\right]&=\begin{cases}
 		-\delta_{-s_1+\ell_1,p}\delta_{s,s_1}a_{-s+\ell} \quad\text{for}\quad p \in B_F\\
 		-\delta_{-s_1,p}\delta_{s-\ell,s_1-\ell_1}a_{-s} \quad\text{for}\quad p \in B^c_F\\
-	\end{cases}\\
+	\end{cases}\label{eq:comm3}\\
 	\left[b_{-s_1}(-\ell_1),[b_{-s}(-\ell), a^*_{p}]^* \right]* &=\begin{cases}
 		-\delta_{-s+\ell,p}\delta_{s,s_1}a^*_{-s_1+\ell_1} \quad\text{for}\quad p \in B_F\\
 		-\delta_{-s,p}\delta_{-s+\ell,-s_1+\ell_1}a^*_{-s_1} \quad\text{for}\quad p \in B^c_F\\
-	\end{cases}\\
-	[b_{-s_1}(-\ell_1),a^*_{p}]^*[b_{-s}(-\ell), a^*_{q}] &= \begin{cases}
+	\end{cases}\label{eq:comm4}\\
+	[b_{-s_1}(-\ell_1),a^*_{p}]^*[b_{-s}(-\ell), a^*_{q}] 
+	&=\begin{cases}
 		\delta_{-s_1+\ell_1,p}\delta_{-s+\ell,q}a^*_{-s_1}a_{-s} \quad\text{for}\quad p,q \in B_F\\
 		\delta_{-s_1,p}\delta_{-s,q}a^*_{-s_1+\ell_1}a_{-s+\ell} \quad\text{for}\quad p,q \in B^c_F 
-	\end{cases}\,.
+	\end{cases}\label{eq:comm5}\,.
 \end{align}
 In the last commutation relation both $p,q$ are simultaneously either in $B_F$ or $B_F^c$.
 
 
-And with the definition of the commutation error we see that each of the error terms are further divided into two terms. We can write the terms with $\delta_{p-k,q-\ell}a^*_{q}a_{p}$, by shifting the momenta over which we are summing giving us terms which have similar forms as their counterparts. Using \eqref{eq:no1com} and \eqref{eq:no2comm}, along with and we get the normal ordered error term as
+And with the definition of the commutation error we see that each of the error terms are further divided into two terms. We can write the terms with $\delta_{p-k,q-\ell}a^*_{q}a_{p}$, by shifting the momenta over which we are summing giving us terms which have similar forms as their counterparts. Using \eqref{eq:no1com} and \eqref{eq:no2comm}, along with \eqref{eq:comm1}-\eqref{eq:comm5} and we get the normal ordered error term as
 %%%%%%%%%%%
 \begin{comment}
 \begin{alignat}{2}
@@ -1120,16 +1121,16 @@ And with the definition of the commutation error we see that each of the error t
 \end{comment}
 %%%%%%%%%%%%%%%
 \begin{alignat}{2}
-    E_{Q_1}(A) &= -
+    E_{Q_1}(A) = &-
     \sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}} A(\ell)_{r,s}K(\ell_1)_{r,s_1}
     \begin{aligned}[t]
         &\Big( 2a^*_{r-\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1)a_{r-\ell} \\ & -\delta_{-s_1+\ell_1,r-\ell} b^*_{s}(\ell) a^*_{r-\ell_1}a^*_{-s_1}\Big)
     \end{aligned}\nonumber\\
-    &\quad -\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1} }}\!\!\!\!\!\!\!\!\!
+    & -\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1} }}\!\!\!\!\!\!\!\!\!
     \begin{aligned}[t] A(\ell)_{r+\ell,s}&K(\ell_1)_{r+\ell_1,s_1}
     \Big( 2a^*_{r+\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r+\ell}\nonumber \\ &+ \delta_{-s_1,r+\ell} b^*_{s}(\ell) a^*_{r+\ell_1}a^*_{-s_1+\ell_1}\Big)
     \end{aligned}\\
-	&\quad+ \mathrm{h.c.} \equalscolon \sum\limits_{i=1}^{2}\sum\limits_{j=1}^{2} E_{Q_1}^{\,i,j}\nonumber
+	&+ \mathrm{h.c.} \equalscolon \sum\limits_{i=1}^{2}\sum\limits_{j=1}^{2} E_{Q_1}^{\,i,j}\nonumber
 \end{alignat}
 and
 \begin{comment}
@@ -1150,75 +1151,98 @@ and
     &\phantom{=\;} +\mathrm{h.c.} -2\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\big\{ A(\ell)_,K(\ell)\big\}_{r,s}\epsilon_{r,s}(\ell,\ell).
 \end{alignat}
 \end{comment}
-
+\textcolor{red}{Which to choose?
 \begin{alignat}{2}
 	2E_{Q_2}(A) &=
 	\!\!\!\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}} \!\!\!\begin{aligned}[t] &A(\ell)_{r,s}K(\ell_1)_{r,s_1}\Big( 4a^*_{r-\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{r-\ell} \nonumber\\ 
-		&\;+ 2a^*_{r-\ell_1}[b_{-s}(-\ell),b^*_{-s_1}(-\ell_1)]a_{r-\ell}-2\delta_{-s_1+\ell_1,r-\ell} a^*_{r-\ell_1}a^*_{-s_1}b_{-s}(-\ell)\nonumber\\
-		&\;- \delta_{-s_1+\ell_1,r-\ell}\delta_{s,s_1}a^*_{r-\ell_1}a_{-s+\ell} - 2\delta_{-s+\ell,r-\ell_1}b^*_{-s_1}(-\ell_1)a_{-s}a_{r-\ell} \nonumber\\
+		&\;+ 2\delta_{s,s_1} \delta_{\ell,\ell_1 } a^*_{r-\ell_1} a_{r-\ell} -2\delta_{s-\ell,s_1-\ell_1}a^*_{r-\ell_1} a^*_{s_1} a_{s} a_{r-\ell} \nonumber\\
+		&\;-2\delta_{s,s_1}a^*_{r-\ell_1} a^*_{s_1-\ell_1}a_{s-\ell} a_{r-\ell} - 2\delta_{-s_1+\ell_1,r-\ell} a^*_{r-\ell_1} a^*_{-s_1} b_{-s}(-\ell)\nonumber\\
+		&\;-\delta_{-s_1+\ell_1,r-\ell}\delta_{s,s_1}a^*_{r-\ell_1}a_{-s+\ell} - 2\delta_{-s+\ell,r-\ell_1}b^*_{-s_1}(-\ell_1)a_{-s}a_{r-\ell} \nonumber\\
 		&\;-2\delta_{-s+\ell,r-\ell_1}\delta_{s,s_1}a^*_{-s_1+\ell_1} a_{r-\ell} - \delta_{-s_1+\ell_1,r-\ell}\delta_{-s+\ell,r-\ell_1}a^*_{-s_1}a_{-s} \nonumber\\
-		&\;+ \big\{ [b_{-s}(-\ell),a^*_{r-\ell_1}],[a^*_{r-\ell}, b_{-s_1}(-\ell_1)]^*\big\}  \Big)    
+		&\;+\delta_{-s+\ell,r-\ell_1}\delta_{-s_1+\ell_1,r-\ell}\delta_{s,s_1} \Big)    
 	\end{aligned}\\
 	&\quad +\!\!\!\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in (L_{\ell}-\ell)\\ \cap \\(L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1}}}\!\!\!\!\!\begin{aligned}[t] &A(\ell)_{r+\ell,s}K(\ell_1)_{r+\ell_1,s_1}\Big(4a^*_{r+\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{r+\ell} \nonumber\\
-		&\;+ 2a^*_{r+\ell_1}[b_{-s}(-\ell),b^*_{-s_1}(-\ell_1)]a_{r+\ell}+ 2 \delta_{-s_1, r+\ell}a^*_{r+\ell_1}a^*_{-s_1+\ell_1}b_{-s}(-\ell)\nonumber\\
+		&\;+ 2\delta_{s,s_1} \delta_{\ell,\ell_1 } a^*_{r+\ell_1} a_{r+\ell} -2\delta_{s-\ell,s_1-\ell_1}a^*_{r+\ell_1} a^*_{s_1} a_{s} a_{r+\ell} \nonumber\\
+		&\;-2\delta_{s,s_1}a^*_{r+\ell_1} a^*_{s_1-\ell_1}a_{s-\ell} a_{r+\ell} + 2 \delta_{-s_1, r+\ell}a^*_{r+\ell_1}a^*_{-s_1+\ell_1}b_{-s}(-\ell)\nonumber\\
 		&\;-\delta_{-s_1,r+\ell}\delta_{s-\ell,s_1-\ell_1}a^*_{r+\ell_1}a_{-s} + 2\delta_{-s,r+\ell_1}b^*_{-s_1}(-\ell_1)a_{-s+\ell}a_{r+\ell} \nonumber\\
 		&\;-2\delta_{-s,r+\ell_1}\delta_{-s+\ell,-s_1+\ell_1}a^*_{-s_1}a_{r+\ell} - \delta_{-s_1,r+\ell}\delta_{-s,r+\ell_1}a^*_{-s_1+\ell_1}a_{-s+\ell}\nonumber\\
-		&\;+ \big\{ [b_{-s}(-\ell),a^*_{r+\ell_1}],[a^*_{r+\ell}, b_{-s_1}(-\ell_1)]^*\big\} \Big)   
+		&\;+\delta_{-s,r+\ell_1} \delta_{-s_1,r+\ell} \delta_{-s+\ell,-s_1+\ell_1} \Big)  
 	\end{aligned}\\
-	&\phantom{=\;}+\mathrm{h.c.} -2\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\big\{ A(\ell)_,K(\ell)\big\}_{r,s}\epsilon_{r,s}(\ell,\ell)\equalscolon \sum\limits_{i=1}^{2}\sum\limits_{j=1}^{8} E_{Q_2}^{\,i,j}\nonumber + E_{Q_2}^{\, 3}.
+	&\quad+2\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}} A(\ell)_{r,s}K(\ell)_{r,s}a^*_{r-\ell}a_{r-\ell} +2\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}} A(\ell)_{r,s}K(\ell)_{r,s} a^*_{r} a_{r} +\mathrm{h.c.}\nonumber\\
+	&\equalscolon \sum\limits_{i=1}^{2}\sum\limits_{j=1}^{10} E_{Q_2}^{\,i,j}\nonumber + E_{Q_2}^{3,i}.
 \end{alignat}
+\begin{alignat}{2}
+	2E_{Q_2}(A) &=
+	\!\!\!\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}} \!\!\!\begin{aligned}[t] &A(\ell)_{r,s}K(\ell_1)_{r,s_1}\Big( 4a^*_{r-\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{r-\ell} \nonumber\\ 
+		&\;+ 4\delta_{s,s_1} \delta_{\ell,\ell_1 } a^*_{r-\ell_1} a_{r-\ell} -2\delta_{s-\ell,s_1-\ell_1}a^*_{r-\ell_1} a^*_{s_1} a_{s} a_{r-\ell} \nonumber\\
+		&\;-2\delta_{s,s_1}a^*_{r-\ell_1} a^*_{s_1-\ell_1}a_{s-\ell} a_{r-\ell} - 2\delta_{-s_1+\ell_1,r-\ell} a^*_{r-\ell_1} a^*_{-s_1} b_{-s}(-\ell)\nonumber\\
+		&\;-\delta_{-s_1+\ell_1,r-\ell}\delta_{s,s_1}a^*_{r-\ell_1}a_{-s+\ell} - 2\delta_{-s+\ell,r-\ell_1}b^*_{-s_1}(-\ell_1)a_{-s}a_{r-\ell} \nonumber\\
+		&\;-2\delta_{-s+\ell,r-\ell_1}\delta_{s,s_1}a^*_{-s_1+\ell_1} a_{r-\ell} - \delta_{-s_1+\ell_1,r-\ell}\delta_{-s+\ell,r-\ell_1}a^*_{-s_1}a_{-s} \nonumber\\
+		&\;+\delta_{-s+\ell,r-\ell_1}\delta_{-s_1+\ell_1,r-\ell}\delta_{s,s_1}  \Big)    
+	\end{aligned}\\
+	&\quad +\!\!\!\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in (L_{\ell}-\ell)\\ \cap \\(L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1}}}\!\!\!\!\!\begin{aligned}[t] &A(\ell)_{r+\ell,s}K(\ell_1)_{r+\ell_1,s_1}\Big(4a^*_{r+\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{r+\ell} \nonumber\\
+		&\;+ 4\delta_{s,s_1} \delta_{\ell,\ell_1 } a^*_{r+\ell_1} a_{r+\ell} -2\delta_{s-\ell,s_1-\ell_1}a^*_{r+\ell_1} a^*_{s_1} a_{s} a_{r+\ell} \nonumber\\
+		&\;-2\delta_{s,s_1}a^*_{r+\ell_1} a^*_{s_1-\ell_1}a_{s-\ell} a_{r+\ell} + 2 \delta_{-s_1, r+\ell}a^*_{r+\ell_1}a^*_{-s_1+\ell_1}b_{-s}(-\ell)\nonumber\\
+		&\;-\delta_{-s_1,r+\ell}\delta_{s-\ell,s_1-\ell_1}a^*_{r+\ell_1}a_{-s} + 2\delta_{-s,r+\ell_1}b^*_{-s_1}(-\ell_1)a_{-s+\ell}a_{r+\ell} \nonumber\\
+		&\;-2\delta_{-s,r+\ell_1}\delta_{-s+\ell,-s_1+\ell_1}a^*_{-s_1}a_{r+\ell} - \delta_{-s_1,r+\ell}\delta_{-s,r+\ell_1}a^*_{-s_1+\ell_1}a_{-s+\ell}\nonumber\\
+		&\;+ \delta_{-s,r+\ell_1} \delta_{-s_1,r+\ell} \delta_{-s+\ell,-s_1+\ell_1} \Big)  
+	\end{aligned}\\
+	&\quad +\mathrm{h.c.} \equalscolon \sum\limits_{i=1}^{2}\sum\limits_{j=1}^{10} E_{Q_2}^{\,i,j}\nonumber\quad.
+\end{alignat}}
 
-Next, we identify certain terms in $E_{Q_1}^{i,j}, E_{Q_2}^{i,j}$ with each other to further reduce the number of terms to be dealt while doing the error estimates.
+
+
+Here, the first superscript refers to the momentum $r,s,s_1$ being summed over different sets and the second superscript refers to the different terms within, i.e., 2 terms for every $i\mathrm{th}$ sum in $E_{Q_1}$ and 10 terms for every $i\mathrm{th}$ sum in $E_{Q_2}$. Each term in this decomposition contains both the error and its complex conjugate. These terms either have six, four, two or no fermionic operator.
+
+Now for any iteration step $m$, we insert the operator $A= \Theta^m_K(P^q)(\ell)$. We can decompose the nested m-fold nested anti commutator, $\Theta^m_K(P^q)(\ell)$,  as
+\begin{align}
+	\Theta^m_K(P^q)(\ell)_{r,s} &= \left(K^m\cdot P^q\right)(\ell )_{r,s} +\left(\sum\limits_{j=1}^{m-1} {{m}\choose j}K^{m-j}\cdot P^q\cdot K^{j}\right)(\ell)_{r,s} + \left(P^q\cdot K^m\right)(\ell)_{r,s}\\ 
+	&\equalscolon \left(A^m(\ell)^q_\mathrm{R}\right)_{r,s} +\left(A^m(\ell)^q_\mathrm{Bulk}\right)_{r,s}+\left(A^m(\ell)^q_\mathrm{L}\right)_{r,s}
+\end{align}
+When we explicitly put $P^q$, we get the following decomposition of the error terms corresponding to momentum fixing at the very right, at all the intermediate positions and the very left, respectively. Preliminarily, we identify certain terms in $E_{Q_1}^{i,j}, E_{Q_2}^{i,j}$ with each other to further reduce the number of terms to be dealt with and then we use the above decomposition of $\Theta^m_K(P^q)(\ell)$ while writing the error estimates.
 
 \begin{lemma}
-	\begin{enumerate}
-		\item $E_{Q_1}^{1,2} = E_{Q_1}^{2,2}$ 
-		\item $E_{Q_2}^{1,3} = E_{Q_2}^{2,3}$ 
-		\item $E_{Q_2}^{1,4} = E_{Q_2}^{2,7}$
-		\item $E_{Q_2}^{1,7} = E_{Q_2}^{2,4}$  
-	\end{enumerate}
+{\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}[t]{lll}
+		 $\mathit{1.}\; E_{Q_1}^{1,2} = E_{Q_1}^{2,2}$\quad\quad& 
+		 $\mathit{2.}\; E_{Q_2}^{1,4} = E_{Q_2}^{2,3}$\quad\quad&
+		 $\mathit{3.}\; E_{Q_2}^{1,5} = E_{Q_2}^{2,5}$ \quad\quad\\
+		 $\mathit{4.}\; E_{Q_2}^{1,10} = E_{Q_2}^{2,10}$\quad\quad&
+		 $\mathit{5.}\; E_{Q_2}^{1,7} = E_{Q_2}^{2,7}\quad\quad$&
+		 $\mathit{6.}\; 2E_{Q_2}^{1,6} = E_{Q_2}^{1,8}= 2E_{Q_2}^{2,9}$\quad\quad\\
+		 $\mathit{7.}\; 2E_{Q_2}^{1,9} = 2E_{Q_2}^{2,6}= E_{Q_2}^{2,8}$\quad\quad&
+		 $\mathit{8.}\; \textcolor{red}{E_{Q_2}^{1,2} = E_{Q_2}^{3,1}}$\quad\quad&
+		 $\mathit{9.}\; \textcolor{red}{E_{Q_2}^{2,2} = E_{Q_2}^{3,2}}$\quad\quad 
+\end{tabular}}
 \end{lemma}	 
-\begin{comment}
-
-\begin{remark}
-	We also have the following identification: $E_{Q_2}^{1,4} = E_{Q_2}^{2,7} = E_{Q_2}^{6,6}$,  as all three terms contain contributions from $q$ and $-q$. 
-\end{remark}
-\end{comment}
 \begin{proof}
 	We begin with writing the terms explicitly and do the necessary identification in order to see that they are exactly the same.
 	We start by proving $E_{Q_1}^{1,2}=E_{Q_1}^{2,2}$.
 	\begin{align}
-		E_{Q_1}^{1,2} &={\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r \in L_{\ell}\cap  L_{\ell_1}\\s_1\in L_{\ell_1}}} \!\!\! \mathds{1}_{L_\ell}(q) K^{m}_{r,q}(\ell) K_{r,s_1}(\ell_1)\Big( 
-			\delta_{-s_1+\ell_1,r-\ell} b^*_{q}(\ell) a^*_{r-\ell_1} a^*_{-s_1} \Big)\nonumber}\\
-		&=\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r \in L_{\ell}\cap  L_{\ell_1}\\ \cap \\(-L_{\ell_1}+\ell_1+\ell)}} \!\!\! \mathds{1}_{L_\ell}(q) K^{m}_{r,q}(\ell) K_{r,-r+\ell_1+\ell}(\ell_1)\Big( b^*_{q}(\ell) a^*_{r-\ell_1} a^*_{r-\ell_1-\ell} \Big)\label{eq:EQ112}\\
-		E_{Q_1}^{2,2} &= -\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r \in  (L_{\ell}-\ell)  \cap \phantom{r\in}  (L_{\ell_1}-\ell_1) \\ s_1 \in L_{\ell_1}}} \!\!\!\! \mathds{1}_{L_\ell}(q) K^{m}_{r+\ell,q}(\ell)
+		E_{Q_1}^{1,2} &={\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r \in L_{\ell}\cap  L_{\ell_1}\\s \in L_{\ell}, s_1\in L_{\ell_1}}} \!\!\!\Theta^m_K(P^q)(\ell)_{r,s} K_{r,s_1}(\ell_1)\Big( \delta_{-s_1+\ell_1,r-\ell} b^*_{s}(\ell) a^*_{r-\ell_1} a^*_{-s_1} \Big)\nonumber}\\
+		&=\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r \in L_{\ell}\cap  L_{\ell_1} \cap (-L_{\ell_1}+\ell_1+\ell)\\s \in L_{\ell}}} \!\!\!\Theta^m_K(P^q)(\ell)_{r,s} K_{r,-r+\ell_1+\ell}(\ell_1) \Big( b^*_{s}(\ell) a^*_{r-\ell_1} a^*_{r-\ell_1-\ell} \Big)\label{eq:EQ112}\\
+		E_{Q_1}^{2,2} &= -\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r \in  (L_{\ell}-\ell)  \cap   (L_{\ell_1}-\ell_1) \\ s \in L_{\ell}, s_1 \in L_{\ell_1}}} \!\!\!\! \Theta^m_K(P^q)(\ell)_{r+\ell,s}
 		K_{r+\ell_1,s_1}(\ell_1)\Big(\delta_{-s_1,r+\ell} b^*_{q}(\ell) a^*_{r+\ell_1}a^*_{-s_1+\ell_1}\Big) \nonumber\\
-		&=-\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r \in  (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1) \\ \, \cap   (-L_{\ell_1}-\ell)}} \!\!\!\! \mathds{1}_{L_\ell}(q) K^{m}_{r+\ell,q}(\ell)
-		K_{r+\ell_1,-r-\ell}(\ell_1)\Big( b^*_{q}(\ell) a^*_{r+\ell_1}a^*_{r+\ell+\ell_1}\Big)  
+		&=-\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r \in  (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1) \cap   (-L_{\ell_1}-\ell) \\ s \in L_{\ell}}}\Theta^m_K(P^q)(\ell)_{r+\ell,s} 
+		K_{r+\ell_1,-r-\ell}(\ell_1) \Big( b^*_{s}(\ell) a^*_{r+\ell_1} a^*_{r+\ell+\ell_1} \Big)  
 	\end{align}
 	Next, we substitute $r = r'-\ell $, which also changes the summed over set, which gives us
 	\begin{equation}
-		=-\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r' \in  L_{\ell} \cap (-L_{\ell_1}) \\ \, \cap\\ \phantom{r'\in}  (L_{\ell_1}-\ell_1+\ell)}} \!\!\!\! \mathds{1}_{L_\ell}(q) K^{m}_{r',q}(\ell)
-		K_{r'+\ell_1-\ell,-r'}(\ell_1)\Big( b^*_{q}(\ell) a^*_{r'+\ell_1-\ell}a^*_{r'+\ell_1}\Big) 
+		=-\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r' \in  L_{\ell} \cap (-L_{\ell_1}) \cap  (L_{\ell_1}-\ell_1+\ell)\\ s \in L_{\ell}}} \!\!\!\! \Theta^m_K(P^q)(\ell)_{r',s}
+		K_{r'+\ell_1-\ell,-r'}(\ell_1)\Big( b^*_{s}(\ell) a^*_{r'+\ell_1-\ell}a^*_{r'+\ell_1}\Big) 
 	\end{equation}
-	Then we flip the $\ell_1$ momenta, i.e., $\ell_1 = -\ell_1$ and use the symmetry $K(\ell)_{p,q} = K(-\ell)_{-p,-q}$ which gives us
+	Then we flip the $\ell_1$ momenta, i.e., $\ell_1 = -\ell_1$ and use the symmetry $K(\ell)_{p,q} = K(-\ell)_{-p,-q}$ to have
 	\begin{align}
-		&=-\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r' \in  L_{\ell} \cap (L_{\ell_1}) \\ \, \cap\\ \phantom{r'\in}  (-L_{\ell_1}+\ell_1+\ell)}} \!\!\!\! \mathds{1}_{L_\ell}(q) K^{m}_{r',q}(\ell) K_{r'-\ell_1-\ell,-r'}(-\ell_1)\Big( b^*_{q}(\ell) a^*_{r'-\ell_1-\ell}a^*_{r'-\ell_1}\Big)\nonumber\\
-		&=-\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r' \in  L_{\ell} \cap (L_{\ell_1}) \\ \, \cap\\ \phantom{r'\in}  (-L_{\ell_1}+\ell_1+\ell)}} \!\!\!\! \mathds{1}_{L_\ell}(q) K^{m}_{r',q}(\ell) K_{-r'+\ell_1+\ell,r'}(\ell_1)\Big( b^*_{q}(\ell) a^*_{r'-\ell_1-\ell}a^*_{r'-\ell_1}\Big)\nonumber\\
-		&=\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r' \in  L_{\ell} \cap (L_{\ell_1}) \\ \, \cap\\ \phantom{r'\in}  (-L_{\ell_1}+\ell_1+\ell)}} \!\!\!\! \mathds{1}_{L_\ell}(q) K^{m}_{r',q}(\ell) K_{r',-r'+\ell_1+\ell}(\ell_1)\Big( b^*_{q}(\ell) a^*_{r'-\ell_1} a^*_{r'-\ell_1-\ell}\Big)\label{eq:EQ122} 
+		&=-\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r' \in  L_{\ell} \cap (L_{\ell_1}) \cap  (-L_{\ell_1}+\ell_1+\ell)\\ s \in L_{\ell}}}  \Theta^m_K(P^q)(\ell)_{r',s} K_{r'-\ell_1-\ell,-r'}(-\ell_1)\Big( b^*_{s}(\ell) a^*_{r'-\ell_1-\ell}a^*_{r'-\ell_1}\Big)\nonumber\\
+		&=-\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r' \in  L_{\ell} \cap (L_{\ell_1}) \cap (-L_{\ell_1}+\ell_1+\ell)\\ s \in L_{\ell}}} \Theta^m_K(P^q)(\ell)_{r',s} K_{-r'+\ell_1+\ell,r'}(\ell_1)\Big( b^*_{s}(\ell) a^*_{r'-\ell_1-\ell}a^*_{r'-\ell_1}\Big)\nonumber\\
+		&=\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r' \in  L_{\ell} \cap (L_{\ell_1}) \cap (-L_{\ell_1}+\ell_1+\ell)\\ s \in L_{\ell}}} \Theta^m_K(P^q)(\ell)_{r',s} K_{r',-r'+\ell_1+\ell}(\ell_1)\Big( b^*_{s}(\ell) a^*_{r'-\ell_1} a^*_{r'-\ell_1-\ell}\Big)\label{eq:EQ122} 
 	\end{align}
-	where in the last line we used the CAR to exchange the two creation operators and $K(\ell)_{p,q}=K(\ell)_{q,p}$. And we see that \eqref{eq:EQ112}=\eqref{eq:EQ122}.
+	where in the last equality we used the CAR to exchange the two creation operators and $K(\ell)_{p,q}=K(\ell)_{q,p}$. And we see that \eqref{eq:EQ112}=\eqref{eq:EQ122}.
 	
-	One can similarly prove the statement for $i = 3$ using the same identifications as above. For $i = 5$, one only flips $\ell_1$ and uses the symmetry  $K(\ell)_{p,q} = K(-\ell)_{-p,-q}$. For the second claim, we proceed exactly as above and we have the required identity.
-	
-	For $i=1,5$ in the third and fourth identities, we proceed by identifying $\ell_1=-\ell_1$ and use the symmetry properties: $K(\ell)_{p,q} = K(-\ell)_{-p,-q}= K(\ell)_{q,p}$.  For $i=3$, we start with identifying $r=r'-\ell$ and then proceed with the same identification as for $i=1,5$. With these, we have all the identities above.
+	One can similarly prove $E_{Q_2}^{1,5}\!=\! E_{Q_2}^{2,5},\; 2E_{Q_2}^{1,6}\! =\! E_{Q_2}^{1,8}\!=\! 2E_{Q_2}^{2,9},\; E_{Q_2}^{1,10}\!=\!E_{Q_2}^{2,10}\;\mathrm{and}\; 2E_{Q_2}^{1,9}\! =\! 2E_{Q_2}^{2,6}\!=\! E_{Q_2}^{2,8}$ using the same identifications as above. 
+	For $ E_{Q_2}^{1,7}\! =\! E_{Q_2}^{2,7}$, we substitute $r=r'-\ell_1$  and then follow the same steps as above. 
+	For $E_{Q_2}^{1,4}\! =\! E_{Q_2}^{2,3} $, we just use the CAR relation twice and rename the indices to get the desired result.
 \end{proof}
-
-Now for any iteration step $m$, we insert the operator $A= \Theta^m_K(P^q)(\ell)$ simultaneously using the definition of $P^q$. We decompose the nested m-fold nested anti commutator, $\Theta^m_K(P^q)(\ell)$,  as
-\begin{align}
-    \Theta^m_K(P^q)(\ell)_{r,s} &= \left(K^m\cdot P^q\right)(\ell )_{r,s} +\left(\sum\limits_{j=1}^{m-1} {{m}\choose j}K^{m-j}\cdot P^q\cdot K^{j}\right)(\ell)_{r,s} + \left(P^q\cdot K^m\right)(\ell)_{r,s}\\ 
-    &\equalscolon \left(A^m(\ell)^q_\mathrm{R}\right)_{r,s} +\left(A^m(\ell)^q_\mathrm{Bulk}\right)_{r,s}+\left(A^m(\ell)^q_\mathrm{L}\right)_{r,s}
-\end{align}
 \begin{comment}
 When we explicitly put $P^q$, we get the following decomposition of the error terms corresponding to momentum fixing at the very right, at all the intermediate positions and the very left, respectively.
 \begin{alignat}{2}
@@ -1364,7 +1388,7 @@ and
 \end{alignat}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Q2 ends here
-with all the terms $E_{Q_1}^{i,j}, E_{Q_2}^{i,j}$ and $E_{Q_2}^{7}$ having the contributions from both $q$ and $-q$ momenta. The first index $i$ refers to the momentum $r,s,s_1$ being summed over different sets and the second index $j$ refers to the different terms within, i.e., 2 terms for every $i\mathrm{th}$ sum in $E_{Q_1}$ and 8 terms for every $i\mathrm{th}$ sum in $E_{Q_2}$. These terms either have six, four, two or no fermionic operator.
+
 \end{comment}
 
 
@@ -1417,7 +1441,7 @@ We start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alp
 	For $\alpha = \half$, we have
 	\begin{align}
 		&\leq C\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K(\ell)}_{\mathrm{max}}\norm{K(\ell_1)}_{\mathrm{max},2}  \norm{b_{q}(\ell) \psi} \norm { (\NN+1)^{\frac{3}{2}} \psi }\nonumber\\
-		&\leq C \sup\limits_{q \in L_\ell} \norm{n_{q}^{\half} \psi} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}}\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max},2} \Bigg)  \norm { (\NN+1)^{\frac{3}{2}} \psi }. \label{eq:preleadbosest}
+		&\leq C \sup\limits_{q \in L_\ell} \norm{n_{q}^{\half} \psi} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}}\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max},2} \Bigg)  \norm { (\NN+1)^{\frac{3}{2}} \psi }. 
 	\end{align}
 \end{proof}
 %Proceeding in a similar manner we also have the following bound.
