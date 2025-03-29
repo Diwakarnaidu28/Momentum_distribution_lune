@@ -314,11 +314,11 @@ For the second commutation relation, we observe that
 Hence the commutation relation holds.
 \end{proof}
 \begin{lemma}[Commutation relation between $b^\sharp_p$ and $n_q$]
-  For $k \in \Z^3_*$ and $p,q \in L_{k}$,
-    \begin{align}
-        \com{n_q,b^*_p(k)} &= \left(\delta_{q,p}+\delta_{q,p-k}\right)b^*_p(k)\\
-        \com{n_q,b_p(k)} &= -\left(\delta_{q,p}+\delta_{q,p-k}\right)b_p(k).
-    \end{align}
+For $k \in \Z^3_*$ and $p,q \in L_{k}$,
+\begin{align}
+	\com{n_q,b^*_p(k)} &= \left(\delta_{q,p}+\delta_{q,p-k}\right)b^*_p(k)\\
+    \com{n_q,b_p(k)} &= -\left(\delta_{q,p}+\delta_{q,p-k}\right)b_p(k).
+\end{align}
 \end{lemma} 
 \begin{proof} We begin with the first commutation relation
     \begin{align}
@@ -332,6 +332,21 @@ Hence the commutation relation holds.
     And we attain the said relation for the second commutator.
 \end{proof}
 
+\begin{lemma}
+	For $p \in \Z^3_*$, 
+	\begin{align}
+		(\NN+1)a_p &= a_p\NN\\
+		\NN a^*_p &= a^*_p (\NN+1)
+	\end{align}
+	And for $k\in \Z^3_*$ and $p \in L_{k}$,
+	\begin{align}
+		(\NN+1)b_p(k) &= b_p(k)\NN\\
+		\NN b^*_p(k) &= b^*_p(k) (\NN+1)
+	\end{align}
+\end{lemma}
+\begin{proof}
+	We prove it using the CAR relations and the quasi-bosonic commutation relation.
+\end{proof}
 Consider a family of symmetric operators $K(\ell):\ell^2(L_\ell)\rightarrow \ell^2(L_\ell), \ell \in \Z^3_* $. Then we define the associated Bogoliubov kernel $\mathcal{K}:\HH_N\rightarrow\HH_N $ by
 \begin{equation}
 \mathcal{K} = \frac{1}{2}\sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell}K(\ell)_{r,s}\left(b_r(\ell)b_{-s}(-\ell)-b^*_{-s}(-\ell)b^*_{r}(\ell)\right)
