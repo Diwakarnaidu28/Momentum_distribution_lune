@@ -1225,8 +1225,8 @@ Preliminary to bounding these errors, we identify certain terms in $E_{Q_1}^{i,j
 
 Finally, we have the error terms as 
 \begin{align}
-	E_{Q_1}\left(\Theta^m_{K}(P^q)\right)&= E_{Q_1}^{\,1,1} +E_{Q_1}^{\,1,2} +2E_{Q_1}^{\,1,2}  + \mathrm{h.c.}\\
-	E_{Q_2}\left(\Theta^m_{K}(P^q)\right)&= E_{Q_2}^{\,1,1} +E_{Q_2}^{\,2,1} + E_{Q_2}^{\,1,2} + E_{Q_2}^{\,2,2} +  E_{Q_2}^{\,1,3} + 2E_{Q_2}^{\,1,4} + E_{Q_2}^{\,2,4}\nonumber\\ &\quad+ 2E_{Q_2}^{\,1,5}+  2E_{Q_2}^{\,1,7} + 2E_{Q_2}^{\,1,8}+ 2E_{Q_2}^{\,2,8}+ 2E_{Q_2}^{\,1,10} + \mathrm{h.c.}
+	E_{Q_1}\left(\Theta^m_{K}(P^q)\right)&= E_{Q_1}^{\,1,1} +E_{Q_1}^{\,2,1} +2E_{Q_1}^{\,1,2}  + \mathrm{h.c.}\\
+	2E_{Q_2}\left(\Theta^m_{K}(P^q)\right)&= E_{Q_2}^{\,1,1} +E_{Q_2}^{\,2,1} + E_{Q_2}^{\,1,2} + E_{Q_2}^{\,2,2} +  E_{Q_2}^{\,1,3} + 2E_{Q_2}^{\,1,4} + E_{Q_2}^{\,2,4}\nonumber\\ &\quad+ 2E_{Q_2}^{\,1,5}+  2E_{Q_2}^{\,1,7} + 2E_{Q_2}^{\,1,8}+ 2E_{Q_2}^{\,2,8}+ 2E_{Q_2}^{\,1,10} + \mathrm{h.c.}
 \end{align}
 \begin{remark}\label{q-q}
 We can decompose the nested m-fold nested anti commutator, $\Theta^m_K(P^q)(\ell)$,  as
@@ -1235,7 +1235,7 @@ We can decompose the nested m-fold nested anti commutator, $\Theta^m_K(P^q)(\ell
 \end{equation}
 When we explicitly put $P^q$, we get the decomposition of the error terms corresponding to momentum fixing at the very right, at all the intermediate positions and the very left, respectively. Each of these momentum fixed terms require slightly different estimates. Also $P^q$ fixes momenta to both $q$ and $-q$ but $q \in \Z^3_*$ is reflection symmetric. Hence we only perform the estimates for momentum fixing to $q$ and multiply it by two to get the contribution for momentum fixing to $-q$. Effectively, we have
 \begin{equation}
-	\Theta^m_K(P^q)(\ell)_{r,s}=\mathds{1}_{L_{\ell}}(q)\left(K^m(\ell )_{r,q}\delta_{q,s} +\sum\limits_{j=1}^{m-1} {{m}\choose j}K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} + K^m(\ell)_{q,s}\delta_{q,r}\right).
+	\Theta^m_K(P^q)(\ell)_{r,s}=\mathds{1}_{L_{\ell}}(q)\left(K^m(\ell )_{r,q}\delta_{q,s} +\sum\limits_{j=1}^{m-1} {{m}\choose j}K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} + K^m(\ell)_{q,s} \delta_{q,r}\right).
 \end{equation}
 \end{remark}
 Next we bound these decomposed error terms and in order to do so we have the following estimates.
@@ -1248,14 +1248,12 @@ For any $\psi \in \HH_N$ and $q \in \Z^3_*$, we have
      &\leq  C\, \Xi^{\half} \Bigg(\sum\limits_{\ell \in \Z^3_*} 2\norm{K^m(\ell)}_{\mathrm{max}} + \sum\limits_{j=0}^m \sum\limits_{\ell \in \Z^3_*}\norm{K^{m-j}(\ell)}_{\mathrm{max}}\norm{K^{j}(\ell)}_{\mathrm{max}}\Bigg)\times\\&\quad\times \Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg)  \norm { (\NN+1)^{\frac{3}{2}} \psi } \label{eq:estEQ111}
 \end{align}
 \end{lemma}
-\begin{proof}We start with the L.H.S. of (\ref{eq:estEQ111}).
+\begin{proof}We start with the L.H.S. of \eqref{eq:estEQ111}.
 \begin{align}
 	&\abs{\eva{\psi,\left(E^{\,1,1}_{Q_1}+\mathrm{h.c.}\right) \psi }} = \abs{\eva{\psi,2\mathrm{Re}\left(E^{\,1,1}_{Q_1}\right) \psi }} = 2\abs{\eva{\psi, E^{\,1,1}_{Q_1} \psi }}\nonumber\\
 	=\,\:4&\abs{\eva{\psi, \sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\  s \in L_{\ell}, s_1\in L_{\ell_1}}} \Theta^m_{K}(P^q)(\ell)_{r,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r-\ell} \psi }} \nonumber\\
-	\leq\,\;4& \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\s_1\in L_{\ell_1}}} \abs{\eva{\psi,K^m(\ell )_{r,q}K(\ell_1)_{r,s_1}
-	a^*_{r-\ell_1}b^*_{q}(\ell) b^*_{-s_1}(-\ell_1)a_{r-\ell} \psi }}\label{eq:EQ1111}\\
-	+\,4& \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}  \abs{\eva{\psi,  K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1}
-	a^*_{r-\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1)a_{r-\ell} \psi }}\label{eq:EQ1112}\\
+	\leq\,\;4& \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\s_1\in L_{\ell_1}}} \abs{\eva{\psi, K^m(\ell )_{r,q} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{q}(\ell) b^*_{-s_1}(-\ell_1) a_{r-\ell} \psi }}\label{eq:EQ1111}\\
+	+\,4& \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}  \abs{\eva{\psi,  K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r-\ell} \psi }}\label{eq:EQ1112}\\
 	+\,4&\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \abs{\eva{\psi, K^m(\ell)_{q,s}K(\ell_1)_{q,s_1}
 	a^*_{q-\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1)a_{q-\ell} \psi }}\label{eq:EQ1113}
 \end{align}
@@ -1318,15 +1316,13 @@ For any $\psi \in \HH_N$ and $q \in \Z^3_*$, we have
 \end{align}
 \end{lemma}
 \begin{proof}
-We start with the L.H.S. of (\ref{eq:estEQ121}).
+We start with the L.H.S. of \eqref{eq:estEQ121}.
 \begin{align}
 	&\abs{\eva{\psi,\left(E^{\,2,1}_{Q_1}+\mathrm{h.c.}\right) \psi }} = \abs{\eva{\psi,2\mathrm{Re}\left(E^{\,2,1}_{Q_1}\right) \psi }} = 2\abs{\eva{\psi, E^{\,2,1}_{Q_1} \psi }}\nonumber\\
-	\leq\;\;&4 \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s_1\in L_{\ell_1} }} \abs{\eva{\psi,K^m(\ell )_{r+\ell,q}K(\ell_1)_{r+\ell_1,s_1}
+	\leq\;\;&4 \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s_1\in L_{\ell_1} }} \abs{\eva{\psi, K^m(\ell )_{r+\ell,q}K(\ell_1)_{r+\ell_1,s_1}
 	a^*_{r+\ell_1} b^*_{q}(\ell) b^*_{-s_1}(-\ell_1)a_{r+\ell} \psi }} \label{eq:EQ1211}\\
-	\;+&4 \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1} }}  \abs{\eva{\psi,  K^{m-j}(\ell)_{r+\ell,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r+\ell_1,s_1}
-	a^*_{r+\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1)a_{r+\ell} \psi }} \label{eq:EQ1212}\\
-	\;+&4\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(L_{\ell_1}-\ell_1+\ell)}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \abs{\eva{\psi, K^m(\ell)_{q+\ell,s}K(\ell_1)_{q+\ell_1,s_1}
-	a^*_{q+\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1)a_{q+\ell} \psi }}\label{eq:EQ1213}
+	\;+&4 \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1} }}  \abs{\eva{\psi,  K^{m-j}(\ell)_{r+\ell,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r+\ell_1,s_1} a^*_{r+\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r+\ell} \psi }} \label{eq:EQ1212}\\
+	\;+&4\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(L_{\ell_1}-\ell_1+\ell)}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \abs{\eva{\psi, K^m(\ell)_{q+\ell,s} K(\ell_1)_{q+\ell_1,s_1} a^*_{q+\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{q+\ell} \psi }}\label{eq:EQ1213}
 \end{align}
 where the last inequality is implied by Remark \ref{q-q}. Then we use the decomposition of $\Theta^m_{K}(P^q)$.
 For \eqref{eq:EQ1211}-\eqref{eq:EQ1213}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pairest}. We estimate \eqref{eq:EQ1211} as
@@ -1340,8 +1336,8 @@ For \eqref{eq:EQ1211}-\eqref{eq:EQ1213}, we start by using resolution of the ide
 \end{alignat}
 wherein we used $\sum_{p\in \Z^3_*}\norm{a_p \psi}^2\leq\norm{\NN\psi}^2<\norm{(\NN+2)\psi}^2$, $\sum_{p\in L_{\ell}}\norm{b_p(\ell) \psi}^2\leq\norm{\NN\psi}^2<\norm{(\NN+3)\psi}^2$ and $\NN(\NN+3)^\half\leq C(\NN+1)^{\frac{3}{2}}$. Then for $\alpha = 1$, we have
 \begin{align}
-		&\leq C\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K(\ell)}_{\mathrm{max}}\norm{K(\ell_1)}_{\mathrm{max}}  \norm{b_{q}(\ell) \psi} \norm { (\NN+1)^{\frac{3}{2}} \psi }\nonumber\\
-		\eqref{eq:EQ1211}&\leq C \,\Xi^{\half} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}}\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg)  \norm { (\NN+1)^{\frac{3}{2}} \psi }. \label{eq:estEQ1211}
+	&\leq C\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K(\ell)}_{\mathrm{max}}\norm{K(\ell_1)}_{\mathrm{max}}  \norm{b_{q}(\ell) \psi} \norm { (\NN+1)^{\frac{3}{2}} \psi }\nonumber\\
+	\eqref{eq:EQ1211}&\leq C \,\Xi^{\half} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}}\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg)  \norm { (\NN+1)^{\frac{3}{2}} \psi }. \label{eq:estEQ1211}
 \end{align}
 We estimate \eqref{eq:EQ1212} as 
 \begin{alignat}{2}
@@ -1375,135 +1371,307 @@ Then we use $\norm{a_q\psi}\leq \norm{\NN^\half\psi}$ for $q \in B_F$ or $q \in 
 Then adding \eqref{eq:estEQ1211},\eqref{eq:estEQ1212} and \eqref{eq:estEQ1213}, we arrive at the bound above \eqref{eq:estEQ121}.
 \end{proof}
 \begin{lemma}[$E_{Q_1}^{1,2}$]
+For any $\psi \in \HH_N$, we have
+\begin{align}
+	2\abs{\eva{\psi,\left(E^{\,1,2}_{Q_1}+\mathrm{h.c.}\right) \psi }}
+	&\leq  C\, \Xi^{\half} \label{eq:estEQ112}
+\end{align}
+\end{lemma}
+\begin{proof}
+We start with the L.H.S. of \eqref{eq:estEQ112}.
+\begin{align}
+	&2\abs{\eva{\psi,\left(E^{\,1,2}_{Q_1}+\mathrm{h.c.}\right) \psi }} = 2\abs{\eva{\psi,2\mathrm{Re}\left(E^{\,1,2}_{Q_1}\right) \psi }} = 4\abs{\eva{\psi, E^{\,1,2}_{Q_1} \psi }}\nonumber\\
+	\leq\,\;4& \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\s_1\in L_{\ell_1}}} \abs{\eva{\psi, \psi }}\label{eq:EQ1121}\\
+	+\,4& \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}  \abs{\eva{\psi,   \psi }}\label{eq:EQ1122}\\
+	+\,4&\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \abs{\eva{\psi, \psi }}\label{eq:EQ1123}
+\end{align}
+where the last inequality is implied by Remark \ref{q-q}. Then we use the decomposition of $\Theta^m_{K}(P^q)$.
+For \eqref{eq:EQ1121}-\eqref{eq:EQ1123}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pairest}. 
+We estimate \eqref{eq:EQ1121} as 
+
+We estimate \eqref{eq:EQ1122} as
+
+We estimate \eqref{eq:EQ1123} as 
+\end{proof}
+\begin{lemma}[$E_{Q_1}$]
 	For any $\psi \in \HH_N$, we have
 	\begin{align}
-		2\abs{\eva{\psi,\left(E^{\,2,1}_{Q_1}+\mathrm{h.c.}\right) \psi }}
-		&\leq  C\, \Xi^{\half} \label{eq:estEQ112}
+		&\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
 	\end{align}
 \end{lemma}
 \begin{proof}
-	We start with the L.H.S. of (\ref{eq:estEQ112}).
-	\begin{align}
-		&2\abs{\eva{\psi,\left(E^{\,1,1}_{Q_1}+\mathrm{h.c.}\right) \psi }} = 2\abs{\eva{\psi,2\mathrm{Re}\left(E^{\,1,1}_{Q_1}\right) \psi }} = 4\abs{\eva{\psi, E^{\,1,1}_{Q_1} \psi }}\nonumber\\
-		=\,\:4&
-	\end{align}
+	We start by
 \end{proof}
-
 
 
 \subsection{$E_{Q_2}$ Estimates}
-\begin{lemma}
+\begin{lemma}[$E_{Q_2}^{1,1}$]
     For any $\psi \in \HH_N$, we have
     \begin{align}
-        &\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+    	\abs{\eva{\psi,\left(E^{\,1,1}_{Q_2}+\mathrm{h.c.}\right) \psi }}
+    	&\leq  C\,  \label{eq:estEQ211}
     \end{align}
 \end{lemma}
 \begin{proof}
-    We start by
+  We start with the L.H.S. of \eqref{eq:estEQ211}.
+  \begin{align}
+  	&\abs{\eva{\psi,\left(E^{\,1,1}_{Q_2}+\mathrm{h.c.}\right) \psi }} = \abs{\eva{\psi,2\mathrm{Re}\left(E^{\,1,1}_{Q_2}\right) \psi }} = 2\abs{\eva{\psi, E^{\,1,1}_{Q_2} \psi }}\nonumber\\
+  	\leq\,\;4& \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\s_1\in L_{\ell_1}}} \abs{\eva{\psi, K^m(\ell )_{r,q} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{q}(\ell) b_{-s_1}(-\ell_1) a_{r-\ell}  \psi }}\label{eq:EQ2111}\\
+  	+\,4& \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}  \abs{\eva{\psi, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{s}(\ell) b_{-s_1}(-\ell_1) a_{r-\ell} \psi }}\label{eq:EQ2112}\\
+  	+\,4&\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \abs{\eva{\psi,  K^m(\ell)_{q,s}K(\ell_1)_{q,s_1}
+  	a^*_{q-\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{q-\ell} \psi}} \label{eq:EQ2113}
+  \end{align}
+  where the last inequality is implied by Remark \ref{q-q}. Then we use the decomposition of $\Theta^m_{K}(P^q)$.
+  For \eqref{eq:EQ2111}-\eqref{eq:EQ2113}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pairest}. 
+  We estimate \eqref{eq:EQ2111} as 
+  
+  We estimate \eqref{eq:EQ2112} as
+  
+  We estimate \eqref{eq:EQ2113} as 
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}[$E_{Q_2}^{2,1}$]
     For any $\psi \in \HH_N$, we have
     \begin{align}
-        &\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+    	\abs{\eva{\psi,\left(E^{\,2,1}_{Q_2}+\mathrm{h.c.}\right) \psi }}
+    	&\leq  C\,  \label{eq:estEQ221}
     \end{align}
 \end{lemma}
 \begin{proof}
-    We start by
+ We start with the L.H.S. of \eqref{eq:estEQ221}.
+ \begin{align}
+ 	&\abs{\eva{\psi,\left(E^{\,2,1}_{Q_2}+\mathrm{h.c.}\right) \psi }} = \abs{\eva{\psi,2\mathrm{Re}\left(E^{\,2,1}_{Q_2}\right) \psi }} = 2\abs{\eva{\psi, E^{\,2,1}_{Q_2} \psi }}\nonumber\\
+ 	\leq\;\;&4 \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s_1\in L_{\ell_1} }} \abs{\eva{\psi,  K^m(\ell )_{r+\ell,q}K(\ell_1)_{r+\ell_1,s_1}
+ 	a^*_{r+\ell_1} b^*_{q}(\ell) b_{-s_1}(-\ell_1)a_{r+\ell} \psi}} \label{eq:EQ2211}\\
+ 	\;+&4 \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in (L_{\ell}-\ell) \\ \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1} }}  \abs{\eva{\psi,  K^{m-j}(\ell)_{r+\ell,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r+\ell_1,s_1} a^*_{r+\ell_1} b^*_{s}(\ell) b_{-s_1}(-\ell_1) a_{r+\ell} \psi }} \label{eq:EQ2212}\\
+ 	\;+&4\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(L_{\ell_1}-\ell_1+\ell)}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \abs{\eva{\psi,  K^m(\ell)_{q+\ell,s} K(\ell_1)_{q+\ell_1,s_1} a^*_{q+\ell_1} b^*_{s}(\ell) b_{-s_1}(-\ell_1) a_{q+\ell} \psi}} \label{eq:EQ2213}
+ \end{align}
+ where the last inequality is implied by Remark \ref{q-q}. Then we use the decomposition of $\Theta^m_{K}(P^q)$.
+ For \eqref{eq:EQ2211}-\eqref{eq:EQ2213}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pairest}.
+ We estimate \eqref{eq:EQ2211} as 
+ 
+ We estimate \eqref{eq:EQ2212} as
+ 
+ We estimate \eqref{eq:EQ2213} as 
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}[$E_{Q_2}^{1,2}$]
     For any $\psi \in \HH_N$, we have
     \begin{align}
-        &\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+    	\abs{\eva{\psi,\left(E^{\,1,2}_{Q_2}+\mathrm{h.c.}\right) \psi }}
+    	&\leq  C\,  \label{eq:estEQ212}
     \end{align}
 \end{lemma}
 \begin{proof}
-    We start by
+     We start with the L.H.S. of \eqref{eq:estEQ212}.
+    \begin{align}
+    	&\abs{\eva{\psi,\left(E^{\,1,2}_{Q_2}+\mathrm{h.c.}\right) \psi }} = \abs{\eva{\psi,2\mathrm{Re}\left(E^{\,1,2}_{Q_2}\right) \psi }} = 2\abs{\eva{\psi, E^{\,1,2}_{Q_2} \psi }}\nonumber\\
+    	\leq\,\;4& \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\s_1\in L_{\ell_1}}} \abs{\eva{\psi, \psi }}\label{eq:EQ2121}\\
+    	+\,4& \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}  \abs{\eva{\psi,   \psi }}\label{eq:EQ2122}\\
+    	+\,4&\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \abs{\eva{\psi, \psi }}\label{eq:EQ2123}
+    \end{align}
+    where the last inequality is implied by Remark \ref{q-q}. Then we use the decomposition of $\Theta^m_{K}(P^q)$.
+    For \eqref{eq:EQ2121}-\eqref{eq:EQ2123}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pairest}.
+    We estimate \eqref{eq:EQ2121} as 
+    
+    We estimate \eqref{eq:EQ2122} as
+    
+    We estimate \eqref{eq:EQ2123} as 
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}[$E_{Q_2}^{2,2}$]
     For any $\psi \in \HH_N$, we have
     \begin{align}
-        &\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+    	\abs{\eva{\psi,\left(E^{\,2,2}_{Q_2}+\mathrm{h.c.}\right) \psi }}
+    	&\leq  C\,  \label{eq:estEQ222}
     \end{align}
 \end{lemma}
 \begin{proof}
-    We start by
+We start with the L.H.S. of \eqref{eq:estEQ222}.
+\begin{align}
+	&\abs{\eva{\psi,\left(E^{\,2,2}_{Q_2}+\mathrm{h.c.}\right) \psi }} = \abs{\eva{\psi,2\mathrm{Re}\left(E^{\,2,2}_{Q_2}\right) \psi }} = 2\abs{\eva{\psi, E^{\,2,2}_{Q_2} \psi }}\nonumber\\
+	\leq\;\;&4 \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s_1\in L_{\ell_1} }} \abs{\eva{\psi,  \psi}} \label{eq:EQ2221}\\
+	\;+&4 \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1} }}  \abs{\eva{\psi,  \psi }} \label{eq:EQ2222}\\
+	\;+&4\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(L_{\ell_1}-\ell_1+\ell)}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \abs{\eva{\psi, \psi}} \label{eq:EQ2223}
+\end{align}
+where the last inequality is implied by Remark \ref{q-q}. Then we use the decomposition of $\Theta^m_{K}(P^q)$.
+For \eqref{eq:EQ2221}-\eqref{eq:EQ2223}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pairest}.
+We estimate \eqref{eq:EQ2221} as 
+
+We estimate \eqref{eq:EQ2222} as
+
+We estimate \eqref{eq:EQ2223} as 
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}[$E_{Q_2}^{1,3}$]
     For any $\psi \in \HH_N$, we have
     \begin{align}
-        &\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+    	\abs{\eva{\psi,\left(E^{\,1,3}_{Q_2}+\mathrm{h.c.}\right) \psi }}
+    	&\leq  C\,  \label{eq:estEQ213}
     \end{align}
 \end{lemma}
 \begin{proof}
-    We start by
+     We start with the L.H.S. of \eqref{eq:estEQ213}.
+    \begin{align}
+    	&\abs{\eva{\psi,\left(E^{\,1,3}_{Q_2}+\mathrm{h.c.}\right) \psi }} = \abs{\eva{\psi,2\mathrm{Re}\left(E^{\,1,3}_{Q_2}\right) \psi }} = 2\abs{\eva{\psi, E^{\,1,3}_{Q_2} \psi }}\nonumber\\
+    	\leq\,\;4& \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\s_1\in L_{\ell_1}}} \abs{\eva{\psi, \psi }}\label{eq:EQ2131}\\
+    	+\,4& \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}  \abs{\eva{\psi,   \psi }}\label{eq:EQ2132}\\
+    	+\,4&\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \abs{\eva{\psi, \psi }}\label{eq:EQ2133}
+    \end{align}
+    where the last inequality is implied by Remark \ref{q-q}. Then we use the decomposition of $\Theta^m_{K}(P^q)$.
+    For \eqref{eq:EQ2131}-\eqref{eq:EQ2133}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pairest}.
+    We estimate \eqref{eq:EQ2131} as 
+    
+    We estimate \eqref{eq:EQ2132} as
+    
+    We estimate \eqref{eq:EQ2133} as 
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}[$E_{Q_2}^{1,4}$]
+    For any $\psi \in \HH_N$, we have
+  \begin{align}
+  	2\abs{\eva{\psi,\left(E^{\,1,4}_{Q_2}+\mathrm{h.c.}\right) \psi }}
+  	&\leq  C\,  \label{eq:estEQ214}
+  \end{align}
+\end{lemma}
+\begin{proof}
+     We start with the L.H.S. of \eqref{eq:estEQ214}.
+    \begin{align}
+    	&2\abs{\eva{\psi,\left(E^{\,1,4}_{Q_2}+\mathrm{h.c.}\right) \psi }} = 2\abs{\eva{\psi,2\mathrm{Re}\left(E^{\,1,4}_{Q_2}\right) \psi }} = 4\abs{\eva{\psi, E^{\,1,4}_{Q_2} \psi }}\nonumber\\
+    	\leq\,\;4& \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\s_1\in L_{\ell_1}}} \abs{\eva{\psi, \psi }}\label{eq:EQ2141}\\
+    	+\,4& \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}  \abs{\eva{\psi,   \psi }}\label{eq:EQ2142}\\
+    	+\,4&\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \abs{\eva{\psi, \psi }}\label{eq:EQ2143}
+    \end{align}
+    where the last inequality is implied by Remark \ref{q-q}. Then we use the decomposition of $\Theta^m_{K}(P^q)$.
+    For \eqref{eq:EQ2141}-\eqref{eq:EQ2143}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pairest}.
+    We estimate \eqref{eq:EQ2141} as 
+    
+    We estimate \eqref{eq:EQ2142} as
+    
+    We estimate \eqref{eq:EQ2143} as 
+\end{proof}
+
+\begin{lemma}[$E_{Q_2}^{2,4}$]
     For any $\psi \in \HH_N$, we have
     \begin{align}
-        &\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+    	\abs{\eva{\psi,\left(E^{\,2,4}_{Q_2}+\mathrm{h.c.}\right) \psi }}
+    	&\leq  C\,  \label{eq:estEQ224}
     \end{align}
 \end{lemma}
 \begin{proof}
-    We start by
+    We start with the L.H.S. of \eqref{eq:estEQ224}.
+    \begin{align}
+    	&\abs{\eva{\psi,\left(E^{\,2,4}_{Q_2}+\mathrm{h.c.}\right) \psi }} = \abs{\eva{\psi,2\mathrm{Re}\left(E^{\,2,4}_{Q_2}\right) \psi }} = 2\abs{\eva{\psi, E^{\,2,4}_{Q_2} \psi }}\nonumber\\
+    	\leq\;\;&4 \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s_1\in L_{\ell_1} }} \abs{\eva{\psi,  \psi}} \label{eq:EQ2241}\\
+    	\;+&4 \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1} }}  \abs{\eva{\psi,  \psi }} \label{eq:EQ2242}\\
+    	\;+&4\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(L_{\ell_1}-\ell_1+\ell)}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \abs{\eva{\psi, \psi}} \label{eq:EQ2243}
+    \end{align}
+    where the last inequality is implied by Remark \ref{q-q}. Then we use the decomposition of $\Theta^m_{K}(P^q)$.
+    For \eqref{eq:EQ2241}-\eqref{eq:EQ2243}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pairest}.
+    We estimate \eqref{eq:EQ2241} as 
+    
+    We estimate \eqref{eq:EQ2242} as
+    
+    We estimate \eqref{eq:EQ2243} as 
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}[$E_{Q_2}^{1,5}$]
     For any $\psi \in \HH_N$, we have
     \begin{align}
-        &\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+    	2\abs{\eva{\psi,\left(E^{\,1,5}_{Q_2}+\mathrm{h.c.}\right) \psi }}
+    	&\leq  C\,  \label{eq:estEQ215}
     \end{align}
 \end{lemma}
 \begin{proof}
-    We start by
-\end{proof}
-
-\begin{lemma}
-    For any $\psi \in \HH_N$, we have
+     We start with the L.H.S. of \eqref{eq:estEQ215}.
     \begin{align}
-        &\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+    	&2\abs{\eva{\psi,\left(E^{\,1,5}_{Q_2}+\mathrm{h.c.}\right) \psi }} = 2\abs{\eva{\psi,2\mathrm{Re}\left(E^{\,1,5}_{Q_2}\right) \psi }} = 4\abs{\eva{\psi, E^{\,1,5}_{Q_2} \psi }}\nonumber\\
+    	\leq\,\;4& \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\s_1\in L_{\ell_1}}} \abs{\eva{\psi, \psi }}\label{eq:EQ2151}\\
+    	+\,4& \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}  \abs{\eva{\psi,   \psi }}\label{eq:EQ2152}\\
+    	+\,4&\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \abs{\eva{\psi, \psi }}\label{eq:EQ2153}
     \end{align}
-\end{lemma}
-\begin{proof}
-    We start by
+    where the last inequality is implied by Remark \ref{q-q}. Then we use the decomposition of $\Theta^m_{K}(P^q)$.
+    For \eqref{eq:EQ2151}-\eqref{eq:EQ2153}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pairest}.
+    We estimate \eqref{eq:EQ2151} as 
+    
+    We estimate \eqref{eq:EQ2152} as
+    
+    We estimate \eqref{eq:EQ2153} as 
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}[$E_{Q_2}^{1,7}$]
 	For any $\psi \in \HH_N$, we have
 	\begin{align}
-		&\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+		2\abs{\eva{\psi,\left(E^{\,1,7}_{Q_2}+\mathrm{h.c.}\right) \psi }}
+		&\leq  C\,  \label{eq:estEQ217}
 	\end{align}
 \end{lemma}
 \begin{proof}
-	We start by
+ We start with the L.H.S. of \eqref{eq:estEQ217}.
+\begin{align}
+	&2\abs{\eva{\psi,\left(E^{\,1,7}_{Q_2}+\mathrm{h.c.}\right) \psi }} =2 \abs{\eva{\psi,2\mathrm{Re}\left(E^{\,1,7}_{Q_2}\right) \psi }} = 4\abs{\eva{\psi, E^{\,1,7}_{Q_2} \psi }}\nonumber\\
+	\leq\,\;4& \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\s_1\in L_{\ell_1}}} \abs{\eva{\psi, \psi }}\label{eq:EQ2171}\\
+	+\,4& \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}  \abs{\eva{\psi,   \psi }}\label{eq:EQ2172}\\
+	+\,4&\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \abs{\eva{\psi, \psi }}\label{eq:EQ2173}
+\end{align}
+where the last inequality is implied by Remark \ref{q-q}. Then we use the decomposition of $\Theta^m_{K}(P^q)$.
+For \eqref{eq:EQ2171}-\eqref{eq:EQ2173}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pairest}.
+We estimate \eqref{eq:EQ2171} as 
+
+We estimate \eqref{eq:EQ2172} as
+
+We estimate \eqref{eq:EQ2173} as 
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}[$E_{Q_2}^{1,8}$]
 	For any $\psi \in \HH_N$, we have
 	\begin{align}
-		&\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+		2\abs{\eva{\psi,\left(E^{\,1,8}_{Q_2}+\mathrm{h.c.}\right) \psi }}
+		&\leq  C\,  \label{eq:estEQ218}
 	\end{align}
 \end{lemma}
 \begin{proof}
-	We start by
+ We start with the L.H.S. of \eqref{eq:estEQ218}.
+\begin{align}
+	&2\abs{\eva{\psi,\left(E^{\,1,8}_{Q_2}+\mathrm{h.c.}\right) \psi }} = 2\abs{\eva{\psi,2\mathrm{Re}\left(E^{\,1,8}_{Q_2}\right) \psi }} = 4\abs{\eva{\psi, E^{\,1,8}_{Q_2} \psi }}\nonumber\\
+	\leq\,\;4& \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\s_1\in L_{\ell_1}}} \abs{\eva{\psi, \psi }}\label{eq:EQ2181}\\
+	+\,4& \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}  \abs{\eva{\psi,   \psi }}\label{eq:EQ2182}\\
+	+\,4&\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \abs{\eva{\psi, \psi }}\label{eq:EQ2183}
+\end{align}
+where the last inequality is implied by Remark \ref{q-q}. Then we use the decomposition of $\Theta^m_{K}(P^q)$.
+For \eqref{eq:EQ2181}-\eqref{eq:EQ2183}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pairest}.
+We estimate \eqref{eq:EQ2181} as 
+
+We estimate \eqref{eq:EQ2182} as
+
+We estimate \eqref{eq:EQ2183} as 
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}[$E_{Q_2}^{2,8}$]
 	For any $\psi \in \HH_N$, we have
 	\begin{align}
-		&\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+		2\abs{\eva{\psi,\left(E^{\,2,8}_{Q_2}+\mathrm{h.c.}\right) \psi }}
+		&\leq  C\,  \label{eq:estEQ228}
 	\end{align}
 \end{lemma}
 \begin{proof}
-	We start by
+We start with the L.H.S. of \eqref{eq:estEQ228}.
+\begin{align}
+	&2\abs{\eva{\psi,\left(E^{\,2,8}_{Q_2}+\mathrm{h.c.}\right) \psi }} = 2\abs{\eva{\psi,2\mathrm{Re}\left(E^{\,2,8}_{Q_2}\right) \psi }} = 4\abs{\eva{\psi, E^{\,2,8}_{Q_2} \psi }}\nonumber\\
+	\leq\;\;&4 \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s_1\in L_{\ell_1} }} \abs{\eva{\psi,  \psi}} \label{eq:EQ2281}\\
+	\;+&4 \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1} }}  \abs{\eva{\psi,  \psi }} \label{eq:EQ2282}\\
+	\;+&4\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(L_{\ell_1}-\ell_1+\ell)}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \abs{\eva{\psi, \psi}} \label{eq:EQ2283}
+\end{align}
+where the last inequality is implied by Remark \ref{q-q}. Then we use the decomposition of $\Theta^m_{K}(P^q)$.
+For \eqref{eq:EQ2281}-\eqref{eq:EQ2283}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pairest}.
+We estimate \eqref{eq:EQ2281} as 
+
+We estimate \eqref{eq:EQ2282} as
+
+We estimate \eqref{eq:EQ2283} as 
 \end{proof}
 
-As for the (D) term, we consider the full term all at once.
-\begin{lemma}
+\begin{lemma}[$E_{Q_2}$]
     For any $\psi \in \HH_N$, we have
     \begin{align}
      &\eva{\psi,-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\Theta^{m+1}_K(P^q)_{r,s}\epsilon_{r,s}(\ell,\ell)\psi }\nonumber\\ 
