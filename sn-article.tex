@@ -897,14 +897,19 @@ We bound the head term next, and to begin we start by establishing certain neces
 \end{proof}
 \begin{lemma}[Gr\"onwall Bound]\label{lem:gronNest}
     Let $\lambda\in [0,1]$, then we have the following operator inequality
-    \begin{equation}
+    \begin{equation}\label{eq:gronest}
      T^*_{\lambda}(\mathcal{N} +1)T_{\lambda} \leq e^C (\NN+1)\, ,    
     \end{equation}
      where $C = \mathrm{exp}(4\sum\limits_{l\in \Z^3_*}\norm{K(\ell)}_{\mathrm{HS}})$,
+     
+     Similarly
+     \begin{equation}\label{eq:gengronest}
+     	T^*_{\lambda}(\mathcal{N} +1)^{\alpha}T_{\lambda} \leq e^{C_\alpha} (\NN+1)^{\alpha}\, , 
+     \end{equation}
      \footnote{The value of $C$ can be different for every new appearance, unless explicitly stated.}.
 \end{lemma}
 \begin{proof}
-    For a given $\Psi \in \HH_N$, we start with taking a derivative of the expectation of the RHS of the inequality above.
+    For a given $\Psi \in \HH_N$, we start with taking a derivative of the expectation of the LHS of \eqref{eq:gronest} above.
     \begin{align}
         \left|\frac{\di}{\di\lambda}\eva{\Psi, (T^*_{\lambda}(\mathcal{N} +1)T_{\lambda})\Psi }\right| 
         &= \left|\eva{\Psi,(T^*_{\lambda}\left[\KK,\NN\right]T_{\lambda}) \Psi}\right|\nonumber\\
@@ -922,6 +927,8 @@ We bound the head term next, and to begin we start by establishing certain neces
         \eva{\Psi, T^*_{\lambda}(\mathcal{N} +1)T_{\lambda} \Psi } \leq \mathrm{exp}(4\sum\limits_{l\in \Z^3_*} \norm{K(\ell)}_{\mathrm{HS}}) \eva{\Psi, (\NN+1)\Psi}
     \end{equation}
     And this proves the estimate.
+    We proceed next with proving \eqref{eq:gengronest}
+    \textcolor{red}{write the proof for the general Gr\"onwall estimate}
 \end{proof}
 \begin{lemma}[HS Norm bound on the K]
  For $\ell \in \Z^3_*$, we have 
@@ -1429,7 +1436,7 @@ Then adding \eqref{eq:estEQ1121},\eqref{eq:estEQ1122} and \eqref{eq:estEQ1123}, 
 \begin{lemma}[$E_{Q_1}$]
 	For any $\psi \in \HH_N$, we have
 	\begin{align}
-		&\abs{\eva{\psi,   \psi}}\nonumber\\&\leq C
+		&\abs{\eva{\psi, E_{Q_1}  \psi}}\nonumber\\&\leq C
 	\end{align}
 \end{lemma}
 \begin{proof}
@@ -2019,29 +2026,13 @@ Then adding \eqref{eq:estEQ2281},\eqref{eq:estEQ2282} and \eqref{eq:estEQ2283}, 
 \begin{lemma}[$E_{Q_2}$]
     For any $\psi \in \HH_N$, we have
     \begin{align}
-     &\eva{\psi,-\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\Theta^{m+1}_K(P^q)_{r,s}\epsilon_{r,s}(\ell,\ell)\psi }\nonumber\\ 
+     &\eva{\psi,E_{Q_2}\psi }\nonumber\\ 
      &\leq 
     \end{align}
-    where
-   \begin{equation}
-       \epsilon_{p,q}(k,\ell) = -\left(\delta_{p,q}a^*_{q-\ell}a_{p-k} + \delta_{p-k,q-\ell}a^*_{q}a_{p}\right)
-   \end{equation}
 \end{lemma}
 \begin{proof}
     We begin with expanding the error as
-    \begin{align}
-       &-\sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell} \eva{\psi, K^{m+1}_{r,q}\epsilon_{r,q}(\ell,\ell)} -\sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{s \in L_\ell} \eva{\psi, K^{m+1}_{q,s}\epsilon_{q,s}(\ell,\ell)}\nonumber\\
-       &-  \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{r,s \in L_\ell} \eva{\psi,\sum_{j=1}^{m-1}K^{m-j}(\ell)_{r,q}K^{j}(\ell)_{q,s}\epsilon_{r,s}(\ell,\ell)} - (q\rightarrow-q)\nonumber\\
-       &= -2\mathrm{Re}\bigg(\sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell} \eva{\psi, K^{m+1}_{r,q}\epsilon_{r,q}(\ell,\ell)}\bigg) \nonumber\\
-       &- \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{r,s \in L_\ell} \eva{\psi,\sum_{j=1}^{m-1}K^{m-j}(\ell)_{r,q}K^{j}(\ell)_{q,s}\epsilon_{r,s}(\ell,\ell)} - (q\rightarrow-q)\nonumber\\
-       &= 2\mathrm{Re}\bigg(\sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell} \eva{\psi, K^{m+1}_{r,q}\delta_{r,q}a^*_{q-\ell}a_{r-\ell}\psi} \bigg) \nonumber\\
-       &+  \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{r,s \in L_\ell} \eva{\psi,\sum_{j=1}^{m-1}K^{m-j}(\ell)_{r,q}K^{j}(\ell)_{q,s}\delta_{r,s}a^*_{s-\ell}a_{r-\ell}} + (q\rightarrow-q) + (\mathrm{shifted\,momenta\,terms})\nonumber\\
-    \end{align}
-    We begin with the first expectation value above
-    \begin{align}
-        &\sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell} \eva{\psi, K^{m+1}_{r,q}\delta_{r,q}a^*_{q-\ell}a_{r-\ell}\psi} \nonumber\\
-        &\leq 
-    \end{align}
+    
 \end{proof}
 %\subsubsection{This is an example for third level head---subsubsection head}\label{subsubsec2}
 %\section{Equations}\label{sec4}
