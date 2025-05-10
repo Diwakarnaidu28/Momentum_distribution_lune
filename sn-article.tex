@@ -1337,14 +1337,14 @@ First, we consider the term $ \I $ and split the sum $ \sum_{\ell} $ according t
 \begin{align}
 	&\abs{\sum_{\ell \in \Z^3_* \setminus S} \I_\ell } \nonumber\\
     &\leq \abs{ \sum_{\ell \in \Z^3_* \setminus S} \sum\limits_{r \in L_\ell} \eva{ b_{q}(\ell)
-    		\sum\limits_{\ell_1 \in \Z^3_*}  \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} \psi, 
+    		\sum\limits_{\ell_1 \in \Z^3_*} \sum\limits_{s_1 \in L_{\ell_1}} \mathds{1}_{L_{\ell_1}}(r) K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} \psi, 
     		 K^m_{r,q}(\ell) a_{r-\ell} \psi }}\nonumber\\
     &\leq \left( \sum_{\ell \in \Z^3_* \setminus S} \sum_{r \in L_\ell}
-    		\norm{a_{q-\ell} a_q \sum\limits_{\ell_1 \in \Z^3_*} \sum_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} (\NN+1)^{-\alpha} \psi}^2 \right)^{\frac 12} \times \nonumber\\
+    		\norm{a_{q-\ell} a_q \sum\limits_{\ell_1 \in \Z^3_*} \sum_{s_1 \in L_{\ell_1}} \mathds{1}_{L_{\ell_1}}(r) K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} (\NN+1)^{-\alpha} \psi}^2 \right)^{\frac 12} \times \nonumber\\
     	&\quad \times \left( \sum_{\ell \in \Z^3_* \setminus S} \sum\limits_{r \in L_\ell} 
     		|K^m_{r,q}(\ell)|^2 \norm{  a_{r-\ell} (\NN+5)^{\alpha}\psi }^2 \right)^{\frac 12} \nonumber\\
     	&\leq \left( \sum_{r \in \Z^3_*}
-    		\norm{\sum\limits_{\ell_1 \in \Z^3_*} \sum_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} a_q (\NN+1)^{\frac 12-\alpha} \psi}^2 \right)^{\frac 12} \times \nonumber\\
+    		\norm{\sum\limits_{\ell_1 \in \Z^3_*} \sum_{s_1 \in L_{\ell_1}} \mathds{1}_{L_{\ell_1}}(r) K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} a_q (\NN+1)^{\frac 12-\alpha} \psi}^2 \right)^{\frac 12} \times \nonumber\\
     	&\quad \times \left( \sum_{\ell \in \Z^3_* \setminus S} \norm{K^m(\ell)}_{\max,2}^2
     		\norm{ (\NN+5)^{\alpha}\psi }^2 \right)^{\frac 12} \nonumber\\
     &\leq \left( \sum_{r \in \Z^3_*} \left(  \sum\limits_{\ell_1 \in \Z^3_*} \sum_{s_1 \in L_{\ell_1}} |K(\ell_1)_{r,s_1}|^2 \right)
@@ -1365,24 +1365,24 @@ First, we consider the term $ \I $ and split the sum $ \sum_{\ell} $ according t
     &\leq \left( \sum_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\max,2}^2 \right)^{\frac 12}
     		\left( \sum_{\ell \in \Z^3_* \setminus S} \norm{K^m(\ell)}_{\max,2}^2 \right)^{\frac 12}
     		\Xi^{\frac 12}
-    		\norm{ (\NN+5)^2 \psi }^2 \;,
+    		\norm{ (\NN+5)^2 \psi } \;,
 \end{align}
 where we set $ \alpha = 2 $. With Lemma~\ref{lem:K_bounds} and $ |\hat{V}(\ell)| \le C $, we conclude now
 \begin{equation}
-	\abs{\sum_{\ell \in \Z^3_* \setminus S} \I_{\ell,\ell_1}}
+	\abs{\sum_{\ell \in \Z^3_* \setminus S} \I_\ell }
 	\le C k_{\F}^{-1} \Xi^{\frac 12}
 		\left( \sum_{\ell \in \Z^3_* \setminus S} \hat{V}(\ell)^2 \right)^{\frac 12}
 		\left( \sum_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1)^2 \right)^{\frac 12}
-		\norm{(\NN+5)^2 \psi}^2 \;.
+		\norm{(\NN+5)^2 \psi} \;.
 \end{equation}
 The bound for $ \ell \in S $ is similar.
 \begin{align}
 	\abs{\sum_{\ell \in S} \I_\ell }
 	&\leq \sum_{\ell \in S} \abs{ \sum\limits_{r \in L_\ell} \eva{ b_{q}(\ell)
-    		\sum\limits_{\ell_1 \in \Z^3_*}  \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} \psi, 
+    		\sum\limits_{\ell_1 \in \Z^3_*}  \sum\limits_{s_1 \in L_{\ell_1}} \mathds{1}_{L_{\ell_1}}(r) K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} \psi, 
     		 K^m_{r,q}(\ell) a_{r-\ell} \psi }}\nonumber\\
     	&\leq \sum_{\ell \in S} \left( \sum_{r \in \Z^3_*}
-    		\norm{\sum\limits_{\ell_1 \in \Z^3_*} \sum_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} a_q (\NN+1)^{-\alpha} \psi}^2 \right)^{\frac 12} \times \nonumber\\
+    		\norm{\sum\limits_{\ell_1 \in \Z^3_*} \sum_{s_1 \in L_{\ell_1}} \mathds{1}_{L_{\ell_1}}(r) K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} a_q (\NN+1)^{-\alpha} \psi}^2 \right)^{\frac 12} \times \nonumber\\
     	&\quad \times \left( \norm{K^m(\ell)}_{\max}^2
     		\sum_{r \in L_\ell} \norm{ a_{r-\ell} (\NN+5)^{\alpha}\psi }^2 \right)^{\frac 12} \nonumber\\
     	&\leq \sum_{\ell \in S} \norm{K^m(\ell)}_{\max}
@@ -1392,11 +1392,37 @@ The bound for $ \ell \in S $ is similar.
     	&\leq C k_{\F}^{-1} \Xi^{\frac 12}
     		\left( k_{\F}^{-\frac 12} \sum_{\ell \in S} \hat{V}(\ell) \right)
     		\left( \sum_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1)^2 \right)^{\frac 12}
-    		\norm{(\NN+5)^2 \psi}^2 \;,
+    		\norm{(\NN+5)^2 \psi} \;,
 \end{align}
 where we used $ \alpha = \frac 32 $ and directly applied Lemma~\ref{lem:K_bounds} in the last line.\\
-To bound the $ \II $-term, we proceed similarly.
-
+For the $ \II $-term, there is no need to split for $ \ell \in S $ or $ \ell \notin S $, but we directly estimate
+\begin{align}
+	&\abs{\sum\limits_{\ell, \ell_1 \in \Z^3_*} \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}  \eva{\psi, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q	,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r-\ell} \psi}} \nonumber\\
+	&\leq \sum_{\ell \in \Z^3_*} \left( \sum_{r \in L_\ell} 
+		\norm{ \sum_{\ell_1 \in \Z^3_*} \sum_{s \in L_{\ell},s_1\in L_{\ell_1}} \mathds{1}_{L_{\ell_1}}(r) K^{j}(\ell)_{q	,s} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) b_{s}(\ell) a_{r-\ell_1} \psi }^2 \right)^{\frac 12} \times \nonumber\\
+	&\quad \times \left( \sum_{r \in L_\ell} \abs{K^{m-j}(\ell)_{r,q}}^2 \norm{a_{r-\ell} \psi}^2 \right)^{\frac 12} \nonumber\\
+	&\leq \sum_{\ell \in \Z^3_*} \left( \sum_{r \in L_\ell} 
+		\sum_{\ell_1' \in \Z^3_*} \sum_{s' \in L_{\ell},s_1'\in L_{\ell_1'}} |K^j(\ell)_{q,s'}|^2 |K(\ell_1')_{r,s_1'}|^2
+		\sum_{\ell_1 \in \Z^3_*} \sum_{s \in L_{\ell},s_1\in L_{\ell_1}} \norm{ b_{-s_1}(-\ell_1) b_{s}(\ell) a_{r-\ell_1} \psi }^2 \right)^{\frac 12} \times \nonumber\\
+	&\quad \times \norm{K^{m-j}(\ell)_{r,q}}_{\max,2} \Xi^{\frac 12} \nonumber\\
+	&\leq \sum_{\ell \in \Z^3_*} \norm{K^j(\ell)}_{\max,2}
+		\left( \sum_{\ell_1' \in \Z^3_*}	\norm{K(\ell_1')}_{\max,2}^2 \right)^{\frac 12}
+		\left( \sum_{\ell_1 \in \Z^3_*} \sum_{s \in L_{\ell},s_1\in L_{\ell_1}} \sum_{r \in L_\ell}
+		\norm{ a_{r-\ell_1} a_{-s_1+\ell_1} a_{-s_1} a_{s-\ell} a_s \psi }^2 \right)^{\frac 12} \times \nonumber\\
+	&\quad \times \norm{K^{m-j}(\ell)_{r,q}}_{\max,2} \Xi^{\frac 12} \nonumber\\
+	& \leq \Xi^{\frac 12} \sum_{\ell \in \Z^3_*}
+		\norm{K^j(\ell)}_{\max,2}
+		\norm{K^{m-j}(\ell)}_{\max,2}
+		\left( \sum_{\ell_1 \in \Z^3_*}	\norm{K(\ell_1)}_{\max,2}^2 \right)^{\frac 12}
+		\norm{\NN^2 \psi} \;.
+\end{align}
+With Lemma~\ref{lem:K_bounds} and $ |\hat{V}(\ell)| \le C $, we conclude
+\begin{equation}
+	\abs{\sum_{\ell \in \Z^3_*} \II_\ell }
+	\leq C k_{\F}^{-\frac 32} \Xi^{\frac 12}
+		\left( \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 \right)^{\frac 32}
+		\norm{\NN^2 \psi} \;.
+\end{equation}
 
 
 ...
