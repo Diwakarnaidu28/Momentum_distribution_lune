@@ -1326,7 +1326,7 @@ Let $q \in \Z^3_*$ and $\psi \in \HH_N$. Then, for any $ S \subset \Z^3_* $, we 
 \end{align}
 First, we consider the term $ \I $ and split the sum $ \sum_{\ell, \ell_1} $ according to whether $ \ell, \ell_1 $ are in $ S $ or not. In any case, we then successively bound annihilation operators against $ \mathcal{N} = \sum_{p \in \Z^3} a_p^* a_p $, also using Lemma \ref{lem:pairest}. To balance the powers of $ \NN $, we use $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$ to be fixed later. Further, we use the pull-through formula (Lemma \ref{lem:commNab}) and the Cauchy--Schwarz inequality. First,
 \begin{align}
-	&\sum_{\ell, \ell_1 \in S} \I_{\ell,\ell_1} \\
+	&\sum_{\ell, \ell_1 \in S} \I_{\ell,\ell_1} \nonumber\\
     &\leq \sum\limits_{\ell,\ell_1 \in S}\!\! \mathds{1}_{L_\ell}(q)
     		\sum\limits_{r \in L_\ell \cap L_{\ell_1}}
     		\abs{\eva{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} K^m_{r,q}(\ell) b_{q}(\ell) (\NN+1)^{\alpha} (\NN+1)^{-\alpha} \psi, 
@@ -1362,19 +1362,44 @@ where we fixed $ \alpha = 1 $ in the last step. Employing Lemma~\ref{lem:K_bound
 	\sum_{\ell, \ell_1 \in S} \I_{\ell,\ell_1}
 	\le C k_{\F}^{-1} \Xi^{\frac 12} \left( k_{\F}^{-\frac 14} \sum_{\ell \in S} \hat{V}(\ell) \right)^2 \norm {(\NN+5)^{\frac 32} \psi} \;.
 \end{equation}
-Next, we treat the case where $ \ell, \ell_1 \notin S $.
-...
+Next, we treat the case where $ \ell, \ell_1 \notin S $. Here, we convert $ \sum_{\ell, \ell'} $ instead of $ \sum_r $ into $ \NN $.
 \begin{align}
-	&\eqref{eq:EQ1111}\nonumber\\
-    &= \sum\limits_{\ell,\ell_1 \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell \cap L_{\ell_1}} \abs{\eva{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) K^{m}_{r,q}(\ell) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{\alpha} (\NN+1)^{-\alpha} \psi,  a_{r-\ell} \psi }}\nonumber\\
-    &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \sum\limits_{ r \in L_\ell \cap L_{\ell_1}} \abs{\eva{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) K^{m}_{r,q}(\ell) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{-\alpha} \psi, a_{r-\ell} (\NN+5)^{\alpha} \psi }}\nonumber\\
-    &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell \cap L_{\ell_1}}    \norm{\sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) K^{m}_{r,q}(\ell) b_{q}(\ell) a_{r-\ell_1} (\NN+5)^{-\alpha}\psi}\norm{  a_{r-\ell} (\NN+5)^{\alpha}\psi } \nonumber\\
-    &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell\cap L_{\ell_1}} \norm{\big(K^{m}_{r,q}(\ell)b_{q}(\ell)\big) a_{r-\ell_1}\left(\NN+1\right)^\half (\NN+1)^{-\alpha} \psi} \norm { a_{r-\ell} (\NN+5)^{\alpha} \psi }\nonumber\\
-    &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\mathds{1}_{L_\ell}(q) \norm{K(\ell_1)}_{\mathrm{max,2}} \sum\limits_{r \in L_\ell\cap L_{\ell_1}} \norm{ a_{r-\ell_1} \big(K^{m}_{r,q}(\ell)b_{q}(\ell)\big) \left(\NN+1\right)^\half (\NN+1)^{-\alpha} \psi} \norm { a_{r-\ell} (\NN+5)^{\alpha} \psi }\nonumber\\
-    &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K^{m}(\ell)}_{\mathrm{max,2}}\norm{K(\ell_1)}_{\mathrm{max}} \sum\limits_{r \in L_\ell \cap L_{\ell_1}} \norm{ a_{r-\ell_1} b_{q}(\ell) \left(\NN+1\right)^\half (\NN+1)^{-\alpha} \psi} \norm { a_{r-\ell} (\NN+5)^{\alpha} \psi }\nonumber\\
-    &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K^{m}(\ell)}_{\mathrm{max,2}}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg(\sum\limits_{r \in L_{\ell_1}} \norm{ a_{r-\ell_1}b_{q}(\ell) \left(\NN+1\right)^\half (\NN+1)^{-\alpha} \psi}^2\Bigg)^\half\!\!\Bigg( \sum\limits_{r \in L_\ell} \norm { a_{r-\ell} (\NN+5)^{\alpha} \psi }^2\Bigg)^\half\nonumber\\
-    &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K^{m}(\ell)}_{\mathrm{max,2}}\norm{K(\ell_1)}_{\mathrm{max}}  \norm{ b_{q}(\ell) (\NN+1) (\NN+1)^{-\alpha} \psi} \!\! \norm { \NN^\half (\NN+5)^{\alpha} \psi } \nonumber
+	&\sum_{\ell, \ell_1 \in \Z^3_* \setminus S} \I_{\ell,\ell_1} \nonumber\\
+    &\leq \abs{ \sum_{\ell \in \Z^3_* \setminus S} \sum\limits_{r \in L_\ell} \eva{ b_{q}(\ell)
+    		\sum\limits_{\ell_1 \in \Z^3_* \setminus S}  \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} \psi, 
+    		 K^m_{r,q}(\ell) a_{r-\ell} \psi }}\nonumber\\
+    &\leq \left( \sum_{\ell \in \Z^3_* \setminus S} \sum_{r \in L_\ell}
+    		\norm{a_{q-\ell} a_q \sum\limits_{\ell_1 \in \Z^3_* \setminus S} \sum_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} (\NN+1)^{-\alpha} \psi}^2 \right)^{\frac 12} \times \nonumber\\
+    	&\quad \times \left( \sum_{\ell \in \Z^3_* \setminus S} \sum\limits_{r \in L_\ell} 
+    		|K^m_{r,q}(\ell)|^2 \norm{  a_{r-\ell} (\NN+5)^{\alpha}\psi }^2 \right)^{\frac 12} \nonumber\\
+    	&\leq \left( \sum_{r \in \Z^3_*}
+    		\norm{\sum\limits_{\ell_1 \in \Z^3_* \setminus S} \sum_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} a_q (\NN+1)^{\frac 12-\alpha} \psi}^2 \right)^{\frac 12} \times \nonumber\\
+    	&\quad \times \left( \sum_{\ell \in \Z^3_* \setminus S} \norm{K^m(\ell)}_{\max,2}^2
+    		\norm{ (\NN+5)^{\alpha}\psi }^2 \right)^{\frac 12} \nonumber\\
+    &\leq \left( \sum_{r \in \Z^3_*} \left(  \sum\limits_{\ell_1 \in \Z^3_* \setminus S} \sum_{s_1 \in L_{\ell_1}} |K(\ell_1)_{r,s_1}|^2 \right)
+    		\sum\limits_{\ell_1 \in \Z^3_* \setminus S} \sum_{s_1 \in L_{\ell_1}} 
+    		\norm{ a_{r-\ell_1} a_{-s_1+\ell_1} a_{-s_1}  a_q (\NN+1)^{\frac 12-\alpha} \psi}^2 \right)^{\frac 12} \times \nonumber\\
+    	&\quad \times \left( \sum_{\ell \in \Z^3_* \setminus S} \norm{K^m(\ell)}_{\max,2}^2 \right)^{\frac 12}
+    		\norm{ (\NN+5)^{\alpha}\psi }  \nonumber\\
+    	&\leq \left( \sum_{\ell_1 \in \Z^3_* \setminus S} \norm{K(\ell_1)}_{\max,2}^2 \right)^{\frac 12}
+    		\left(
+    		\sum_{s_1 \in \Z^3_*} \sum\limits_{\ell_1 \in \Z^3_* \setminus S} \sum_{r \in \Z^3_*}
+    		\norm{ a_{r-\ell_1} a_{-s_1+\ell_1} a_{-s_1}  a_q (\NN+1)^{\frac 12-\alpha} \psi}^2 \right)^{\frac 12} \times \nonumber\\
+    	&\quad \times \left( \sum_{\ell \in \Z^3_* \setminus S} \norm{K^m(\ell)}_{\max,2}^2 \right)^{\frac 12}
+    		\norm{ (\NN+5)^{\alpha}\psi }  \nonumber\\
+    	&\leq \left( \sum_{\ell_1 \in \Z^3_* \setminus S} \norm{K(\ell_1)}_{\max,2}^2 \right)^{\frac 12}
+    		\left( \sum_{\ell \in \Z^3_* \setminus S} \norm{K^m(\ell)}_{\max,2}^2 \right)^{\frac 12}
+    		\norm{ a_q (\NN+1)^{2-\alpha} \psi}
+    		\norm{ (\NN+5)^{\alpha}\psi }  \nonumber\\
+    &\leq \left( \sum_{\ell_1 \in \Z^3_* \setminus S} \norm{K(\ell_1)}_{\max,2}^2 \right)^{\frac 12}
+    		\left( \sum_{\ell \in \Z^3_* \setminus S} \norm{K^m(\ell)}_{\max,2}^2 \right)^{\frac 12}
+    		\Xi^{\frac 12}
+    		\norm{ (\NN+5)^2 \psi }  \;,
 \end{align}
+where we now optimized with $ \alpha = 2 $.
+
+
+...
 wherein we used $\NN<(\NN+2)<(\NN+5)$ and $\NN^\half(\NN+5)\leq C(\NN+1)^{\frac{3}{2}}$. Then for $\alpha = 1$, we have
 \begin{align}
     &\leq C\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K(\ell)}_{\mathrm{max}}\norm{K(\ell_1)}_{\mathrm{max}}  \norm{b_{q}(\ell) \psi} \norm { (\NN+1)^{\frac{3}{2}} \psi }\nonumber\\
