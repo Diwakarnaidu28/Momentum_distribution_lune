@@ -947,7 +947,7 @@ We bound the head term next, and to begin we start by establishing certain neces
 \end{proof}
 
 Next, we compile some bounds on the correlation structure $ K(\ell) $.
-\begin{lemma}[Bounds on $ K $]
+\begin{lemma}[Bounds on $ K $] \label{lem:K_bounds}
 	Let $ \ell \in \Z^3_* $, $ m \in \mathbb{N} $ and $ r,s \in L_\ell $. We then have the pointwise estimate
 	\begin{equation} \label{eq:K_element_bounds}
 		|(K(\ell)^m)_{r,s}|
@@ -1329,23 +1329,40 @@ First, we consider the term $ \I $ and split the sum $ \sum_{\ell, \ell_1} $ acc
 	&\sum_{\ell, \ell_1 \in S} \I_{\ell,\ell_1} \\
     &\leq \sum\limits_{\ell,\ell_1 \in S}\!\! \mathds{1}_{L_\ell}(q)
     		\sum\limits_{r \in L_\ell \cap L_{\ell_1}}
-    		\abs{\eva{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} K^{m}_{r,q}(\ell) b_{q}(\ell) (\NN+1)^{\alpha} (\NN+1)^{-\alpha} \psi, 
+    		\abs{\eva{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} K^m_{r,q}(\ell) b_{q}(\ell) (\NN+1)^{\alpha} (\NN+1)^{-\alpha} \psi, 
     		 a_{r-\ell} \psi }}\nonumber\\
     &\leq \sum\limits_{\ell,\ell_1 \in S} \!\!\mathds{1}_{L_\ell}(q)
     		\sum\limits_{r \in L_\ell \cap L_{\ell_1}}
-    		\norm{\sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} K^{m}_{r,q}(\ell) b_{q}(\ell) (\NN+1)^{-\alpha}\psi}
+    		\norm{\sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} K^m_{r,q}(\ell) b_{q}(\ell) (\NN+1)^{-\alpha}\psi}
     		\norm{  a_{r-\ell} (\NN+5)^{\alpha}\psi } \nonumber\\
-    &\leq \sum\limits_{\ell,\ell_1 \in S} \!\mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell\cap L_{\ell_1}} 
-		\norm{K(\ell_1)}_{\mathrm{max,2}}
-    		\norm{a_{r-\ell_1} \big(K^{m}_{r,q}(\ell)b_{q}(\ell)\big) \left(\NN+1\right)^\half (\NN+1)^{-\alpha} \psi}
-    		\norm { a_{r-\ell} (\NN+5)^{\alpha} \psi }\nonumber\\
     &\leq \sum\limits_{\ell,\ell_1 \in S} \!\mathds{1}_{L_\ell}(q)
-    		\norm{K(\ell_1)}_{\mathrm{max,2}} \norm{K^m(\ell)}_{\max}
-    		\sum\limits_{r \in L_\ell\cap L_{\ell_1}} \norm{ a_{r-\ell_1} \big(K^{m}_{r,q}(\ell)b_{q}(\ell)\big) \left(\NN+1\right)^\half (\NN+1)^{-\alpha} \psi} \norm { a_{r-\ell} (\NN+5)^{\alpha} \psi }\nonumber\\
-    &\leq \sum\limits_{\ell,\ell_1 \in S} \mathds{1}_{L_\ell}(q) \norm{K^{m}(\ell)}_{\mathrm{max,2}}\norm{K(\ell_1)}_{\mathrm{max}} \sum\limits_{r \in L_\ell \cap L_{\ell_1}} \norm{ a_{r-\ell_1} b_{q}(\ell) \left(\NN+1\right)^\half (\NN+1)^{-\alpha} \psi} \norm { a_{r-\ell} (\NN+5)^{\alpha} \psi }\nonumber\\
-    &\leq \sum\limits_{\ell,\ell_1 \in S} \mathds{1}_{L_\ell}(q) \norm{K^{m}(\ell)}_{\mathrm{max,2}}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg(\sum\limits_{r \in L_{\ell_1}} \norm{ a_{r-\ell_1}b_{q}(\ell) \left(\NN+1\right)^\half (\NN+1)^{-\alpha} \psi}^2\Bigg)^\half\!\!\Bigg( \sum\limits_{r \in L_\ell} \norm { a_{r-\ell} (\NN+5)^{\alpha} \psi }^2\Bigg)^\half\nonumber\\
-    &\leq \sum\limits_{\ell,\ell_1 \in S} \mathds{1}_{L_\ell}(q) \norm{K^{m}(\ell)}_{\mathrm{max,2}}\norm{K(\ell_1)}_{\mathrm{max}}  \norm{ b_{q}(\ell) (\NN+1) (\NN+1)^{-\alpha} \psi} \!\! \norm { \NN^\half (\NN+5)^{\alpha} \psi } \nonumber
+    		\norm{K(\ell_1)}_{\mathrm{max,2}}
+    		\sum\limits_{r \in L_\ell\cap L_{\ell_1}} 
+    		\norm{a_{r-\ell_1} K^m_{r,q}(\ell)b_{q}(\ell) (\NN+1)^{\frac 12 -\alpha} \psi}
+    		\norm { a_{r-\ell} (\NN+5)^{\alpha} \psi }\nonumber\\
+	&\leq \sum\limits_{\ell,\ell_1 \in S} \!\mathds{1}_{L_\ell}(q)
+    		\norm{K(\ell_1)}_{\mathrm{max,2}}
+    		\norm{K^m(\ell)}_{\max}
+    		\left( \sum\limits_{r \in L_\ell\cap L_{\ell_1}} 
+    		\norm{a_{r-\ell_1} b_{q}(\ell) (\NN+1)^{\frac 12 -\alpha} \psi}^2 \right)^{\frac 12}
+    		\left( \sum\limits_{r \in L_\ell\cap L_{\ell_1}} \norm { a_{r-\ell} (\NN+5)^{\alpha} \psi}^2 \right)^{\frac 12} \nonumber\\
+    &\leq \sum\limits_{\ell,\ell_1 \in S} \!\mathds{1}_{L_\ell}(q)
+    		\norm{K(\ell_1)}_{\mathrm{max,2}}
+    		\norm{K^m(\ell)}_{\max}
+    		\norm{ b_{q}(\ell) (\NN+1)^{1-\alpha} \psi}
+    		\norm {(\NN+5)^{\frac 12 + \alpha} \psi }\nonumber\\
+    &\leq \sum\limits_{\ell,\ell_1 \in S} \!\mathds{1}_{L_\ell}(q)
+    		\norm{K(\ell_1)}_{\mathrm{max,2}}
+    		\norm{K^m(\ell)}_{\max}
+    		\Xi^{\frac 12}
+    		\norm {(\NN+5)^{\frac 32} \psi} \;,
 \end{align}
+where we fixed $ \alpha = 1 $ in the last step. Employing Lemma~\ref{lem:K_bounds} and $ \hat{V}(\ell) \le C $, we conclude
+\begin{equation}
+	\sum_{\ell, \ell_1 \in S} \I_{\ell,\ell_1}
+	\le C k_{\F}^{-1} \Xi^{\frac 12} \left( k_{\F}^{-\frac 14} \sum_{\ell \in S} \hat{V}(\ell) \right)^2 \norm {(\NN+5)^{\frac 32} \psi} \;.
+\end{equation}
+Next, we treat the case where $ \ell, \ell_1 \notin S $.
 ...
 \begin{align}
 	&\eqref{eq:EQ1111}\nonumber\\
