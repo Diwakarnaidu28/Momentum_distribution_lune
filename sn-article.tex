@@ -107,6 +107,9 @@
 \newcommand{\delltwo}[2]{\frac{\partial^2 #1}{\partial #2 ^2}}  
 \newcommand{\com}[1]{\left[ #1 \right]}
 \newcommand{\F}{\mathrm{F}}
+\newcommand{\I}{\mathrm{I}}
+\newcommand{\II}{\mathrm{II}}
+\newcommand{\III}{\mathrm{III}}
 \newcommand{\di}{\mathrm{d}}
 \newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -942,66 +945,68 @@ We bound the head term next, and to begin we start by establishing certain neces
     We proceed next with proving \eqref{eq:gengronest}
     \textcolor{red}{write the proof for the general Gr\"onwall estimate}
 \end{proof}
-\begin{lemma}[HS Norm bound on the K]
- For $\ell \in \Z^3_*$, we have 
-    \begin{equation}
-    \norm{K(\ell)}_{\mathrm{HS}}\leq C\hat{V}(\ell)\min\{1,k^2_F\abs{\ell}^{-2}\}   
-    \end{equation}
-\end{lemma}
-\begin{proof}
-    \textcolor{red}{to be filled}
-\end{proof}
 
 Next, we compile some bounds on the correlation structure $ K(\ell) $.
 \begin{lemma}[Bounds on $ K $]
 	Let $ \ell \in \Z^3_* $, $ m \in \mathbb{N} $ and $ r,s \in L_\ell $. We then have the pointwise estimate
 	\begin{equation} \label{eq:K_element_bounds}
 		|(K(\ell)^m)_{r,s}|
-		\le \frac{(C \hat{V}(\ell))^m k_{\mathrm{F}}^{-1}}{\lambda_{\ell,r} + \lambda_{\ell,s}} \;.
+		\le \frac{(C \hat{V}(\ell))^m k_{\F}^{-1}}{\lambda_{\ell,r} + \lambda_{\ell,s}} \;.
 	\end{equation}
 \textcolor{red}{[SL: Make sure that $ \lambda_{\ell,r} $ has been defined]} Further, we have the bounds
 \begin{equation} \label{eq:K_max_bounds}
+\begin{aligned}
 	\Vert K(\ell)^m \Vert_{\mathrm{max}}
-	\le (C \hat{V}(\ell))^m k_{\mathrm{F}}^{-1} \;, \qquad
+	&\le (C \hat{V}(\ell))^m k_{\F}^{-1} \;, \\
 	\Vert K(\ell)^m \Vert_{\mathrm{max},2}
-	\le (C \hat{V}(\ell))^m |k|^{\frac{11}{6}} k_{\mathrm{F}}^{-\frac 23} \log(k_{\mathrm{F}})^{\frac 13} \;.
+	&\le (C \hat{V}(\ell))^m k_{\F}^{-\frac 12} \;, \\
+	\norm{K(\ell)^m}_{\mathrm{HS}}
+	&\le (C \hat{V}(\ell))^m \min\{1,k^2_F\abs{\ell}^{-2}\} \;.
+\end{aligned}   
 \end{equation}
 \end{lemma}
 \begin{proof}
 From \textcolor{red}{[CHN22, Prop.~7.10]} we readily retrieve \eqref{eq:K_element_bounds} for $ m = 1 $:
 \begin{equation}
 	|K(\ell)_{r,s}|
-	\le C \frac{\hat{V}(\ell) k_{\mathrm{F}}^{-1}}{\lambda_{\ell,r} + \lambda_{\ell,s}} \;.
+	\le C \frac{\hat{V}(\ell) k_{\F}^{-1}}{\lambda_{\ell,r} + \lambda_{\ell,s}} \;.
 \end{equation}
-For $ m \ge 2 $, we proceed by induction: Suppose, \eqref{eq:K_element_bounds} was shown to hold until $ m-1 $. Then, using $ \lambda_{\ell,r} > 0 $ and \textcolor{red}{[CHN22, Prop.~A.2]} $ \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \le C k_{\mathrm{F}} $, we get
+For $ m \ge 2 $, we proceed by induction: Suppose, \eqref{eq:K_element_bounds} was shown to hold until $ m-1 $. Then, using $ \lambda_{\ell,r} > 0 $ and \textcolor{red}{[CHN22, Prop.~A.2]} $ \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \le C k_{\F} $, we get
 \begin{equation}
 	\begin{aligned}
 		|(K(\ell)^m)_{r,s}|
 		&\le \sum_{r' \in L_\ell}
 		|(K(\ell)^{m-1})_{r,r'}| \;
 		|K(\ell)_{r',s}|
-		\le (C \hat{V}(\ell))^m k_{\mathrm{F}}^{-2} \sum_{r' \in L_\ell}
+		\le (C \hat{V}(\ell))^m k_{\F}^{-2} \sum_{r' \in L_\ell}
 		\frac{1}{\lambda_{\ell, r} + \lambda_{\ell, r'}}
 		\frac{1}{\lambda_{\ell, r'} + \lambda_{\ell, s}} \\
-		&\le (C \hat{V}(\ell))^m k_{\mathrm{F}}^{-2} \sum_{r' \in L_\ell}
+		&\le (C \hat{V}(\ell))^m k_{\F}^{-2} \sum_{r' \in L_\ell}
 		\frac{1}{\lambda_{\ell, r'} (\lambda_{\ell, r} + \lambda_{\ell, s})}
-		\le (C \hat{V}(\ell))^m k_{\mathrm{F}}^{-1}
+		\le (C \hat{V}(\ell))^m k_{\F}^{-1}
 		\frac{1}{\lambda_{\ell, r} + \lambda_{\ell, s}} \;.
 	\end{aligned}
 \end{equation}
-The first bound in \eqref{eq:K_max_bounds} then follows immediately noting that $ \lambda_{\ell,r} \ge \frac 12 $ uniformly in $ \ell, r $. For the second bound in \eqref{eq:K_max_bounds}, we proceed as in \textcolor{red}{[CHN22, Prop.~7.2]}: Using that \textcolor{red}{[CHN22, Prop.~A.3]} for all $ \beta < -\frac 43 $,
-\begin{equation}
-	\sum_{r \in L_\ell} \lambda_{\ell,r}^{-\beta}
-	\le C |k|^{\frac{11}{3}} k_{\mathrm{F}}^{\frac 23} \log(k_{\mathrm{F}})^{\frac 23} \;,
-\end{equation}
-we get with $ \beta = 2 $:
-\begin{equation}
+The first bound in \eqref{eq:K_max_bounds} then follows immediately noting that $ \lambda_{\ell,r} \ge \frac 12 $ uniformly in $ \ell, r $. For the second and the third bound,
+\begin{equation} \label{eq:max2_HS_bound}
+\begin{aligned}
 	\Vert K(\ell)^m \Vert_{\mathrm{max},2}^2
-	= \sup_{q \in \Z^3} \sum_{r \in L_\ell} |(K(\ell)^m)_{r,q}|^2
-	\le \sup_{q \in \Z^3} \sum_{r \in L_\ell} (C \hat{V}(\ell))^{2m} k_{\mathrm{F}}^{-2} \lambda_{\ell,r}^{-2}
-	\le (C \hat{V}(\ell))^{2m} |k|^{\frac{11}{3}} k_{\mathrm{F}}^{-\frac 43} \log(k_{\mathrm{F}})^{\frac 23} \;.
+	&\le \sup_{q \in \Z^3} \sum_{r \in L_\ell} (C \hat{V}(\ell))^{2m} k_{\F}^{-2} (\lambda_{\ell,r} + \lambda_{\ell,q})^{-2}
+	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1}
+	\le (C \hat{V}(\ell))^{2m} k_{\F} \;, \\
+	\norm{K(\ell)^m}_{\mathrm{HS}}^2
+	&\le \sum_{r,s \in L_\ell} (C \hat{V}(\ell))^{2m} k_{\F}^{-2} (\lambda_{\ell,r} + \lambda_{\ell,s})^{-2}
+	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} \Big( \sum_{r \in L_\ell}  \lambda_{\ell,r}^{-1} \Big)^2
+	\le (C \hat{V}(\ell))^{2m} \;.
+\end{aligned}
 \end{equation}
-Taking the square root implies the second bound in \eqref{eq:K_max_bounds}.\\
+Further, if $ |\ell| \ge 3 k_{\F} $, then we even have $ \lambda_{\ell,r} \le C |\ell|^2 $ uniformly in $ r \in L_\ell $, while the lune has volume $ |L_\ell| \le C k_{\F}^3 $, so
+\begin{equation}
+	\norm{K(\ell)^m}_{\mathrm{HS}}^2
+	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} |L_\ell|^2 |\ell|^{-4}
+	\le (C \hat{V}(\ell))^{2m} k_{\F}^4 |\ell|^{-4} \;.
+\end{equation}
+If $ |\ell| < 3 k_{\F} $, then $ k_{\F} |\ell|^{-1} \ge C $, so by \eqref{eq:max2_HS_bound}, this bound is equally true.
 \end{proof}
 
 \begin{lemma}[Bound on nested anti-commutator]\label{lem:multicommest}
@@ -1303,23 +1308,45 @@ Next we bound these decomposed error terms and in order to do so we have the fol
 
  \subsection{$E_{Q_1}$ Estimates}
 \begin{lemma}[$E_{Q_1}^{1,1}$]
-For any $\psi \in \HH_N$ and $q \in \Z^3_*$, we have
+Let $q \in \Z^3_*$ and $\psi \in \HH_N$. Then, for any $ S \subset \Z^3_* $, we have the estimate
 \begin{align}
      \abs{\eva{\psi,\left(E^{\,1,1}_{Q_1}+\mathrm{h.c.}\right) \psi }}\nonumber
      &\leq  C\, \Xi^{\half} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} + \sum\limits_{j=0}^m \sum\limits_{\ell \in \Z^3_*}\norm{K^{m-j}(\ell)}_{\mathrm{max}}\norm{K^{j}(\ell)}_{\mathrm{max}}\Bigg)\times\\&\quad\times \Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg)  \norm { (\NN+1)^{\frac{3}{2}} \psi } \label{eq:estEQ111}
 \end{align}
 \end{lemma}
-\begin{proof}We start with the L.H.S. of \eqref{eq:estEQ111}.
+\begin{proof} Recall the definition \eqref{eq:???} of $ E^{\,1,1}_{Q_1} $, where by \eqref{eq:decomptheta}, the multi-commutator $ \Theta^m_K(P^q) $ has three contributions. Thus,
 \begin{align}
 	&\abs{\eva{\psi,\left(E^{\,1,1}_{Q_1}+\mathrm{h.c.}\right) \psi }} = \abs{\eva{\psi,2\mathrm{Re}\left(E^{\,1,1}_{Q_1}\right) \psi }} = 2\abs{\eva{\psi, E^{\,1,1}_{Q_1} \psi }}\nonumber\\
-	=\,\:4&\abs{\eva{\psi, \sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\  s \in L_{\ell}, s_1\in L_{\ell_1}}} \Theta^m_{K}(P^q)(\ell)_{r,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r-\ell} \psi }} \nonumber\\
-	\leq\,\;4& \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\s_1\in L_{\ell_1}}} \abs{\eva{\psi, K^m(\ell )_{r,q} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{q}(\ell) b^*_{-s_1}(-\ell_1) a_{r-\ell} \psi }}\label{eq:EQ1111}\\
-	+\,4& \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}  \abs{\eva{\psi,  K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r-\ell} \psi }}\label{eq:EQ1112}\\
-	+\,4&\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \abs{\eva{\psi, K^m(\ell)_{q,s}K(\ell_1)_{q,s_1}
-	a^*_{q-\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1)a_{q-\ell} \psi }}\label{eq:EQ1113}
+	&=\abs{\eva{\psi, \sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\  s \in L_{\ell}, s_1\in L_{\ell_1}}} \Theta^m_{K}(P^q)(\ell)_{r,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r-\ell} \psi }} \nonumber\\
+	&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\s_1\in L_{\ell_1}}} \abs{\eva{\psi, K^m(\ell )_{r,q} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{q}(\ell) b^*_{-s_1}(-\ell_1) a_{r-\ell} \psi }}\\
+	&\quad + \sum\limits_{\ell, \ell_1\in \Z^3_*} \sum\limits_{j=1}^{m-1} {{m}\choose j} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}  \abs{\eva{\psi,  K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r-\ell} \psi }} \\
+	&\quad +\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \abs{\eva{\psi, K^m(\ell)_{q,s}K(\ell_1)_{q,s_1}
+	a^*_{q-\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1)a_{q-\ell} \psi }}\\
+	&=: \sum_{\ell, \ell_1 \in \Z^3_*} (\I_{\ell,\ell_1} + \II_{\ell,\ell_1} + \III_{\ell,\ell_1})
 \end{align}
-where the last inequality is implied by Remark \ref{q-q} and we used \eqref{eq:decomptheta}.
-For \eqref{eq:EQ1111}-\eqref{eq:EQ1113}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then we use the Cauchy-Schwarz inequality, Lemma \ref{lem:commNab} and the bounds from Lemma \ref{lem:pairest}. We estimate \eqref{eq:EQ1111} as 
+First, we consider the term $ \I $ and split the sum $ \sum_{\ell, \ell_1} $ according to whether $ \ell, \ell_1 $ are in $ S $ or not. In any case, we then successively bound annihilation operators against $ \mathcal{N} = \sum_{p \in \Z^3} a_p^* a_p $, also using Lemma \ref{lem:pairest}. To balance the powers of $ \NN $, we use $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$ to be fixed later. Further, we use the pull-through formula (Lemma \ref{lem:commNab}) and the Cauchy--Schwarz inequality. First,
+\begin{align}
+	&\sum_{\ell, \ell_1 \in S} \I_{\ell,\ell_1} \\
+    &\leq \sum\limits_{\ell,\ell_1 \in S}\!\! \mathds{1}_{L_\ell}(q)
+    		\sum\limits_{r \in L_\ell \cap L_{\ell_1}}
+    		\abs{\eva{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} K^{m}_{r,q}(\ell) b_{q}(\ell) (\NN+1)^{\alpha} (\NN+1)^{-\alpha} \psi, 
+    		 a_{r-\ell} \psi }}\nonumber\\
+    &\leq \sum\limits_{\ell,\ell_1 \in S} \!\!\mathds{1}_{L_\ell}(q)
+    		\sum\limits_{r \in L_\ell \cap L_{\ell_1}}
+    		\norm{\sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} K^{m}_{r,q}(\ell) b_{q}(\ell) (\NN+1)^{-\alpha}\psi}
+    		\norm{  a_{r-\ell} (\NN+5)^{\alpha}\psi } \nonumber\\
+    &\leq \sum\limits_{\ell,\ell_1 \in S} \!\mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell\cap L_{\ell_1}} 
+		\norm{K(\ell_1)}_{\mathrm{max,2}}
+    		\norm{a_{r-\ell_1} \big(K^{m}_{r,q}(\ell)b_{q}(\ell)\big) \left(\NN+1\right)^\half (\NN+1)^{-\alpha} \psi}
+    		\norm { a_{r-\ell} (\NN+5)^{\alpha} \psi }\nonumber\\
+    &\leq \sum\limits_{\ell,\ell_1 \in S} \!\mathds{1}_{L_\ell}(q)
+    		\norm{K(\ell_1)}_{\mathrm{max,2}} \norm{K^m(\ell)}_{\max}
+    		\sum\limits_{r \in L_\ell\cap L_{\ell_1}} \norm{ a_{r-\ell_1} \big(K^{m}_{r,q}(\ell)b_{q}(\ell)\big) \left(\NN+1\right)^\half (\NN+1)^{-\alpha} \psi} \norm { a_{r-\ell} (\NN+5)^{\alpha} \psi }\nonumber\\
+    &\leq \sum\limits_{\ell,\ell_1 \in S} \mathds{1}_{L_\ell}(q) \norm{K^{m}(\ell)}_{\mathrm{max,2}}\norm{K(\ell_1)}_{\mathrm{max}} \sum\limits_{r \in L_\ell \cap L_{\ell_1}} \norm{ a_{r-\ell_1} b_{q}(\ell) \left(\NN+1\right)^\half (\NN+1)^{-\alpha} \psi} \norm { a_{r-\ell} (\NN+5)^{\alpha} \psi }\nonumber\\
+    &\leq \sum\limits_{\ell,\ell_1 \in S} \mathds{1}_{L_\ell}(q) \norm{K^{m}(\ell)}_{\mathrm{max,2}}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg(\sum\limits_{r \in L_{\ell_1}} \norm{ a_{r-\ell_1}b_{q}(\ell) \left(\NN+1\right)^\half (\NN+1)^{-\alpha} \psi}^2\Bigg)^\half\!\!\Bigg( \sum\limits_{r \in L_\ell} \norm { a_{r-\ell} (\NN+5)^{\alpha} \psi }^2\Bigg)^\half\nonumber\\
+    &\leq \sum\limits_{\ell,\ell_1 \in S} \mathds{1}_{L_\ell}(q) \norm{K^{m}(\ell)}_{\mathrm{max,2}}\norm{K(\ell_1)}_{\mathrm{max}}  \norm{ b_{q}(\ell) (\NN+1) (\NN+1)^{-\alpha} \psi} \!\! \norm { \NN^\half (\NN+5)^{\alpha} \psi } \nonumber
+\end{align}
+...
 \begin{align}
 	&\eqref{eq:EQ1111}\nonumber\\
     &= \sum\limits_{\ell,\ell_1 \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell \cap L_{\ell_1}} \abs{\eva{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) K^{m}_{r,q}(\ell) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{\alpha} (\NN+1)^{-\alpha} \psi,  a_{r-\ell} \psi }}\nonumber\\
