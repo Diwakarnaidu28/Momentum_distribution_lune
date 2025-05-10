@@ -1426,7 +1426,29 @@ Next, let us bound the term with $ \ell \in S $ and $ \ell_1 \notin S $:
     		\left( \sum_{\ell \in \Z^3_* \setminus S} \hat{V}(\ell)^2 \right)^{\frac 12}
     		\norm{(\NN+5)^4 \psi} \;,
 \end{align}
-where we used $ \alpha = \frac 32 $ and directly applied Lemma~\ref{lem:K_bounds} in the last line.
+where we used $ \alpha = \frac 32 $ and directly applied Lemma~\ref{lem:K_bounds} in the last line. Finally,
+\begin{align}
+	&\abs{\sum_{\ell_1 \in S} \sum_{\ell \in \Z^3_* \setminus S} \I_{\ell,\ell_1}} \nonumber\\
+	&\leq \sum_{\ell_1 \in S} \left( \sum_{r \in \Z^3_*}
+    		\norm{\sum_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} a_q (\NN+1)^{\frac 12-\alpha} \psi}^2 \right)^{\frac 12} \times \nonumber\\
+    	&\quad \times \left( \sum_{\ell \in \Z^3_* \setminus S} \norm{K^m(\ell)}_{\max,2}^2
+    		\norm{ (\NN+5)^{\alpha}\psi }^2 \right)^{\frac 12} \nonumber\\
+    	&\leq \sum_{\ell_1 \in S} \norm{K(\ell_1)}_{\max,2} \left( \sum_{r \in \Z^3_*}
+    		\norm{ a_{r-\ell_1} a_q (\NN+1)^{1-\alpha} \psi}^2 \right)^{\frac 12} 
+    		\left( \sum_{\ell \in \Z^3_* \setminus S} \norm{K^m(\ell)}_{\max,2}^2 \right)^{\frac 12}
+    		\norm{ (\NN+5)^{\alpha}\psi } \nonumber\\
+    	&\leq \sum_{\ell_1 \in S} \norm{K(\ell_1)}_{\max,2}
+    		\left( \sum_{\ell \in \Z^3_* \setminus S} \norm{K^m(\ell)}_{\max,2}^2 \right)^{\frac 12}
+    		\norm{ a_q (\NN+1)^{\frac 32-\alpha} \psi}
+    		\norm{ (\NN+5)^{\alpha}\psi } \nonumber\\
+    		&\leq C k_{\F}^{-1} \Xi^{\frac 12}
+    		\left( \sum_{\ell \in S} \hat{V}(\ell) \right)
+    		\left( \sum_{\ell \in \Z^3_* \setminus S} \hat{V}(\ell)^2 \right)^{\frac 12}
+    		\norm{(\NN+5)^{\frac 32} \psi} \;.
+\end{align}
+
+
+
 ...
 wherein we used $\NN<(\NN+2)<(\NN+5)$ and $\NN^\half(\NN+5)\leq C(\NN+1)^{\frac{3}{2}}$. Then for $\alpha = 1$, we have
 \begin{align}
