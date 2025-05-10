@@ -1322,7 +1322,9 @@ Let $q \in \Z^3_*$ and $\psi \in \HH_N$. Then, for any $ S \subset \Z^3_* $, we 
 	&\quad + \abs{\sum\limits_{\ell, \ell_1\in \Z^3_*} \sum\limits_{j=1}^{m-1} {{m}\choose j} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}  \eva{\psi,  K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r-\ell} \psi }} \\
 	&\quad + \abs{\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \eva{\psi, K^m(\ell)_{q,s}K(\ell_1)_{q,s_1}
 	a^*_{q-\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1)a_{q-\ell} \psi }}\\
-	&=: \abs{\sum_{\ell, \ell_1 \in \Z^3_*} (\I_{\ell,\ell_1} + \II_{\ell,\ell_1} + \III_{\ell,\ell_1})} \;.
+	&=: \abs{\sum_{\ell, \ell_1 \in \Z^3_*} \I_{\ell,\ell_1}}
+		+ \abs{\sum_{\ell, \ell_1 \in \Z^3_*} \II_{\ell,\ell_1}}
+		+ \abs{\sum_{\ell, \ell_1 \in \Z^3_*} \III_{\ell,\ell_1}} \;.
 \end{align}
 First, we consider the term $ \I $ and split the sum $ \sum_{\ell, \ell_1} $ according to whether $ \ell, \ell_1 $ are in $ S $ or not. In any case, we then successively bound annihilation operators against $ \mathcal{N} = \sum_{p \in \Z^3} a_p^* a_p $, also using Lemma \ref{lem:pairest}. To balance the powers of $ \NN $, we use $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$ to be fixed later. Further, we use the pull-through formula (Lemma \ref{lem:commNab}) and the Cauchy--Schwarz inequality. First,
 \begin{align}
@@ -1360,7 +1362,9 @@ First, we consider the term $ \I $ and split the sum $ \sum_{\ell, \ell_1} $ acc
 where we fixed $ \alpha = 1 $ in the last step. Employing Lemma~\ref{lem:K_bounds} and $ \hat{V}(\ell) \le C $, we conclude
 \begin{equation}
 	\abs{\sum_{\ell, \ell_1 \in S} \I_{\ell,\ell_1}}
-	\le C k_{\F}^{-1} \Xi^{\frac 12} \left( k_{\F}^{-\frac 14} \sum_{\ell \in S} \hat{V}(\ell) \right)^2 \norm {(\NN+5)^{\frac 32} \psi} \;.
+	\le C k_{\F}^{-1} \Xi^{\frac 12}
+		\left( k_{\F}^{-\frac 14} \sum_{\ell \in S} \hat{V}(\ell) \right)^2
+		\norm{(\NN+5)^{\frac 32} \psi} \;.
 \end{equation}
 Next, we treat the case where $ \ell, \ell_1 \notin S $. Here, we convert $ \sum_{\ell, \ell'} $ instead of $ \sum_r $ into $ \NN $.
 \begin{align}
@@ -1399,11 +1403,30 @@ Next, we treat the case where $ \ell, \ell_1 \notin S $. Here, we convert $ \sum
 where we now optimized with $ \alpha = 2 $. With Lemma~\ref{lem:K_bounds}, we conclude now
 \begin{equation}
 	\abs{\sum_{\ell, \ell_1 \in \Z^3_* \setminus S} \I_{\ell,\ell_1}}
-	\le C k_{\F}^{-1} \Xi^{\frac 12} \sum_{\ell \in \Z^3_* \setminus S} \hat{V}(\ell)^2  \norm {(\NN+5)^4 \psi} \;.
+	\le C k_{\F}^{-1} \Xi^{\frac 12}
+		\sum_{\ell \in \Z^3_* \setminus S} \hat{V}(\ell)^2
+		 \norm{(\NN+5)^4 \psi} \;.
 \end{equation}
-
-
-
+Next, let us bound the term with $ \ell \in S $ and $ \ell_1 \notin S $:
+\begin{align}
+	&\abs{\sum_{\ell \in S} \sum_{\ell_1 \in \Z^3_* \setminus S} \I_{\ell,\ell_1}} \nonumber\\
+	&\leq \sum_{\ell \in \Z^3_* \setminus S} \abs{ \sum\limits_{r \in L_\ell} \eva{ b_{q}(\ell)
+    		\sum\limits_{\ell_1 \in \Z^3_* \setminus S}  \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} \psi, 
+    		 K^m_{r,q}(\ell) a_{r-\ell} \psi }}\nonumber\\
+    	&\leq \sum_{\ell \in \Z^3_* \setminus S} \left( \sum_{r \in \Z^3_*}
+    		\norm{\sum\limits_{\ell_1 \in \Z^3_* \setminus S} \sum_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} a_q (\NN+1)^{-\alpha} \psi}^2 \right)^{\frac 12} \times \nonumber\\
+    	&\quad \times \left( \norm{K^m(\ell)}_{\max}^2
+    		\sum_{r \in L_\ell} \norm{ a_{r-\ell} (\NN+5)^{\alpha}\psi }^2 \right)^{\frac 12} \nonumber\\
+    	&\leq \sum_{\ell \in \Z^3_* \setminus S} \norm{K^m(\ell)}_{\max}
+    	\left( \sum_{\ell_1 \in \Z^3_* \setminus S} \norm{K(\ell_1)}_{\max,2}^2 \right)^{\frac 12}
+    		\norm{ a_q (\NN+1)^{\frac 32-\alpha} \psi}
+    		\norm{ (\NN+5)^{\frac 12+\alpha}\psi }  \nonumber\\
+    	&\leq C k_{\F}^{-1} \Xi^{\frac 12}
+    		\left( k_{\F}^{-\frac 14} \sum_{\ell \in S} \hat{V}(\ell) \right)
+    		\left( \sum_{\ell \in \Z^3_* \setminus S} \hat{V}(\ell)^2 \right)^{\frac 12}
+    		\norm{(\NN+5)^4 \psi} \;,
+\end{align}
+where we used $ \alpha = \frac 32 $ and directly applied Lemma~\ref{lem:K_bounds} in the last line.
 ...
 wherein we used $\NN<(\NN+2)<(\NN+5)$ and $\NN^\half(\NN+5)\leq C(\NN+1)^{\frac{3}{2}}$. Then for $\alpha = 1$, we have
 \begin{align}
