@@ -1538,16 +1538,46 @@ The bound for $ \ell \in S $ is similar.
     		\norm{(\NN+5)^2 \psi} \;,
 \end{align}
 where we used $ \alpha = \frac 32 $ and directly applied Lemma~\ref{lem:K_bounds} in the last line.\\
+For the $ \II $-term, there is no need to split for $ \ell \in S $ or $ \ell \notin S $, but we directly estimate
+\begin{align}
+	&\abs{\sum\limits_{\ell, \ell_1 \in \Z^3_*} \sum\limits_{\substack{r\in L_{\ell} \cap (L_{\ell_1}+\ell-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1}}}  \eva{\psi, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r-\ell+\ell_1,s_1} a^*_{r-\ell+\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_r \psi}} \nonumber\\
+	&\leq \sum_{\ell \in \Z^3_*} \left( \sum_{r \in L_\ell} 
+		\norm{ \sum_{\ell_1 \in \Z^3_*} \sum_{s \in L_{\ell},s_1\in L_{\ell_1}} \mathds{1}_{L_{\ell_1}+\ell-\ell_1}(r) K^{j}(\ell)_{q,s} K(\ell_1)_{r-\ell+\ell_1',s_1} b_{-s_1}(-\ell_1) b_{s}(\ell) a_{r-\ell+\ell_1} \psi }^2 \right)^{\frac 12} \times \nonumber\\
+	&\quad \times \left( \sum_{r \in L_\ell} \abs{K^{m-j}(\ell)_{r,q}}^2 \norm{a_r \psi}^2 \right)^{\frac 12} \nonumber\\
+	&\leq \sum_{\ell \in \Z^3_*} \left( \sum_{r \in L_\ell} 
+		\sum_{\ell_1' \in \Z^3_*} \sum_{s' \in L_{\ell},s_1'\in L_{\ell_1'}} |K^j(\ell)_{q,s'}|^2 |K(\ell_1')_{r,s_1'}|^2
+		\sum_{\ell_1 \in \Z^3_*} \sum_{s \in L_{\ell},s_1\in L_{\ell_1}} \norm{ b_{-s_1}(-\ell_1) b_{s}(\ell) a_{r-\ell+\ell_1} \psi }^2 \right)^{\frac 12} \times \nonumber\\
+	&\quad \times \norm{K^{m-j}(\ell)_{r,q}}_{\max,2} \Xi^{\frac 12} \nonumber\\
+	&\leq \sum_{\ell \in \Z^3_*} \norm{K^j(\ell)}_{\max,2}
+		\left( \sum_{\ell_1' \in \Z^3_*}	\norm{K(\ell_1')}_{\max,2}^2 \right)^{\frac 12}
+		\left( \sum_{\ell_1 \in \Z^3_*} \sum_{s \in L_{\ell},s_1\in L_{\ell_1}} \sum_{r \in L_\ell}
+		\norm{ a_{r-\ell+\ell_1} a_{-s_1+\ell_1} a_{-s_1} a_{s-\ell} a_s \psi }^2 \right)^{\frac 12} \times \nonumber\\
+	&\quad \times \norm{K^{m-j}(\ell)_{r,q}}_{\max,2} \Xi^{\frac 12} \nonumber\\
+	& \leq \Xi^{\frac 12} \sum_{\ell \in \Z^3_*}
+		\norm{K^j(\ell)}_{\max,2}
+		\norm{K^{m-j}(\ell)}_{\max,2}
+		\left( \sum_{\ell_1 \in \Z^3_*}	\norm{K(\ell_1)}_{\max,2}^2 \right)^{\frac 12}
+		\norm{\NN^2 \psi} \;.
+\end{align}
+Again, with Lemma~\ref{lem:K_bounds} and $ |\hat{V}(\ell)| \le C $, we conclude
+\begin{equation}
+	\abs{\sum_{\ell \in \Z^3_*} \II_\ell }
+	\leq C k_{\F}^{-\frac 32} \Xi^{\frac 12}
+		\left( \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 \right)^{\frac 32}
+		\norm{\NN^2 \psi} \;.
+\end{equation}
+Finally, for the $ \III $-term,
 
-
-
- %TODO Writing head
-
+...
 
 \end{proof}
 
 
 
+
+ %TODO Writing head
+ 
+ 
 
 \begin{lemma}[$E_{Q_1}^{1,2}$]
 For any $\psi \in \HH_N$, we have
