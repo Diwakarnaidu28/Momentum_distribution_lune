@@ -109,6 +109,7 @@
 \newcommand{\delltwo}[2]{\frac{\partial^2 #1}{\partial #2 ^2}}  
 \newcommand{\com}[1]{\left[ #1 \right]}
 \newcommand{\F}{\mathrm{F}}
+\newcommand{\HS}{\mathrm{HS}}
 \newcommand{\I}{\mathrm{I}}
 \newcommand{\II}{\mathrm{II}}
 \newcommand{\III}{\mathrm{III}}
@@ -885,8 +886,8 @@ We bound the head term next, and to begin we start by establishing certain neces
 \begin{lemma}\label{lem:estQ2}
     Let $\ell \in \Z^3_*$, then we have
     \begin{align}
-        |\eva{\Psi,Q_1(A)\Psi}| &\leq 2\sum\limits_{\ell\in \Z^3_*}\norm{A(\ell)}_{\mathrm{HS}}\eva{\Psi,\mathcal{N} \Psi}\label{eq:Q1est}\\
-        |\eva{\Psi,Q_2(A)\Psi}| &\leq 2\sum\limits_{\ell\in \Z^3_*}\norm{A(\ell)}_{\mathrm{HS}}\eva{\Psi,(\mathcal{N}+1) \Psi}\label{eq:Q2est}
+        |\eva{\Psi,Q_1(A)\Psi}| &\leq 2\sum\limits_{\ell\in \Z^3_*}\norm{A(\ell)}_{\HS}\eva{\Psi,\mathcal{N} \Psi}\label{eq:Q1est}\\
+        |\eva{\Psi,Q_2(A)\Psi}| &\leq 2\sum\limits_{\ell\in \Z^3_*}\norm{A(\ell)}_{\HS}\eva{\Psi,(\mathcal{N}+1) \Psi}\label{eq:Q2est}
     \end{align}
     for all $\Psi \in \HH_N$.
 \end{lemma}
@@ -907,8 +908,8 @@ We bound the head term next, and to begin we start by establishing certain neces
     \begin{align}
         &\leq 2\sum\limits_{\ell\in \Z^3_*} \left(\sum\limits_{q\in L_{\ell}} \norm{b_{-q}(-\ell)\Psi}^2\right)^\half \Big(\sum\limits_{p,q\in L_{\ell}}\left|A(\ell)_{p,q}\right|^2\Big)^\half \norm{(\mathcal{N}+1)^\half \Psi}\nonumber\\
         &\leq 2\sum\limits_{\ell\in \Z^3_*} \Big(\sum\limits_{p,q\in L_{\ell}}\left|A(\ell)_{p,q}\right|^2\Big)^\half \norm{\mathcal{N}^\half \Psi}\norm{(\mathcal{N}+1)^\half \Psi}\nonumber\\
-        &= 2\sum\limits_{\ell\in \Z^3_*}\norm{A(\ell)}_{\mathrm{HS}}\norm{\mathcal{N}^\half \Psi}\norm{(\mathcal{N}+1)^\half \Psi}\nonumber\\
-        &\leq 2\sum\limits_{\ell\in \Z^3_*}\norm{A(\ell)}_{\mathrm{HS}}\eva{\Psi,(\mathcal{N}+1) \Psi}
+        &= 2\sum\limits_{\ell\in \Z^3_*}\norm{A(\ell)}_{\HS}\norm{\mathcal{N}^\half \Psi}\norm{(\mathcal{N}+1)^\half \Psi}\nonumber\\
+        &\leq 2\sum\limits_{\ell\in \Z^3_*}\norm{A(\ell)}_{\HS}\eva{\Psi,(\mathcal{N}+1) \Psi}
     \end{align}
     Hence, we have the required estimate and we can similarly prove (\ref{eq:Q1est}). 
 \end{proof}
@@ -917,7 +918,7 @@ We bound the head term next, and to begin we start by establishing certain neces
     \begin{equation}\label{eq:gronest}
      T^*_{\lambda}(\mathcal{N} +1)T_{\lambda} \leq e^C (\NN+1)\, ,    
     \end{equation}
-     where $C = \mathrm{exp}(4\sum\limits_{l\in \Z^3_*}\norm{K(\ell)}_{\mathrm{HS}})$,
+     where $C = \mathrm{exp}(4\sum\limits_{l\in \Z^3_*}\norm{K(\ell)}_{\HS})$,
      
      Similarly
      \begin{equation}\label{eq:gengronest}
@@ -936,12 +937,12 @@ We bound the head term next, and to begin we start by establishing certain neces
     Then using Cauchy-Schwarz inequality and the estimates from Lemma \ref{lem:pairest}, we get
     \begin{align}
         (\ref{eq:diffeva}) &\leq 4\sum\limits_{\ell \in \Z^3_*}\sum\limits_{s \in L_{\ell}} \norm{b_{-s}(-\ell) T_\lambda\Psi} \norm{\sum\limits_{r \in L_{\ell}}K(\ell)_{r,s} b^*_{r}(\ell)T_\lambda\Psi} \nonumber\\
-        &\leq 4 \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{HS}}\norm{\NN^\half T_\lambda\Psi}\norm{(\NN+1)^\half T_\lambda\Psi}\nonumber\\
-        &\leq 4 \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{HS}} \eva{\Psi,T^*_\lambda(\NN+1)T_\lambda\Psi}
+        &\leq 4 \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\HS}\norm{\NN^\half T_\lambda\Psi}\norm{(\NN+1)^\half T_\lambda\Psi}\nonumber\\
+        &\leq 4 \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\HS} \eva{\Psi,T^*_\lambda(\NN+1)T_\lambda\Psi}
     \end{align}
     Then using Gr\"onwall's lemma, we have
     \begin{equation}
-        \eva{\Psi, T^*_{\lambda}(\mathcal{N} +1)T_{\lambda} \Psi } \leq \mathrm{exp}(4\sum\limits_{l\in \Z^3_*} \norm{K(\ell)}_{\mathrm{HS}}) \eva{\Psi, (\NN+1)\Psi}
+        \eva{\Psi, T^*_{\lambda}(\mathcal{N} +1)T_{\lambda} \Psi } \leq \mathrm{exp}(4\sum\limits_{l\in \Z^3_*} \norm{K(\ell)}_{\HS}) \eva{\Psi, (\NN+1)\Psi}
     \end{equation}
     And this proves the estimate.
     We proceed next with proving \eqref{eq:gengronest}
@@ -962,7 +963,7 @@ Next, we compile some bounds on the correlation structure $ K(\ell) $.
 	&\le (C \hat{V}(\ell))^m k_{\F}^{-1} \;, \\
 	\Vert K(\ell)^m \Vert_{\mathrm{max},2}
 	&\le (C \hat{V}(\ell))^m k_{\F}^{-\frac 12} \;, \\
-	\norm{K(\ell)^m}_{\mathrm{HS}}
+	\norm{K(\ell)^m}_{\HS}
 	&\le (C \hat{V}(\ell))^m \min\{1,k^2_F\abs{\ell}^{-2}\} \;.
 \end{aligned}   
 \end{equation}
@@ -996,7 +997,7 @@ The first bound in \eqref{eq:K_max_bounds} then follows immediately noting that 
 	&\le \sup_{q \in \Z^3} \sum_{r \in L_\ell} (C \hat{V}(\ell))^{2m} k_{\F}^{-2} (\lambda_{\ell,r} + \lambda_{\ell,q})^{-2}
 	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1}
 	\le (C \hat{V}(\ell))^{2m} k_{\F} \;, \\
-	\norm{K(\ell)^m}_{\mathrm{HS}}^2
+	\norm{K(\ell)^m}_{\HS}^2
 	&\le \sum_{r,s \in L_\ell} (C \hat{V}(\ell))^{2m} k_{\F}^{-2} (\lambda_{\ell,r} + \lambda_{\ell,s})^{-2}
 	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} \Big( \sum_{r \in L_\ell}  \lambda_{\ell,r}^{-1} \Big)^2
 	\le (C \hat{V}(\ell))^{2m} \;.
@@ -1004,7 +1005,7 @@ The first bound in \eqref{eq:K_max_bounds} then follows immediately noting that 
 \end{equation}
 Further, if $ |\ell| \ge 3 k_{\F} $, then we even have $ \lambda_{\ell,r} \le C |\ell|^2 $ uniformly in $ r \in L_\ell $, while the lune has volume $ |L_\ell| \le C k_{\F}^3 $, so
 \begin{equation}
-	\norm{K(\ell)^m}_{\mathrm{HS}}^2
+	\norm{K(\ell)^m}_{\HS}^2
 	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} |L_\ell|^2 |\ell|^{-4}
 	\le (C \hat{V}(\ell))^{2m} k_{\F}^4 |\ell|^{-4} \;.
 \end{equation}
@@ -1014,26 +1015,26 @@ If $ |\ell| < 3 k_{\F} $, then $ k_{\F} |\ell|^{-1} \ge C $, so by \eqref{eq:max
 \begin{lemma}[Bound on nested anti-commutator]\label{lem:multicommest}
     For $\ell \in \Z^3_*$, we have for all symmetric $A:\ell^2(L_{\ell})\rightarrow \ell^2(L_{\ell})$,
     \begin{equation}
-    \sum\limits_{\ell \in \Z^3_*}\norm{\Theta^{n}_K(A)(\ell)}_{\mathrm{HS}}\leq    \sum\limits_{\ell \in \Z^3_*} 2^{n}\norm{K(\ell)}^{n}_{\mathrm{op}}\norm{A(\ell)}_{\mathrm{HS}}
+    \sum\limits_{\ell \in \Z^3_*}\norm{\Theta^{n}_K(A)(\ell)}_{\HS}\leq    \sum\limits_{\ell \in \Z^3_*} 2^{n}\norm{K(\ell)}^{n}_{\mathrm{op}}\norm{A(\ell)}_{\HS}
     \end{equation}
 with $\Theta^n_K$ defined in \eqref{eq:nestanticomm}.
 \end{lemma}
 \begin{proof}
     We begin with 
     \begin{align}
-        \sum\limits_{\ell \in \Z^3_*}\norm{\Theta^{n}_K(A)(\ell)}_{\mathrm{HS}} = \sum\limits_{\ell \in \Z^3_*}\norm{\left\{K(\ell),\Theta^{n-1}_K(A)(\ell)\right\}}_{\mathrm{HS}} &=  \sum\limits_{\ell \in \Z^3_*}\norm{K(\ell)\Theta^{n-1}_K(A)(\ell) +\Theta^{n-1}_K(A)(\ell) K(\ell) }_{\mathrm{HS}}\nonumber\\
-        &\leq 2 \sum\limits_{\ell \in \Z^3_*}\norm{K(\ell)\Theta^{n-1}_K(A)(\ell)  }_{\mathrm{HS}}
+        \sum\limits_{\ell \in \Z^3_*}\norm{\Theta^{n}_K(A)(\ell)}_{\HS} = \sum\limits_{\ell \in \Z^3_*}\norm{\left\{K(\ell),\Theta^{n-1}_K(A)(\ell)\right\}}_{\HS} &=  \sum\limits_{\ell \in \Z^3_*}\norm{K(\ell)\Theta^{n-1}_K(A)(\ell) +\Theta^{n-1}_K(A)(\ell) K(\ell) }_{\HS}\nonumber\\
+        &\leq 2 \sum\limits_{\ell \in \Z^3_*}\norm{K(\ell)\Theta^{n-1}_K(A)(\ell)  }_{\HS}
     \end{align}
-    Then using the inequality $\norm{AB}_{\mathrm{HS}}\leq \norm{A}_{\mathrm{op}} \norm{B}_{\mathrm{HS}}$, we get
+    Then using the inequality $\norm{AB}_{\HS}\leq \norm{A}_{\mathrm{op}} \norm{B}_{\HS}$, we get
     \begin{equation}
-        \leq 2 \sum\limits_{\ell \in \Z^3_*}\norm{K(\ell)}_{\mathrm{op}}\norm{\Theta^{n-1}_K(A)(\ell)}_{\mathrm{HS}}
-        \leq 2^{n}\sum\limits_{\ell \in \Z^3_*}\norm{K(\ell)}^{n}_{\mathrm{op}} \norm{A(\ell)}_{\mathrm{HS}}
+        \leq 2 \sum\limits_{\ell \in \Z^3_*}\norm{K(\ell)}_{\mathrm{op}}\norm{\Theta^{n-1}_K(A)(\ell)}_{\HS}
+        \leq 2^{n}\sum\limits_{\ell \in \Z^3_*}\norm{K(\ell)}^{n}_{\mathrm{op}} \norm{A(\ell)}_{\HS}
     \end{equation}
 \end{proof}
 \begin{proposition}[The head term]\label{prop:headerr}
 For $q \in B^c_{\mathrm{F}}$, we have the following bound
 \begin{equation}\label{eq:headest}
-    \abs{\bint\limits_{\Delta^{m}_1}\di^n\underline{\lambda} \eva{\Omega,\Big( T^*_{\lambda_n}Q_{\sigma(n)}(\Theta^{n+1}_{K}(P^q))T_{\lambda_n}\Big)\Omega}}\leq \frac{2^{n+2}}{(n+1)!} \norm{K(\ell)}^{n+1}_{\mathrm{HS}} \,C \, \eva{\Omega,\Big(\NN+1\Big)\Omega} 
+    \abs{\bint\limits_{\Delta^{m}_1}\di^n\underline{\lambda} \eva{\Omega,\Big( T^*_{\lambda_n}Q_{\sigma(n)}(\Theta^{n+1}_{K}(P^q))T_{\lambda_n}\Big)\Omega}}\leq \frac{2^{n+2}}{(n+1)!} \norm{K(\ell)}^{n+1}_{\HS} \,C \, \eva{\Omega,\Big(\NN+1\Big)\Omega} 
 \end{equation}
 \end{proposition}
 \begin{proof}
@@ -1041,13 +1042,13 @@ For $q \in B^c_{\mathrm{F}}$, we have the following bound
     We begin with the L.H.S. of the above expression and use the the estimate from Lemma \ref{lem:estQ2} to get
     \begin{equation}
       \mathrm{L.H.S.\,of\,} (\ref{eq:headest})   
-        \leq  \abs{2\bint\limits_{\Delta^{n}_1}\di^n\underline{\lambda} \norm{\Theta^{n+1}_{K}(P^q)}_{\mathrm{HS}} \eva{\Omega,\Big( T^*_{\lambda_n}(\NN +1) T_{\lambda_n}\Big)\Omega}} 
+        \leq  \abs{2\bint\limits_{\Delta^{n}_1}\di^n\underline{\lambda} \norm{\Theta^{n+1}_{K}(P^q)}_{\HS} \eva{\Omega,\Big( T^*_{\lambda_n}(\NN +1) T_{\lambda_n}\Big)\Omega}} 
     \end{equation}
     Then using Lemma \ref{lem:multicommest} we get
     \begin{equation}
-        \leq  \abs{2\bint\limits_{\Delta^{n}_1}\di^n\underline{\lambda}\, 2^{n+1} \norm{K(\ell)}^{n+1}_{\mathrm{op}} \norm{(P^q)}_{\mathrm{HS}} \eva{\Omega, \Big( T^*_{\lambda_n} (\NN +1) T_{\lambda_n}\Big)\Omega}}
+        \leq  \abs{2\bint\limits_{\Delta^{n}_1}\di^n\underline{\lambda}\, 2^{n+1} \norm{K(\ell)}^{n+1}_{\mathrm{op}} \norm{(P^q)}_{\HS} \eva{\Omega, \Big( T^*_{\lambda_n} (\NN +1) T_{\lambda_n}\Big)\Omega}}
     \end{equation}
-    Here we observe that $\norm{P^q}_{\mathrm{HS}} = \frac{1}{\sqrt{2}}$, and then we use the Gr\"onwall estimate from Lemma \ref{lem:gronNest} to have
+    Here we observe that $\norm{P^q}_{\HS} = \frac{1}{\sqrt{2}}$, and then we use the Gr\"onwall estimate from Lemma \ref{lem:gronNest} to have
     \begin{equation}
     \leq \abs{2^{n+2}\!\bint\limits_{\Delta^{n}_1} \di^n \underline{\lambda} \norm{K(\ell)}^{n+1}_{\mathrm{op}} \,C \, \eva{\Omega,\Big(\NN+1\Big)\Omega}}= \frac{2^{n+2}}{(n+1)!} \,C \, \norm{K(\ell)}^{n+1}_{\mathrm{op}}  \eva{\Omega,\Big(\NN+1\Big)\Omega}\nonumber
     \end{equation}
@@ -1857,7 +1858,8 @@ The estimate follows by putting together the results from Lemma \ref{lem:estEQ11
     For any $\psi \in \HH_N$, we have
     \begin{align}
     	\abs{\eva{\psi,\left(E^{\,1,2}_{Q_2}+\mathrm{h.c.}\right) \psi }}
-    	&\leq   C\,\Xi^\half \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}} \left(\norm{K^m(\ell)}_{\mathrm{max}} + \sum\limits_{j=1}^{m-1} {{m}\choose j} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{K^j(\ell)}_{\mathrm{max}}\right)  \norm{  (\NN+1)^\half \psi} \label{eq:estEQ212}
+    	&\leq C k_{\F}^{-1} \Xi
+    		\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^2 \;. \label{eq:estEQ212}
     \end{align}
 \end{lemma}
 \begin{proof}
@@ -1871,28 +1873,48 @@ The estimate follows by putting together the results from Lemma \ref{lem:estEQ11
     where the last inequality is implied by Remark \ref{q-q} and we used \eqref{eq:decomptheta}.
     For \eqref{eq:EQ2121}-\eqref{eq:EQ2123}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then we use the Cauchy-Schwarz inequality, Lemma \ref{lem:commNab} and the bounds from Lemma \ref{lem:pairest}.
     We estimate \eqref{eq:EQ2121} as 
-    \begin{align}
+\begin{align}
     	\eqref{eq:EQ2121}
-    	&= \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{r\in L_{\ell}} \abs{\eva{ K(\ell)_{r,q} a_{r-\ell} \psi, K^m(\ell)_{r,q}  a_{r-\ell} \psi }}\nonumber\\
-    	&\leq \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{r\in L_{\ell}} \norm{ K(\ell)_{r,q} a_{r-\ell} \psi}\norm{ K^m(\ell)_{r,q}  a_{r-\ell} \psi }\nonumber\\
-    	&\leq C\,\sup\limits_{r\in \Z^3_*}\norm{n_r^{\,\half}\psi} \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}} \norm{K^m(\ell)}_{\mathrm{max}}  \norm{  (\NN+1)^\half \psi}\nonumber\\
-    	&\leq C\,\Xi^\half \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}} \norm{K^m(\ell)}_{\mathrm{max}}  \norm{  (\NN+1)^\half \psi}\label{eq:estEQ2121}
-    \end{align}
-where we used $\sum_{q\in\Z^3}\norm{a_q}\leq \norm{\NN^\half\psi}$ 
-We estimate \eqref{eq:EQ2122} as
+    	&= \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) 
+    		\sum\limits_{r\in L_{\ell}} \abs{\eva{ K(\ell)_{r,q} a_{r-\ell} \psi, K^m(\ell)_{r,q}  a_{r-\ell} \psi }}\nonumber\\
+    	&\leq \sum\limits_{\ell \in \Z^3_*}
+    		\sum\limits_{r\in L_{\ell}} |K(\ell)_{r,q}| |K^m(\ell)_{r,q}|
+    		\norm{ a_{r-\ell} \psi}\norm{ a_{r-\ell} \psi }\nonumber\\
+    	&\leq \Xi \sum\limits_{\ell \in \Z^3_*}
+    		\left( \sum\limits_{r\in L_{\ell}} |K(\ell)_{r,q}|^2 \right)^{\frac 12}
+    		\left( \sum\limits_{r\in L_{\ell}} |K^m(\ell)_{r,q}|^2 \right)^{\frac 12} \nonumber\\
+    	&\leq \Xi
+    		\sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\max,2} \norm{K^m(\ell)}_{\max,2} \nonumber\\
+    	&\leq C k_{\F}^{-1} \Xi
+    		\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^2 \;. \label{eq:estEQ2121}
+\end{align}
+Likewise, we estimate \eqref{eq:EQ2122} as
 \begin{align}
      \eqref{eq:EQ2122}
     &=\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{r,s\in L_{\ell}}  \abs{\eva{ K(\ell)_{r,s} a_{r-\ell}\psi, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} a_{r-\ell} \psi }}\nonumber\\
-    &\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{r,s\in L_{\ell}}  \norm{ K(\ell)_{r,s} a_{r-\ell}\psi}\norm{ K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} a_{r-\ell} \psi } \nonumber\\
-    &\leq C\,\Xi^\half \sum\limits_{j=1}^{m-1} {{m}\choose j}\sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{K^j(\ell)}_{\mathrm{max}} \norm{(\NN+1)^\half \psi} \label{eq:estEQ2122}
-    \end{align}
-    We estimate \eqref{eq:EQ2123} as 
-    \begin{align}
-    	\eqref{eq:EQ2123}
+    &\leq \Xi \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*}
+    		\sum\limits_{r,s\in L_{\ell}} |K(\ell)_{r,s}| |K^{m-j}(\ell)_{r,q}| |K^{j}(\ell)_{q,s}| \nonumber\\
+    	&\leq \Xi \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*}
+    		\left( \sum\limits_{s\in L_{\ell}} \left( \sum\limits_{r\in L_{\ell}} |K(\ell)_{r,s}| |K^{m-j}(\ell)_{r,q}| \right)^2 \right)^{\frac 12}
+    		\left( \sum\limits_{s\in L_{\ell}} |K^{j}(\ell)_{q,s}|^2 \right)^{\frac 12} \nonumber\\
+    	&\leq \Xi \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*}
+    		\left( \sum\limits_{r,s\in L_{\ell}} |K(\ell)_{r,s}|^2
+    			\sum\limits_{r\in L_{\ell}} |K^{m-j}(\ell)_{r,q}|^2 \right)^{\frac 12}
+    		\norm{K^{j}(\ell)}_{\max,2} \nonumber\\
+    	&\leq \Xi \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*}
+    		\norm{K(\ell)}_{\HS}
+    		\norm{K^{m-j}(\ell)}_{\max,2}
+    		\norm{K^{j}(\ell)}_{\max,2} \nonumber\\
+    &\leq C k_{\F}^{-1} \Xi \sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^2 \;, \nonumber\\ \label{eq:estEQ2122}
+\end{align}
+where we used in the last step that $ \sum_{\ell} \hat{V}(\ell)^3 \le C \sum_{\ell} \hat{V}(\ell)^2 $. Finally, we estimate \eqref{eq:EQ2123} just as \eqref{eq:EQ2121}
+\begin{align}
+\eqref{eq:EQ2123}
     	&=\sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{ s \in L_{\ell}} \abs{\eva{K(\ell)_{q,s} a^*_{q-\ell} \psi, K^m(\ell)_{q,s}  a_{q-\ell} \psi }} \nonumber\\
-    	&\leq \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{ s \in L_{\ell}} \norm{K(\ell)_{q,s} a^*_{q-\ell} \psi}\norm{ K^m(\ell)_{q,s}  a_{q-\ell} \psi } \nonumber\\
-    	&\leq C\,\Xi^\half \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}} \norm{K^m(\ell)}_{\mathrm{max}}  \norm{  (\NN+1)^\half \psi}\label{eq:estEQ2123}
-    \end{align} 
+    	&\leq \sum\limits_{\ell \in \Z^3_*} \sum\limits_{ s \in L_{\ell}} |K(\ell)_{q,s}| |K^m(\ell)_{q,s}| \norm{ a_{q-\ell} \psi}\norm{ a_{q-\ell} \psi } \nonumber\\
+    	&\leq C k_{\F}^{-1} \Xi
+    		\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^2 \label{eq:estEQ2123}
+\end{align} 
 Then adding \eqref{eq:estEQ2121},\eqref{eq:estEQ2122} and \eqref{eq:estEQ2123}, we arrive at the bound above \eqref{eq:estEQ212}.
 \end{proof}
 
