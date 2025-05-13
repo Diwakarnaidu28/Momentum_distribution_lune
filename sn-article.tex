@@ -964,10 +964,15 @@ Next, we compile some bounds on the correlation structure $ K(\ell) $.
 	\Vert K(\ell)^m \Vert_{\mathrm{max},2}
 	&\le (C \hat{V}(\ell))^m k_{\F}^{-\frac 12} \;, \\
 	\norm{K(\ell)^m}_{\HS}
-	&\le (C \hat{V}(\ell))^m \min\{1,k^2_F\abs{\ell}^{-2}\} \;.
+	&\le (C \hat{V}(\ell))^m \min\{1,k^2_F\abs{\ell}^{-2}\} \;,
 \end{aligned}   
 \end{equation}
 \end{lemma}
+and for any fixed $ s \in \Z^3 $, we have \textcolor{red}{[SL: set $ K(\ell)_{r,s} = 0 $ if $ r $ or $ s $ is outside $ L_\ell $.]}
+\begin{equation} \label{eq:Krr_bound}
+	\left( \sum_{r \in L_\ell} |K(\ell)^m_{r,r+s}|^2 \right)^{\frac 12}
+	\le (C \hat{V}(\ell))^m k_{\F}^{-\frac 12} \;.
+\end{equation}
 \begin{proof}
 From \textcolor{red}{[CHN22, Prop.~7.10]} we readily retrieve \eqref{eq:K_element_bounds} for $ m = 1 $:
 \begin{equation}
@@ -1009,7 +1014,14 @@ Further, if $ |\ell| \ge 3 k_{\F} $, then we even have $ \lambda_{\ell,r} \le C 
 	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} |L_\ell|^2 |\ell|^{-4}
 	\le (C \hat{V}(\ell))^{2m} k_{\F}^4 |\ell|^{-4} \;.
 \end{equation}
-If $ |\ell| < 3 k_{\F} $, then $ k_{\F} |\ell|^{-1} \ge C $, so by \eqref{eq:max2_HS_bound}, this bound is equally true.
+If $ |\ell| < 3 k_{\F} $, then $ k_{\F} |\ell|^{-1} \ge C $, so by \eqref{eq:max2_HS_bound}, this bound is equally true.\\
+Finally, \eqref{eq:Krr_bound} is proven like the bound for $ \norm{K(\ell)^m}_{\max,2} $:
+\begin{equation}
+	\sum_{r \in L_\ell} |K(\ell)^m_{r,r+s}|^2
+	\le \sup_{q \in \Z^3} \sum_{r \in L_\ell} (C \hat{V}(\ell))^{2m} k_{\F}^{-2} (\lambda_{\ell,r} + \lambda_{\ell,r+s})^{-2}
+	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1}
+	\le (C \hat{V}(\ell))^{2m} k_{\F} \;.
+\end{equation}
 \end{proof}
 
 \begin{lemma}[Bound on nested anti-commutator]\label{lem:multicommest}
@@ -1645,18 +1657,12 @@ For the $ \I $-term, we again split according to whether $ \ell $ is in $ S $, a
 		\left( \sum\limits_{\ell \in \Z^3_* \setminus S} \sum\limits_{r\in _\ell}|K^m(\ell)_{r,q}|^2 \right)^{\frac 12}
 		\left( \sum\limits_{\ell_1\in \Z^3_*} \sum\limits_{r\in L_{\ell_1}} |K(\ell_1)_{r,-r+\ell+\ell_1}|^2 \right)^{\frac 12} \norm{ a_q (\NN+1)^{1-\alpha} \psi}
 		\norm{(\NN+5)^\alpha \psi} \nonumber\\
-	&\leq \Xi^{\frac 12}
-		\left( \sum\limits_{\ell \in \Z^3_* \setminus S} \norm{K^m(\ell)}_{\max,2}^2 \right)^{\frac 12}
-		\left( \sum\limits_{\ell_1\in \Z^3_*} \norm{K(\ell_1)}_{\max,2}^2 \right)^{\frac 12} 
-		\norm{(\NN+5) \psi} \nonumber\\
 	&\leq C k_{\F}^{-1} \Xi^{\frac 12}
 		\left( \sum\limits_{\ell \in \Z^3_* \setminus S} \hat{V}(\ell)^2 \right)^{\frac 12}
 		\left( \sum\limits_{\ell_1\in \Z^3_*} \hat{V}(\ell_1)^2 \right)^{\frac 12} 
 		\norm{(\NN+5) \psi} \nonumber\\
 \end{align}
-where we fixed $ \alpha = 1 $.
-\textcolor{red}{[SL: I do not think that the conversion of $ \norm{K(\ell_1)}_{\max,2}^2 $ is legitimate, since the $ r $ appears in both indices of $ K(\ell_1) $. But one can establish an analogous bound for $ \sum_r |K(\ell_1)_{r,r+s}|^2 $.]}
-On the other hand
+where we fixed $ \alpha = 1 $ and used Lemma~\ref{lem:K_bounds}. On the other hand,
 \begin{align}
 	&\abs{\sum_{\ell \in S} \I_\ell } \nonumber\\
 	&\leq \sum_{\ell \in S} \sum\limits_{\ell_1\in \Z^3_*} \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}
