@@ -1628,40 +1628,52 @@ Let $q \in \Z^3_*$ and $\psi \in \HH_N$. Then, for any $ S \subset \Z^3_* $, we 
 \end{align*}
 For the $ \I $-term, we again split according to whether $ \ell $ is in $ S $, and use the decomposition $ \I = (\NN+1)^{\alpha} (\NN+1)^{-\alpha} $, which is valid for any $ \alpha \in \mathbb{R} $:
 \begin{align}
-	&\abs{\sum_{\ell \in S} \I_\ell } \nonumber\\
-	&\leq \sum\limits_{\ell \in S, \ell_1\in \Z^3_*} \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}
+	&\abs{\sum_{\ell \in \Z^3_* \setminus S} \I_\ell } \nonumber\\
+	&\leq \sum\limits_{\ell \in \Z^3_* \setminus S, \ell_1\in \Z^3_*} \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}
 		\norm{ K^m(\ell)_{r,q} K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell_1} a_{r-\ell-\ell_1} b_{q}(\ell) (\NN+1)^{-\alpha} \psi}
 		\norm{(\NN+5)^\alpha \psi} \nonumber\\
-	&\leq \sum\limits_{\ell \in S, \ell_1\in \Z^3_*} 
-		\left( \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} |K^m(\ell)_{r,q}| |K(\ell_1)_{r,-r+\ell+\ell_1}| \right)
-		\max_{r' \in \Z^3_*} \norm{ a_{r'-\ell_1} a_{r'-\ell-\ell_1} a_{q-\ell} a_q (\NN+1)^{-\alpha} \psi}
+	&\leq \sum\limits_{r\in \Z^3} 
+		\left( \sum\limits_{\ell \in \Z^3_* \setminus S, \ell_1\in \Z^3_*} \mathds{1}_{L_\ell \cap L_{\ell_1}}(r) |K^m(\ell)_{r,q}|^2 |K(\ell_1)_{r,-r+\ell+\ell_1}|^2 \right)^{\frac 12} \times \nonumber\\
+	&\quad \times \left( \sum\limits_{\ell \in \Z^3_* \setminus S, \ell_1\in \Z^3_*} \norm{ a_{r-\ell_1} a_{r-\ell-\ell_1} a_{q-\ell} a_q (\NN+1)^{-\alpha} \psi}^2 \right)^{\frac 12}
 		\norm{(\NN+5)^\alpha \psi} \nonumber\\
-	&\leq \left( \sum\limits_{\ell \in S, \ell_1\in \Z^3_*} 
-		\sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}		|K^m(\ell)_{r,q}|^2
-		\sum\limits_{r'\in L_{\ell} \cap L_{\ell_1}} |K(\ell_1)_{r',-r'+\ell+\ell_1}|^2 \right)^{\frac 12} \times \nonumber\\
-	&\quad \times \left( \sum\limits_{\ell \in S, \ell_1 \in \Z^3_*}
-		\max_{r'} \norm{a_{q-\ell} a_{r'-\ell_1}a_q (\NN+1)^{-\alpha} \psi}^2 \right)^{\frac 12}
+	&\leq \sum\limits_{r\in \Z^3} 
+		\left( \sum\limits_{\ell \in \Z^3_* \setminus S} \mathds{1}_{L_\ell}(r) |K^m(\ell)_{r,q}|^2 \right)^{\frac 12}
+		\left( \sum\limits_{\ell_1\in \Z^3_*} \mathds{1}_{L_{\ell_1}}(r) |K(\ell_1)_{r,-r+\ell+\ell_1}|^2 \right)^{\frac 12} \times \nonumber\\
+	&\quad \times \left( \sum\limits_{\ell \in \Z^3_* \setminus S, \ell_1\in \Z^3_*} \norm{ a_{r-\ell_1} a_{q-\ell} a_q (\NN+1)^{-\alpha} \psi}^2 \right)^{\frac 12}
 		\norm{(\NN+5)^\alpha \psi} \nonumber\\
+	&\leq 
+		\left( \sum\limits_{\ell \in \Z^3_* \setminus S} \sum\limits_{r\in _\ell}|K^m(\ell)_{r,q}|^2 \right)^{\frac 12}
+		\left( \sum\limits_{\ell_1\in \Z^3_*} \sum\limits_{r\in L_{\ell_1}} |K(\ell_1)_{r,-r+\ell+\ell_1}|^2 \right)^{\frac 12} \norm{ a_q (\NN+1)^{1-\alpha} \psi}
+		\norm{(\NN+5)^\alpha \psi} \nonumber\\
+	&\leq \Xi^{\frac 12}
+		\left( \sum\limits_{\ell \in \Z^3_* \setminus S} \norm{K^m(\ell)}_{\max,2}^2 \right)^{\frac 12}
+		\left( \sum\limits_{\ell_1\in \Z^3_*} \norm{K(\ell_1)}_{\max,2}^2 \right)^{\frac 12} 
+		\norm{(\NN+5) \psi} \nonumber\\
+	&\leq C k_{\F}^{-1} \Xi^{\frac 12}
+		\left( \sum\limits_{\ell \in \Z^3_* \setminus S} \hat{V}(\ell)^2 \right)^{\frac 12}
+		\left( \sum\limits_{\ell_1\in \Z^3_*} \hat{V}(\ell_1)^2 \right)^{\frac 12} 
+		\norm{(\NN+5) \psi} \nonumber\\
 \end{align}
-\textcolor{red}{[SL: Actually, these sums cannot be converted that easily]}
+where we fixed $ \alpha = 1 $.
+\textcolor{red}{[SL: I do not think that the conversion of $ \norm{K(\ell_1)}_{\max,2}^2 $ is legitimate, since the $ r $ appears in both indices of $ K(\ell_1) $. But one can establish an analogous bound for $ \sum_r |K(\ell_1)_{r,r+s}|^2 $.]}
 On the other hand
 \begin{align}
-	&\abs{\sum_{\ell \in \Z^3_* \setminus S} \I_\ell } \nonumber\\
-	&\leq \sum_{\ell \in \Z^3_* \setminus S} \sum\limits_{\ell_1\in \Z^3_*} \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}
+	&\abs{\sum_{\ell \in S} \I_\ell } \nonumber\\
+	&\leq \sum_{\ell \in S} \sum\limits_{\ell_1\in \Z^3_*} \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}
 		\norm{ K^m(\ell)_{r,q} K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell_1} a_{r-\ell-\ell_1} b_{q}(\ell) (\NN+1)^{-\alpha} \psi}
 		\norm{(\NN+5)^\alpha \psi} \nonumber\\
-	&\leq \sum_{\ell \in \Z^3_* \setminus S} \left( \sum\limits_{\ell_1\in \Z^3_*} \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}
+	&\leq \sum_{\ell \in S} \left( \sum\limits_{\ell_1\in \Z^3_*} \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}
 		|K^m(\ell)_{r,q}|^2 |K(\ell_1)_{r,-r+\ell+\ell_1}|^2 \right)^{\frac 12} \times \nonumber\\
 	&\quad \times \left( \sum\limits_{\ell_1, r \in \Z^3_*}
 		\norm{a_{q-\ell} a_{r-\ell_1} a_{r-\ell-\ell_1} a_q (\NN+1)^{-\alpha} \psi}^2 \right)^{\frac 12}
 		\norm{(\NN+5)^\alpha \psi} \nonumber\\
-	&\leq \sum_{\ell \in \Z^3_* \setminus S}
+	&\leq \sum_{\ell \in S}
 		\norm{K^m(\ell)}_{\max} \left( \sum\limits_{\ell_1\in \Z^3_*} \norm{K(\ell_1)}_{\max,2}^2 \right)^{\frac 12} \times \nonumber\\
 	&\quad \times \left( \sum\limits_{\ell_1, r \in \Z^3_*}
 		\norm{a_{r-\ell_1} a_{r-\ell-\ell_1} a_q (\NN+1)^{-\alpha} \psi}^2 \right)^{\frac 12}
 		\norm{(\NN+5)^\alpha \psi} \nonumber\\
 \end{align}
-\textcolor{red}{[SL: Also here, there are conversion problems. The proof below also does not seem to work.]}
+\textcolor{red}{[SL: Here, there are conversion problems. The proof below also does not seem to work.]}
 %TODO Writing head
  
  
