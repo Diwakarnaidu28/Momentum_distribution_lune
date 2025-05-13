@@ -1755,12 +1755,25 @@ Finally, for the $ \III $-term,
 		|K(\ell_1)_{q,-q+\ell+\ell_1}|
 		\norm{ a_{q-\ell_1} a_{q-\ell-\ell_1} b_s(\ell) (\NN+1)^{-\alpha} \psi}
 		\norm{(\NN+5)^\alpha \psi} \nonumber\\
-	&\leq \left( \sum\limits_{\ell \in \Z^3_* \setminus S, \ell_1\in \Z^3_*} \sum\limits_{s\in L_\ell}
+	&\leq \sum\limits_{s\in \Z^3}
+		\left( \sum\limits_{\ell \in \Z^3_* \setminus S, \ell_1\in \Z^3_*} \mathds{1}_{L_\ell}(s)
 		|K^m(\ell)_{q,s}|^2
 		|K(\ell_1)_{q,-q+\ell+\ell_1}|^2 \right)^{\frac 12} \times \nonumber\\
-	&\quad \times \left( \sum\limits_{\ell \in \Z^3_* \setminus S, \ell_1\in \Z^3_*} \sum\limits_{s\in \Z^3} \norm{ a_{q-\ell_1} a_{q-\ell-\ell_1} a_s a_{s-\ell} (\NN+1)^{-\alpha} \psi}^2 \right)^{\frac 12}
+	&\quad \times \left( \sum\limits_{\ell \in \Z^3_* \setminus S, \ell_1\in \Z^3_*} \norm{ a_{q-\ell_1} a_{q-\ell-\ell_1} a_s a_{s-\ell} (\NN+1)^{-\alpha} \psi}^2 \right)^{\frac 12}
 		\norm{(\NN+5)^\alpha \psi} \nonumber\\
+	&\leq \sum\limits_{s\in \Z^3}
+		\left( \sum\limits_{\ell \in \Z^3_* \setminus S, \ell_1\in \Z^3_*} \mathds{1}_{L_\ell}(s)
+		|K^m(\ell)_{q,s}|^2
+		|K(\ell_1)_{q,-q+\ell+\ell_1}|^2 \right)^{\frac 12} 
+		\norm{ a_s (\NN+1)^{1-\alpha} \psi}
+		\norm{(\NN+5)^\alpha \psi} \nonumber\\
+	&\leq \Xi^{\frac 12} \sum\limits_{s\in \Z^3}
+		\left( \sum\limits_{\ell \in \Z^3_* \setminus S, \ell_1\in \Z^3_*} \mathds{1}_{L_\ell}(s)
+		|K^m(\ell)_{q,s}|^2
+		|K(\ell_1)_{q,-q+\ell+\ell_1}|^2 \right)^{\frac 12}
+		\norm{(\NN+5) \psi} \nonumber\\
 \end{align}
+\textcolor{red}{[SL: I don't see how to pull the $ \sum_s $ into the bracket to convert $ \sum_s |K^m(\ell)_{q,s}| \le C $, without going over from $ \sum_\ell \hat{V}(\ell)^2 $ to $ \sum_\ell \hat{V}(\ell) $.]}
 %TODO Writing head
 \end{proof}
 
