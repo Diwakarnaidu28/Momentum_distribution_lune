@@ -1660,7 +1660,7 @@ For the $ \I $-term, we again split according to whether $ \ell $ is in $ S $, a
 	&\leq C k_{\F}^{-1} \Xi^{\frac 12}
 		\left( \sum\limits_{\ell \in \Z^3_* \setminus S} \hat{V}(\ell)^2 \right)^{\frac 12}
 		\left( \sum\limits_{\ell_1\in \Z^3_*} \hat{V}(\ell_1)^2 \right)^{\frac 12} 
-		\norm{(\NN+5) \psi} \nonumber\\
+		\norm{(\NN+5) \psi} \;, \nonumber\\
 \end{align}
 where we fixed $ \alpha = 1 $ and used Lemma~\ref{lem:K_bounds}. On the other hand,
 \begin{align}
@@ -1677,9 +1677,64 @@ where we fixed $ \alpha = 1 $ and used Lemma~\ref{lem:K_bounds}. On the other ha
 		\norm{K^m(\ell)}_{\max} \left( \sum\limits_{\ell_1\in \Z^3_*} \norm{K(\ell_1)}_{\max,2}^2 \right)^{\frac 12} \times \nonumber\\
 	&\quad \times \left( \sum\limits_{\ell_1, r \in \Z^3_*}
 		\norm{a_{r-\ell_1} a_{r-\ell-\ell_1} a_q (\NN+1)^{-\alpha} \psi}^2 \right)^{\frac 12}
-		\norm{(\NN+5)^\alpha \psi} \nonumber\\
+		\norm{(\NN+5)^\alpha \psi} \;. \nonumber\\
 \end{align}
 \textcolor{red}{[SL: Here, there are conversion problems. The proof below also does not seem to work.]}
+Next, we treat the $ \II $-term, where again no split is necessary.
+\begin{align}
+	&\abs{\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell}}} \eva{\psi,  K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,-r+\ell+\ell_1} a^*_{r-\ell_1} b^*_{s}(\ell) a^*_{r-\ell-\ell_1} \psi }} \nonumber\\
+	&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell}}} 
+		|K^{m-j}(\ell)_{r,q}|
+		|K^{j}(\ell)_{q,s}|
+		|K(\ell_1)_{r,-r+\ell+\ell_1}|
+		\norm{a_{r-\ell_1} a_{r-\ell-\ell_1} a_s a_{s-\ell} (\NN+1)^{-\alpha} \psi}
+		\norm{(\NN+1)^\alpha \psi} \nonumber\\
+	&\leq \sum\limits_{\ell \in \Z^3_*} \sum\limits_{r \in L_\ell}
+		\left( \sum\limits_{\ell_1\in \Z^3_*} \sum_{s \in L_\ell}
+		\mathds{1}_{L_{\ell_1}}(r)
+		|K^{m-j}(\ell)_{r,q}|^2
+		|K^{j}(\ell)_{q,s}|^2
+		|K(\ell_1)_{r,-r+\ell+\ell_1}|^2 \right)^{\frac 12} \times \nonumber\\
+	&\quad \times \left( 
+		\sum\limits_{\ell_1\in \Z^3_*} \sum_{s \in L_\ell}
+		\norm{a_{r-\ell_1} a_{r-\ell-\ell_1} a_s a_{s-\ell} (\NN+1)^{-\alpha} \psi}^2
+		\right)^{\frac 12}
+		\norm{(\NN+5)^\alpha \psi} \nonumber\\
+	&\leq \sum\limits_{\ell \in \Z^3_*} \norm{K^j(\ell)}_{\max,2}
+		\sum\limits_{r \in L_\ell}
+		|K^{m-j}(\ell)_{r,q}|
+		\left( \sum\limits_{\ell_1 \in \Z^3_*}
+		\mathds{1}_{L_{\ell_1}}(r)
+		|K(\ell_1)_{r,-r+\ell+\ell_1}|^2 \right)^{\frac 12} \times \nonumber\\
+	&\quad \times \left( 
+		\sum\limits_{\ell_1\in \Z^3_*} \sum_{s \in L_\ell}
+		\norm{a_{r-\ell_1} a_{s-\ell} a_s (\NN+1)^{-\alpha} \psi}^2
+		\right)^{\frac 12}
+		\norm{(\NN+5)^\alpha \psi} \nonumber\\
+	&\leq \sum\limits_{\ell \in \Z^3_*}
+		\norm{K^j(\ell)}_{\max,2}
+		\norm{K^{m-j}(\ell)}_{\max,2}
+		\left( \sum\limits_{\ell_1 \in \Z^3_*}
+		\sum\limits_{r \in L_{\ell_1}}
+		|K(\ell_1)_{r,-r+\ell+\ell_1}|^2 \right)^{\frac 12}
+		\norm{(\NN+1)^{1-\alpha} \psi}
+		\norm{(\NN+5)^\alpha \psi} \nonumber\\
+\end{align}
+\textcolor{red}{[SL: This scales like $ k_{\F}^{\frac 32} $, which is too weak.]}
+Finally, for the $ \III $-term,
+\begin{align}
+	&\abs{\sum_{\ell \in \Z^3_* \setminus S} \III_\ell } \nonumber\\
+	&\leq \sum\limits_{\ell \in \Z^3_* \setminus S, \ell_1\in \Z^3_*} \sum\limits_{s\in L_{\ell}}
+		|K^m(\ell)_{q,s}|
+		|K(\ell_1)_{q,-q+\ell+\ell_1}|
+		\norm{ a_{q-\ell_1} a_{q-\ell-\ell_1} b_s(\ell) (\NN+1)^{-\alpha} \psi}
+		\norm{(\NN+5)^\alpha \psi} \nonumber\\
+	&\leq \left( \sum\limits_{\ell \in \Z^3_* \setminus S, \ell_1\in \Z^3_*} \sum\limits_{s\in L_\ell}
+		|K^m(\ell)_{q,s}|^2
+		|K(\ell_1)_{q,-q+\ell+\ell_1}|^2 \right)^{\frac 12} \times \nonumber\\
+	&\quad \times \left( \sum\limits_{\ell \in \Z^3_* \setminus S, \ell_1\in \Z^3_*} \sum\limits_{s\in \Z^3} \norm{ a_{q-\ell_1} a_{q-\ell-\ell_1} a_s a_{s-\ell} (\NN+1)^{-\alpha} \psi}^2 \right)^{\frac 12}
+		\norm{(\NN+5)^\alpha \psi} \nonumber\\
+\end{align}
 %TODO Writing head
  
  
