@@ -109,6 +109,10 @@
 \newcommand{\F}{\mathrm{F}}
 \newcommand{\di}{\mathrm{d}}
 \newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\normmax}[1]{\norm{#1}_{\mathrm{max}}}
+\newcommand{\normmaxi}[1]{\norm{#1}_{\mathrm{max,1}}}
+\newcommand{\normmaxii}[1]{\norm{#1}_{\mathrm{max,2}}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % THEOREMSTYLES
 \theoremstyle{plain}
@@ -817,19 +821,26 @@ For $q \in B^c_{\mathrm{F}}$ and the vacuum state $\Omega \in \HH_N$, we have
 
 \section{Error Bounds}\label{subsec3}
  Before we start with the estimates we introduce some definitions.
-
 \begin{definition}[Norms]
 	For any $k \in \Z^3_*$ and $A(k)\in \ell^2(L_k)\otimes \ell^2(L_k)$, we define
 	\begin{align}
-		\norm{A(k)}_{\mathrm{max}} &\coloneq \sup\limits_{p,q \in \Z^3}\abs{A(k)_{p,q}},\\
-		\norm{A(k)}_{\mathrm{max,1}} &\coloneq \sup\limits_{q \in \Z^3}\sum\limits_{p \in \Z^3}\abs{A(k)_{p,q}}
+		\norm{A(k)}_{\mathrm{max}} &\coloneq \sup\limits_{p,q \in L_k}\abs{A(k)_{p,q}},\\
+		\norm{A(k)}_{\mathrm{max,1}} &\coloneq \sup\limits_{q \in \L_k}\sum\limits_{p \in L_k}\abs{A(k)_{p,q}},
 	\end{align}
 	and
 	\begin{equation}
-		\norm{A(k)}_{\mathrm{max},2} \coloneq \sup\limits_{q \in \Z^3}\bigg(\sum\limits_{p \in \Z^3}\abs{A(k)_{p,q}}^2\bigg)^\half.
+		\norm{A(k)}_{\mathrm{max},2} \coloneq \sup\limits_{q \in L_k}\bigg(\sum\limits_{p \in L_k}\abs{A(k)_{p,q}}^2\bigg)^\half.
 	\end{equation}
 \end{definition}
-
+\begin{comment}
+	\begin{remark}
+		In the error estimates we sometimes write the supremum over all $p$ and/or $q$ in $\Z^3$, which is understood as follows.
+		\begin{equation}
+			\norm{A(k)}_{\mathrm{max}} = \mathds{1}_{L_k}(p)\mathds{1}_{L_k}(q) \sup\limits_{p,q \in \Z^3}\abs{A(k)_{p,q}}.
+		\end{equation} 
+		
+	\end{remark}	
+\end{comment}
 We bound the head term next, and to begin we start by establishing certain necessary bounds.    
 \begin{lemma}[Bounds on Pair Operators]\label{lem:pairest}
     Let $k \in \Z^3_*$ and $p \in L_k$, then
@@ -1309,10 +1320,9 @@ Next we bound these decomposed error terms and in order to do so we have the fol
 For any $\psi \in \HH_N$ and $q \in \Z^3_*$, we have
 \begin{alignat}{2}
      \abs{\eva{\psi,\left(E^{\,1,1}_{Q_1}+\mathrm{h.c.}\right) \psi }}\nonumber
-     \leq  C\, &\Xi^{\half}  \begin{aligned}[t] &\Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} + \sum\limits_{j=0}^m \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg) \times\\
-     &\quad\times \Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)^\half  \norm { (\NN+1)^{2} \psi } \nonumber\\
+     \leq  C\, &\Xi^{\half} \begin{aligned}[t]\Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \Bigg( &\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} + \nonumber\\+\sum\limits_{j=0}^m &\sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg)\norm { (\NN+1)^{\frac{3}{2}} \psi } \nonumber\\
      \end{aligned}\\
-	 + &\Xi^{\frac{3}{4}} \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\right)\Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \norm{ \NN\psi}^\half\label{eq:estEQ111}
+     + C\,&\Xi^{\frac{3}{4}} \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\right) \Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \norm{ (\NN+1)\psi}^\half\label{eq:estEQ111}
 \end{alignat}
 \end{lemma}
 \begin{proof}We start with the L.H.S. of \eqref{eq:estEQ111}.
@@ -1330,36 +1340,26 @@ For \eqref{eq:EQ1111}-\eqref{eq:EQ1113}, we start by using resolution of the ide
 	&\eqref{eq:EQ1111}\nonumber\\
     &= \sum\limits_{\ell,\ell_1  \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell \cap L_{\ell_1}} \abs{\eva{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{\alpha} (\NN+1)^{-\alpha} \psi,  K^{m}(\ell)_{r,q} a_{r-\ell} \psi }}\nonumber\\
     &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \sum\limits_{ r \in L_\ell \cap L_{\ell_1}} \abs{\eva{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{-\alpha} \psi, K^{m}(\ell)_{r,q} a_{r-\ell} (\NN+5)^{\alpha} \psi }}\nonumber\\
-    &\leq\sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \sum\limits_{ r \in L_\ell \cap L_{\ell_1}}    \norm{\sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+5)^{-\alpha}\psi}\norm{  K^{m}(\ell)_{r,q}  a_{r-\ell} (\NN+5)^{\alpha}\psi } \nonumber\\
+    &\leq\sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \sum\limits_{ r \in L_\ell \cap L_{\ell_1}}    \norm{\sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{-\alpha}\psi}\norm{  K^{m}(\ell)_{r,q}  a_{r-\ell} (\NN+5)^{\alpha}\psi } \nonumber\\
     &\leq \sum\limits_{\ell.\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \Bigg( \sum\limits_{r \in L_{\ell_1}} \norm{\sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{-\alpha}\psi}^2\Bigg)^\half \times\nonumber\\
     &\quad \times \Bigg( \sum\limits_{r \in L_\ell}  \norm{  K^{m}(\ell)_{r,q}  a_{r-\ell} (\NN+5)^{\alpha}\psi }^2\Bigg)^\half \nonumber\\
     &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \Bigg( \sum\limits_{r \in L_{\ell_1}} \bigg( \sum\limits_{s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r,s_1}}^2\bigg) \sum\limits_{s_1 \in L_{\ell_1}} \norm{ b_{-s_1}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{-\alpha}\psi}^2\Bigg)^\half \times\nonumber\\
     &\quad \times  \norm{  K^{m}(\ell)}_{\mathrm{max}} \norm{ \NN^\half(\NN+5)^{\alpha}\psi } \nonumber\\
-    &\leq \sum\limits_{\ell \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \Bigg(\sum\limits_{\ell_1 \in \Z^3_*}\sup_{r \in \Z^3}\sum\limits_{s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r,s_1}}^2\Bigg)^\half \Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \sum\limits_{r \in L_{\ell_1}}  \sum\limits_{s_1 \in L_{\ell_1}} \norm{ b_{-s_1}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{-\alpha}\psi}^2\Bigg)^\half \times\nonumber\\
-    &\quad \times  \norm{  K^{m}(\ell)}_{\mathrm{max}} \norm{ \NN^\half (\NN+5)^{\alpha}\psi } \nonumber\\
-    &\leq \sum\limits_{\ell \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}}^2 \bigg)^\half \Bigg(   \sum\limits_{\ell_1 \in \Z^3_*} \sum\limits_{s_1 \in L_{\ell_1}} \sum\limits_{r \in \Z^3_*} \norm{ b_{-s_1}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{-\alpha}\psi}^2\Bigg)^\half \times\nonumber\\
-    &\quad \times  \norm{  K^{m}(\ell)}_{\mathrm{max}} \norm{ \NN^\half (\NN+5)^{\alpha}\psi } \nonumber\\
-    &\leq \sum\limits_{\ell \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}}^2 \bigg)^\half \Bigg( \sum\limits_{s_1 \in \Z^3}  \sum\limits_{\ell_1 \in \Z^3_*} \mathds{1}_{L_{\ell_1}}(s_1) \sum\limits_{r \in \Z^3} \norm{ a_{r-\ell_1} a_{-s_1+\ell_1} a_{-s_1}  a_{q}(\NN+1)^{-\alpha}\psi}^2\Bigg)^\half \times\nonumber\\
-    &\quad \times  \norm{  K^{m}(\ell)}_{\mathrm{max}} \norm{ \NN^\half (\NN+5)^{\alpha}\psi } \nonumber\\
-    &\leq \sum\limits_{\ell \in \Z^3_*}\mathds{1}_{L_\ell}(q) \norm{  K^{m}(\ell)}_{\mathrm{max}}  \bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}}^2 \bigg)^\half  \norm{   a_{q}(\NN+1)^{\frac{3}{2}-\alpha}\psi} \norm{ \NN^\half (\NN+5)^{\alpha}\psi } \nonumber\\
+    &\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*}\mathds{1}_{L_\ell}(q) \norm{  K^{m}(\ell)}_{\mathrm{max}}  \norm{K(\ell_1)}_{\mathrm{max,2}}   \norm{   a_{q}(\NN+1)^{1-\alpha}\psi} \norm{  (\NN+5)^{\half+\alpha}\psi } \nonumber\\
 \end{align}
-wherein we use $\NN<(\NN+1)<(\NN+5)$ and $\NN^\half(\NN+5)^{\frac{3}{2}}\leq C(\NN+1)^{2}$. Then for $\alpha = \frac{3}{2}$, we have
-\begin{align}
-    %&\leq C\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K(\ell)}_{\mathrm{max}}\norm{K(\ell_1)}_{\mathrm{max}}  \norm{b_{q}(\ell) \psi} \norm { (\NN+1)^{\frac{3}{2}} \psi }\nonumber\\
-    %&\leq C \sup\limits_{q \in L_\ell} \norm{n_{q}^{\half} \psi} \sum\limits_{\ell,\ell_1 \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}}\norm{K(\ell_1)}_{\mathrm{max}} \norm { (\NN+1)^{\frac{3}{2}} \psi }\nonumber\\
-    \eqref{eq:EQ1111}&\leq C\, \Xi^\half \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}}\Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max,2}}^2 \Bigg)^\half  \norm { (\NN+1)^{2} \psi }. \label{eq:estEQ1111}    
-\end{align}
+wherein we use $\NN<(\NN+1)<(\NN+5)$ and $\NN^\half(\NN+5)^1\leq C(\NN+1)^{\frac{3}{2}}$. Then for $\alpha = 1$, we have
+\begin{equation}
+    \eqref{eq:EQ1111}\leq C\, \Xi^\half \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}}\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \norm { (\NN+1)^{\frac{3}{2}} \psi }. \label{eq:estEQ1111}    
+\end{equation}
 We estimate \eqref{eq:EQ1112} as 
 \begin{alignat}{2}
 	&\eqref{eq:EQ1112}\nonumber\\
 	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)\!\! \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}\! \norm{ \sum\limits_{s \in L_\ell, s_1 \in L_{\ell_1}} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) b_{s}(\ell) a_{r-\ell_1}\psi}\norm{  K^{m-j}(\ell)_{r,q} a_{r-\ell} \psi } \nonumber\\
-	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)\!\! \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}\! \Bigg( \sum\limits_{s \in L_\ell}\abs{K^{j}(\ell)_{q,s}}^2\Bigg)^\half \norm{ \sum\limits_{ s_1 \in L_{\ell_1}}  K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1)  a_{r-\ell_1}\psi}\norm{  K^{m-j}(\ell)_{r,q} a_{r-\ell} \psi } \nonumber\\
-	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg( \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}\! \norm{ \sum\limits_{ s_1 \in L_{\ell_1}}  K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1)  a_{r-\ell_1}\psi} ^2\Bigg)^\half \times\nonumber\\ &\quad\times\Bigg( \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}\!\norm{  K^{m-j}(\ell)_{r,q} a_{r-\ell} \psi }^2\Bigg)^\half\nonumber\\
-	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg( \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}\! \norm{ \sum\limits_{ s_1 \in L_{\ell_1}}  K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1)  a_{r-\ell_1}\psi} ^2\Bigg)^\half \sup_{r \in \Z^3}\norm{a_r\psi}\nonumber\\
-	&\leq \Xi^\half \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg(\sup_{r \in \Z^3} \sum\limits_{ s_1 \in L_{\ell_1}}\abs{  K(\ell_1)_{r,s_1} }^2\Bigg)^\half \Bigg(  \sum\limits_{ s_1 \in L_{\ell_1}}\norm{   b_{-s_1}(-\ell_1)  \NN^\half\psi} ^2\Bigg)^\half \nonumber\\
-	&\leq \Xi^\half \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg(\sum\limits_{ \ell_1\in \Z^3_*}\norm{  K(\ell_1)}_{\mathrm{max,2}}^2\Bigg)^\half \Bigg( \sum\limits_{ \ell_1\in \Z^3_*} \sum\limits_{ s_1 \in L_{\ell_1}}\norm{   a_{-s_1+\ell_1}a_{-s_1} \NN^\half \psi} ^2\Bigg)^\half \nonumber\\
-	&\leq \Xi^\half \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{ \mathrm{max,2} } \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg(\sum\limits_{ \ell_1\in \Z^3_*}\norm{  K(\ell_1)}_{\mathrm{max,2}}^2\Bigg)^\half \Bigg(\sum\limits_{ s_1 \in \Z^3} \sum\limits_{ \ell_1\in \Z^3_*} \norm{   a_{-s_1+\ell_1}a_{-s_1} \NN^\half \psi} ^2\Bigg)^\half \nonumber\\
-	&\leq \Xi^\half \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{ \mathrm{max,2} } \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg(\sum\limits_{ \ell_1\in \Z^3_*}\norm{  K(\ell_1)}_{\mathrm{max,2}}^2\Bigg)^\half  \norm{\NN^2 \psi} \label{eq:estEQ1112}
+	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)\!\! \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}\! \Bigg( \sum\limits_{s \in L_\ell}\abs{K^{j}(\ell)_{q,s}}^2\Bigg)^\half \norm{ \sum\limits_{ s_1 \in L_{\ell_1}}  K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1)  a_{r-\ell_1}(\NN+1)^\half\psi}\norm{  K^{m-j}(\ell)_{r,q} a_{r-\ell} \psi } \nonumber\\
+	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg( \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}\! \norm{ \sum\limits_{ s_1 \in L_{\ell_1}}  K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1)  a_{r-\ell_1}(\NN+1)^\half\psi} ^2\Bigg)^\half \times\nonumber\\ &\quad\times\Bigg( \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}\!\norm{  K^{m-j}(\ell)_{r,q} a_{r-\ell} \psi }^2\Bigg)^\half\nonumber\\
+	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg( \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}\! \norm{ \sum\limits_{ s_1 \in L_{\ell_1}}  K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1)  a_{r-\ell_1} (\NN+1)^\half \psi} ^2\Bigg)^\half \sup_{r \in \Z^3}\norm{a_r\psi}\nonumber\\
+	&\leq \Xi^\half \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg(\sup_{r \in \Z^3} \sum\limits_{ s_1 \in L_{\ell_1}}\abs{  K(\ell_1)_{r,s_1} }^2\Bigg)^\half \Bigg(  \sum\limits_{ s_1 \in L_{\ell_1}}\norm{   b_{-s_1}(-\ell_1)  (\NN+1)\psi} ^2\Bigg)^\half \nonumber\\
+	&\leq \Xi^\half \Bigg(\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{ \mathrm{max,2} } \norm{K^{j}(\ell)}_{\mathrm{max,2}}\Bigg) \Bigg(\sum\limits_{ \ell_1\in \Z^3_*}\norm{  K(\ell_1)}_{\mathrm{max,2}}\Bigg)  \norm{(\NN+1)^\frac{3}{2} \psi} \label{eq:estEQ1112}
 \end{alignat} 
 
 We estimate \eqref{eq:EQ1113} as
@@ -1386,10 +1386,10 @@ We estimate \eqref{eq:EQ1113} as
 \begin{align}
 	&\eqref{eq:EQ1113}\nonumber\\
 	&\leq\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell_1}}(q) \mathds{1}_{L_{\ell}}(q)  \norm{ \sum\limits_{s\in L_{\ell}, s_1 \in L_{\ell_1}} K^m(\ell)_{q,s}K(\ell_1)_{q,s_1} b_{-s_1}(-\ell_1) b_{s}(\ell) a_{q-\ell_1}\psi}\norm{ a_{q-\ell}\psi }\nonumber\\
-	&\leq\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell_1}}(q) \mathds{1}_{L_{\ell}}(q) \Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half \Bigg(\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{q,s_1}}^2\Bigg)^\half \norm{ a_{q-\ell_1} \NN\psi} \norm{ a_{q-\ell}\psi }\nonumber\\
-	&\leq \sup_{q \in \Z^3}\norm{ a_{q} \NN\psi}\Xi^\half\sum\limits_{\ell \in \Z^3_*} \norm{  K^{m}(\ell)}_{\mathrm{max,2}}  \sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \nonumber\\
-	&\leq  \Xi^\half  \sup_{q \in \Z^3}\norm{ a_{q} \psi}^\half \norm{ \NN\psi}^\half \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\right)\Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}}\Bigg) \nonumber\\
-	&\leq \Xi^{\frac{3}{4}} \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\right)\Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \norm{ \NN\psi}^\half \label{eq:estEQ1113}
+	&\leq\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell_1}}(q) \mathds{1}_{L_{\ell}}(q) \Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half \Bigg(\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{q,s_1}}^2\Bigg)^\half \norm{ a_{q-\ell_1} (\NN+1)\psi} \norm{ a_{q-\ell}\psi }\nonumber\\
+	&\leq \sup_{q \in \Z^3}\norm{ a_{q} (\NN+1)\psi}\Xi^\half\sum\limits_{\ell \in \Z^3_*} \norm{  K^{m}(\ell)}_{\mathrm{max,2}}  \sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \nonumber\\
+	&\leq  \Xi^\half  \sup_{q \in \Z^3}\norm{ a_{q} \psi}^\half \norm{ (\NN+1)\psi}^\half \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\right)\Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}}\Bigg) \nonumber\\
+	&\leq \Xi^{\frac{3}{4}} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\Bigg)\Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \norm{ (\NN+1)\psi}^\half \label{eq:estEQ1113}
 \end{align}
 
 Then adding \eqref{eq:estEQ1111},\eqref{eq:estEQ1112} and \eqref{eq:estEQ1113}, we arrive at the bound above \eqref{eq:estEQ111}.
@@ -1399,10 +1399,9 @@ For any $\psi \in \HH_N$ and $q \in \Z^3_*$, we have
 
 \begin{alignat}{2}
 	\abs{\eva{\psi,\left(E^{\,2,1}_{Q_1}+\mathrm{h.c.}\right) \psi }}\nonumber
-	\leq  C\, &\Xi^{\half}  \begin{aligned}[t] &\Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} + \sum\limits_{j=0}^m \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg) \times\\
-		&\quad\times \Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)^\half  \norm { (\NN+1)^{2} \psi } \nonumber\\
+	\leq  C\, &\Xi^{\half} \begin{aligned}[t]\Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \Bigg( &\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} + \nonumber\\+\sum\limits_{j=0}^m &\sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg)\norm { (\NN+1)^{\frac{3}{2}} \psi } \nonumber\\
 	\end{aligned}\\
-	+ &\Xi^{\frac{3}{4}} \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\right)\Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \norm{ \NN\psi}^\half\label{eq:estEQ111}
+	+ C\,&\Xi^{\frac{3}{4}} \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\right) \Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \norm{ (\NN+1)\psi}^\half\label{eq:estEQ121}
 \end{alignat}
 \end{lemma}
 \begin{proof}
@@ -1423,28 +1422,27 @@ For \eqref{eq:EQ1211}-\eqref{eq:EQ1213}, we start by using resolution of the ide
 	&\quad \times \Bigg( \sum\limits_{r \in (L_\ell-\ell)}  \norm{  K^{m}(\ell)_{r+\ell,q}  a_{r+\ell} (\NN+5)^{\alpha}\psi }^2\Bigg)^\half \nonumber\\
 	&\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \Bigg( \sum\limits_{r \in (L_\ell-\ell)} \bigg( \sum\limits_{s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r+\ell_1,s_1}}^2\bigg) \sum\limits_{s_1 \in L_{\ell_1}} \norm{ b_{-s_1}(-\ell_1) b_{q}(\ell) a_{r+\ell_1} (\NN+1)^{-\alpha}\psi}^2\Bigg)^\half \times\nonumber\\
 	&\quad \times  \norm{  K^{m}(\ell)}_{\mathrm{max}} \norm{ \NN^\half(\NN+5)^{\alpha}\psi } \nonumber\\
-	&\leq \sum\limits_{\ell \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \Bigg(\sum\limits_{\ell_1 \in \Z^3_*}\sup_{r \in \Z^3}\sum\limits_{s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r+\ell_1,s_1}}^2\Bigg)^\half \Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \sum\limits_{r \in \Z^3}  \sum\limits_{s_1 \in L_{\ell_1}} \norm{ b_{-s_1}(-\ell_1) b_{q}(\ell) a_{r+\ell_1} (\NN+1)^{-\alpha}\psi}^2\Bigg)^\half \times\nonumber\\
-	&\quad \times  \norm{  K^{m}(\ell)}_{\mathrm{max}} \norm{ \NN^\half (\NN+5)^{\alpha}\psi } \nonumber\\
-	&\leq \sum\limits_{\ell \in \Z^3_*}\mathds{1}_{L_\ell}(q) \norm{  K^{m}(\ell)}_{\mathrm{max}}  \bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}}^2 \bigg)^\half  \norm{   a_{q}(\NN+1)^{\frac{3}{2}-\alpha}\psi} \norm{ \NN^\half (\NN+5)^{\alpha}\psi } \nonumber\\
+	&\leq \sum\limits_{\ell ,\ell_1\in \Z^3_*}\mathds{1}_{L_\ell}(q) \norm{  K^{m}(\ell)}_{\mathrm{max}}   \norm{K(\ell_1)}_{\mathrm{max,2}}  \norm{   a_{q}(\NN+1)^{1-\alpha}\psi} \norm{ \NN^\half (\NN+5)^{\alpha}\psi } \nonumber\\
 \end{align}
-wherein we use $\NN<(\NN+1)<(\NN+5)$ and $\NN^\half(\NN+5)^{\frac{3}{2}}\leq C(\NN+1)^{2}$. Then for $\alpha = \frac{3}{2}$, we have
+wherein we use $\NN<(\NN+1)<(\NN+5)$ and $\NN^\half(\NN+5)^1\leq C(\NN+1)^{\frac{3}{2}}$. Then for $\alpha = 1$, we have
 \begin{align}
 	%&\leq C\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K(\ell)}_{\mathrm{max}}\norm{K(\ell_1)}_{\mathrm{max}}  \norm{b_{q}(\ell) \psi} \norm { (\NN+1)^{\frac{3}{2}} \psi }\nonumber\\
 	%&\leq C \sup\limits_{q \in L_\ell} \norm{n_{q}^{\half} \psi} \sum\limits_{\ell,\ell_1 \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}}\norm{K(\ell_1)}_{\mathrm{max}} \norm { (\NN+1)^{\frac{3}{2}} \psi }\nonumber\\
-	\eqref{eq:EQ1211}&\leq C\, \Xi^\half \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}}\Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max,2}}^2 \Bigg)^\half  \norm { (\NN+1)^{2} \psi }. \label{eq:estEQ1211}    
+	\eqref{eq:EQ1211}&\leq C\, \Xi^\half \Bigg( \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}} \Bigg) \Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \norm { (\NN+1)^{\frac{3}{2}} \psi }. \label{eq:estEQ1211}    
 \end{align}
 We estimate \eqref{eq:EQ1212} as 
 \begin{alignat}{2}
 	&\eqref{eq:EQ1212}\nonumber\\
-	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)\!\! \sum\limits_{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)}\! \norm{ \sum\limits_{s \in L_\ell, s_1 \in L_{\ell_1}} K^{j}(\ell)_{q,s} K(\ell_1)_{r+\ell_1,s_1} b_{-s_1}(-\ell_1) b_{s}(\ell) a_{r+\ell_1}\psi}\norm{  K^{m-j}(\ell)_{r+\ell,q} a_{r+\ell} \psi } \nonumber\\
-	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)\!\! \sum\limits_{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)}\! \Bigg( \sum\limits_{s \in L_\ell}\begin{aligned}[t]
-		\abs{K^{j}(\ell)_{q,s}}^2\Bigg)^\half &\norm{ \sum\limits_{ s_1 \in L_{\ell_1}}  K(\ell_1)_{r+\ell_1,s_1} b_{-s_1}(-\ell_1)  a_{r+\ell_1}\psi}\times\nonumber\\ \times&\norm{  K^{m-j}(\ell)_{r+\ell,q} a_{r+\ell} \psi }
+	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)\, \begin{aligned}[t]
+	\sum\limits_{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)} &\norm{ \sum\limits_{s \in L_\ell, s_1 \in L_{\ell_1}} K^{j}(\ell)_{q,s} K(\ell_1)_{r+\ell_1,s_1} b_{-s_1}(-\ell_1) b_{s}(\ell) a_{r+\ell_1}\psi}\times\nonumber\\\times&\norm{  K^{m-j}(\ell)_{r+\ell,q} a_{r+\ell} \psi }
 	\end{aligned} \nonumber\\
-	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg( \sum\limits_{r\in  (L_{\ell_1}-\ell_1)}\! \norm{ \sum\limits_{ s_1 \in L_{\ell_1}}  K(\ell_1)_{r+\ell_1,s_1} b_{-s_1}(-\ell_1)  a_{r+\ell_1}\psi} ^2\Bigg)^\half \times\nonumber\\ &\quad\times\Bigg( \sum\limits_{r\in (L_{\ell}-\ell) }\!\norm{  K^{m-j}(\ell)_{r+\ell,q} a_{r+\ell} \psi }^2\Bigg)^\half\nonumber\\
-	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg( \sum\limits_{r\in (L_{\ell_1}-\ell_1)}\! \norm{ \sum\limits_{ s_1 \in L_{\ell_1}}  K(\ell_1)_{r+\ell_1,s_1} b_{-s_1}(-\ell_1)  a_{r+\ell_1}\psi} ^2\Bigg)^\half \sup_{r \in \Z^3}\norm{a_r\psi}\nonumber\\
-	&\leq \Xi^\half \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg(\sup_{r \in \Z^3} \sum\limits_{ s_1 \in L_{\ell_1}}\abs{  K(\ell_1)_{r+\ell_1,s_1} }^2\Bigg)^\half \Bigg(  \sum\limits_{ s_1 \in L_{\ell_1}}\norm{   b_{-s_1}(-\ell_1)  \NN^\half\psi} ^2\Bigg)^\half \nonumber\\
-	&\leq \Xi^\half \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg(\sum\limits_{ \ell_1\in \Z^3_*}\norm{  K(\ell_1)}_{\mathrm{max,2}}^2\Bigg)^\half \Bigg( \sum\limits_{ \ell_1\in \Z^3_*} \sum\limits_{ s_1 \in L_{\ell_1}}\norm{   a_{-s_1+\ell_1}a_{-s_1} \NN^\half \psi} ^2\Bigg)^\half \nonumber\\
-	&\leq \Xi^\half \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{ \mathrm{max,2} } \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg(\sum\limits_{ \ell_1\in \Z^3_*}\norm{  K(\ell_1)}_{\mathrm{max,2}}^2\Bigg)^\half  \norm{\NN^2 \psi} \label{eq:estEQ1212}
+	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)\!\! \sum\limits_{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)}\! \Bigg( \sum\limits_{s \in L_\ell}\begin{aligned}[t]
+		\abs{K^{j}(\ell)_{q,s}}^2\Bigg)^\half &\norm{ \sum\limits_{ s_1 \in L_{\ell_1}}  K(\ell_1)_{r+\ell_1,s_1} b_{-s_1}(-\ell_1)  a_{r+\ell_1}(\NN+1)^\half\psi}\times\nonumber\\ \times&\norm{  K^{m-j}(\ell)_{r+\ell,q} a_{r+\ell} \psi }
+	\end{aligned} \nonumber\\
+	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg( \sum\limits_{r\in  (L_{\ell_1}-\ell_1)}\! \norm{ \sum\limits_{ s_1 \in L_{\ell_1}}  K(\ell_1)_{r+\ell_1,s_1} b_{-s_1}(-\ell_1)  a_{r+\ell_1} (\NN+1)^\half\psi} ^2\Bigg)^\half \times\nonumber\\ &\quad\times\Bigg( \sum\limits_{r\in (L_{\ell}-\ell) }\!\norm{  K^{m-j}(\ell)_{r+\ell,q} a_{r+\ell} \psi }^2\Bigg)^\half\nonumber\\
+	&\leq \Xi^\half \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg( \sum\limits_{r\in (L_{\ell_1}-\ell_1)}\! \norm{ \sum\limits_{ s_1 \in L_{\ell_1}}  K(\ell_1)_{r+\ell_1,s_1} b_{-s_1}(-\ell_1)  a_{r+\ell_1} (\NN+1)^\half\psi} ^2\Bigg)^\half \nonumber\\
+	&\leq \Xi^\half \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg(\sup_{r \in \Z^3} \sum\limits_{ s_1 \in L_{\ell_1}}\abs{  K(\ell_1)_{r+\ell_1,s_1} }^2\Bigg)^\half \Bigg(  \sum\limits_{ s_1 \in L_{\ell_1}}\norm{   b_{-s_1}(-\ell_1)  (\NN+1)\psi} ^2\Bigg)^\half \nonumber\\
+	&\leq \Xi^\half \Bigg(\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{ \mathrm{max,2} } \norm{K^{j}(\ell)}_{\mathrm{max,2}}\Bigg) \Bigg(\sum\limits_{ \ell_1\in \Z^3_*}\norm{  K(\ell_1)}_{\mathrm{max,2}}\Bigg)  \norm{(\NN+1)^\frac{3}{2} \psi} \label{eq:estEQ1212}
 \end{alignat} 
 
 We estimate \eqref{eq:EQ1213} as
@@ -1462,10 +1460,10 @@ Then adding \eqref{eq:estEQ1211},\eqref{eq:estEQ1212} and \eqref{eq:estEQ1213}, 
 \begin{lemma}[$E_{Q_1}^{1,2}$]
 For any $\psi \in \HH_N$, we have
 \begin{align}
-	&2\abs{\eva{\psi,\left(E^{\,1,2}_{Q_1}+\mathrm{h.c.}\right) \psi }}\nonumber\\
-	&\leq\quad C\, \Xi^{\half} \left(\sum\limits_{\ell_1\in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max}} \right) \left(\left(\sum\limits_{\ell\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}^2  \right)^\half  \norm{(\NN+1) \psi} \right.\nonumber\\ 
-	&\quad +\left.\left(  \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{ K^{j}(\ell)}_{\mathrm{max,1}}\right) \norm{(\NN+1)^\half
-		 \psi }\right) \label{eq:estEQ112}
+	2\abs{\eva{\psi,\left(E^{\,1,2}_{Q_1}+\mathrm{h.c.}\right) \psi }}\nonumber
+	&\leq\quad C\, \Xi^{\half} \left(\sum\limits_{\ell_1\in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max}} \right) \left(\sum\limits_{\ell\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}   \right.\nonumber\\ 
+	&\quad +\left. \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{ K^{j}(\ell)}_{\mathrm{max,1}}\right) \norm{(\NN+1)^\half
+		 \psi } \label{eq:estEQ112}
 \end{align}
 \end{lemma}
 \begin{proof}
@@ -1484,12 +1482,11 @@ We estimate \eqref{eq:EQ1121} as
 	 &=\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \abs{\eva{  (\NN+5)^{\alpha} \psi, K^m(\ell )_{r,q} K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell-\ell_1} a_{r-\ell_1} b_{q}(\ell)  (\NN+1)^{-\alpha} \psi }}\nonumber\\
 	 &\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \norm{  (\NN+5)^{\alpha} \psi} \norm{ K^m(\ell )_{r,q} K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell-\ell_1} a_{r-\ell_1} b_{q}(\ell) (\NN+1)^{-\alpha} \psi }\nonumber\\
 	 &\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K(\ell_1) }_{\mathrm{max}} \norm{  (\NN+5)^{\alpha} \psi} \Bigg( \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}  \abs{ K^m(\ell)_{r,q}}^2 \Bigg)^\half \Bigg( \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \norm{ a_{r-\ell_1} b_{q}(\ell) (\NN+1)^{-\alpha} \psi }^2 \Bigg)^\half \nonumber\\
-	 &\leq \sum\limits_{\ell_1\in \Z^3_*}  \norm{K(\ell_1) }_{\mathrm{max}} \norm{  (\NN+5)^{\alpha} \psi} \Bigg( \sum\limits_{\ell\in \Z^3_*} \norm{ K^m(\ell)}_{\mathrm{max,2}}^2 \Bigg)^\half \Bigg( \sum\limits_{\ell\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{  a_{q-\ell}a_q (\NN+1)^{\half-\alpha} \psi }^2 \Bigg)^\half \nonumber\\
-	 &\leq \sum\limits_{\ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K(\ell_1) }_{\mathrm{max}} \norm{  (\NN+5)^{\alpha} \psi} \Bigg( \sum\limits_{\ell\in \Z^3_*} \norm{ K^m(\ell)}_{\mathrm{max,2}}^2 \Bigg)^\half  \norm{ a_q (\NN+1)^{1-\alpha} \psi } \nonumber\\
+	 &\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K(\ell_1) }_{\mathrm{max}}   \norm{ K^m(\ell)}_{\mathrm{max,2}} \norm{(\NN+5)^{\alpha} \psi} \norm{ a_q (\NN+1)^{\half-\alpha} \psi } \nonumber\\
 \end{align}
-wherein we used $\norm{a_p} \leq \mathds{1}$, $\sum_{p\in \Z^3_*}\norm{a_p \psi}^2\leq\norm{\NN\psi}^2<\norm{(\NN+2)\psi}^2$ and $(\NN+5)\leq C(\NN+1)$. Then for $\alpha = 1$, we have
+wherein we used $\norm{a_p} \leq \mathds{1}$, $\sum_{p\in \Z^3_*}\norm{a_p \psi}^2\leq\norm{\NN\psi}^2<\norm{(\NN+2)\psi}^2$ and $(\NN+5)^\half\leq C(\NN+1)^\half$. Then for $\alpha = 1$, we have
 \begin{equation}
-	\eqref{eq:EQ1121}\leq C\, \Xi^\half \Bigg( \sum\limits_{\ell\in \Z^3_*} \norm{ K(\ell)}_{\mathrm{max,2}}^2 \Bigg)^\half \left(\sum\limits_{\ell_1\in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max}} \right) \norm{(\NN+1)^1 \psi} \label{eq:estEQ1121}
+	\eqref{eq:EQ1121}\leq C\, \Xi^\half \Bigg( \sum\limits_{\ell\in \Z^3_*} \norm{ K(\ell)}_{\mathrm{max,2}} \Bigg) \left(\sum\limits_{\ell_1\in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max}} \right) \norm{(\NN+1)^\half \psi} \label{eq:estEQ1121}
 \end{equation} 
 We estimate \eqref{eq:EQ1122} as
 \begin{alignat}{2}
@@ -1506,22 +1503,19 @@ We estimate \eqref{eq:EQ1122} as
 Then for $\alpha = \half$, we have
 \begin{align}
 	&\leq  \sum\limits_{j=1}^{m-1} {{m}\choose j}\sum\limits_{\ell, \ell_1\in \Z^3_*}  \norm{K(\ell_1)}_{\mathrm{max}} \norm{K^{m-j}(\ell_1)}_{\mathrm{max,2}} \norm{ (\NN+5)^{\half} \psi} \bigg(\sup_{q \in \Z^3}\sum\limits_{s\in L_{\ell}}\abs{K^{j}(\ell)_{q,s}}\bigg) \bigg(
-	\sup_{s \in \Z^3}\norm{  n_q^\half   \psi } \bigg)\nonumber\\
+	\sup_{s \in \Z^3}\norm{  n_s^\half   \psi } \bigg)\nonumber\\
 	\eqref{eq:EQ1122}&\leq C \: \Xi^\half \left(  \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{ K^{j}(\ell)}_{\mathrm{max,1}}\right) \left( \sum\limits_{ \ell_1\in \Z^3_*}\norm{ K(\ell_1) }_{\mathrm{max}} \right)\!\! \norm{(\NN+1)^\half \psi } \label{eq:estEQ1122}
 \end{align}
 We estimate \eqref{eq:EQ1123} as 
 \begin{align}
 	&\eqref{eq:EQ1123}\nonumber\\
 	&\leq\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}\cap(-L_{\ell_1}+\ell+\ell_1)}(q) \sum\limits_{s \in L_{\ell}} \norm{(\NN+5)^{\alpha} \psi}\norm{ K^m(\ell)_{q,s} K(\ell_1)_{q,-q+\ell+\ell_1} a_{q-\ell-\ell_1} a_{q-\ell_1} b_{s}(\ell) (\NN+1)^{-\alpha} \psi }\nonumber\nonumber\\
-	&\leq\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}\cap(-L_{\ell_1}+\ell+\ell_1)}(q)\norm{(\NN+5)^{\alpha} \psi} \norm{K(\ell_1)}_{\mathrm{max}} \Bigg( \sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half \Bigg(\sum\limits_{s \in L_{\ell}} \norm{ a_{s-\ell} a_{q-\ell_1} a_s (\NN+1)^{-\alpha} \psi  }^2\Bigg)^\half \nonumber\nonumber\\
-	&\leq\sum\limits_{\ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}\cap(-L_{\ell_1}+\ell+\ell_1)}(q)\norm{(\NN+5)^{\alpha} \psi} \norm{K(\ell_1)}_{\mathrm{max}} \Bigg( \sum\limits_{\ell\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}^2\Bigg)^\half \times \nonumber\\ 
-	&\quad\times \Bigg(\sum\limits_{s \in L_{\ell}} \sum\limits_{\ell\in \Z^3_*} \mathds{1}_{L_\ell}(s) \norm{ a_{s-\ell} a_s a_{q-\ell_1}  (\NN+1)^{-\alpha} \psi  }^2\Bigg)^\half \nonumber\nonumber\\
-	&\leq\sum\limits_{ \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}\cap(-L_{\ell_1}+\ell+\ell_1)}(q)\norm{(\NN+5)^{\alpha} \psi} \norm{K(\ell_1)}_{\mathrm{max}} \Bigg( \sum\limits_{\ell\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}^2\Bigg)^\half \Bigg(\sum\limits_{\ell\in \Z^3_*} \sum\limits_{s \in L_{\ell}} \norm{  a_{q-\ell_1}  (\NN+1)^{1-\alpha} \psi  }^2\Bigg)^\half \nonumber\nonumber\\
+	&\leq\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}\cap(-L_{\ell_1}+\ell+\ell_1)}(q)\norm{(\NN+5)^{\alpha} \psi} \norm{K(\ell_1)}_{\mathrm{max}} \Bigg( \sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half \Bigg(\sum\limits_{s \in L_{\ell}} \norm{ a_{q-\ell_1} b_s(\ell) (\NN+1)^{-\alpha} \psi  }^2\Bigg)^\half \nonumber\\
 \end{align}
-For $\alpha=1$, we have
+For $\alpha=\half$, we have
 \begin{align}
-	&\leq C\sum\limits_{ \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}\cap(-L_{\ell_1}+\ell+\ell_1)}(q)  \Bigg( \sum\limits_{\ell\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}^2\Bigg)^\half \norm{K(\ell_1)}_{\mathrm{max}} \norm{a_{q-\ell_1} \psi } \norm{(\NN+1) \psi}\nonumber\\
-	\eqref{eq:EQ1123}&\leq C\: \Xi^\half   \Bigg( \sum\limits_{\ell\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}^2\Bigg)^\half \left(\sum\limits_{ \ell_1\in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max}} \right)  \norm{(\NN+1) \psi}\label{eq:estEQ1123}
+	&\leq C\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}\cap(-L_{\ell_1}+\ell+\ell_1)}(q)  \Bigg(  \norm{K^m(\ell)}_{\mathrm{max,2}}\Bigg) \norm{K(\ell_1)}_{\mathrm{max}} \norm{a_{q-\ell_1} \psi } \norm{(\NN+1)^\half \psi}\nonumber\\
+	\eqref{eq:EQ1123}&\leq C\: \Xi^\half   \Bigg( \sum\limits_{\ell\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\Bigg) \left(\sum\limits_{ \ell_1\in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max}} \right)  \norm{(\NN+1)^\half \psi}\label{eq:estEQ1123}
 \end{align}
 Then adding \eqref{eq:estEQ1121},\eqref{eq:estEQ1122} and \eqref{eq:estEQ1123}, we arrive at the bound above \eqref{eq:estEQ112}.
 \end{proof}
@@ -1541,138 +1535,149 @@ Then adding \eqref{eq:estEQ1121},\eqref{eq:estEQ1122} and \eqref{eq:estEQ1123}, 
     For any $\psi \in \HH_N$, we have
     \begin{align}
     	\abs{\eva{\psi,\left(E^{\,1,1}_{Q_2}+\mathrm{h.c.}\right) \psi }}
-    	&\leq  C\, \Xi^{\half} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} + \sum\limits_{j=0}^m \sum\limits_{\ell \in \Z^3_*}\norm{K^{m-j}(\ell)}_{\mathrm{max}}\norm{K^{j}(\ell)}_{\mathrm{max}}\Bigg)\times\nonumber\\&\quad\times \Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg)  \norm { (\NN+1)^{\frac{3}{2}} \psi }  \label{eq:estEQ211}
+    	 \leq  C\,  &\Xi^{\half} \begin{aligned}[t]\Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \Bigg( &\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} + \nonumber\\+\sum\limits_{j=0}^m &\sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg)\norm { (\NN+1)^{\frac{3}{2}} \psi } \nonumber\\
+    	 \end{aligned}\\
+    	 + C\,&\Xi^{\frac{3}{4}} \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\right) \Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \norm{ (\NN+1)\psi}^\half \label{eq:estEQ211}
     \end{align}
 \end{lemma}
 \begin{proof}
   We start with the L.H.S. of \eqref{eq:estEQ211}.
   \begin{align}
   	&\abs{\eva{\psi,\left(E^{\,1,1}_{Q_2}+\mathrm{h.c.}\right) \psi }} = \abs{\eva{\psi,2\mathrm{Re}\left(E^{\,1,1}_{Q_2}\right) \psi }} = 2\abs{\eva{\psi, E^{\,1,1}_{Q_2} \psi }}\nonumber\\
-  	\leq\,\;8& \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\s_1\in L_{\ell_1}}} \abs{\eva{\psi, K^m(\ell )_{r,q} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{q}(\ell) b_{-s_1}(-\ell_1) a_{r-\ell}  \psi }}\label{eq:EQ2111}\\
-  	+\,8& \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}  \abs{\eva{\psi, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{s}(\ell) b_{-s_1}(-\ell_1) a_{r-\ell} \psi }}\label{eq:EQ2112}\\
-  	+\,8&\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \abs{\eva{\psi,  K^m(\ell)_{q,s}K(\ell_1)_{q,s_1}
+  	\leq\,\;8& \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \abs{\eva{\psi, \sum\limits_{s_1\in L_{\ell_1}} K^m(\ell )_{r,q} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{q}(\ell) b_{-s_1}(-\ell_1) a_{r-\ell}  \psi }}\label{eq:EQ2111}\\
+  	+\,8& \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}  \abs{\eva{\psi, \sum\limits_{\substack{s \in L_{\ell},\\ s_1\in L_{\ell_1}}} K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{s}(\ell) b_{-s_1}(-\ell_1) a_{r-\ell} \psi }}\label{eq:EQ2112}\\
+  	+\,8&\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \abs{\eva{\psi,  \sum\limits_{s \in L_{\ell}, s_1\in L_{\ell_1}} K^m(\ell)_{q,s}K(\ell_1)_{q,s_1}
   	a^*_{q-\ell_1} b^*_{s}(\ell) b_{-s_1}(-\ell_1) a_{q-\ell} \psi}} \label{eq:EQ2113}
   \end{align}
   where the last inequality is implied by Remark \ref{q-q} and we used \eqref{eq:decomptheta}.
   For \eqref{eq:EQ2111}-\eqref{eq:EQ2113}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then we use the Cauchy-Schwarz inequality, Lemma \ref{lem:commNab} and the bounds from Lemma \ref{lem:pairest}.We estimate \eqref{eq:EQ2111} as
-  \begin{align}
-  	&\eqref{eq:EQ2111}\nonumber\\
-  	&= \sum\limits_{\ell,\ell_1 \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) \sum\limits_{\substack{r \in L_\ell \cap L_{\ell_1}\\ s_1 \in L_{\ell_1}}} \abs{\eva{ K^{m}(\ell)_{r,q} b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{\alpha} (\NN+1)^{-\alpha} \psi, K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell} \psi}}\nonumber\\
-  	&\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \sum\limits_{\substack{r \in L_\ell \cap L_{\ell_1}\\ s_1 \in L_{\ell_1}}} \abs{\eva{ K^{m}(\ell)_{r,q} b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{-\alpha} \psi, K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell} (\NN+1)^{\alpha} \psi }}\nonumber\\
-  	&\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \sum\limits_{r \in L_\ell \cap L_{\ell_1}}  \sum\limits_{s_1 \in L_{\ell_1}} \norm{ K^{m}(\ell)_{r,q} b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{-\alpha}\psi}\norm{K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1)  a_{r-\ell} (\NN+1)^{\alpha}\psi } \nonumber\\
-  	&\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K^{m}(\ell)}_{\mathrm{max}}\norm{K(\ell_1)}_{\mathrm{max}} \sum\limits_{r \in L_\ell \cap L_{\ell_1}} \norm{ a_{r-\ell_1} b_{q}(\ell) (\NN+1)^{-\alpha} \psi} \norm { a_{r-\ell}\NN^\half (\NN+1)^{\alpha} \psi }\nonumber\\
-  	&\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K^{m}(\ell)}_{\mathrm{max}}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg(\sum\limits_{r \in L_{\ell_1}} \norm{ a_{r-\ell_1}b_{q}(\ell) (\NN+1)^{-\alpha} \psi}^2\Bigg)^\half\!\!\Bigg( \sum\limits_{r \in L_\ell} \norm { a_{r-\ell} \NN^\half (\NN+1)^{\alpha} \psi }^2\Bigg)^\half\nonumber\\
-  	&\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K^{m}(\ell)}_{\mathrm{max}}\norm{K(\ell_1)}_{\mathrm{max}}  \norm{ b_{q}(\ell) (\NN+1)^\half (\NN+1)^{-\alpha} \psi}  \norm { \NN (\NN+1)^{\alpha} \psi }\nonumber
-  \end{align}
-  wherein we used $\sum_{p\in \Z^3_*}\norm{a_p \psi}^2\leq\norm{\NN\psi}^2<\norm{(\NN+2)\psi}^2$, $\sum_{p\in L_{\ell}}\norm{b_p({\ell}) \psi}^2\leq\norm{\NN\psi}^2<\norm{(\NN+1)\psi}^2$ and $\NN(\NN+1)^\half\leq C(\NN+1)^{\frac{3}{2}}$. Then for $\alpha = \half $, we have
-  \begin{align}
-  	&\leq C\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K(\ell)}_{\mathrm{max}}\norm{K(\ell_1)}_{\mathrm{max}}  \norm{b_{q}(\ell) \psi} \norm { (\NN+1)^{\frac{3}{2}} \psi } \nonumber\\
-  	&\leq C \sup\limits_{q \in L_\ell} \norm{n_{q}^{\half} \psi} \sum\limits_{\ell,\ell_1 \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}} \norm { (\NN+1)^{\frac{3}{2}} \psi} \nonumber\\
-  	\eqref{eq:EQ2111}&\leq C\, \Xi^\half \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}}\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg)  \norm { (\NN+1)^{\frac{3}{2}} \psi }. \label{eq:estEQ2111}    
-  \end{align}
-  We estimate \eqref{eq:EQ2112} as 
+\begin{align}
+	&\eqref{eq:EQ2111}\nonumber\\
+	&\leq\sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \sum\limits_{ r \in L_\ell \cap L_{\ell_1}}    \norm{ K^{m}(\ell)_{r,q} b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{\alpha}\psi}\norm{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1)   a_{r-\ell} (\NN+1)^{-\alpha}\psi } \nonumber\\
+ 	&\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \Bigg( \sum\limits_{r \in L_{\ell_1}} \norm{\sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell} (\NN+1)^{\alpha}\psi}^2\Bigg)^\half \times\nonumber\\
+ 	&\quad \times \Bigg( \sum\limits_{r \in L_\ell}  \norm{  K^{m}(\ell)_{r,q}  b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{-\alpha}\psi }^2\Bigg)^\half \nonumber\\
+ 	&\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \Bigg( \sum\limits_{r \in L_{\ell_1}} \bigg( \sum\limits_{s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r,s_1}}^2\bigg) \sum\limits_{s_1 \in L_{\ell_1}} \norm{ b_{-s_1}(-\ell_1)  a_{r-\ell} (\NN+1)^{\alpha}\psi}^2\Bigg)^\half \times\nonumber\\
+ 	&\quad \times  \norm{  K^{m}(\ell)}_{\mathrm{max}} \norm{b_{q}(\ell) \NN^\half(\NN+1)^{-\alpha}\psi } \nonumber\\
+\end{align}
+	Then for $\alpha = \half$, we have 
+\begin{align}
+ 	&\leq \Xi^\half \sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\! \norm{ K^{m}(\ell)}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max,2}}  \Bigg( \sum\limits_{r \in L_{\ell_1}} \sum\limits_{s_1 \in L_{\ell_1}} \norm{ b_{-s_1}(-\ell_1)  a_{r-\ell} (\NN+1)^{\half}\psi}^2\Bigg)^\half \nonumber\\
+ 	\eqref{eq:EQ2111}&\leq \Xi^\half \Bigg(\sum\limits_{\ell \in \Z^3_*}  \norm{  K^{m}(\ell)}_{\mathrm{max}}\Bigg) \bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \bigg) \norm{ (\NN+1)^{\frac{3}{2}}\psi}  \label{eq:estEQ2111} 
+ \end{align}
+ wherein we use $\NN<(\NN+1)$. We estimate \eqref{eq:EQ2112} as 
   \begin{alignat}{2}
   	&\eqref{eq:EQ2112}\nonumber\\
-  	&= \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)\!\!\!\! \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}\!\!\!\! \abs{ \eva{ K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} b_{s}(\ell) a_{r-\ell_1}(\NN+1)^{-\alpha} \psi,  K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell}(\NN+1)^{\alpha} \psi }}\nonumber\\
-  	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)\!\!\!\! \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}\!\!\!\! \norm{ K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} b_{s}(\ell) a_{r-\ell_1}(\NN+1)^{-\alpha} \psi}\norm{  K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell}(\NN+1)^{\alpha} \psi }\nonumber\\
-  	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K^{j}(\ell)}_{\mathrm{max}} \norm{ K(\ell_1) }_{\mathrm{max}} \begin{aligned}[t]\sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}\!\!\! &\norm{ a_{r-\ell_1} (\NN+1)^{\frac{1}{2}} (\NN+1)^{-\alpha} \psi}\times \\ \times&\norm{a_{r-\ell} (\NN+1)^{\frac{1}{2}} (\NN+1)^{\alpha}\psi }	
-   \end{aligned}\nonumber
+  	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)\!\! \begin{aligned}[t]
+  	\sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}\! &\norm{ \sum\limits_{s \in L_\ell} K^{j}(\ell)_{q,s}  b_{s}(\ell) a_{r-\ell_1} (\NN+1)^{\alpha}\psi}\times\nonumber \\\times &\norm{\sum\limits_{s_1 \in L_{\ell_1}} K^{m-j}(\ell)_{r,q} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1)  a_{r-\ell} (\NN+1)^{-\alpha}\psi }
+  	\end{aligned} \nonumber\\
+    &\leq \sum\limits_{j=1}^{m-1} \begin{aligned}[t] {{m}\choose j} &\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)\!\! 
+    \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}\! \Bigg( \sum\limits_{s \in L_\ell} \abs{K^{j}(\ell)_{q,s}}^2\Bigg)^\half \bigg( \sum\limits_{s \in L_\ell}\norm{  b_{s}(\ell) a_{r-\ell_1} (\NN+1)^{\alpha}\psi}^2\bigg)^\half \times\nonumber\\ \times \Bigg( &\sum\limits_{s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r,s_1}}^2\Bigg)^\half \bigg(\sum\limits_{s_1 \in L_{\ell_1}}\norm{ K^{m-j}(\ell)_{r,q}  b_{-s_1}(-\ell_1)  a_{r-\ell} (\NN+1)^{-\alpha}\psi }^2\bigg)^\half
+    \end{aligned} \nonumber\\   
+	&\leq \sum\limits_{j=1}^{m-1} \begin{aligned}[t]{{m}\choose j} &\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \normmaxii{K^j(\ell)} \sum\limits_{ \ell_1\in \Z^3_*}\normmaxii{K(\ell_1)} 
+    \bigg( \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}\!  \norm{ a_{r-\ell_1} (\NN+1)^{\half+\alpha}\psi}^2\bigg)^\half \times \nonumber\\ \times 
+    \bigg( &\sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \sum\limits_{s_1 \in L_{\ell_1}}\norm{ K^{m-j}(\ell)_{r,q}  b_{-s_1}(-\ell_1)  a_{r-\ell} (\NN+1)^{-\alpha}\psi }^2\bigg)^\half
+	\end{aligned} \nonumber\\
+	&\leq \sum\limits_{j=1}^{m-1} \begin{aligned}[t]{{m}\choose j} &\sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \normmaxii{K^j(\ell)} \Bigg(\sum\limits_{ \ell_1\in \Z^3_*}\normmaxii{K(\ell_1)}^2\Bigg)^\half  
+	 \norm{ (\NN+1)^{1+\alpha}\psi} \times \nonumber\\ \times 
+	\bigg( &\sum\limits_{r\in \Z^3}  \norm{ K^{m-j}(\ell)_{r,q} a_{r-\ell} (\NN+1)^{\half-\alpha}\psi }^2\bigg)^\half \end{aligned} \nonumber\\
+\end{alignat}
+We know that $\NN<(\NN+1)$, then for $\alpha = \half$, we have
+\begin{alignat}{2}
+	&\leq \Xi^\half\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \normmaxii{K^j(\ell)} \normmaxii{K(\ell_1)} \bigg(\sum\limits_{r\in \Z^3}  \abs{ K^{m-j}(\ell)_{r,q} }^2\bigg)^\half \norm{(\NN+1)^\frac{3}{2} \psi}  \nonumber\\
+  	\eqref{eq:EQ2112}&\leq \Xi^\half \Bigg(\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{ \mathrm{max,2} } \norm{K^{j}(\ell)}_{\mathrm{max,2}}\Bigg) \Bigg(\sum\limits_{ \ell_1\in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}}\Bigg)  \norm{(\NN+1)^{\frac{3}{2}} \psi} \label{eq:estEQ2112}
   \end{alignat} 
-  For $\alpha = \half$, we have
-  \begin{align}
-  	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K^{j}(\ell)}_{\mathrm{max}} \norm{ K(\ell_1) }_{\mathrm{max}} \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}\!\! \norm{ a_{r-\ell_1} \psi} \norm{ a_{r-\ell}(\NN+1) \psi }\nonumber\\
-  	&\leq C \sup\limits_{r \in \Z^3_*} \norm{ n^{\,\half}_r \psi} \left(  \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K^{j}(\ell)}_{\mathrm{max}} \right) \left( \sum\limits_{ \ell_1\in \Z^3_*} \norm{ K(\ell_1) }_{\mathrm{max} } \right)\!\! \norm{(\NN+1)^{\frac{3}{2}} \psi }\nonumber\\
-  	\eqref{eq:EQ2112}&\leq C \, \Xi^\half \left(  \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K^{j}(\ell)}_{\mathrm{max}}\right) \left( \sum\limits_{ \ell_1\in \Z^3_*}\norm{ K(\ell_1) }_{\mathrm{max}} \right)\!\! \norm{(\NN+1)^{\frac{3}{2}} \psi }\label{eq:estEQ2112}		
-  \end{align}
-  We estimate \eqref{eq:EQ2113} as
-  \begin{align}
-  	&\eqref{eq:EQ2113}\nonumber\\
-  	&= \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell_1}}(q) \mathds{1}_{L_{\ell}}(q) \!\!\! \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}}\!\! \abs{\eva{ K^m(\ell)_{q,s} b_{s}(\ell) a_{q-\ell_1} (\NN+1)^{-\alpha}\psi, K(\ell_1)_{q,s_1} b_{-s_1}(-\ell_1) a_{q-\ell} (\NN+1)^{\alpha} \psi }}\nonumber\\
-  	&\leq\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell_1}}(q) \mathds{1}_{L_{\ell}}(q) \!\!\! \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}}\!\!  \norm{ K^m(\ell)_{q,s} b_{s}(\ell) a_{q-\ell_1} (\NN+1)^{-\alpha}\psi}\norm{ K(\ell_1)_{q,s_1} b_{-s_1}(-\ell_1) a_{q-\ell} (\NN+1)^{\alpha} \psi }\nonumber\\
-  	&\leq\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \!  \norm{ a_{q-\ell_1} (\NN+1)^\half (\NN+1)^{-\alpha} \psi} \norm{ a_{q-\ell} \NN^\half (\NN+1)^{\alpha} \psi }\nonumber
-  \end{align}
-  For $\alpha=\half$
-  \begin{equation}
-  	\leq\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)  \mathds{1}_{L_{\ell_1}}(q)\norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \! \norm{ a_{q-\ell_1} \psi} \norm{ a_{q-\ell} \NN^\half (\NN+1)^\half \psi }\nonumber
-  \end{equation}
-  Then we use $\norm{a_q\psi}\leq \norm{\NN^\half\psi}$ for $q \in B_F$ or $q \in B^c_F$ and we arrive at 
-  \begin{align}
-  	&\leq C \sup\limits_{q \in \Z^3_*} \norm{ n^\half_{q} \psi}\sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \norm{ (\NN+1)^{\frac{3}{2}} \psi } \nonumber\\
-  	\eqref{eq:EQ2113}&\leq  C \,\Xi^\half \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\right)\left( \sum\limits_{\ell_1\in \Z^3_*} \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{ (\NN+1)^{\frac{3}{2}} \psi }\label{eq:estEQ2113}
-  \end{align}
+We estimate \eqref{eq:EQ2113} as
+\begin{align}
+	&\eqref{eq:EQ2113}\nonumber\\
+	&\leq\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell_1}}(q) \mathds{1}_{L_{\ell}}(q)  \norm{ \sum\limits_{s\in L_{\ell}} K^m(\ell)_{q,s} b_{s}(\ell) a_{q-\ell_1}(\NN+1)^{\alpha}\psi}\norm{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{q,s_1} b_{-s_1}(-\ell_1)a_{q-\ell} (\NN+1)^{-\alpha} \psi }\nonumber\\
+	&\leq\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell_1}}(q) \mathds{1}_{L_{\ell}}(q) \Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half \Bigg(\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{q,s_1}}^2\Bigg)^\half \norm{ a_{q-\ell_1} \NN^\half (\NN+1)^{\alpha}\psi} \norm{ a_{q-\ell} \NN^\half (\NN+1)^{-\alpha} \psi }\nonumber\\
+\end{align}
+We know that $\NN<(\NN+1)$, then for $\alpha = \half$, we have
+\begin{align}
+	&\leq \sup_{q \in \Z^3}\norm{ a_{q} (\NN+1)\psi} \Xi^\half\sum\limits_{\ell \in \Z^3_*} \norm{  K^{m}(\ell)}_{\mathrm{max,2}}  \sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \nonumber\\
+	\eqref{eq:EQ2113}&\leq \Xi^{\frac{3}{4}} \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\right) \Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \norm{ (\NN+1)\psi}^\half \label{eq:estEQ2113}
+\end{align}
   Then adding \eqref{eq:estEQ2111},\eqref{eq:estEQ2112} and \eqref{eq:estEQ2113}, we arrive at the bound above \eqref{eq:estEQ211}. 
 \end{proof}
 
 \begin{lemma}[$E_{Q_2}^{2,1}$]
     For any $\psi \in \HH_N$, we have
-    \begin{align}
+    \begin{alignat}{2}
     	\abs{\eva{\psi,\left(E^{\,2,1}_{Q_2}+\mathrm{h.c.}\right) \psi }}
-    	&\leq  C\, \Xi^{\half} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} + \sum\limits_{j=0}^m \sum\limits_{\ell \in \Z^3_*}\norm{K^{m-j}(\ell)}_{\mathrm{max}}\norm{K^{j}(\ell)}_{\mathrm{max}}\Bigg)\times\nonumber\\&\quad\times \Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg)  \norm { (\NN+1)^{\frac{3}{2}} \psi }  \label{eq:estEQ221}
-    \end{align}
+    	\leq  C\,  &\Xi^{\half} \begin{aligned}[t]\Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \Bigg( &\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} + \nonumber\\+\sum\limits_{j=0}^m &\sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg)\norm { (\NN+1)^{\frac{3}{2}} \psi } \nonumber\\
+    	\end{aligned}\\
+    	+ C\,&\Xi^{\frac{3}{4}} \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\right) \Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \norm{ (\NN+1)\psi}^\half \label{eq:estEQ221}
+    \end{alignat}
 \end{lemma}
 \begin{proof}
  We start with the L.H.S. of \eqref{eq:estEQ221}.
  \begin{align}
  	&\abs{\eva{\psi,\left(E^{\,2,1}_{Q_2}+\mathrm{h.c.}\right) \psi }} = \abs{\eva{\psi,2\mathrm{Re}\left(E^{\,2,1}_{Q_2}\right) \psi }} = 2\abs{\eva{\psi, E^{\,2,1}_{Q_2} \psi }}\nonumber\\
- 	\leq\;\;&8 \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s_1\in L_{\ell_1} }} \abs{\eva{\psi,  K^m(\ell )_{r+\ell,q}K(\ell_1)_{r+\ell_1,s_1}
+ 	\leq\;\;&8 \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)} \abs{\eva{\psi, \sum\limits_{ s_1\in L_{\ell_1} }  K^m(\ell )_{r+\ell,q}K(\ell_1)_{r+\ell_1,s_1}
  			a^*_{r+\ell_1} b^*_{q}(\ell) b_{-s_1}(-\ell_1)a_{r+\ell} \psi}} \label{eq:EQ2211}\\
- 	\;+&8 \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in (L_{\ell}-\ell) \\ \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1} }}  \abs{\eva{\psi,  K^{m-j}(\ell)_{r+\ell,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r+\ell_1,s_1} a^*_{r+\ell_1} b^*_{s}(\ell) b_{-s_1}(-\ell_1) a_{r+\ell} \psi }} \label{eq:EQ2212}\\
- 	\;+&8\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(L_{\ell_1}-\ell_1+\ell)}(q) \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} \abs{\eva{\psi,  K^m(\ell)_{q+\ell,s} K(\ell_1)_{q+\ell_1,s_1} a^*_{q+\ell_1} b^*_{s}(\ell) b_{-s_1}(-\ell_1) a_{q+\ell} \psi}} \label{eq:EQ2213}
+ 	\;+&8 \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in (L_{\ell}-\ell) \\ \cap (L_{\ell_1}-\ell_1)}}  \abs{\eva{\psi, \sum\limits_{ \substack{s \in L_{\ell},\\s_1\in L_{\ell_1}} }   K^{m-j}(\ell)_{r+\ell,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r+\ell_1,s_1} a^*_{r+\ell_1} b^*_{s}(\ell) b_{-s_1}(-\ell_1) a_{r+\ell} \psi }} \label{eq:EQ2212}\\
+ 	\;+&8\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(L_{\ell_1}-\ell_1+\ell)}(q)  \abs{\eva{\psi, \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}} K^m(\ell)_{q+\ell,s} K(\ell_1)_{q+\ell_1,s_1} a^*_{q+\ell_1} b^*_{s}(\ell) b_{-s_1}(-\ell_1) a_{q+\ell} \psi}} \label{eq:EQ2213}
  \end{align}
  where the last inequality is implied by Remark \ref{q-q} and we used \eqref{eq:decomptheta}.
  For \eqref{eq:EQ2211}-\eqref{eq:EQ2213}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then we use the Cauchy-Schwarz inequality, Lemma \ref{lem:commNab} and the bounds from Lemma \ref{lem:pairest}.
  We estimate \eqref{eq:EQ2211} as
- \begin{alignat}{2}
+ \begin{align}
  	&\eqref{eq:EQ2211}\nonumber\\
- 	&= \sum\limits_{\ell,\ell_1 \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) \sum\limits_{\substack{r\in (L_{\ell}-\ell)\\ \cap (L_{\ell_1}-\ell_1)\\ s_1 \in L_{\ell_1}}} \abs{\eva{ K^{m}_{r+\ell,q}(\ell) b_{q}(\ell) a_{r+\ell_1} (\NN+1)^{\alpha}  \psi, K(\ell_1)_{r+\ell_1,s_1} b_{-s_1}(-\ell_1) a_{r+\ell} (\NN+1)^{-\alpha} \psi }}\nonumber\\
- 	&\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \sum\limits_{\substack{r\in (L_{\ell}-\ell)\\ \cap (L_{\ell_1}-\ell_1)}}  \sum\limits_{s_1 \in L_{\ell_1}}  \norm{ K^{m}_{r+\ell,q}(\ell) b_{q}(\ell) a_{r+\ell_1} (\NN+1)^{-\alpha}\psi}\norm{  K(\ell_1)_{r+\ell_1,s_1} b_{-s_1}(-\ell_1) a_{r+\ell} (\NN+1)^{\alpha}\psi } \nonumber\\
- 	&\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\mathds{1}_{L_\ell}(q) \norm{K(\ell_1)}_{\mathrm{max}} \norm{K^m(\ell)}_{\mathrm{max}} \sum\limits_{\substack{r \in (L_\ell-\ell) \\ \cap (L_{\ell_1}-\ell_1)}} \norm{a_{r+\ell_1} b_{q}(\ell) (\NN+1)^{-\alpha} \psi} \norm { a_{r+\ell} \NN^\half (\NN+1)^{\alpha} \psi }\nonumber\\
- 	&\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K^{m}(\ell)}_{\mathrm{max}}\norm{K(\ell_1)}_{\mathrm{max}} \begin{aligned}[t]
- 		&\Bigg(\sum\limits_{r \in (L_{\ell_1}-\ell_1)} \norm{ a_{r+\ell_1} b_{q}(\ell) (\NN+1)^{-\alpha} \psi}^2\Bigg)^\half\times \nonumber\\\times &\Bigg( \sum\limits_{r \in (L_\ell-\ell)} \norm { a_{r+\ell}  \NN^\half (\NN+1)^{\alpha} \psi }^2\Bigg)^\half \end{aligned}\nonumber
- \end{alignat}
- wherein we used $\sum_{p\in \Z^3_*}\norm{a_p \psi}^2\leq\norm{\NN\psi}^2<\norm{(\NN+2)\psi}^2$, $\sum_{p\in L_{\ell}}\norm{b_p(\ell) \psi}^2\leq\norm{\NN\psi}^2<\norm{(\NN+1)\psi}^2$ and $\NN (\NN+1)^\half\leq C(\NN+1)^{\frac{3}{2}}$. Then for $\alpha = 1$, we have
- \begin{align}
- 	&\leq C\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \norm{K(\ell)}_{\mathrm{max}}\norm{K(\ell_1)}_{\mathrm{max}}  \norm{b_{q}(\ell) \psi} \norm { (\NN+1)^{\frac{3}{2}} \psi }\nonumber\\
- 	\eqref{eq:EQ2211}&\leq C \,\Xi^{\half} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}}\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg)  \norm { (\NN+1)^{\frac{3}{2}} \psi }. \label{eq:estEQ2211}
+ 	&\leq\sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \sum\limits_{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)}    \norm{ K^{m}(\ell)_{r+\ell,q} b_{q}(\ell) a_{r+\ell_1} (\NN+1)^{\alpha}\psi}\norm{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r+\ell_1,s_1} b_{-s_1}(-\ell_1)   a_{r+\ell} (\NN+1)^{-\alpha}\psi } \nonumber\\
+ 	&\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \Bigg( \sum\limits_{r\in (L_{\ell_1}-\ell_1)} \norm{\sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r+\ell_1,s_1} b_{-s_1}(-\ell_1) a_{r+\ell} (\NN+1)^{\alpha}\psi}^2\Bigg)^\half \times\nonumber\\
+ 	&\quad \times \Bigg( \sum\limits_{r\in (L_{\ell}-\ell)}  \norm{K^{m}(\ell)_{r+\ell,q}  b_{q}(\ell) a_{r+\ell_1} (\NN+1)^{-\alpha}\psi }^2\Bigg)^\half \nonumber\\
+ 	&\leq \sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \Bigg( \sum\limits_{r\in (L_{\ell_1}-\ell_1)} \bigg( \sum\limits_{s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r+\ell_1,s_1}}^2\bigg) \sum\limits_{s_1 \in L_{\ell_1}} \norm{ b_{-s_1}(-\ell_1)  a_{r+\ell} (\NN+1)^{\alpha}\psi}^2\Bigg)^\half \times\nonumber\\
+ 	&\quad \times  \norm{  K^{m}(\ell)}_{\mathrm{max}} \norm{b_{q}(\ell) (\NN+1)^{\half-\alpha}\psi } \nonumber
  \end{align}
- We estimate \eqref{eq:EQ2212} as 
- \begin{alignat}{2}
- 	&\eqref{eq:EQ2212}\nonumber\\
- 	&= \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)\!\!\!\! \sum\limits_{\substack{r\in (L_{\ell}-\ell)\\ \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1}}}\!\!\!\! \abs{ \eva{ K^{m-j}(\ell)_{r+\ell,q} K^{j}(\ell)_{q,s} b_{s}(\ell) a_{r+\ell_1}(\NN+1)^{-\alpha} \psi, K(\ell_1)_{r+\ell_1,s_1} b_{-s_1}(-\ell_1) a_{r+\ell}(\NN+1)^{\alpha} \psi }}\nonumber\\
- 	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)\!\!\!\! \sum\limits_{\substack{r\in (L_{\ell}-\ell)\\ \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1}}}\!\!\!\! \norm{ K^{m-j}(\ell)_{r+\ell,q} K^{j}(\ell)_{q,s} b_{s}(\ell) a_{r+\ell_1}(\NN+1)^{-\alpha} \psi}\norm{ K(\ell_1)_{r+\ell_1,s_1} b_{-s_1}(-\ell_1)   a_{r+\ell}(\NN+1)^{\alpha} \psi }\nonumber\\
- 	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K^{j}(\ell)}_{\mathrm{max}} \norm{ K(\ell_1) }_{\mathrm{max}}\!\!\!\begin{aligned}[t] \sum\limits_{\substack{r\in (L_{\ell}-\ell)\\ \cap (L_{\ell_1}-\ell_1)}}\!\!\! &\norm{ a_{r+\ell_1} (\NN+1)^\half (\NN+1)^{-\alpha} \psi}\times\\\times &\norm{a_{r+\ell} \NN^\half (\NN+1)^{\alpha}\psi }\end{aligned}\nonumber
- \end{alignat} 
- For $\alpha = \half$, we have
- \begin{align}
- 	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)\norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K^{j}(\ell)}_{\mathrm{max}} \norm{ K(\ell_1) }_{\mathrm{max}} \sum\limits_{\substack{r\in (L_{\ell}-\ell) \\ \cap (L_{\ell_1}-\ell_1)}}\!\! \norm{ a_{r+\ell_1} \psi} \norm{ a_{r+\ell}\NN^\half (\NN+1)^\half \psi }\nonumber\\
- 	&\leq C \sup\limits_{r \in \Z^3_*} \norm{ n^{\,\half}_r \psi} \left(  \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K^{j}(\ell)}_{\mathrm{max}} \right) \left( \sum\limits_{ \ell_1\in \Z^3_*} \norm{ K(\ell_1) }_{\mathrm{max} } \right)\!\! \norm{(\NN+1)^{\frac{3}{2}} \psi }\nonumber\\
- 	\eqref{eq:EQ2212}&\leq C \, \Xi^\half \left(  \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K^{j}(\ell)}_{\mathrm{max}}\right) \left( \sum\limits_{ \ell_1\in \Z^3_*}\norm{ K(\ell_1) }_{\mathrm{max}} \right)\!\! \norm{(\NN+1)^{\frac{3}{2}} \psi }\label{eq:estEQ2212}		
- \end{align}
- We estimate \eqref{eq:EQ2213} as
- \begin{align}
- 	&\eqref{eq:EQ2213}\nonumber\\
- 	&= \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(L_{\ell_1}-\ell_1+\ell)}(q) \!\!\! \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}}\!\! \abs{\eva{ K^m(\ell)_{q+\ell,s}  b_{s}(\ell) a_{q+\ell_1} (\NN+1)^{-\alpha}\psi, K(\ell_1)_{q+\ell_1,s_1} b_{-s_1}(-\ell_1) a_{q+\ell} (\NN+1)^{\alpha} \psi }}\nonumber\\
- 	&\leq\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(L_{\ell_1}-\ell_1+\ell)}(q) \!\!\! \sum\limits_{s \in L_{\ell},s_1\in L_{\ell_1}}\!\! \norm{ K^m(\ell)_{q+\ell,s} b_{s}(\ell) a_{q+\ell_1} (\NN+1)^{-\alpha}\psi}\norm{ K(\ell_1)_{q+\ell_1,s_1} b_{-s_1}(-\ell_1) a_{q+\ell} (\NN+1)^{\alpha} \psi }\nonumber\\
- 	&\leq\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(L_{\ell_1}-\ell_1+\ell)}(q)\norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \! \norm{ a_{q+\ell_1} (\NN+1)^\half (\NN+1)^{-\alpha} \psi} \norm{ a_{q+\ell} \NN^\half (\NN+1)^{\alpha} \psi }\nonumber
- \end{align}
- For $\alpha=\half$
+ Then for $\alpha = \half$, we have 
  \begin{equation}
- 	\leq\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)  \mathds{1}_{(L_{\ell_1}-\ell_1+\ell)}(q)\norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \! \norm{ a_{q+\ell_1} \psi} \norm{ a_{q+\ell} \NN^\half (\NN+1)^\half \psi} \nonumber
- \end{equation} 
- Then we use $\norm{a_q\psi}\leq \norm{\NN^\half\psi}$ for $q \in B_F$ or $q \in B^c_F$ and we arrive at 
- \begin{align}
- 	&\leq C \sup\limits_{q \in \Z^3_*} \norm{ n^\half_{q} \psi}\sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \norm{ (\NN+1)^{\frac{3}{2}} \psi } \nonumber\\
- 	\eqref{eq:EQ2213}&\leq  C \,\Xi^\half \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\right)\left( \sum\limits_{\ell_1\in \Z^3_*} \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{ (\NN+1)^{\frac{3}{2}} \psi }\label{eq:estEQ2213}
- \end{align}
+ 	\eqref{eq:EQ2211}\leq \Xi^\half \sum\limits_{\ell \in \Z^3_*} \!\! \norm{  K^{m}(\ell)}_{\mathrm{max}} \bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \bigg) \norm{ (\NN+1)^{\frac{3}{2}}\psi}  \label{eq:estEQ2211} 
+ \end{equation}
+ wherein we use $\NN<(\NN+1)$.
+ We estimate \eqref{eq:EQ2212} as 
+   \begin{alignat}{2}
+ 	&\eqref{eq:EQ2212}\nonumber\\
+ 	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)\!\! \begin{aligned}[t]
+ 		\sum\limits_{\substack{r\in (L_{\ell}-\ell) \\ \cap (L_{\ell_1}-\ell_1)}}\! &\norm{ \sum\limits_{s \in L_\ell} K^{j}(\ell)_{q,s}  b_{s}(\ell) a_{r+\ell_1} (\NN+1)^{\alpha}\psi}\times\nonumber \\\times &\norm{\sum\limits_{s_1 \in L_{\ell_1}} K^{m-j}(\ell)_{r+\ell,q} K(\ell_1)_{r+\ell_1,s_1} b_{-s_1}(-\ell_1)  a_{r+\ell} (\NN+1)^{-\alpha}\psi }
+ 	\end{aligned} \nonumber\\
+ 	&\leq \sum\limits_{j=1}^{m-1} \begin{aligned}[t] {{m}\choose j} &\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)\!\! 
+ 		\sum\limits_{\substack{r\in (L_{\ell}-\ell) \\ \cap (L_{\ell_1}-\ell_1)}}\! \Bigg( \sum\limits_{s \in L_\ell} \abs{K^{j}(\ell)_{q,s}}^2\Bigg)^\half \bigg( \sum\limits_{s \in L_\ell}\norm{  b_{s}(\ell) a_{r+\ell_1} (\NN+1)^{\alpha}\psi}^2\bigg)^\half \times\nonumber\\ \times \Bigg( &\sum\limits_{s_1 \in L_{\ell_1}} \abs{ K(\ell_1)_{r+\ell_1,s_1} }^2\Bigg)^\half \bigg(\sum\limits_{s_1 \in L_{\ell_1}}\norm{ K^{m-j}(\ell)_{r+\ell,q}  b_{-s_1}(-\ell_1)  a_{r+\ell} (\NN+1)^{-\alpha}\psi }^2\bigg)^\half
+ 	\end{aligned} \nonumber\\   
+ 	&\leq \sum\limits_{j=1}^{m-1} \begin{aligned}[t]{{m}\choose j} &\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \normmaxii{K^j(\ell)} \sum\limits_{ \ell_1\in \Z^3_*}\normmaxii{K(\ell_1)} 
+ 		\bigg( \sum\limits_{r\in (L_{\ell_1}-\ell_1)}\!  \norm{ a_{r+\ell_1} (\NN+1)^{\half+\alpha}\psi}^2\bigg)^\half \times \nonumber\\ \times 
+ 		\bigg( &\sum\limits_{r\in (L_{\ell}-\ell) }\norm{ K^{m-j}(\ell)_{r+\ell,q}   a_{r+\ell} (\NN+1)^{\half-\alpha}\psi }^2\bigg)^\half
+ 	\end{aligned} \nonumber\\
+ 	&\leq \sum\limits_{j=1}^{m-1} \begin{aligned}[t]{{m}\choose j} &\sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \normmaxii{K^j(\ell)} \Bigg(\sum\limits_{ \ell_1\in \Z^3_*}\normmaxii{K(\ell_1)}\Bigg)  
+ 		\norm{ (\NN+1)^{1+\alpha}\psi} \times \nonumber\\ \times 
+ 		\bigg( &\sum\limits_{r\in \Z^3}  \norm{ K^{m-j}(\ell)_{r+\ell,q} a_{r+\ell} (\NN+1)^{\half-\alpha}\psi }^2\bigg)^\half \end{aligned} \nonumber\\
+ \end{alignat}
+ We know that $\NN<(\NN+1)$, then for $\alpha = \half$, we have
+ \begin{alignat}{2}
+ 	&\leq \Xi^\half\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \normmaxii{K^j(\ell)} \bigg(\sum\limits_{r\in \Z^3} \normmaxii{K(\ell_1)} \abs{ K^{m-j}(\ell)_{r+\ell,q} }^2\bigg)^\half  \norm{(\NN+1)^\frac{3}{2} \psi}  \nonumber\\
+ 	\eqref{eq:EQ2212}&\leq \Xi^\half \Bigg(\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{ \mathrm{max,2} } \norm{K^{j}(\ell)}_{\mathrm{max,2}}\Bigg) \Bigg(\sum\limits_{ \ell_1\in \Z^3_*}\norm{  K(\ell_1)}_{\mathrm{max,2}}\Bigg)  \norm{(\NN+1)^\frac{3}{2} \psi} \label{eq:estEQ2212}
+ \end{alignat}
+ We estimate \eqref{eq:EQ2213} as
+\begin{alignat}{2}
+	&\eqref{eq:EQ2213}\nonumber\\
+	&\leq\sum\limits_{\ell, \ell_1\in \Z^3_*}  \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(L_{\ell_1}-\ell_1+\ell)}(q) \norm{ \sum\limits_{s\in L_{\ell}} K^m(\ell)_{q+\ell,s} b_{s}(\ell) a_{q+\ell_1}(\NN+1)^{\alpha}\psi}\norm{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{q+\ell_1,s_1} b_{-s_1}(-\ell_1)a_{q+\ell} (\NN+1)^{-\alpha} \psi }\nonumber\\
+	&\leq\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \begin{aligned}[t] \mathds{1}_{(L_{\ell_1}-\ell_1+\ell)}(q) &\Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q+\ell,s}}^2\Bigg)^\half \Bigg(\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{q+\ell_1,s_1}}^2\Bigg)^\half \times\nonumber\\ \times&\norm{ a_{q+\ell_1} \NN^\half (\NN+1)^{\alpha}\psi} \norm{ a_{q+\ell} \NN^\half (\NN+1)^{-\alpha} \psi }\end{aligned}\\
+\end{alignat}
+We know that $\NN<(\NN+1)$, then for $\alpha = \half$, we have
+\begin{align}
+	&\leq \sup_{q \in \Z^3}\norm{ a_{q} (\NN+1)\psi} \Xi^\half\sum\limits_{\ell \in \Z^3_*} \norm{  K^{m}(\ell)}_{\mathrm{max,2}}  \sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \nonumber\\
+	\eqref{eq:EQ2213}&\leq \Xi^{\frac{3}{4}} \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\right) \Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \norm{ (\NN+1)\psi}^\half \label{eq:estEQ2213}
+\end{align}
  Then adding \eqref{eq:estEQ2211},\eqref{eq:estEQ2212} and \eqref{eq:estEQ2213}, we arrive at the bound above \eqref{eq:estEQ221}. 
 \end{proof}
 
 \begin{lemma}[$E_{Q_2}^{1,2}$]
     For any $\psi \in \HH_N$, we have
-    \begin{align}
-    	\abs{\eva{\psi,\left(E^{\,1,2}_{Q_2}+\mathrm{h.c.}\right) \psi }}
-    	&\leq   C\,\Xi^\half \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}} \left(\norm{K^m(\ell)}_{\mathrm{max}} + \sum\limits_{j=1}^{m-1} {{m}\choose j} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{K^j(\ell)}_{\mathrm{max}}\right)  \norm{  (\NN+1)^\half \psi} \label{eq:estEQ212}
-    \end{align}
+    \begin{alignat}{2}
+    	&\begin{aligned}
+    		&\abs{\eva{\psi,\left(E^{\,1,2}_{Q_2}+\mathrm{h.c.}\right) \psi }}_,\\ &\abs{\eva{\psi,\left(E^{\,2,2}_{Q_2}+\mathrm{h.c.}\right) \psi }}_,\\
+    	\end{aligned}
+   	&\leq   C\,\Xi \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max,2}} \left(\norm{K^m(\ell)}_{\mathrm{max,2}} + \sum\limits_{j=1}^{m-1} {{m}\choose j} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^j(\ell)}_{\mathrm{max,1}}\right) \label{eq:estEQ212}
+    \end{alignat}
 \end{lemma}
 \begin{proof}
      We start with the L.H.S. of \eqref{eq:estEQ212}.
@@ -1685,12 +1690,13 @@ Then adding \eqref{eq:estEQ1121},\eqref{eq:estEQ1122} and \eqref{eq:estEQ1123}, 
     where the last inequality is implied by Remark \ref{q-q} and we used \eqref{eq:decomptheta}.
     For \eqref{eq:EQ2121}-\eqref{eq:EQ2123}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then we use the Cauchy-Schwarz inequality, Lemma \ref{lem:commNab} and the bounds from Lemma \ref{lem:pairest}.
     We estimate \eqref{eq:EQ2121} as 
-    \begin{align}
-    	\eqref{eq:EQ2121}
-    	&= \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{r\in L_{\ell}} \abs{\eva{ K(\ell)_{r,q} a_{r-\ell} \psi, K^m(\ell)_{r,q}  a_{r-\ell} \psi }}\nonumber\\
-    	&\leq \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{r\in L_{\ell}} \norm{ K(\ell)_{r,q} a_{r-\ell} \psi}\norm{ K^m(\ell)_{r,q}  a_{r-\ell} \psi }\nonumber\\
-    	&\leq C\,\sup\limits_{r\in \Z^3_*}\norm{n_r^{\,\half}\psi} \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}} \norm{K^m(\ell)}_{\mathrm{max}}  \norm{  (\NN+1)^\half \psi}\nonumber\\
-    	&\leq C\,\Xi^\half \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}} \norm{K^m(\ell)}_{\mathrm{max}}  \norm{  (\NN+1)^\half \psi}\label{eq:estEQ2121}
+\begin{align}
+    \eqref{eq:EQ2121}
+    &= \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{r\in L_{\ell}} \abs{\eva{ K(\ell)_{r,q} a_{r-\ell} \psi, K^m(\ell)_{r,q}  a_{r-\ell} \psi }}\nonumber\\
+    &\leq \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{r\in L_{\ell}} \norm{ K(\ell)_{r,q} a_{r-\ell} \psi}\norm{ K^m(\ell)_{r,q}  a_{r-\ell} \psi }\nonumber\\
+	&\leq \sup\limits_{r\in \Z^3_*} \norm{n_r^{\,\half}\psi}^2 \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{r\in L_{\ell}} \abs{ K(\ell)_{r,q} } \abs{ K^m(\ell)_{r,q} }\nonumber\\
+	&\leq \sup\limits_{r\in \Z^3_*} \norm{n_r^{\,\half}\psi}^2 \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \Bigg(\sum\limits_{r\in L_{\ell}} \abs{ K(\ell)_{r,q} }^2\Bigg)^\half \Bigg(\sum\limits_{r\in L_{\ell}}\abs{ K^m(\ell)_{r,q} }^2\Bigg)^\half\nonumber\\
+    &\leq \, \Xi \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max,2}} \norm{K^m(\ell)}_{\mathrm{max,2}}  \label{eq:estEQ2121}
     \end{align}
 where we used $\sum_{q\in\Z^3}\norm{a_q}\leq \norm{\NN^\half\psi}$ 
 We estimate \eqref{eq:EQ2122} as
@@ -1698,16 +1704,16 @@ We estimate \eqref{eq:EQ2122} as
      \eqref{eq:EQ2122}
     &=\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{r,s\in L_{\ell}}  \abs{\eva{ K(\ell)_{r,s} a_{r-\ell}\psi, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} a_{r-\ell} \psi }}\nonumber\\
     &\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{r,s\in L_{\ell}}  \norm{ K(\ell)_{r,s} a_{r-\ell}\psi}\norm{ K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} a_{r-\ell} \psi } \nonumber\\
-    &\leq C\,\Xi^\half \sum\limits_{j=1}^{m-1} {{m}\choose j}\sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{K^j(\ell)}_{\mathrm{max}} \norm{(\NN+1)^\half \psi} \label{eq:estEQ2122}
+    &\leq \,\Xi \sum\limits_{j=1}^{m-1} {{m}\choose j}\sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max,2}} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^j(\ell)}_{\mathrm{max,1}} \label{eq:estEQ2122}
     \end{align}
     We estimate \eqref{eq:EQ2123} as 
     \begin{align}
     	\eqref{eq:EQ2123}
-    	&=\sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{ s \in L_{\ell}} \abs{\eva{K(\ell)_{q,s} a^*_{q-\ell} \psi, K^m(\ell)_{q,s}  a_{q-\ell} \psi }} \nonumber\\
-    	&\leq \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{ s \in L_{\ell}} \norm{K(\ell)_{q,s} a^*_{q-\ell} \psi}\norm{ K^m(\ell)_{q,s}  a_{q-\ell} \psi } \nonumber\\
-    	&\leq C\,\Xi^\half \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}} \norm{K^m(\ell)}_{\mathrm{max}}  \norm{  (\NN+1)^\half \psi}\label{eq:estEQ2123}
+    	&=\sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{ s \in L_{\ell}} \abs{\eva{K(\ell)_{q,s} a_{q-\ell} \psi, K^m(\ell)_{q,s}  a_{q-\ell} \psi }} \nonumber\\
+    	&\leq \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{ s \in L_{\ell}} \norm{K(\ell)_{q,s} a_{q-\ell} \psi}\norm{ K^m(\ell)_{q,s}  a_{q-\ell} \psi } \nonumber\\
+    	&\leq \,\Xi \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max,2}} \norm{K^m(\ell)}_{\mathrm{max,2}} \label{eq:estEQ2123}
     \end{align} 
-Then adding \eqref{eq:estEQ2121},\eqref{eq:estEQ2122} and \eqref{eq:estEQ2123}, we arrive at the bound above \eqref{eq:estEQ212}.
+Then adding \eqref{eq:estEQ2121},\eqref{eq:estEQ2122} and \eqref{eq:estEQ2123}, we arrive at the bound above \eqref{eq:estEQ212}. One can exactly proceed as the above estimates to get the same bound for $E_{Q_2}^{2,2}$
 \end{proof}
 
 \begin{lemma}[$E_{Q_2}^{2,2}$]
@@ -1730,8 +1736,7 @@ where the last inequality is implied by Remark \ref{q-q} and we used \eqref{eq:d
 	\eqref{eq:EQ2221}
 	&= \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{r\in L_{\ell}} \abs{\eva{ K(\ell)_{r,q} a_{r} \psi, K^m(\ell)_{r,q}  a_{r} \psi }}\nonumber\\
 	&\leq \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{r\in L_{\ell}} \norm{ K(\ell)_{r,q} a_{r} \psi}\norm{ K^m(\ell)_{r,q}  a_{r} \psi }\nonumber\\
-	&\leq C\,\sup\limits_{r\in \Z^3_*}\norm{n_r^{\,\half}\psi} \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}} \norm{K^m(\ell)}_{\mathrm{max}}  \norm{  (\NN+1)^\half \psi}\nonumber\\
-	&\leq C\,\Xi^\half \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}} \norm{K^m(\ell)}_{\mathrm{max}}  \norm{  (\NN+1)^\half \psi}\label{eq:estEQ2221}
+	&\leq C\,\Xi\sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max,2}} \norm{K^m(\ell)}_{\mathrm{max,2}} \label{eq:estEQ2221}
 \end{align}
 where we used $\sum_{q\in\Z^3}\norm{a_q}\leq \norm{\NN^\half\psi}$ 
 We estimate \eqref{eq:EQ2222} as
@@ -1739,14 +1744,14 @@ We estimate \eqref{eq:EQ2222} as
 	\eqref{eq:EQ2222}
 	&=\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{r,s\in L_{\ell}}  \abs{\eva{ K(\ell)_{r,s} a_{r}\psi, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} a_{r} \psi }}\nonumber\\
 	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{r,s\in L_{\ell}}  \norm{ K(\ell)_{r,s} a_{r}\psi}\norm{ K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} a_{r} \psi } \nonumber\\
-	&\leq C\,\Xi^\half \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{K^j(\ell)}_{\mathrm{max}} \norm{(\NN+1)^\half \psi} \label{eq:estEQ2222}
+	&\leq C\,\Xi \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max,2}} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^j(\ell)}_{\mathrm{max,1}} \label{eq:estEQ2222}
 \end{align}
 We estimate \eqref{eq:EQ2123} as 
 \begin{align}
 	\eqref{eq:EQ2223}
 	&=\sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{ s \in L_{\ell}} \abs{\eva{K(\ell)_{q,s} a^*_{q} \psi, K^m(\ell)_{q,s}  a_{q} \psi }} \nonumber\\
 	&\leq \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{ s \in L_{\ell}} \norm{K(\ell)_{q,s} a^*_{q} \psi}\norm{ K^m(\ell)_{q,s}  a_{q} \psi } \nonumber\\
-	&\leq C\,\Xi^\half \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max}} \norm{K^m(\ell)}_{\mathrm{max}}  \norm{  (\NN+1)^\half \psi}\label{eq:estEQ2223}
+	&\leq C\,\Xi \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max,2}} \norm{K^m(\ell)}_{\mathrm{max,2}}  \label{eq:estEQ2223}
 \end{align} 
 Then adding \eqref{eq:estEQ2221},\eqref{eq:estEQ2222} and \eqref{eq:estEQ2223}, we arrive at the bound above \eqref{eq:estEQ222}. 
 \end{proof}
@@ -1755,7 +1760,7 @@ Then adding \eqref{eq:estEQ2221},\eqref{eq:estEQ2222} and \eqref{eq:estEQ2223}, 
 For any $\psi \in \HH_N$, we have
 \begin{align}
 	2\abs{\eva{\psi,\left(E^{\,1,3}_{Q_2}+\mathrm{h.c.}\right) \psi }}
-  	&\leq  C\, \Xi^{\half} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} + \sum\limits_{j=0}^m \sum\limits_{\ell \in \Z^3_*}\norm{K^{m-j}(\ell)}_{\mathrm{max}}\norm{K^{j}(\ell)}_{\mathrm{max}}\Bigg)\times\nonumber\\&\quad\times \Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg)  \norm { (\NN+1) \psi }    \label{eq:estEQ213}
+  	&\leq  C\, \Xi^{\half} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} + \sum\limits_{j=0}^m \sum\limits_{\ell \in \Z^3_*}\norm{K^{m-j}(\ell)}_{\mathrm{max}}\norm{K^{j}(\ell)}_{\mathrm{max,1}}\Bigg)\times\nonumber\\&\quad\times \Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg)  \norm { (\NN+1) \psi }    \label{eq:estEQ213}
 \end{align}
 \end{lemma}
 \begin{proof}
@@ -1769,45 +1774,40 @@ We start with the L.H.S. of \eqref{eq:estEQ213}.
 where the last inequality is implied by Remark \ref{q-q} and we used \eqref{eq:decomptheta}.
 For \eqref{eq:EQ2131}-\eqref{eq:EQ2133}, we start by using resolution of the identity $I = (\NN+1)^{-\alpha}(\NN+1)^{\alpha}$ for some $\alpha \in \R$. Then we use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pairest}.
 We estimate \eqref{eq:EQ2131} as
-\begin{align}
+\begin{alignat}{2}
     &\eqref{eq:EQ2131}\nonumber\\
-    &= \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(-L_{\ell_1}+\ell+\ell_1)}(q) \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \abs{\eva{ K(\ell_1)_{r,q-\ell+\ell_1} a_{-q+\ell-\ell_1} a_{r-\ell_1}(\NN+1)^{\alpha}\psi, K^m(\ell)_{r,q} a_{-q}a_{r-\ell} (\NN+1)^{-\alpha} \psi }}\nonumber\\
     &\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(-L_{\ell_1}+\ell+\ell_1)}(q) \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \norm{ K(\ell_1)_{r,q-\ell+\ell_1} a_{-q+\ell-\ell_1} a_{r-\ell_1}(\NN+1)^{\alpha}\psi}\norm{ K^m(\ell)_{r,q} a_{-q}a_{r-\ell} (\NN+1)^{-\alpha} \psi }\nonumber\\
-    &\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(-L_{\ell_1}+\ell+\ell_1)}(q)  \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}}\sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \norm{ a_{r-\ell_1}(\NN+1)^{\alpha}\psi}\norm{ a_{r-\ell} a_{-q} (\NN+1)^{-\alpha} \psi }\nonumber\\
-    &\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(-L_{\ell_1}+\ell+\ell_1)}(q)  \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}}\left(\sum\limits_{r\in L_{\ell_1}} \norm{ a_{r-\ell_1} (\NN+1)^{\alpha} \psi}^2\right)^\half\left( \sum\limits_{r\in L_{\ell} } \norm{ a_{r-\ell} a_{-q} (\NN+1)^{-\alpha} \psi }^2\right)^\half\nonumber\\
+    &\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \begin{aligned}[t]
+     \mathds{1}_{(-L_{\ell_1}+\ell+\ell_1)}(q) &\left(\sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \norm{ K(\ell_1)_{r,q-\ell+\ell_1} a_{r-\ell_1}(\NN+1)^{\alpha} \psi}^2\right)^\half \times\nonumber\\ \times &\left(\sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \norm{ K^m(\ell)_{r,q} a_{-q}a_{r-\ell} (\NN+1)^{-\alpha} \psi }^2 \right)^\half \end{aligned}\nonumber\\
     &\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(-L_{\ell_1}+\ell+\ell_1)}(q)  \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \norm{ (\NN+1)^\half(\NN+1)^{\alpha} \psi} \norm{ (\NN+2)^\half a_{-q} (\NN+1)^{-\alpha} \psi }\nonumber
-\end{align} 
+\end{alignat} 
 wherein we used $\sum_{p\in \Z^3_*}\norm{a_p \psi}^2\leq\norm{\NN\psi}^2<\norm{(\NN+2)\psi}^2$. Then for $\alpha =  \half $, we have 
 \begin{align}
-	&\leq C\,\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(-L_{\ell_1}+\ell+\ell_1)}(q)  \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}}  \norm{a_{-q} \psi } \norm{ (\NN+1) \psi} \nonumber\\
 	&\leq C\, \sup\limits_{q\in \Z^3_*}\norm{n_q^\half \psi } \sum\limits_{\ell, \ell_1\in \Z^3_*}   \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}}   \norm{ (\NN+1) \psi} \nonumber\\
 	\eqref{eq:EQ2131}&\leq C\, \Xi^\half \left(\sum\limits_{\ell\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\right)\left(  \sum\limits_{ \ell_1\in \Z^3_*}  \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{ (\NN+1) \psi}\label{eq:estEQ2131} 
 \end{align}  
 We estimate \eqref{eq:EQ2132} as
 \begin{align}
 	&\eqref{eq:EQ2132}\nonumber\\
-    &=\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)}} \begin{aligned}[t] \big|\big<&K(\ell_1)_{r,s+\ell_1}a_{-s-\ell_1} a_{r-\ell_1} (\NN+1)^{\alpha} \psi,\nonumber\\  &K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s+\ell} a_{-s-\ell} a_{r-\ell}  (\NN+1)^{-\alpha} \psi\big>\big| \end{aligned} 
-    \nonumber\\
     &\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)}} \begin{aligned}[t] &\norm{ K(\ell_1)_{r,s+\ell_1}a_{-s-\ell_1} a_{r-\ell_1} (\NN+1)^{\alpha}\psi}\nonumber \times \\ \times&\norm{ K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s+\ell} a_{-s-\ell}a_{r-\ell} (\NN+1)^{-\alpha} \psi }\end{aligned} \nonumber\\
-    &\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}   \begin{aligned}[t] \Bigg(\sum\limits_{ s \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)}&\norm{ K(\ell_1)_{r,s+\ell_1}a_{-s-\ell_1} a_{r-\ell_1} (\NN+1)^{\alpha}\psi}^2\Bigg)^\half\nonumber \times \\ \times\Bigg(  \sum\limits_{ s \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)}&\norm{ K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s+\ell} a_{-s-\ell}a_{r-\ell} (\NN+1)^{-\alpha} \psi }^2\Bigg)^\half\end{aligned} \nonumber\\
-    &\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{K^{j}(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \begin{aligned}[t] &\norm{(\NN+1)^\half a_{r-\ell_1} (\NN+1)^{\alpha}\psi}\nonumber \times \\ \times&\norm{   (\NN+2)^\half a_{r-\ell} (\NN+1)^{-\alpha} \psi }\end{aligned} \nonumber
+    &\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{ s \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)}   \begin{aligned}[t] \Bigg(\sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} &\norm{ K(\ell_1)_{r,s+\ell_1}a_{-s-\ell_1} a_{r-\ell_1} (\NN+1)^{\alpha}\psi}^2\Bigg)^\half\nonumber \times \\ \times\Bigg(  \sum\limits_{ r\in L_{\ell} \cap L_{\ell_1}}&\norm{ K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s+\ell} a_{-s-\ell}a_{r-\ell} (\NN+1)^{-\alpha} \psi }^2\Bigg)^\half\end{aligned} \nonumber\\
+    &\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \sum\limits_{ s \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)} \begin{aligned}[t] &\norm{(\NN+1)^{\half+\alpha}\psi}\nonumber \times \\ \times&\norm{  K^{j}(\ell)_{q,s+\ell}  a_{-s-\ell} (\NN+1)^{\half-\alpha} \psi }\end{aligned} \nonumber
 \end{align} 
 Then for $\alpha = \half$, we have
 \begin{align}
-	&\leq C\, \sup\limits_{r \in \Z^3_*} \norm{ n_{r}^{\,\half} \psi } \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{K^{j}(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \norm{(\NN+1) \psi} \nonumber\\
-	\eqref{eq:EQ2132} &\leq  C \, \Xi^\half \left(  \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K^{j}(\ell)}_{\mathrm{max}}\right) \left( \sum\limits_{ \ell_1\in \Z^3_*}\norm{ K(\ell_1) }_{\mathrm{max}} \right)\!\! \norm{(\NN+1) \psi }\label{eq:estEQ2132}
+	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \norm{(\NN+1)\psi}\sum\limits_{ \substack{s \in (L_{\ell}-\ell) \\ \cap (L_{\ell_1}-\ell_1)}} \abs{K^{j}(\ell)_{q,s+\ell}} \norm{ a_{-s-\ell}  \psi }\nonumber\\
+	\eqref{eq:EQ2132} &\leq  C \, \Xi^\half \left(  \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K^{j}(\ell)}_{\mathrm{max,1}}\right) \left( \sum\limits_{ \ell_1\in \Z^3_*}\norm{ K(\ell_1) }_{\mathrm{max}} \right)\!\! \norm{(\NN+1) \psi }\label{eq:estEQ2132}
 \end{align}
 We estimate \eqref{eq:EQ2133} as
 \begin{align}
     &\eqref{eq:EQ2133}\nonumber\\
-    &=\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{ s \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)} \abs{\eva{K(\ell_1)_{q,s+\ell_1} a_{-s-\ell_1} a_{q-\ell_1}  (\NN+1)^{\alpha}\psi, K^m{\ell}_{q,s+\ell}  a_{-s-\ell} a_{q-\ell} (\NN+1)^{-\alpha} \psi }} \nonumber\\
     &\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{ s \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)} \norm{K(\ell_1)_{q,s+\ell_1} a_{-s-\ell_1} a_{q-\ell_1}  (\NN+1)^{\alpha}\psi}\norm{ K^m{\ell}_{q,s+\ell}  a_{-s-\ell} a_{q-\ell} (\NN+1)^{-\alpha} \psi } \nonumber\\
-    &\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \begin{aligned}[t]&\left(\sum\limits_{ s \in  (L_{\ell_1}-\ell_1)} \norm{K(\ell_1)_{q,s+\ell_1} a_{-s-\ell_1} a_{q-\ell_1}  (\NN+1)^{\alpha}\psi}^2\right)^\half \times \nonumber\\ \times &\left( \sum\limits_{ s \in (L_{\ell}-\ell) } \norm{ K^m{\ell}_{q,s+\ell}  a_{-s-\ell} a_{q-\ell} (\NN+1)^{-\alpha} \psi }^2\right)^\half \end{aligned}\nonumber\\
-    &\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \norm{K^m{\ell}}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}} \norm{ (\NN+1)^\half a_{q-\ell_1}  (\NN+1)^{\alpha}\psi} \norm{  (\NN+2)^\half  a_{q-\ell} (\NN+1)^{-\alpha} \psi } \nonumber
+    &\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \begin{aligned}[t]&\left(\sum\limits_{ s \in  (L_{\ell_1}-\ell_1)} \norm{K(\ell_1)_{q,s+\ell_1} a_{-s-\ell_1} a_{q-\ell_1}  (\NN+1)^{\alpha}\psi}^2\right)^\half \times \nonumber\\ \times &\left( \sum\limits_{ s \in (L_{\ell}-\ell) } \norm{ K^m{(\ell)}_{q,s+\ell}  a_{-s-\ell} a_{q-\ell} (\NN+1)^{-\alpha} \psi }^2\right)^\half \end{aligned}\nonumber\\
+    &\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \norm{K^m{\ell}}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}} \norm{ (\NN+1)^{\half+\alpha}\psi} \norm{  (\NN+2)^\half  a_{q-\ell} (\NN+1)^{-\alpha} \psi } \nonumber
 \end{align} 
 Then for $\alpha = \half$, we have
 \begin{align}
-	&\leq  \sup\limits_{q \in \Z^3_*} \norm{ n_{q}^{\,\half} \psi } \sum\limits_{\ell, \ell_1\in \Z^3_*}  \norm{K^m{\ell}}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}} \norm{ (\NN+1)^{\frac{1}{2}} \psi}  \nonumber\\
+	&\leq  \sup\limits_{q \in \Z^3_*} \norm{ n_{q}^{\,\half} \psi } \sum\limits_{\ell, \ell_1\in \Z^3_*}  \norm{K^m{\ell}}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}} \norm{ (\NN+1) \psi}  \nonumber\\
 	\eqref{eq:EQ2133}&\leq C\, \Xi^\half \left(\sum\limits_{\ell\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\right)\left(  \sum\limits_{ \ell_1\in \Z^3_*}  \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{ (\NN+1) \psi}\label{eq:estEQ2133} 
 \end{align}
 Then adding \eqref{eq:estEQ2131},\eqref{eq:estEQ2132} and \eqref{eq:estEQ2133}, we arrive at the bound above \eqref{eq:estEQ213}.
@@ -1817,7 +1817,7 @@ Then adding \eqref{eq:estEQ2131},\eqref{eq:estEQ2132} and \eqref{eq:estEQ2133}, 
 	For any $\psi \in \HH_N$, we have
 	\begin{align}
 		\abs{\eva{\psi,\left(E^{\,2,3}_{Q_2}+\mathrm{h.c.}\right) \psi }}
-		&\leq  C\, \Xi^{\half} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} + \sum\limits_{j=0}^m \sum\limits_{\ell \in \Z^3_*}\norm{K^{m-j}(\ell)}_{\mathrm{max}}\norm{K^{j}(\ell)}_{\mathrm{max}}\Bigg)\times\nonumber\\&\quad\times \Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg)  \norm { (\NN+1) \psi }  \label{eq:estEQ223}
+		&\leq  C\, \Xi^{\half} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} + \sum\limits_{j=0}^m \sum\limits_{\ell \in \Z^3_*}\norm{K^{m-j}(\ell)}_{\mathrm{max}}\norm{K^{j}(\ell)}_{\mathrm{max,1}}\Bigg)\times\nonumber\\&\quad\times \Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg)  \norm { (\NN+1) \psi }  \label{eq:estEQ223}
 	\end{align}
 \end{lemma}
 \begin{proof}
@@ -1833,43 +1833,35 @@ Then adding \eqref{eq:estEQ2131},\eqref{eq:estEQ2132} and \eqref{eq:estEQ2133}, 
 	We estimate \eqref{eq:EQ2231} as 
 	\begin{align}
 		&\eqref{eq:EQ2231}\nonumber\\
-		&= \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)  \sum\limits_{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)} \abs{\eva{ K(\ell_1)_{r+\ell_1,q-\ell+\ell_1} a_{-q+\ell-\ell_1} a_{r+\ell_1}(\NN+1)^{\alpha}\psi, K^m(\ell)_{r+\ell,q} a_{-q}a_{r+\ell} (\NN+1)^{-\alpha} \psi }}\nonumber\\
 		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)  \sum\limits_{r\in(L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)} \norm{ K(\ell_1)_{r+\ell_1,q-\ell+\ell_1} a_{-q+\ell-\ell_1} a_{r+\ell_1}(\NN+1)^{\alpha}\psi}\norm{ K^m(\ell)_{r+\ell,q} a_{-q}a_{r+\ell} (\NN+1)^{-\alpha} \psi }\nonumber\\
-		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)   \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}}\sum\limits_{(L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)} \norm{ a_{r+\ell_1}(\NN+1)^{\alpha}\psi}\norm{ a_{r+\ell} a_{-q} (\NN+1)^{-\alpha} \psi }\nonumber\\
-		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)   \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}}\left(\sum\limits_{r\in  (L_{\ell_1}-\ell_1)} \norm{ a_{r+\ell_1} (\NN+1)^{\alpha} \psi}^2\right)^\half\left( \sum\limits_{r\in (L_{\ell}-\ell) } \norm{ a_{r+\ell} a_{-q} (\NN+1)^{-\alpha} \psi }^2\right)^\half\nonumber\\
-		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)  \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \norm{ (\NN+1)^\half(\NN+1)^{\alpha} \psi} \norm{ (\NN+2)^\half a_{-q} (\NN+1)^{-\alpha} \psi }\nonumber
+		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \begin{aligned}[t] \mathds{1}_{L_{\ell}}(q)  &\left(\sum\limits_{r\in(L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)} \norm{ K(\ell_1)_{r+\ell_1,q-\ell+\ell_1} a_{-q+\ell-\ell_1} a_{r+\ell_1} \psi}^2 \right)^\half \times \nonumber\\ \times &\left(\sum\limits_{r\in(L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)} \norm{ K^m(\ell)_{r+\ell,q} a_{-q}a_{r+\ell} (\NN+1)^{-\alpha} \psi }^2\right)^\half \end{aligned}\nonumber\\
+		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)   \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \norm{ (\NN+1)^{\half+\alpha}\psi}\norm{ a_{-q} (\NN+1)^{\half-\alpha} \psi }\nonumber\\
 	\end{align} 
 	wherein we used $\sum_{p\in \Z^3_*}\norm{a_p \psi}^2\leq\norm{\NN\psi}^2<\norm{(\NN+2)\psi}^2$. Then for $\alpha =  \half $, we have 
-	\begin{align}
-		&\leq C\,\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(-L_{\ell_1}+\ell+\ell_1)}(q)  \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}}  \norm{a_{-q} \psi } \norm{ (\NN+1) \psi} \nonumber\\
-		&\leq C\, \sup\limits_{q\in \Z^3_*}\norm{n_q^\half \psi } \sum\limits_{\ell, \ell_1\in \Z^3_*}   \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}}   \norm{ (\NN+1) \psi} \nonumber\\
-		\eqref{eq:EQ2231}&\leq C\, \Xi^\half \left(\sum\limits_{\ell\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\right)\left(  \sum\limits_{ \ell_1\in \Z^3_*}  \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{ (\NN+1) \psi}\label{eq:estEQ2231} 
-	\end{align}  
+	\begin{equation}
+		\eqref{eq:EQ2231}\leq C\, \Xi^\half \left(\sum\limits_{\ell\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\right)\left(  \sum\limits_{ \ell_1\in \Z^3_*}  \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{ (\NN+1) \psi}\label{eq:estEQ2231} 
+	\end{equation}  
 	We estimate \eqref{eq:EQ2232} as
 	\begin{align}
 		&\eqref{eq:EQ2232}\nonumber\\
-		&=\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{r, s \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)} \begin{aligned}[t] \big|\big<&K(\ell_1)_{r+\ell_1,s+\ell_1}a_{-s-\ell_1} a_{r+\ell_1} (\NN+1)^{\alpha} \psi,\nonumber\\  &K^{m-j}(\ell)_{r+\ell,q} K^{j}(\ell)_{q,s+\ell} a_{-s-\ell} a_{r+\ell}  (\NN+1)^{-\alpha} \psi\big>\big| \end{aligned} 
-		\nonumber\\
 		&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{r, s \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)} \begin{aligned}[t] &\norm{ K(\ell_1)_{r+\ell_1,s+\ell_1}a_{-s-\ell_1} a_{r+\ell_1} (\NN+1)^{\alpha}\psi}\nonumber \times \\ \times&\norm{ K^{m-j}(\ell)_{r+\ell,q} K^{j}(\ell)_{q,s+\ell} a_{-s-\ell}a_{r+\ell} (\NN+1)^{-\alpha} \psi }\end{aligned} \nonumber\\
-		&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{r\in(L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)}   \begin{aligned}[t] \Bigg(\sum\limits_{ s \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)}&\norm{ K(\ell_1)_{r+\ell_1,s+\ell_1}a_{-s-\ell_1} a_{r+\ell_1} (\NN+1)^{\alpha}\psi}^2\Bigg)^\half\nonumber \times \\ \times\Bigg(  \sum\limits_{ s \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)}&\norm{ K^{m-j}(\ell)_{r+\ell,q} K^{j}(\ell)_{q,s+\ell} a_{-s-\ell}a_{r+\ell} (\NN+1)^{-\alpha} \psi }^2\Bigg)^\half\end{aligned} \nonumber\\
-		&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{K^{j}(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \sum\limits_{r\in(L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)} \begin{aligned}[t] &\norm{(\NN+1)^\half a_{r+\ell_1} (\NN+1)^{\alpha}\psi}\nonumber \times \\ \times&\norm{   (\NN+2)^\half a_{r+\ell} (\NN+1)^{-\alpha} \psi }\end{aligned} \nonumber
+		&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{s\in(L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)}   \begin{aligned}[t] \Bigg(\sum\limits_{ r \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)}&\norm{ K(\ell_1)_{r+\ell_1,s+\ell_1}a_{-s-\ell_1} a_{r+\ell_1} (\NN+1)^{\alpha}\psi}^2\Bigg)^\half\nonumber \times \\ \times\Bigg(  \sum\limits_{ r \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)}&\norm{ K^{m-j}(\ell)_{r+\ell,q} K^{j}(\ell)_{q,s+\ell} a_{-s-\ell}a_{r+\ell} (\NN+1)^{-\alpha} \psi }^2\Bigg)^\half\end{aligned} \nonumber\\
+		&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \sum\limits_{s\in(L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)} \begin{aligned}[t] &\norm{ (\NN+1)^{\half+\alpha}\psi}\nonumber \times \\ \times&\norm{  K^{j}(\ell)_{q,s+\ell} (\NN+2)^\half a_{-s-\ell} (\NN+1)^{-\alpha} \psi }\end{aligned} \nonumber
 	\end{align} 
 	Then for $\alpha = \half$, we have
 	\begin{align}
-		&\leq C\, \sup\limits_{r \in \Z^3_*} \norm{ n_{r}^{\,\half} \psi } \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{K^{j}(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \norm{(\NN+1) \psi} \nonumber\\
+		&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \norm{(\NN+1)\psi}\sum\limits_{ \substack{s \in (L_{\ell}-\ell) \\ \cap (L_{\ell_1}-\ell_1)}} \abs{K^{j}(\ell)_{q,s+\ell}} \norm{ a_{-s-\ell}  \psi }\nonumber\\
 		\eqref{eq:EQ2232} &\leq  C \, \Xi^\half \left(  \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K^{j}(\ell)}_{\mathrm{max}}\right) \left( \sum\limits_{ \ell_1\in \Z^3_*}\norm{ K(\ell_1) }_{\mathrm{max}} \right)\!\! \norm{(\NN+1) \psi }\label{eq:estEQ2232}
 	\end{align}
 	We estimate \eqref{eq:EQ2233} as
 	\begin{align}
 		&\eqref{eq:EQ2233}\nonumber\\
-		&=\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(L_{\ell_1}+\ell-\ell_1)} (q) \sum\limits_{ s \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)} \abs{\eva{K(\ell_1)_{q-\ell+\ell_1,s+\ell_1} a_{-s-\ell_1} a_{q-\ell+\ell_1}  (\NN+1)^{\alpha}\psi, K^m{\ell}_{q,s+\ell}  a_{-s-\ell} a_{q} (\NN+1)^{-\alpha} \psi }} \nonumber\\
-		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(L_{\ell_1}+\ell-\ell_1)}(q) \sum\limits_{ s \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)} \norm{K(\ell_1)_{q-\ell+\ell_1,s+\ell_1} a_{-s-\ell_1} a_{q-\ell+\ell_1}  (\NN+1)^{\alpha}\psi}\norm{ K^m{\ell}_{q,s+\ell}  a_{-s-\ell} a_{q} (\NN+1)^{-\alpha} \psi } \nonumber\\
-		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(L_{\ell_1}+\ell-\ell_1)}(q) \begin{aligned}[t]&\left(\sum\limits_{ s \in  (L_{\ell_1}-\ell_1)} \norm{K(\ell_1)_{q-\ell+\ell_1,s+\ell_1} a_{-s-\ell_1} a_{q-\ell+\ell_1}  (\NN+1)^{\alpha}\psi}^2\right)^\half \times \nonumber\\ \times &\left( \sum\limits_{ s \in (L_{\ell}-\ell) } \norm{ K^m{\ell}_{q,s+\ell}  a_{-s-\ell} a_{q} (\NN+1)^{-\alpha} \psi }^2\right)^\half \end{aligned}\nonumber\\
-		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(L_{\ell_1}+\ell-\ell_1)}(q) \norm{K^m{\ell}}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}} \norm{ (\NN+1)^\half a_{q-\ell+\ell_1}  (\NN+1)^{\alpha}\psi} \norm{  (\NN+2)^\half  a_{q} (\NN+1)^{-\alpha} \psi } \nonumber
+		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(L_{\ell_1}+\ell-\ell_1)}(q) \begin{aligned}[t]\sum\limits_{ s \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)}  &\norm{K(\ell_1)_{q-\ell+\ell_1,s+\ell_1} a_{-s-\ell_1} a_{q-\ell+\ell_1}  (\NN+1)^{\alpha}\psi} \times\nonumber\\\times &\norm{ K^m{\ell}_{q,s+\ell}  a_{-s-\ell} a_{q} (\NN+1)^{-\alpha} \psi } \end{aligned}\nonumber\\
+		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(L_{\ell_1}+\ell-\ell_1)}(q) \begin{aligned}[t]&\left(\sum\limits_{ s \in  (L_{\ell_1}-\ell_1)} \norm{K(\ell_1)_{q-\ell+\ell_1,s+\ell_1} a_{-s-\ell_1} (\NN+1)^{\alpha}\psi}^2\right)^\half \times \nonumber\\ \times &\left( \sum\limits_{ s \in (L_{\ell}-\ell) } \norm{ K^m{\ell}_{q,s+\ell}  a_{-s-\ell} a_{q} (\NN+1)^{-\alpha} \psi }^2\right)^\half \end{aligned}\nonumber\\
+		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{(L_{\ell_1}+\ell-\ell_1)}(q) \norm{K^m{\ell}}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}} \norm{ (\NN+1)^{\half\alpha}\psi} \norm{  (\NN+2)^\half  a_{q} (\NN+1)^{-\alpha} \psi } \nonumber
 	\end{align} 
 	Then for $\alpha = \half$, we have
 	\begin{align}
-		&\leq  \sup\limits_{q \in \Z^3_*} \norm{ n_{q}^{\,\half} \psi } \sum\limits_{\ell, \ell_1\in \Z^3_*}  \norm{K^m{\ell}}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}} \norm{ (\NN+1)^{\frac{1}{2}} \psi}  \nonumber\\
 		\eqref{eq:EQ2233}&\leq C\, \Xi^\half \left(\sum\limits_{\ell\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\right)\left(  \sum\limits_{ \ell_1\in \Z^3_*}  \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{ (\NN+1) \psi}\label{eq:estEQ2233} 
 	\end{align}
 	Then adding \eqref{eq:estEQ2231},\eqref{eq:estEQ2232} and \eqref{eq:estEQ2233}, we arrive at the bound above \eqref{eq:estEQ223}. 
@@ -1879,7 +1871,7 @@ Then adding \eqref{eq:estEQ2131},\eqref{eq:estEQ2132} and \eqref{eq:estEQ2133}, 
 	For any $\psi \in \HH_N$, we have
 	\begin{align}
 		\abs{\eva{\psi,\left(E^{\,1,4}_{Q_2}+\mathrm{h.c.}\right) \psi }}
-		&\leq  C\, \Xi^{\half} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} + \sum\limits_{j=0}^m \sum\limits_{\ell \in \Z^3_*}\norm{K^{m-j}(\ell)}_{\mathrm{max}}\norm{K^{j}(\ell)}_{\mathrm{max}}\Bigg)\times\nonumber\\&\quad\times \Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg)  \norm { (\NN+1) \psi }   \label{eq:estEQ214}
+		&\leq  C\, \Xi^{\half} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} + \sum\limits_{j=0}^m \sum\limits_{\ell \in \Z^3_*}\norm{K^{m-j}(\ell)}_{\mathrm{max}}\norm{K^{j}(\ell)}_{\mathrm{max,1}}\Bigg)\times\nonumber\\&\quad\times \Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg)  \norm { (\NN+1) \psi }   \label{eq:estEQ214}
 	\end{align}
 \end{lemma}
 \begin{proof}
@@ -1895,45 +1887,36 @@ Then adding \eqref{eq:estEQ2131},\eqref{eq:estEQ2132} and \eqref{eq:estEQ2133}, 
 	We estimate \eqref{eq:EQ2141} as 
 	\begin{align}
 		&\eqref{eq:EQ2141}\nonumber\\
-		&= \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \abs{\eva{ K(\ell_1)_{r,q} a_{-q+\ell_1} a_{r-\ell_1}(\NN+1)^{\alpha}\psi, K^m(\ell)_{r,q} a_{-q+\ell}a_{r-\ell} (\NN+1)^{-\alpha} \psi }}\nonumber\\
 		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \norm{ K(\ell_1)_{r,q} a_{-q+\ell_1} a_{r-\ell_1}(\NN+1)^{\alpha}\psi}\norm{ K^m(\ell)_{r,q} a_{-q+\ell}a_{r-\ell} (\NN+1)^{-\alpha} \psi }\nonumber\\
-		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q)  \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}}\sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \norm{ a_{r-\ell_1}(\NN+1)^{\alpha}\psi}\norm{ a_{r-\ell} a_{-q+\ell} (\NN+1)^{-\alpha} \psi }\nonumber\\
-		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q)  \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}}\left(\sum\limits_{r\in L_{\ell_1}} \norm{ a_{r-\ell_1} (\NN+1)^{\alpha} \psi}^2\right)^\half\left( \sum\limits_{r\in L_{\ell} } \norm{ a_{r-\ell} a_{-q+\ell} (\NN+1)^{-\alpha} \psi }^2\right)^\half\nonumber\\
-		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q)  \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \norm{ (\NN+1)^\half(\NN+1)^{\alpha} \psi} \norm{ (\NN+2)^\half a_{-q+\ell} (\NN+1)^{-\alpha} \psi }\nonumber
+		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \begin{aligned}[t] \mathds{1}_{L_{\ell_1}}(q) &\left(\sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \norm{ K(\ell_1)_{r,q} a_{-q+\ell_1} a_{r-\ell_1}(\NN+1)^{\alpha}\psi}^2\right)^\half \times \nonumber\\ \times &\left(\sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \norm{ K^m(\ell)_{r,q} a_{-q+\ell}a_{r-\ell} (\NN+1)^{-\alpha} \psi }^2\right)^\half \end{aligned}\nonumber\\
+		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q)  \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \norm{ (\NN+1)^{\half+\alpha} \psi} \norm{  a_{-q+\ell} (\NN+1)^{\half-\alpha} \psi }\nonumber
 	\end{align} 
 	wherein we used $\sum_{p\in \Z^3_*}\norm{a_p \psi}^2\leq\norm{\NN\psi}^2<\norm{(\NN+2)\psi}^2$. Then for $\alpha =  \half $, we have 
-	\begin{align}
-		&\leq C\,\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q)  \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}}  \norm{a_{-q+\ell} \psi } \norm{ (\NN+1) \psi} \nonumber\\
-		&\leq C\, \sup\limits_{q\in \Z^3_*}\norm{n_q^\half \psi } \sum\limits_{\ell, \ell_1\in \Z^3_*}   \norm{K^m(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}}   \norm{ (\NN+1) \psi} \nonumber\\
-		\eqref{eq:EQ2141}&\leq C\, \Xi^\half \left(\sum\limits_{\ell\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\right)\left(  \sum\limits_{ \ell_1\in \Z^3_*}  \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{ (\NN+1) \psi}\label{eq:estEQ2141} 
-	\end{align}  
+	\begin{equation}
+		\eqref{eq:EQ2141}\leq C\, \Xi^\half \left(\sum\limits_{\ell\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\right)\left(  \sum\limits_{ \ell_1\in \Z^3_*}  \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{ (\NN+1) \psi}\label{eq:estEQ2141} 
+	\end{equation}  
 	We estimate \eqref{eq:EQ2142} as
 	\begin{align}
 		&\eqref{eq:EQ2142}\nonumber\\
-		&=\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{r,s \in L_{\ell} \cap L_{\ell_1}} \begin{aligned}[t] \big|\big<&K(\ell_1)_{r,s}a_{-s+\ell_1} a_{r-\ell_1} (\NN+1)^{\alpha} \psi,\nonumber\\  &K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} a_{-s+\ell} a_{r-\ell}  (\NN+1)^{-\alpha} \psi\big>\big| \end{aligned} 
-		\nonumber\\
 		&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{r,s \in L_{\ell} \cap L_{\ell_1}} \begin{aligned}[t] &\norm{ K(\ell_1)_{r,s}a_{-s+\ell_1} a_{r-\ell_1} (\NN+1)^{\alpha}\psi}\nonumber \times \\ \times&\norm{ K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} a_{-s+\ell}a_{r-\ell} (\NN+1)^{-\alpha} \psi }\end{aligned} \nonumber\\
-		&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}   \begin{aligned}[t] \Bigg(\sum\limits_{ s \in L_{\ell} \cap L_{\ell_1}}&\norm{ K(\ell_1)_{r,s}a_{-s+\ell_1} a_{r-\ell_1} (\NN+1)^{\alpha}\psi}^2\Bigg)^\half\nonumber \times \\ \times\Bigg(  \sum\limits_{ s \in L_{\ell} \cap L_{\ell_1}}&\norm{ K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} a_{-s+\ell}a_{r-\ell} (\NN+1)^{-\alpha} \psi }^2\Bigg)^\half\end{aligned} \nonumber\\
-		&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{K^{j}(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \begin{aligned}[t] &\norm{(\NN+1)^\half a_{r-\ell_1} (\NN+1)^{\alpha}\psi}\nonumber \times \\ \times&\norm{   (\NN+2)^\half a_{r-\ell} (\NN+1)^{-\alpha} \psi }\end{aligned} \nonumber
+		&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{s\in L_{\ell} \cap L_{\ell_1}}   \begin{aligned}[t] \Bigg(\sum\limits_{ r \in L_{\ell} \cap L_{\ell_1}}&\norm{ K(\ell_1)_{r,s}a_{-s+\ell_1} a_{r-\ell_1} (\NN+1)^{\alpha}\psi}^2\Bigg)^\half\nonumber \times \\ \times\Bigg(  \sum\limits_{ r \in L_{\ell} \cap L_{\ell_1}}&\norm{ K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} a_{-s+\ell}a_{r-\ell} (\NN+1)^{-\alpha} \psi }^2\Bigg)^\half\end{aligned} \nonumber\\
+		&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{K^{j}(\ell)}_{\mathrm{max}}  \sum\limits_{s\in L_{\ell} \cap L_{\ell_1}} \begin{aligned}[t] &\norm{(\NN+1)^{\half+\alpha}\psi}\nonumber \times \\ \times&\norm{ K(\ell_1)_{q,s} a_{-s+\ell} (\NN+1)^{\half-\alpha} \psi }\end{aligned} \nonumber
 	\end{align} 
 	Then for $\alpha = \half$, we have
 	\begin{align}
-		&\leq C\, \sup\limits_{r \in \Z^3_*} \norm{ n_{r}^{\,\half} \psi } \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{K^{j}(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \norm{(\NN+1) \psi} \nonumber\\
-		\eqref{eq:EQ2142} &\leq  C \, \Xi^\half \left(  \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K^{j}(\ell)}_{\mathrm{max}}\right) \left( \sum\limits_{ \ell_1\in \Z^3_*}\norm{ K(\ell_1) }_{\mathrm{max}} \right)\!\! \norm{(\NN+1) \psi }\label{eq:estEQ2142}
+		\eqref{eq:EQ2142} &\leq  C \, \Xi^\half \left(  \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K^{j}(\ell)}_{\mathrm{max,1}}\right) \left( \sum\limits_{ \ell_1\in \Z^3_*}\norm{ K(\ell_1) }_{\mathrm{max}} \right)\!\! \norm{(\NN+1) \psi }\label{eq:estEQ2142}
 	\end{align}
 	We estimate \eqref{eq:EQ2143} as 
 	\begin{align}
 		&\eqref{eq:EQ2143}\nonumber\\
-		&=\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{ s \in L_{\ell}\cap L_{\ell_1}} \abs{\eva{K(\ell_1)_{q,s} a_{-s+\ell_1} a_{q-\ell_1}  (\NN+1)^{\alpha}\psi, K^m{\ell}_{q,s}  a_{-s+\ell} a_{q-\ell} (\NN+1)^{-\alpha} \psi }} \nonumber\\
 		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{ s \in L_{\ell} \cap L_{\ell_1}} \norm{K(\ell_1)_{q,s} a_{-s+\ell_1} a_{q-\ell_1}  (\NN+1)^{\alpha}\psi}\norm{ K^m{\ell}_{q,s}  a_{-s+\ell} a_{q-\ell} (\NN+1)^{-\alpha} \psi } \nonumber\\
-		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \begin{aligned}[t]&\left(\sum\limits_{ s \in L_{\ell_1}} \norm{K(\ell_1)_{q,s} a_{-s+\ell_1} a_{q-\ell_1}  (\NN+1)^{\alpha}\psi}^2\right)^\half \times \nonumber\\ \times &\left( \sum\limits_{ s \in L_{\ell} } \norm{ K^m{\ell}_{q,s+\ell}  a_{-s-\ell} a_{q-\ell} (\NN+1)^{-\alpha} \psi }^2\right)^\half \end{aligned}\nonumber\\
-		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \norm{K^m{\ell}}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}} \norm{ (\NN+1)^\half a_{q-\ell_1}  (\NN+1)^{\alpha}\psi} \norm{  (\NN+2)^\half  a_{q-\ell} (\NN+1)^{-\alpha} \psi } \nonumber
+		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \begin{aligned}[t]&\left(\sum\limits_{ s \in L_{\ell_1}} \norm{K(\ell_1)_{q,s} a_{-s+\ell_1} (\NN+1)^{\alpha}\psi}^2\right)^\half \times \nonumber\\ \times &\left( \sum\limits_{ s \in L_{\ell} } \norm{ K^m{\ell}_{q,s+\ell}  a_{-s-\ell} a_{q-\ell} (\NN+1)^{-\alpha} \psi }^2\right)^\half \end{aligned}\nonumber\\
+		&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \norm{K^m{\ell}}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}} \norm{   (\NN+1)^{\half+\alpha}\psi} \norm{ a_{q-\ell} (\NN+1)^{\half-\alpha} \psi } \nonumber
 	\end{align} 
 	Then for $\alpha = \half$, we have
-	\begin{align}
-		&\leq  \sup\limits_{q \in \Z^3_*} \norm{ n_{q}^{\,\half} \psi } \sum\limits_{\ell, \ell_1\in \Z^3_*}  \norm{K^m{\ell}}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}} \norm{ (\NN+1)^{\frac{1}{2}} \psi}  \nonumber\\
-		\eqref{eq:EQ2143}&\leq C\, \Xi^\half \left(\sum\limits_{\ell\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\right)\left(  \sum\limits_{ \ell_1\in \Z^3_*}  \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{ (\NN+1) \psi}\label{eq:estEQ2143} 
-	\end{align}
+	\begin{equation}
+		\eqref{eq:EQ2143}\leq C\, \Xi^\half \left(\sum\limits_{\ell\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\right)\left(  \sum\limits_{ \ell_1\in \Z^3_*}  \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{ (\NN+1) \psi}\label{eq:estEQ2143} 
+	\end{equation}
 	Then adding \eqref{eq:estEQ2141},\eqref{eq:estEQ2142} and \eqref{eq:estEQ2143}, we arrive at the bound above \eqref{eq:estEQ214}.
 \end{proof}
 
@@ -1941,7 +1924,7 @@ Then adding \eqref{eq:estEQ2131},\eqref{eq:estEQ2132} and \eqref{eq:estEQ2133}, 
     For any $\psi \in \HH_N$, we have
     \begin{align}
     	2\abs{\eva{\psi,\left(E^{\,1,5}_{Q_2}+\mathrm{h.c.}\right) \psi }}
-    	\leq  C\, \Xi^\half &\left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} +\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K^{j}(\ell)}_{\mathrm{max},2}\right)\nonumber \times\\ \times&\left( \sum\limits_{\ell_1\in \Z^3_*} \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{(\NN+1)^\half\psi}  \label{eq:estEQ215}
+    	\leq  C\, \Xi^\half &\left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}} +\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}}  \norm{ K^{j}(\ell)}_{\mathrm{max},1} \right)\nonumber \times\\ \times&\left( \sum\limits_{\ell_1\in \Z^3_*} \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{(\NN+1)^\half \psi}  \label{eq:estEQ215}
     \end{align}
 \end{lemma}
 \begin{proof}
@@ -1957,29 +1940,24 @@ Then we use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pai
 We estimate \eqref{eq:EQ2151} as
 \begin{align}
     &\eqref{eq:EQ2151}\nonumber\\
-    &= \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1} \\ \cap (-L_{\ell_1}+\ell+\ell_1)}} \abs{\eva{K^m(\ell)_{r,q} K(\ell_1)_{r,-r+\ell+\ell_1}  a_{r-\ell-\ell_1}  a_{r-\ell_1} \psi,  b_{-q}(-\ell) \psi}}\nonumber\\
 	&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1} \\ \cap (-L_{\ell_1}+\ell+\ell_1)}} \norm{K^m(\ell)_{r,q} K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell-\ell_1} a_{r-\ell_1} \psi}\norm{  b_{-q}(-\ell) \psi}\nonumber\\
-	&\leq \sup\limits_{q \in \Z^3_*} \norm{ n_{q}^\half \psi} \sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}} \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1} \\ \cap (-L_{\ell_1}+\ell+\ell_1)}} \norm{  a_{r-\ell_1} \psi}\nonumber\\  	
-	&\leq C \, \Xi^\half \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\right)\left( \sum\limits_{\ell_1\in \Z^3_*} \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{ (\NN+1)^{\frac{1}{2}} \psi }\label{eq:estEQ2151}
+	&\leq \sup\limits_{q \in \Z^3_*} \norm{ n_{q}^\half \psi} \sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}} \norm{K(\ell_1)}_{\mathrm{max}} \Bigg( \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1} \\ \cap (-L_{\ell_1}+\ell+\ell_1)}} \norm{  a_{r-\ell_1} \psi}^2\Bigg)^\half\nonumber\\    	
+	&\leq \, \Xi^\half \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\right)\left( \sum\limits_{\ell_1\in \Z^3_*} \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{ (\NN+1)^\half \psi }\label{eq:estEQ2151}
 \end{align} 
 wherein we used $\norm{a_q} \leq \mathds{1}$ and $\sum_{p\in \Z^3_*}\norm{a_p \psi}^2\leq\norm{\NN\psi}^2<\norm{(\NN+1)\psi}^2$. We estimate \eqref{eq:EQ2152} as
 \begin{align}
 	&\eqref{eq:EQ2152}\nonumber\\
-	&= \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell_1}+\ell+\ell_1)\\ s \in L_{\ell}}}  \abs{\eva{\psi, K^{m-j}(\ell)_{r,q} K^j(\ell)_{q,s} K(\ell_1)_{r,-r+\ell+\ell_1}  a^*_{r-\ell_1}a^*_{r-\ell-\ell_1}b_{-s}(-\ell) \psi }}\nonumber\\
 	&\leq  \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell_1}+\ell+\ell_1)\\ s \in L_{\ell}}}  \norm{ K^{m-j}(\ell)_{r,q} K(\ell_1)_{r,-r+\ell+\ell_1}  a_{r-\ell-\ell_1} a_{r-\ell_1} \psi}\norm{ K^j(\ell)_{q,s}  b_{-s}(-\ell) \psi }\nonumber\\
-	&\leq  \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}}  \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell_1}+\ell+\ell_1)\\ s \in L_{\ell}}} \norm{ a_{r-\ell_1} \psi}\norm{ K^j(\ell)_{q,s} b_{-s}(-\ell) \psi }\nonumber\\
-	&\leq C\,\sup\limits_{q \in \Z^3_*}\norm{n_q^\half\psi} \sum\limits_{\ell,\ell_1 \in \Z^3_*} \sum\limits_{j=1}^{m-1} {{m}\choose j} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K^{j}(\ell)}_{\mathrm{max},2} \norm{ K(\ell_1) }_{\mathrm{max}}  \norm{ (\NN+1)^{\frac{1}{2}} \psi }\nonumber\\
-	&\leq  C\,\Xi^\half \left( \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K^{j}(\ell)}_{\mathrm{max},2}\right) \left( \sum\limits_{ \ell_1\in \Z^3_*}\norm{ K(\ell_1) }_{\mathrm{max}} \right) \norm{ (\NN+1)^{\frac{1}{2}} \psi }\label{eq:estEQ2152}
+	&\leq \Xi^\half \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K^{j}(\ell)}_{\mathrm{max,1}}  \norm{K(\ell_1)}_{\mathrm{max}} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \Bigg(\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell_1}+\ell+\ell_1)}} \norm{ a_{r-\ell_1} \psi}^2\Bigg)^\half\nonumber\\
+	&\leq  C\,\Xi^\half  \sum\limits_{j=1}^{m-1} {{m}\choose j} \left( \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{ K^{j}(\ell)}_{\mathrm{max},1}\right) \left( \sum\limits_{ \ell_1\in \Z^3_*}\norm{ K(\ell_1) }_{\mathrm{max}} \right) \norm{ (\NN+1)^\half \psi }\label{eq:estEQ2152}
 \end{align}
     
 We estimate \eqref{eq:EQ2153} as 
 \begin{align}
 	&\eqref{eq:EQ2153}\nonumber\\
-	&= \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}\cap (-L_{\ell_1}+\ell+\ell_1)}(q) \sum\limits_{ s \in L_{\ell}} \abs{\eva{K(\ell_1)_{q,-q+\ell+\ell_1} a_{q-\ell-\ell_1}  a_{q-\ell_1} \psi, K^m(\ell)_{q,s}  b_{-s}(-\ell) \psi }}\nonumber\\
 	&\leq  \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}\cap (-L_{\ell_1}+\ell+\ell_1)}(q) \sum\limits_{ s \in L_{\ell}} \norm{K(\ell_1)_{q,-q+\ell+\ell_1} a_{q-\ell-\ell_1}  a_{q-\ell_1} \psi} \norm{ K^m(\ell)_{q,s}  b_{-s}(-\ell) \psi }\nonumber\\
-	&\leq  \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}\cap (-L_{\ell_1}+\ell+\ell_1)}(q) \norm{K^m(\ell)}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}} \norm{  a_{q-\ell_1} \psi} \sum\limits_{ s \in L_{\ell}} \norm{ b_{-s}(-\ell) \psi }\nonumber\\
-	&\leq C\,\sup\limits_{q \in \Z^3_*} \norm{ n_{q}^\half \psi} \sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}} \norm{(\NN+1)^\half\psi}\nonumber\\
-	&\leq  C\, \Xi^\half \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\right)\left( \sum\limits_{\ell_1\in \Z^3_*} \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{(\NN+1)^\half\psi}\label{eq:estEQ2153}
+	&\leq  \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}\cap (-L_{\ell_1}+\ell+\ell_1)}(q) \norm{K(\ell_1)}_{\mathrm{max}} \norm{K^m(\ell)}_{\mathrm{max,2}} \norm{  a_{q-\ell_1} \psi} \Bigg( \sum\limits_{ s \in L_{\ell}} \norm{ b_{-s}(-\ell) \psi }^2\Bigg)^\half\nonumber\\
+	&\leq  C\, \Xi^\half \Bigg(\sum\limits_{\ell \in \Z^3_*}\norm{K^m(\ell)}_{\mathrm{max,2}}\Bigg) \left( \sum\limits_{\ell_1\in \Z^3_*} \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{(\NN+1)^\half\psi}\label{eq:estEQ2153}
 \end{align}
 Then adding \eqref{eq:estEQ2151},\eqref{eq:estEQ2152} and \eqref{eq:estEQ2153}, we arrive at the bound above \eqref{eq:estEQ215}.
 \end{proof}
@@ -1988,7 +1966,7 @@ Then adding \eqref{eq:estEQ2151},\eqref{eq:estEQ2152} and \eqref{eq:estEQ2153}, 
 	For any $\psi \in \HH_N$, we have
 	\begin{align}
 		2\abs{\eva{\psi,\left(E^{\,1,7}_{Q_2}+\mathrm{h.c.}\right) \psi }}
-		\leq  C\, \Xi^\half &\left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} +\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K^{j}(\ell)}_{\mathrm{max},2}\right)\nonumber \times\\ \times&\left( \sum\limits_{\ell_1\in \Z^3_*} \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{(\NN+1)^\half\psi}  \label{eq:estEQ217}
+		\leq  C\,  \Xi^\half &\left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} +\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}}  \norm{ K^{j}(\ell)}_{\mathrm{max},1} \right)\nonumber \times\\ \times& \sum\limits_{\ell_1\in \Z^3_*} \norm{ K(\ell_1)}_{\mathrm{max,2}} \norm{(\NN+1)^\half\psi}  \label{eq:estEQ217}
 	\end{align}
 \end{lemma}
 \begin{proof}
@@ -2004,31 +1982,26 @@ Then we use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pai
 We estimate \eqref{eq:EQ2171} as 
 \begin{align}
 	&\eqref{eq:EQ2171}\nonumber\\
-	&=\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell} \cap (-L_{\ell_1}+\ell+\ell_1) \cap (-L_{\ell}+\ell+\ell_1)}(q) \sum\limits_{s_1 \in L_{\ell_1}} \abs{\eva{  K(\ell_1)_{-q_\ell+\ell_1,s_1} b_{-s_1}(-\ell_1) \psi, K^m(\ell)_{q,-q+\ell+\ell_1}a_{-q}a_{-q+\ell_1} \psi }}\nonumber\\
 	&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell} \cap (-L_{\ell_1}+\ell+\ell_1) \cap (-L_{\ell}+\ell+\ell_1)}(q) \sum\limits_{s_1 \in L_{\ell_1}} \norm{  K(\ell_1)_{-q_\ell+\ell_1,s_1} b_{-s_1}(-\ell_1) \psi}\norm{ K^m(\ell)_{q,-q+\ell+\ell_1}a_{-q}a_{-q+\ell_1} \psi }\nonumber\\
-	&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell} \cap (-L_{\ell_1}+\ell+\ell_1) \cap (-L_{\ell}+\ell+\ell_1)}(q)  \norm{K^m(\ell)}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}} \sum\limits_{s_1 \in L_{\ell_1}} \norm{ b_{-s_1}(-\ell_1) \psi}\norm{ a_{-q}a_{-q+\ell_1} \psi }\nonumber\\
-	&\leq C\,\sup\limits_{q\in \Z^3_*}\norm{n_q^\half\psi} \sum\limits_{\ell, \ell_1\in \Z^3_*}  \norm{K^m(\ell)}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}}\norm{(\NN+1)^\half\psi}\nonumber\\
-	 &\leq C\, \Xi^\half \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\right)\left( \sum\limits_{\ell_1\in \Z^3_*} \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{(\NN+1)^\half\psi}\label{eq:estEQ2171}
+	&\leq \Xi^\half \sum\limits_{\ell, \ell_1\in \Z^3_*}  \norm{K^m(\ell)}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max,2}} \left(\sum\limits_{s_1 \in L_{\ell_1}} \norm{ b_{-s_1}(-\ell_1) \psi}^2\right)^\half\nonumber\\
+	&\leq C\, \Xi^\half \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\right)\left( \sum\limits_{\ell_1\in \Z^3_*} \norm{ K(\ell_1)}_{\mathrm{max,2}} \right) \norm{(\NN+1)^\half\psi}\label{eq:estEQ2171}
 \end{align}
-wherein we used $\norm{a_q} \leq \mathds{1}$ and $\sum_{p\in L_\ell}\norm{b_p(\ell) \psi}^2\leq\norm{\NN\psi}^2<\norm{(\NN+1)\psi}^2$.
+wherein we used $\norm{a_q} \leq \mathds{1}$.
 We estimate \eqref{eq:EQ2172} as
 \begin{align}
 	&\eqref{eq:EQ2172}\nonumber\\
-	&=\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1} \\ \cap (-L_{\ell}+\ell+\ell_1)\\s_1\in L_{\ell_1}}}  \abs{\eva{K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) \psi, K^{m-j}(\ell)_{r,q} K^j(\ell)_{q,-r+\ell+\ell_1} a_{r-\ell-\ell_1} a_{r-\ell} \psi }}\nonumber\\
 	&\leq\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1} \\ \cap (-L_{\ell}+\ell+\ell_1)\\s_1\in L_{\ell_1}}}  \norm{K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) \psi}\norm{ K^{m-j}(\ell)_{r,q} K^j(\ell)_{q,-r+\ell+\ell_1} a_{r-\ell-\ell_1} a_{r-\ell} \psi }\nonumber\\
-	&\leq\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \norm{K(\ell_1)}_{\mathrm{max}} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1} \\ \cap (-L_{\ell}+\ell+\ell_1)}}  \norm{ K^j(\ell)_{q,-r+\ell+\ell_1} a_{r-\ell} \psi } \norm{ (\NN+1)^\half \psi}\nonumber\\
-	&\leq C\,\sup\limits_{q\in \Z^3_*}\norm{n_q^\half\psi} \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max}} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{K^{j}(\ell)}_{\mathrm{max},2} \norm{ (\NN+1)^\half \psi}\nonumber\\
-	&\leq  C\,\Xi^\half \left( \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K^{j}(\ell)}_{\mathrm{max},2}\right) \left( \sum\limits_{ \ell_1\in \Z^3_*}\norm{ K(\ell_1) }_{\mathrm{max}} \right) \norm{ (\NN+1)^{\frac{1}{2}} \psi }\label{eq:estEQ2172}
+	&\leq\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \norm{K^{m-j}(\ell)}_{\mathrm{max}} \sum\limits_{s_1\in L_{\ell_1}} \norm{K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) \psi} \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1} \\ \cap (-L_{\ell}+\ell+\ell_1)}}  \norm{  K^j(\ell)_{q,-r+\ell+\ell_1} a_{r-\ell} \psi }\nonumber\\
+	&\leq \Xi^\half \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q)  \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{K^{j}(\ell)}_{\mathrm{max,1}}  \sum\limits_{s_1\in L_{\ell_1}} \norm{K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) \psi} \nonumber\\
+	&\leq  C\,\Xi^\half \left( \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{ K^{j}(\ell)}_{\mathrm{max},1}\right) \left( \sum\limits_{ \ell_1\in \Z^3_*}\norm{ K(\ell_1) }_{\mathrm{max,2}} \right) \norm{ (\NN+1)^\half \psi }\label{eq:estEQ2172}
 \end{align}
 
 We estimate \eqref{eq:EQ2173} as
 \begin{align}
 	&\eqref{eq:EQ2173}\nonumber\\
-	&=\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}\cap (-L_{\ell}+\ell+\ell_1)}(q) \sum\limits_{s_1\in L_{\ell_1}} \abs{\eva{ K(\ell_1)_{q,s_1} b_{-s_1}(-\ell_1) \psi, K^m(\ell)_{q,-q+\ell+\ell_1} a_{q-\ell-\ell_1} a_{q-\ell} \psi }}\nonumber\\
 	&\leq\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}\cap (-L_{\ell}+\ell+\ell_1)}(q) \sum\limits_{s_1\in L_{\ell_1}} \norm{ K(\ell_1)_{q,s_1} b_{-s_1}(-\ell_1) \psi}\norm{ K^m(\ell)_{q,-q+\ell+\ell_1} a_{q-\ell-\ell_1} a_{q-\ell} \psi }\nonumber\\
-	&\leq\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}\cap (-L_{\ell}+\ell+\ell_1)}(q)\norm{K^m(\ell)}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}} \sum\limits_{s_1 \in L_{\ell_1}} \norm{ b_{-s_1}(-\ell_1) \psi}\norm{ a_{q-\ell-\ell_1} a_{q-\ell} \psi } \nonumber\\ 
-	&\leq C\,\sup\limits_{q\in \Z^3_*}\norm{n_q^\half\psi} \sum\limits_{\ell, \ell_1\in \Z^3_*}  \norm{K^m(\ell)}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}}\norm{(\NN+1)^\half\psi}\nonumber\\
-	&\leq C\, \Xi^\half \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\right)\left( \sum\limits_{\ell_1\in \Z^3_*} \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{(\NN+1)^\half\psi}\label{eq:estEQ2173}
+	&\leq \Xi^\half \sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max,2}} \left(\sum\limits_{s_1 \in L_{\ell_1}} \norm{ b_{-s_1}(-\ell_1) \psi}^2\right)^\half  \nonumber\\ 
+	&\leq C\, \Xi^\half \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\right)\left( \sum\limits_{\ell_1\in \Z^3_*} \norm{ K(\ell_1)}_{\mathrm{max,2}} \right) \norm{(\NN+1)^\half\psi}\label{eq:estEQ2173}
 \end{align}
 Then adding \eqref{eq:estEQ2171},\eqref{eq:estEQ2172} and \eqref{eq:estEQ2173}, we arrive at the bound above \eqref{eq:estEQ217}. 
 \end{proof}
@@ -2036,7 +2009,10 @@ Then adding \eqref{eq:estEQ2171},\eqref{eq:estEQ2172} and \eqref{eq:estEQ2173}, 
 \begin{lemma}[$E_{Q_2}^{1,8}$]
 	For any $\psi \in \HH_N$, we have
 	\begin{align}
-		2\abs{\eva{\psi,\left(E^{\,1,8}_{Q_2}+\mathrm{h.c.}\right) \psi }}
+		&\begin{aligned}
+			&\abs{\eva{\psi,\left(E^{\,1,8}_{Q_2}+\mathrm{h.c.}\right) \psi }}_,\\
+			&\abs{\eva{\psi,\left(E^{\,2,8}_{Q_2}+\mathrm{h.c.}\right) \psi }}
+		\end{aligned}
 		&\leq  C\,  \label{eq:estEQ218}
 	\end{align}
 \end{lemma}
@@ -2054,22 +2030,21 @@ We estimate \eqref{eq:EQ2181} as
 	 \eqref{eq:EQ2181}
 	&= \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{\substack{L_{\ell}\cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}(q) \abs{\eva{ K(\ell_1)_{q,-q+\ell+\ell_1} a_{-q+\ell} \psi, K^m(\ell)_{q,-q+\ell+\ell_1} a_{-q+\ell} \psi }}\nonumber\\
 	&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{\substack{L_{\ell}\cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}(q) \norm{ K(\ell_1)_{q,-q+\ell+\ell_1} a_{-q+\ell} \psi}\norm{ K^m(\ell)_{q,-q+\ell+\ell_1} a_{-q+\ell} \psi }\nonumber\\
-	&\leq C\,\Xi^\half \sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} \sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max}}   \norm{  (\NN+1)^\half \psi}\label{eq:estEQ2181}
+	&\leq C\,\Xi \sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} \sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max}}   \label{eq:estEQ2181}
 \end{align}
 We estimate \eqref{eq:EQ2182} as
 \begin{align}
 	& \eqref{eq:EQ2182}\nonumber\\
 	&= \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}  \abs{\eva{ K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell_1} \psi, K^{m-j}(\ell)_{r,q} K^j(\ell)_{q,-r+\ell+\ell_1} a_{r-\ell_1} \psi }}\nonumber\\
 	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}  \norm{ K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell_1} \psi} \norm{ K^{m-j}(\ell)_{r,q} K^j(\ell)_{q,-r+\ell+\ell_1} a_{r-\ell_1} \psi} \nonumber\\
-	&\leq C\, \sup\limits_{r \in \Z^3_*}\norm{n_r^{\,\half\psi}} \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{K^j(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}  \norm{ a_{r-\ell_1} \psi}\nonumber\\
-	&\leq C\,\Xi^\half \left(\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{ \ell\in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{K^j(\ell)}_{\mathrm{max}}\right) \left(\sum\limits_{ \ell_1\in \Z^3_*}\norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{ (\NN+1)^\half \psi}\label{eq:estEQ2182}
+	&\leq C\,\Xi \left(\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{ \ell\in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^j(\ell)}_{\mathrm{max,2}}\right) \left(\sum\limits_{ \ell_1\in \Z^3_*}\norm{ K(\ell_1)}_{\mathrm{max}} \right) \label{eq:estEQ2182}
 \end{align}
 We estimate \eqref{eq:EQ2183} as
 \begin{align}
 	& \eqref{eq:EQ2183}\nonumber\\
 	&= \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{\substack{L_{\ell}\cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}} (q) \abs{\eva{K(\ell_1)_{q,-q+\ell+\ell_1} a^*_{q-\ell_1} \psi, \Theta^m_{K}(P^q)_{q,-q+\ell+\ell_1} a_{q-\ell_1}\psi }}\nonumber\\
 	&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{\substack{L_{\ell}\cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}} (q) \norm{K(\ell_1)_{q,-q+\ell+\ell_1} a^*_{q-\ell_1} \psi}\norm{ \Theta^m_{K}(P^q)_{q,-q+\ell+\ell_1} a_{q-\ell_1}\psi }\nonumber\\
-	&\leq C\,\Xi^\half \sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} \sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max}}   \norm{  (\NN+1)^\half \psi}\label{eq:estEQ2183}
+	&\leq C\,\Xi \sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} \sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max}}  \label{eq:estEQ2183}
 \end{align} 
 Then adding \eqref{eq:estEQ2181},\eqref{eq:estEQ2182} and \eqref{eq:estEQ2183}, we arrive at the bound above \eqref{eq:estEQ218}. 
 \end{proof}
@@ -2095,22 +2070,21 @@ We estimate \eqref{eq:EQ2281} as
 	\eqref{eq:EQ2281}
 	&= \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{\substack{L_{\ell}\cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}(q) \abs{\eva{ K(\ell_1)_{q,-q+\ell+\ell_1} a_{-q} \psi, K^m(\ell)_{q,-q+\ell+\ell_1} a_{-q} \psi }}\nonumber\\
 	&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{\substack{L_{\ell}\cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}(q) \norm{ K(\ell_1)_{q,-q+\ell+\ell_1} a_{-q} \psi}\norm{ K^m(\ell)_{q,-q+\ell+\ell_1} a_{-q} \psi }\nonumber\\
-	&\leq C\,\Xi^\half \sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} \sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max}}   \norm{  (\NN+1)^\half \psi}\label{eq:estEQ2281}
+	&\leq C\,\Xi\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} \sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max}}  \label{eq:estEQ2281}
 \end{align}
 We estimate \eqref{eq:EQ2282} as
 \begin{align}
 	& \eqref{eq:EQ2282}\nonumber\\
 	&= \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}  \abs{\eva{ K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell-\ell_1} \psi, K^{m-j}(\ell)_{r,q} K^j(\ell)_{q,-r+\ell+\ell_1} a_{r-\ell-\ell_1} \psi }}\nonumber\\
 	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}  \norm{ K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell-\ell_1} \psi} \norm{ K^{m-j}(\ell)_{r,q} K^j(\ell)_{q,-r+\ell+\ell_1} a_{r-\ell-\ell_1} \psi} \nonumber\\
-	&\leq C\, \sup\limits_{r \in \Z^3_*}\norm{n_r^{\,\half\psi}} \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{K^j(\ell)}_{\mathrm{max}} \norm{ K(\ell_1)}_{\mathrm{max}} \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}  \norm{ a_{r-\ell-\ell_1} \psi}\nonumber\\
-	&\leq C\,\Xi^\half \left(\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{ \ell\in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max}} \norm{K^j(\ell)}_{\mathrm{max}}\right) \left(\sum\limits_{ \ell_1\in \Z^3_*}\norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{ (\NN+1)^\half \psi}\label{eq:estEQ2282}
+	&\leq C\,\Xi \left(\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{ \ell\in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^j(\ell)}_{\mathrm{max,2}}\right) \left(\sum\limits_{ \ell_1\in \Z^3_*}\norm{ K(\ell_1)}_{\mathrm{max}} \right)\label{eq:estEQ2282}
 \end{align}
 We estimate \eqref{eq:EQ2283} as
 \begin{align}
 	& \eqref{eq:EQ2283}\nonumber\\
 	&= \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{\substack{L_{\ell}\cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}} (q) \abs{\eva{K(\ell_1)_{q,-q+\ell+\ell_1} a^*_{q-\ell-\ell_1} \psi, \Theta^m_{K}(P^q)_{q,-q+\ell+\ell_1} a_{q-\ell-\ell_1}\psi }}\nonumber\\
 	&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{\substack{L_{\ell}\cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}} (q) \norm{K(\ell_1)_{q,-q+\ell+\ell_1} a^*_{q-\ell-\ell_1} \psi}\norm{ \Theta^m_{K}(P^q)_{q,-q+\ell+\ell_1} a_{q-\ell-\ell_1}\psi }\nonumber\\
-	&\leq C\,\Xi^\half \sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} \sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max}}   \norm{  (\NN+1)^\half \psi}\label{eq:estEQ2283}
+	&\leq C\,\Xi \sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} \sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max}} \label{eq:estEQ2283}
 \end{align} 
 Then adding \eqref{eq:estEQ2281},\eqref{eq:estEQ2282} and \eqref{eq:estEQ2283}, we arrive at the bound above \eqref{eq:estEQ228}.  
 \end{proof}
