@@ -670,17 +670,17 @@ Using the definition of $Q_2$, \eqref{eq:Q2}, we arrive at
     (\ref{eq:anticomKDelta}) = \left(n_q+n_{-q}\right) -\bint\limits_0^1 \!\!\di\lambda
      \:T_\lambda^* Q_2 \Big(\big\{K(\ell),P^q\big\} \Big)T_\lambda
 \end{equation}
-which is the claimed equality.\end{proof}
+which is the claimed statement.\end{proof}
 
 \subsubsection{Transformation of quadratic operators}
 \begin{lemma}[Operator expansion for the Quadratic Operators]\label{lem:4}
 For $\lambda \in [0,1] $, we have $T_\lambda = e^{\lambda \KK}$. Let $Q_1$ and $Q_2$ be the quadratic operators defined above for symmetric $A : \ell^2(L_{\ell})\rightarrow \ell^2(L_{\ell})$ where $\ell \in \Z^3_*$, then 
 \begin{align}
 	T^*_{\lambda}Q_1(A)T_{\lambda} 
-    &=Q_1(A) - \bint\limits_0^{\lambda}\di\lambda' \big( T^*_{\lambda'} (Q_2(\{K,A\})) T_{\lambda'}\big) - \bint\limits_0^{\lambda} \di\lambda' \big( T^*_{\lambda'} E_{Q_1}(A) T_{\lambda'} \big)\label{eq:29}\\
+    =Q_1(A) - &\bint\limits_0^{\lambda}\di\lambda' \big( T^*_{\lambda'} (Q_2(\{K,A\})) T_{\lambda'}\big) - \bint\limits_0^{\lambda} \di\lambda' \big( T^*_{\lambda'} E_{Q_1}(A) T_{\lambda'} \big)\label{eq:29}\\
     T^*_{\lambda}Q_2(A)T_{\lambda} 
-    &= Q_2(A) - \bint\limits_0^{\lambda}\di\lambda' \big(T^*_{\lambda'} (Q_1(\{K,A\})) T_{\lambda'}\big) + \bint\limits_0^{\lambda} \di\lambda' \big( T^*_{\lambda'} E_{Q_2}(A) T_{\lambda'}\big) \nonumber\\
-    &- \bint\limits_0^{\lambda}\di\lambda' T^*_{\lambda'} \left( \sum\limits_{\ell\in \Z^3_*} \sum\limits_{r\in L_\ell}\big\{K(\ell), A(\ell) \big\}_{r,r} \right) T_{\lambda'} \label{eq:30}
+    = Q_2(A) - &\bint\limits_0^{\lambda}\di\lambda' \big(T^*_{\lambda'} (Q_1(\{K,A\})) T_{\lambda'}\big) + \bint\limits_0^{\lambda} \di\lambda' \big( T^*_{\lambda'} E_{Q_2}(A) T_{\lambda'}\big) \nonumber\\
+    - &\bint\limits_0^{\lambda}\di\lambda' T^*_{\lambda'} \left( \sum\limits_{\ell\in \Z^3_*} \sum\limits_{r\in L_\ell}\big\{K(\ell), A(\ell) \big\}_{r,r} \right) T_{\lambda'} \label{eq:30}
 \end{align}
 \end{lemma}
 \begin{proof}
@@ -694,12 +694,23 @@ Then from Lemma \ref{lem:Q2Kcomm}, we get
 \begin{alignat}{2}
     \eqref{eq:26}&= Q_2(A) + \bint\limits_0^\lambda \di\lambda' \Big(T^*_{\lambda'}\big(-Q_1(\{K,A\}) + E_{Q_2}(A)- \sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K(\ell),A(\ell)\big\}_{r,r}\big)T_{\lambda'}\Big) \nonumber\\
     &= Q_2(A) \begin{aligned}[t]
-        &-\bint\limits_0^\lambda \di\lambda' \Big( T^*_{\lambda'}Q_1(\{K,A\})T_{\lambda'}\Big) + \bint\limits_0^\lambda \di\lambda'\Big( T^*_{\lambda'}E_{Q_1}(A)T_{\lambda'}\Big)\\
+        &-\bint\limits_0^\lambda \di\lambda' \Big( T^*_{\lambda'}Q_1(\{K,A\})T_{\lambda'}\Big) + \bint\limits_0^\lambda \di\lambda'\Big( T^*_{\lambda'}E_{Q_2}(A)T_{\lambda'}\Big)\\
         &-\bint\limits_0^\lambda \di\lambda' T^*_{\lambda'}\left(\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K(\ell),A(\ell)\big\}_{r,r}\right) T_{\lambda'} 
     \end{aligned}
 \end{alignat}
 Similarly, we can prove the operator identity for $Q_1(A)$ using Duhamel's formula and Lemma \ref{lem:Q1Kcomm}.
 \end{proof}
+\begin{remark}\label{rem:genopid}
+	For $m \in \Z$, let $\sigma(m) = \begin{cases}
+		1 &\text{for m odd}\\
+		2 &\text{for m even} 
+	\end{cases}$, we combine the two operator identities above as 
+\begin{align}
+	T^*_{\lambda}Q_{\sigma(m)}(A)T_{\lambda} 
+	&= Q_{\sigma(m)}(A) - \bint\limits_0^{\lambda}\di\lambda'   \big(T^*_{\lambda'} (Q_{\sigma(m+1)}(\{K,A\})) T_{\lambda'}\big) + \bint\limits_0^{\lambda} \di\lambda' \big( T^*_{\lambda'} E_{Q_{\sigma(m)}}(A) T_{\lambda'}\big) \nonumber\\
+	&\quad- \half\left(1+(-1)^{m}\right) \bint\limits_0^{\lambda}\di\lambda' T^*_{\lambda'} \left( \sum\limits_{\ell\in \Z^3_*} \sum\limits_{r\in L_\ell}\big\{K(\ell), A(\ell) \big\}_{r,r} \right) T_{\lambda'} \label{eq:genopid}
+\end{align}
+\end{remark}
 For our convenience, we introduce the following notation for writing the nested anti-commutators 
     \begin{equation}\label{eq:nestanticomm}
         \Theta^n_{K}(A) = \underbrace{\{K,\{\ldots,\{K}_\textrm{n times},A\}\ldots\}\}\quad\quad\mathrm{with,}\quad  \Theta^0_{K}(A) = A\,.
@@ -725,43 +736,55 @@ For $\lambda \in [0,1] $ and let $Q_2$ be the quadratic operator defined above f
         &+\sum\limits_{m=1}^{n} \bint\limits_{\Delta ^m_\lambda}\di^m\underline{\lambda} \big(T^*_{\lambda_{m}}E_{Q_{\sigma(m-1)}}(\Theta^{m-1}_K(A))T_{\lambda_{m}}\big)
         +\bint\limits_{\Delta^{n}_{\lambda}}\di^n\underline{\lambda}(-1)^{n}\Big( T^*_{\lambda_n}(Q_{\sigma(n)}(\Theta^n_K(A))T_{\lambda_n}\Big)
     \end{align}
-    where $\sigma(m) = \begin{cases}
-        1 &\text{for m odd}\\
-        2 &\text{for m even} 
-    \end{cases}$, $\Theta^n_{K}$ and the simplex integral are defined as above and, $E_{Q_1}$ and $E_{Q_2}$ are defined as in (\ref{eq:errKQ1}) and (\ref{eq:errKQ2}) respectively.  
+    where $\sigma(m), \Theta^n_{K}$ and the simplex integral are defined as above and, $E_{Q_1}$ and $E_{Q_2}$ are defined as in (\ref{eq:errKQ1}) and (\ref{eq:errKQ2}) respectively.  
 \end{lemma}
 \begin{proof}
-   \textcolor{red}{Write the proof with induction\\
-    We begin with $T^*_\lambda Q_2(A)T_\lambda $ and from \eqref{eq:30} we have
-    \begin{align}
-        T^*_{\lambda}Q_2(A)T_{\lambda} 
-        &= Q_2(A) - \bint\limits_0^{\lambda}\di\lambda_1 \big(T^*_{\lambda_1}Q_1(\{K,A\})T_{\lambda_1}\big) + \bint\limits_0^{\lambda}\di\lambda_1 \big(T^*_{\lambda_1}E_{Q_2}(A)T_{\lambda_1}\big) \nonumber\\&- 
-        \bint\limits_0^{\lambda}\di\lambda_1 \left(T^*_{\lambda_1}\left(\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K,A\big\}_{r,r}\right)T_{\lambda_1}\right).\label{eq:32}
-    \end{align}
-    Next, we use \eqref{eq:29} from Lemma \ref{lem:4} to arrive at
-    \begin{align}
-        \eqref{eq:32} &= Q_2(A) + \bint\limits_0^{\lambda}\di\lambda_1 \big(T^*_{\lambda_1}E_{Q_2}(A)T_{\lambda_1}\big)  - 
-        \bint\limits_0^{\lambda}\di\lambda_1 \left(T^*_{\lambda_1}\left(\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K,A\big\}_{r,r}\right)T_{\lambda_1}\right) \nonumber\\ &-\bint\limits_0^{\lambda}\di\lambda_1 \big(Q_1(\{K,A\}\big) + \bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \big(T^*_{\lambda_2}Q_2(\{K,\{K,A\}\})T_{\lambda_2}\big)\nonumber\\
-        &+ \bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \big(T^*_{\lambda_2}E_{Q_1}(\{K,A\})T_{\lambda_2}\big)\label{eq:33}.
-    \end{align} 
-    Again we use \eqref{eq:30} from Lemma \ref{lem:4}
-    \begin{align}
-        \eqref{eq:33}  &= Q_2(A) + \bint\limits_0^{\lambda}\di\lambda_1 \big(T^*_{\lambda_1}E_{Q_2}(A)T_{\lambda_1}\big)  - 
-        \bint\limits_0^{\lambda}\di\lambda_1 \left(T^*_{\lambda_1}\left(\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K,A\big\}_{r,r}\right)T_{\lambda_1}\right) \nonumber\\ &+\bint\limits_0^{\lambda}\di\lambda_1 \big(Q_1(\{K,A\}\big) +\bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \big(T^*_{\lambda_2}E_{Q_1}(\{K,A\})T_{\lambda_2}\big)\nonumber\\
-        &+  \bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \big(Q_2(\{K,\{K,A\}\})\big) \nonumber \\ 
-        &+ \bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \bint\limits_0^{\lambda_2}\di\lambda_3 \big(T^*_{\lambda_3}E_{Q_2}(\{K,\{K,A\}\})T_{\lambda_3}\big)\nonumber\\
-        &-\bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \bint\limits_0^{\lambda_2}\di\lambda_3 \Bigg(T^*_{\lambda_3}\left(\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K,\big\{K,\big\{K,A\big\}\big\}\big\}_{r,r} \right)T_{\lambda_3}\Bigg)\\
-        &-\bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \bint\limits_0^{\lambda_2}\di\lambda_3 \big(T^*_{\lambda_3}Q_1(\{K,\{K,\{K,A\}\}\})T_{\lambda_3}\big)\label{eq:34}.
-    \end{align}
-    Then after multiple interations we arrive at
-    \begin{align}
-        (\ref{eq:34}) &= Q_2(\Theta^0_{K}(A)) - \frac{\lambda}{1!}Q_1(\Theta^1_{K}(A))+ \frac{\lambda^2}{2!}Q_2(\Theta^2_{K}(A) -\frac{\lambda^3}{3!}Q_1(\Theta^3_{K}(A)+\cdots \nonumber \\
-        &- \frac{\lambda}{1!}\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K,A\big\}_{r,r}  - \frac{\lambda^3}{3!}\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K,\big\{K,\big\{K),A\big\}\big\}\big\}_{r,r} - \cdots  \nonumber\\
-        &+\bint\limits_0^{\lambda}\di\lambda_1 \big(T^*_{\lambda_1}E_{Q_2}(\Theta^0_{K}(A))T_{\lambda_1}\big) + \bint\limits_0^{\lambda}\bint\limits_0^{\lambda_1}\di\lambda_1 \di\lambda_2 \big(T^*_{\lambda_2}E_{Q_1}(\Theta^1_{K}(A))T_{\lambda_2}\big)\nonumber\\
-        &+  \bint\limits_0^{\lambda}\bint\limits_0^{\lambda_1} \bint\limits_0^{\lambda_2} \di\lambda_1 \di\lambda_2 \di\lambda_3 \big(T^*_{\lambda_3}E_{Q_2}(\Theta^2_{K}(A))T_{\lambda_3}\big) +\cdots\nonumber\\
-        &+\bint\limits_0^\lambda \bint\limits_0^{\lambda_1} \cdots \bint\limits_0^{\lambda_{n-1}}\di\lambda_1\cdots \di\lambda_n (-1)^n\Big( T^*_{\lambda_n}(Q_{\sigma(n)}(\Theta^n_{K}(A))T_{\lambda_n}\Big)
-    \end{align}
-   which when written as sums gives us the required operator expansion.}
+	The above identity results by applying $n$ times the Duhamel formula to $T^*_\lambda Q_2(A)T_\lambda $. So formally we begin with $T^*_\lambda Q_2(A)T_\lambda $ and from \eqref{eq:30} we have
+	\begin{align}
+		T^*_{\lambda}Q_2(A)T_{\lambda} 
+		&= Q_2(A) - \bint\limits_0^{\lambda}\di\lambda_1 \big(T^*_{\lambda_1}Q_1(\{K,A\})T_{\lambda_1}\big) + \bint\limits_0^{\lambda}\di\lambda_1 \big(T^*_{\lambda_1}E_{Q_2}(A)T_{\lambda_1}\big) \nonumber\\&\quad- 
+		\bint\limits_0^{\lambda}\di\lambda_1 \left(T^*_{\lambda_1}\left(\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K,A\big\}_{r,r}\right)T_{\lambda_1}\right).\label{eq:32}
+	\end{align}
+	Next, we use \eqref{eq:29} from Lemma \ref{lem:4} to arrive at
+	\begin{align}
+		\eqref{eq:32} &= Q_2(A) + \bint\limits_0^{\lambda}\di\lambda_1 \big(T^*_{\lambda_1}E_{Q_2}(A)T_{\lambda_1}\big)  - 
+		\bint\limits_0^{\lambda}\di\lambda_1 \left(T^*_{\lambda_1}\left(\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K,A\big\}_{r,r}\right)T_{\lambda_1}\right) \nonumber\\ &\quad-\bint\limits_0^{\lambda}\di\lambda_1 \big(Q_1(\{K,A\}\big) + \bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \big(T^*_{\lambda_2}Q_2(\{K,\{K,A\}\})T_{\lambda_2}\big)\nonumber\\
+		&\quad+ \bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \big(T^*_{\lambda_2}E_{Q_1}(\{K,A\})T_{\lambda_2}\big)\label{eq:33}.
+	\end{align} 
+	Again we use \eqref{eq:30} from Lemma \ref{lem:4}
+	\begin{align}
+		\eqref{eq:33}  &= Q_2(A) + \bint\limits_0^{\lambda}\di\lambda_1 \big(T^*_{\lambda_1}E_{Q_2}(A)T_{\lambda_1}\big)  - 
+		\bint\limits_0^{\lambda}\di\lambda_1 \left(T^*_{\lambda_1}\left(\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K,A\big\}_{r,r}\right)T_{\lambda_1}\right) +\bint\limits_0^{\lambda}\di\lambda_1 \big(Q_1(\{K,A\}\big) \nonumber\\ &\quad +\bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \big(T^*_{\lambda_2}E_{Q_1}(\{K,A\})T_{\lambda_2}\big)+  \bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \big(Q_2(\{K,\{K,A\}\})\big) \nonumber \\ 
+		&\quad+ \bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \bint\limits_0^{\lambda_2}\di\lambda_3 \big(T^*_{\lambda_3}E_{Q_2}(\{K,\{K,A\}\})T_{\lambda_3}\big)\nonumber\\
+		&\quad-\bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \bint\limits_0^{\lambda_2}\di\lambda_3 \Bigg(T^*_{\lambda_3}\left(\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K,\big\{K,\big\{K,A\big\}\big\}\big\}_{r,r} \right)T_{\lambda_3}\Bigg)\\
+		&\quad-\bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \bint\limits_0^{\lambda_2}\di\lambda_3 \big(T^*_{\lambda_3}Q_1(\{K,\{K,\{K,A\}\}\})T_{\lambda_3}\big)\label{eq:34}.
+	\end{align}
+	Then after multiple interations we arrive at
+	\begin{align}
+		(\ref{eq:34}) &= Q_2(\Theta^0_{K}(A)) - \frac{\lambda}{1!}Q_1(\Theta^1_{K}(A))+ \frac{\lambda^2}{2!}Q_2(\Theta^2_{K}(A) -\frac{\lambda^3}{3!}Q_1(\Theta^3_{K}(A)+\cdots \nonumber \\
+		&\quad- \frac{\lambda}{1!}\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K,A\big\}_{r,r}  - \frac{\lambda^3}{3!}\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K,\big\{K,\big\{K),A\big\}\big\}\big\}_{r,r} - \cdots  \nonumber\\
+		&\quad+\bint\limits_0^{\lambda}\di\lambda_1 \big(T^*_{\lambda_1}E_{Q_2}(\Theta^0_{K}(A))T_{\lambda_1}\big) + \bint\limits_0^{\lambda}\bint\limits_0^{\lambda_1}\di\lambda_1 \di\lambda_2 \big(T^*_{\lambda_2}E_{Q_1}(\Theta^1_{K}(A))T_{\lambda_2}\big)\nonumber\\
+		&\quad+  \bint\limits_0^{\lambda}\bint\limits_0^{\lambda_1} \bint\limits_0^{\lambda_2} \di\lambda_1 \di\lambda_2 \di\lambda_3 \big(T^*_{\lambda_3}E_{Q_2}(\Theta^2_{K}(A))T_{\lambda_3}\big) +\cdots\nonumber\\
+		&\quad+\bint\limits_0^\lambda \bint\limits_0^{\lambda_1} \cdots \bint\limits_0^{\lambda_{n-1}}\di\lambda_1\cdots \di\lambda_n (-1)^n\Big( T^*_{\lambda_n}(Q_{\sigma(n)}(\Theta^n_{K}(A))T_{\lambda_n}\Big)
+	\end{align}
+	which when written as sums gives us the required operator expansion.  
+	We prove the above statement using induction. We know from Lemma \ref{lem:4} that for $n = 1$, the statement holds.
+	We consider the induction hypothesis for $n= n'-1$.
+	\begin{align}
+	 	T^*_{\lambda}Q_2(A)T_{\lambda} &= \sum\limits_{m=1}^{n'-1} (-1)^{m-1} \frac{\lambda^{m-1}}{(m-1)!} Q_{\sigma(m-1)} (\Theta^{m-1}_K(A)) \nonumber - \sum\limits_{m=1}^{\floor{n'/2}}\frac{\lambda^{(2m-1)}}{(2m-1)!}\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell}(\Theta^{(2m-1)}_K(A))_{r,r}    \nonumber\\
+		&\quad+\sum\limits_{m=1}^{n'-1} \bint\limits_{\Delta ^m_\lambda}\di^m\underline{\lambda} \big(T^*_{\lambda_{m}} E_{Q_{\sigma(m-1)}} (\Theta^{m-1}_K(A)) T_{\lambda_{m}}\big) \nonumber\\ 
+		&\quad+ \bint\limits_{\Delta^{(n'-1)}_{\lambda}}\di^{(n'-1)} \underline{\lambda}(-1)^{(n'-1)} \Big( T^*_{\lambda_{n'}} (Q_{\sigma(n')}(\Theta^{n'}_K(A)) T_{\lambda_{n'}} \Big)	
+	\end{align} 
+Then we use the remark \ref{rem:genopid} (essentially, perform one more Duhamal step.)
+\begin{align}
+	&T^*_{\lambda}Q_2(A)T_{\lambda}\nonumber\\ &= \sum\limits_{m=1}^{n'-1} (-1)^{m-1} \frac{\lambda^{m-1}}{(m-1)!} Q_{\sigma(m-1)} (\Theta^{m-1}_K(A)) - \sum\limits_{m=1}^{\floor{n'/2}} \frac{\lambda^{(2m-1)}}{(2m-1)!} \sum\limits_{\ell\in \Z^3_*} \sum\limits_{r\in L_\ell} (\Theta^{(2m-1)}_K(A))_{r,r}    \nonumber\\
+	&\quad+\sum\limits_{m=1}^{n'-1} \bint\limits_{\Delta ^m_\lambda}\di^m\underline{\lambda} \big(T^*_{\lambda_{m}} E_{Q_{\sigma(m-1)}} (\Theta^{m-1}_K(A)) T_{\lambda_{m}}\big) + \bint\limits_{\Delta^{(n'-1)}_{\lambda}}\di^{(n'-1)} \underline{\lambda}(-1)^{(n'-1)} \Bigg( Q_{\sigma(n'-1)}(\Theta^{(n'-1)}_K(A)) \nonumber\\ 
+	&\quad - \bint\limits_0^{\lambda_{n'}}\di\lambda_{n'}   \big(T^*_{\lambda_{n'}} (Q_{\sigma(n')}(\{K,\Theta^{(n'-1)}_K(A)\})) T_{\lambda_{n'}}\big) + \bint\limits_0^{\lambda_{n'}} \di\lambda' \big( T^*_{\lambda_{n'}} E_{Q_{\sigma(n'-1)}}(\Theta^{(n'-1)}_K(A)) T_{\lambda_{n'}}\big) \nonumber\\
+	&\quad - \half\left(1+(-1)^{(n'-1)}\right) \bint\limits_0^{\lambda_{n'}}\di\lambda_{n'} T^*_{\lambda_{n'}} \left( \sum\limits_{\ell\in \Z^3_*} \sum\limits_{r\in L_\ell}\big\{K(\ell), \Theta^{(n'-1)}_K(A)(\ell) \big\}_{r,r} \right) T_{\lambda_{n'}} \Bigg) \nonumber\\
+	&= \sum\limits_{m=1}^{n'} (-1)^{m-1} \frac{\lambda^{m-1}}{(m-1)!} Q_{\sigma(m-1)} (\Theta^{m-1}_K(A)) - \sum\limits_{m=1}^{\floor{(n'+1)/2}}\frac{\lambda^{(2m-1)}}{(2m-1)!}\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell}(\Theta^{(2m-1)}_K(A))_{r,r}  \nonumber\\
+	&\quad+\sum\limits_{m=1}^{n'} \bint\limits_{\Delta ^m_\lambda}\di^m\underline{\lambda} \big(T^*_{\lambda_{m}} E_{Q_{\sigma(m-1)}} (\Theta^{m-1}_K(A)) T_{\lambda_{m}}\big) + \bint\limits_{\Delta^{n'}_{\lambda}}\di^{n'} \underline{\lambda}(-1)^{n'} \Big( T^*_{\lambda_{n'}} (Q_{\sigma(n'+1)}(\Theta^{(n'-1)}_K(A)) T_{\lambda_{(n'-1)}} \Big)
+\end{align}
+ where in the last step we performed the simplex integral for terms which do not depend on $\lambda$ and collected all the resulting terms which proves the statement.
 \end{proof}
 \begin{proposition}[Final Operator Identity]\label{prop:finopid}
 For $q \in B_\mathrm{F}^c$, we have
@@ -825,22 +848,20 @@ For $q \in B^c_{\mathrm{F}}$ and the vacuum state $\Omega \in \HH_N$, we have
 	For any $k \in \Z^3_*$ and $A(k)\in \ell^2(L_k)\otimes \ell^2(L_k)$, we define
 	\begin{align}
 		\norm{A(k)}_{\mathrm{max}} &\coloneq \sup\limits_{p,q \in L_k}\abs{A(k)_{p,q}},\\
-		\norm{A(k)}_{\mathrm{max,1}} &\coloneq \sup\limits_{q \in \L_k}\sum\limits_{p \in L_k}\abs{A(k)_{p,q}},
+		\norm{A(k)}_{\mathrm{max,1}} &\coloneq \sup\limits_{q \in L_k}\sum\limits_{p \in L_k}\abs{A(k)_{p,q}},
 	\end{align}
 	and
 	\begin{equation}
 		\norm{A(k)}_{\mathrm{max},2} \coloneq \sup\limits_{q \in L_k}\bigg(\sum\limits_{p \in L_k}\abs{A(k)_{p,q}}^2\bigg)^\half.
 	\end{equation}
 \end{definition}
-\begin{comment}
-	\begin{remark}
-		In the error estimates we sometimes write the supremum over all $p$ and/or $q$ in $\Z^3$, which is understood as follows.
-		\begin{equation}
-			\norm{A(k)}_{\mathrm{max}} = \mathds{1}_{L_k}(p)\mathds{1}_{L_k}(q) \sup\limits_{p,q \in \Z^3}\abs{A(k)_{p,q}}.
-		\end{equation} 
+\begin{remark}
+	In the error estimates we sometimes write the supremum over all $p$ and/or $q$ in $\Z^3$, which is understood as follows.
+	\begin{equation}
+		\norm{A(k)}_{\mathrm{max}} = \mathds{1}_{L_k}(p)\mathds{1}_{L_k}(q) \sup\limits_{p,q \in \Z^3}\abs{A(k)_{p,q}}.
+	\end{equation} 
 		
 	\end{remark}	
-\end{comment}
 We bound the head term next, and to begin we start by establishing certain necessary bounds.    
 \begin{lemma}[Bounds on Pair Operators]\label{lem:pairest}
     Let $k \in \Z^3_*$ and $p \in L_k$, then
@@ -1107,9 +1128,8 @@ To bound the bosonization error in (\ref{eq:inftylimexp}), we start by bounding 
 \begin{align}
      E_{Q_1}(A)&=- 2 \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A_{r,s}(\ell)\Big(\mathcal{E}_{r}(\ell)b_{s}(\ell) + b^*_{s}(\ell)\mathcal{E}^*_{r}(\ell)\Big)\nonumber\\ 
     E_{Q_2}(A) &=
-        \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A_{r,s}(\ell)\Big(\big\{\mathcal{E}^*_{r}(\ell), b_{-s}(-\ell)\big\} + \big\{ b^*_{-s}(-l),\mathcal{E}_r(l)\big\}\Big) - \big\{A,K\big\}_{r,s}(\ell)\epsilon_{r,s}(\ell,\ell) .\nonumber 
+        \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A_{r,s}(\ell)\Big(\big\{\mathcal{E}^*_{r}(\ell), b_{-s}(-\ell)\big\} + \big\{ b^*_{-s}(-l),\mathcal{E}_r(l)\big\}\Big) - \big\{A(\ell),K(\ell)\big\}_{r,s}\epsilon_{r,s}(\ell,\ell) .\nonumber 
 \end{align}
-\textcolor{red}{new notation for the anti-commutator}
 
 By substituting the definition of $\mathcal{E}_p(k)$ from \eqref{eq:commerrKb}, we arrive at
 \begin{alignat}{2}
@@ -1320,7 +1340,7 @@ Next we bound these decomposed error terms and in order to do so we have the fol
 \begin{lemma}[$E_{Q_1}^{1,1}$]
 For any $\psi \in \HH_N$ and $q \in \Z^3_*$, we have
 \begin{alignat}{2}
-     \abs{\eva{\psi,\left(E^{\,1,1}_{Q_1}+\mathrm{h.c.}\right) \psi }}\nonumber
+     \abs{\eva{\psi,\left(E^{\,1,1}_{Q_1}+E^{\,2,1}_{Q_1}+\mathrm{h.c.}\right) \psi }}\nonumber
      \leq \; &C\, \begin{aligned}[t]\Xi^{\half}\Bigg( &\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} +\sum\limits_{j=1}^{m-1} {{m}\choose{j}} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg)\times \nonumber\\ \times \Bigg(&\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)\norm { (\NN+1)^{\frac{3}{2}} \psi } \nonumber\\
      \end{aligned}\\
      \;+ &C\,\Xi^{\frac{3}{4}} \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\right) \Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \norm{ (\NN+1)^2\psi}^\half\label{eq:estEQ111}
@@ -1393,11 +1413,10 @@ We estimate \eqref{eq:EQ1113} as
 	&\leq C\,\Xi^{\frac{3}{4}} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\Bigg)\Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \norm{ (\NN+1)^2\psi}^\half \label{eq:estEQ1113}
 \end{align}
 
-Then adding \eqref{eq:estEQ1111},\eqref{eq:estEQ1112} and \eqref{eq:estEQ1113}, we arrive at the bound \eqref{eq:estEQ111}.
+Then adding \eqref{eq:estEQ1111},\eqref{eq:estEQ1112} and \eqref{eq:estEQ1113}, we arrive at the bound \eqref{eq:estEQ111}.  One can bound $\abs{\eva{\psi,\left(E^{\,2,1}_{Q_2}+\mathrm{h.c.}\right) \psi }}$ similarly.
 \end{proof}
-\begin{lemma}[$E_{Q_1}^{2,1}$]
+\textcolor{blue}{\begin{lemma}[$E_{Q_1}^{2,1}$]
 For any $\psi \in \HH_N$ and $q \in \Z^3_*$, we have
-
 \begin{alignat}{2}
 	\abs{\eva{\psi,\left(E^{\,2,1}_{Q_1}+\mathrm{h.c.}\right) \psi }}\nonumber
 	\leq \; &C\, \begin{aligned}[t]\Xi^{\half}\Bigg( &\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} +\sum\limits_{j=1}^{m-1} {{m}\choose{j}} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg)\times \nonumber\\ \times \Bigg(&\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)\norm { (\NN+1)^{\frac{3}{2}} \psi } \nonumber\\
@@ -1445,7 +1464,6 @@ We estimate \eqref{eq:EQ1212} as
 	&\leq \Xi^\half \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg(\sup_{r \in L_{\ell_1}} \sum\limits_{ s_1 \in L_{\ell_1}}\abs{  K(\ell_1)_{r,s_1} }^2\Bigg)^\half \Bigg(  \sum\limits_{ s_1 \in L_{\ell_1}}\norm{   b_{-s_1}(-\ell_1)  (\NN+1)\psi} ^2\Bigg)^\half \nonumber\\
 	&\leq C\, \Xi^\half \Bigg(\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{ \mathrm{max,2} } \norm{K^{j}(\ell)}_{\mathrm{max,2}}\Bigg) \Bigg(\sum\limits_{ \ell_1\in \Z^3_*}\norm{  K(\ell_1)}_{\mathrm{max,2}}\Bigg)  \norm{(\NN+1)^\frac{3}{2} \psi} \label{eq:estEQ1212}
 \end{alignat} 
-
 We estimate \eqref{eq:EQ1213} as
 \begin{align}
 	&\eqref{eq:EQ1213}\nonumber\\
@@ -1455,9 +1473,8 @@ We estimate \eqref{eq:EQ1213} as
 	&\leq  \Xi^\half  \sup_{q \in \Z^3}\norm{ a_{q} \psi}^\half \norm{ (\NN+1)^2\psi}^\half \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\right)\Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}}\Bigg) \nonumber\\
 	&\leq C\, \Xi^{\frac{3}{4}} \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\right)\Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \norm{ (\NN+1)^2\psi}^\half \label{eq:estEQ1213}
 \end{align}
-
 Then adding \eqref{eq:estEQ1211},\eqref{eq:estEQ1212} and \eqref{eq:estEQ1213}, we arrive at the bound above \eqref{eq:estEQ121}.
-\end{proof}
+\end{proof}}
 \begin{lemma}[$E_{Q_1}^{1,2}$]
 For any $\psi \in \HH_N$, we have
 \begin{align}
@@ -1534,7 +1551,7 @@ Then adding \eqref{eq:estEQ1121},\eqref{eq:estEQ1122} and \eqref{eq:estEQ1123}, 
 \begin{lemma}[$E_{Q_2}^{1,1}$]
     For any $\psi \in \HH_N$, we have
     \begin{align}
-    	\abs{\eva{\psi,\left(E^{\,1,1}_{Q_2}+\mathrm{h.c.}\right) \psi }}
+    	\abs{\eva{\psi,\left(E^{\,1,1}_{Q_2}+E^{\,2,1}_{Q_2}+\mathrm{h.c.}\right) \psi }}
     	 \leq  &C\, \begin{aligned}[t]\Xi^{\half}\Bigg( &\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} +\sum\limits_{j=1}^{m-1} {{m}\choose{j}} \sum\limits_{\ell \in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^{j}(\ell)}_{\mathrm{max,2}} \Bigg)\times \nonumber\\ \times \Bigg(&\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)\norm { (\NN+1)^{\frac{3}{2}} \psi } \nonumber\\
     	 \end{aligned}\\
     	 \;+ &C\,\Xi^{\frac{3}{4}} \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\right) \Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \norm{ (\NN+1)^2\psi}^\half\label{eq:estEQ211}
@@ -1597,10 +1614,10 @@ We know that $\NN<(\NN+1)$, then for $\alpha = \half$, we have
 	&\leq \sup_{q \in \Z^3}\norm{ a_{q} (\NN+1)\psi} \Xi^\half\sum\limits_{\ell \in \Z^3_*} \norm{  K^{m}(\ell)}_{\mathrm{max,2}}  \sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \nonumber\\
 	\eqref{eq:EQ2113}&\leq \Xi^{\frac{3}{4}} \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\right) \Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \norm{ (\NN+1)\psi}^\half \label{eq:estEQ2113}
 \end{align}
-  Then adding \eqref{eq:estEQ2111},\eqref{eq:estEQ2112} and \eqref{eq:estEQ2113}, we arrive at the bound above \eqref{eq:estEQ211}. 
+  Then adding \eqref{eq:estEQ2111},\eqref{eq:estEQ2112} and \eqref{eq:estEQ2113}, we arrive at the bound above \eqref{eq:estEQ211}. One can bound $\abs{\eva{\psi,\left(E^{\,2,1}_{Q_2}+\mathrm{h.c.}\right) \psi }}$ similarly.
 \end{proof}
 
-\begin{lemma}[$E_{Q_2}^{2,1}$]
+\textcolor{blue}{\begin{lemma}[$E_{Q_2}^{2,1}$]
     For any $\psi \in \HH_N$, we have
     \begin{alignat}{2}
     	\abs{\eva{\psi,\left(E^{\,2,1}_{Q_2}+\mathrm{h.c.}\right) \psi }}
@@ -1668,15 +1685,13 @@ We know that $\NN<(\NN+1)$, then for $\alpha = \half$, we have
 	\eqref{eq:EQ2213}&\leq \Xi^{\frac{3}{4}} \left(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max,2}}\right) \Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max,2}} \Bigg)  \norm{ (\NN+1)^2\psi}^\half \label{eq:estEQ2213}
 \end{align}
  Then adding \eqref{eq:estEQ2211},\eqref{eq:estEQ2212} and \eqref{eq:estEQ2213}, we arrive at the bound above \eqref{eq:estEQ221}. 
-\end{proof}
+\end{proof}}
 
 \begin{lemma}[$E_{Q_2}^{1,2}$]
     For any $\psi \in \HH_N$, we have
     \begin{alignat}{2}
-    	&\begin{aligned}
-    		&\abs{\eva{\psi,\left(E^{\,1,2}_{Q_2}+\mathrm{h.c.}\right) \psi }}_,\\ &\abs{\eva{\psi,\left(E^{\,2,2}_{Q_2}+\mathrm{h.c.}\right) \psi }}
-    	\end{aligned}
-   	&\leq   C\,\Xi \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max,2}} \left(\norm{K^m(\ell)}_{\mathrm{max,2}} + \sum\limits_{j=1}^{m-1} {{m}\choose j} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^j(\ell)}_{\mathrm{max,1}}\right) \label{eq:estEQ212}
+    \abs{\eva{\psi,\left(E^{\,1,2}_{Q_2}+E^{\,2,2}_{Q_2}+\mathrm{h.c.}\right) \psi }}\nonumber\\
+   	\leq   C\,\Xi \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max,2}} &\left(\norm{K^m(\ell)}_{\mathrm{max,2}} + \sum\limits_{j=1}^{m-1} {{m}\choose j} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^j(\ell)}_{\mathrm{max,1}}\right) \label{eq:estEQ212}
     \end{alignat}
 \end{lemma}
 \begin{proof}
@@ -1712,14 +1727,14 @@ We estimate \eqref{eq:EQ2122} as
     	&\leq \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{ s \in L_{\ell}} \norm{K(\ell)_{q,s} a_{q-\ell} \psi}\norm{ K^m(\ell)_{q,s}  a_{q-\ell} \psi } \nonumber\\
     	&\leq \,\Xi \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max,2}} \norm{K^m(\ell)}_{\mathrm{max,2}} \label{eq:estEQ2123}
     \end{align} 
-Then adding \eqref{eq:estEQ2121},\eqref{eq:estEQ2122} and \eqref{eq:estEQ2123}, we arrive at the bound above \eqref{eq:estEQ212}. One can exactly proceed as the above estimates to get the same bound for $E_{Q_2}^{2,2}$
+Then adding \eqref{eq:estEQ2121},\eqref{eq:estEQ2122} and \eqref{eq:estEQ2123}, we arrive at the bound above \eqref{eq:estEQ212}. One can exactly proceed as the above to get the same bound for $E_{Q_2}^{2,2}$
 \end{proof}
 
-\begin{lemma}[$E_{Q_2}^{2,2}$]
+\textcolor{blue}{\begin{lemma}[$E_{Q_2}^{2,2}$]
 For any $\psi \in \HH_N$, we have
 \begin{align}
     \abs{\eva{\psi,\left(E^{\,2,2}_{Q_2}+\mathrm{h.c.}\right) \psi }}
-    &\leq   C\,\Xi \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max,2}} \left(\norm{K^m(\ell)}_{\mathrm{max,2}} + \sum\limits_{j=1}^{m-1} {{m}\choose j} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^j(\ell)}_{\mathrm{max,2}} \right) \norm{(\NN+1)^\half \psi} \label{eq:estEQ222}
+    &\leq   C\,\Xi \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max,2}} \left(\norm{K^m(\ell)}_{\mathrm{max,2}} + \sum\limits_{j=1}^{m-1} {{m}\choose j} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^j(\ell)}_{\mathrm{max,2}} \right) \label{eq:estEQ222}
     \end{align}
 \end{lemma}
 \begin{proof}
@@ -1752,13 +1767,13 @@ We estimate \eqref{eq:EQ2123} as
 	&\leq C\,\Xi \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{max,2}} \norm{K^m(\ell)}_{\mathrm{max,2}}  \label{eq:estEQ2223}
 \end{align} 
 Then adding \eqref{eq:estEQ2221},\eqref{eq:estEQ2222} and \eqref{eq:estEQ2223}, we arrive at the bound above \eqref{eq:estEQ222}. 
-\end{proof}
+\end{proof}}
 
 \begin{lemma}[$E_{Q_2}^{1,3}$]
 For any $\psi \in \HH_N$, we have
 \begin{align}
-	2\abs{\eva{\psi,\left(E^{\,1,3}_{Q_2}+\mathrm{h.c.}\right) \psi }}
-  	&\leq  C\, \Xi^{\half} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} + \sum\limits_{j=1}^{m-1} {m\choose j} \sum\limits_{\ell \in \Z^3_*}\norm{K^{m-j}(\ell)}_{\mathrm{max}}\norm{K^{j}(\ell)}_{\mathrm{max,1}}\Bigg)\times\nonumber\\&\quad\times \Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg)  \norm { (\NN+1) \psi }    \label{eq:estEQ213}
+	&2\abs{\eva{\psi,\left(E^{\,1,3}_{Q_2}+E^{\,2,3}_{Q_2}+E^{\,1,4}_{Q_2}+\mathrm{h.c.}\right) \psi }} \nonumber\\
+  	&\leq  C\, \Xi^{\half} \Bigg(\sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} + \sum\limits_{j=1}^{m-1} {m\choose j} \sum\limits_{\ell \in \Z^3_*}\norm{K^{m-j}(\ell)}_{\mathrm{max}}\norm{K^{j}(\ell)}_{\mathrm{max,1}}\Bigg) \Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\norm{K(\ell_1)}_{\mathrm{max}} \Bigg)  \norm { (\NN+1) \psi }    \label{eq:estEQ213}
 \end{align}
 \end{lemma}
 \begin{proof}
@@ -1808,10 +1823,10 @@ Then for $\alpha = \half$, we have
 	&\leq  \sup\limits_{q \in \Z^3_*} \norm{ n_{q}^{\,\half} \psi } \sum\limits_{\ell, \ell_1\in \Z^3_*}  \norm{K^m{\ell}}_{\mathrm{max}} \norm{K(\ell_1)}_{\mathrm{max}} \norm{ (\NN+1) \psi}  \nonumber\\
 	\eqref{eq:EQ2133}&\leq C\, \Xi^\half \left(\sum\limits_{\ell\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\right)\left(  \sum\limits_{ \ell_1\in \Z^3_*}  \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{ (\NN+1) \psi}\label{eq:estEQ2133} 
 \end{align}
-Then adding \eqref{eq:estEQ2131},\eqref{eq:estEQ2132} and \eqref{eq:estEQ2133}, we arrive at the bound above \eqref{eq:estEQ213}.
+Then adding \eqref{eq:estEQ2131},\eqref{eq:estEQ2132} and \eqref{eq:estEQ2133}, we arrive at the bound above \eqref{eq:estEQ213}. One can bound $\abs{\eva{\psi,\left(E^{\,2,3}_{Q_2}+\mathrm{h.c.}\right) \psi }}$ and $\abs{\eva{\psi,\left(E^{\,1,4}_{Q_2}+\mathrm{h.c.}\right) \psi }}$ similarly.
 \end{proof}
 
-\begin{lemma}[$E_{Q_2}^{2,3}$]
+\textcolor{blue}{\begin{lemma}[$E_{Q_2}^{2,3}$]
 	For any $\psi \in \HH_N$, we have
 	\begin{align}
 		\abs{\eva{\psi,\left(E^{\,2,3}_{Q_2}+\mathrm{h.c.}\right) \psi }}
@@ -1864,7 +1879,6 @@ Then adding \eqref{eq:estEQ2131},\eqref{eq:estEQ2132} and \eqref{eq:estEQ2133}, 
 	\end{align}
 	Then adding \eqref{eq:estEQ2231},\eqref{eq:estEQ2232} and \eqref{eq:estEQ2233}, we arrive at the bound above \eqref{eq:estEQ223}. 
 \end{proof}
-
 \begin{lemma}[$E_{Q_2}^{1,4}$]
 	For any $\psi \in \HH_N$, we have
 	\begin{align}
@@ -1916,7 +1930,7 @@ Then adding \eqref{eq:estEQ2131},\eqref{eq:estEQ2132} and \eqref{eq:estEQ2133}, 
 		\eqref{eq:EQ2143}\leq C\, \Xi^\half \left(\sum\limits_{\ell\in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}}\right)\left(  \sum\limits_{ \ell_1\in \Z^3_*}  \norm{ K(\ell_1)}_{\mathrm{max}} \right) \norm{ (\NN+1) \psi}\label{eq:estEQ2143} 
 	\end{equation}
 	Then adding \eqref{eq:estEQ2141},\eqref{eq:estEQ2142} and \eqref{eq:estEQ2143}, we arrive at the bound above \eqref{eq:estEQ214}.
-\end{proof}
+\end{proof}}
 
 \begin{lemma}[$E_{Q_2}^{1,5}$]
     For any $\psi \in \HH_N$, we have
@@ -2041,10 +2055,10 @@ We estimate \eqref{eq:EQ2183} as
 	&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{\substack{L_{\ell}\cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}} (q) \norm{K(\ell_1)_{q,-q+\ell+\ell_1} a_{q-\ell} \psi}\norm{ K^m(\ell)_{q,-q+\ell+\ell_1} a_{q-\ell}\psi }\nonumber\\
 	&\leq C\,\Xi \sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} \sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max}}  \label{eq:estEQ2183}
 \end{align} 
-Then adding \eqref{eq:estEQ2181},\eqref{eq:estEQ2182} and \eqref{eq:estEQ2183}, we arrive at the bound above \eqref{eq:estEQ218}. 
+Then adding \eqref{eq:estEQ2181},\eqref{eq:estEQ2182} and \eqref{eq:estEQ2183}, we arrive at the bound above \eqref{eq:estEQ218}. $\abs{\eva{\psi,\left(E^{\,2,8}_{Q_2}+\mathrm{h.c.}\right) \psi }}$
 \end{proof}
 
-\begin{lemma}[$E_{Q_2}^{2,8}$]
+\textcolor{blue}{\begin{lemma}[$E_{Q_2}^{2,8}$]
 For any $\psi \in \HH_N$, we have
 \begin{align}
 	\abs{\eva{\psi,\left(E^{\,2,8}_{Q_2}+\mathrm{h.c.}\right) \psi }}
@@ -2082,7 +2096,7 @@ We estimate \eqref{eq:EQ2283} as
 	&\leq C\,\Xi \sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\mathrm{max}} \sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\mathrm{max}} \label{eq:estEQ2283}
 \end{align} 
 Then adding \eqref{eq:estEQ2281},\eqref{eq:estEQ2282} and \eqref{eq:estEQ2283}, we arrive at the bound above \eqref{eq:estEQ228}.  
-\end{proof}
+\end{proof}}
 
 \begin{lemma}[$E_{Q_2}$]
     For any $\psi \in \HH_N$, we have
