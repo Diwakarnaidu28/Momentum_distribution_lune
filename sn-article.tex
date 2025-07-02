@@ -1005,12 +1005,14 @@ Next, we compile some bounds on the correlation structure $ K(\ell) $.
 \textcolor{red}{[SL: Make sure that $ \lambda_{\ell,r} $ has been defined]} Further, we have the bounds
 \begin{equation} \label{eq:K_max_bounds}
 \begin{aligned}
-	\Vert K(\ell)^m \Vert_{\mathrm{max}}
-	&\le (C \hat{V}(\ell))^m k_{\F}^{-1} \;, \\
-	\Vert K(\ell)^m \Vert_{\mathrm{max},2}
-	&\le (C \hat{V}(\ell))^m k_{\F}^{-\frac 12} \;, \\
-	\norm{K(\ell)^m}_{\mathrm{HS}}
-	&\le (C \hat{V}(\ell))^m \min\{1,k^2_F\abs{\ell}^{-2}\} \;.
+	&\Vert K(\ell)^m \Vert_{\mathrm{max}}\!\!\!\!
+	&\le\; &(C \hat{V}(\ell))^m k_{\F}^{-1} \;, \\ 
+	&\Vert K(\ell)^m \Vert_{\mathrm{max},2}\!\!\!\!
+	&\le \;&(C \hat{V}(\ell))^m k_{\F}^{-\frac 12} \;, \\
+	&\normmaxi{K(\ell)^m}\!\!\!\!
+	&\leq \; &(C \hat{V}(\ell))^m \min\{1,k^2_F\abs{\ell}^{-2}\} \;,\\
+	&\norm{K(\ell)^m}_{\mathrm{HS}}\!\!\!\!
+	&\le \;&(C \hat{V}(\ell))^m \min\{1,k^2_F\abs{\ell}^{-2}\} \;.
 \end{aligned}   
 \end{equation}
 \end{lemma}
@@ -1046,16 +1048,21 @@ The first bound in \eqref{eq:K_max_bounds} then follows immediately noting that 
 	\norm{K(\ell)^m}_{\mathrm{HS}}^2
 	&\le \sum_{r,s \in L_\ell} (C \hat{V}(\ell))^{2m} k_{\F}^{-2} (\lambda_{\ell,r} + \lambda_{\ell,s})^{-2}
 	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} \Big( \sum_{r \in L_\ell}  \lambda_{\ell,r}^{-1} \Big)^2
-	\le (C \hat{V}(\ell))^{2m} \;.
+	\le (C \hat{V}(\ell))^{2m} \; \\
+	\normmaxi{K(\ell)^m} 
+	&\leq \sup_{q \in \Z^3} \sum_{r \in L_\ell} (C \hat{V}(\ell))^{m} k_{\F}^{-1} (\lambda_{\ell,r} + \lambda_{\ell,q})^{-1} \le (C \hat{V}(\ell))^{m} k_{\F}^{-1} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \leq (C \hat{V}(\ell))^{m} \;.
 \end{aligned}
 \end{equation}
 Further, if $ |\ell| \ge 3 k_{\F} $, then we even have $ \lambda_{\ell,r} \le C |\ell|^2 $ uniformly in $ r \in L_\ell $, while the lune has volume $ |L_\ell| \le C k_{\F}^3 $, so
-\begin{equation}
+\begin{align}
 	\norm{K(\ell)^m}_{\mathrm{HS}}^2
-	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} |L_\ell|^2 |\ell|^{-4}
-	\le (C \hat{V}(\ell))^{2m} k_{\F}^4 |\ell|^{-4} \;.
-\end{equation}
-If $ |\ell| < 3 k_{\F} $, then $ k_{\F} |\ell|^{-1} \ge C $, so by \eqref{eq:max2_HS_bound}, this bound is equally true.
+	&\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} |L_\ell|^2 |\ell|^{-4}
+	\le (C \hat{V}(\ell))^{2m} k_{\F}^4 |\ell|^{-4} \;,\\
+	\norm{K(\ell)^m}_{\mathrm{max,1}}
+	&\le (C \hat{V}(\ell))^{m} k_{\F}^{-1} |L_\ell| |\ell|^{-2}
+	\le (C \hat{V}(\ell))^{m} k_{\F}^2 |\ell|^{-2} \;.
+\end{align}
+If $ |\ell| < 3 k_{\F} $, then $ k_{\F} |\ell|^{-1} \ge C $, so by \eqref{eq:max2_HS_bound}, these bound are equally true.
 \end{proof}
 
 \begin{lemma}[Bound on nested anti-commutator]\label{lem:multicommest}
