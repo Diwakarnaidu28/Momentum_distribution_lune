@@ -941,20 +941,39 @@ We bound the head term next, and to begin we start by establishing certain neces
     \end{align}
     Hence, we have the required estimate and we can similarly prove (\ref{eq:Q1est}). 
 \end{proof}
-\begin{lemma}[Gr\"onwall Bound]\label{lem:gronNest}
+\begin{lemma}[Gr\"onwall Estimate]\label{lem:gronNest}
     Let $\lambda\in [0,1]$, then we have the following operator inequality
     \begin{equation}\label{eq:gronest}
-     T^*_{\lambda}(\mathcal{N} +1)T_{\lambda} \leq e^C (\NN+1)\, ,    
+     T^*_{\lambda}(\mathcal{N} +1)^m T_{\lambda} \leq C_m (\NN+1)^m\, ,    
     \end{equation}
-     where $C = \mathrm{exp}(4\sum\limits_{l\in \Z^3_*}\norm{K(\ell)}_{\mathrm{HS}})$,
-     
-     Similarly
-     \begin{equation}\label{eq:gengronest}
-     	T^*_{\lambda}(\mathcal{N} +1)^{\alpha}T_{\lambda} \leq e^{C_\alpha} (\NN+1)^{\alpha}\, , 
-     \end{equation}
-     \footnote{The value of $C$ can be different for every new appearance, unless explicitly stated.}.
+    where $C_m = \mathrm{exp}(C'_m\sum\limits_{l\in \Z^3_*} \norm{K(\ell)}_{\mathrm{HS}}) $,
+    \footnote{The value of $C$ can be different for every new appearance, unless explicitly stated as done here.}.
 \end{lemma}
 \begin{proof}
+Before proving the inequality, we observe
+\begin{align}
+	\left[(\NN+4)^m, b^*_{-s}(-\ell)b^*_{r}(\ell)\right] &= \left( (\NN+4)^m - \NN^m \right) b^*_{-s}(-\ell)b^*_{r}(\ell) \nonumber \\
+	&= \left( \left(\NN+4\right)^m - \NN^m \right)^\half b^*_{-s}(-\ell)b^*_{r}(\ell) \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half.
+\end{align}
+Then we begin with
+\begin{align}
+	&\left|\frac{\di}{\di\lambda}\eva{\Psi, (T^*_{\lambda}(\mathcal{N}+4)^m T_{\lambda})\Psi }\right| \nonumber\\ 
+	&= \left| \eva{\Psi,( T^*_{\lambda} \left[\KK, (\NN+4)^m\right] T_{\lambda}) \Psi}\right|\nonumber\\
+	&= \abs{\mathrm{Re}\eva{ T_{\lambda}\psi, \sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell}K(\ell)_{r,s}\left[ (\NN+4)^m, b^*_{-s}(-\ell)b^*_{r}(\ell) \right]T_{\lambda} \psi }}\nonumber\\
+	&\leq \abs{\mathrm{Re}\sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell} \eva{  b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half T_{\lambda} \psi, K(\ell)_{r,s} b^*_{r}(\ell) \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half T_{\lambda}\psi }}\nonumber\\
+	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell} \norm{ b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half T_{\lambda}\psi} \norm {K(\ell)_{r,s} b^*_{r}(\ell) \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half T_{\lambda}\psi} \nonumber\\
+	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{s\in L_\ell} \norm{  b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half T_{\lambda}\psi} \left(\sum\limits_{r\in L_\ell} \abs{K(\ell)_{r,s}}^2 \right)^\half \norm { (\NN+1)^\half \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half T_{\lambda}\psi} \nonumber\\
+	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*} \norm{K(\ell)}_{\mathrm{HS}}\left(\sum\limits_{s\in L_\ell} \norm{  b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half T_{\lambda}\psi}^2\right)^\half \norm{ \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half T_{\lambda}\psi }\nonumber\\
+	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*} \norm{K(\ell)}_{\mathrm{HS}}\norm{ \NN^\half \left( \left(\NN+4\right)^m - \NN^m \right)^\half T_{\lambda}\psi} \norm{ (\NN+1)^\half \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half T_{\lambda}\psi }\nonumber\\
+	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*} \norm{K(\ell)}_{\mathrm{HS}}\norm{ \left(\NN+4\right)^\frac{m}{2} T_{\lambda}\psi}^2
+\end{align}
+where we used
+\begin{align}
+	\left( \left(\NN+4\right)^m - \NN^m \right) &\leq C'_m \left(\NN+4\right)^{m-1} \\
+	\left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right) &\leq  C'_m \left(\NN+4\right)^{m-1}.
+\end{align}
+Here the constant $C'_m$ depends on $m$. 
+    \begin{comment} 
     For a given $\Psi \in \HH_N$, we start with taking a derivative of the expectation of the LHS of \eqref{eq:gronest} above.
     \begin{align}
         \left|\frac{\di}{\di\lambda}\eva{\Psi, (T^*_{\lambda}(\mathcal{N} +1)T_{\lambda})\Psi }\right| 
@@ -968,13 +987,12 @@ We bound the head term next, and to begin we start by establishing certain neces
         &\leq 4 \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{HS}}\norm{\NN^\half T_\lambda\Psi}\norm{(\NN+1)^\half T_\lambda\Psi}\nonumber\\
         &\leq 4 \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{HS}} \eva{\Psi,T^*_\lambda(\NN+1)T_\lambda\Psi}
     \end{align}
+\end{comment}
     Then using Gr\"onwall's lemma, we have
     \begin{equation}
-        \eva{\Psi, T^*_{\lambda}(\mathcal{N} +1)T_{\lambda} \Psi } \leq \mathrm{exp}(4\sum\limits_{l\in \Z^3_*} \norm{K(\ell)}_{\mathrm{HS}}) \eva{\Psi, (\NN+1)\Psi}
+        \eva{\Psi, T^*_{\lambda}(\mathcal{N} +1)^m T_{\lambda} \Psi } \leq \mathrm{exp}(C'_m\sum\limits_{l\in \Z^3_*} \norm{K(\ell)}_{\mathrm{HS}}) \eva{\Psi, (\NN+1)^m\Psi}
     \end{equation}
-    And this proves the estimate.
-    We proceed next with proving \eqref{eq:gengronest}
-    \textcolor{red}{write the proof for the general Gr\"onwall estimate}
+    And we have the estimate.
 \end{proof}
 
 Next, we compile some bounds on the correlation structure $ K(\ell) $.
@@ -1024,7 +1042,7 @@ The first bound in \eqref{eq:K_max_bounds} then follows immediately noting that 
 	\Vert K(\ell)^m \Vert_{\mathrm{max},2}^2
 	&\le \sup_{q \in \Z^3} \sum_{r \in L_\ell} (C \hat{V}(\ell))^{2m} k_{\F}^{-2} (\lambda_{\ell,r} + \lambda_{\ell,q})^{-2}
 	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1}
-	\le (C \hat{V}(\ell))^{2m} k_{\F} \;, \\
+	\le (C \hat{V}(\ell))^{2m} k^{-1}_{\F} \;, \\
 	\norm{K(\ell)^m}_{\mathrm{HS}}^2
 	&\le \sum_{r,s \in L_\ell} (C \hat{V}(\ell))^{2m} k_{\F}^{-2} (\lambda_{\ell,r} + \lambda_{\ell,s})^{-2}
 	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} \Big( \sum_{r \in L_\ell}  \lambda_{\ell,r}^{-1} \Big)^2
