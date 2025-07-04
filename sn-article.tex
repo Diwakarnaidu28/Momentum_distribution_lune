@@ -1362,7 +1362,7 @@ When we explicitly put $P^q$, we get the decomposition of the error terms corres
 Next we bound these decomposed error terms and in order to do so we have the following estimates.
 
  \subsection{$E_{Q_1}$ Estimates}
-\begin{lemma}[$E_{Q_1}^{1,1}$]
+\begin{lemma}[$E_{Q_1}^{1,1}$]\label{lem:EQ111}
 For any $\psi \in \HH_N$ and $q \in \Z^3_*$, we have
 \begin{alignat}{2}
      \abs{\eva{\psi,\left(E^{\,1,1}_{Q_1}+E^{\,2,1}_{Q_1}+\mathrm{h.c.}\right) \psi }}\nonumber
@@ -1451,7 +1451,7 @@ Then we use Lemma \ref{lem:normsk} to get
 \end{equation}
 Then adding \eqref{eq:estEQ1111},\eqref{eq:estEQ1112} and \eqref{eq:estEQ1113}, we arrive at the bound \eqref{eq:estEQ111}.  One can bound $\abs{\eva{\psi,\left(E^{\,2,1}_{Q_2}+\mathrm{h.c.}\right) \psi }}$ similarly.
 \end{proof}
-\textcolor{blue}{\begin{lemma}[$E_{Q_1}^{2,1}$]
+\textcolor{blue}{\begin{lemma}[$E_{Q_1}^{2,1}$] \label{lem:EQ121}
 For any $\psi \in \HH_N$ and $q \in \Z^3_*$, we have
 \begin{alignat}{2}
 	\abs{\eva{\psi,\left(E^{\,2,1}_{Q_1}+\mathrm{h.c.}\right) \psi }}\nonumber
@@ -1510,7 +1510,7 @@ We estimate \eqref{eq:EQ1213} as
 \end{align}
 Then adding \eqref{eq:estEQ1211},\eqref{eq:estEQ1212} and \eqref{eq:estEQ1213} and using Lemma \ref{lem:normsk}, we arrive at the bound above \eqref{eq:estEQ121}.
 \end{proof}}
-\begin{lemma}[$E_{Q_1}^{1,2}$]
+\begin{lemma}[$E_{Q_1}^{1,2}$]\label{lem:EQ112}
 For any $\psi \in \HH_N$, we have
 \begin{equation}
 	2\abs{\eva{\psi,\left(E^{\,1,2}_{Q_1}+\mathrm{h.c.}\right) \psi }}\nonumber
@@ -1570,19 +1570,25 @@ For $\alpha=\half$, we have
 \end{align}
 Then adding \eqref{eq:estEQ1121},\eqref{eq:estEQ1122} and \eqref{eq:estEQ1123} and using Lemma \ref{lem:normsk}, we arrive at the bound above \eqref{eq:estEQ112}.
 \end{proof}
-\begin{lemma}[$E_{Q_1}$]
+\begin{lemma}[$E_{Q_1}(\Theta^m_{K}(P^q))$]
 	For any $\psi \in \HH_N$, we have
 	\begin{align}
-		&\abs{\eva{\psi, E_{Q_1}  \psi}}\nonumber\\&\leq C
+		\abs{\eva{\psi, E_{Q_1}\!\left(\Theta^m_K(P^q)\right)  \psi}} \leq \; &C\,  k_{F}^{-\frac{3}{2}} \Xi^\half \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg) \left(\norm { (\NN+1)^{\frac{3}{2}} \psi } + \norm { (\NN+1)^{\frac{1}{2}} \psi } \right)\nonumber\\
+		\;+ &C\, k_{F}^{-1}\Xi^{\frac{3}{4}} \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg) \Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)  \norm{ (\NN+1)^2\psi}^\half \label{eq:genEQ1est}
 	\end{align}
+Furthermore, for $\psi = T_{\lambda}\Omega$, we have 
+\begin{equation}
+	\abs{\eva{ T_{\lambda}\Omega, E_{Q_1}\!\left(\Theta^m_K(P^q) \right)  T_{\lambda}\Omega}} \leq \; C\,  \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)\left( k_{F}^{-\frac{3}{2}} \Xi^\half 
+	+ k_{F}^{-1}\Xi^{\frac{3}{4}} \right) \label{eq:finalEQ1est}
+\end{equation}
 \end{lemma}
 \begin{proof}
-	The proof follows from Lemmas.
+	The first bound follows from Lemmas \ref{lem:EQ111} and \ref{lem:EQ112}. And the last bound follows from the Gr\"onwall's bound, Lemma \ref{lem:gronNest}. 
 \end{proof}
 
 
 \subsection{$E_{Q_2}$ Estimates}
-\begin{lemma}[$E_{Q_2}^{1,1}$]
+\begin{lemma}[$E_{Q_2}^{1,1}$]\label{lem:EQ211}
     For any $\psi \in \HH_N$, we have
     \begin{align}
     	\abs{\eva{\psi,\left(E^{\,1,1}_{Q_2}+E^{\,2,1}_{Q_2}+\mathrm{h.c.}\right) \psi }}
@@ -1650,7 +1656,7 @@ We know that $\NN<(\NN+1)$, then for $\alpha = \half$, we have
   Then adding \eqref{eq:estEQ2111},\eqref{eq:estEQ2112} and \eqref{eq:estEQ2113} and using Lemma \ref{lem:normsk}, we arrive at the bound above \eqref{eq:estEQ211}. One can bound $\abs{\eva{\psi,\left(E^{\,2,1}_{Q_2}+\mathrm{h.c.}\right) \psi }}$ similarly.
 \end{proof}
 
-\textcolor{blue}{\begin{lemma}[$E_{Q_2}^{2,1}$]
+\textcolor{blue}{\begin{lemma}[$E_{Q_2}^{2,1}$]\label{lem:EQ221}
     For any $\psi \in \HH_N$, we have
     \begin{alignat}{2}
     	\abs{\eva{\psi,\left(E^{\,2,1}_{Q_2}+\mathrm{h.c.}\right) \psi }}
@@ -1719,7 +1725,7 @@ We know that $\NN<(\NN+1)$, then for $\alpha = \half$, we have
  Then adding \eqref{eq:estEQ2211},\eqref{eq:estEQ2212} and \eqref{eq:estEQ2213} and using Lemma \ref{lem:normsk}, we arrive at the bound above \eqref{eq:estEQ221}. 
 \end{proof}}
 
-\begin{lemma}[$E_{Q_2}^{1,2}$]
+\begin{lemma}[$E_{Q_2}^{1,2}$]\label{lem:EQ212}
     For any $\psi \in \HH_N$, we have
     \begin{alignat}{2}
     \abs{\eva{\psi,\left(E^{\,1,2}_{Q_2}+E^{\,2,2}_{Q_2}+\mathrm{h.c.}\right) \psi }}
@@ -1762,7 +1768,7 @@ We estimate \eqref{eq:EQ2122} as
 Then adding \eqref{eq:estEQ2121},\eqref{eq:estEQ2122} and \eqref{eq:estEQ2123} and using Lemma \ref{lem:normsk}, we arrive at the bound above \eqref{eq:estEQ212}. One can exactly proceed as the above to get the same bound for $E_{Q_2}^{2,2}$
 \end{proof}
 
-\textcolor{blue}{\begin{lemma}[$E_{Q_2}^{2,2}$]
+\textcolor{blue}{\begin{lemma}[$E_{Q_2}^{2,2}$]\label{lem:EQ222}
 For any $\psi \in \HH_N$, we have
 \begin{equation}
     \abs{\eva{\psi,\left(E^{\,2,2}_{Q_2}+\mathrm{h.c.}\right) \psi }}
@@ -1801,7 +1807,7 @@ We estimate \eqref{eq:EQ2123} as
 Then adding \eqref{eq:estEQ2221},\eqref{eq:estEQ2222} and \eqref{eq:estEQ2223} and using Lemma \ref{lem:normsk}, we arrive at the bound above \eqref{eq:estEQ222}. 
 \end{proof}}
 
-\begin{lemma}[$E_{Q_2}^{1,3}$]
+\begin{lemma}[$E_{Q_2}^{1,3}$]\label{lem:EQ213}
 For any $\psi \in \HH_N$, we have
 \begin{equation}
 	2\abs{\eva{\psi,\left(E^{\,1,3}_{Q_2}+E^{\,2,3}_{Q_2}+E^{\,1,4}_{Q_2}+\mathrm{h.c.}\right) \psi }} 
@@ -1858,7 +1864,7 @@ Then for $\alpha = \half$, we have
 Then adding \eqref{eq:estEQ2131},\eqref{eq:estEQ2132} and \eqref{eq:estEQ2133} and using Lemma \ref{lem:normsk}, we arrive at the bound above \eqref{eq:estEQ213}. One can bound $\abs{\eva{\psi,\left(E^{\,2,3}_{Q_2}+\mathrm{h.c.}\right) \psi }}$ and $\abs{\eva{\psi,\left(E^{\,1,4}_{Q_2}+\mathrm{h.c.}\right) \psi }}$ similarly.
 \end{proof}
 
-\textcolor{blue}{\begin{lemma}[$E_{Q_2}^{2,3}$]
+\textcolor{blue}{\begin{lemma}[$E_{Q_2}^{2,3}$]\label{lem:EQ223}
 	For any $\psi \in \HH_N$, we have
 	\begin{align}
 		\abs{\eva{\psi,\left(E^{\,2,3}_{Q_2}+\mathrm{h.c.}\right) \psi }}
@@ -1911,7 +1917,7 @@ Then adding \eqref{eq:estEQ2131},\eqref{eq:estEQ2132} and \eqref{eq:estEQ2133} a
 	\end{align}
 	Then adding \eqref{eq:estEQ2231},\eqref{eq:estEQ2232} and \eqref{eq:estEQ2233} and using Lemma \ref{lem:normsk}, we arrive at the bound above \eqref{eq:estEQ223}. 
 \end{proof}
-\begin{lemma}[$E_{Q_2}^{1,4}$]
+\begin{lemma}[$E_{Q_2}^{1,4}$]\label{lem:EQ214}
 	For any $\psi \in \HH_N$, we have
 	\begin{align}
 		\abs{\eva{\psi,\left(E^{\,1,4}_{Q_2}+\mathrm{h.c.}\right) \psi }}
@@ -1964,7 +1970,7 @@ Then adding \eqref{eq:estEQ2131},\eqref{eq:estEQ2132} and \eqref{eq:estEQ2133} a
 	Then adding \eqref{eq:estEQ2141},\eqref{eq:estEQ2142} and \eqref{eq:estEQ2143} and using Lemma \ref{lem:normsk}, we arrive at the bound above \eqref{eq:estEQ214}.
 \end{proof}}
 
-\begin{lemma}[$E_{Q_2}^{1,5}$]
+\begin{lemma}[$E_{Q_2}^{1,5}$]\label{lem:EQ215}
 For any $\psi \in \HH_N$, we have
 	\begin{align}
     	2\abs{\eva{\psi,\left(E^{\,1,5}_{Q_2}+\mathrm{h.c.}\right) \psi }}
@@ -2006,7 +2012,7 @@ We estimate \eqref{eq:EQ2153} as
 Then adding \eqref{eq:estEQ2151},\eqref{eq:estEQ2152} and \eqref{eq:estEQ2153} and using Lemma \ref{lem:normsk}, we arrive at the bound above \eqref{eq:estEQ215}.
 \end{proof}
 
-\begin{lemma}[$E_{Q_2}^{1,7}$]
+\begin{lemma}[$E_{Q_2}^{1,7}$]\label{lem:EQ217}
 	For any $\psi \in \HH_N$, we have
 	\begin{align}
 		2\abs{\eva{\psi,\left(E^{\,1,7}_{Q_2}+\mathrm{h.c.}\right) \psi }}
@@ -2050,7 +2056,7 @@ We estimate \eqref{eq:EQ2173} as
 Then adding \eqref{eq:estEQ2171},\eqref{eq:estEQ2172} and \eqref{eq:estEQ2173} and using Lemma \ref{lem:normsk}, we arrive at the bound above \eqref{eq:estEQ217}. 
 \end{proof}
 
-\begin{lemma}[$E_{Q_2}^{1,8}$]
+\begin{lemma}[$E_{Q_2}^{1,8}$]\label{lem:EQ218}
 	For any $\psi \in \HH_N$, we have
 	\begin{alignat}{2}
 		\abs{\eva{\psi,\left(E^{\,1,8}_{Q_2}+E^{\,2,8}_{Q_2}+\mathrm{h.c.}\right) \psi }}
@@ -2090,7 +2096,7 @@ We estimate \eqref{eq:EQ2183} as
 Then adding \eqref{eq:estEQ2181},\eqref{eq:estEQ2182} and \eqref{eq:estEQ2183} and using Lemma \ref{lem:normsk}, we arrive at the bound above \eqref{eq:estEQ218}. For $\abs{\eva{\psi,\left(E^{\,2,8}_{Q_2}+\mathrm{h.c.}\right) \psi }}$ one can proceed similarly as above and obtain the same bound.
 \end{proof}
 
-\textcolor{blue}{\begin{lemma}[$E_{Q_2}^{2,8}$]
+\textcolor{blue}{\begin{lemma}[$E_{Q_2}^{2,8}$]\label{lem:EQ228}
 For any $\psi \in \HH_N$, we have
 \begin{align}
 	\abs{\eva{\psi,\left(E^{\,2,8}_{Q_2}+\mathrm{h.c.}\right) \psi }}
@@ -2133,13 +2139,21 @@ Then adding \eqref{eq:estEQ2281},\eqref{eq:estEQ2282} and \eqref{eq:estEQ2283} a
 \begin{lemma}[$E_{Q_2}$]
     For any $\psi \in \HH_N$, we have
     \begin{align}
-     &\eva{\psi,E_{Q_2}\psi }\nonumber\\ 
-     &\leq 
+    	\abs{\eva{\psi, E_{Q_2}\!\left(\Theta^m_K(P^q)\right)  \psi}} \leq \; &C\,  k_{F}^{-\frac{3}{2}} \Xi^\half \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg) \left(\norm { (\NN+1)^{\frac{3}{2}} \psi } + \norm { (\NN+1)^{\frac{1}{2}} \psi } \right)\nonumber\\
+    	\quad+ &C\, k_{F}^{-1}\Xi^{\frac{3}{4}} \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg) \Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)  \norm{ (\NN+1)^2\psi}^\half \nonumber\\ 
+    	\quad+ &C\, k_{F}^{-2}\Xi^{\frac{1}{2}} \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg) \Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)  \norm{ (\NN+1)\psi} \nonumber\\
+    	\quad+ &C\, k_{F}^{-1}\Xi \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^{m+1}\Bigg) + C\, k_{F}^{-2}\Xi \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg) \Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg) \label{eq:genEQ2est}
+    \end{align}
+    Furthermore, for $\psi = T_{\lambda}\Omega$, we have 
+    \begin{align}
+    	\abs{\eva{ T_{\lambda}\Omega, E_{Q_2}\!\left(\Theta^m_K(P^q) \right)  T_{\lambda}\Omega}} \leq \; &C\,  \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)\left( k_{F}^{-\frac{3}{2}} \Xi^\half 
+    	+k_{F}^{-2} \Xi^\half 
+    	+ k_{F}^{-1}\Xi^{\frac{3}{4}} + k_{F}^{-2}\Xi \right)\nonumber\\
+    	\quad + &C\, \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^{m+1}\Bigg)  k_{F}^{-1}\Xi \label{eq:finalEQ2est}
     \end{align}
 \end{lemma}
 \begin{proof}
-    We begin with expanding the error as
-    
+    	The first bound follows from Lemmas \ref{lem:EQ211}, \ref{lem:EQ212}, \ref{lem:EQ213}, \ref{lem:EQ215}, \ref{lem:EQ217},and \ref{lem:EQ218}. And the last bound follows from the Gr\"onwall's bound, Lemma \ref{lem:gronNest}. 
 \end{proof}
 %\subsubsection{This is an example for third level head---subsubsection head}\label{subsubsec2}
 %\section{Equations}\label{sec4}
