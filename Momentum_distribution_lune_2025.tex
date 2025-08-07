@@ -63,12 +63,17 @@
 \newcommand{\cS}{\mathcal{S}}
 \newcommand{\fn}{\mathfrak{n}}
 \newcommand{\fC}{\mathfrak{C}}
+\newcommand{\fR}{\mathfrak{R}}
+
 \newcommand{\CCC}{\mathbb{C}}
 \newcommand{\NNN}{\mathbb{N}}
 \newcommand{\RRR}{\mathbb{R}}
 \newcommand{\TTT}{\mathbb{T}}
 \newcommand{\ZZZ}{\mathbb{Z}}
 \newcommand{\Zbb}{\mathbb{Z}}
+
+\newcommand{\ulambda}{\underline{\lambda}}
+
 \newcommand{\1}{\mathbb{I}}
 \renewcommand{\a}{\textnormal{a}}
 \newcommand{\ad}{\mathrm{ad}}
@@ -256,6 +261,7 @@ Then, $ \Psi_{\FS} $ is called the Fermi ball state or Fermi sea state. As exact
 
 \begin{itemize}
 \item Do a very quick literature recap and explain Fermi liquids.
+\item Mention that we will only do the proofs for $ q \notin B_{\F} $.
 \end{itemize}
 
 
@@ -303,7 +309,7 @@ This notation allows us to conveniently write the Fermi sea state $ \Psi_{\FS} $
 	R^* a_q^* R
 	= a_q^* \chi(q \in B_{\F}^c) + a_q \chi(q \in B_{\F}) \;.
 \end{equation}
-Note that $ R^{-1} = R = R^* $. The \textbf{trial state} of~\cite{CHN???} now takes the form\todo{Check if $ T $ shall be replaced by $ \mathcal{U} $ or similar.}
+Note that $ R^{-1} = R = R^* $. The \textbf{trial state} of~\cite{CHN23} now takes the form\todo{Check if $ T $ shall be replaced by $ \mathcal{U} $ or similar.}
 \begin{equation} \label{eq:Psitrial}
 	\Psi_{\trial} = R T \Omega \;,
 \end{equation}
@@ -331,7 +337,7 @@ where $ \ZZZ^3_* := \ZZZ^3 \setminus \{0\} $, and with matrices $ h(k), P(k) \in
 	P(k)_{p,q} &:= \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^3} \;.
 \end{aligned}
 \end{equation}
-In particular $ P(k) $ is rank-one with $ P(k) := |v_k \rangle \langle v_k | $, where $ v_{k,p} := \left( \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^3} \right)^{1/2} $. As the pair excitation operators satisfy approximate bosonic commutation relations, see Lemma~\ref{lem:???}, one may treat $ H_{\Bog} $ as an approximately quadratic bosonic Hamiltonian, which is approximately diagonalized by the transformation~\cite[Thm.~1.4]{CHN23}
+In particular $ P(k) $ is rank-one with $ P(k) := |v_k \rangle \langle v_k | $, where $ v_{k,p} := \left( \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^3} \right)^{1/2} $. As the pair excitation operators satisfy approximate bosonic commutation relations, see Lemma~\ref{lem:???}, one may treat $ H_{\Bog} $ as an approximately quadratic bosonic Hamiltonian, which is approximately diagonalized by the transformation~\cite[Thm.~1.4]{CHN23} \textcolor{red}{[SL: Actually, the trial state of [CHN] has $ \xi = e^{-\cK} \Omega $ and not $ \xi = e^{\cK} \Omega $. I fixed this.]}
 \begin{equation} \label{eq:T}
 	T := e^{-\cK} \;, \qquad
 	\cK := \frac{1}{2}\sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell}K(\ell)_{r,s}\left(b_r(\ell)b_{-s}(-\ell)-b^*_{-s}(-\ell)b^*_{r}(\ell)\right) \;,
@@ -353,8 +359,10 @@ satisfying $ K(-k)_{-p,-q} = K(k)_{p,q} $. This concludes the definition of the 
 
 \section{Extraction of the Leading-Order Terms}\label{sec:extraction}
 
+\subsection{Bosonized Contribution}
+\label{sec:extraction_bos}
 
-We now extract the leading-order contributions $ n_q^{\b} $ and $ n_q^{\ex} $ out of the momentum distribution $ \langle \Psi, a_q^* a_q \Psi \rangle $ with $ \Psi = \Psi_{\trial} = R e^{-\cK} \Omega $, compare~\eqref{eq:Psitrial}. The particle--hole transformation $ R $ can easily be dealt with, since by~\eqref{eq:R}, it only reverses the momentum distribution inside the Fermi ball as
+We now extract the bosonized contribution $ n_q^{\b} $ out of the momentum distribution $ \langle \Psi, a_q^* a_q \Psi \rangle $ with $ \Psi = \Psi_{\trial} = R e^{-\cK} \Omega $, compare~\eqref{eq:Psitrial}. The particle--hole transformation $ R $ can easily be dealt with, since by~\eqref{eq:R}, it only reverses the momentum distribution inside the Fermi ball as
 \begin{equation} \label{eq:momentum_dist_R_trafo}
 	\langle R \xi, a_q^* a_q R \xi \rangle
 	= \chi(q \in B_{\F}) \big( 1 - \langle \xi, a_q^* a_q \xi \rangle \big)
@@ -373,7 +381,7 @@ So it suffices to consider the excitation vector $ \xi = \xi_{\trial} := e^{-\cK
 	= \ldots \;,
 \end{aligned}
 \end{equation}
-see Lemma~\ref{lem:???}. From $ a_q \Omega = 0 $, we immediately get $ \langle \Omega, a_q^* a_q \Omega \rangle = 0 $. To compute the multicommutators, we use the CAR~\eqref{eq:CAR}, which will produce several quadratic pseudo-bosonic expressions, for which we adopt the notation of~\cite{CHN21}.
+see Proposition~\ref{prop:finexpan}. From $ a_q \Omega = 0 $, we immediately get $ \langle \Omega, a_q^* a_q \Omega \rangle = 0 $. To compute the multicommutators, we use the CAR~\eqref{eq:CAR}, which will produce several quadratic pseudo-bosonic expressions, for which we adopt the notation of~\cite{CHN21}.
 
 \begin{definition} \label{def:Q}
 Let $A=(A(\ell))_{\ell \in \Z^3_*} $ be a family of symmetric operators with $A(\ell): \ell^2(L_\ell)\rightarrow \ell^2(L_\ell)$. We, the quadratic pseudo-bosonic operators are given by
@@ -384,14 +392,7 @@ Let $A=(A(\ell))_{\ell \in \Z^3_*} $ be a family of symmetric operators with $A(
 \end{aligned}
 \end{equation} 
 \end{definition}
-With the definition~\eqref{eq:T} of $ \cK $ and the CAR~\eqref{eq:CAR}, the first multicommutator in~\eqref{eq:duhamelexpansion_blueprint} is then found to be
-\begin{equation}
-	[\cK, a_q^* a_q]
-	= Q_2(\{K,P_q\})
-	\qquad \Rightarrow \qquad
-	\langle \Omega, [\cK, a_q^* a_q] \Omega \rangle = 0 \;,
-\end{equation}
-as $ a_q \Omega = 0 $. To compute further multicommutators, we will make frequent use of the following ``almost-CCR'' for the pair operators~\eqref{eq:b}, compare also~\cite[(1.66)]{CHN21}.
+We will further make frequent use of the following ``almost-CCR'' for the pair operators~\eqref{eq:b}, compare also~\cite[(1.66)]{CHN21}.
 
 \begin{lemma}[Quasi-Bosonic commutation relations]\label{lem:paircomm}
 For $k,\ell \in \Z^3_*$ and $p \in L_{k}$, $q\in L_{\ell}$, we have the approximate commutation relations\todo{Unify the notation ``quasi-bosonic'' / ``pseudo-bosonic'' / ...}
@@ -399,7 +400,7 @@ For $k,\ell \in \Z^3_*$ and $p \in L_{k}$, $q\in L_{\ell}$, we have the approxim
        [b_{p}(k),b_{q}(\ell)] = [b^*_{p}(k),b^*_{q}(\ell)] = 0 \;, \qquad
        [b_{p}(k),b^*_{q}(\ell)] = \delta_{p,q}\delta_{k,\ell} + \epsilon_{p,q}(k,\ell) \;,
 \end{equation}
-with $ b_p(k) $ defined in~\eqref{eq:b}, and with commutation error
+with $ b_p(k) $ defined in~\eqref{eq:b}, and with commutation error \textcolor{red}{[SL: Some signs changed in this and the subsequent lemmas, when replacing $ e^{\cK} \mapsto e^{-\cK} $.}
 \begin{equation}
 	\epsilon_{p,q}(k,\ell)
 	:= -\left(\delta_{p,q}a^*_{q-\ell}a_{p-k} + \delta_{p-k,q-\ell}a^*_{q}a_{p}\right) \;.
@@ -407,10 +408,12 @@ with $ b_p(k) $ defined in~\eqref{eq:b}, and with commutation error
 \end{lemma}
 The proof is an immediate application of the CAR~\eqref{eq:CAR}. Also, note that evidently $\epsilon_{p,q}(l,k) = \epsilon^*_{q,p}(k,l) $ and $\epsilon_{p,p}(k,k)\leq 0$. As an immediate consequence of Lemma~\ref{lem:paircomm}, we obtain the following commutation relations.
 
-\begin{lemma}[Commutator between $\mathcal{K} $ and Pair Operators]
+\begin{lemma}[Commutator between $\cK $ and Pair Operators]
 For $k \in \Z^3_*$ and $p \in L_k$ we have
 \begin{equation} \label{eq:comm_Kb}
-    [b^*_p(k),\mathcal{K}] =-\sum\limits_{s\in L_{k}}K(k)_{p,s}b_{-s}(-k) + \mathcal{E}_{p}(k) \;,
+	[\cK, b^*_p(k)]
+	= \sum\limits_{s\in L_{k}}K(k)_{p,s}b_{-s}(-k)
+		- \mathcal{E}_{p}(k) \;,
 \end{equation}
 with commutation error
 \begin{equation}\label{eq:commerrKb}
@@ -419,14 +422,17 @@ with commutation error
 \end{lemma}
 
 
-\begin{lemma}[Commutator between $\mathcal{K} $ and $1$]\label{lem:Q1Kcomm}
+\begin{lemma}[Commutator between $\cK $ and $Q$]\label{lem:Q1Kcomm}
 Let $ A = (A(\ell))_{\ell \in \Z^3_*} $, $ A(\ell) : \ell^2(L_\ell) \to \ell^2(L_\ell) $ be a family of symmetric operators satisfying $A(\ell)_{r,s} = A(-\ell)_{-r,-s}$. Then, with definition~\eqref{eq:T} of $ \cK $ and~\eqref{eq:Q} of $ Q_1(A) $ and $ Q_2(A) $, we have
 \begin{equation}
 \begin{aligned}
-	[Q_1(A),\cK] 
-	&= -Q_2(\{A,K\}) - E_{Q_1}(A) \;, \\
-	[Q_2(A),\cK] 
-	&= -Q_1\left(\{A,K\} \right) - \sum\limits_{\ell \in \Z^3_*} \sum\limits_{r \in L_{\ell}} \big\{ A(\ell), K(\ell) \big\}_{r,r} + E_{Q_2}(A) \;,
+	[\cK, Q_1(A)] 
+	&= Q_2(\{A,K\})
+		+ E_{Q_1}(A) \;, \\
+	[\cK, Q_2(A)] 
+	&= Q_1\left(\{A,K\} \right) 
+		+ \sum\limits_{\ell \in \Z^3_*} \sum\limits_{r \in L_{\ell}} \big\{ A(\ell), K(\ell) \big\}_{r,r}
+		- E_{Q_2}(A) \;,
 \end{aligned}
 \end{equation}
 with the family $ \{A,K\} = (\{A(\ell),K(\ell)\})_{\ell \in \Z^3_*} $ and with the commutation errors
@@ -441,267 +447,112 @@ with the family $ \{A,K\} = (\{A(\ell),K(\ell)\})_{\ell \in \Z^3_*} $ and with t
 \end{lemma}
 
 
-
-
-
-
-Before we begin the evaluation, we define\newline
-
-\textbf{Reflection transformation:} A reflection transformation is a unitary transformation $\mathfrak{R}:\mathcal{F}\rightarrow \mathcal{F}$ defined by its action as
+To compactify notation in the Duhamel expansion, we introduce the iterated anticommutator
 \begin{equation}
-    \mathfrak{R}: a^*_{k_1}\ldots a^*_{k_n}\Omega \mapsto a^*_{-k_1}\ldots a^*_{-k_n}\Omega 
+	\Theta_K^n (A)
+	:= \underbrace{\{ K, \{ K , \ldots \{K}_{n \in \N \textnormal{ times}} , A\} \ldots \} \} \;, \qquad
+	\textnormal{with }
+	\Theta_K^0 (A)
+	:= A \;,
 \end{equation}
-while leaving the vacuum state invariant.\newline
-
-\begin{lemma}\label{lem:symtransformation}
-    For the symmetry transformation $\mathfrak{R}$ and the almost bosonic Bogoliubov transformation $T$, we have
-    \begin{equation}
-        \mathfrak{R}T\Omega = T\Omega
-    \end{equation}
-\end{lemma}
-%\begin{proof}\textcolor{red}{to be filled in}
-    %We begin with
-    %\begin{align}
-     %   \eva{\mathfrak{R}T\Omega, a^*_qa_q\mathfrak{R}T\Omega} &= \eva{T\Omega, \mathfrak{R}^*a^*_qa_q\mathfrak{R}T\Omega}\\
-    %\end{align}
-%\end{proof}
-From this lemma we observe that 
+the projection matrix \textcolor{red}{[SL: I changed this notation: $ P_q $ is now only the projection to $ q $, while $ \tilde{P}_q $ is the projection to $ q $ and $ -q $. This makes the proposition easier to read and avoids a later discussion, why we only need to fix $ q $ when writing down the error terms.]}
 \begin{equation}
-    \eva{T\Omega, a^*_qa_qT\Omega} = \eva{T\Omega, a^*_{-q}a_{-q}T\Omega}
+	P^q(\ell) : \ell^2(L_\ell) \to \ell^2(L_\ell) \;, \qquad
+	P^q(\ell)_{r,s} := \delta_{q,r} \delta_{q,s} \qquad
+	\textnormal{for } \ell \in \Z^3_* \;,
 \end{equation}
-And hence motivated by Lemma \ref{lem:symtransformation}, we evaluate $\half\eva{\Omega, T_1^*\left(n_q+n_{-q}\right)T_1\Omega}$.
-
-\subsection{Bogoliubov transformation and the expectation value}
-Before we start the evaluation of the expectation value, we first study the effect of the Bogoliubov transformation defined above on the relevant operators.
-\subsubsection{Transformation of the number operator}
-\begin{lemma}\label{lem:1stDuhamel}
-For $q \in B_\F^c$, we define a rank $2$ operator, projecting to momentum $q$ and ${-q}$: $P^q = \half (\ket{q}\bra{q} + \ket{-q}\bra{-q}) \in \ell^2(L_k)\otimes\ell^2(L_k)$, for $k\in \Z^3_*$ with an explicit matrix representation as  
+as well as the simplex integral
 \begin{equation}
-  (P^q)_{r,s}\coloneq \half\delta_{r,s}(\delta_{r,q}+\delta_{r,-q})  
+	\int_{\Delta^n} \di^n \ulambda
+	:= \int_0^1 \di \lambda_1 \int_0^{\lambda_1} \di \lambda_2 \ldots \int_0^{\lambda_{n-1}} \di \lambda_n \;, \qquad
+	\ulambda := (\lambda_1, \ldots, \lambda_n) \;.
 \end{equation}
-and we get
-\begin{equation}\label{eq: mainexp}
-     T_1^*\left(n_q+n_{-q}\right)T_1 = \left(n_q+n_{-q}\right) -\bint\limits_0^1 \!\!\di\lambda
-     \:T_\lambda^* Q_2 \Big(\big\{K(\ell),P^q\big\} \Big)T_\lambda
-\end{equation}   
-\end{lemma}
-\begin{proof}
-We start by applying Duhamel's formula to $T_1^*\left(n_q+n_{-q}\right)T_1$ and we have
-\begin{align}
-    &\left(n_q+n_{-q}\right) + \bint\limits_0^1 \di\lambda  \fulld{\lambda} \left(T_\lambda^*\left(n_q+n_{-q}\right)T_\lambda \right)\nonumber\\
-    &=\left(n_q+n_{-q}\right) +\bint\limits_0^1 \di\lambda  \eva{\Omega, T_\lambda^*(-\mathcal{K})\left(n_q+n_{-q}\right)T_\lambda+T_\lambda^*\left(n_q+n_{-q}\right)\mathcal{K}T_\lambda\Omega} \nonumber\\
-    &= \left(n_q+n_{-q}\right) +\bint\limits_0^1 \di\lambda  \eva{\Omega, T_\lambda^*[\left(n_q+n_{-q} \right),\mathcal{K}]T_\lambda\Omega} \label{eq:halfexp}.
-\end{align}
-Next using the definition of $\mathcal{K}$, we write the expression for the commutator.
-\begin{align}
-    \left[n_q,\mathcal{K}\right]= \half\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}K(\ell)_{r,s}&\left[a^*_q a_q, \left(b_r(\ell)b_{-s}(-\ell)-b^*_{-s}(-\ell)b^*_{r}(\ell)\right)\right]\nonumber\\
-    = \half\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}K(\ell)_{r,s}
-         &\bigg(\left[a^*_q a_q, b_r(\ell)\right]b_{-s}(-\ell) + b_{r}(\ell)\left[a^*_q a_q, b_{-s}(-\ell)\right]\nonumber\\  &- \left[a^*_q a_q,b^*_{-s}(-\ell)\right]b^*_{r}(\ell) -b^*_{-s}(-\ell)\left[a^*_q a_q,b^*_{r}(\ell)\right]\bigg)\nonumber\\
-    =\half\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}K(\ell)_{r,s} &\bigg((-1)\left(\delta_{q,r}+\delta_{q,r-\ell}+\delta_{q,-s}+\delta_{q,-s+\ell}\right)\left(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell)\right)\bigg)
-\end{align}    
- Now, since $q \in B_\F^c$, $\delta_{q,r-\ell}=\delta_{q,-s+\ell}=0$, hence we have
- \begin{equation}\label{eq:nqcommuteK}
-     \left[n_q,\mathcal{K}\right]= -\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}} \!\! K(\ell)_{r,s} \!\half\left(\delta_{q,r}+\delta_{q,-s}\right)\!\left(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell)\right).
- \end{equation}
-Similarly for $\left[n_{-q},\mathcal{K}\right]$, we have
-\begin{equation}\label{eq:n-qcommuteK}
-    \left[n_{-q},\mathcal{K}\right]= -\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}} \!\! K(\ell)_{r,s} \!\,\,\,\half\left(\delta_{-q,r}+\delta_{-q,-s}\right)\!\left(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell)\right).
-\end{equation}
-Next we substitute commutators (\ref{eq:nqcommuteK}) and (\ref{eq:n-qcommuteK}) in (\ref{eq:halfexp}),
-\begin{alignat}{2}
-    (\ref{eq:halfexp}) 
-    &= \left(n_q+n_{-q}\right) -\bint\limits_0^1 \!\!\di\lambda\;\begin{aligned}[t]
-     T_\lambda^*\bigg( \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}} \,\,\half&\Big(\underbrace{K(\ell)_{r,s} (\delta_{q,r}+\delta_{q,-s}+\delta_{-q,r}+\delta_{-q,-s})}_{\text{interpret as matrix product}}\\ &\times(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell))\Big)\bigg)T_\lambda
-    \end{aligned}\nonumber\\
-    &= \left(n_q+n_{-q}\right) \begin{aligned}[t] &-\bint\limits_0^1 \!\!\di\lambda\;T_\lambda^*\bigg( \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,m \in L_{\ell}}\Big(K(\ell)_{r,m} \,\,\half\underbrace{(\delta_{m,q}\delta_{m,s}+\delta_{m,-q}\delta_{m,s})}_{\text{(a)}}\\ &  + \,\,\half\underbrace{(\delta_{r,q}\delta_{r,m}+\delta_{r,-q}\delta_{r,m})}_{\text{(b)}}K(\ell)_{m,s} \Big)(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell))\bigg)T_\lambda\label{eq:momentumfix} 
-    \end{aligned}
-\end{alignat}
-Next, we observe that (a) and (b) are projections of a momentum ($r$ or $s \in L_\ell$) to momentum $q$ or $-q$.
-We then arrive at
-\begin{alignat}{2}
-    (\ref{eq:momentumfix}) &= \left(n_q+n_{-q}\right) -\bint\limits_0^1\!\! \di\lambda\:\begin{aligned}[t]
-     T_\lambda^*\bigg( \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s,m \in L_{\ell}}&\Big(K(\ell)_{r,m}P^q_{m,s}  +P^q_{r,m} K(\ell)_{m,s} \Big)\\&\times(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell))\bigg)T_\lambda
-    \end{aligned}\nonumber\\
-    &= \left(n_q+n_{-q}\right) 
-    -\bint\limits_0^1 \!\!\di\lambda\:
-     T_\lambda^*\bigg( \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\Big\{K(\ell),P^q\Big\}_{r,s}\times(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell))\bigg)T_\lambda\label{eq:anticomKDelta} 
-\end{alignat}
-Using the definition of $Q_2$, \eqref{eq:Q2}, we arrive at 
-\begin{equation}
-    (\ref{eq:anticomKDelta}) = \left(n_q+n_{-q}\right) -\bint\limits_0^1 \!\!\di\lambda
-     \:T_\lambda^* Q_2 \Big(\big\{K(\ell),P^q\big\} \Big)T_\lambda
-\end{equation}
-which is the claimed statement.\end{proof}
+The final Duhamel expansion is then the following.
 
-\subsubsection{Transformation of quadratic operators}
-\begin{lemma}[Operator expansion for the Quadratic Operators]\label{lem:4}
-For $\lambda \in [0,1] $, we have $T_\lambda = e^{\lambda \KK}$. Let $Q_1$ and $Q_2$ be the quadratic operators defined above for symmetric $A : \ell^2(L_{\ell})\rightarrow \ell^2(L_{\ell})$ where $\ell \in \Z^3_*$, then 
-\begin{align}
-	T^*_{\lambda}Q_1(A)T_{\lambda} 
-    =Q_1(A) - &\bint\limits_0^{\lambda}\di\lambda' \big( T^*_{\lambda'} (Q_2(\{K,A\})) T_{\lambda'}\big) - \bint\limits_0^{\lambda} \di\lambda' \big( T^*_{\lambda'} E_{Q_1}(A) T_{\lambda'} \big)\label{eq:29}\\
-    T^*_{\lambda}Q_2(A)T_{\lambda} 
-    = Q_2(A) - &\bint\limits_0^{\lambda}\di\lambda' \big(T^*_{\lambda'} (Q_1(\{K,A\})) T_{\lambda'}\big) + \bint\limits_0^{\lambda} \di\lambda' \big( T^*_{\lambda'} E_{Q_2}(A) T_{\lambda'}\big) \nonumber\\
-    - &\bint\limits_0^{\lambda}\di\lambda' T^*_{\lambda'} \left( \sum\limits_{\ell\in \Z^3_*} \sum\limits_{r\in L_\ell}\big\{K(\ell), A(\ell) \big\}_{r,r} \right) T_{\lambda'} \label{eq:30}
+\begin{proposition}[Duhamel expansion of the excitation density]\label{prop:finexpan}
+For $q \in B^c_{\F}$, we have\todo{Check that $ \mathds{1}_{L_\ell}(q) $ has been defined.}
+\begin{align} \label{eq:finexpan}
+	\eva{\Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega} 
+	&= \half\sum\limits_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \sum\limits_{m=1}^{\floor{(n+1)/2}} \frac{\mathrm{Tr}\,\Theta^{(2m)}_K \big(P^q\big)}{(2m)!}
+		+ \half \sum\limits_{m=1}^{n} \eva{\Omega, E_m(P^q)\Omega}\nonumber\\
+	&\quad +\half \int_{\Delta^{n+1}} \di^{n+1}\underline{\lambda} \;
+		\eva{\Omega, e^{\lambda_{n+1} \cK}Q_{\sigma(n+1)}(\Theta^{n+1}_{K}(P^q)) e^{-\lambda_{n+1} \cK} \Omega} \;,
 \end{align}
-\end{lemma}
-\begin{proof}
-We begin with $T^*_1Q_2(A)T_1$ and apply Duhamel's formula, 
-\begin{align}
-    T^*_\lambda Q_2(A)T_\lambda &= Q_2(A) + \bint\limits_0^\lambda \di\lambda' \bigg(\frac{d}{\di\lambda'}\left(T^*_{\lambda'}Q_2(A)T_{\lambda'}\right)\bigg)\nonumber\\
-    &=Q_2(A) + \bint\limits_0^\lambda \di\lambda' \Big(T^*_{\lambda'}(-\mathcal{K})Q_2(A)T_{\lambda'} + T^*_{\lambda'}Q_2(A)(\mathcal{K})T_{\lambda'} \Big) \nonumber\\
-    &=Q_2(A) + \bint\limits_0^\lambda \di\lambda' T^*_{\lambda'}[Q_2(A),\mathcal{K}]T_{\lambda'}.\label{eq:26}
-\end{align}
-Then from Lemma \ref{lem:Q2Kcomm}, we get
-\begin{alignat}{2}
-    \eqref{eq:26}&= Q_2(A) + \bint\limits_0^\lambda \di\lambda' \Big(T^*_{\lambda'}\big(-Q_1(\{K,A\}) + E_{Q_2}(A)- \sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K(\ell),A(\ell)\big\}_{r,r}\big)T_{\lambda'}\Big) \nonumber\\
-    &= Q_2(A) \begin{aligned}[t]
-        &-\bint\limits_0^\lambda \di\lambda' \Big( T^*_{\lambda'}Q_1(\{K,A\})T_{\lambda'}\Big) + \bint\limits_0^\lambda \di\lambda'\Big( T^*_{\lambda'}E_{Q_2}(A)T_{\lambda'}\Big)\\
-        &-\bint\limits_0^\lambda \di\lambda' T^*_{\lambda'}\left(\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K(\ell),A(\ell)\big\}_{r,r}\right) T_{\lambda'} 
-    \end{aligned}
-\end{alignat}
-Similarly, we can prove the operator identity for $Q_1(A)$ using Duhamel's formula and Lemma \ref{lem:Q1Kcomm}.
-\end{proof}
-\begin{remark}\label{rem:genopid}
-	For $m \in \Z$, let $\sigma(m) = \begin{cases}
-		1 &\text{for m odd}\\
-		2 &\text{for m even} 
-	\end{cases}$, we combine the two operator identities above as 
-\begin{align}
-	T^*_{\lambda}Q_{\sigma(m)}(A)T_{\lambda} 
-	&= Q_{\sigma(m)}(A) - \bint\limits_0^{\lambda}\di\lambda'   \big(T^*_{\lambda'} (Q_{\sigma(m+1)}(\{K,A\})) T_{\lambda'}\big) + \bint\limits_0^{\lambda} \di\lambda' \big( T^*_{\lambda'} E_{Q_{\sigma(m)}}(A) T_{\lambda'}\big) \nonumber\\
-	&\quad- \half\left(1+(-1)^{m}\right) \bint\limits_0^{\lambda}\di\lambda' T^*_{\lambda'} \left( \sum\limits_{\ell\in \Z^3_*} \sum\limits_{r\in L_\ell}\big\{K(\ell), A(\ell) \big\}_{r,r} \right) T_{\lambda'} \label{eq:genopid}
-\end{align}
-\end{remark}
-For our convenience, we introduce the following notation for writing the nested anti-commutators 
-    \begin{equation}\label{eq:nestanticomm}
-        \Theta^n_{K}(A) = \underbrace{\{K,\{\ldots,\{K}_\textrm{n times},A\}\ldots\}\}\quad\quad\mathrm{with,}\quad  \Theta^0_{K}(A) = A\,.
-    \end{equation}
-
-And we denote the simplex integral as
-\begin{equation}
-        \bint\limits_{\Delta^{m}_1}\di^m\underline{\lambda} = \bint\limits_{0}^{1}\di\lambda\bint\limits_0^\lambda \di\lambda_1\bint\limits_0^{\lambda_1} \cdots \bint\limits_0^{\lambda_{m-1}} \di\lambda_m\quad, 
-    \end{equation}
-with 
-\begin{equation}
-        \bint\limits_{\Delta^{m}_\lambda}\di^m\underline{\lambda} = \bint\limits_0^\lambda \di\lambda_1 \bint\limits_0^{\lambda_1} \cdots \bint\limits_0^{\lambda_{m-1}} \di\lambda_m\quad, 
-    \end{equation}
-while following
-\begin{equation}
-    \bint\limits_{\Delta^{m}_1}\di^m\underline{\lambda} = \bint\limits_{0}^{1}\di\lambda \bint\limits_{\Delta^{m}_\lambda}\di^m\underline{\lambda} 
-\end{equation}
-
-\begin{lemma}[Action of $T_\lambda$ on $Q_2(A)$]\label{prop:Op_Id_Q2}
-For $\lambda \in [0,1] $ and let $Q_2$ be the quadratic operator defined above for symmetric $A : \ell^2(L_{\ell})\rightarrow \ell^2(L_{\ell})$ where $\ell \in \Z^3_*$, then 
-    \begin{align}
-        T^*_{\lambda}Q_2(A)T_{\lambda} &= \sum\limits_{m=1}^{n} (-1)^{m-1}\frac{\lambda^{m-1}}{(m-1)!}Q_{\sigma(m-1)}(\Theta^{m-1}_K(A)) \nonumber - \sum\limits_{m=1}^{\floor{(n+1)/2}}\frac{\lambda^{(2m-1)}}{(2m-1)!}\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell}(\Theta^{(2m-1)}_K(A))_{r,r}    \nonumber\\
-        &+\sum\limits_{m=1}^{n} \bint\limits_{\Delta ^m_\lambda}\di^m\underline{\lambda} \big(T^*_{\lambda_{m}}E_{Q_{\sigma(m-1)}}(\Theta^{m-1}_K(A))T_{\lambda_{m}}\big)
-        +\bint\limits_{\Delta^{n}_{\lambda}}\di^n\underline{\lambda}(-1)^{n}\Big( T^*_{\lambda_n}(Q_{\sigma(n)}(\Theta^n_K(A))T_{\lambda_n}\Big)
-    \end{align}
-    where $\sigma(m), \Theta^n_{K}$ and the simplex integral are defined as above and, $E_{Q_1}$ and $E_{Q_2}$ are defined as in~\eqref{eq:errKQ} respectively.  
-\end{lemma}
-\begin{proof}
-	The above identity results by applying $n$ times the Duhamel formula to $T^*_\lambda Q_2(A)T_\lambda $. So formally we begin with $T^*_\lambda Q_2(A)T_\lambda $ and from \eqref{eq:30} we have
-	\begin{align}
-		T^*_{\lambda}Q_2(A)T_{\lambda} 
-		&= Q_2(A) - \bint\limits_0^{\lambda}\di\lambda_1 \big(T^*_{\lambda_1}Q_1(\{K,A\})T_{\lambda_1}\big) + \bint\limits_0^{\lambda}\di\lambda_1 \big(T^*_{\lambda_1}E_{Q_2}(A)T_{\lambda_1}\big) \nonumber\\&\quad- 
-		\bint\limits_0^{\lambda}\di\lambda_1 \left(T^*_{\lambda_1}\left(\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K,A\big\}_{r,r}\right)T_{\lambda_1}\right).\label{eq:32}
-	\end{align}
-	Next, we use \eqref{eq:29} from Lemma \ref{lem:4} to arrive at
-	\begin{align}
-		\eqref{eq:32} &= Q_2(A) + \bint\limits_0^{\lambda}\di\lambda_1 \big(T^*_{\lambda_1}E_{Q_2}(A)T_{\lambda_1}\big)  - 
-		\bint\limits_0^{\lambda}\di\lambda_1 \left(T^*_{\lambda_1}\left(\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K,A\big\}_{r,r}\right)T_{\lambda_1}\right) \nonumber\\ &\quad-\bint\limits_0^{\lambda}\di\lambda_1 \big(Q_1(\{K,A\}\big) + \bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \big(T^*_{\lambda_2}Q_2(\{K,\{K,A\}\})T_{\lambda_2}\big)\nonumber\\
-		&\quad+ \bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \big(T^*_{\lambda_2}E_{Q_1}(\{K,A\})T_{\lambda_2}\big)\label{eq:33}.
-	\end{align} 
-	Again we use \eqref{eq:30} from Lemma \ref{lem:4}
-	\begin{align}
-		\eqref{eq:33}  &= Q_2(A) + \bint\limits_0^{\lambda}\di\lambda_1 \big(T^*_{\lambda_1}E_{Q_2}(A)T_{\lambda_1}\big)  - 
-		\bint\limits_0^{\lambda}\di\lambda_1 \left(T^*_{\lambda_1}\left(\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K,A\big\}_{r,r}\right)T_{\lambda_1}\right) +\bint\limits_0^{\lambda}\di\lambda_1 \big(Q_1(\{K,A\}\big) \nonumber\\ &\quad +\bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \big(T^*_{\lambda_2}E_{Q_1}(\{K,A\})T_{\lambda_2}\big)+  \bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \big(Q_2(\{K,\{K,A\}\})\big) \nonumber \\ 
-		&\quad+ \bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \bint\limits_0^{\lambda_2}\di\lambda_3 \big(T^*_{\lambda_3}E_{Q_2}(\{K,\{K,A\}\})T_{\lambda_3}\big)\nonumber\\
-		&\quad-\bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \bint\limits_0^{\lambda_2}\di\lambda_3 \Bigg(T^*_{\lambda_3}\left(\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K,\big\{K,\big\{K,A\big\}\big\}\big\}_{r,r} \right)T_{\lambda_3}\Bigg)\\
-		&\quad-\bint\limits_0^{\lambda}\di\lambda_1 \bint\limits_0^{\lambda_1}\di\lambda_2 \bint\limits_0^{\lambda_2}\di\lambda_3 \big(T^*_{\lambda_3}Q_1(\{K,\{K,\{K,A\}\}\})T_{\lambda_3}\big)\label{eq:34}.
-	\end{align}
-	Then after multiple interations we arrive at
-	\begin{align}
-		(\ref{eq:34}) &= Q_2(\Theta^0_{K}(A)) - \frac{\lambda}{1!}Q_1(\Theta^1_{K}(A))+ \frac{\lambda^2}{2!}Q_2(\Theta^2_{K}(A) -\frac{\lambda^3}{3!}Q_1(\Theta^3_{K}(A)+\cdots \nonumber \\
-		&\quad- \frac{\lambda}{1!}\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K,A\big\}_{r,r}  - \frac{\lambda^3}{3!}\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell} \big\{K,\big\{K,\big\{K),A\big\}\big\}\big\}_{r,r} - \cdots  \nonumber\\
-		&\quad+\bint\limits_0^{\lambda}\di\lambda_1 \big(T^*_{\lambda_1}E_{Q_2}(\Theta^0_{K}(A))T_{\lambda_1}\big) + \bint\limits_0^{\lambda}\bint\limits_0^{\lambda_1}\di\lambda_1 \di\lambda_2 \big(T^*_{\lambda_2}E_{Q_1}(\Theta^1_{K}(A))T_{\lambda_2}\big)\nonumber\\
-		&\quad+  \bint\limits_0^{\lambda}\bint\limits_0^{\lambda_1} \bint\limits_0^{\lambda_2} \di\lambda_1 \di\lambda_2 \di\lambda_3 \big(T^*_{\lambda_3}E_{Q_2}(\Theta^2_{K}(A))T_{\lambda_3}\big) +\cdots\nonumber\\
-		&\quad+\bint\limits_0^\lambda \bint\limits_0^{\lambda_1} \cdots \bint\limits_0^{\lambda_{n-1}}\di\lambda_1\cdots \di\lambda_n (-1)^n\Big( T^*_{\lambda_n}(Q_{\sigma(n)}(\Theta^n_{K}(A))T_{\lambda_n}\Big)
-	\end{align}
-	which when written as sums gives us the required operator expansion.\newline 
-	We prove the above statement using induction. We know from Lemma \ref{lem:4} that for $n = 1$, the statement holds.
-	We consider the induction hypothesis for $n= n'-1$.
-	\begin{align}
-	 	T^*_{\lambda}Q_2(A)T_{\lambda} &= \sum\limits_{m=1}^{n'-1} (-1)^{m-1} \frac{\lambda^{m-1}}{(m-1)!} Q_{\sigma(m-1)} (\Theta^{m-1}_K(A)) \nonumber - \sum\limits_{m=1}^{\floor{n'/2}}\frac{\lambda^{(2m-1)}}{(2m-1)!}\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell}(\Theta^{(2m-1)}_K(A))_{r,r}    \nonumber\\
-		&\quad+\sum\limits_{m=1}^{n'-1} \bint\limits_{\Delta ^m_\lambda}\di^m\underline{\lambda} \big(T^*_{\lambda_{m}} E_{Q_{\sigma(m-1)}} (\Theta^{m-1}_K(A)) T_{\lambda_{m}}\big) \nonumber\\ 
-		&\quad+ \bint\limits_{\Delta^{(n'-1)}_{\lambda}}\di^{(n'-1)} \underline{\lambda}(-1)^{(n'-1)} \Big( T^*_{\lambda_{n'}} (Q_{\sigma(n')}(\Theta^{n'}_K(A)) T_{\lambda_{n'}} \Big)	
-	\end{align} 
-Then we use the remark \ref{rem:genopid} (essentially, perform one more Duhamal step.)
-\begin{align}
-	&T^*_{\lambda}Q_2(A)T_{\lambda}\nonumber\\ &= \sum\limits_{m=1}^{n'-1} (-1)^{m-1} \frac{\lambda^{m-1}}{(m-1)!} Q_{\sigma(m-1)} (\Theta^{m-1}_K(A)) - \sum\limits_{m=1}^{\floor{n'/2}} \frac{\lambda^{(2m-1)}}{(2m-1)!} \sum\limits_{\ell\in \Z^3_*} \sum\limits_{r\in L_\ell} (\Theta^{(2m-1)}_K(A))_{r,r}    \nonumber\\
-	&\quad+\sum\limits_{m=1}^{n'-1} \bint\limits_{\Delta ^m_\lambda}\di^m\underline{\lambda} \big(T^*_{\lambda_{m}} E_{Q_{\sigma(m-1)}} (\Theta^{m-1}_K(A)) T_{\lambda_{m}}\big) + \bint\limits_{\Delta^{(n'-1)}_{\lambda}}\di^{(n'-1)} \underline{\lambda}(-1)^{(n'-1)} \Bigg( Q_{\sigma(n'-1)}(\Theta^{(n'-1)}_K(A)) \nonumber\\ 
-	&\quad - \bint\limits_0^{\lambda_{n'}}\di\lambda_{n'}   \big(T^*_{\lambda_{n'}} (Q_{\sigma(n')}(\{K,\Theta^{(n'-1)}_K(A)\})) T_{\lambda_{n'}}\big) + \bint\limits_0^{\lambda_{n'}} \di\lambda' \big( T^*_{\lambda_{n'}} E_{Q_{\sigma(n'-1)}}(\Theta^{(n'-1)}_K(A)) T_{\lambda_{n'}}\big) \nonumber\\
-	&\quad - \half\left(1+(-1)^{(n'-1)}\right) \bint\limits_0^{\lambda_{n'}}\di\lambda_{n'} T^*_{\lambda_{n'}} \left( \sum\limits_{\ell\in \Z^3_*} \sum\limits_{r\in L_\ell}\big\{K(\ell), \Theta^{(n'-1)}_K(A)(\ell) \big\}_{r,r} \right) T_{\lambda_{n'}} \Bigg) \nonumber\\
-	&= \sum\limits_{m=1}^{n'} (-1)^{m-1} \frac{\lambda^{m-1}}{(m-1)!} Q_{\sigma(m-1)} (\Theta^{m-1}_K(A)) - \sum\limits_{m=1}^{\floor{(n'+1)/2}}\frac{\lambda^{(2m-1)}}{(2m-1)!}\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell}(\Theta^{(2m-1)}_K(A))_{r,r}  \nonumber\\
-	&\quad+\sum\limits_{m=1}^{n'} \bint\limits_{\Delta ^m_\lambda}\di^m\underline{\lambda} \big(T^*_{\lambda_{m}} E_{Q_{\sigma(m-1)}} (\Theta^{m-1}_K(A)) T_{\lambda_{m}}\big) + \bint\limits_{\Delta^{n'}_{\lambda}}\di^{n'} \underline{\lambda}(-1)^{n'} \Big( T^*_{\lambda_{n'}} (Q_{\sigma(n'+1)}(\Theta^{(n'-1)}_K(A)) T_{\lambda_{(n'-1)}} \Big)
-\end{align}
- where in the last step we performed the simplex integral for terms which do not depend on $\lambda$ and collected all the resulting terms which proves the statement.
-\end{proof}
-\begin{proposition}[Final Operator Identity]\label{prop:finopid}
-For $q \in B_{\F}^c$, we have
-\begin{align}
-    T_1^*\left(n_q+n_{-q}\right)T_1 &=\left(n_q+n_{-q}\right)+ \sum\limits_{\ell\in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{m=1}^{\floor{(n+1)/2}} \frac{\mathrm{Tr} \,\Theta^{(2m)}_K \big(P^q\big)}{(2m)!} + \sum\limits_{m=1}^n E_m(P^q) + Q_1\left( \sum\limits_{m=1}^{\floor{n/2}} \frac{\Theta^{2m}_{K}(P^q)}{(2m)!}\right)  \nonumber\\
-    &\quad- Q_2\left(\sum\limits_{m=1}^{\floor{(n+1)/2}} \frac{\Theta^{2m-1}_{K}(P^q)} {(2m-1)!}\right) +\bint\limits_{\Delta^{n}_1} \di^n \underline{\lambda} (-1)^{n+1} \Big( T^*_{\lambda_n} Q_{\sigma(n)}(\Theta^{n+1}_{K}(P^q)) T_{\lambda_n}\Big)
-\end{align}
-where $E_m(P^q)$ is defined as
+where $ \floor{x} $ is the floor function, $ \sigma(n) = 1 $ if $ n $ is even and $ \sigma(n) = 2 $ otherwise, and where
 \begin{equation}\label{eq:errEm}
-    E_m(P^q) \coloneq -\bint\limits_{\Delta^{m}_1} \di^m\underline{\lambda} T^*_{\lambda_m} E_{Q_{\sigma(m-1)}}\left(\Theta^{m}_{K}(P^q)\right)T_{\lambda_m} .
-    \end{equation}
-    with $E_{Q_1}$ and $E_{Q_2}$ defined above and, $\Theta^n_{K}$, the simplex integral and $\sigma(n)$ are defined above.
+	E_m(P^q) \coloneq (-1)^m \int_{\Delta^m} \di^m\underline{\lambda} \;
+		e^{\lambda_n \cK} E_{Q_{\sigma(m)}}\left(\Theta^{m}_{K}(P^q)\right) e^{-\lambda_n \cK}
+\end{equation}
+is the total commutation error.
 \end{proposition}
-\begin{remark}
-    In the infinite n limit, the terms $Q_1$ and $Q_2$ converge, respectively, to a $\cosh$ and $\sinh$ series in their arguments.
-\end{remark}
+
 \begin{proof}
-    From Lemma \ref{lem:1stDuhamel}, we have the equality
-    \begin{equation}
-         T_1^*\left(n_q+n_{-q}\right)T_1 = \left(n_q+n_{-q}\right) -\bint\limits_0^1 \!\!\di\lambda
-     \:T_\lambda^* Q_2 \Big(\big\{K(\ell),P^q\big\} \Big)T_\lambda\label{eq:1stDuhamel_result}
-    \end{equation}
-    Then we use Lemma \ref{prop:Op_Id_Q2} with $A(\ell)=\big\{K(\ell),P^q\big\}$ to arrive at
-    \begin{align}
-        &= \left(n_q+n_{-q}\right) -\bint\limits_0^1 \!\!\di\lambda \Bigg(\sum\limits_{m=1}^{n} (-1)^{m-1}\frac{\lambda^{m-1}}{(m-1)!}Q_{\sigma(m-1)}(\Theta^{m-1}_K\big\{K(\ell),P^q\big\}) \nonumber\\ &\quad- \sum\limits_{m=1}^{\floor{(n+1)/2}}\frac{\lambda^{(2m-1)}}{(2m-1)!}\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell}(\Theta^{(2m-1)}_K\big\{K(\ell),P^q\big\})_{r,r}    \nonumber\\
-        &\quad+\sum\limits_{m=1}^{n} \bint\limits_{\Delta ^m_\lambda}\di^m\underline{\lambda}\, T^*_{\lambda_{m}} E_{Q_{\sigma(m-1)}}(\Theta^{m-1}_K\big\{K(\ell),P^q\big\})T_{\lambda_{m}}+\bint\limits_{\Delta^{n}_{\lambda}}\di^n\underline{\lambda}(-1)^{n}\, T^*_{\lambda_n}Q_{\sigma(n)}(\Theta^n_K\big\{K(\ell),P^q\big\})T_{\lambda_n}\Bigg)\nonumber\\
-        &= \left(n_q+n_{-q}\right) + \sum\limits_{m=1}^{n} \frac{(-1)^{m}}{(m)!}Q_{\sigma(m-1)}(\Theta^{m}_K (P^q)) +\sum\limits_{m=1}^{\floor{(n+1)/2}}\frac{1}{(2m)! }\sum\limits_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q)
-        \Theta^{(2m)}_K\big(P^q\big)_{q,q}\nonumber\\
-        &\quad-\sum\limits_{m=1}^{n} \bint\limits_{\Delta ^m_1}\di^m\underline{\lambda} \big(T^*_{\lambda_{m}}E_{Q_{\sigma(m-1)}} \Theta^{m}_K\big(P^q\big)T_{\lambda_{m}}\big) + \bint\limits_{\Delta^{n}_{1}}\di^n\underline{\lambda}(-1)^{(n+1)}\Big( T^*_{\lambda_n}Q_{\sigma(n)}(\Theta^{n+1}_K(P^q))T_{\lambda_n}\Big)
-    \end{align}
-    In the second term, we separate the odd and even terms which results in sums of $Q_2$ and $Q_{1}$ operators. Since  
-    the quadratic operators are linear in their argument, we can interpret them as $\cosh$ and $\sinh$ series of $\Theta_{K}(P^q)$ operator in the infinite $n$ limit as mentioned in the remark. In the third term, again using the linearity of the sum over all momenta transfer $\ell$ and the trace we recover the trace term. And for the fourth term, we just use the definition of $E_M(A)$. Doing these identifications we arrive at the desired operator identity.  
-\end{proof}
-\subsubsection{Evaluation of the expectation value}
-\begin{lemma}\label{lem:evaquad}
-    For the quadratic operators $Q_1(A)$ and $Q_2(B)$ for symmetric $A,B:\ell^2(L_\ell)\rightarrow\ell^2(L_\ell)$, we have
-    \begin{align}
-        \eva{\Omega, Q_1(A)\Omega} &= 0,\\
-        \eva{\Omega, Q_2(B)\Omega} &= 0.
-    \end{align}
-\end{lemma}
-\begin{proof}
-The proof follows by plugging in the definitions of the operators $Q_1$ and $Q_2$ and observing the fact that both $Q_1$ and $Q_2$ are normal ordered in the fermionic creation and annihilation operators.     
-\end{proof}
-\begin{proposition}[Final Expectation]\label{prop:finexpan}
-For $q \in B^c_{\F}$ and the vacuum state $\Omega \in \HH_N$, we have
-    \begin{align}
-    \eva{\Omega, T_1^*\half\left(n_q+n_{-q}\right)T_1\Omega} &= \half\sum\limits_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \sum\limits_{m=1}^{\floor{(n+1)/2}} \frac{\mathrm{Tr}\,\Theta^{(2m)}_K \big(P^q\big)}{(2m)!} - \half\eva{\Omega,\sum\limits_{m=1}^{n} E_m(P^q))\Omega}\nonumber\\
-    &\quad-\half\bint\limits_{\Delta^{n}_1}\di^n\underline{\lambda} (-1)^n\eva{\Omega, T^*_{\lambda_n}Q_{\sigma(n)}(\Theta^{n+1}_{K}(P^q)T_{\lambda_n}\Omega}
-    \end{align}
-\end{proposition}
-\begin{proof}
-    The proof follows from Proposition \ref{prop:finopid} and Lemma \ref{lem:evaquad}.
+First, note that for the first commutator in the expansion~\eqref{eq:duhamelexpansion_blueprint}, we have\todo{Resolve the issue that $ P^q $ and $ P^{-q} $ have different domains}
+\begin{equation} \label{eq:firstcommutator}
+	[\cK, a_q^* a_q] + [\cK, a_{-q}^* a_{-q}]
+	= Q_2(\{K,\tilde{P}^q\}) \;, \qquad
+	\tilde{P}^q := \half(P^q + P^{-q}) \;,
+\end{equation}
+while $ [\cK, a_q^* a_q] $ itself does not allow for an equally convenient rewriting. Nevertheless, our trial state and excitation density are reflection symmetric, that is, if we define the unitary reflection transformation $ \fR: \cF \to \cF $ by $ \fR^* a_q \fR = a_{-q} $, then one easily checks
+\begin{equation} \label{eq:reflectionsymmetry}
+	\fR e^{-\cK} \Omega = e^{-\cK} \Omega \qquad \Rightarrow \qquad
+	\eva{\Omega, e^{\cK} a^*_q a_q e^{-\cK}\Omega} = \eva{\Omega, e^{\cK} a^*_{-q} a_{-q} e^{-\cK} \Omega} \;.
+\end{equation}
+Hence, we can simply expand
+\begin{equation}
+	\half \eva{\Omega, e^{\cK} (a_q^* a_q + a_{-q}^* a_{-q}) e^{-\cK} \Omega} 
+	= \eva{\Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega} \;,
+\end{equation}
+where the first commutator is evaluated via~\eqref{eq:firstcommutator}. We then iteratively Duhamel-expand the $ Q_1 $ and $ Q_2 $-terms using Lemma~\ref{lem:Q1Kcomm} as
+\begin{equation}
+\begin{aligned}
+	e^{\lambda \cK} Q_1(A) e^{-\lambda \cK}
+	&= Q_1(A) + \int_0^{\lambda} \di \lambda' e^{\lambda' \cK} Q_2(\{A,K\}) e^{-\lambda' \cK}
+		+ \int_0^{\lambda} \di \lambda' e^{\lambda' \cK} E_{Q_1}(A) e^{-\lambda' \cK} \;, \\
+	e^{\lambda \cK} Q_2(A) e^{-\lambda \cK}
+	&= Q_2(A) + \int_0^{\lambda} \di \lambda' e^{\lambda' \cK} Q_1(\{A,K\}) e^{-\lambda' \cK}
+		+ \int_0^{\lambda} \di \lambda' e^{\lambda' \cK} E_{Q_2}(A) e^{-\lambda' \cK} \\
+	&\quad + \lambda \sum\limits_{\ell \in \Z^3_*} \sum\limits_{r \in L_{\ell}} \big\{ A(\ell), K(\ell) \big\}_{r,r} \;.
+\end{aligned}
+\end{equation}
+The $ E_{Q_1} $ and $ E_{Q_2} $-terms are not expanded but collected as errors, while the $ \{A,K\} $-terms are extracted as the leading-order contribution. The result after $ n $ expansion steps is
+\begin{equation}
+\begin{aligned}
+	&e^{\cK} (a_q^* a_q + a_{-q}^* a_{-q}) e^{-\cK} \\
+	&= a_q^* a_q + a_{-q}^* a_{-q}
+		+ \sum\limits_{\ell\in \Z^3_*} \mathds{1}_{L_\ell \cup L_{-\ell}}(q) \sum\limits_{m=1}^{\floor{(n+1)/2}} \frac{\mathrm{Tr} \,\Theta^{(2m)}_K \big(\tilde{P}^q\big)}{(2m)!}
+		+ \sum\limits_{m=1}^n E_m(\tilde{P}^q)
+		+ Q_1\left( \sum\limits_{m=1}^{\floor{n/2}} \frac{\Theta^{2m}_{K}(\tilde{P}^q)}{(2m)!}\right) \\
+	&\quad+ Q_2\left(\sum\limits_{m=1}^{\floor{(n+1)/2}} \frac{\Theta^{2m-1}_{K}(\tilde{P}^q)} {(2m-1)!}\right)
+		+\int_{\Delta^{n+1}} \di^{n+1}\underline{\lambda} \;
+		e^{\lambda_{n+1} \cK}Q_{\sigma(n+1)}(\Theta^{n+1}_{K}(\tilde{P}^q)) e^{-\lambda_{n+1} \cK} \;.
+\end{aligned}
+\end{equation}
+Taking the vacuum expectation, the terms $ a_q^* a_q + a_{-q}^* a_{-q} $, as well as the $ Q_1 $- and $ Q_2 $-terms now vanish, since $ a_q \Omega = 0 $. Thus,
+\begin{equation}
+\begin{aligned}
+	\half \langle \Omega, e^{\cK} (a_q^* a_q + a_{-q}^* a_{-q}) e^{-\cK} \Omega \rangle
+	&= \half \sum\limits_{\ell\in \Z^3_*} \mathds{1}_{L_\ell \cup L_{-\ell}}(q) \sum\limits_{m=1}^{\floor{(n+1)/2}} \frac{\mathrm{Tr} \,\Theta^{(2m)}_K \big(\tilde{P}^q\big)}{(2m)!}
+		+ \half \sum\limits_{m=1}^n \langle \Omega, E_m(\tilde{P}^q) \Omega \rangle \\
+	&\quad +\half \int_{\Delta^{n+1}} \di^{n+1}\underline{\lambda} \;
+		\langle \Omega, e^{\lambda_{n+1} \cK}Q_{\sigma(n+1)}(\Theta^{n+1}_{K}(\tilde{P}^q)) e^{-\lambda_{n+1} \cK} \Omega, \rangle \;.
+\end{aligned}
+\end{equation}
+Finally, using reflection symmetry, we may replace $ \tilde{P}^q $ by $ P^q $, rendering the desired result.
 \end{proof}
 
-\textcolor{red}{Section on matrix element bounds}
+
+
+\subsection{Exchange Contribution and Commutation Errors}
+\label{sec:extraction_ex}
+
+We now expand the many-body errors $ E_{Q_1} $ and $ E_{Q_2} $ in \eqref{eq:finexpan}, thus extracting the contribution $ n_q^{\ex} $.
+
+
+
+
+
+
 
 \section{Error Bounds}\label{subsec3}
  Before we start with the estimates we introduce some definitions.
