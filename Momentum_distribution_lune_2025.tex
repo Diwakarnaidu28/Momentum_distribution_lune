@@ -546,175 +546,185 @@ Finally, using reflection symmetry, we may replace $ \tilde{P}^q $ by $ P^q $, r
 \subsection{Exchange Contribution and Commutation Errors}
 \label{sec:extraction_ex}
 
-We now expand the many-body errors $ E_{Q_1} $ and $ E_{Q_2} $ in \eqref{eq:finexpan}, thus extracting the contribution $ n_q^{\ex} $.
+To facilitate bounding the many-body errors $ E_{Q_1} $ and $ E_{Q_2} $ in \eqref{eq:errEm}, we normal-order them, which will at the same time extract the exchange contribution $ n_q^{\ex} $. Normal-ordering amounts to a lengthy but straightforward application of the CAR~\eqref{eq:CAR} with the following result:
+\begin{equation}
+\begin{aligned}
+	&E_{Q_1}(\Theta^m_{K}(P^q)) \\
+	&= -	\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}} \Theta^m_{K}(P^q)(\ell)_{r,s}K(\ell_1)_{r,s_1}
+		\Big( 2a^*_{r-\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1)a_{r-\ell} 
+		-\delta_{-s_1+\ell_1,r-\ell} b^*_{s}(\ell) a^*_{r-\ell_1}a^*_{-s_1} \Big) \\
+	&\quad -\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1} }}
+	\Theta^m_{K}(P^q)(\ell)_{r+\ell,s} K(\ell_1)_{r+\ell_1,s_1}
+		\Big( 2a^*_{r+\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r+\ell} 
+		+ \delta_{-s_1,r+\ell} b^*_{s}(\ell) a^*_{r+\ell_1}a^*_{-s_1+\ell_1}\Big)\\
+	&+ \mathrm{h.c.} \equalscolon \sum\limits_{i=1}^{2}\sum\limits_{j=1}^{2} E_{Q_1}^{\,i,j} + \mathrm{h.c.} \;,
+\end{aligned}
+\end{equation}
+as well as
+\begin{alignat}{2}
+	2E_{Q_2}(\Theta^m_{K}(P^q)) &=
+	\!\!\!\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}} \!\!\!\begin{aligned}[t] &\Theta^m_{K}(P^q)(\ell)_{r,s}K(\ell_1)_{r,s_1}\Big( 4a^*_{r-\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{r-\ell} \nonumber\\ 
+		&\;+ 4\delta_{s,s_1} \delta_{\ell,\ell_1 } a^*_{r-\ell_1} a_{r-\ell} -2\delta_{s-\ell,s_1-\ell_1}a^*_{r-\ell_1} a^*_{-s_1} a_{-s} a_{r-\ell} \nonumber\\
+		&\;-2\delta_{s,s_1}a^*_{r-\ell_1} a^*_{-s_1+\ell_1}a_{-s+\ell} a_{r-\ell} - 2\delta_{-s_1+\ell_1,r-\ell} a^*_{r-\ell_1} a^*_{-s_1} b_{-s}(-\ell)\nonumber\\
+		&\;-\delta_{-s_1+\ell_1,r-\ell}\delta_{s,s_1}a^*_{r-\ell_1}a_{-s+\ell} - 2\delta_{-s+\ell,r-\ell_1}b^*_{-s_1}(-\ell_1)a_{-s}a_{r-\ell} \nonumber\\
+		&\;-2\delta_{-s+\ell,r-\ell_1}\delta_{s,s_1}a^*_{-s_1+\ell_1} a_{r-\ell} - \delta_{-s_1+\ell_1,r-\ell}\delta_{-s+\ell,r-\ell_1}a^*_{-s_1}a_{-s} \nonumber\\
+		&\;+\delta_{-s+\ell,r-\ell_1}\delta_{-s_1+\ell_1,r-\ell}\delta_{s,s_1}  \Big)    
+	\end{aligned}\\
+	&\quad +\!\!\!\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in (L_{\ell}-\ell)\\ \cap \\(L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1}}}\!\!\!\!\!\begin{aligned}[t] &\Theta^m_{K}(P^q)(\ell)_{r+\ell,s}K(\ell_1)_{r+\ell_1,s_1}\Big(4a^*_{r+\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{r+\ell} \nonumber\\
+		&\;+ 4\delta_{s,s_1} \delta_{\ell,\ell_1 } a^*_{r+\ell_1} a_{r+\ell} -2\delta_{s-\ell,s_1-\ell_1}a^*_{r+\ell_1} a^*_{-s_1} a_{-s} a_{r+\ell} \nonumber\\
+		&\;-2\delta_{s,s_1}a^*_{r+\ell_1} a^*_{-s_1+\ell_1}a_{-s+\ell} a_{r+\ell} + 2 \delta_{-s_1, r+\ell}a^*_{r+\ell_1}a^*_{-s_1+\ell_1}b_{-s}(-\ell)\nonumber\\
+		&\;-\delta_{-s_1,r+\ell}\delta_{s-\ell,s_1-\ell_1}a^*_{r+\ell_1}a_{-s} + 2\delta_{-s,r+\ell_1}b^*_{-s_1}(-\ell_1)a_{-s+\ell}a_{r+\ell} \nonumber\\
+		&\;-2\delta_{-s,r+\ell_1}\delta_{-s+\ell,-s_1+\ell_1}a^*_{-s_1}a_{r+\ell} - \delta_{-s_1,r+\ell}\delta_{-s,r+\ell_1}a^*_{-s_1+\ell_1}a_{-s+\ell}\nonumber\\
+		&\;+ \delta_{-s,r+\ell_1} \delta_{-s_1,r+\ell} \delta_{-s+\ell,-s_1+\ell_1} \Big)  
+	\end{aligned}\\
+	&\quad +\mathrm{h.c.} \equalscolon \sum\limits_{i=1}^{2}\sum\limits_{j=1}^{10} E_{Q_2}^{\,i,j} + \mathrm{h.c.} \nonumber \;,
+\end{alignat}
+with the identifications\\
+{\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}[t]{lll}
+		 $\mathit{1.}\; E_{Q_1}^{1,2} = E_{Q_1}^{2,2}$\quad\quad& 
+		 $\mathit{2.}\; E_{Q_2}^{1,3} = E_{Q_2}^{2,4}$\quad\quad&
+		 $\mathit{3.}\; E_{Q_2}^{1,5} = E_{Q_2}^{2,5}$ \quad\quad\\
+		 $\mathit{4.}\; E_{Q_2}^{1,7} = E_{Q_2}^{2,7}$\quad\quad&
+		 $\mathit{5.}\; E_{Q_2}^{1,8} = 2E_{Q_2}^{1,6} =  2E_{Q_2}^{2,9}$\quad\quad&
+		 $\mathit{6.}\; E_{Q_2}^{2,8} = 2E_{Q_2}^{1,9} = 2E_{Q_2}^{2,6}$\quad\quad\\
+		 $\mathit{7.}\; E_{Q_2}^{1,10} = E_{Q_2}^{2,10}$\quad\quad
+	 
+\end{tabular}}
+
+\textcolor{red}{[SL: I would be inclined to just name the error terms after identification like $ \mathrm{I}_m^{Q_2} + \mathrm{II}_m^{Q_2} + \ldots + \mathrm{X}_m^{Q_2} $, and define each one separately.]}
+
+We remark that the normal ordering can conveniently be executed and visualized in terms of Friedrichs diagrams~\cite{BL23}, where each term corresponds to a diagram in Figure ???.
 
 
 
+The exchange contribution $ n_q^{\ex} $ in (???) now follows from $ E_{Q_2}^{1,10} $ as
+\begin{equation}
+	n_q^{\ex}
+	= \sum_{m=1}^\infty \frac{1}{m!} E_{Q_2}^{1,10} \;.
+\end{equation}
+\todo{Update the notation, here, with $ E_{Q_2}^{1,10} $ depending on $ m $.}
+
+The other 14 terms are many-body errors, which we will bound below.
 
 
 
+\section{Preliminary Bounds}
+\label{sec:prelim_bounds}
 
-\section{Error Bounds}\label{subsec3}
- Before we start with the estimates we introduce some definitions.
-\begin{definition}[Norms]
-	For any $k \in \Z^3_*$ and $A(k)\in \ell^2(L_k)\otimes \ell^2(L_k)$, we define
-	\begin{align}
-		\norm{A(k)}_{\mathrm{max}} &\coloneq \sup\limits_{p,q \in L_k}\abs{A(k)_{p,q}},\\
-		\norm{A(k)}_{\mathrm{max,1}} &\coloneq \sup\limits_{q \in L_k}\sum\limits_{p \in L_k}\abs{A(k)_{p,q}},
-	\end{align}
-	and
-	\begin{equation}
-		\norm{A(k)}_{\mathrm{max},2} \coloneq \sup\limits_{q \in L_k}\bigg(\sum\limits_{p \in L_k}\abs{A(k)_{p,q}}^2\bigg)^\half.
-	\end{equation}
-\end{definition}
-\begin{remark}
-	In the error estimates we sometimes write the supremum over all $p$ and/or $q$ in $\Z^3$, which is understood as follows.
-	\begin{equation}
-		\norm{A(k)}_{\mathrm{max}} = \mathds{1}_{L_k}(p)\mathds{1}_{L_k}(q) \sup\limits_{p,q \in \Z^3}\abs{A(k)_{p,q}}.
-	\end{equation} 
-		
-	\end{remark}	
-We bound the head term next, and to begin we start by establishing certain necessary bounds.    
+In this section, we compile some estimates which will be useful to bound the many-body errors. We start with bounds against the number operator
+\begin{equation} \label{eq:cN}
+	\cN := \sum_{q \in \Z^3} a_q^* a_q \;.
+\end{equation}
+\todo{Check if the first bound is not also well-known.}
+  
 \begin{lemma}[Bounds on Pair Operators]\label{lem:pairest}
-    Let $k \in \Z^3_*$ and $p \in L_k$, then
-    \begin{equation}\label{eq:estopb}
-        \sum\limits_{p \in L_k}\norm{b_p(k)\psi}^2 \leq  \eva{\psi, \NN\psi} \quad \quad \forall \psi \in \HH_N .
-    \end{equation}
-    Furthermore, for $f \in \ell^2(L_k)$ and for all $\psi \in \HH_N$, we have
-    \begin{align}
-        \norm{\sum\limits_{p\in L_k}f_p(k)b_p(k)\psi}&\leq \left(\sum\limits_{p \in L_{k}}\left|f_p(k)\right|^2\right)^\half \norm{\NN^\half\psi}\label{eq:estb}\\
-        \norm{\sum\limits_{p\in L_k}f_p(k)b^*_p(k)\psi}&\leq \left(\sum\limits_{p \in L_{k}}\left|f_p(k)\right|^2\right)^\half \norm{(\NN+1)^\half\psi}.\label{eq:estb*}
-    \end{align}
+Let $k \in \Z^3_*$ and $ \psi \in \cF $. Then,
+\begin{equation}\label{eq:estopb}
+	\sum\limits_{p \in L_k}\norm{b_p(k)\psi}^2 \leq  \eva{\psi, \NN\psi} \;.
+\end{equation}
+Furthermore, for $f \in \ell^2(L_k)$ we have
+\begin{equation} \label{eq:estb}
+	\Bigg\Vert \sum\limits_{p\in L_k}f_p b_p(k) \psi \Bigg\Vert
+	\leq \norm{f}_2 \norm{\NN^\half\psi} \;, \qquad
+	\Bigg\Vert \sum\limits_{p\in L_k}f_p b^*_p(k) \psi \Bigg\Vert
+	\leq \norm{f}_2 \norm{(\NN+1)^\half\psi} \;.
+\end{equation}
+\end{lemma}
+\begin{proof}
+For the first estimate, we use definition~\eqref{eq:b} and $a^*_{p-k}a_{p-k} \leq \mathds{1}$:
+\begin{equation}
+	\sum\limits_{p \in L_k}\norm{b_p(k)\psi}^2
+	= \sum\limits_{p \in L_k} \eva{\psi,a^*_{p} a^*_{p-k}a_{p-k} a_{p}\psi}
+	\leq \sum\limits_{p \in \Z^3_*} \eva{\psi, a^*_{p} a_{p}\psi}
+	= \eva{\psi, \NN \psi} \;.  
+\end{equation}
+The bound~\eqref{eq:estb} is well-known~\cite[Prop.~4.2]{CHN21}.
+\end{proof}
+
+The following bounds were proven in~\cite[Props.~4.5~and~4.7]{CHN21}.
+
+\begin{lemma}\label{lem:estQ2}
+Let $A = (A(\ell))_{\ell \in \Z^3_*}$ be a family of symmetric matrices $ A(\ell) : \ell^2(L_\ell) \to \ell^2(L_\ell) $. Then for $ \psi \in \cF $,
+\begin{equation} \label{eq:Qest}
+\begin{aligned}
+	|\eva{\Psi,Q_1(A)\Psi}|
+	&\leq 2\sum\limits_{\ell\in \Z^3_*}\norm{A(\ell)}_{\mathrm{HS}}\eva{\Psi,\mathcal{N} \Psi} \;, \\
+	|\eva{\Psi,Q_2(A)\Psi}|
+	&\leq 2\sum\limits_{\ell\in \Z^3_*}\norm{A(\ell)}_{\mathrm{HS}}\eva{\Psi,(\mathcal{N}+1) \Psi} \;.
+\end{aligned}
+\end{equation}
 \end{lemma}
 
-\begin{proof}
-    For the first estimate, we begin with
-    \begin{equation}
-         \sum\limits_{p \in L_k}\norm{b_p(k)\psi}^2 = \sum\limits_{p \in L_k} \eva{b_p(k)\psi,b_p(k)\psi}= \sum\limits_{p \in L_k} \eva{\psi,a^*_{p} a^*_{p-k}a_{p-k} a_{p}\psi}.  
-    \end{equation}
-    We use $a^*_{p-k}a_{p-k} \leq \mathds{1}$ to get 
-    \begin{equation}
-        \leq \sum\limits_{p \in L_k} \eva{\psi,a^*_{p} a_{p}\psi}
-        \leq \eva{\psi,\sum\limits_{p \in \Z^3_*}a^*_{p} a_{p}\psi} = \eva{\psi, \NN\psi}
-    \end{equation}
-    This proves the estimate (\ref{eq:estopb}). For the estimate in (\ref{eq:estb}) we begin with
-    \begin{align}
-        \norm{\sum\limits_{p\in L_k}f_p(k)b_p(k)\psi}^2 &= \eva{\sum\limits_{p\in L_k}f_p(k)b_p(k)\psi,\sum\limits_{p'\in L_k}f_{p'}(k)b_{p'}(k)\psi}\nonumber\\
-        &= \sum\limits_{p,p' \in L_k} \overline{f_p(k)}f_{p'}(k) \eva{\psi,b^*_p(k)b_{p'}(k)\psi} \nonumber.  
-    \end{align}
-    and, we use the Cauchy-Schwarz inequality and $a^*_{p'-k}a^{\phantom{*}}_{p'-k} \leq \mathds{1}$ to arrive at 
-    \begin{align}
-        \leq \sum\limits_{p \in L_k} \abs{f_p(k)}^2 \sum\limits_{p' \in L_k} \eva{\psi,a^*_{p'} a_{p'} \psi} &\leq \sum\limits_{p \in L_k} \abs{f_p(k)}^2 \eva{\psi, \sum\limits_{p' \in L_k} a^*_{p'} a_{p'} \psi}\nonumber\\
-        &\leq \sum\limits_{p \in L_k} \abs{f_p(k)}^2 \eva{\psi, \sum\limits_{p' \in Z^3_*} a^*_{p'} a_{p'} \psi}= \sum\limits_{p \in L_k} \abs{f_p(k)}^2 \eva{\psi, \NN \psi}
-    \end{align}
-    
-    For the next inequality, we use Lemma \ref{lem:paircomm} and (\ref{eq:estb}). We begin with
-    \begin{align}
-        \norm{\sum\limits_{p\in L_k}f_p(k)b^*_p(k)\psi}^2 &= \eva{\sum\limits_{p\in L_k}f_p(k)b^*_p(k)\psi,\sum\limits_{q\in L_k}f_q(k)b^*_q(k)\psi}\nonumber\\
-        &= \sum\limits_{p,q \in L_k} \overline{f_p(k)}f_q(k)\left( \eva{\psi,b^*_p(k)b_q(k)\psi} + \eva{\psi, \left[ b_p(k),b^*_q(k)\right]\psi}\right) \nonumber\\
-        &=\sum\limits_{p,q \in L_k} \overline{f_p(k)}f_q(k)\left( \eva{\psi,b^*_p(k)b_q(k)\psi} + \eva{\psi, \left( \delta_{p,q} + \epsilon_{p,q} (k,k) \right)\psi}\right)
-    \end{align}
-    Then we know that $\epsilon_{p,q}(k,k)\leq 0$ and we have
-    \begin{align}
-        &\leq \sum\limits_{p,q \in L_k} \overline{f_p(k)}f_q(k) \eva{\psi,b^*_p(k)b_q(q)\psi} + \sum\limits_{p,q \in L_k} \overline{f_p(k)}f_q(k)\eva{\psi, \delta_{p,q}\psi}\nonumber\\
-        &=  \norm{\sum\limits_{p\in L_k}f_p(k)b_p(k)\psi}^2 + \sum\limits_{p \in L_k} \abs{f_p(k)}^2 \eva{\psi, \psi}\nonumber\\
-        &\leq \sum\limits_{p \in L_k} \abs{f_p(k)}^2 \eva{\psi, \NN \psi} + \sum\limits_{p \in L_k} \abs{f_p(k)}^2 \eva{\psi, \psi}
-    \end{align}
-    and we have the second estimate.
-\end{proof}
-\begin{lemma}\label{lem:estQ2}
-    Let $\ell \in \Z^3_*$, then we have
-    \begin{align}
-        |\eva{\Psi,Q_1(A)\Psi}| &\leq 2\sum\limits_{\ell\in \Z^3_*}\norm{A(\ell)}_{\mathrm{HS}}\eva{\Psi,\mathcal{N} \Psi}\label{eq:Q1est}\\
-        |\eva{\Psi,Q_2(A)\Psi}| &\leq 2\sum\limits_{\ell\in \Z^3_*}\norm{A(\ell)}_{\mathrm{HS}}\eva{\Psi,(\mathcal{N}+1) \Psi}\label{eq:Q2est}
-    \end{align}
-    for all $\Psi \in \HH_N$.
-\end{lemma}
-\begin{proof}
-    We begin with the quantity we want to bound and use the definition of the $Q_2$ operator.
-    \begin{align}
-        |\eva{\Psi,Q_2(A)\Psi}|&=\left|\eva{\Psi,\sum\limits_{\ell\in \Z^3_*}\sum\limits_{p,q\in L_{\ell}}A(\ell)_{p,q}\big(b_{-q}^*(-\ell)b_p^*(\ell)+\mathrm{h.c.}\big)\Psi}\right|\nonumber \\
-        &\leq \sum\limits_{\ell\in \Z^3_*}\left|\eva{\Psi,\sum\limits_{p,q\in L_{\ell}}A(\ell)_{p,q}\big(b_{-q}^*(-\ell)b_p^*(\ell)+\mathrm{h.c.}\big)\Psi}\right|\nonumber\\
-        &\leq 2\sum\limits_{\ell\in \Z^3_*}\left|\eva{\Psi,\sum\limits_{p,q\in L_{\ell}}A(\ell)_{p,q}\big(b_{-q}^*(-\ell)b_p^*(\ell)\big)\Psi}\right|\nonumber\\
-        &=2\sum\limits_{\ell\in \Z^3_*}\left|\eva{\Psi,\sum\limits_{q\in L_{\ell}}b^*_{-q}(-\ell)\Big(\sum\limits_{p\in L_{\ell}}A(\ell)_{p,q}b_p^*(\ell)\Big)\Psi}\right|\nonumber\\
-        &=2\sum\limits_{\ell\in \Z^3_*}\sum\limits_{q\in L_{\ell}}\left|\eva{b_{-q}(-\ell)\Psi,\sum\limits_{p\in L_{\ell}}A(\ell)_{p,q}b_p^*(\ell) \Psi}\right|\nonumber\\
-    \end{align}
-	Here, "h.c." means hermitian conjugate.
-    Then we use Cauchy-Schwarz inequality to get
-    \begin{equation}
-        \leq 2\sum\limits_{\ell\in \Z^3_*}\sum\limits_{q\in L_{\ell}} \norm{b_{-q}(-\ell)\Psi}\norm{\sum\limits_{p\in L_{\ell}} A(\ell)_{p,q}b^*_{p}(\ell)\Psi}
-    \end{equation}
-    Then we use the estimates from Lemma \ref{lem:pairest} to have
-    \begin{align}
-        &\leq 2\sum\limits_{\ell\in \Z^3_*} \left(\sum\limits_{q\in L_{\ell}} \norm{b_{-q}(-\ell)\Psi}^2\right)^\half \Big(\sum\limits_{p,q\in L_{\ell}}\left|A(\ell)_{p,q}\right|^2\Big)^\half \norm{(\mathcal{N}+1)^\half \Psi}\nonumber\\
-        &\leq 2\sum\limits_{\ell\in \Z^3_*} \Big(\sum\limits_{p,q\in L_{\ell}}\left|A(\ell)_{p,q}\right|^2\Big)^\half \norm{\mathcal{N}^\half \Psi}\norm{(\mathcal{N}+1)^\half \Psi}\nonumber\\
-        &= 2\sum\limits_{\ell\in \Z^3_*}\norm{A(\ell)}_{\mathrm{HS}}\norm{\mathcal{N}^\half \Psi}\norm{(\mathcal{N}+1)^\half \Psi}\nonumber\\
-        &\leq 2\sum\limits_{\ell\in \Z^3_*}\norm{A(\ell)}_{\mathrm{HS}}\eva{\Psi,(\mathcal{N}+1) \Psi}
-    \end{align}
-    Hence, we have the required estimate and we can similarly prove (\ref{eq:Q1est}). 
-\end{proof}
+The next estimate is a straightforward generalization of~\cite[Prop.~5.8]{CHN21}, which allows us to control $ \langle \Omega, e^{\lambda \cK} (\mathcal{N} + 1)^m e^{-\lambda \cK} \Omega \rangle \sim 1 $, irrespective of $ m $.
+
 \begin{lemma}[Gr\"onwall Estimate]\label{lem:gronNest}
-    Let $\lambda\in [0,1]$, then we have the following operator inequality
-    \begin{equation}\label{eq:gronest}
-     T^*_{\lambda}(\mathcal{N} +1)^m T_{\lambda} \leq C_m (\NN+1)^m\, ,    
-    \end{equation}
-    where $C_m = \mathrm{exp}(C'_m\sum\limits_{l\in \Z^3_*} \norm{K(\ell)}_{\mathrm{HS}}) $,
-    \footnote{The value of $C$ can be different for every new appearance, unless explicitly stated as done here.}.
+For every $ m \in \NNN $, there exists a constant $ C_m > 0 $ such that for all $ \lambda\in [0,1]$
+\begin{equation}\label{eq:gronest}
+	e^{\lambda \cK} (\mathcal{N} +1)^m e^{-\lambda \cK}
+	\leq C_m (\NN+1)^m \;,
+\end{equation}
+as an operator inequality. More precisely, $ C_m $ depends on $ K $ as $C_m = \mathrm{exp}(C'_m\sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{HS}}) $ \todo{Do we need this? The notation $ C'_m $ might be confusing.}
+\footnote{The value of $C$ can be different for every new appearance, unless explicitly stated as done here.}.
 \end{lemma}
 \begin{proof}
-Before proving the inequality, we observe
+First, observe that by the pull-through formula, we have
 \begin{align}
 	\left[(\NN+4)^m, b^*_{-s}(-\ell)b^*_{r}(\ell)\right] &= \left( (\NN+4)^m - \NN^m \right) b^*_{-s}(-\ell)b^*_{r}(\ell) \nonumber \\
-	&= \left( \left(\NN+4\right)^m - \NN^m \right)^\half b^*_{-s}(-\ell)b^*_{r}(\ell) \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half.
+	&= \left( \left(\NN+4\right)^m - \NN^m \right)^\half b^*_{-s}(-\ell)b^*_{r}(\ell) \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \;.
 \end{align}
-Then we begin with
+Further, note that
+\begin{equation}
+	\left( \left(\NN+4\right)^m - \NN^m \right)
+	\leq C'_m \left(\NN+4\right)^{m-1} \;, \qquad
+	\left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)
+	\leq  C'_m \left(\NN+4\right)^{m-1} \;.
+\end{equation}
+For $ \Psi_0 \in \cF $ and $ \Psi_\lambda := e^{-\lambda \cK} \Psi_0 $, recalling definition~\eqref{eq:T} of $ \cK $ and Lemma~\ref{lem:estb}, we then estimate\textcolor{red}{[SL: Isn't that just a bound on $ Q_1(A) $?]}
 \begin{align}
-	&\left|\frac{\di}{\di\lambda}\eva{\Psi, (T^*_{\lambda}(\mathcal{N}+4)^m T_{\lambda})\Psi }\right| \nonumber\\ 
-	&= \left| \eva{\Psi,( T^*_{\lambda} \left[\KK, (\NN+4)^m\right] T_{\lambda}) \Psi}\right|\nonumber\\
-	&= \abs{\mathrm{Re}\eva{ T_{\lambda}\psi, \sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell}K(\ell)_{r,s}\left[ (\NN+4)^m, b^*_{-s}(-\ell)b^*_{r}(\ell) \right]T_{\lambda} \psi }}\nonumber\\
-	&\leq \abs{\mathrm{Re}\sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell} \eva{  b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half T_{\lambda} \psi, K(\ell)_{r,s} b^*_{r}(\ell) \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half T_{\lambda}\psi }}\nonumber\\
-	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell} \norm{ b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half T_{\lambda}\psi} \norm {K(\ell)_{r,s} b^*_{r}(\ell) \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half T_{\lambda}\psi} \nonumber\\
-	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{s\in L_\ell} \norm{  b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half T_{\lambda}\psi} \left(\sum\limits_{r\in L_\ell} \abs{K(\ell)_{r,s}}^2 \right)^\half \norm { (\NN+1)^\half \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half T_{\lambda}\psi} \nonumber\\
-	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*} \norm{K(\ell)}_{\mathrm{HS}}\left(\sum\limits_{s\in L_\ell} \norm{  b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half T_{\lambda}\psi}^2\right)^\half \norm{ \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half T_{\lambda}\psi }\nonumber\\
-	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*} \norm{K(\ell)}_{\mathrm{HS}}\norm{ \NN^\half \left( \left(\NN+4\right)^m - \NN^m \right)^\half T_{\lambda}\psi} \norm{ (\NN+1)^\half \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half T_{\lambda}\psi }\nonumber\\
-	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*} \norm{K(\ell)}_{\mathrm{HS}}\norm{ \left(\NN+4\right)^\frac{m}{2} T_{\lambda}\psi}^2
+	&\left|\frac{\di}{\di\lambda}\eva{\Psi_0, e^{\lambda \cK} (\mathcal{N}+4)^m e^{-\lambda \cK} \Psi_0 }\right|
+	= \left| \eva{\Psi_0, e^{\lambda \cK} \left[\KK, (\NN+4)^m\right] e^{-\lambda \cK} \Psi_0}\right|\nonumber\\
+	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell} \abs{\eva{  b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half \Psi_\lambda, K(\ell)_{r,s} b^*_{r}(\ell) \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \Psi_\lambda }}\nonumber\\
+	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell} \norm{ b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half \Psi_\lambda} \norm {K(\ell)_{r,s} b^*_{r}(\ell) \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \Psi_\lambda} \nonumber\\
+	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{s\in L_\ell} \norm{  b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half \Psi_\lambda} \left(\sum\limits_{r\in L_\ell} \abs{K(\ell)_{r,s}}^2 \right)^\half \norm { (\NN+1)^\half \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \Psi_\lambda} \nonumber\\
+	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*} \norm{K(\ell)}_{\mathrm{HS}}\left(\sum\limits_{s\in L_\ell} \norm{  b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half \Psi_\lambda}^2\right)^\half \norm{ \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \Psi_\lambda }\nonumber\\
+	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*} \norm{K(\ell)}_{\mathrm{HS}}\norm{ \NN^\half \left( \left(\NN+4\right)^m - \NN^m \right)^\half \Psi_\lambda} \norm{ (\NN+1)^\half \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \Psi_\lambda }\nonumber\\
+	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*} \norm{K(\ell)}_{\mathrm{HS}}\norm{ \left(\NN+4\right)^\frac{m}{2} \Psi_\lambda}^2 \;.
 \end{align}
-where we used
-\begin{align}
-	\left( \left(\NN+4\right)^m - \NN^m \right) &\leq C'_m \left(\NN+4\right)^{m-1} \\
-	\left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right) &\leq  C'_m \left(\NN+4\right)^{m-1}.
-\end{align}
-Here the constant $C'_m$ depends on $m$. 
-    \begin{comment} 
-    For a given $\Psi \in \HH_N$, we start with taking a derivative of the expectation of the LHS of \eqref{eq:gronest} above.
-    \begin{align}
-        \left|\frac{\di}{\di\lambda}\eva{\Psi, (T^*_{\lambda}(\mathcal{N} +1)T_{\lambda})\Psi }\right| 
-        &= \left|\eva{\Psi,(T^*_{\lambda}\left[\KK,\NN\right]T_{\lambda}) \Psi}\right|\nonumber\\
-        &= \abs{4\mathrm{Re} \eva{T_\lambda\Psi,\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}K(\ell)_{r,s} b^*_{-s}(-\ell)b^*_{r}(\ell)T_\lambda\Psi}}\nonumber\\
-        &\leq 4 \sum\limits_{\ell \in \Z^3_*} \abs{\eva{\sum\limits_{s \in L_{\ell}}b_{-s}(-\ell) T_\lambda\Psi,\sum\limits_{r \in L_{\ell}}K(\ell)_{r,s} b^*_{r}(\ell)T_\lambda\Psi}}\label{eq:diffeva}
-    \end{align}
-    Then using Cauchy-Schwarz inequality and the estimates from Lemma \ref{lem:pairest}, we get
-    \begin{align}
-        (\ref{eq:diffeva}) &\leq 4\sum\limits_{\ell \in \Z^3_*}\sum\limits_{s \in L_{\ell}} \norm{b_{-s}(-\ell) T_\lambda\Psi} \norm{\sum\limits_{r \in L_{\ell}}K(\ell)_{r,s} b^*_{r}(\ell)T_\lambda\Psi} \nonumber\\
-        &\leq 4 \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{HS}}\norm{\NN^\half T_\lambda\Psi}\norm{(\NN+1)^\half T_\lambda\Psi}\nonumber\\
-        &\leq 4 \sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\mathrm{HS}} \eva{\Psi,T^*_\lambda(\NN+1)T_\lambda\Psi}
-    \end{align}
-\end{comment}
-    Then using Gr\"onwall's lemma, we have
-    \begin{equation}
-        \eva{\Psi, T^*_{\lambda}(\mathcal{N} +1)^m T_{\lambda} \Psi } \leq \mathrm{exp}(C'_m\sum\limits_{l\in \Z^3_*} \norm{K(\ell)}_{\mathrm{HS}}) \eva{\Psi, (\NN+1)^m\Psi}
-    \end{equation}
-    And we have the estimate.
+We conclude the bound using Gr\"onwall's lemma.
 \end{proof}
 
-Next, we compile some bounds on the correlation structure $ K(\ell) $.
+Next, we compile some bounds on the correlation structure $ K(\ell) $. For this, we define the following norms for matrices.
+
+\begin{definition}[Norms]
+For $k \in \Z^3_*$ and $A(k)\in \ell^2(L_k)\otimes \ell^2(L_k)$, we define
+\begin{equation}
+\begin{aligned}
+	\norm{A(k)}_{\mathrm{max}}
+	&\coloneq \sup\limits_{p,q \in L_k}\abs{A(k)_{p,q}} \;, \qquad
+	\norm{A(k)}_{\mathrm{max},2}
+	\coloneq \sup\limits_{q \in L_k}\bigg(\sum\limits_{p \in L_k}\abs{A(k)_{p,q}}^2\bigg)^\half \;, \\
+	\norm{A(k)}_{\mathrm{max,1}}
+	&\coloneq \sup\limits_{q \in L_k}\sum\limits_{p \in L_k}\abs{A(k)_{p,q}} \;.
+\end{aligned}
+\end{equation}
+\end{definition}
+
+\begin{remark}
+	In the error estimates we sometimes write the supremum over all $p$ and/or $q$ in $\Z^3$, which is understood as follows.
+\begin{equation}
+	\norm{A(k)}_{\mathrm{max}} = \mathds{1}_{L_k}(p)\mathds{1}_{L_k}(q) \sup\limits_{p,q \in \Z^3}\abs{A(k)_{p,q}} \;.
+\end{equation} 	
+\end{remark}	
+
+
 \begin{lemma}[Bounds on $ K $]\label{lem:normsk}
 	Let $ \ell \in \Z^3_* $, $ m \in \mathbb{N} $ and $ r,s \in L_\ell $. We then have the pointwise estimate
 	\begin{equation} \label{eq:K_element_bounds}
 		|(K(\ell)^m)_{r,s}|
 		\le \frac{(C \hat{V}(\ell))^m k_{\F}^{-1}}{\lambda_{\ell,r} + \lambda_{\ell,s}} \;.
 	\end{equation}
-\textcolor{red}{[SL: Make sure that $ \lambda_{\ell,r} $ has been defined]} Further, we have the bounds
+Further, we have the bounds
 \begin{equation} \label{eq:K_max_bounds}
 \begin{aligned}
 	&\Vert K(\ell)^m \Vert_{\mathrm{max}}\!\!\!\!
@@ -729,7 +739,7 @@ Next, we compile some bounds on the correlation structure $ K(\ell) $.
 \end{equation}
 \end{lemma}
 \begin{proof}
-From \textcolor{red}{[CHN22, Prop.~7.10]} we readily retrieve \eqref{eq:K_element_bounds} for $ m = 1 $:
+From~\cite[Prop.~7.10]{CHN23} we readily retrieve \eqref{eq:K_element_bounds} for $ m = 1 $:
 \begin{equation}
 	|K(\ell)_{r,s}|
 	\le C \frac{\hat{V}(\ell) k_{\F}^{-1}}{\lambda_{\ell,r} + \lambda_{\ell,s}} \;.
@@ -861,200 +871,14 @@ where we used $a^*_{q-\ell}a_{q-\ell}\leq \mathds{1}$
     \end{align}
 \end{definition}
 
-To bound the bosonization error in (\ref{eq:inftylimexp}), we start by bounding the expectation value of each of the $E_{Q_{\sigma(m)}}$. We spell out the two different error terms \eqref{eq:errKQ} depending on the iteration step $m$ and for a symmetric operator $A$.
-\begin{align}
-     E_{Q_1}(A)&=- 2 \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A_{r,s}(\ell)\Big(\mathcal{E}_{r}(\ell)b_{s}(\ell) + b^*_{s}(\ell)\mathcal{E}^*_{r}(\ell)\Big)\nonumber\\ 
-    E_{Q_2}(A) &=
-        \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A_{r,s}(\ell)\Big(\big\{\mathcal{E}^*_{r}(\ell), b_{-s}(-\ell)\big\} + \big\{ b^*_{-s}(-l),\mathcal{E}_r(l)\big\}\Big) - \big\{A(\ell),K(\ell)\big\}_{r,s}\epsilon_{r,s}(\ell,\ell) .\nonumber 
-\end{align}
-
-By substituting the definition of $\mathcal{E}_p(k)$ from \eqref{eq:commerrKb}, we arrive at
-\begin{alignat}{2}
-    E_{Q_1}(A) &= 
-    \sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r,s \in L_{\ell}\\r_1,s_1\in L_{\ell_1}}} A(\ell)_{r,s}K(\ell_1)_{r_1,s_1}\Big( b^*_{s}(\ell) \{ \epsilon_{r_1,r}(\ell_1.\ell) , b_{-s_1}(-\ell_1) \}^* + \mathrm{h.c.} \Big)\\
-    E_{Q_2}(A) &=
-    -\half\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r,s \in L_{\ell}\\r_1,s_1 \in L_{\ell_1}}} A(\ell)_{r,s}K(\ell_1)_{r_1,s_1}\Big(\big\{\{\epsilon_{r_1,r}(\ell_1.\ell), b_{-s_1}(-\ell_1)\}^*, b_{-s}(-l)\big\} + \mathrm{h.c.} \Big)\\
-    &\phantom{=\;} -\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\big\{ A(\ell)_,K(\ell)\big\}_{r,s}\epsilon_{r,s}(\ell,\ell).
-\end{alignat}
-
-When we substitute the definition of $\epsilon_{r,s}(\ell,k)$, we have that the error terms are not normal ordered. We then normal order all the fermionic operators appearing in the error terms above. We have two combinations of fermionic operators, i.e., one with only one anti-commutator and the other with two anti-commutators. To begin with the normal ordering, we only consider the first term of $\epsilon_{r,r_1}(\ell, \ell_1)$ which is $ a^*_{r_1-\ell_1}a_{r-\ell}$. Also when using these identities, we have to take the deltas associated with the quasi-bosonic commutation error into consideration.
-
-For the error term with one anti-commutator, we normal order it as follows
-\begin{align}
-    b^*_{s}(\ell)\{ a^*_{r_1-\ell_1}a_{r-\ell}, b^*_{-s_1}(-\ell_1)\}
-    &=b^*_{s}(\ell) a^*_{r_1-\ell_1}\{ a_{r-\ell}, b^*_{-s_1}(-\ell_1)\}\nonumber\\
-    &=b^*_{s}(\ell) a^*_{r_1-\ell_1}a_{r-\ell}b^*_{-s_1}(-\ell_1)+b^*_{s}(\ell) a^*_{r_1-\ell_1}b^*_{-s_1}(-\ell_1)a_{r-\ell}\nonumber\\
-    &=2a^*_{r_1-\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1)a_{r-\ell} + b^*_{s}(\ell) a^*_{r_1-\ell_1}[b_{-s_1}(-\ell_1),a^*_{r-\ell}]^*.\label{eq:no1com}
-\end{align}
-
-The normal ordering for the term with two anti-commutators is a bit involved.
-We begin with 
-\begin{equation}
-    \big\{\{a^*_{r_1-\ell_1}a_{r-\ell}, b^*_{-s_1}(-\ell_1)\},b_{-s}(-\ell)\big\} =  b_{-s}(-\ell)\{a^*_{r_1-\ell_1}a_{r-\ell}, b^*_{-s_1}(-\ell_1)\} + \{a^*_{r_1-\ell_1}a_{r-\ell}, b^*_{-s_1}(-\ell_1)\}b_{-s}(-\ell).
-\end{equation}
-For the normal ordering of the second term, we proceed as we did to get  \eqref{eq:no1com}. We normal order the first term as
-\begin{align}
-    &= 
-    b_{-s}(-\ell)a^*_{  r_1-\ell_1}\{a_{ r-\ell}, b^*_{-s_1}(-\ell_1)\}\nonumber\\
-    &= a^*_{  r_1-\ell_1}b_{-s}(-\ell)\{a_{ r-\ell}, b^*_{-s_1}(-\ell_1)\} + [b_{-s}(-\ell),a^*_{  r_1-\ell_1}]\{a_{ r-\ell}, b^*_{-s_1}(-\ell_1)\} \nonumber\\
-    &= a^*_{  r_1-\ell_1}b_{-s}(-\ell)a_{ r-\ell} b^*_{-s_1}(-\ell_1) + a^*_{  r_1-\ell_1}b_{-s}(-\ell)b^*_{-s_1}(-\ell_1)a_{ r-\ell}\nonumber\\ &\quad + [b_{-s}(-\ell),a^*_{  r_1-\ell_1}]a_{ r-\ell}b^*_{-s_1}(-\ell_1) +[b_{-s}(-\ell),a^*_{r_1-\ell_1}] b^*_{-s_1}(-\ell_1)a_{ r-\ell}\nonumber\\
-    &= a^*_{  r_1-\ell_1}b_{-s}(-\ell)b^*_{-s_1}(-\ell_1)a_{ r-\ell} + a^*_{  r_1-\ell_1}b_{-s}(-\ell)[ b_{-s_1}(-\ell_1), a^*_{ r-\ell}]^*  \nonumber\\ 
-    &\quad + a^*_{  r_1-\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{ r-\ell} +a^*_{  r_1-\ell_1}[b_{-s}(-\ell),b^*_{-s_1}(-\ell_1)]a_{ r-\ell}\nonumber\\ &\quad + [b_{-s}(-\ell),a^*_{  r_1-\ell_1}]b^*_{-s_1}(-\ell_1)a_{ r-\ell} - [b_{-s}(-\ell),a^*_{  r_1-\ell_1}][a^*_{ r-\ell}, b_{-s_1}(-\ell_1)]^*\nonumber\\ &\quad +b^*_{-s_1}(-\ell_1)[b_{-s}(-\ell),a^*_{  r_1-\ell_1}]a_{ r-\ell}+ \big[b_{-s_1}(-\ell_1),[b_{-s}(-\ell),a^*_{  r_1-\ell_1}]^*\big]^*a_{ r-\ell}\nonumber\\
-    &= 2a^*_{  r_1-\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{ r-\ell} + 2a^*_{  r_1-\ell_1}[b_{-s}(-\ell),b^*_{-s_1}(-\ell_1)]a_{ r-\ell}\nonumber\\ 
-    &\quad + a^*_{r_1-\ell_1}[b_{-s_1}(-\ell_1),a^*_{ r-\ell}]^*b_{-s}(-\ell) + a^*_{  r_1-\ell_1}\big[b_{-s}(-\ell),[b_{-s_1}(-\ell_1),a^*_{ r-\ell}]^*\big]\nonumber\\
-    &\quad + 2b^*_{-s_1}(-\ell_1)[b_{-s}(-\ell),a^*_{  r_1-\ell_1}]a_{ r-\ell} +2\big[b_{-s_1}(-\ell_1),[b_{-s}(-\ell),a^*_{  r_1-\ell_1}]^*\big]^*a_{ r-\ell}\nonumber\\
-    &\quad + \big\{ [b_{-s}(-\ell),a^*_{  r_1-\ell_1}],[b_{-s_1}(-\ell_1), a^*_{ r-\ell}]^* \big\} - [ b_{-s_1}(-\ell_1), a^*_{ r-\ell}]^* [b_{-s}(-\ell), a^*_{r_1-\ell_1}].
-\end{align}
-Then we have
-\begin{align}
-    &\big\{\{a^*_{r_1-\ell_1}a_{r-\ell}, b^*_{-s_1}(-\ell_1)\},b_{-s}(-\ell)\big\}\nonumber\\
-    &= 4a^*_{  r_1-\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{ r-\ell} + 2a^*_{  r_1-\ell_1}[b_{-s}(-\ell),b^*_{-s_1}(-\ell_1)]a_{ r-\ell}\nonumber\\ 
-    &\quad + 2a^*_{r_1-\ell_1}[b_{-s_1}(-\ell_1),a^*_{ r-\ell}]^*b_{-s}(-\ell) + a^*_{  r_1-\ell_1}\big[b_{-s}(-\ell),[b_{-s_1}(-\ell_1),a^*_{ r-\ell}]^*\big]\nonumber\\
-    &\quad + 2b^*_{-s_1}(-\ell_1)[b_{-s}(-\ell),a^*_{  r_1-\ell_1}]a_{ r-\ell} +2\big[b_{-s_1}(-\ell_1),[b_{-s}(-\ell),a^*_{  r_1-\ell_1}]^*\big]^*a_{ r-\ell}\nonumber\\
-    &\quad + \big\{ [b_{-s}(-\ell),a^*_{  r_1-\ell_1}],[b_{-s_1}(-\ell_1), a^*_{ r-\ell}]^* \big\} - [ b_{-s_1}(-\ell_1), a^*_{ r-\ell}]^* [b_{-s}(-\ell), a^*_{r_1-\ell_1}].\label{eq:no2comm}
-\end{align}
-Then one can proceed in a similar manner to normal order the second term, i.e. $\delta_{r_1-\ell_1,r-\ell}a^*_{r_1}a_{r}$, of $\epsilon_{r,r_1}(\ell, \ell_1)$. In all the commutators above we see two different momenta $p,q \in \Z^3_*$ in the fermionic creation and annihilation operators. We can resolve these commutators depending on whether $p,q$ are in $B_{F}$ or $B_{F}^c$ as 
-\begin{align}
-	[b_{-s_1}(-\ell_1), a^*_{p}]^* = [a_{-s_1+\ell_1}a_{-s_1}, a^*_{p}]^* &=\left(a_{-s_1+\ell_1}\{a_{-s_1}, a^*_{p}\}-\{a_{-s_1+\ell_1}, a^*_{p}\}a_{-s_1} \right)^*\nonumber\\ 
-	&=\begin{cases}
-		-\delta_{-s_1+\ell_1,p}a^*_{-s_1} \quad&\text{for}\quad p \in B_F\\
-		\delta_{-s_1,p}a^*_{-s_1+\ell_1} \quad&\text{for}\quad p \in B^c_F\\
-	\end{cases}\label{eq:comm1}\,.
-\end{align}
-Similarly
-\begin{align}
-	[b_{-s}(-\ell), a^*_{p}] &= 
-	\begin{cases}
-		-\delta_{-s+\ell,p}a_{-s} \quad&\text{for}\quad p \in B_F\\
-		\delta_{-s,p}a_{-s+\ell} \quad&\text{for}\quad p \in B^c_F\\
-	\end{cases}\label{eq:comm2}\\
-	\left[b_{-s}(-\ell), [b_{-s_1}(-\ell_1),a^*_{p}]^*\right]&=\begin{cases}
-		-\delta_{-s_1+\ell_1,p}\delta_{s,s_1}a_{-s+\ell} \quad\text{for}\quad p \in B_F\\
-		-\delta_{-s_1,p}\delta_{s-\ell,s_1-\ell_1}a_{-s} \quad\text{for}\quad p \in B^c_F\\
-	\end{cases}\label{eq:comm3}\\
-	\left[b_{-s_1}(-\ell_1),[b_{-s}(-\ell), a^*_{p}]^* \right]^* &=\begin{cases}
-		-\delta_{-s+\ell,p}\delta_{s,s_1}a^*_{-s_1+\ell_1} \quad&\text{for}\quad p \in B_F\\
-		-\delta_{-s,p}\delta_{-s+\ell,-s_1+\ell_1}a^*_{-s_1} \quad&\text{for}\quad p \in B^c_F\\
-	\end{cases}\label{eq:comm4}\\
-	[b_{-s_1}(-\ell_1),a^*_{p}]^*[b_{-s}(-\ell), a^*_{q}] 
-	&=\begin{cases}
-		\delta_{-s_1+\ell_1,p}\delta_{-s+\ell,q}a^*_{-s_1}a_{-s} \quad\text{for}\quad p,q \in B_F\\
-		\delta_{-s_1,p}\delta_{-s,q}a^*_{-s_1+\ell_1}a_{-s+\ell} \quad\text{for}\quad p,q \in B^c_F 
-	\end{cases}\label{eq:comm5}\,.
-\end{align}
-In the last commutation relation both $p,q$ are simultaneously either in $B_F$ or $B_F^c$.
 
 
-Now for any iteration step $m$, we insert the operator $A(\ell)= \Theta^m_K(P^q)(\ell)$. And with the definition of the commutation error we see that each of the error terms are further divided into two terms. We can write the terms with $\delta_{r_1-\ell_1,r-\ell}a^*_{r_1}a_{r}$, by shifting the momenta over which we are summing, giving us terms which have similar forms as their counterparts. Using \eqref{eq:no1com} and \eqref{eq:no2comm}, along with \eqref{eq:comm1}-\eqref{eq:comm5} and we get the normal ordered error term as
-%%%%%%%%%%%
-\begin{comment}
-\begin{alignat}{2}
-	E_{Q_1}(A) &= -
-	\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}} A(\ell)_{r,s}K(\ell_1)_{r,s_1}
-	\begin{aligned}[t]
-		&\Big( 2a^*_{r-\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1)a_{r-\ell} \\ &+ b^*_{s}(\ell) a^*_{r-\ell_1}[b_{-s_1}(-\ell_1),a^*_{r-\ell}]^*+ \mathrm{h.c.} \Big)
-	\end{aligned}\nonumber\\
-	&\quad -\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1} }}\!\!\!\!\!\!\!\!\!\begin{aligned}[t] A(\ell)_{r+\ell,s}&K(\ell_1)_{r+\ell_1,s_1}
-		\Big( 2a^*_{r+\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r+\ell}\nonumber \\ &+ b^*_{s}(\ell) a^*_{r+\ell_1}[b_{-s_1}(-\ell_1),a^*_{r+\ell}]^*+ \mathrm{h.c.} \Big)
-	\end{aligned}\\
-\end{alignat}
-\end{comment}
-%%%%%%%%%%%%%%%
-\begin{alignat}{2}
-	E_{Q_1}(\Theta^m_{K}(P^q)) = &-
-	\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}} \Theta^m_{K}(P^q)(\ell)_{r,s}K(\ell_1)_{r,s_1}
-	\begin{aligned}[t]
-		&\Big( 2a^*_{r-\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1)a_{r-\ell} \\ & -\delta_{-s_1+\ell_1,r-\ell} b^*_{s}(\ell) a^*_{r-\ell_1}a^*_{-s_1}\Big)
-	\end{aligned}\nonumber\\
-	& -\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1} }}\!\!\!\!\!\!\!\!\!
-	\begin{aligned}[t] \Theta^m_{K}(P^q)(\ell)_{r+\ell,s}&K(\ell_1)_{r+\ell_1,s_1}
-		\Big( 2a^*_{r+\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r+\ell}\nonumber \\ &+ \delta_{-s_1,r+\ell} b^*_{s}(\ell) a^*_{r+\ell_1}a^*_{-s_1+\ell_1}\Big)
-	\end{aligned}\\
-	&+ \mathrm{h.c.} \equalscolon \sum\limits_{i=1}^{2}\sum\limits_{j=1}^{2} E_{Q_1}^{\,i,j} + \mathrm{h.c.}\nonumber
-\end{alignat}
-and
-\begin{alignat}{2}
-	2E_{Q_2}(\Theta^m_{K}(P^q)) &=
-	\!\!\!\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}} \!\!\!\begin{aligned}[t] &\Theta^m_{K}(P^q)(\ell)_{r,s}K(\ell_1)_{r,s_1}\Big( 4a^*_{r-\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{r-\ell} \nonumber\\ 
-		&\;+ 4\delta_{s,s_1} \delta_{\ell,\ell_1 } a^*_{r-\ell_1} a_{r-\ell} -2\delta_{s-\ell,s_1-\ell_1}a^*_{r-\ell_1} a^*_{-s_1} a_{-s} a_{r-\ell} \nonumber\\
-		&\;-2\delta_{s,s_1}a^*_{r-\ell_1} a^*_{-s_1+\ell_1}a_{-s+\ell} a_{r-\ell} - 2\delta_{-s_1+\ell_1,r-\ell} a^*_{r-\ell_1} a^*_{-s_1} b_{-s}(-\ell)\nonumber\\
-		&\;-\delta_{-s_1+\ell_1,r-\ell}\delta_{s,s_1}a^*_{r-\ell_1}a_{-s+\ell} - 2\delta_{-s+\ell,r-\ell_1}b^*_{-s_1}(-\ell_1)a_{-s}a_{r-\ell} \nonumber\\
-		&\;-2\delta_{-s+\ell,r-\ell_1}\delta_{s,s_1}a^*_{-s_1+\ell_1} a_{r-\ell} - \delta_{-s_1+\ell_1,r-\ell}\delta_{-s+\ell,r-\ell_1}a^*_{-s_1}a_{-s} \nonumber\\
-		&\;+\delta_{-s+\ell,r-\ell_1}\delta_{-s_1+\ell_1,r-\ell}\delta_{s,s_1}  \Big)    
-	\end{aligned}\\
-	&\quad +\!\!\!\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in (L_{\ell}-\ell)\\ \cap \\(L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1}}}\!\!\!\!\!\begin{aligned}[t] &\Theta^m_{K}(P^q)(\ell)_{r+\ell,s}K(\ell_1)_{r+\ell_1,s_1}\Big(4a^*_{r+\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{r+\ell} \nonumber\\
-		&\;+ 4\delta_{s,s_1} \delta_{\ell,\ell_1 } a^*_{r+\ell_1} a_{r+\ell} -2\delta_{s-\ell,s_1-\ell_1}a^*_{r+\ell_1} a^*_{-s_1} a_{-s} a_{r+\ell} \nonumber\\
-		&\;-2\delta_{s,s_1}a^*_{r+\ell_1} a^*_{-s_1+\ell_1}a_{-s+\ell} a_{r+\ell} + 2 \delta_{-s_1, r+\ell}a^*_{r+\ell_1}a^*_{-s_1+\ell_1}b_{-s}(-\ell)\nonumber\\
-		&\;-\delta_{-s_1,r+\ell}\delta_{s-\ell,s_1-\ell_1}a^*_{r+\ell_1}a_{-s} + 2\delta_{-s,r+\ell_1}b^*_{-s_1}(-\ell_1)a_{-s+\ell}a_{r+\ell} \nonumber\\
-		&\;-2\delta_{-s,r+\ell_1}\delta_{-s+\ell,-s_1+\ell_1}a^*_{-s_1}a_{r+\ell} - \delta_{-s_1,r+\ell}\delta_{-s,r+\ell_1}a^*_{-s_1+\ell_1}a_{-s+\ell}\nonumber\\
-		&\;+ \delta_{-s,r+\ell_1} \delta_{-s_1,r+\ell} \delta_{-s+\ell,-s_1+\ell_1} \Big)  
-	\end{aligned}\\
-	&\quad +\mathrm{h.c.} \equalscolon \sum\limits_{i=1}^{2}\sum\limits_{j=1}^{10} E_{Q_2}^{\,i,j} + \mathrm{h.c.} \nonumber\quad.
-\end{alignat}
-\begin{comment}
-\begin{alignat}{2}
-   2E_{Q_2}(A) &=
-    \!\!\!\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}} \!\!\!\begin{aligned}[t] &A(\ell)_{r,s}K(\ell_1)_{r,s_1}\Big( 4a^*_{r_1-\ell_1} b^*_{-s_1}(-\ell_1) b_{-s}(-\ell) a_{ r-\ell}\nonumber\\ 
-    &\; + 2a^*_{  r_1-\ell_1}[b_{-s}(-\ell),b^*_{-s_1}(-\ell_1)]a_{ r-\ell} + 2a^*_{r_1-\ell_1}[b_{-s_1}(-\ell_1),a^*_{ r-\ell}]^* b_{-s}(-\ell) \nonumber\\
-    &\; + a^*_{  r_1-\ell_1}\big[b_{-s}(-\ell),[b_{-s_1}(-\ell_1),a^*_{ r-\ell}]^*\big] + 2b^*_{-s_1}(-\ell_1)[b_{-s}(-\ell),a^*_{  r_1-\ell_1}]a_{ r-\ell}\nonumber\\
-    &\; +2\big[b_{-s_1}(-\ell_1),[b_{-s}(-\ell),a^*_{  r_1-\ell_1}]^*\big]^*a_{ r-\ell} - [ b_{-s_1}(-\ell_1), a^*_{ r-\ell}]^* [b_{-s}(-\ell), a^*_{r_1-\ell_1}]  \nonumber\\
-    &\; + \big\{ [b_{-s}(-\ell),a^*_{  r_1-\ell_1}],[b_{-s_1}(-\ell_1), a^*_{ r-\ell}]^* \big\} \Big)    
-    \end{aligned}\\
-    &\quad +\!\!\!\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in (L_{\ell}-\ell)\\ \cap \\(L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1}}}\!\!\!\begin{aligned}[t] &A(\ell)_{r+\ell,s} K(\ell_1)_{r+\ell_1,s_1}\Big( 4a^*_{r_1+\ell_1} b^*_{-s_1}(-\ell_1) b_{-s}(-\ell) a_{ r+\ell}\nonumber\\ 
-    	&\; + 2a^*_{  r_1+\ell_1}[b_{-s}(-\ell),b^*_{-s_1}(-\ell_1)]a_{ r+\ell} + 2a^*_{r_1+\ell_1}[b_{-s_1}(-\ell_1),a^*_{ r+\ell}]^* b_{-s}(-\ell) \nonumber\\
-    	&\; + a^*_{  r_1+\ell_1}\big[b_{-s}(-\ell),[b_{-s_1}(-\ell_1),a^*_{ r+\ell}]^*\big] + 2b^*_{-s_1}(-\ell_1)[b_{-s}(-\ell),a^*_{  r_1+\ell_1}]a_{ r+\ell}\nonumber\\
-    	&\; +2\big[b_{-s_1}(-\ell_1),[b_{-s}(-\ell),a^*_{  r_1+\ell_1}]^*\big]^*a_{ r+\ell} - [ b_{-s_1}(-\ell_1), a^*_{ r+\ell}]^* [b_{-s}(-\ell), a^*_{r_1+\ell_1}]  \nonumber\\
-    	&\; + \big\{ [b_{-s}(-\ell),a^*_{  r_1+\ell_1}],[b_{-s_1}(-\ell_1), a^*_{ r+\ell}]^* \big\}  \Big)   
-    \end{aligned}\\
-    &\phantom{=\;} +\mathrm{h.c.} -2\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\big\{ A(\ell)_,K(\ell)\big\}_{r,s}\epsilon_{r,s}(\ell,\ell).
-\end{alignat}
-\end{comment}
+
 Here, the first superscript refers to the momentum $r,s,s_1$ being summed over different sets and the second superscript refers to the different terms within, i.e., 2 terms for every $i\mathrm{th}$ sum in $E_{Q_1}$ and 10 terms for every $i\mathrm{th}$ sum in $E_{Q_2}$. These terms either have six, four, two or no fermionic operators. 
 
 Preliminary to bounding these errors, we identify certain terms in $E_{Q_1}^{i,j}, E_{Q_2}^{i,j}$ with each other to further reduce the number of terms to be dealt with while writing the error estimates.
 
-\begin{lemma}
-{\renewcommand{\arraystretch}{1.5}
-	\begin{tabular}[t]{lll}
-		 $\mathit{1.}\; E_{Q_1}^{1,2} = E_{Q_1}^{2,2}$\quad\quad& 
-		 $\mathit{2.}\; E_{Q_2}^{1,3} = E_{Q_2}^{2,4}$\quad\quad&
-		 $\mathit{3.}\; E_{Q_2}^{1,5} = E_{Q_2}^{2,5}$ \quad\quad\\
-		 $\mathit{4.}\; E_{Q_2}^{1,7} = E_{Q_2}^{2,7}$\quad\quad&
-		 $\mathit{5.}\; E_{Q_2}^{1,8} = 2E_{Q_2}^{1,6} =  2E_{Q_2}^{2,9}$\quad\quad&
-		 $\mathit{6.}\; E_{Q_2}^{2,8} = 2E_{Q_2}^{1,9} = 2E_{Q_2}^{2,6}$\quad\quad\\
-		 $\mathit{7.}\; E_{Q_2}^{1,10} = E_{Q_2}^{2,10}$\quad\quad
-		 
-\end{tabular}}
-\end{lemma}	 
-\begin{proof}
-	We begin with writing the terms explicitly and do the necessary identification in order to see that they are exactly the same.
-	We start by proving $E_{Q_1}^{1,2}=E_{Q_1}^{2,2}$.
-	\begin{align}
-		E_{Q_1}^{1,2} &={\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r \in L_{\ell}\cap  L_{\ell_1}\\s \in L_{\ell}, s_1\in L_{\ell_1}}} \!\!\!\Theta^m_K(P^q)(\ell)_{r,s} K_{r,s_1}(\ell_1)\Big( \delta_{-s_1+\ell_1,r-\ell} b^*_{s}(\ell) a^*_{r-\ell_1} a^*_{-s_1} \Big)\nonumber}\\
-		&=\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r \in L_{\ell}\cap  L_{\ell_1} \cap (-L_{\ell_1}+\ell_1+\ell)\\s \in L_{\ell}}} \!\!\!\Theta^m_K(P^q)(\ell)_{r,s} K_{r,-r+\ell_1+\ell}(\ell_1) \Big( b^*_{s}(\ell) a^*_{r-\ell_1} a^*_{r-\ell_1-\ell} \Big)\label{eq:EQ112}\\
-		E_{Q_1}^{2,2} &= -\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r \in  (L_{\ell}-\ell)  \cap   (L_{\ell_1}-\ell_1) \\ s \in L_{\ell}, s_1 \in L_{\ell_1}}} \!\!\!\! \Theta^m_K(P^q)(\ell)_{r+\ell,s}
-		K_{r+\ell_1,s_1}(\ell_1)\Big(\delta_{-s_1,r+\ell} b^*_{q}(\ell) a^*_{r+\ell_1}a^*_{-s_1+\ell_1}\Big) \nonumber\\
-		&=-\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r \in  (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1) \cap   (-L_{\ell_1}-\ell) \\ s \in L_{\ell}}}\Theta^m_K(P^q)(\ell)_{r+\ell,s} 
-		K_{r+\ell_1,-r-\ell}(\ell_1) \Big( b^*_{s}(\ell) a^*_{r+\ell_1} a^*_{r+\ell+\ell_1} \Big)  
-	\end{align}
-	Next, we substitute $r = r'-\ell $, which also changes the summed over set, which gives us
-	\begin{equation}
-		=-\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r' \in  L_{\ell} \cap (-L_{\ell_1}) \cap  (L_{\ell_1}-\ell_1+\ell)\\ s \in L_{\ell}}} \!\!\!\! \Theta^m_K(P^q)(\ell)_{r',s}
-		K_{r'+\ell_1-\ell,-r'}(\ell_1)\Big( b^*_{s}(\ell) a^*_{r'+\ell_1-\ell}a^*_{r'+\ell_1}\Big) 
-	\end{equation}
-	Then we flip the $\ell_1$ momenta, i.e., $\ell_1 = -\ell_1$ and use the symmetry $K(\ell)_{p,q} = K(-\ell)_{-p,-q}$ to have
-	\begin{align}
-		&=-\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r' \in  L_{\ell} \cap (L_{\ell_1}) \cap  (-L_{\ell_1}+\ell_1+\ell)\\ s \in L_{\ell}}}  \Theta^m_K(P^q)(\ell)_{r',s} K_{r'-\ell_1-\ell,-r'}(-\ell_1)\Big( b^*_{s}(\ell) a^*_{r'-\ell_1-\ell}a^*_{r'-\ell_1}\Big)\nonumber\\
-		&=-\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r' \in  L_{\ell} \cap (L_{\ell_1}) \cap (-L_{\ell_1}+\ell_1+\ell)\\ s \in L_{\ell}}} \Theta^m_K(P^q)(\ell)_{r',s} K_{-r'+\ell_1+\ell,r'}(\ell_1)\Big( b^*_{s}(\ell) a^*_{r'-\ell_1-\ell}a^*_{r'-\ell_1}\Big)\nonumber\\
-		&=\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r' \in  L_{\ell} \cap (L_{\ell_1}) \cap (-L_{\ell_1}+\ell_1+\ell)\\ s \in L_{\ell}}} \Theta^m_K(P^q)(\ell)_{r',s} K_{r',-r'+\ell_1+\ell}(\ell_1)\Big( b^*_{s}(\ell) a^*_{r'-\ell_1} a^*_{r'-\ell_1-\ell}\Big)\label{eq:EQ122} 
-	\end{align}
-	where in the last equality we used the CAR to exchange the two creation operators and $K(\ell)_{p,q}=K(\ell)_{q,p}$. 
-	
-	One can similarly prove $E_{Q_2}^{1,5}\!=\! E_{Q_2}^{2,5},\; E_{Q_2}^{1,6}\!=\! E_{Q_2}^{2,9},\; E_{Q_2}^{1,10}\!=\!E_{Q_2}^{2,10}\;\mathrm{and}\; E_{Q_2}^{1,9}\! =\! E_{Q_2}^{2,6}$ using the same identifications as above. 
-	For $ E_{Q_2}^{1,7}\! =\! E_{Q_2}^{2,7}$, we substitute $r=r'-\ell_1$  and then follow the same steps as above.
-	For $ 2E_{Q_2}^{i,6}\! =\! E_{Q_2}^{i,8}$ for $i=\{1,2\}$, we just interchange $\ell$ and $\ell_1$.   
-	For $E_{Q_2}^{1,3}\! =\! E_{Q_2}^{2,4} $, we use the CAR relation twice and interchange the $r$ and $s$ indices to get the desired result.
-\end{proof}
+
 \begin{remark}\label{q-q}
 	We can decompose the nested m-fold anti commutator, $\Theta^m_K(P^q)(\ell)$,  as
 	\begin{equation}
