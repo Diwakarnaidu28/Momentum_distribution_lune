@@ -355,6 +355,19 @@ Consider a family of symmetric operators $K(\ell):\ell^2(L_\ell)\rightarrow \ell
 \begin{equation}
 \mathcal{K} = \frac{1}{2}\sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell}K(\ell)_{r,s}\left(b_r(\ell)b_{-s}(-\ell)-b^*_{-s}(-\ell)b^*_{r}(\ell)\right)
 \end{equation}
+where, 
+\begin{equation}
+	K(\ell) = -\half\log(h^{-\half}_{\ell}(h^{\half}_{\ell}(h_{\ell}+2P_\ell)^{\half}h^{\half}_{\ell})h^{-\half}_{\ell})
+\end{equation}
+with $h_{\ell}, P_{\ell}: \ell^2(L_{\ell})\rightarrow \ell^2(L_{\ell})$, where $h_{\ell}$ is a positive self-adjoint operator, defined as 
+\begin{equation}\label{eq:hPdefs}
+	\begin{aligned}
+		h_\ell e_p &= \lambda_{\ell,p}e_p\; , \quad \lambda_{\ell,p} = \half\left(\abs{p}^2 - \abs{p-\ell}^2\right)\\
+		P_{\ell}(\cdot) &= \eva{v_\ell,\cdot}v_\ell \;, \quad v_\ell = \sqrt{g_\ell}\sum_{p \in L_{\ell}}e_p\;,\\
+		\eva{e_q,v_\ell}\eva{v_\ell,e_q}&=g_{\ell} = \frac{\hat{V}_{\ell}k_F^{-1}}{2(2\pi)^3}\;, \quad \text{for some } q \in L_\ell\;,
+	\end{aligned}
+\end{equation}
+where $(e_p)_{p\in L_\ell}$ is the standard orthonormal basis of $\ell^2(L_{\ell})$. 
 Next, we define the Bogoliubov transformation $ T_\lambda\coloneq e^{\lambda\mathcal{K}}$, where $\lambda \in \R$ , with $T_1=T$ which is a unitary due the fact that $\mathcal{K}$ is anti self-adjoint i.e. $\mathcal{K}=-\mathcal{K}^* $.\newline
 %\begin{lemma}[Commutator between $\mathcal{K} $ and number operators]
 %    For $q\in \Z^3_*$,
@@ -370,7 +383,7 @@ Next, we define the Bogoliubov transformation $ T_\lambda\coloneq e^{\lambda\mat
     \end{equation}
 \end{lemma}
 \begin{proof}
-    \textcolor{red}{to be filled}
+    Firstly, we interpret $K(\ell)_{r,s} = \eva{e_r, K(\ell)e_s}$. Secondly, we see that $\sum_{-p \in L_{-\ell}}e_{-p} = \sum_{p \in L_{\ell}}e_{p} $, as $-p \in L_{-\ell}$ is the same as $-p \in -L_{\ell}$ . Then it is clear from the definitions in \eqref{eq:hPdefs} that under the transformation $(\ell,r,s)\rightarrow(-\ell,-r,-s)$ the above statement holds. 
 \end{proof}
 \begin{lemma}[Commutator between $\mathcal{K} $ and Pair Operators]
 For $k \in \Z^3_*$, and $p \in L_{k}$, we consider the above defined Bogoliubov kernel which implies the relations,
@@ -380,7 +393,7 @@ For $k \in \Z^3_*$, and $p \in L_{k}$, we consider the above defined Bogoliubov 
 \end{align}
     where
 \begin{equation}\label{eq:commerrKb}
-    \mathcal{E}_{p}(k) = -\frac{1}{2}\sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell}K(\ell)_{r,s}\left\{\epsilon_{r,p}(\ell,k),b_{-s}(-\ell)\right\} 
+    \mathcal{E}_{p}(k) \coloneq -\frac{1}{2}\sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell}K(\ell)_{r,s}\left\{\epsilon_{r,p}(\ell,k),b_{-s}(-\ell)\right\} 
 \end{equation}
 \end{lemma}
 \begin{proof}
@@ -439,7 +452,7 @@ Let $A$ be a family of symmetric operators $A(\ell)$, for any $ \ell \in \Z^3_*,
     \end{equation}
  where
  \begin{equation}\label{eq:errKQ1}
-     E_{Q_1}(A)=- 2 \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(\mathcal{E}_{r}(\ell)b_{s}(\ell) + b^*_{s}(\ell)\mathcal{E}^*_{r}(\ell)\Big). 
+     E_{Q_1}(A)\coloneq- 2 \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(\mathcal{E}_{r}(\ell)b_{s}(\ell) + b^*_{s}(\ell)\mathcal{E}^*_{r}(\ell)\Big). 
  \end{equation}
 \end{lemma}
 \begin{proof}We begin with $[Q_1(A),\mathcal{K}]$.
@@ -464,7 +477,7 @@ Now we use the commutation relation \eqref{eq:13} and \eqref{eq:14} to get
 \end{alignat}
 Now we represent the second sum in (\ref{eq:Q1Kerr_not_con}) as $E_{Q_1}(A)$. Furthermore, we exchange $r$ and $s$ in first and fourth term of second sum in (\ref{eq:Q1Kerr_not_con}) and we have
 \begin{align}
-    E_{Q_1}(A)&= -\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(b^*_{s}(\ell)\mathcal{E}^*_{r}(\ell) + \mathcal{E}_{r}(\ell)b_{s}(\ell) + b^*_{s}(\ell)\mathcal{E}^*_{r}(\ell) + \mathcal{E}_{r}(\ell)b_{s}(\ell)\Big)\nonumber\\
+    E_{Q_1}(A)&\coloneq -\sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(b^*_{s}(\ell)\mathcal{E}^*_{r}(\ell) + \mathcal{E}_{r}(\ell)b_{s}(\ell) + b^*_{s}(\ell)\mathcal{E}^*_{r}(\ell) + \mathcal{E}_{r}(\ell)b_{s}(\ell)\Big)\nonumber\\
     &= - 2 \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(\mathcal{E}_{r}(\ell)b_{s}(\ell) + b^*_{s}(\ell)\mathcal{E}^*_{r}(\ell)\Big).
 \end{align}
 Continuing with (\ref{eq:Q1Kerr_not_con}) while having the error $E_{Q_1}(A)$.
@@ -501,7 +514,7 @@ We consider the above defined Bogoliubov kernel $\mathcal{K}$ and the quadratic 
 \end{equation}
 where,
 \begin{align}
-    E_{Q_2}(A) =
+    E_{Q_2}(A) \coloneq
     \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}&\Big(A(\ell)_{r,s}\big(\big\{\mathcal{E}^*_{r}(\ell), b_{-s}(-\ell)\big\} + \big\{ b^*_{-s}(-\ell) , \mathcal{E}_r(\ell) \big\} \big)-\big\{A(\ell)_,K(\ell)\big\}_{r,s}\epsilon_{r,s}(\ell,\ell)\Big)\label{eq:errKQ2} . 
 \end{align}
 \end{lemma}
@@ -535,7 +548,7 @@ Next we do the identification $s'\rightarrow -s'$ and then use the symmetry $K(\
 \end{alignat}
 Here we represent the second sum (in (\ref{eq:unrefcomerrq2k})) as $\tilde{E}_{Q_2}(A)$, the commutation error, which can be further written as
 \begin{equation}
-    \tilde E_{Q_2}(A) = \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big( \mathcal{E}^*_{r}(\ell)b_{-s}(-\ell) +b^*_{-s}(-\ell) \mathcal{E}_{r}(\ell)+b_{r}(\ell) \mathcal{E}^*_{-s}(-\ell)+ \mathcal{E}_{-s}(-\ell)b^*_{r}(\ell) \Big)\label{eq:Q2Kerr_no_mod}
+    \tilde E_{Q_2}(A) \coloneq \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big( \mathcal{E}^*_{r}(\ell)b_{-s}(-\ell) +b^*_{-s}(-\ell) \mathcal{E}_{r}(\ell)+b_{r}(\ell) \mathcal{E}^*_{-s}(-\ell)+ \mathcal{E}_{-s}(-\ell)b^*_{r}(\ell) \Big)\label{eq:Q2Kerr_no_mod}
 \end{equation}
 Then in the last two terms, we exchange the indices $r$ and $s$ and reflect all the momenta (i.e. $\ell\rightarrow -\ell,r\rightarrow -r,s\rightarrow -s$) to get
 \begin{align}
@@ -575,7 +588,7 @@ And finally to interpret the terms as a matrix product, we exchange $r$ and $s'$
 \end{alignat}
 And we define $E_{Q_2}(A(\ell))$ as the total error from the commutation, which can be succinctly written as 
 \begin{equation}
-    E_{Q_2}(A) =
+    E_{Q_2}(A) \coloneq
     \sum\limits_{\ell \in \Z^3_*} \sum\limits_{r,s \in L_{\ell}} \Big( A(\ell)_{r,s} \big( \big\{ \mathcal{E}^*_{r}(\ell), b_{-s}(-\ell) \big\} + \big\{ b^*_{-s}(-\ell) , \mathcal{E}_r(\ell) \big\} \big)-\big\{A(\ell)_,K(\ell) \big\}_{r,s} \epsilon_{r,s}(\ell,\ell) \Big)\;.  
 \end{equation}
 Then, we have 
@@ -627,7 +640,7 @@ and we get
 \begin{proof}
 We start by applying Duhamel's formula to $T_1^*\left(n_q+n_{-q}\right)T_1$ and we have
 \begin{align}
-    &\left(n_q+n_{-q}\right) + \bint\limits_0^1 \di\lambda  \fulld{\lambda} \left(T_\lambda^*\left(n_q+n_{-q}\right)T_\lambda \right)\nonumber\\
+    T_1^*\left(n_q+n_{-q}\right)T_1&=\left(n_q+n_{-q}\right) + \bint\limits_0^1 \di\lambda  \fulld{\lambda} \left(T_\lambda^*\left(n_q+n_{-q}\right)T_\lambda \right)\nonumber\\
     &=\left(n_q+n_{-q}\right) +\bint\limits_0^1 \di\lambda  \eva{\Omega, T_\lambda^*(-\mathcal{K})\left(n_q+n_{-q}\right)T_\lambda+T_\lambda^*\left(n_q+n_{-q}\right)\mathcal{K}T_\lambda\Omega} \nonumber\\
     &= \left(n_q+n_{-q}\right) +\bint\limits_0^1 \di\lambda  \eva{\Omega, T_\lambda^*[\left(n_q+n_{-q} \right),\mathcal{K}]T_\lambda\Omega} \label{eq:halfexp}.
 \end{align}
@@ -663,11 +676,11 @@ We then arrive at
     \end{aligned}\nonumber\\
     &= \left(n_q+n_{-q}\right) 
     -\bint\limits_0^1 \!\!\di\lambda\:
-     T_\lambda^*\bigg( \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\Big\{K(\ell),P^q\Big\}_{r,s}\times(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell))\bigg)T_\lambda\label{eq:anticomKDelta} 
+     T_\lambda^*\bigg( \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\Big\{K(\ell),P^q\Big\}_{r,s}(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell))\bigg)T_\lambda\label{eq:anticomKDelta} 
 \end{alignat}
 Using the definition of $Q_2$, \eqref{eq:Q2}, we arrive at 
 \begin{equation}
-    (\ref{eq:anticomKDelta}) = \left(n_q+n_{-q}\right) -\bint\limits_0^1 \!\!\di\lambda
+    T_1^*\left(n_q+n_{-q}\right)T_1 = \left(n_q+n_{-q}\right) -\bint\limits_0^1 \!\!\di\lambda
      \:T_\lambda^* Q_2 \Big(\big\{K(\ell),P^q\big\} \Big)T_\lambda
 \end{equation}
 which is the claimed statement.\end{proof}
@@ -733,8 +746,8 @@ while following
 For $\lambda \in [0,1] $ and let $Q_2$ be the quadratic operator defined above for symmetric $A : \ell^2(L_{\ell})\rightarrow \ell^2(L_{\ell})$ where $\ell \in \Z^3_*$, then 
     \begin{align}
         T^*_{\lambda}Q_2(A)T_{\lambda} &= \sum\limits_{m=1}^{n} (-1)^{m-1}\frac{\lambda^{m-1}}{(m-1)!}Q_{\sigma(m-1)}(\Theta^{m-1}_K(A)) \nonumber - \sum\limits_{m=1}^{\floor{(n+1)/2}}\frac{\lambda^{(2m-1)}}{(2m-1)!}\sum\limits_{\ell\in \Z^3_*}\sum\limits_{r\in L_\ell}(\Theta^{(2m-1)}_K(A))_{r,r}    \nonumber\\
-        &+\sum\limits_{m=1}^{n} \bint\limits_{\Delta ^m_\lambda}\di^m\underline{\lambda} \big(T^*_{\lambda_{m}}E_{Q_{\sigma(m-1)}}(\Theta^{m-1}_K(A))T_{\lambda_{m}}\big)
-        +\bint\limits_{\Delta^{n}_{\lambda}}\di^n\underline{\lambda}(-1)^{n}\Big( T^*_{\lambda_n}(Q_{\sigma(n)}(\Theta^n_K(A))T_{\lambda_n}\Big)
+        &+\sum\limits_{m=1}^{n} \bint\limits_{\Delta ^m_\lambda}\di^m\underline{\lambda} T^*_{\lambda_{m}}E_{Q_{\sigma(m-1)}}(\Theta^{m-1}_K(A))T_{\lambda_{m}}
+        +\bint\limits_{\Delta^{n}_{\lambda}}\di^n\underline{\lambda}(-1)^{n} T^*_{\lambda_n}Q_{\sigma(n)}(\Theta^n_K(A))T_{\lambda_n}
     \end{align}
     where $\sigma(m), \Theta^n_{K}$ and the simplex integral are defined as above and, $E_{Q_1}$ and $E_{Q_2}$ are defined as in (\ref{eq:errKQ1}) and (\ref{eq:errKQ2}) respectively.  
 \end{lemma}
@@ -832,8 +845,8 @@ The proof follows by plugging in the definitions of the operators $Q_1$ and $Q_2
 \begin{proposition}[Final Expectation]\label{prop:finexpan}
 For $q \in B^c_{\mathrm{F}}$ and the vacuum state $\Omega \in \HH_N$, we have
     \begin{align}
-    \eva{\Omega, T_1^*\half\left(n_q+n_{-q}\right)T_1\Omega} &= \half\sum\limits_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \sum\limits_{m=1}^{\floor{(n+1)/2}} \frac{\mathrm{Tr}\,\Theta^{(2m)}_K \big(P^q\big)}{(2m)!} - \half\eva{\Omega,\sum\limits_{m=1}^{n} E_m(P^q))\Omega}\nonumber\\
-    &\quad-\half\bint\limits_{\Delta^{n}_1}\di^n\underline{\lambda} (-1)^n\eva{\Omega, T^*_{\lambda_n}Q_{\sigma(n)}(\Theta^{n+1}_{K}(P^q)T_{\lambda_n}\Omega}
+    \eva{\Omega, T_1^*\half\left(n_q+n_{-q}\right)T_1\Omega} &= \half\sum\limits_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \sum\limits_{m=1}^{\floor{(n+1)/2}} \frac{\mathrm{Tr}\,\Theta^{(2m)}_K \big(P^q\big)}{(2m)!} - \half\eva{\Omega,\sum\limits_{m=1}^{n} E_m(P^q)\Omega}\nonumber\\
+    &\quad-\half\bint\limits_{\Delta^{n}_1}\di^n\underline{\lambda} (-1)^n\eva{\Omega, T^*_{\lambda_n}Q_{\sigma(n)}(\Theta^{n+1}_{K}(P^q))T_{\lambda_n}\Omega}
     \end{align}
 \end{proposition}
 \begin{proof}
@@ -1112,11 +1125,20 @@ For $q \in B^c_{\mathrm{F}}$, we have the following bound
 \begin{remark}
     The above bound for the head term is not optimal but in the infinite $n$ limit proves to be sufficient. \textcolor{red}{Write why it is not optimal}
 \end{remark}
-\begin{lemma}[The infinite $n$ limit]\label{lem:inftylimexp}
+\begin{proposition}[The infinite $n$ limit]\label{lem:inftylimexp}
     \begin{equation}\label{eq:inftylimexp}
-    \lim\limits_{n\rightarrow\infty}\eva{\Omega, T_1^*\half\left(n_q+n_{-q}\right)T_1\Omega} = \half\sum\limits_{\ell\in \Z^3_*} \mathds{1}_{L_\ell}(q) \left(\cosh (2K(\ell))-1\right)_{ q,q} -\half \sum\limits_{m=1}^\infty \eva{\Omega, E_m(P^q)\Omega}
+   \eva{\Omega, T_1^*\half\left(n_q+n_{-q}\right)T_1\Omega} = n_q^b -\half \sum\limits_{m=1}^\infty \eva{\Omega, E_m(P^q)\Omega}
     \end{equation}
-\end{lemma} 
+where 
+\begin{equation}\label{eq:nqb}
+	n_q^b \coloneq \half\sum\limits_{\ell\in \Z^3_*} \mathds{1}_{L_\ell}(q) \left(\cosh (2K(\ell))-1\right)_{ q,q} 
+\end{equation}
+and 
+\begin{equation}\label{eq:errEm}
+	E_m(P^q) \coloneq -\bint\limits_{\Delta^{m}_1} \di^m\underline{\lambda} T^*_{\lambda_m} E_{Q_{\sigma(m-1)}}\left(\Theta^{m}_{K}(P^q)\right)T_{\lambda_m} .
+\end{equation}
+with $E_{Q_1}$ and $E_{Q_2}$ defined above and, $\Theta^n_{K}$, the simplex integral and $\sigma(n)$ are defined above.
+\end{proposition} 
 \begin{proof}
     We take the $n\rightarrow \infty$ in Proposition \ref{prop:finexpan} and from Proposition \ref{prop:headerr} we see that the last term in the expansions tends to $0$ in the limit. Hence we obtain the above expression.
 \end{proof}
@@ -1358,7 +1380,7 @@ Preliminary to bounding these errors, we identify certain terms in $E_{Q_1}^{i,j
 	\begin{align}
 		E^{\,1,10}_{Q_2} &= \sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}} \!\!\!\Theta^m_{K}(P^q)(\ell)_{r,s}K(\ell_1)_{r,s_1}(\delta_{-s+\ell,r-\ell_1}\delta_{-s_1+\ell_1,r-\ell}\delta_{s,s_1}) \nonumber\\
 		&= \sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}} \!\!\!\Theta^m_{K}(P^q)(\ell)_{r,-r+\ell+\ell_1}K(\ell_1)_{r,-r+\ell+\ell_1}\nonumber\\
-		&= \sum\limits_{\ell,\ell_1 \in \Z^3_*}\mathds{1}_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}}(q)\Bigg( 2 K^m(\ell )_{q,-q+\ell+\ell_1}K(\ell_1)_{q,-q+\ell+\ell_1}+ \nonumber \\  &\quad +\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}} \sum\limits_{j=1}^{m-1} {{m}\choose j}K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,-r+\ell+\ell_1} K(\ell_1)_{r,-r+\ell+\ell_1} \Bigg)\nonumber\\
+		&= \sum\limits_{\ell,\ell_1 \in \Z^3_*}\mathds{1}_{\substack{ L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}}(q)\Bigg( 2 K^m(\ell )_{q,-q+\ell+\ell_1}K(\ell_1)_{q,-q+\ell+\ell_1}+ \nonumber \\  &\quad +\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}} \sum\limits_{j=1}^{m-1} {{m}\choose j}K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,-r+\ell+\ell_1} K(\ell_1)_{r,-r+\ell+\ell_1} \Bigg)\nonumber\\
 		&\leq C\,  k_{F}^{-2} \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg).
 	\end{align} 
 	From the bounds in Lemma \ref{lem:normsk}, it is evident that this term is of order $k_F^{-2}$, i.e., leading order.
@@ -2171,21 +2193,21 @@ We know that depending on $m$, we either have $E_m = E_{Q_1}(\Theta^m_K(P^q))$ o
 	For any $m$, we have $E_m(P^q)$, as defined in (\ref{eq:errEm}), and we have
 	\begin{equation}
 		\abs{\eva{\Omega, E_m(P^q) \Omega}} \leq \; C_m(\ell,\ell_1)\left( k_{F}^{-\frac{3}{2}} \Xi^\half
-		+ k_{F}^{-1}\Xi^{\frac{3}{4}} \right)+ C'_m(\ell,\ell_1) k_{F}^{-1}\Xi \label{eq:finalEmest}
+		+ k_{F}^{-1}\Xi^{\frac{3}{4}} \right)+ (\sigma(m)-1)C'_m(\ell,\ell_1) k_{F}^{-1}\Xi \label{eq:finalEmest}
 	\end{equation}
 where
 \begin{align}
-	C_m(\ell,\ell_1)&= C\,  \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)\nonumber\\
-	C'_m(\ell,\ell_1)&= C\,  \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^{m+1}+\hat{V}(\ell)^m\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)\,.\nonumber
+	C_m(\ell,\ell_1)&= \frac{C}{m!}\,  \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)\nonumber\\
+	C'_m(\ell,\ell_1)&= \frac{C}{m!}\,  \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^{m+1}+\hat{V}(\ell)^m\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)\,.\nonumber
 \end{align}
 \end{lemma}
 \begin{proof}
-	It follows from Lemmas \ref{lem:finEQ1est} and \ref{lem:finEQ2est}. We note that  $k_F^{-2}\Xi\leq k_F^{-1}\Xi$. Hence we can combine the terms just with a different constant.
+	It follows from Lemmas \ref{lem:finEQ1est} and \ref{lem:finEQ2est}. We note that  $k_F^{-2}\Xi\leq k_F^{-1}\Xi$. Hence we can combine the terms just with a different constant which also includes the factor coming from the simplex integral.
 \end{proof}
 Next, in order to bound \eqref{eq:finalEmest} we will employ a bootstrap technique, as in [BL'23]. Before we do that, we simplify the expression so it is easier to work with it.
 We observe that 
 \begin{equation}
-	k_{F}^{-\frac{3}{2}} \Xi^\half = (k_{F}^{-\frac{3}{2} +\epsilon} ) (k_{F}^{-\epsilon} \Xi^\half) \leq \half(k_{F}^{-\frac{3}{2} +\epsilon} )^2 + \half(k_{F}^{-\epsilon} \Xi^\half)^2 = \half(k_{F}^{-3 +2\epsilon}) + \half(k_{F}^{-2\epsilon} \Xi)
+	k_{F}^{-\frac{3}{2}} \Xi^\half = (k_{F}^{-\frac{3}{2} +\epsilon} ) (k_{F}^{-\epsilon} \Xi^\half) \stackrel{\text{(Young's ineq)} }{\leq} \half(k_{F}^{-\frac{3}{2} +\epsilon} )^2 + \half(k_{F}^{-\epsilon} \Xi^\half)^2 = \half(k_{F}^{-3 +2\epsilon}) + \half(k_{F}^{-2\epsilon} \Xi)
 \end{equation}
 We know that the leading order of \eqref{eq:inftylimexp} is of order $k_F^{-2}$, i.e., we optimise the above expression for the choice $\Xi \sim k_F^{-2}$. Then we have $-3 +2\epsilon = -2\epsilon -2 $, which implies $\epsilon =\frac{1}{4}$. 
 Then we have  
@@ -2231,6 +2253,80 @@ We know that the leading order terms scale as $k_F^{-2}$, then we have
 	\Xi = \frac{k_F^{-2}}{(1 - Ck_F^{-\frac{1}{2}})}
 \end{equation}
 For sufficiently large $k_F$ (or sufficiently large $N$), we have that $\Xi\leq k_F^{-2}$. Next we use this bound again in \eqref{eq:prebootexp} to get the result.
+\end{proof}
+
+\subsection{Diagonal matrix elements of Leading order}
+We evaluate the diagonal matrix elements of the leading order $n_q^b$ defined in \eqref{eq:nqb}, i.e., hyperbolic cosine of the matrix $K(\ell)$ using functional calculus.
+From the definition of the Bogoliubov transformation we know that $K(\ell): \ell^2(L_{\ell})\rightarrow \ell^2(L_{\ell})$ is
+\begin{equation}
+	K(\ell) = -\half\log(h^{-\half}_{\ell}(h^{\half}_{\ell}(h_{\ell}+2P_\ell)^{\half}h^{\half}_{\ell})h^{-\half}_{\ell})
+\end{equation}
+with $h_\ell, P_{\ell}$ defined in \eqref{eq:hPdefs}. Then
+\begin{equation}
+	K(\ell) = -\half\log\left(h^{-\half}_{\ell}\big(h^2_{\ell}+2P_{h^{\half}\ell}\big)^{\half}h^{-\half}_{\ell}\right)\;.
+\end{equation}
+
+To evaluate the diagonal matrix element, we use the following integral identities for a symmetric matrix $A$,
+\begin{equation}\label{eq:intid}
+	A^\half = \frac{2}{\pi}\bint\limits_{0}^{\infty}\left(1- \frac{t^2}{A+t^2}\right)\mathrm{d}t\;,\quad A^{-\half} = \frac{2}{\pi}\bint\limits_{0}^{\infty} \frac{1}{A+t^2} \mathrm{d}t \;,
+\end{equation}
+and the Sherman-Morrison formula.
+\begin{lemma}[Sherman-Morrison Formula]
+	Let $A: \ell^2(L_{\ell})\rightarrow \ell^2(L_{\ell})$,\footnote{here, $\ell^2(L_{\ell})$ can be replaced by any Hilbert space} be an invertible self-adjoint operator. Then for any $w \in \ell^2(L_{\ell})$ and $c \in \C$, the operator $A+cP_w$ is invertible if and only if $\eva{w, A^{-1}w} \neq -c^{-1}$, with the inverse
+	\begin{equation}\label{eq:shermor}
+		(A+cP_w)^{-1} = A^{-1} - \frac{c}{1+c\eva{w, A^{-1}w}}P_{A^{-1}w}\;.
+	\end{equation}
+\end{lemma}
+\begin{proposition}
+	For $q \in \Z^3$, we have  
+	\begin{equation}
+		n_q^b = \sum\limits_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \frac{1}{\pi}\bint\limits_{0}^{\infty} \frac{g_\ell (t^2-\lambda^2_{\ell,q}) (t^2 + \lambda^2_{\ell,q})^{-2}}{1 + 2g_\ell \sum_{p \in L_{\ell}}\lambda_{\ell,p} (t^2+\lambda^2_{\ell,p})^{-1}} \mathrm{d}t \;.
+	\end{equation}
+\end{proposition}
+\begin{proof}
+The leading order term can be written as
+\begin{equation}
+	\cosh(2K)-1 = \half\left(e^{-2K}-2+e^{2K}\right) = \half\left((e^{-2K}-1)-(1-e^{2K})\right) 
+\end{equation}
+with 
+\begin{align}
+	e^{-2k} &= h^{-\half}_{\ell} \big(h^2_{\ell} +2P_{h^{\half}\ell}\big)^{\half} h^{-\half}_{\ell}\\
+	e^{2k} &=  h^{\half}_{\ell} \big(h^2_{\ell} +2P_{h^{\half}\ell}\big)^{-\half} h^{\half}_{\ell}\;.
+\end{align}
+Then
+\begin{equation}
+	\eva{e_q, (\cosh(2K)-1) e_q} = \half\eva{e_q, (e^{-2K}-1)e_q}-\half\eva{e_q,(1-e^{2K})e_q}
+\end{equation}
+Now, to evaluate $\eva{e_q, (e^{-2K}-1)e_q}$, we begin with 
+\begin{align}
+	\big(h^2_{\ell} +2P_{h^{\half}\ell}\big)^{\half} &= \frac{2}{\pi}\bint\limits_{0}^{\infty}\left(1- \frac{t^2}{t^2+h^2_{\ell} +2P_{h^{\half}\ell}}\right)\mathrm{d}t\nonumber\\
+	&= \frac{2}{\pi}\bint\limits_{0}^{\infty}1- t^2\left((t^2+h_{\ell}^2)^{-1} - \frac{2}{1+ 2\eva{h^{\half}_\ell v_\ell ,(t^2+h^2_{\ell})^{-1} h^\half_\ell v_\ell}} \right) P_{(t^2+h^2_{\ell})^{-1}h^{\half}_\ell\ell}\mathrm{d}t\nonumber\\
+	&= h_{\ell} + \frac{2}{\pi}\bint\limits_{0}^{\infty} \frac{2t^2}{1+ 2\eva{h^{\half}_\ell v_\ell ,(t^2+h^2_{\ell})^{-1} h^\half_\ell v_\ell}}  P_{(t^2+h^2_{\ell})^{-1}h^{\half}_\ell\ell}\mathrm{d}t \label{eq:e-2k}
+\end{align}
+where we used \eqref{eq:intid} and \eqref{eq:shermor} in the first and second equality respectively.
+Then we use \eqref{eq:e-2k} to get
+\begin{align}
+	\eva{e_q, (e^{-2K}-1)e_q} &= \eva{e_q,  h^{-\half}_{\ell} \big(h^2_{\ell} +2P_{h^{\half}\ell}\big)^{\half} h^{-\half}_{\ell} e_q} - 1\nonumber\\
+	 &= \eva{e_q,  h^{-\half}_{\ell} \big( h_{\ell} + \frac{2}{\pi}\bint\limits_{0}^{\infty} \frac{2t^2}{1+ 2\eva{h^{\half}_\ell v_\ell ,(t^2+h^2_{\ell})^{-1} h^\half_\ell v_\ell}}  P_{(t^2+h^2_{\ell})^{-1}h^{\half}_\ell\ell}\mathrm{d}t\big)^{\half} h^{-\half}_{\ell} e_q} - 1\nonumber\\
+	&= \frac{2}{\pi}\bint\limits_{0}^{\infty} \frac{2t^2}{1+ 2\eva{h^{\half}_\ell v_\ell ,(t^2+h^2_{\ell})^{-1} h^\half_\ell v_\ell}}  \eva{e_q,h^{-\half}_{\ell} P_{(t^2+h^2_{\ell})^{-1}h^{\half}_\ell\ell}h^{-\half}_{\ell} e_q}\mathrm{d}t\nonumber\\
+	&= \frac{2}{\pi}\bint\limits_{0}^{\infty} \frac{2g_\ell t^2 (t^2+\lambda^2_{\ell,q})^{-2}}{1+ 2g_\ell\sum_{p \in L_{\ell}}\lambda_{\ell,p}(t^2+\lambda^2_{\ell,p})^{-1} }  \mathrm{d}t
+\end{align}
+Similarly we can proceed with $\eva{e_q,(1-e^{2K})e_q}$. We again use \eqref{eq:intid} and \eqref{eq:shermor} to get
+\begin{align}
+	\big(h^2_{\ell} +2P_{h^{\half}\ell}\big)^{-\half} &= \frac{2}{\pi}\bint\limits_{0}^{\infty}\left( \frac{1}{t^2+h^2_{\ell} +2P_{h^{\half}\ell}}\right)\mathrm{d}t\\
+	&= h_{\ell}^{-1} - \frac{2}{\pi}\bint\limits_{0}^{\infty} \frac{2}{1+ 2\eva{h^{\half}_\ell v_\ell ,(t^2+h^2_{\ell})^{-1} h^\half_\ell v_\ell}}  P_{(t^2+h^2_{\ell})^{-1}h^{\half}_\ell\ell}\mathrm{d}t\,.\label{eq:e2k}
+\end{align}
+Then we use \eqref{eq:e2k} to get
+\begin{align}
+	\eva{e_q, (1-e^{2K})e_q} &= 1-\eva{e_q,  h^{\half}_{\ell} \big(h^2_{\ell} +2P_{h^{\half}\ell}\big)^{-\half} h^{\half}_{\ell} e_q}\nonumber\\
+	&= \frac{2}{\pi}\bint\limits_{0}^{\infty} \frac{2}{1+ 2\eva{h^{\half}_\ell v_\ell ,(t^2+h^2_{\ell})^{-1} h^\half_\ell v_\ell}}  \eva{e_q,h^{\half}_{\ell} P_{(t^2+h^2_{\ell})^{-1}h^{\half}_\ell\ell}h^{\half}_{\ell} e_q}\mathrm{d}t\nonumber\\
+	&= \frac{2}{\pi}\bint\limits_{0}^{\infty} \frac{2g_\ell \lambda_{\ell,q}^2 (t^2+\lambda^2_{\ell,q})^{-2}}{1+ 2g_\ell\sum_{p \in L_{\ell}}\lambda_{\ell,p}(t^2+\lambda^2_{\ell,p})^{-1} }  \mathrm{d}t\label{eq:e2kfin}
+\end{align}
+Then we have 
+\begin{equation}
+		\eva{e_q, (\cosh(2K)-1) e_q} = \frac{1}{\pi}\bint\limits_{0}^{\infty} \frac{2g_\ell (t^2-\lambda_{\ell,q}^2) (t^2+\lambda^2_{\ell,q})^{-2}}{1+ 2g_\ell\sum_{p \in L_{\ell}}\lambda_{\ell,p}(t^2+\lambda^2_{\ell,p})^{-1} }  \mathrm{d}t
+\end{equation}
+Now substituting this in \eqref{eq:nqb} results in the claim above.
 \end{proof}
 %\subsubsection{This is an example for third level head---subsubsection head}\label{subsubsec2}
 %\section{Equations}\label{sec4}
