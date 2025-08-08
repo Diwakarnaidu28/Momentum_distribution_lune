@@ -1091,25 +1091,21 @@ We add together the bounds from Lemmas~\ref{lem:EQ111} and~\ref{lem:EQ112} and u
 
 
 \begin{lemma}[$E_{Q_2}$]\label{lem:finEQ2est}
-    For any $\xi_\lambda \in \HH_N$, we have
-    \begin{align}
-    	\abs{\eva{\xi_\lambda, E_{Q_2}\!\left(\Theta^m_K(P^q)\right)  \xi_\lambda}} \leq \; &C\,  k_{\F}^{-\frac{3}{2}} \Xi^\half \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg) \left(\norm { (\NN+1)^{\frac{3}{2}} \xi_\lambda } + \norm { (\NN+1)^{\frac{1}{2}} \xi_\lambda } \right)\nonumber\\
-    	\quad+ &C\, k_{\F}^{-1}\Xi^{\frac{3}{4}} \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg) \Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)  \norm{ (\NN+1)^2\xi_\lambda}^\half \nonumber\\ 
-    	\quad+ &C\, k_{\F}^{-2}\Xi^{\frac{1}{2}} \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg) \Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)  \norm{ (\NN+1)\xi_\lambda} \nonumber\\
-    	\quad+ &C\, k_{\F}^{-1}\Xi \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^{m+1}\Bigg) + C\, k_{\F}^{-2}\Xi \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg) \Bigg(\sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg) \label{eq:genEQ2est}
-    \end{align}
-    Furthermore, for $\xi_\lambda = T_{\lambda}\Omega$, we have 
-    \begin{align}
-    	\abs{\eva{ T_{\lambda}\Omega, E_{Q_2}\!\left(\Theta^m_K(P^q) \right)  T_{\lambda}\Omega}} \leq \; &C\,  \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)\left( k_{\F}^{-\frac{3}{2}} \Xi^\half 
-    	+ k_{\F}^{-1}\Xi^{\frac{3}{4}} + k_{\F}^{-2}\Xi \right)\nonumber\\
-    	\quad + &C\, \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^{m+1}\Bigg)  k_{\F}^{-1}\Xi \label{eq:finalEQ2est}
-    \end{align}
+For $ q \in \Z^3 $, $\xi_\lambda = e^{-\lambda \cK} \Omega$ and $ \lambda \in [0,1] $, there exists a constant $ C > 0 $ such that for all $ m \in \NNN $,
+\begin{equation}\label{eq:genEQ2est}
+	\abs{\eva{\xi_\lambda, E_{Q_2}\!\left(\Theta^m_K(P^q)\right)  \xi_\lambda}} 
+	\leq C \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
+		+ k_{\F}^{-1}\Xi^{\frac{3}{4}}
+		+ k_{\F}^{-1}\Xi \right)
+		\Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg) \;. \\
+\end{equation}
 \end{lemma}
+
 \begin{proof}
     	The first bound follows from Lemmas \ref{lem:EQ211}, \ref{lem:EQ212}, \ref{lem:EQ213}, \ref{lem:EQ215}, \ref{lem:EQ217},and \ref{lem:EQ218}. And the last bound follows from the Gr\"onwall's bound, Lemma \ref{lem:gronNest}. We also note that $k_{\F}^{-\frac{3}{2}} \Xi^\half 
     	\geq k_{\F}^{-2} \Xi^\half $. 
 \end{proof}
-
+%TODO move this proof down.
 
 
 \begin{lemma}[$E_{Q_2}^{1,1}$]\label{lem:EQ211}
@@ -1416,7 +1412,7 @@ Then adding \eqref{eq:estEQ2181},\eqref{eq:estEQ2182} and \eqref{eq:estEQ2183} a
 \end{proof}
 
 
-\section{???}
+\section{Conclusion of Theorem ???}
 
 
 We know that depending on $m$, we either have $E_m = E_{Q_1}(\Theta^m_K(P^q))$ or $E_{Q_2}(\Theta^m_K(P^q))$; $E_m$ being the error in Lemma \ref{lem:inftylimexp}. We observe that the final $E_{Q_1}$ estimate is contained in the final $E_{Q_2}$ estimate, albeit for a different $m$. Hence we can write the estimate for $E_m$ for any $m$. 
@@ -1482,37 +1478,83 @@ For sufficiently large $k_F$ (or sufficiently large $N$), we have that $\Xi\leq 
 \label{subsec:leading_order_control}
 
 
-To be written
+In this section, we prove the claimed scalings (???) of the leading-order terms $ n_q^{\b} $~\eqref{eq:???} and $ n_q^{\ex} $~\eqref{eq:???}.
+
+\begin{proposition}[Control of the bosonized momentum distribution] \label{prop:nqb_nqex_bounds}
+Recall the definitions of the bosonized and exchange excitation densities $ n_q^{\b} $ (???) and $ n_q^{\ex} $ (???), as well as of the excitation energy $ e(q) := ||q|^2 - k_{\F}^2| $. Then, for any fixed potential $ \hat{V} \in L^1(\Z^3_*) $, there exists a constant $ C > 0 $ such that for all particle numbers $ N = |B_{\F}| \sim k_{\F}^3 $ and all $ q \in \Z^3 $,
+\begin{equation} \label{eq:nqb_nqex_upperbound}
+	n_q^{\b}
+	\le C k_{\F}^{-1} e(q)^{-1} \;, \qquad
+	|n_q^{\ex}|
+	\le C k_{\F}^{-2} e(q)^{-2} \;.
+\end{equation}
+Further, there exists a potential $ \hat{V} \in L^1(\Z^3_*) $, some $ c > 0 $, and two sequences $ (k_{\F}^{(n)})_{n \in \NNN} \subset (0,\infty) $ and $ (q_n)_{n \in \NNN} \subset \Z^3 $ with $ k_{\F}^{(n)} \to \infty $, such that for all $ n \in \NNN $,
+\begin{equation} \label{eq:nqb_nqex_lowerbound}
+	n_{q_n}^{\b}
+	\ge c (k_{\F}^{(n)})^{-1} e(q_n)^{-1} \;, \qquad
+	\textcolor{red}{|n_q^{\ex}|
+	\ge c k_{\F}^{-2} e(q)^{-2}} \;.
+\end{equation}
+\end{proposition}
+\begin{proof}
+We focus on the case $ q \in B_{\F}^c $, as $ q \in B_{\F} $ is treated analogously. For the lowed bound on $ n_q^{\b} $, we expand the $ \cosh $ in~\eqref{eq:???} and use Lemma~\ref{lem:normsk}, as well as $ 2 \lambda_{\ell,q} = e(q) + e(q - \ell) \ge e(q) $
+\begin{equation}
+	n_q^{\b}
+	\le \half \sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum_{m=1}^{\infty} \frac{4^m |(K(\ell)^{2m})_{q,q}|}{(2m)!}
+	\le C \sum_{\ell \in \Z^3_*} \frac{k_{\F}^{-1}}{\lambda_{\ell,q}} \sum_{m=1}^{\infty} \frac{4^m \hat{V}(\ell)^{2m}}{(2m)!}
+	\le C \frac{k_{\F}^{-1}}{e(q)} \;.
+\end{equation}
+For $ n_q^{\ex} $, we expand the anticommutator via~\eqref{eq:q-q} and then apply the buonds of Lemma~\ref{lem:normsk}, as well as~\cite[Prop.~A.2]{CHN21} $ \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \le C k_{\F} $
+\todo{Check the factor of $ \frac{2^m}{m!} $}
+\begin{equation}
+\begin{aligned}
+	|n_q^{\ex}|
+	&\le C \sum_{m=1}^\infty \frac{2^m}{m!} \sum_{\ell,\ell_1 \in \Z^3_*}
+		\abs{K(\ell)^m_{q,-q+\ell+\ell_1}}
+		\abs{K(\ell_1)_{q,-q+\ell+\ell_1}} \\
+		&\quad + C \sum_{1 \le j < m} \frac{2^m}{m!} {{m}\choose j} \sum_{\ell,\ell_1 \in \Z^3_*}
+		\sum_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}}
+		\abs{K(\ell)^{m-j}_{r,q}}
+		\abs{K(\ell)^j_{q,-r+\ell+\ell_1}}
+		\abs{K(\ell_1)_{r,-r+\ell+\ell_1}} \\
+	&\le C \frac{k_{\F}^{-2}}{e(q)^2} \sum_{m=1}^\infty \frac{2^m}{m!} \sum_{\ell,\ell_1 \in \Z^3_*}
+		\hat{V}(\ell)^m
+		\hat{V}(\ell_1)
+	+ C \frac{k_{\F}^{-3}}{e(q)^2} \sum_{m=1}^\infty \frac{4^m}{m!} \sum_{\ell,\ell_1 \in \Z^3_*}
+		\sum_{r\in L_{\ell_1}}
+		\frac{1}{\lambda_{\ell_1,r}}
+		\hat{V}(\ell)^m
+		\hat{V}(\ell_1) \\
+	&\le C \frac{k_{\F}^{-2}}{e(q)^2} \;.
+\end{aligned}
+\end{equation}
+
+For the lower bound, first observe that~\cite[Prop.~7.8]{CHN21} implies the matrix element bound
+\begin{equation}
+	(\cosh(2K(\ell)) - 1)_{q,q}
+	\ge \frac{c \hat{V}(\ell) k_{\F}^{-1}}{\lambda_{\ell,q}}
+		\frac{1}{1 + \langle v_\ell, h(\ell)^{-1} v_\ell \rangle} \;,
+\end{equation}
+with $ v_\ell $ and $ h(\ell) $ defined in~\eqref{eq:HkPk}. We bound the denominator and thus $ n_q^{\b} $ as
+\begin{equation}
+	\langle v_\ell, h(\ell)^{-1} v_\ell \rangle \le C \sum_{r \in L_\ell} \frac{\hat{V}(\ell) k_{\F}^{-1}}{\lambda_{\ell,r}} \le C \qquad \Rightarrow \qquad
+	n_q^{\b}
+	\ge c \sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q)
+		\frac{\hat{V}(\ell) k_{\F}^{-1}}{\lambda_{\ell,q}} \;.
+\end{equation}
+As a potential, we now choose $ \hat{V}((1,0,0)) = 1 $ and $ \hat{V}(\ell) = 0 $ on all other momenta $ \ell \neq (1,0,0) $. Then, we choose $ k_{\F}^{(n)} $ slightly larger than $ n $, such that $ (0,0,n) \in B_{\F} $ while $ q_n := (1,0,n) \notin B_{\F} $ with $ e(q_n) \ge \half $. Evidently, with $ \ell^* := (1,0,0) $ we then get $ \lambda_{\ell^*, q_n} = 1 $, so
+\begin{equation}
+	n_q^{\b}
+	\ge c \hat{V}(\ell^*) (k_{\F}^{(n)})^{-1}
+	\ge c (k_{\F}^{(n)})^{-1} e(q_n)^{-1} \;.
+\end{equation}
+
+\textcolor{red}{[SL: I am not so sure if an analogous bound for $ n_q^{\ex} $ can be shown that easily, as the positivity argument no longer holds, and the ``parallelogram condition'' $ -q+\ell+\ell_1 \in L_\ell \cap L_{\ell_1} $ makes the choice of the potential much harder. I am sure that such a bound should hold but is a bit tedious to work out.]}
+\end{proof}
 
 
-\begin{remark}\label{q-q}
-	We can decompose the nested m-fold anti commutator, $\Theta^m_K(P^q)(\ell)$,  as
-	\begin{equation}
-		\Theta^m_K(P^q)(\ell)_{r,s}= \left(K^m\cdot P^q\right)(\ell )_{r,s} +\left(\sum\limits_{j=1}^{m-1} {{m}\choose j}K^{m-j}\cdot P^q\cdot K^{j}\right)(\ell)_{r,s} + \left(P^q\cdot K^m\right)(\ell)_{r,s}
-	\end{equation}
-	When we explicitly put $P^q$, we get the decomposition of the error terms corresponding to momentum fixing at the very right, at all the intermediate positions and the very left, respectively. Each of these momentum fixed terms require slightly different estimates. Also $P^q$ fixes momenta to both $q$ and $-q$ but $q \in \Z^3_*$ is reflection symmetric. Hence we only perform the estimates for momentum fixing to $q$ and multiply it by two to get the contribution for momentum fixing to $-q$. Effectively, we have
-	\begin{equation}\label{eq:decomptheta}
-		\Theta^m_K(P^q)(\ell)_{r,s}=2\cdot\mathds{1}_{L_{\ell}}(q)\half \left(\!\! K^m(\ell )_{r,q}\delta_{q,s} +\sum\limits_{j=1}^{m-1} {{m}\choose j}K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} + K^m(\ell)_{q,s} \delta_{q,r}\!\!\right), \:\mathrm{for}\: r,s \in L_{\ell}
-	\end{equation}
-\end{remark}
-\begin{remark} \label{rem:leadorder}
-	The term with no fermionic operator, i.e., $E^{\,1,10}_{Q_2}$ is of leading order, which can be seen as 
-	\begin{align}
-		E^{\,1,10}_{Q_2} &= \sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}} \!\!\!\Theta^m_{K}(P^q)(\ell)_{r,s}K(\ell_1)_{r,s_1}(\delta_{-s+\ell,r-\ell_1}\delta_{-s_1+\ell_1,r-\ell}\delta_{s,s_1}) \nonumber\\
-		&= \sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}} \!\!\!\Theta^m_{K}(P^q)(\ell)_{r,-r+\ell+\ell_1}K(\ell_1)_{r,-r+\ell+\ell_1}\nonumber\\
-		&= \sum\limits_{\ell,\ell_1 \in \Z^3_*}\mathds{1}_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}}(q)\Bigg( 2 K^m(\ell )_{q,-q+\ell+\ell_1}K(\ell_1)_{q,-q+\ell+\ell_1}+ \nonumber \\  &\quad +\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}} \sum\limits_{j=1}^{m-1} {{m}\choose j}K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,-r+\ell+\ell_1} K(\ell_1)_{r,-r+\ell+\ell_1} \Bigg)\nonumber\\
-		&\leq C\,  k_{\F}^{-2} \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg).
-	\end{align} 
-	From the bounds in Lemma \ref{lem:normsk}, it is evident that this term is of order $k_F^{-2}$, i.e., leading order.
-	They actually are correction to leading order term. Hence the momentum distribution obtained from assuming that the quasi-bosonic commutation relations are exact, i.e., the first term in \eqref{eq:inftylimexp}, does not contain this extra correction in the expression for momentum distribution. We call the first term in \eqref{eq:inftylimexp} as $n_q^b$, the "bosonic contribution" and the correction as $n_q^{ex}$, the "exchange contribution."
-\end{remark}
 
 
-%\begin{lemma}[The infinite $n$ limit]\label{lem:inftylimexp}
-%\begin{equation}\label{eq:inftylimexp}
-%    \lim\limits_{n\rightarrow\infty}\eva{\Omega, T_1^*\half\left(n_q+n_{-q}\right)T_1\Omega} = \half\sum\limits_{\ell\in \Z^3_*} \mathds{1}_{L_\ell}(q) \left(\cosh (2K(\ell))-1\right)_{ q,q} -\half \sum\limits_{m=1}^\infty \eva{\Omega, E_m(P^q)\Omega}
-%\end{equation}
-%\end{lemma} 
 
 
 \section*{Acknowledgments}
