@@ -272,13 +272,19 @@ Then, $ \Psi_{\FS} $ is called the Fermi ball state or Fermi sea state. As exact
 \label{subsec:mainresult}
 
 
+We will prove that the momentum distribution for $ q \in B_{\F}^c $ is approximately given by its bosonized approximation
 \begin{equation} \label{eq:nqb}
 	n_q^{\b}
-	:= \sum\limits_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \frac{1}{\pi}\int_0^\infty \frac{g_\ell (t^2-\lambda^2_{\ell,q}) (t^2 + \lambda^2_{\ell,q})^{-2}}{1 + 2g_\ell \sum_{p \in L_{\ell}}\lambda_{\ell,p} (t^2+\lambda^2_{\ell,p})^{-1}} \mathrm{d}t \;.
+	:= \sum\limits_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \; \frac{1}{\pi}\int_0^\infty \frac{g_\ell (t^2-\lambda^2_{\ell,q}) (t^2 + \lambda^2_{\ell,q})^{-2}}{1 + 2g_\ell \sum_{p \in L_{\ell}}\lambda_{\ell,p} (t^2+\lambda^2_{\ell,p})^{-1}} \mathrm{d}t \;,
+\end{equation}
+where the lune $ L_\ell $, the excitation energy $ \lambda_{\ell,p} $ and the coupling quantity $ g_\ell $ are defined by
+\begin{equation}
+	L_\ell := B_{\F}^c \cap (B_{\F} + \ell) \;, \qquad
+	\lambda_{\ell,p} := \half (|p|^2 - |p-\ell|^2) \;, \qquad
+	g_\ell := \frac{\hat{V}(\ell) k_{\F}^{-1}}{2 (2 \pi)^2} \;.
 \end{equation}
 
 \begin{itemize}
-\item Introduce the minimal set of definitions needed to formulate the formula for $ n_q^{\b} $
 \item Formulate the main result in the form ``There exists a state $ \Psi_{trial} $ such that it is energetically close to the GS and $ \langle \Psi_{\mathrm{trial}}, n_q \Psi_{\mathrm{trial}} \rangle = n_q^{\b} + error $.
 \item Add comments and remarks
 \end{itemize}
@@ -326,11 +332,7 @@ where $ T: \cF \to \cF $ is another unitary transformation motivated as follows:
 	\qquad \textnormal{with adjoint} \qquad
 	b_p(k) := a_{p-k} a_p \;.
 \end{equation}
-The constraint on $ (p,k) $ can be written as $ p \in L_k $, where
-\begin{equation}
-	L_k := B_{\F}^c \cap (B_{\F} + k)
-\end{equation}
-is also called \emph{lune} or \emph{lense-shaped set} with $ L_{-k} = - L_k $. Indeed, one may now approximate $ H_N $ by an effective Bogoliubov-type Hamiltonian~\cite[(1.34)]{CHN23} \todo{Why don't we use the notation $ b_{k,p} $ instead of $ b_p(k) $? And also $ h_k, P_k $ I think, it might make some things a bit shorter and also easier for a reader to switch.}
+The constraint on $ (p,k) $ can be written as $ p \in L_k $, where we recall $ L_k = B_{\F}^c \cap (B_{\F} + k) $ with $ L_{-k} = - L_k $. Indeed, one may now approximate $ H_N $ by an effective Bogoliubov-type Hamiltonian~\cite[(1.34)]{CHN23} \todo{Why don't we use the notation $ b_{k,p} $ instead of $ b_p(k) $? And also $ h_k, P_k $ I think, it might make some things a bit shorter and also easier for a reader to switch.}
 \begin{equation} \label{eq:HBog}
 	H_{\Bog}
 	:= \sum_{k \in \ZZZ^3_*} \left( \sum_{p,q \in L_k} 2 (h(k) + P(k))_{p,q} b^*_p(k) b_q(k)
@@ -340,11 +342,10 @@ where $ \ZZZ^3_* := \ZZZ^3 \setminus \{0\} $, and with matrices $ h(k), P(k) \in
 \begin{equation} \label{eq:HkPk}
 \begin{aligned}
 	h(k)_{p,q} &:= \delta_{p,q} \lambda_{k,p} \;, \qquad
-	\lambda_{k,p} := \frac 12 (|p|^2 - |p-k|^2) \;, \qquad
-	P(k)_{p,q} &:= \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^3} \;.
+	P(k)_{p,q} &:= \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^2} \;,
 \end{aligned}
 \end{equation}
-In particular $ P(k) $ is rank-one with $ P(k) := |v_k \rangle \langle v_k | $, where $ v_{k,p} := \left( \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^3} \right)^{1/2} $. As the pair excitation operators satisfy approximate bosonic commutation relations, see Lemma~\ref{lem:???}, one may treat $ H_{\Bog} $ as an approximately quadratic bosonic Hamiltonian, which is approximately diagonalized by the transformation~\cite[Thm.~1.4]{CHN23} \textcolor{red}{[SL: Actually, the trial state of [CHN] has $ \xi = e^{-\cK} \Omega $ and not $ \xi = e^{\cK} \Omega $. I fixed this.]}
+where we recall $ \lambda_{k,p} = \frac 12 (|p|^2 - |p-k|^2) $. In particular $ P(k) $ is rank-one with $ P(k) := |v_k \rangle \langle v_k | $, where $ v_{k,p} := g_k^{\frac 12} = \left( \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^2} \right)^{1/2}  $. As the pair excitation operators satisfy approximate bosonic commutation relations, see Lemma~\ref{lem:paircomm}, one may treat $ H_{\Bog} $ as an approximately quadratic bosonic Hamiltonian, which is approximately diagonalized by the transformation~\cite[Thm.~1.4]{CHN23} \textcolor{red}{[SL: Actually, the trial state of [CHN] has $ \xi = e^{-\cK} \Omega $ and not $ \xi = e^{\cK} \Omega $. I fixed this.]}
 \begin{equation} \label{eq:T}
 	T := e^{-\cK} \;, \qquad
 	\cK := \frac{1}{2}\sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell}K(\ell)_{r,s}\left(b_r(\ell)b_{-s}(-\ell)-b^*_{-s}(-\ell)b^*_{r}(\ell)\right) \;,
@@ -483,7 +484,7 @@ as well as the simplex integral
 The final result is then the following.
 
 \begin{proposition}[Extraction of the Bosonized Contribution]\label{prop:finexpan}
-For $q \in B^c_{\F}$, we have\todo{Check that $ \mathds{1}_{L_\ell}(q) $ has been defined.}
+For $q \in B^c_{\F}$, we have
 \begin{align} \label{eq:finexpan}
 	&\eva{\Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega} \nonumber \\
 	&= n_q^{\b}
@@ -627,7 +628,7 @@ Plugging this into~\eqref{eq:e-2k} and proceeding as in~\eqref{eq:e-2k_integral}
 \end{equation}
 With~\eqref{eq:coshrewriting} we then finally obtain
 \begin{equation}
-	\half (\cosh(2K(\ell))-1)_{q,q} = \frac{1}{\pi} \int_0^\infty  \frac{2g_\ell (t^2-\lambda_{\ell,q}^2) (t^2+\lambda^2_{\ell,q})^{-2}}{1+ 2g_\ell\sum_{p \in L_{\ell}}\lambda_{\ell,p}(t^2+\lambda^2_{\ell,p})^{-1} }  \mathrm{d}t \;.
+	\half (\cosh(2K(\ell))-1)_{q,q} = \frac{1}{\pi} \int_0^\infty  \frac{g_\ell (t^2-\lambda_{\ell,q}^2) (t^2+\lambda^2_{\ell,q})^{-2}}{1+ 2g_\ell\sum_{p \in L_{\ell}}\lambda_{\ell,p}(t^2+\lambda^2_{\ell,p})^{-1} }  \mathrm{d}t \;.
 \end{equation}
 Summing over $ \ell \in \Z^3_* $ with $ q \in L_\ell $ and comparing with~\eqref{eq:nqb}, we get the claimed result.
 \end{proof}
