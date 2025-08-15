@@ -236,7 +236,7 @@ In this article we are interested in the momentum distribution of states $ \Psi 
 	n(q) := \eva{\Psi, a^*_q a_q \Psi} \;,
 \end{align}
 where $ a_q^*, a_q $ are the standard fermionic creation and annihilation operators of momentum $ q \in \ZZZ^3 $. As the momentum distribution of the true ground state is difficult to access~\cite{BL25}, we focus our attention on a trial state $ \Psi = \Psi_{\trial} $ that was constructed in~\cite{CHN???}.\\
-To better understand the shape of $ n(q) $, let us first consider the simple non-interacting case where $ V=0 $. Here, the ground state is exactly known to be a Slater determinant of $ N $ plain waves with momenta $ k_j \in \ZZZ^3 $:
+To better understand the shape of $ n(q) $, let us first consider the simple non-interacting case where $ V=0 $. Here, the ground state is exactly known to be a Slater determinant of $ N $ plane waves with momenta $ k_j \in \ZZZ^3 $:
 \begin{equation}
     \Psi_{\FS}(x_1, x_2, \ldots, x_N) := \frac{1}{\sqrt{N!}}\text{det}\left(\frac{1}{(2\pi)^{3/2}}e^{ik_j\cdot x_i}\right)^N_{j,i=1} \;.
 \end{equation}
@@ -256,7 +256,7 @@ and we define the complement of the Fermi ball as
 Then, $ \Psi_{\FS} $ is called the Fermi ball state or Fermi sea state. As exactly all momentum modes with $ k_j \in B_{\F} $ are occupied, it is not too difficult to see that the momentum distribution in $ \Psi_{\FS} $ is an indicator function
 \begin{equation}
 	\langle \Psi_{\FS}, a_q^* a_q \Psi_{\FS} \rangle
-	= \chi(q \in B_{\F}) \;.
+	= \mathds{1}_{B_{\F}}(q) \;.
 \end{equation}
 
 
@@ -271,6 +271,11 @@ Then, $ \Psi_{\FS} $ is called the Fermi ball state or Fermi sea state. As exact
 \subsection{Main Results}
 \label{subsec:mainresult}
 
+
+\begin{equation} \label{eq:nqb}
+	n_q^{\b}
+	:= \sum\limits_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \frac{1}{\pi}\int_0^\infty \frac{g_\ell (t^2-\lambda^2_{\ell,q}) (t^2 + \lambda^2_{\ell,q})^{-2}}{1 + 2g_\ell \sum_{p \in L_{\ell}}\lambda_{\ell,p} (t^2+\lambda^2_{\ell,p})^{-1}} \mathrm{d}t \;.
+\end{equation}
 
 \begin{itemize}
 \item Introduce the minimal set of definitions needed to formulate the formula for $ n_q^{\b} $
@@ -290,7 +295,7 @@ Let us briefly recap the trial state construction of~\cite{CHN???}. To facilitat
 \begin{equation}
 	\cF := \bigoplus_{N=0}^\infty L^2_a(\T^{3N}) \;,
 \end{equation}
-with vacuum vector $ \Omega = (1,0,0,\ldots) \in \cF $ and the standard fermionic creation/annihilation operators $ a^*(f), a(f) $ for $ f \in L^2(\TTT) $. To each momentum $ q \in \ZZZ^3 $, we assign a plain wave
+with vacuum vector $ \Omega = (1,0,0,\ldots) \in \cF $ and the standard fermionic creation/annihilation operators $ a^*(f), a(f) $ for $ f \in L^2(\TTT) $. To each momentum $ q \in \ZZZ^3 $, we assign a plane wave
 \begin{equation}
 	f_q \in L^2(\TTT^3) \;, \qquad
 	f_q(x) := (2 \pi)^{-3/2} e^{i q \cdot x} \;,
@@ -308,7 +313,8 @@ satisfying the canonical anticommutation relations (CAR)
 This notation allows us to conveniently write the Fermi sea state $ \Psi_{\FS} $ as $ \Psi_{\FS} = R \Omega $ where $ R: \cF \to \cF $ is the unitary particle--hole transformation defined by
 \begin{equation} \label{eq:R}
 	R^* a_q^* R
-	= a_q^* \chi(q \in B_{\F}^c) + a_q \chi(q \in B_{\F}) \;.
+	= \mathds{1}_{B_{\F}^c}(q) \; a_q^*
+		+ \mathds{1}_{B_{\F}}(q) \; a_q \;.
 \end{equation}
 Note that $ R^{-1} = R = R^* $. The \textbf{trial state} of~\cite{CHN23} now takes the form\todo{Check if $ T $ shall be replaced by $ \mathcal{U} $ or similar.}
 \begin{equation} \label{eq:Psitrial}
@@ -360,17 +366,16 @@ satisfying $ K(-k)_{-p,-q} = K(k)_{p,q} $. This concludes the definition of the 
 
 \section{Extraction of the Leading-Order Terms}\label{sec:extraction}
 
-\subsection{Bosonized Contribution}
-\label{sec:extraction_bos}
 
-We now extract the bosonized contribution $ n_q^{\b} $ out of the momentum distribution $ \langle \Psi, a_q^* a_q \Psi \rangle $ with $ \Psi = \Psi_{\trial} = R e^{-\cK} \Omega $, compare~\eqref{eq:Psitrial}. The particle--hole transformation $ R $ can easily be dealt with, since by~\eqref{eq:R}, it only reverses the momentum distribution inside the Fermi ball as
+
+We now extract the leading-order terms $ n_q^{\b} $ and $ n_q^{\ex} $ out of the momentum distribution $ \langle \Psi, a_q^* a_q \Psi \rangle $ with $ \Psi = \Psi_{\trial} = R e^{-\cK} \Omega $, compare~\eqref{eq:Psitrial}. The particle--hole transformation $ R $ can easily be dealt with, since by~\eqref{eq:R}, it only reverses the momentum distribution inside the Fermi ball as
 \begin{equation} \label{eq:momentum_dist_R_trafo}
 	\langle R \xi, a_q^* a_q R \xi \rangle
-	= \chi(q \in B_{\F}) \big( 1 - \langle \xi, a_q^* a_q \xi \rangle \big)
-		+ \chi(q \in B_{\F}^c) \langle \xi, a_q^* a_q \xi \rangle \qquad
+	= \mathds{1}_{B_{\F}}(q) \big( 1 - \langle \xi, a_q^* a_q \xi \rangle \big)
+		+ \mathds{1}_{B_{\F}^c}(q) \langle \xi, a_q^* a_q \xi \rangle \qquad
 		\forall \xi \in \cF \;.
 \end{equation}
-So it suffices to consider the excitation vector $ \xi = \xi_{\trial} := e^{-\cK} \Omega $ and to compute the excitation density $ \langle \xi, a_q^* a_q \xi \rangle $. As in~\cite{BL25}, we will do so by iterative Duhamel expansion as
+So it suffices to consider the excitation vector $ \xi = \xi_{\trial} := e^{-\cK} \Omega $ and to compute the excitation density $ \langle \xi, a_q^* a_q \xi \rangle $. As in~\cite{BL25}, we do so by iterative Duhamel expansion as
 \begin{equation} \label{eq:duhamelexpansion_blueprint}
 \begin{aligned}
 	&\langle \Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega \rangle
@@ -382,7 +387,14 @@ So it suffices to consider the excitation vector $ \xi = \xi_{\trial} := e^{-\cK
 	= \ldots \;,
 \end{aligned}
 \end{equation}
-see Proposition~\ref{prop:finexpan}. From $ a_q \Omega = 0 $, we immediately get $ \langle \Omega, a_q^* a_q \Omega \rangle = 0 $. To compute the multicommutators, we use the CAR~\eqref{eq:CAR}, which will produce several quadratic pseudo-bosonic expressions, for which we adopt the notation of~\cite{CHN21}.
+leading to Proposition~\ref{prop:finexpan}, which is the main result of this section. Note that $ a_q \Omega = 0 $, from which we immediately conclude $ \langle \Omega, a_q^* a_q \Omega \rangle = 0 $. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n_q^{\b} $ by bosonization, similarly as in~\cite{BL25}. The term $ n_q^{\ex} $ then appears when normal ordering the bosonization errors, similar to the exchange contribution to the correlation energy appearing in~\cite{CHN23}.
+
+
+
+\subsection{Bosonized Contribution}
+\label{sec:extraction_bos}
+
+To compute the multicommutators in~\eqref{eq:duhamelexpansion_blueprint}, we use the CAR~\eqref{eq:CAR}, which will produce several quadratic pseudo-bosonic expressions, for which we adopt the notation of~\cite{CHN21}.
 
 \begin{definition} \label{def:Q}
 Let $A=(A(\ell))_{\ell \in \Z^3_*} $ be a family of symmetric operators with $A(\ell): \ell^2(L_\ell)\rightarrow \ell^2(L_\ell)$. We, the quadratic pseudo-bosonic operators are given by
@@ -468,15 +480,15 @@ as well as the simplex integral
 	:= \int_0^1 \di \lambda_1 \int_0^{\lambda_1} \di \lambda_2 \ldots \int_0^{\lambda_{n-1}} \di \lambda_n \;, \qquad
 	\ulambda := (\lambda_1, \ldots, \lambda_n) \;.
 \end{equation}
-The final Duhamel expansion is then the following.
+The final result is then the following.
 
-\begin{proposition}[Duhamel expansion of the excitation density]\label{prop:finexpan}
+\begin{proposition}[Extraction of the Bosonized Contribution]\label{prop:finexpan}
 For $q \in B^c_{\F}$, we have\todo{Check that $ \mathds{1}_{L_\ell}(q) $ has been defined.}
 \begin{align} \label{eq:finexpan}
-	\eva{\Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega} 
-	&= \half\sum\limits_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \sum\limits_{m=1}^{\floor{(n+1)/2}} \frac{\mathrm{Tr}\,\Theta^{(2m)}_K \big(P^q\big)}{(2m)!}
-		+ \half \sum\limits_{m=1}^{n} \eva{\Omega, E_m(P^q)\Omega}\nonumber\\
-	&\quad +\half \int_{\Delta^{n+1}} \di^{n+1}\underline{\lambda} \;
+	&\eva{\Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega} \nonumber \\
+	&= n_q^{\b}
+		+ \half \sum\limits_{m=1}^{n} \eva{\Omega, E_m(P^q)\Omega}
+		+\half \int_{\Delta^{n+1}} \di^{n+1}\underline{\lambda} \;
 		\eva{\Omega, e^{\lambda_{n+1} \cK}Q_{\sigma(n+1)}(\Theta^{n+1}_{K}(P^q)) e^{-\lambda_{n+1} \cK} \Omega} \;,
 \end{align}
 where $ \floor{x} $ is the floor function, $ \sigma(n) = 1 $ if $ n $ is even and $ \sigma(n) = 2 $ otherwise, and where
@@ -486,6 +498,19 @@ where $ \floor{x} $ is the floor function, $ \sigma(n) = 1 $ if $ n $ is even an
 \end{equation}
 is the total commutation error.
 \end{proposition}
+
+We split the proof into two parts: First, we execute the Duhamel expansion, recovering some expression for $ n_q^{\b} $ in terms of the matrix $ K $~\eqref{eq:K}. Then, we show that this expression coincides with the integral in~\eqref{eq:nqb}
+
+\begin{lemma}[Duhamel expansion of the excitation density] \label{lem:Duhamelexpan}
+For $q \in B^c_{\F}$, we have
+\begin{align} \label{eq:Duhamelexpan}
+	\eva{\Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega} 
+	&= \half\sum\limits_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \big( \cosh(2K(\ell)) - 1 \big)_{q,q}
+		+ \half \sum\limits_{m=1}^{n} \eva{\Omega, E_m(P^q)\Omega}\nonumber\\
+	&\quad +\half \int_{\Delta^{n+1}} \di^{n+1}\underline{\lambda} \;
+		\eva{\Omega, e^{\lambda_{n+1} \cK}Q_{\sigma(n+1)}(\Theta^{n+1}_{K}(P^q)) e^{-\lambda_{n+1} \cK} \Omega} \;,
+\end{align}
+\end{lemma}
 
 \begin{proof}
 First, note that for the first commutator in the expansion~\eqref{eq:duhamelexpansion_blueprint}, we have\todo{Resolve the issue that $ P^q $ and $ P^{-q} $ have different domains}
@@ -539,15 +564,86 @@ Taking the vacuum expectation, the terms $ a_q^* a_q + a_{-q}^* a_{-q} $, as wel
 		\langle \Omega, e^{\lambda_{n+1} \cK}Q_{\sigma(n+1)}(\Theta^{n+1}_{K}(\tilde{P}^q)) e^{-\lambda_{n+1} \cK} \Omega, \rangle \;.
 \end{aligned}
 \end{equation}
-Finally, using reflection symmetry, we may replace $ \tilde{P}^q $ by $ P^q $, rendering the desired result.
+Using reflection symmetry, we may replace $ \tilde{P}^q $ by $ P^q $. The desired result then follows, noticing that by cyclicity of the trace,
+\begin{equation}
+	\sum\limits_{m=1}^{\floor{(n+1)/2}} \frac{\mathrm{Tr} \,\Theta^{(2m)}_K (P^q)}{(2m)!}
+	= \sum\limits_{m=1}^{\floor{(n+1)/2}} \frac{2^{2m} K^{2m}(\ell)_{q,q}}{(2m)!}
+	= \big( \cosh(2K(\ell)) - 1 \big)_{q,q} \;.
+\end{equation}
 \end{proof}
+
+
+
+\begin{lemma}[Recovering the Integral Representation for $ n_q^{\b} $] \label{lem:nqb_integralrecovery}
+Let $q \in B^c_{\F}$ and recall the definition~\eqref{eq:nqb} of $ n_q^{\b} $ via an integral formula. Then,
+\begin{equation} \label{eq:nqb_integralrecovery}
+	n_q^{\b} = \half\sum\limits_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \big( \cosh(2K(\ell)) - 1 \big)_{q,q} \;.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+In what follows, we will drop the $ \ell $-dependence of the matrices $ K(\ell) $, $ h(\ell) $ and $ P(\ell) = |v_\ell \rangle \langle v_\ell| $ defined in~\eqref{eq:HkPk} and~\eqref{eq:K}, if not explicitly needed. We start with re-writing
+\begin{equation} \label{eq:coshrewriting}
+	\cosh(2K)-1
+	= \half\big((e^{-2K}-1)-(1-e^{2K})\big) \;.
+\end{equation}
+Using the notation $ P_w = |w \rangle \langle w| $, so $ P = P_v $, we readily retrieve from~\eqref{eq:K}:
+\begin{equation}
+	e^{-2K} = h^{-\half} \big(h^2 +2P_{h^{\half} v}\big)^{\half} h^{-\half} \;, \qquad
+	e^{2K} = h^{\half} \big(h^2 +2P_{h^{\half} v}\big)^{-\half} h^{\half} \;.
+\end{equation}
+We then express $ (e^{-2K}-1)_{q,q} $ and $ (1-e^{2K})_{q,q} $ in terms of integrals, using the identities
+\begin{equation}\label{eq:intid}
+	A^\half = \frac{2}{\pi} \int_0^\infty \left(1- \frac{t^2}{A+t^2}\right)\mathrm{d}t\;,\qquad
+	A^{-\half} = \frac{2}{\pi} \int_0^\infty \frac{1}{A+t^2} \mathrm{d}t \;,
+\end{equation}
+for any matrix $ A: \ell^2(L_\ell) \to \ell^2(L_\ell) $, as well as the Sherman-Morrison formula
+\begin{equation}\label{eq:shermor}
+	(A+cP_w)^{-1} = A^{-1} - \frac{c}{1+c\eva{w, A^{-1}w}}P_{A^{-1}w} \;,
+\end{equation}
+for $ c \in \C $ and $ w \in \ell^2(L_\ell) $. We begin with 
+\begin{align}
+	\big(h^2 +2P_{h^{\half} v}\big)^{\half} &= \frac{2}{\pi} \int_0^\infty \left(1- \frac{t^2}{t^2+h^2 +2P_{h^{\half} v}}\right)\mathrm{d}t\nonumber\\
+	&= \frac{2}{\pi} \int_0^\infty \Bigg( \frac{h^2}{t^2+h^2} - \frac{2 t^2}{1+ 2\eva{h^{\half} v ,(t^2+h^2)^{-1} h^\half v}} P_{(t^2+h^2)^{-1}h^{\half} v} \Bigg) \mathrm{d}t \nonumber\\
+	&= h + \frac{2}{\pi} \int_0^\infty  \frac{2t^2}{1+ 2\eva{h^{\half} v ,(t^2+h^2)^{-1} h^\half v}}  P_{(t^2+h^2)^{-1}h^{\half} v}\mathrm{d}t \;. \label{eq:e-2k}
+\end{align}
+Using the canonical basis vectors $ (e_p)_{p \in L_\ell} $ with $ h e_q = \lambda_{\ell,q} e_q $, where we recall the definition~\eqref{eq:???} of $ \lambda_{\ell,q} $ and $ g_\ell $, the first desired matrix element then amounts to
+\begin{align}
+	(e^{-2K}-1)_{q,q}
+	&= \eva{e_q,  h^{-\half} \big(h^2 +2P_{h^{\half} v}\big)^{\half} h^{-\half} e_q} - 1\nonumber\\
+	&= \frac{2}{\pi} \int_0^\infty  \frac{2t^2}{1+ 2\eva{h^{\half} v ,(t^2+h^2)^{-1} h^\half v}}  \eva{e_q,h^{-\half} P_{(t^2+h^2)^{-1}h^{\half} v}h^{-\half} e_q}\mathrm{d}t\nonumber\\
+	&= \frac{2}{\pi} \int_0^\infty  \frac{2g_\ell t^2 (t^2+\lambda^2_{\ell,q})^{-2}}{1+ 2g_\ell\sum_{p \in L_\ell}\lambda_{\ell,p}(t^2+\lambda^2_{\ell,p})^{-1} }  \mathrm{d}t \;. \label{eq:e-2k_integral}
+\end{align}
+Similarly we can proceed with $(1-e^{2K})_{q,q}$. We again use \eqref{eq:intid} and \eqref{eq:shermor} to get
+\begin{align}
+	\big(h^2 +2P_{h^{\half} v}\big)^{-\half}
+	&= \frac{2}{\pi} \int_0^\infty \left( \frac{1}{t^2+h^2 +2P_{h^{\half} v}}\right)\mathrm{d}t\\
+	&= h^{-1} - \frac{2}{\pi} \int_0^\infty  \frac{2}{1+ 2\eva{h^{\half} v ,(t^2+h^2)^{-1} h^\half v}}  P_{(t^2+h^2)^{-1}h^{\half} v}\mathrm{d}t \;. \label{eq:e2k}
+\end{align}
+Plugging this into~\eqref{eq:e-2k} and proceeding as in~\eqref{eq:e-2k_integral}, we arrive at
+\begin{equation} \label{eq:e2kfin}
+	(1-e^{2K})_{q,q}
+	= \frac{2}{\pi} \int_0^\infty  \frac{2g_\ell \lambda_{\ell,q}^2 (t^2+\lambda^2_{\ell,q})^{-2}}{1+ 2g_\ell\sum_{p \in L_{\ell}}\lambda_{\ell,p}(t^2+\lambda^2_{\ell,p})^{-1} }  \mathrm{d}t \;.
+\end{equation}
+With~\eqref{eq:coshrewriting} we then finally obtain
+\begin{equation}
+	\half (\cosh(2K(\ell))-1)_{q,q} = \frac{1}{\pi} \int_0^\infty  \frac{2g_\ell (t^2-\lambda_{\ell,q}^2) (t^2+\lambda^2_{\ell,q})^{-2}}{1+ 2g_\ell\sum_{p \in L_{\ell}}\lambda_{\ell,p}(t^2+\lambda^2_{\ell,p})^{-1} }  \mathrm{d}t \;.
+\end{equation}
+Summing over $ \ell \in \Z^3_* $ with $ q \in L_\ell $ and comparing with~\eqref{eq:nqb}, we get the claimed result.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:finexpan}]
+Follows readily by~\eqref{eq:Duhamelexpan} and~\eqref{eq:nqb_integralrecovery}.
+\end{proof}
+
+
 
 
 
 \subsection{Exchange Contribution and Commutation Errors}
 \label{sec:extraction_ex}
 
-To facilitate bounding the many-body errors $ E_{Q_1} $ and $ E_{Q_2} $ in \eqref{eq:errEm}, we normal-order them, which will at the same time extract the exchange contribution $ n_q^{\ex} $. Normal-ordering amounts to a lengthy but straightforward application of the CAR~\eqref{eq:CAR} with the following result:
+To facilitate bounding the many-body errors $ E_{Q_1} $ and $ E_{Q_2} $ in \eqref{eq:errKQ}, we normal-order them, which will at the same time extract the exchange contribution $ n_q^{\ex} $. Normal-ordering amounts to a lengthy but straightforward application of the CAR~\eqref{eq:CAR} with the following result:
 \begin{equation} \label{eq:EQ1_expansion}
 \begin{aligned}
 	&E_{Q_1}(\Theta^m_{K}(P^q)) \\
@@ -669,7 +765,7 @@ From~\cite[Prop.~7.10]{CHN23} we readily retrieve \eqref{eq:K_element_bounds} fo
 		\le (C \hat{V}(\ell))^m k_{\F}^{-2} \sum_{r' \in L_\ell}
 		\frac{1}{\lambda_{\ell, r} + \lambda_{\ell, r'}}
 		\frac{1}{\lambda_{\ell, r'} + \lambda_{\ell, s}} \\
-		&\le (C \hat{V}(\ell))^m k_{\F}^{-2} \sum_{r' \in L_\ell} \;,
+		&\le (C \hat{V}(\ell))^m k_{\F}^{-2} \sum_{r' \in L_\ell}
 		\frac{1}{\lambda_{\ell, r'} (\lambda_{\ell, r} + \lambda_{\ell, s})}
 		\le (C \hat{V}(\ell))^m k_{\F}^{-1}
 		\frac{1}{\lambda_{\ell, r} + \lambda_{\ell, s}} \;.
@@ -932,7 +1028,7 @@ We focus on the bound for $ E^{\,1,1}_{Q_1} $ as that one for $ E^{\,2,1}_{Q_1} 
 	\Theta^m_K(P^q)(\ell)_{r,s}
 	= \left(\sum\limits_{j=0}^m {{m}\choose j} K^{m-j} \cdot P^q \cdot K^{j}\right)(\ell)_{r,s} \;,
 \end{equation}
-with $ K^0 = I $\todo{Unify the notation for the identity $ \mathrm{id} $ vs. $ I $ vs. $ \mathds{1} $}, we obtain
+with $ K^0 = 1 $ being the identity matrix, we obtain
 \begin{equation} \label{eq:EQ1111}
 \begin{aligned}
 	\abs{\eva{\xi_\lambda,\left(E^{\,1,1}_{Q_1}+\mathrm{h.c.}\right) \xi_\lambda }} 
@@ -943,7 +1039,7 @@ with $ K^0 = I $\todo{Unify the notation for the identity $ \mathrm{id} $ vs. $ 
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r-\ell} \xi_\lambda} \;. \\
 \end{aligned}
 \end{equation}
-We will need to employ three different estimation strategies for $ j = 0 $, $ 1 \le j \le m-1 $ and $ j = m $. For $ j = 0 $, we start with splitting $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$ to be fixed later. Then we use the Cauchy-Schwarz inequality and Lemma~\ref{lem:pairest}.
+We will need to employ three different estimation strategies for $ j = 0 $, $ 1 \le j \le m-1 $ and $ j = m $. For $ j = 0 $, we start with splitting $1 = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$ to be fixed later. Then we use the Cauchy-Schwarz inequality and Lemma~\ref{lem:pairest}.
 \begin{align}
 	&|\I_0(\ell, \ell_1)| \nonumber\\
     &\le \sum\limits_{r \in L_\ell \cap L_{\ell_1}} \abs{\eva{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{\alpha} (\NN+1)^{-\alpha} \xi_\lambda,  K^{m}(\ell)_{r,q} a_{r-\ell} \xi_\lambda }}\nonumber\\
@@ -1026,7 +1122,7 @@ As in the proof of Lemma~\ref{lem:EQ111}, we split
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s}K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell-\ell_1} a_{r-\ell_1} b_{s}(\ell) \xi_\lambda} \;. \\
 \end{aligned}
 \end{equation}
-We again employ three different bounding strategies for $ j = 0 $, $ 1 \le j \le m-1 $, and $ j = m $. For $ j = 0 $, we again use the resolution of the identity $I = (\NN+5)^{-\alpha}(\NN+5)^{\alpha}$ with some $\alpha \in \R$ to be determined later. Together with the Cauchy--Schwarz inequality, $ \norm{a_p} \le 1 $ and Lemma~\ref{lem:pairest}
+We again employ three different bounding strategies for $ j = 0 $, $ 1 \le j \le m-1 $, and $ j = m $. For $ j = 0 $, we again use the resolution of the identity $1 = (\NN+5)^{-\alpha}(\NN+5)^{\alpha}$ with some $\alpha \in \R$ to be determined later. Together with the Cauchy--Schwarz inequality, $ \norm{a_p} \le 1 $ and Lemma~\ref{lem:pairest}
 \begin{align}
 	&|\I_0(\ell, \ell_1)| \nonumber\\
 	&\leq \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell_1}+\ell+\ell_1)}} \abs{\eva{  (\NN+5)^{\alpha} \xi_\lambda, K^m(\ell )_{r,q} K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell-\ell_1} a_{r-\ell_1} b_{q}(\ell)  (\NN+1)^{-\alpha} \xi_\lambda }}\nonumber\\
@@ -1126,7 +1222,7 @@ For $ q \in \Z^3 $, $\xi_\lambda = e^{-\lambda \cK} \Omega$ and $ \lambda \in [0
   	a^*_{q-\ell_1} b^*_{-s_1}(-\ell_1) b_{-s}(-\ell) a_{q-\ell} \xi_\lambda}} \label{eq:EQ2113}
   \end{align}
   where the last inequality is implied by Remark \ref{q-q} and we used \eqref{eq:decomptheta}.
-  For \eqref{eq:EQ2111}-\eqref{eq:EQ2113}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then we use the Cauchy-Schwarz inequality, Lemma \ref{lem:commNab} and the bounds from Lemma \ref{lem:pairest}.We estimate \eqref{eq:EQ2111} as
+  For \eqref{eq:EQ2111}-\eqref{eq:EQ2113}, we start by using resolution of the identity $1 = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then we use the Cauchy-Schwarz inequality, Lemma \ref{lem:commNab} and the bounds from Lemma \ref{lem:pairest}.We estimate \eqref{eq:EQ2111} as
 \begin{align}
 	&\eqref{eq:EQ2111}\nonumber\\
 	&\leq\sum\limits_{\ell,\ell_1 \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \sum\limits_{ r \in L_\ell \cap L_{\ell_1}}    \norm{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1)  a_{r-\ell_1} (\NN+1)^{\alpha}\xi_\lambda}\norm{ K^{m}(\ell)_{r,q}   b_{-q}(-\ell) a_{r-\ell} (\NN+1)^{-\alpha}\xi_\lambda } \nonumber\\
@@ -1193,7 +1289,7 @@ We know that $\NN<(\NN+1)$, then for $\alpha = \half$, we have
     	+\,8&\sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{ s \in L_{\ell}} \abs{\eva{\xi_\lambda, K^m(\ell)_{q,s} K(\ell)_{q,s} a^*_{q-\ell} a_{q-\ell} \xi_\lambda }}\label{eq:EQ2123}
     \end{align}
     where the last inequality is implied by Remark \ref{q-q} and we used \eqref{eq:decomptheta}.
-    For \eqref{eq:EQ2121}-\eqref{eq:EQ2123}, we start by using resolution of the identity $I = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then we use the Cauchy-Schwarz inequality, Lemma \ref{lem:commNab} and the bounds from Lemma \ref{lem:pairest}.
+    For \eqref{eq:EQ2121}-\eqref{eq:EQ2123}, we start by using resolution of the identity $1 = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then we use the Cauchy-Schwarz inequality, Lemma \ref{lem:commNab} and the bounds from Lemma \ref{lem:pairest}.
     We estimate \eqref{eq:EQ2121} as 
 \begin{align}
     \eqref{eq:EQ2121}
@@ -1238,7 +1334,7 @@ We start with the L.H.S. of \eqref{eq:estEQ213}.
     +\,8&\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \sum\limits_{ s \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)} \abs{\eva{\xi_\lambda, K^m{(\ell)}_{q,s+\ell} K(\ell_1)_{q,s+\ell_1} a^*_{q-\ell_1} a^*_{-s-\ell_1} a_{-s-\ell} a_{q-\ell} \xi_\lambda }}\label{eq:EQ2133}
 \end{align}
 where the last inequality is implied by Remark \ref{q-q} and we used \eqref{eq:decomptheta}.
-For \eqref{eq:EQ2131}-\eqref{eq:EQ2133}, we start by using resolution of the identity $I = (\NN+1)^{-\alpha}(\NN+1)^{\alpha}$ for some $\alpha \in \R$. Then we use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pairest}.
+For \eqref{eq:EQ2131}-\eqref{eq:EQ2133}, we start by using resolution of the identity $1 = (\NN+1)^{-\alpha}(\NN+1)^{\alpha}$ for some $\alpha \in \R$. Then we use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pairest}.
 We estimate \eqref{eq:EQ2131} as
 \begin{alignat}{2}
     &\eqref{eq:EQ2131}\nonumber\\
@@ -1447,7 +1543,7 @@ Next we show that first term in \eqref{eq:finalfinalEmest} is also sub-leading u
 \begin{lemma}[Bootstrap lemma]
 	For $q \in \Z^3$ and for the trial state $T_{\lambda}\Omega$, we have 
 	\begin{equation}
-		\eva{ T_{\lambda}\Omega. n_q T_{\lambda}\Omega} = n_q^b + n_q^{ex} + C k_F^{-\frac{5}{2}}
+		\eva{ T_{\lambda}\Omega. n_q T_{\lambda}\Omega} = n_q^{\b} + n_q^{ex} + C k_F^{-\frac{5}{2}}
 	\end{equation}
 where, 
 \begin{equation}
@@ -1457,12 +1553,12 @@ where,
 \begin{proof}
 	We begin with \eqref{eq:inftylimexp} with the leading order denoted as in Remark \ref{rem:leadorder} and the error estimate from \eqref{eq:finalfinalEmest} as
 	\begin{equation}\label{eq:prebootexp}
-		\eva{ T_{\lambda}\Omega. n_q T_{\lambda}\Omega} = n_q^b + n_q^{ex} + C k_F^{-\frac{1}{2}}\Xi
+		\eva{ T_{\lambda}\Omega. n_q T_{\lambda}\Omega} = n_q^{\b} + n_q^{ex} + C k_F^{-\frac{1}{2}}\Xi
 \end{equation}
 where C is as defined above. Next we take the supremum over this expression, which results in
 \begin{align}
-	&\Xi = \sup_{q \in \Z^3}(n_q^b + n_q^{ex}) + C k_f^{-\frac{1}{2}}\Xi \nonumber\\
-	\implies &\Xi(1 - Ck_F^{-\frac{1}{2}}) = \sup_{q \in \Z^3}(n_q^b + n_q^{ex})
+	&\Xi = \sup_{q \in \Z^3}(n_q^{\b} + n_q^{ex}) + C k_f^{-\frac{1}{2}}\Xi \nonumber\\
+	\implies &\Xi(1 - Ck_F^{-\frac{1}{2}}) = \sup_{q \in \Z^3}(n_q^{\b} + n_q^{ex})
 \end{align}
 We know that the leading order terms scale as $k_F^{-2}$, then we have 
 \begin{equation}
@@ -1473,12 +1569,19 @@ For sufficiently large $k_F$ (or sufficiently large $N$), we have that $\Xi\leq 
 
 
 
+\section{Analysis of the Leading-Order Terms}
+\label{sec:leading_order_analysis}
 
-\section{Control of the Leading-Order Terms}
+
+
+
+
+
+\subsection{Control of the Leading-Order Terms}
 \label{subsec:leading_order_control}
 
 
-In this section, we prove the claimed scalings (???) of the leading-order terms $ n_q^{\b} $~\eqref{eq:???} and $ n_q^{\ex} $~\eqref{eq:???}.
+Finally, we prove the claimed scalings (???) of the leading-order terms $ n_q^{\b} $~\eqref{eq:nqb} and $ n_q^{\ex} $~\eqref{eq:???}.
 
 \begin{proposition}[Control of the bosonized momentum distribution] \label{prop:nqb_nqex_bounds}
 Recall the definitions of the bosonized and exchange excitation densities $ n_q^{\b} $ (???) and $ n_q^{\ex} $ (???), as well as of the excitation energy $ e(q) := ||q|^2 - k_{\F}^2| $. Then, for any fixed potential $ \hat{V} \in L^1(\Z^3_*) $, there exists a constant $ C > 0 $ such that for all particle numbers $ N = |B_{\F}| \sim k_{\F}^3 $ and all $ q \in \Z^3 $,
@@ -1501,7 +1604,7 @@ We focus on the case $ q \in B_{\F}^c $, as $ q \in B_{\F} $ is treated analogou
 \begin{equation}
 	n_q^{\b}
 	\le \half \sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum_{m=1}^{\infty} \frac{4^m |(K(\ell)^{2m})_{q,q}|}{(2m)!}
-	\le C \sum_{\ell \in \Z^3_*} \frac{k_{\F}^{-1}}{\lambda_{\ell,q}} \sum_{m=1}^{\infty} \frac{4^m \hat{V}(\ell)^{2m}}{(2m)!}
+	\le \sum_{\ell \in \Z^3_*} \frac{k_{\F}^{-1}}{\lambda_{\ell,q}} \sum_{m=1}^{\infty} \frac{C^m \hat{V}(\ell)^{2m}}{(2m)!}
 	\le C \frac{k_{\F}^{-1}}{e(q)} \;.
 \end{equation}
 For $ n_q^{\ex} $, we expand the anticommutator via~\eqref{eq:q-q} and then apply the buonds of Lemma~\ref{lem:normsk}, as well as~\cite[Prop.~A.2]{CHN21} $ \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \le C k_{\F} $
@@ -1529,10 +1632,10 @@ For $ n_q^{\ex} $, we expand the anticommutator via~\eqref{eq:q-q} and then appl
 \end{aligned}
 \end{equation}
 
-For the lower bound, first observe that~\cite[Prop.~7.8]{CHN21} implies the matrix element bound
+For the lower bound, first observe that~\cite[Prop.~7.8]{CHN21} implies the matrix element bound \textcolor{red}{[SL: I would expect that the following bound holds true, but it might be cumbersome to show. Maybe, we do a numerical evaluation using the corresponding integral formula, instead.]}
 \begin{equation}
 	(\cosh(2K(\ell)) - 1)_{q,q}
-	\ge \frac{c \hat{V}(\ell) k_{\F}^{-1}}{\lambda_{\ell,q}}
+	\ge \frac{c \hat{V}(\ell)^2 k_{\F}^{-1}}{\lambda_{\ell,q}}
 		\frac{1}{1 + \langle v_\ell, h(\ell)^{-1} v_\ell \rangle} \;,
 \end{equation}
 with $ v_\ell $ and $ h(\ell) $ defined in~\eqref{eq:HkPk}. We bound the denominator and thus $ n_q^{\b} $ as
@@ -1542,7 +1645,7 @@ with $ v_\ell $ and $ h(\ell) $ defined in~\eqref{eq:HkPk}. We bound the denomin
 	\ge c \sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q)
 		\frac{\hat{V}(\ell) k_{\F}^{-1}}{\lambda_{\ell,q}} \;.
 \end{equation}
-As a potential, we now choose $ \hat{V}((1,0,0)) = 1 $ and $ \hat{V}(\ell) = 0 $ on all other momenta $ \ell \neq (1,0,0) $. Then, we choose $ k_{\F}^{(n)} $ slightly larger than $ n $, such that $ (0,0,n) \in B_{\F} $ while $ q_n := (1,0,n) \notin B_{\F} $ with $ e(q_n) \ge \half $. Evidently, with $ \ell^* := (1,0,0) $ we then get $ \lambda_{\ell^*, q_n} = 1 $, so
+As a potential, we now choose $ \hat{V}((1,0,0)) = \hat{V}((-1,0,0)) = 1 $ and $ \hat{V}(\ell) = 0 $ on all other momenta $ \ell \in \ZZZ^3 $. Then, we choose $ k_{\F}^{(n)} $ slightly larger than $ n $, such that $ (0,0,n) \in B_{\F} $ while $ q_n := (1,0,n) \notin B_{\F} $ with $ e(q_n) \ge \half $. Evidently, with $ \ell^* := (1,0,0) $ we then get $ \lambda_{\ell^*, q_n} = 1 $, so
 \begin{equation}
 	n_q^{\b}
 	\ge c \hat{V}(\ell^*) (k_{\F}^{(n)})^{-1}
