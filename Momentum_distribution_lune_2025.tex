@@ -486,13 +486,13 @@ The final result is then the following.
 \begin{proposition}[Extraction of the Bosonized Contribution]\label{prop:finexpan}
 For $q \in B^c_{\F}$, we have
 \begin{align} \label{eq:finexpan}
-	&\eva{\Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega} \nonumber \\
-	&= n_q^{\b}
-		+ \half \sum\limits_{m=1}^{n} \eva{\Omega, E_m(P^q)\Omega}
-		+\half \int_{\Delta^{n+1}} \di^{n+1}\underline{\lambda} \;
+	\eva{\Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega} 
+	&= \half\sum\limits_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \sum\limits_{\substack{m=2\\m:\textnormal{ even}}}^{n+1} \frac{((2K(\ell))^m)_{q,q}}{m!}
+		+ \half \sum\limits_{m=1}^{n} \eva{\Omega, E_m(P^q)\Omega}\nonumber\\
+	&\quad +\half \int_{\Delta^{n+1}} \di^{n+1}\underline{\lambda} \;
 		\eva{\Omega, e^{\lambda_{n+1} \cK}Q_{\sigma(n+1)}(\Theta^{n+1}_{K}(P^q)) e^{-\lambda_{n+1} \cK} \Omega} \;,
 \end{align}
-where $ \floor{x} $ is the floor function, $ \sigma(n) = 1 $ if $ n $ is even and $ \sigma(n) = 2 $ otherwise, and where
+where $ \sigma(n) = 1 $ if $ n $ is even and $ \sigma(n) = 2 $ otherwise, and where
 \begin{equation}\label{eq:errEm}
 	E_m(P^q) \coloneq (-1)^m \int_{\Delta^m} \di^m\underline{\lambda} \;
 		e^{\lambda_n \cK} E_{Q_{\sigma(m)}}\left(\Theta^{m}_{K}(P^q)\right) e^{-\lambda_n \cK}
@@ -500,18 +500,8 @@ where $ \floor{x} $ is the floor function, $ \sigma(n) = 1 $ if $ n $ is even an
 is the total commutation error.
 \end{proposition}
 
-We split the proof into two parts: First, we execute the Duhamel expansion, recovering some expression for $ n_q^{\b} $ in terms of the matrix $ K $~\eqref{eq:K}. Then, we show that this expression coincides with the integral in~\eqref{eq:nqb}
+Note that in Lemma~\ref{lem:nqb_integralrecovery}, we will see that the first term on the r.~h.~s. of~\eqref{eq:finexpan} converges to $ n_b^q $ as $ n \to \infty $. The other two terms are error terms which we bound below.
 
-\begin{lemma}[Duhamel expansion of the excitation density] \label{lem:Duhamelexpan}
-For $q \in B^c_{\F}$, we have
-\begin{align} \label{eq:Duhamelexpan}
-	\eva{\Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega} 
-	&= \half\sum\limits_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \big( \cosh(2K(\ell)) - 1 \big)_{q,q}
-		+ \half \sum\limits_{m=1}^{n} \eva{\Omega, E_m(P^q)\Omega}\nonumber\\
-	&\quad +\half \int_{\Delta^{n+1}} \di^{n+1}\underline{\lambda} \;
-		\eva{\Omega, e^{\lambda_{n+1} \cK}Q_{\sigma(n+1)}(\Theta^{n+1}_{K}(P^q)) e^{-\lambda_{n+1} \cK} \Omega} \;,
-\end{align}
-\end{lemma}
 
 \begin{proof}
 First, note that for the first commutator in the expansion~\eqref{eq:duhamelexpansion_blueprint}, we have\todo{Resolve the issue that $ P^q $ and $ P^{-q} $ have different domains}
@@ -547,10 +537,12 @@ The $ E_{Q_1} $ and $ E_{Q_2} $-terms are not expanded but collected as errors, 
 \begin{aligned}
 	&e^{\cK} (a_q^* a_q + a_{-q}^* a_{-q}) e^{-\cK} \\
 	&= a_q^* a_q + a_{-q}^* a_{-q}
-		+ \sum\limits_{\ell\in \Z^3_*} \mathds{1}_{L_\ell \cup L_{-\ell}}(q) \sum\limits_{m=1}^{\floor{(n+1)/2}} \frac{\mathrm{Tr} \,\Theta^{(2m)}_K \big(\tilde{P}^q\big)}{(2m)!}
+		+ \sum\limits_{\ell\in \Z^3_*} \mathds{1}_{L_\ell \cup L_{-\ell}}(q) \sum\limits_{\substack{m=2\\m:\textnormal{ even}}}^{n+1} \frac{\mathrm{Tr} \,\Theta^m_{K(\ell)} \big( \tilde{P}^q(\ell) \big)}{m!}
 		+ \sum\limits_{m=1}^n E_m(\tilde{P}^q)
-		+ Q_1\left( \sum\limits_{m=1}^{\floor{n/2}} \frac{\Theta^{2m}_{K}(\tilde{P}^q)}{(2m)!}\right) \\
-	&\quad+ Q_2\left(\sum\limits_{m=1}^{\floor{(n+1)/2}} \frac{\Theta^{2m-1}_{K}(\tilde{P}^q)} {(2m-1)!}\right)
+		+ \sum\limits_{\substack{m=2\\m:\textnormal{ even}}}^n
+		Q_1\left( \frac{\Theta^m_{K}(\tilde{P}^q)}{m!}\right) \\
+	&\quad+ \sum\limits_{\substack{m=1\\m:\textnormal{ odd}}}^n
+		Q_2\left( \frac{\Theta^m_{K}(\tilde{P}^q)} {m!}\right)
 		+\int_{\Delta^{n+1}} \di^{n+1}\underline{\lambda} \;
 		e^{\lambda_{n+1} \cK}Q_{\sigma(n+1)}(\Theta^{n+1}_{K}(\tilde{P}^q)) e^{-\lambda_{n+1} \cK} \;.
 \end{aligned}
@@ -559,83 +551,17 @@ Taking the vacuum expectation, the terms $ a_q^* a_q + a_{-q}^* a_{-q} $, as wel
 \begin{equation}
 \begin{aligned}
 	\half \langle \Omega, e^{\cK} (a_q^* a_q + a_{-q}^* a_{-q}) e^{-\cK} \Omega \rangle
-	&= \half \sum\limits_{\ell\in \Z^3_*} \mathds{1}_{L_\ell \cup L_{-\ell}}(q) \sum\limits_{m=1}^{\floor{(n+1)/2}} \frac{\mathrm{Tr} \,\Theta^{(2m)}_K \big(\tilde{P}^q\big)}{(2m)!}
+	&= \half \sum\limits_{\ell\in \Z^3_*} \mathds{1}_{L_\ell \cup L_{-\ell}}(q) \sum\limits_{\substack{m=2\\m:\textnormal{ even}}}^{n+1} \frac{\mathrm{Tr} \,\Theta^m_{K(\ell)} \big( \tilde{P}^q(\ell) \big)}{m!}
 		+ \half \sum\limits_{m=1}^n \langle \Omega, E_m(\tilde{P}^q) \Omega \rangle \\
 	&\quad +\half \int_{\Delta^{n+1}} \di^{n+1}\underline{\lambda} \;
-		\langle \Omega, e^{\lambda_{n+1} \cK}Q_{\sigma(n+1)}(\Theta^{n+1}_{K}(\tilde{P}^q)) e^{-\lambda_{n+1} \cK} \Omega, \rangle \;.
+		\langle \Omega, e^{\lambda_{n+1} \cK}Q_{\sigma(n+1)}(\Theta^{n+1}_{K}(\tilde{P}^q)) e^{-\lambda_{n+1} \cK} \Omega \rangle \;.
 \end{aligned}
 \end{equation}
-Using reflection symmetry, we may replace $ \tilde{P}^q $ by $ P^q $. The desired result then follows, noticing that by cyclicity of the trace,
-\begin{equation}
-	\sum\limits_{m=1}^{\floor{(n+1)/2}} \frac{\mathrm{Tr} \,\Theta^{(2m)}_K (P^q)}{(2m)!}
-	= \sum\limits_{m=1}^{\floor{(n+1)/2}} \frac{2^{2m} K^{2m}(\ell)_{q,q}}{(2m)!}
-	= \big( \cosh(2K(\ell)) - 1 \big)_{q,q} \;.
-\end{equation}
+Using reflection symmetry, we may replace $ \tilde{P}^q $ by $ P^q $. The desired result then follows, noting that by cyclicity of the trace, $ \mathrm{Tr} \,\Theta^m_{K(\ell)} (P^q(\ell)) = ((2K(\ell))^m)_{q,q} $.
 \end{proof}
 
 
 
-\begin{lemma}[Recovering the Integral Representation for $ n_q^{\b} $] \label{lem:nqb_integralrecovery}
-Let $q \in B^c_{\F}$ and recall the definition~\eqref{eq:nqb} of $ n_q^{\b} $ via an integral formula. Then,
-\begin{equation} \label{eq:nqb_integralrecovery}
-	n_q^{\b} = \half\sum\limits_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \big( \cosh(2K(\ell)) - 1 \big)_{q,q} \;.
-\end{equation}
-\end{lemma}
-
-\begin{proof}
-In what follows, we will drop the $ \ell $-dependence of the matrices $ K(\ell) $, $ h(\ell) $ and $ P(\ell) = |v_\ell \rangle \langle v_\ell| $ defined in~\eqref{eq:HkPk} and~\eqref{eq:K}, if not explicitly needed. We start with re-writing
-\begin{equation} \label{eq:coshrewriting}
-	\cosh(2K)-1
-	= \half\big((e^{-2K}-1)-(1-e^{2K})\big) \;.
-\end{equation}
-Using the notation $ P_w = |w \rangle \langle w| $, so $ P = P_v $, we readily retrieve from~\eqref{eq:K}:
-\begin{equation}
-	e^{-2K} = h^{-\half} \big(h^2 +2P_{h^{\half} v}\big)^{\half} h^{-\half} \;, \qquad
-	e^{2K} = h^{\half} \big(h^2 +2P_{h^{\half} v}\big)^{-\half} h^{\half} \;.
-\end{equation}
-We then express $ (e^{-2K}-1)_{q,q} $ and $ (1-e^{2K})_{q,q} $ in terms of integrals, using the identities
-\begin{equation}\label{eq:intid}
-	A^\half = \frac{2}{\pi} \int_0^\infty \left(1- \frac{t^2}{A+t^2}\right)\mathrm{d}t\;,\qquad
-	A^{-\half} = \frac{2}{\pi} \int_0^\infty \frac{1}{A+t^2} \mathrm{d}t \;,
-\end{equation}
-for any matrix $ A: \ell^2(L_\ell) \to \ell^2(L_\ell) $, as well as the Sherman-Morrison formula
-\begin{equation}\label{eq:shermor}
-	(A+cP_w)^{-1} = A^{-1} - \frac{c}{1+c\eva{w, A^{-1}w}}P_{A^{-1}w} \;,
-\end{equation}
-for $ c \in \C $ and $ w \in \ell^2(L_\ell) $. We begin with 
-\begin{align}
-	\big(h^2 +2P_{h^{\half} v}\big)^{\half} &= \frac{2}{\pi} \int_0^\infty \left(1- \frac{t^2}{t^2+h^2 +2P_{h^{\half} v}}\right)\mathrm{d}t\nonumber\\
-	&= \frac{2}{\pi} \int_0^\infty \Bigg( \frac{h^2}{t^2+h^2} - \frac{2 t^2}{1+ 2\eva{h^{\half} v ,(t^2+h^2)^{-1} h^\half v}} P_{(t^2+h^2)^{-1}h^{\half} v} \Bigg) \mathrm{d}t \nonumber\\
-	&= h + \frac{2}{\pi} \int_0^\infty  \frac{2t^2}{1+ 2\eva{h^{\half} v ,(t^2+h^2)^{-1} h^\half v}}  P_{(t^2+h^2)^{-1}h^{\half} v}\mathrm{d}t \;. \label{eq:e-2k}
-\end{align}
-Using the canonical basis vectors $ (e_p)_{p \in L_\ell} $ with $ h e_q = \lambda_{\ell,q} e_q $, where we recall the definition~\eqref{eq:???} of $ \lambda_{\ell,q} $ and $ g_\ell $, the first desired matrix element then amounts to
-\begin{align}
-	(e^{-2K}-1)_{q,q}
-	&= \eva{e_q,  h^{-\half} \big(h^2 +2P_{h^{\half} v}\big)^{\half} h^{-\half} e_q} - 1\nonumber\\
-	&= \frac{2}{\pi} \int_0^\infty  \frac{2t^2}{1+ 2\eva{h^{\half} v ,(t^2+h^2)^{-1} h^\half v}}  \eva{e_q,h^{-\half} P_{(t^2+h^2)^{-1}h^{\half} v}h^{-\half} e_q}\mathrm{d}t\nonumber\\
-	&= \frac{2}{\pi} \int_0^\infty  \frac{2g_\ell t^2 (t^2+\lambda^2_{\ell,q})^{-2}}{1+ 2g_\ell\sum_{p \in L_\ell}\lambda_{\ell,p}(t^2+\lambda^2_{\ell,p})^{-1} }  \mathrm{d}t \;. \label{eq:e-2k_integral}
-\end{align}
-Similarly we can proceed with $(1-e^{2K})_{q,q}$. We again use \eqref{eq:intid} and \eqref{eq:shermor} to get
-\begin{align}
-	\big(h^2 +2P_{h^{\half} v}\big)^{-\half}
-	&= \frac{2}{\pi} \int_0^\infty \left( \frac{1}{t^2+h^2 +2P_{h^{\half} v}}\right)\mathrm{d}t\\
-	&= h^{-1} - \frac{2}{\pi} \int_0^\infty  \frac{2}{1+ 2\eva{h^{\half} v ,(t^2+h^2)^{-1} h^\half v}}  P_{(t^2+h^2)^{-1}h^{\half} v}\mathrm{d}t \;. \label{eq:e2k}
-\end{align}
-Plugging this into~\eqref{eq:e-2k} and proceeding as in~\eqref{eq:e-2k_integral}, we arrive at
-\begin{equation} \label{eq:e2kfin}
-	(1-e^{2K})_{q,q}
-	= \frac{2}{\pi} \int_0^\infty  \frac{2g_\ell \lambda_{\ell,q}^2 (t^2+\lambda^2_{\ell,q})^{-2}}{1+ 2g_\ell\sum_{p \in L_{\ell}}\lambda_{\ell,p}(t^2+\lambda^2_{\ell,p})^{-1} }  \mathrm{d}t \;.
-\end{equation}
-With~\eqref{eq:coshrewriting} we then finally obtain
-\begin{equation}
-	\half (\cosh(2K(\ell))-1)_{q,q} = \frac{1}{\pi} \int_0^\infty  \frac{g_\ell (t^2-\lambda_{\ell,q}^2) (t^2+\lambda^2_{\ell,q})^{-2}}{1+ 2g_\ell\sum_{p \in L_{\ell}}\lambda_{\ell,p}(t^2+\lambda^2_{\ell,p})^{-1} }  \mathrm{d}t \;.
-\end{equation}
-Summing over $ \ell \in \Z^3_* $ with $ q \in L_\ell $ and comparing with~\eqref{eq:nqb}, we get the claimed result.
-\end{proof}
-
-\begin{proof}[Proof of Proposition~\ref{prop:finexpan}]
-Follows readily by~\eqref{eq:Duhamelexpan} and~\eqref{eq:nqb_integralrecovery}.
-\end{proof}
 
 
 
@@ -710,7 +636,7 @@ The other 14 terms are many-body errors, which we will bound below.
 \section{Preliminary Bounds}
 \label{sec:prelim_bounds}
 
-In this section, we compile some estimates which will be useful to bound the many-body errors. We start with some bounds on norms of powers of the correlation structure $ K(\ell) $.
+In this section, we compile some estimates which we need to bound the many-body error terms in~\eqref{eq:finexpan}. We start with some bounds on norms of powers of the correlation structure $ K(\ell) $.
 
 \begin{definition}
 For $k \in \Z^3_*$ and $A(k)\in \ell^2(L_k)\otimes \ell^2(L_k)$, we define the norms
@@ -1509,10 +1435,95 @@ Then adding \eqref{eq:estEQ2181},\eqref{eq:estEQ2182} and \eqref{eq:estEQ2183} a
 \end{proof}
 
 
+
+
 \section{Conclusion of Theorem ???}
 
+We will conclude the proof of our main result employing a bootstrap argument for the quantity $ \Xi = \sup_q \eva{\Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega}  $: We employ the Duhamel expansion~\eqref{eq:finexpan}, which gives 3 terms: The first one converges to $ n_q^{\b} $, the second amounts to $ n_q^{\ex} $ plus an error controlled against $ \Xi $ by Proposition~\ref{prop:finalEmest}, and the third one vanishes by Proposition~\ref{prop:headerr}.
 
-We know that depending on $m$, we either have $E_m = E_{Q_1}(\Theta^m_K(P^q))$ or $E_{Q_2}(\Theta^m_K(P^q))$; $E_m$ being the error in Lemma \ref{lem:inftylimexp}. We observe that the final $E_{Q_1}$ estimate is contained in the final $E_{Q_2}$ estimate, albeit for a different $m$. Hence we can write the estimate for $E_m$ for any $m$. 
+\begin{proposition}[Bootstrap Step] \label{prop:bootstrap}
+For $q \in B^c_{\F}$, recalling the definitions~\eqref{eq:T},~\eqref{eq:nqb} and~\eqref{eq:nqex} of $ \cK $, $ n_b^{\b} $ and $ n_q^{\ex} $, we have
+\begin{equation} \label{eq:bootstrap}
+	\eva{\Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega} 
+	\le n_q^{\b} + n_q^{\ex} + C k_{\F}^{-\half} \Xi \;.
+\end{equation} 
+\end{proposition} \todo{Put the proof of the main theorem up into Section 1?}
+
+In order to prove this bound, we must still make sure that the first term on the r.~h.~s. of~\eqref{eq:finexpan} indeed converges to $ n_q^{\b} $.
+
+
+\subsection{Recovering the Integral Representation for $ n_q^{\b} $}
+
+\begin{lemma}[Recovering the Integral Representation for $ n_q^{\b} $] \label{lem:nqb_integralrecovery}
+Let $q \in B^c_{\F}$ and recall the definition~\eqref{eq:nqb} of $ n_q^{\b} $ via an integral formula. Then,
+\begin{equation} \label{eq:nqb_integralrecovery}
+	n_q^{\b} = \half\sum\limits_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \big( \cosh(2K(\ell)) - 1 \big)_{q,q} \;.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+In what follows, we will drop the $ \ell $-dependence of the matrices $ K(\ell) $, $ h(\ell) $ and $ P(\ell) = |v_\ell \rangle \langle v_\ell| $ defined in~\eqref{eq:HkPk} and~\eqref{eq:K}, if not explicitly needed. We start with re-writing
+\begin{equation} \label{eq:coshrewriting}
+	\cosh(2K)-1
+	= \half\big((e^{-2K}-1)-(1-e^{2K})\big) \;.
+\end{equation}
+Using the notation $ P_w = |w \rangle \langle w| $, so $ P = P_v $, we readily retrieve from~\eqref{eq:K}:
+\begin{equation}
+	e^{-2K} = h^{-\half} \big(h^2 +2P_{h^{\half} v}\big)^{\half} h^{-\half} \;, \qquad
+	e^{2K} = h^{\half} \big(h^2 +2P_{h^{\half} v}\big)^{-\half} h^{\half} \;.
+\end{equation}
+We then express $ (e^{-2K}-1)_{q,q} $ and $ (1-e^{2K})_{q,q} $ in terms of integrals, using the identities
+\begin{equation}\label{eq:intid}
+	A^\half = \frac{2}{\pi} \int_0^\infty \left(1- \frac{t^2}{A+t^2}\right)\mathrm{d}t\;,\qquad
+	A^{-\half} = \frac{2}{\pi} \int_0^\infty \frac{1}{A+t^2} \mathrm{d}t \;,
+\end{equation}
+for any matrix $ A: \ell^2(L_\ell) \to \ell^2(L_\ell) $, as well as the Sherman-Morrison formula
+\begin{equation}\label{eq:shermor}
+	(A+cP_w)^{-1} = A^{-1} - \frac{c}{1+c\eva{w, A^{-1}w}}P_{A^{-1}w} \;,
+\end{equation}
+for $ c \in \C $ and $ w \in \ell^2(L_\ell) $. We begin with 
+\begin{align}
+	\big(h^2 +2P_{h^{\half} v}\big)^{\half} &= \frac{2}{\pi} \int_0^\infty \left(1- \frac{t^2}{t^2+h^2 +2P_{h^{\half} v}}\right)\mathrm{d}t\nonumber\\
+	&= \frac{2}{\pi} \int_0^\infty \Bigg( \frac{h^2}{t^2+h^2} - \frac{2 t^2}{1+ 2\eva{h^{\half} v ,(t^2+h^2)^{-1} h^\half v}} P_{(t^2+h^2)^{-1}h^{\half} v} \Bigg) \mathrm{d}t \nonumber\\
+	&= h + \frac{2}{\pi} \int_0^\infty  \frac{2t^2}{1+ 2\eva{h^{\half} v ,(t^2+h^2)^{-1} h^\half v}}  P_{(t^2+h^2)^{-1}h^{\half} v}\mathrm{d}t \;. \label{eq:e-2k}
+\end{align}
+Using the canonical basis vectors $ (e_p)_{p \in L_\ell} $ with $ h e_q = \lambda_{\ell,q} e_q $, where we recall the definition~\eqref{eq:???} of $ \lambda_{\ell,q} $ and $ g_\ell $, the first desired matrix element then amounts to
+\begin{align}
+	(e^{-2K}-1)_{q,q}
+	&= \eva{e_q,  h^{-\half} \big(h^2 +2P_{h^{\half} v}\big)^{\half} h^{-\half} e_q} - 1\nonumber\\
+	&= \frac{2}{\pi} \int_0^\infty  \frac{2t^2}{1+ 2\eva{h^{\half} v ,(t^2+h^2)^{-1} h^\half v}}  \eva{e_q,h^{-\half} P_{(t^2+h^2)^{-1}h^{\half} v}h^{-\half} e_q}\mathrm{d}t\nonumber\\
+	&= \frac{2}{\pi} \int_0^\infty  \frac{2g_\ell t^2 (t^2+\lambda^2_{\ell,q})^{-2}}{1+ 2g_\ell\sum_{p \in L_\ell}\lambda_{\ell,p}(t^2+\lambda^2_{\ell,p})^{-1} }  \mathrm{d}t \;. \label{eq:e-2k_integral}
+\end{align}
+Similarly we can proceed with $(1-e^{2K})_{q,q}$. We again use \eqref{eq:intid} and \eqref{eq:shermor} to get
+\begin{align}
+	\big(h^2 +2P_{h^{\half} v}\big)^{-\half}
+	&= \frac{2}{\pi} \int_0^\infty \left( \frac{1}{t^2+h^2 +2P_{h^{\half} v}}\right)\mathrm{d}t\\
+	&= h^{-1} - \frac{2}{\pi} \int_0^\infty  \frac{2}{1+ 2\eva{h^{\half} v ,(t^2+h^2)^{-1} h^\half v}}  P_{(t^2+h^2)^{-1}h^{\half} v}\mathrm{d}t \;. \label{eq:e2k}
+\end{align}
+Plugging this into~\eqref{eq:e-2k} and proceeding as in~\eqref{eq:e-2k_integral}, we arrive at
+\begin{equation} \label{eq:e2kfin}
+	(1-e^{2K})_{q,q}
+	= \frac{2}{\pi} \int_0^\infty  \frac{2g_\ell \lambda_{\ell,q}^2 (t^2+\lambda^2_{\ell,q})^{-2}}{1+ 2g_\ell\sum_{p \in L_{\ell}}\lambda_{\ell,p}(t^2+\lambda^2_{\ell,p})^{-1} }  \mathrm{d}t \;.
+\end{equation}
+With~\eqref{eq:coshrewriting} we then finally obtain
+\begin{equation}
+	\half (\cosh(2K(\ell))-1)_{q,q} = \frac{1}{\pi} \int_0^\infty  \frac{g_\ell (t^2-\lambda_{\ell,q}^2) (t^2+\lambda^2_{\ell,q})^{-2}}{1+ 2g_\ell\sum_{p \in L_{\ell}}\lambda_{\ell,p}(t^2+\lambda^2_{\ell,p})^{-1} }  \mathrm{d}t \;.
+\end{equation}
+Summing over $ \ell \in \Z^3_* $ with $ q \in L_\ell $ and comparing with~\eqref{eq:nqb}, we get the claimed result.
+\end{proof}
+
+
+\subsection{Controlling $ n_q^{b} $ and $ n_q^{\ex} $}
+
+\textcolor{red}{[SL: This is Section~\ref{sec:leading_order_analysis}. We may wish to just leave it there and just refer to it in the proof of the main result.]}
+
+\subsection{Closing the Bootstrap}
+
+\textcolor{red}{[SL: We may move the conclusion of the main result up to Sect. 1 and just leave the proof of the bootstrap proposition here.]}
+
+
+
+We know that depending on $m$, we either have $E_m = E_{Q_1}(\Theta^m_K(P^q))$ or $E_{Q_2}(\Theta^m_K(P^q))$; $E_m$ being the error in Proposition~\ref{prop:finexpan}. We observe that the final $E_{Q_1}$ estimate is contained in the final $E_{Q_2}$ estimate, albeit for a different $m$. Hence we can write the estimate for $E_m$ for any $m$. 
 
 
 
@@ -1574,14 +1585,6 @@ For sufficiently large $k_F$ (or sufficiently large $N$), we have that $\Xi\leq 
 \label{sec:leading_order_analysis}
 
 
-
-
-
-
-\subsection{Control of the Leading-Order Terms}
-\label{subsec:leading_order_control}
-
-
 Finally, we prove the claimed scalings (???) of the leading-order terms $ n_q^{\b} $~\eqref{eq:nqb} and $ n_q^{\ex} $~\eqref{eq:???}.
 
 \begin{proposition}[Control of the bosonized momentum distribution] \label{prop:nqb_nqex_bounds}
@@ -1601,7 +1604,7 @@ Further, there exists a potential $ \hat{V} \in L^1(\Z^3_*) $, some $ c > 0 $, a
 \end{equation}
 \end{proposition}
 \begin{proof}
-We focus on the case $ q \in B_{\F}^c $, as $ q \in B_{\F} $ is treated analogously. For the lowed bound on $ n_q^{\b} $, we expand the $ \cosh $ in~\eqref{eq:???} and use Lemma~\ref{lem:normsk}, as well as $ 2 \lambda_{\ell,q} = e(q) + e(q - \ell) \ge e(q) $
+We focus on the case $ q \in B_{\F}^c $, as $ q \in B_{\F} $ is treated analogously. For the lowed bound on $ n_q^{\b} $, we expand the $ \cosh $ in~\eqref{eq:nqb_integralrecovery} and use Lemma~\ref{lem:normsk}, as well as $ 2 \lambda_{\ell,q} = e(q) + e(q - \ell) \ge e(q) $
 \begin{equation}
 	n_q^{\b}
 	\le \half \sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum_{m=1}^{\infty} \frac{4^m |(K(\ell)^{2m})_{q,q}|}{(2m)!}
