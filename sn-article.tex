@@ -1365,6 +1365,30 @@ Preliminary to bounding these errors, we identify certain terms in $E_{Q_1}^{i,j
 	For $ 2E_{Q_2}^{i,6}\! =\! E_{Q_2}^{i,8}$ for $i=\{1,2\}$, we just interchange $\ell$ and $\ell_1$.   
 	For $E_{Q_2}^{1,3}\! =\! E_{Q_2}^{2,4} $, we use the CAR relation twice and interchange the $r$ and $s$ indices to get the desired result.
 \end{proof}
+After identifications
+\begin{alignat}{2}
+	E_{Q_1}(\Theta^m_{K}(P^q)) = &- 2
+	\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}} \Theta^m_{K}(P^q)(\ell)_{r,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r-\ell} 
+	\nonumber\\
+	& -2\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1} }} \Theta^m_{K}(P^q)(\ell)_{r+\ell,s}K(\ell_1)_{r+\ell_1,s_1}
+	2a^*_{r+\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r+\ell}
+ \nonumber\\
+	&-2 	\sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell_1}+\ell+\ell_1)\\ s \in L_{\ell}}} \Theta^m_{K}(P^q)(\ell)_{r,s}K(\ell_1)_{r,-r+\ell+\ell_1} b^*_{s}(\ell) a^*_{r-\ell_1}a^*_{r-\ell-\ell_1}	+\mathrm{h.c.}
+\end{alignat}
+and
+\begin{align}
+	2E_{Q_2}(\Theta^m_{K}) &=  \quad 4\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}} \Theta^m_{K}(P^q)_{r,s}K(\ell_1)_{r,s_1} a^*_{r-\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{r-\ell} \nonumber\\ 
+	&\quad +4\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in (L_{\ell}-\ell)\\ \cap \\(L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1}}} \Theta^m_{K}(P^q)_{r+\ell,s} K(\ell_1)_{r+\ell_1,s_1} a^*_{r+\ell_1} b^*_{-s_1}(-\ell_1) b_{-s}(-\ell) a_{r+\ell}\nonumber\\
+	&\quad-4\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1} \cap (-L_{\ell_1}+\ell+\ell_1)\\ s \in L_{\ell}}} \Theta^m_{K}(P^q)_{r,s} K(\ell_1)_{r,-r+\ell+\ell_1}  a^*_{r-\ell_1}a^*_{r-\ell-\ell_1}b_{-s}(-\ell)\nonumber\\
+	&\quad -4\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \cap (-L_{\ell_1}+\ell+\ell_1)}} \Theta^m_{K}(P^q)_{r,-r+\ell+\ell_1}K(\ell_1)_{r,-r+\ell+\ell_1} a^*_{r-\ell_1}a_{r-\ell_1}\nonumber\\
+	&\quad -4\sum\limits_{\ell,\ell_1 \in \Z^3_*} \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell +\ell_1) \cap (-L_{\ell_1}+\ell+\ell_1)}} \Theta^m_{K}(P^q)_{r,-r+\ell+\ell_1}K(\ell_1)_{r,-r+\ell+\ell_1} a^*_{r-\ell-\ell_1}a_{r-\ell-\ell_1} \nonumber\\
+	&\quad -4 \sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\cap (-L_{\ell}+\ell+\ell_1)\\s_1\in L_{\ell_1}}} \Theta^m_{K}(P^q)_{r,-r+\ell+\ell_1} K(\ell_1)_{r,s_1} b^*_{-s_1}(-\ell_1)a_{r-\ell-\ell_1}a_{r-\ell}\nonumber\\
+	&\quad - 4\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)}} \Theta^m_{K}(P^q)_{r,s+\ell}K(\ell_1)_{r,s+\ell_1}a^*_{r-\ell_1}a^*_{-s-\ell_1} a_{-s-\ell}a_{r-\ell}\nonumber\\
+	&\quad- 2\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{r,s\in L_{\ell} \cap L_{\ell_1}} \Theta^m_{K}(P^q)_{r,s}K(\ell_1)_{r,s}a^*_{r-\ell_1}a^*_{-s+\ell_1} a_{-s+\ell}a_{r-\ell}\nonumber\\
+	&\quad -2\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{r,s\in (L_{\ell}-\ell)\cap (L_{\ell_1}-\ell_1)} \Theta^m_{K}(P^q)_{r+\ell,s+\ell} K(\ell_1)_{r+\ell_1,s+\ell_1}  a^*_{r+\ell_1}a^*_{-s-\ell_1}a_{-s-\ell}a_{r+\ell}\nonumber\\
+	&\quad+3\sum\limits_{\ell \in \Z^3_*} \sum\limits_{r\in L_{\ell}}\Theta^{m+1}_{K}(P^q)(\ell)_{r,r} a^*_{r-\ell}a_{r-\ell} \;+\;3\sum\limits_{\ell \in \Z^3_*} \sum\limits_{r\in L_{\ell}}\Theta^{m+1}_{K}(P^q)(\ell)_{r,r} a^*_{r}a_{r} \nonumber\\
+	&\quad + 2 \sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}} \!\!\!\Theta^m_{K}(P^q)(\ell)_{r,-r+\ell+\ell_1}K(\ell_1)_{r,-r+\ell+\ell_1} + \mathrm{h.c.} \nonumber
+\end{align}
 \begin{remark}\label{q-q}
 	We can decompose the nested m-fold anti commutator, $\Theta^m_K(P^q)(\ell)$,  as
 	\begin{equation}
