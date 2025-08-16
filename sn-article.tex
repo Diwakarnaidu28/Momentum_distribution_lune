@@ -2219,13 +2219,13 @@ We know that depending on $m$, we either have $E_m = E_{Q_1}(\Theta^m_K(P^q))$ o
 \begin{lemma}
 	For any $m$, we have $E_m(P^q)$, as defined in (\ref{eq:errEm}), and we have
 	\begin{equation}
-		\abs{\eva{\Omega, E_m(P^q) \Omega}} \leq \; C_m(\ell,\ell_1)\left( k_{F}^{-\frac{3}{2}} \Xi^\half
-		+ k_{F}^{-1}\Xi^{\frac{3}{4}} \right)e(q)^{-1}+ (\sigma(m)-1)C'_m(\ell,\ell_1) k_{F}^{-1} e(q)^{-1} \Xi \label{eq:finalEmest}
+		\abs{\eva{\Omega, E_m(P^q) \Omega}} \leq \; C^q_m(\ell,\ell_1)\left( k_{F}^{-\frac{3}{2}} \Xi^\half
+		+ k_{F}^{-1}\Xi^{\frac{3}{4}} \right)e(q)^{-1}+ (\sigma(m)-1)C'^{q}_m k_{F}^{-1} e(q)^{-1} \Xi \label{eq:finalEmest}
 	\end{equation}
 where
 \begin{align}
-	C_m(\ell,\ell_1)&= \frac{C}{m!}\,  \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)e(q)^{-1}\nonumber\\
-	C'_m(\ell,\ell_1)&= \frac{C}{m!}\,  \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^{m+1}+\hat{V}(\ell)^m\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)e(q)^{-1}\,.\nonumber
+	C^q_m&= \frac{C}{m!}\,  \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)e(q)^{-1}\nonumber\\
+	\tilde{C}^q_m&= \frac{C}{m!}\,  \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^{m+1}+\hat{V}(\ell)^m\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)e(q)^{-1}\,.\nonumber
 \end{align}
 \end{lemma}
 \begin{proof}
@@ -2251,35 +2251,35 @@ Again optimizing for the choice $\Xi \sim k_F^{-2}$. Then we have $-4 +4\epsilon
 \end{equation}
 Now we use \eqref{eq:kfholder1} and \eqref{eq:kfholder2} to rewrite \eqref{eq:finalEmest} as
 \begin{equation}
-		\abs{\eva{\Omega, E_m(P^q) \Omega}} \leq \; C'_m(\ell,\ell_1) k_{F}^{-\half}\Xi + C'_m(\ell,\ell_1)k_F^{-\frac{5}{2}} \label{eq:finalfinalEmest}
+		\abs{\eva{\Omega, E_m(P^q) \Omega}} \leq \; \tilde{C}^q_m k_{F}^{-\half}\Xi + \tilde{C}^q_m(\ell,\ell_1)k_F^{-\frac{5}{2}} \label{eq:finalfinalEmest}
 \end{equation}
 Here we see that the second term is already sub-leading.
 Next we show that first term in \eqref{eq:finalfinalEmest} is also sub-leading using the bootstrap argument.
 \begin{lemma}[Bootstrap lemma]
 	For $q \in \Z^3$ and for the trial state $T_{\lambda}\Omega$, we have 
 	\begin{equation}
-		\eva{ T_{\lambda}\Omega. n_q T_{\lambda}\Omega} = n_q^b + n_q^{ex} + C k_F^{-\frac{5}{2}}
+		\eva{ T_{\lambda}\Omega. n_q T_{\lambda}\Omega} = n_q^b + n_q^{ex} + \mathfrak{C}^q k_F^{-\frac{3}{2}}
 	\end{equation}
 where, 
 \begin{equation}
-	C = \sum\limits_{m=1}^\infty C'_m(\ell,\ell_1)
+	\mathfrak{C}^q = \sum\limits_{m=1}^\infty \tilde{C}^q_m(\ell,\ell_1)
 \end{equation}
 \end{lemma}
 \begin{proof}
 	We begin with \eqref{eq:inftylimexp} with the leading order denoted as in Remark \ref{rem:leadorder} and the error estimate from \eqref{eq:finalfinalEmest} as
 	\begin{equation}\label{eq:prebootexp}
-		\eva{ T_{\lambda}\Omega. n_q T_{\lambda}\Omega} = n_q^b + n_q^{ex} + C k_F^{-\frac{1}{2}}\Xi
+		\eva{ T_{\lambda}\Omega. n_q T_{\lambda}\Omega} = n_q^b + n_q^{ex} + \mathfrak{C}^q k_F^{-\frac{1}{2}}\Xi
 \end{equation}
 where C is as defined above. Next we take the supremum over this expression, which results in
 \begin{align}
-	&\Xi = \sup_{q \in \Z^3}(n_q^b + n_q^{ex}) + C k_f^{-\frac{1}{2}}\Xi \nonumber\\
-	\implies &\Xi(1 - Ck_F^{-\frac{1}{2}}) = \sup_{q \in \Z^3}(n_q^b + n_q^{ex})
+	&\Xi = \sup_{q \in \Z^3}(n_q^b + n_q^{ex}) + \mathfrak{C}^q k_f^{-\frac{1}{2}}\Xi \nonumber\\
+	\implies &\Xi(1 - \mathfrak{C}^qk_F^{-\frac{1}{2}}) = \sup_{q \in \Z^3}(n_q^b + n_q^{ex})
 \end{align}
 We know that the leading order terms scale as $k_F^{-2}$, then we have 
 \begin{equation}
-	\Xi = \frac{k_F^{-2}}{(1 - Ck_F^{-\frac{1}{2}})}
+	\Xi = \frac{k_F^{-2}}{(1 - \mathfrak{C}^qk_F^{-\frac{1}{2}})}
 \end{equation}
-For sufficiently large $k_F$ (or sufficiently large $N$), we have that $\Xi\leq k_F^{-2}$. Next we use this bound again in \eqref{eq:prebootexp} to get the result.
+For sufficiently large $k_F$ (or sufficiently large $N$), we have that $\Xi\leq k_F^{-1}$. Next we use this bound again in \eqref{eq:prebootexp} to get the result.
 \end{proof}
 
 \subsection{Diagonal matrix elements of Leading order}
