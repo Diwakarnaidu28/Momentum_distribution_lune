@@ -920,6 +920,8 @@ where we recall the expansions~\eqref{eq:EQ1_expansion} and~\eqref{eq:EQ2_expans
 We will now consecutively bound these error terms.
 
 
+
+
 \subsubsection{Bounding $E_{Q_1}$}
 
 \begin{proposition}[Bounding $E_{Q_1}(\Theta^m_{K}(P^q))$]\label{prop:finEQ1est}
@@ -933,10 +935,7 @@ For $ q \in \Z^3 $, $\xi_\lambda = e^{-\lambda \cK} \Omega$ and $ \lambda \in [0
 \end{proposition}
 
 
-
-
-
-\begin{lemma}[Bounding $E_{Q_1}^{1,1}$ and $E^{\,2,1}_{Q_1}$]\label{lem:EQ111}
+\begin{lemma} \label{lem:EQ111}
 For $ q \in \Z^3 $, $\xi_\lambda = e^{-\lambda \cK} \Omega$ and $ \lambda \in [0,1] $, there exists a constant $ C > 0 $ such that for all $ m \in \NNN $,
 \begin{equation} \label{eq:estEQ111}
 \begin{aligned}
@@ -1021,7 +1020,7 @@ Summing up all bounds and using $\sum_{j=1}^{m-1} {{m}\choose j} < 2^m $ conclud
 
 
 
-\begin{lemma}[Bounding $E_{Q_1}^{1,2}$]\label{lem:EQ112}
+\begin{lemma} \label{lem:EQ112}
 For $ q \in \Z^3 $, $\xi_\lambda = e^{-\lambda \cK} \Omega$ and $ \lambda \in [0,1] $, there exists a constant $ C > 0 $ such that for all $ m \in \NNN $,
 \begin{equation}
 	\abs{\eva{\xi_\lambda,\left(E^{\,1,2}_{Q_1}+\mathrm{h.c.}\right) \xi_\lambda }}\nonumber
@@ -1103,7 +1102,6 @@ Adding up all bounds and using $ e(q) \ge 1 $ yields the claimed result.
 \end{proof}
 
 
-
 \begin{proof}[Proof of Proposition~\ref{prop:finEQ1est}]
 We add together the bounds from Lemmas~\ref{lem:EQ111} and~\ref{lem:EQ112} and use the Gr\"onwall bound, Lemma \ref{lem:gronNest}, to bound $ \norm{(\NN+1)^2 \xi_\lambda} \le C $.
 \end{proof}
@@ -1133,7 +1131,7 @@ For $ q \in \Z^3 $, $\xi_\lambda = e^{-\lambda \cK} \Omega$ and $ \lambda \in [0
 \todo{In the end, move this proof down.}
 
 
-\begin{lemma}[Bounding $E_{Q_2}^{1,1}$]\label{lem:EQ211}
+\begin{lemma} \label{lem:EQ211}
 For $ q \in \Z^3 $, $\xi_\lambda = e^{-\lambda \cK} \Omega$ and $ \lambda \in [0,1] $, there exists a constant $ C > 0 $ such that for all $ m \in \NNN $,
 \begin{align}
 	&\abs{\eva{\xi_\lambda,\left(E^{\,1,1}_{Q_2}+E^{\,2,1}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }} \nonumber \\
@@ -1206,7 +1204,7 @@ Summing up the three bounds concludes the proof.
 \end{proof}
 
 
-\begin{lemma}[Bounding $E_{Q_2}^{1,2}$]\label{lem:EQ212}
+\begin{lemma} \label{lem:EQ212}
 For $ q \in \Z^3 $, $\xi_\lambda = e^{-\lambda \cK} \Omega$ and $ \lambda \in [0,1] $, there exists a constant $ C > 0 $ such that for all $ m \in \NNN $,
 \begin{equation}
     \abs{\eva{\xi_\lambda,\left(E^{\,1,2}_{Q_2}+E^{\,2,2}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }}
@@ -1244,11 +1242,11 @@ and the same bound applies to $ |\I_m(\ell)| $. Finally, for $ 1 \le j \le m-1 $
 \end{proof}
 
 
-\begin{lemma}[Bounding $E_{Q_2}^{1,3}$]\label{lem:EQ213}
-For $ q \in \Z^3 $, $\xi_\lambda = e^{-\lambda \cK} \Omega$ and $ \lambda \in [0,1] $, there exists a constant $ C > 0 $ such that for all $ m \in \NNN $, \textcolor{red}{[SL: The $ e(q)^{-2} $ here is not a typo, we really get this bound.]}
+\begin{lemma} \label{lem:EQ213}
+For $ q \in \Z^3 $, $\xi_\lambda = e^{-\lambda \cK} \Omega$ and $ \lambda \in [0,1] $, there exists a constant $ C > 0 $ such that for all $ m \in \NNN $,
 \begin{equation}
 	\abs{\eva{\xi_\lambda,\left(E^{\,1,3}_{Q_2}+E^{\,2,3}_{Q_2}+E^{\,1,4}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }} 
-	\leq  C\, k_{\F}^{-2} e(q)^{-2} \Xi^{\half}
+	\leq  C\, k_{\F}^{-2} e(q)^{-1} \Xi^{\half}
 		\Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m \Bigg)
 		\Bigg( \sum\limits_{\ell_1 \in \Z^3_*}\hat{V}(\ell_1) \Bigg)
 		\norm { (\NN+1) \xi_\lambda } \;.\label{eq:estEQ213}
@@ -1273,9 +1271,10 @@ For $ j = 0 $, the Cauchy--Schwarz inequality and Lemmas~\ref{lem:normsk} and~\r
 	&|\I_0(\ell, \ell_1)| \nonumber\\
 	&\leq \left(\sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \norm{ K(\ell_1)_{r,q-\ell+\ell_1} a_{r-\ell_1}(\NN+1)^{\alpha} \xi_\lambda}^2\right)^\half
 		\left(\sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \norm{ K^m(\ell)_{r,q} a_{-q}a_{r-\ell} (\NN+1)^{-\alpha} \xi_\lambda }^2 \right)^\half \nonumber\\
-	&\leq C \hat{V}(\ell)^m \hat{V}(\ell_1) k_{\F}^{-2} e(q)^{-2} \norm{ (\NN+1)^{\half+\alpha} \xi_\lambda} \norm{ a_{-q} (\NN+1)^{\half-\alpha} \xi_\lambda } \nonumber \\
-	&\leq C \hat{V}(\ell)^m \hat{V}(\ell_1) k_{\F}^{-2} e(q)^{-2} \Xi^{\half} \norm{ (\NN+1) \xi_\lambda} \;.
+	&\leq C \hat{V}(\ell)^m \hat{V}(\ell_1) k_{\F}^{-2} e(q)^{-1} \norm{ (\NN+1)^{\half+\alpha} \xi_\lambda} \norm{ a_{-q} (\NN+1)^{\half-\alpha} \xi_\lambda } \nonumber \\
+	&\leq C \hat{V}(\ell)^m \hat{V}(\ell_1) k_{\F}^{-2} e(q)^{-1} \Xi^{\half} \norm{ (\NN+1) \xi_\lambda} \;.
 \end{align}
+Note that estimating $ |K(\ell_1)_{r,-q-\ell+\ell_1}| $ via Lemma~\ref{lem:normsk} gives $ \lambda_{\ell_1,-q-\ell+\ell_1}^{-1} $, whence we cannot extract an additional $ e(q)^{-1} $ from this term.
 The bound for $ |\I_m(\ell, \ell_1)| $ is analogous. For $ 1 \le j \le m-1 $, we proceed as follows:
 \begin{align}
 	|\I_j(\ell, \ell_1)|
@@ -1292,7 +1291,7 @@ The bound for $ |\I_m(\ell, \ell_1)| $ is analogous. For $ 1 \le j \le m-1 $, we
 \end{proof}
 
 
-\begin{lemma}[Bounding $E_{Q_2}^{1,5}$]\label{lem:EQ215}
+\begin{lemma} \label{lem:EQ215}
 For $ q \in \Z^3 $, $\xi_\lambda = e^{-\lambda \cK} \Omega$ and $ \lambda \in [0,1] $, there exists a constant $ C > 0 $ such that for all $ m \in \NNN $,
 \begin{align}
 	\abs{\eva{\xi_\lambda,\left(E^{\,1,5}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }}
@@ -1301,7 +1300,7 @@ For $ q \in \Z^3 $, $\xi_\lambda = e^{-\lambda \cK} \Omega$ and $ \lambda \in [0
 \end{lemma}
 
 \begin{proof}
-Splitting the anticommutator in~ $ E^{\,1,5}_{Q_2} $\eqref{eq:???} via~\eqref{eq:q-q} gives
+Splitting the anticommutator in $ E^{\,1,5}_{Q_2} $~\eqref{eq:???} via~\eqref{eq:q-q} gives
 \begin{equation} \label{eq:EQ2151}
 \begin{aligned}
 	\abs{\eva{\xi_\lambda,\left(E^{\,1,5}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }} 
@@ -1349,16 +1348,16 @@ Finally, for $ j = m $,
 \end{proof}
 
 
-\begin{lemma}[Bounding $E_{Q_2}^{1,7}$]\label{lem:EQ217}
+\begin{lemma} \label{lem:EQ217}
 For $ q \in \Z^3 $, $\xi_\lambda = e^{-\lambda \cK} \Omega$ and $ \lambda \in [0,1] $, there exists a constant $ C > 0 $ such that for all $ m \in \NNN $,
 \begin{align}
 	\abs{\eva{\xi_\lambda,\left(E^{\,1,7}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }}
-	\leq C k_{\F}^{-\frac{3}{2}} e(q)^{-\frac 32} \Xi^{\half} \left(\sum\limits_{\ell\in \Z^3_*} \hat{V}(\ell)^m \right) \left(\sum\limits_{\ell_1\in \Z^3_*} \hat{V}(\ell_1) \right) \norm{(\NN+1)^\half \xi_\lambda } \;. \label{eq:estEQ217}
+	\leq C k_{\F}^{-\frac{3}{2}} e(q)^{-1} \Xi^{\half} \left(\sum\limits_{\ell\in \Z^3_*} \hat{V}(\ell)^m \right) \left(\sum\limits_{\ell_1\in \Z^3_*} \hat{V}(\ell_1) \right) \norm{(\NN+1)^\half \xi_\lambda } \;. \label{eq:estEQ217}
 \end{align}
 \end{lemma}
 
 \begin{proof}
-Splitting the anticommutator in~ $ E^{\,1,7}_{Q_2} $\eqref{eq:???} via~\eqref{eq:q-q} gives
+Splitting the anticommutator in $ E^{\,1,7}_{Q_2} $~\eqref{eq:???} via~\eqref{eq:q-q} gives
 \begin{equation} \label{eq:EQ2171}
 \begin{aligned}
 	\abs{\eva{\xi_\lambda,\left(E^{\,1,7}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }} 
@@ -1375,7 +1374,7 @@ For $ j = 0 $, employing the Cauchy--Schwarz inequality and Lemmas~\ref{lem:norm
 	&\leq \sum\limits_{s_1 \in L_{\ell_1}}
 		\norm{  K(\ell_1)_{-q+\ell+\ell_1,s_1} b_{-s_1}(-\ell_1) \xi_\lambda}
 		\norm{ K^m(\ell)_{q,-q+\ell+\ell_1}a_{-q}a_{-q+\ell_1} \xi_\lambda } \nonumber\\
-	&\leq C k_{\F}^{-\frac 32} e(q)^{-\frac 32} \Xi^\half
+	&\leq C k_{\F}^{-\frac 32} e(q)^{-1} \Xi^\half
 		\hat{V}(\ell)^m
 		\hat{V}(\ell_1)
 		\norm{(\NN+1)^\half\xi_\lambda} \;. \label{eq:estEQ2171}
@@ -1402,7 +1401,7 @@ The bound for $ j = m $ is analogous. Finally, for $ 1 \le j \le m-1 $,
 \end{proof}
 
 
-\begin{lemma}[Bounding $E_{Q_2}^{1,8}$]\label{lem:EQ218}
+\begin{lemma} \label{lem:EQ218}
 For $ q \in \Z^3 $, $\xi_\lambda = e^{-\lambda \cK} \Omega$ and $ \lambda \in [0,1] $, there exists a constant $ C > 0 $ such that for all $ m \in \NNN $,
 \begin{align}
 	\abs{\eva{\xi_\lambda,\left(E^{\,1,8}_{Q_2}+E^{\,2,8}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }}
@@ -1412,7 +1411,7 @@ For $ q \in \Z^3 $, $\xi_\lambda = e^{-\lambda \cK} \Omega$ and $ \lambda \in [0
 
 \begin{proof}
 We focus on $ E^{\,1,8}_{Q_2} $, since the proof for $ E^{\,2,8}_{Q_2} $ is analogous.
-Splitting again the anticommutator in~ $ E^{\,1,8}_{Q_2} $\eqref{eq:???} via~\eqref{eq:q-q} we get
+Splitting again the anticommutator in $ E^{\,1,8}_{Q_2} $~\eqref{eq:???} via~\eqref{eq:q-q} we get
 \begin{equation} \label{eq:EQ2181}
 \begin{aligned}
 	\abs{\eva{\xi_\lambda,\left(E^{\,1,8}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }} 
@@ -1450,9 +1449,10 @@ We add the bounds from Lemmas~\ref{lem:EQ211}--\ref{lem:EQ218}, and use $ e(q) \
 %TODO Writing head
 
 
+\todo{Make sure that $ C^m $ was placed everywhere}
 \todo{In the end, complement the max-norm bounds with the extraction of $ e(q)^{-1} $}
 \todo{In the end, check that all $ E_Q $-terms were copied correctly from their definition to the estimation Lemmas.}
-\todo{Adjust the captions of all Lemmas: They should include all bounded quantities.}
+
 
 
 \section{Conclusion of Theorem ???}
