@@ -739,9 +739,9 @@ Let $k \in \Z^3_*$ and $ \Psi \in \cF $. Then,
 \end{equation}
 Furthermore, for $f \in \ell^2(L_k)$ we have
 \begin{equation} \label{eq:estb}
-	\Bigg\Vert \sum\limits_{p\in L_k}f_p b_p(k) \Psi \Bigg\Vert
+	\sum\limits_{p\in L_k} |f_p| \norm{b_p(k) \Psi}
 	\leq \norm{f}_2 \norm{\NN^\half\Psi} \;, \qquad
-	\Bigg\Vert \sum\limits_{p\in L_k}f_p b^*_p(k) \Psi \Bigg\Vert
+	\sum\limits_{p\in L_k} |f_p| \norm{b^*_p(k) \Psi}
 	\leq \norm{f}_2 \norm{(\NN+1)^\half\Psi} \;.
 \end{equation}
 \end{lemma}
@@ -1121,8 +1121,7 @@ For $ q \in \Z^3 $, $\xi_\lambda = e^{-\lambda \cK} \Omega$ and $ \lambda \in [0
 \begin{equation}\label{eq:finEQ2est}
 	\abs{\eva{\xi_\lambda, E_{Q_2}\!\left(\Theta^m_K(P^q)\right)  \xi_\lambda}} 
 	\leq C e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
-		+ k_{\F}^{-1}\Xi^{\frac{3}{4}}
-		+ k_{\F}^{-1}\Xi \right)
+		+ k_{\F}^{-1} \Xi^{\frac{3}{4}} \right)
 		\Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg) \;. \\
 \end{equation}
 \end{proposition}
@@ -1402,48 +1401,53 @@ The bound for $ j = m $ is analogous. Finally, for $ 1 \le j \le m-1 $,
 \end{align}
 \end{proof}
 
-%TODO Writing head
 
 \begin{lemma}[Bounding $E_{Q_2}^{1,8}$]\label{lem:EQ218}
 For $ q \in \Z^3 $, $\xi_\lambda = e^{-\lambda \cK} \Omega$ and $ \lambda \in [0,1] $, there exists a constant $ C > 0 $ such that for all $ m \in \NNN $,
 \begin{align}
 	\abs{\eva{\xi_\lambda,\left(E^{\,1,8}_{Q_2}+E^{\,2,8}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }}
-	\leq C k_{\F}^{-2} e(q)^{-1} \Xi \left(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m \right) \left(\sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \right) \;.\label{eq:estEQ218}  
+	\leq C k_{\F}^{-2} e(q)^{-\frac 32} \Xi \left(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m \right) \left(\sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \right) \;.\label{eq:estEQ218}  
 \end{align}
 \end{lemma}
 
 \begin{proof}
- We start with the L.H.S. of \eqref{eq:estEQ218}.
+We focus on $ E^{\,1,8}_{Q_2} $, since the proof for $ E^{\,2,8}_{Q_2} $ is analogous.
+Splitting again the anticommutator in~ $ E^{\,1,8}_{Q_2} $\eqref{eq:???} via~\eqref{eq:q-q} we get
+\begin{equation} \label{eq:EQ2181}
+\begin{aligned}
+	\abs{\eva{\xi_\lambda,\left(E^{\,1,8}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }} 
+	= 2\abs{\eva{\xi_\lambda, E^{\,1,8}_{Q_2} \xi_\lambda }}
+	\le 4 \sum_{j=0}^m {{m}\choose j} \sum\limits_{\ell,\ell_1  \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,\\
+	\I_j(\ell, \ell_1)
+	:= \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}
+		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,-r+\ell+\ell_1} K(\ell_1)_{r,-r+\ell+\ell_1} a^*_{r-\ell} a_{r-\ell} \xi_\lambda} \;. \\
+\end{aligned}
+\end{equation}
+For $ j = 0 $, the term $ K^0(\ell)_{q,-r+\ell+\ell_1} = \delta_{q,-r+\ell+\ell_1} $ eliminates the sum over $ r $, so with the Cauchy--Schwarz inequality and Lemma~\ref{lem:normsk} we immediately get
+\begin{equation}
+	|\I_0(\ell, \ell_1)|
+	= \abs{\eva{ K(\ell_1)_{q,-q+\ell+\ell_1} a_{-q+\ell_1} \xi_\lambda, K^m(\ell)_{q,-q+\ell+\ell_1} a_{-q+\ell_1} \xi_\lambda }}
+	\leq C k_{\F}^{-2} e(q)^{-2} \Xi
+		\hat{V}(\ell)^m
+		\hat{V}(\ell_1) \;. \label{eq:estEQ2181}
+\end{equation}
+An analogous bound holds for $ j = m $. Finally, for $ 1 \le j \le m-1 $, the Cauchy--Schwarz inequality, followed by Lemmas~\ref{lem:pairest} and~\ref{lem:normsk}, yields
 \begin{align}
-	&2\abs{\eva{\xi_\lambda,\left(E^{\,1,8}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }} = 2\abs{\eva{\xi_\lambda,2\mathrm{Re}\left(E^{\,1,8}_{Q_2}\right) \xi_\lambda }} = 4\abs{\eva{\xi_\lambda, E^{\,1,8}_{Q_2} \xi_\lambda }}\nonumber\\
-	\leq\,\;8& \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{\substack{L_{\ell}\cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}(q) \abs{\eva{\xi_\lambda, K^m(\ell)_{q,-q+\ell+\ell_1} K(\ell_1)_{q,-q+\ell+\ell_1} a^*_{-q+\ell_1}a_{-q+\ell_1} \xi_\lambda }} \label{eq:EQ2181}\\
-	+\,8& \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}  \abs{\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^j(\ell)_{q,-r+\ell+\ell_1} K(\ell_1)_{r,-r+\ell+\ell_1} a^*_{r-\ell}a_{r-\ell} \xi_\lambda }} \label{eq:EQ2182}\\
-	+\,8&\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{\substack{L_{\ell}\cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}} (q) \abs{\eva{\xi_\lambda, K^m(\ell)_{q,-q+\ell+\ell_1}K(\ell_1)_{q,-q+\ell+\ell_1} a^*_{q-\ell}a_{q-\ell}\xi_\lambda }} \label{eq:EQ2183}
+	|\I_j(\ell, \ell_1)|
+	&\leq \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}  \norm{ K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell} \xi_\lambda} \norm{ K^{m-j}(\ell)_{r,q} K^j(\ell)_{q,-r+\ell+\ell_1} a_{r-\ell} \xi_\lambda} \nonumber\\
+	&\leq C k_{\F}^{-2} e(q)^{-\frac 32} \Xi
+		\hat{V}(\ell)^m
+		\hat{V}(\ell_1) \;. \label{eq:estEQ2182}
 \end{align}
-where the last inequality is implied by Remark \ref{q-q} and we used \eqref{eq:decomptheta}. Then we use the Cauchy-Schwarz inequality and the bounds from Lemma \ref{lem:pairest}.
-We estimate \eqref{eq:EQ2181} as 
-\begin{align}
-	 \eqref{eq:EQ2181}
-	&= \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{\substack{L_{\ell}\cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}(q) \abs{\eva{ K(\ell_1)_{q,-q+\ell+\ell_1} a_{-q+\ell_1} \xi_\lambda, K^m(\ell)_{q,-q+\ell+\ell_1} a_{-q+\ell_1} \xi_\lambda }}\nonumber\\
-	&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{\substack{L_{\ell}\cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}(q) \norm{ K(\ell_1)_{q,-q+\ell+\ell_1} a_{-q+\ell_1} \xi_\lambda}\norm{ K^m(\ell)_{q,-q+\ell+\ell_1} a_{-q+\ell_1} \xi_\lambda }\nonumber\\
-	&\leq C\,\Xi \sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\max} \sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\max}   \label{eq:estEQ2181}
-\end{align}
-We estimate \eqref{eq:EQ2182} as
-\begin{align}
-	& \eqref{eq:EQ2182}\nonumber\\
-	&= \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}  \abs{\eva{ K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell} \xi_\lambda, K^{m-j}(\ell)_{r,q} K^j(\ell)_{q,-r+\ell+\ell_1} a_{r-\ell} \xi_\lambda }}\nonumber\\
-	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}  \norm{ K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell} \xi_\lambda} \norm{ K^{m-j}(\ell)_{r,q} K^j(\ell)_{q,-r+\ell+\ell_1} a_{r-\ell} \xi_\lambda} \nonumber\\
-	&\leq C\,\Xi \left(\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{ \ell\in \Z^3_*} \norm{K^{m-j}(\ell)}_{\mathrm{max,2}} \norm{K^j(\ell)}_{\mathrm{max,2}}\right) \left(\sum\limits_{ \ell_1\in \Z^3_*}\norm{ K(\ell_1)}_{\max} \right) \label{eq:estEQ2182}
-\end{align}
-We estimate \eqref{eq:EQ2183} as
-\begin{align}
-	& \eqref{eq:EQ2183}\nonumber\\
-	&= \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{\substack{L_{\ell}\cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}} (q) \abs{\eva{K(\ell_1)_{q,-q+\ell+\ell_1} a_{q-\ell} \xi_\lambda, K^m(\ell)_{q,-q+\ell+\ell_1} a_{q-\ell}\xi_\lambda }}\nonumber\\
-	&\leq \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{\substack{L_{\ell}\cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}} (q) \norm{K(\ell_1)_{q,-q+\ell+\ell_1} a_{q-\ell} \xi_\lambda}\norm{ K^m(\ell)_{q,-q+\ell+\ell_1} a_{q-\ell}\xi_\lambda }\nonumber\\
-	&\leq C\,\Xi \sum\limits_{\ell \in \Z^3_*} \norm{K^m(\ell)}_{\max} \sum\limits_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\max}  \label{eq:estEQ2183}
-\end{align} 
-Then adding \eqref{eq:estEQ2181},\eqref{eq:estEQ2182} and \eqref{eq:estEQ2183} and using Lemma \ref{lem:normsk}, we arrive at the bound above \eqref{eq:estEQ218}. For $\abs{\eva{\xi_\lambda,\left(E^{\,2,8}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }}$ one can proceed similarly as above and obtain the same bound.
+\textcolor{red}{[SL: Note that we could also sacrifice a $ \Xi^{\half} $, here, to gain another $ e(q)^{\half} $. This is not relevant here, but maybe an interesting observation.]}
 \end{proof}
+
+
+\begin{proof}[Proof of Proposition~\ref{prop:finEQ2est}]
+We add the bounds from Lemmas~\ref{lem:EQ211}--\ref{lem:EQ218}, and use $ e(q) \ge 1 $, $ \Xi \le 1 $, as well as the Gr\"onwall bound, Lemma \ref{lem:gronNest}, to estimate $ \norm{(\NN+1)^2 \xi_\lambda} \le C $.
+\end{proof}
+
+%TODO Writing head
 
 
 \todo{In the end, complement the max-norm bounds with the extraction of $ e(q)^{-1} $}
