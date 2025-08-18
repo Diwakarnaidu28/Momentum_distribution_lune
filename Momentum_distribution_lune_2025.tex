@@ -405,7 +405,7 @@ leading to Proposition~\ref{prop:finexpan}, which is the main result of this sec
 
 
 
-\subsection{Bosonized Contribution}
+\subsection{Extraction of the Bosonized Contribution}
 \label{sec:extraction_bos}
 
 To compute the multicommutators in~\eqref{eq:duhamelexpansion_blueprint}, we use the CAR~\eqref{eq:CAR}, which will produce several quadratic pseudo-bosonic expressions, for which we adopt the notation of~\cite{CHN21}.
@@ -580,7 +580,7 @@ Using reflection symmetry, we may replace $ \tilde{P}^q $ by $ P^q $. The desire
 
 
 
-\subsection{Exchange Contribution and Commutation Errors}
+\subsection{Extraction of the Exchange Contribution}
 \label{sec:extraction_ex}
 
 To facilitate bounding the many-body errors $ E_{Q_1} $ and $ E_{Q_2} $ in \eqref{eq:errKQ}, we normal-order them, which will at the same time extract the exchange contribution $ n_q^{\ex} $. Normal-ordering amounts to a lengthy but straightforward application of the CAR~\eqref{eq:CAR} with the following result:
@@ -684,13 +684,13 @@ Further, we have the bounds
 \begin{equation} \label{eq:K_max_bounds}
 \begin{aligned}
 	&\Vert K(\ell)^m \Vert_{\max}
-	&\le\; &(C \hat{V}(\ell))^m k_{\F}^{-1} \;, \qquad
-	&\Vert K(\ell)^m \Vert_{\max,2}
-	&\le \;&(C \hat{V}(\ell))^m k_{\F}^{-\frac 12} \;, \\
+	&\le \; &(C \hat{V}(\ell))^m k_{\F}^{-1} \;, \qquad
+	&&\Vert K(\ell)^m \Vert_{\max,2}
+	&&\le (C \hat{V}(\ell))^m k_{\F}^{-\frac 12} \;, \\
 	&\normmaxi{K(\ell)^m}
-	&\leq \; &(C \hat{V}(\ell))^m \;, \qquad
-	&\norm{K(\ell)^m}_{\HS}
-	&\le \;&(C \hat{V}(\ell))^m \;,
+	&\le \; &(C \hat{V}(\ell))^m \;, \qquad
+	&&\norm{K(\ell)^m}_{\HS}
+	&&\le (C \hat{V}(\ell))^m \;,
 \end{aligned}   
 \end{equation}
 as well as for $ q, r \in L_\ell $,
@@ -909,7 +909,7 @@ The largest part of our many-body analysis addresses the estimation of the error
 \end{equation}
 \end{definition}
 
-The main bound of this subsection is then the following:
+The main bound of this subsection is then the following: \textcolor{red}{[SL: We must still subtract the contribution to $ n_q^{\ex} $ from $ E_m(P^q) $. Say, $ n_q^{\ex,m} $.]}
 
 \begin{proposition} \label{prop:finalEmest}
 Recall the bosonization error term $E_m(P^q)$~\eqref{eq:errEm} with $ \Theta^n_K $, $ P^q $, $ \int_{\Delta^n} \di^n \ulambda $ and $ \sigma(n) $ defined within and above Proposition~\ref{prop:finexpan}. Then, there exists a constant $ C > 0 $ such that for all $ m \in \NNN $ and $ q \in B_{\F}^c $,
@@ -1143,7 +1143,7 @@ For $\xi_\lambda = e^{-\lambda \cK} \Omega$, there exists a constant $ C > 0 $ s
 		+ k_{\F}^{-1} \Xi^{\frac{3}{4}} \right) \;. \\
 \end{equation}
 \end{proposition}
-
+\textcolor{red}{[SL: We must still subtract the contribution to $ n_q^{\ex} $ from $ E_m(P^q) $. Say, $ n_q^{\ex,m} $. Also, we should refer to the definitions of the $ E_{Q_1} $ and $ E_{Q_2} $-terms when we finalize the proofs of the two main propositions.]}
 
 
 \begin{lemma} \label{lem:EQ211}
