@@ -786,7 +786,7 @@ Let $A = (A(\ell))_{\ell \in \Z^3_*}$ be a family of symmetric matrices $ A(\ell
 \end{equation}
 \end{lemma}
 
-The next estimate is a straightforward generalization of~\cite[Prop.~5.8]{CHN21}, which allows us to control $ \langle \Omega, e^{\lambda \cK} (\mathcal{N} + 1)^m e^{-\lambda \cK} \Omega \rangle \sim 1 $, irrespective of $ m $.
+The next estimate is a straightforward generalization of~\cite[Prop.~5.8]{CHN21}, which allows us to control $ \langle \Omega, e^{\lambda \cK} (\mathcal{N} + 1)^m e^{-\lambda \cK} \Omega \rangle \sim 1 $, irrespectively of $ m $.
 
 \begin{lemma}[Gr\"onwall Estimate]\label{lem:gronNest}
 For every $ m \in \NNN $, there exists a constant $ C_m > 0 $ such that for all $ \lambda\in [0,1]$
@@ -794,8 +794,7 @@ For every $ m \in \NNN $, there exists a constant $ C_m > 0 $ such that for all 
 	e^{\lambda \cK} (\mathcal{N} +1)^m e^{-\lambda \cK}
 	\leq C_m (\NN+1)^m \;,
 \end{equation}
-as an operator inequality. More precisely, $ C_m $ depends on $ K $ as $C_m = \mathrm{exp}(C'_m\sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\HS}) $ \todo{Do we need this? The notation $ C'_m $ might be confusing.}
-\footnote{The value of $C$ can be different for every new appearance, unless explicitly stated as done here.}.
+as an operator inequality. More precisely, $ C_m $ depends on $ K $ as $C_m = \mathrm{exp}(C'_m\sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\HS}) $ \todo{Shall we remove this in the end?}.
 \end{lemma}
 \begin{proof}
 First, observe that by the pull-through formula, we have
@@ -810,16 +809,23 @@ Further, note that
 	\left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)
 	\leq  C'_m \left(\NN+4\right)^{m-1} \;.
 \end{equation}
-For $ \Psi_0 \in \cF $ and $ \Psi_\lambda := e^{-\lambda \cK} \Psi_0 $, recalling definition~\eqref{eq:T} of $ \cK $ and Lemma~\ref{lem:estb}, we then estimate \textcolor{red}{[SL: Isn't that just a bound on $ Q_1(A) $?]}
+For $ \Psi_0 \in \cF $ and $ \Psi_\lambda := e^{-\lambda \cK} \Psi_0 $, using the definition~\eqref{eq:T} of $ \cK $, then the Cauchy--Schwarz inequality and then Lemma~\ref{lem:pairest}, we get
 \begin{align}
 	&\left|\frac{\di}{\di\lambda}\eva{\Psi_0, e^{\lambda \cK} (\mathcal{N}+4)^m e^{-\lambda \cK} \Psi_0 }\right|
 	= \left| \eva{\Psi_0, e^{\lambda \cK} \left[\KK, (\NN+4)^m\right] e^{-\lambda \cK} \Psi_0}\right|\nonumber\\
-	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell} \abs{\eva{  b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half \Psi_\lambda, K(\ell)_{r,s} b^*_{r}(\ell) \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \Psi_\lambda }}\nonumber\\
-	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell} \norm{ b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half \Psi_\lambda} \norm {K(\ell)_{r,s} b^*_{r}(\ell) \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \Psi_\lambda} \nonumber\\
-	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{s\in L_\ell} \norm{  b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half \Psi_\lambda} \left(\sum\limits_{r\in L_\ell} \abs{K(\ell)_{r,s}}^2 \right)^\half \norm { (\NN+1)^\half \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \Psi_\lambda} \nonumber\\
-	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*} \norm{K(\ell)}_{\HS}\left(\sum\limits_{s\in L_\ell} \norm{  b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half \Psi_\lambda}^2\right)^\half \norm{ \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \Psi_\lambda }\nonumber\\
-	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*} \norm{K(\ell)}_{\HS}\norm{ \NN^\half \left( \left(\NN+4\right)^m - \NN^m \right)^\half \Psi_\lambda} \norm{ (\NN+1)^\half \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \Psi_\lambda }\nonumber\\
-	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*} \norm{K(\ell)}_{\HS}\norm{ \left(\NN+4\right)^\frac{m}{2} \Psi_\lambda}^2 \;.
+	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*}
+		\sum\limits_{r,s\in L_\ell} \abs{\eva{  b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half \Psi_\lambda, K(\ell)_{r,s} b^*_{r}(\ell) \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \Psi_\lambda }}\nonumber\\
+	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*}
+		\Bigg( \sum\limits_{s\in L_\ell} \norm{ b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half \Psi_\lambda}^2 \Bigg)^{\half}
+		\Bigg( \sum\limits_{r,s\in L_\ell} |K(\ell)_{r,s}|^2 \Bigg)^{\half} \times \nonumber\\
+		&\quad \times \Bigg( \sum\limits_{r\in L_\ell} \norm {b^*_{r}(\ell) \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \Psi_\lambda}^2 \Bigg)^{\half} \nonumber\\
+	&\leq \sum\limits_{\ell\in \mathbb{Z}^3_*} 
+		\norm{ \NN^\half \left( \left(\NN+4\right)^m - \NN^m \right)^\half \Psi_\lambda}
+		\norm{K(\ell)}_{\HS}
+		\norm{ (\NN+1)^\half \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \Psi_\lambda } \nonumber\\
+	&\leq C_m' \sum\limits_{\ell\in \mathbb{Z}^3_*}
+		\norm{K(\ell)}_{\HS}
+		\norm{ \left(\NN+4\right)^\frac{m}{2} \Psi_\lambda}^2 \;.
 \end{align}
 We conclude the bound using Gr\"onwall's lemma.
 \end{proof}
@@ -1472,6 +1478,7 @@ and the same bound applies to $ |\I_m(\ell)| $. Finally, for $ 1 \le j \le m-1 $
     		k_{\F}^{-1} e(q)^{-1} \Xi \;. \label{eq:estEQ2122}
 \end{equation}
 \end{proof}
+
 
 
 
