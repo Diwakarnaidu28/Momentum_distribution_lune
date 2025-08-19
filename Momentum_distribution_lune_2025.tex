@@ -283,27 +283,46 @@ where the lune $ L_\ell $, the excitation energy $ \lambda_{\ell,p} $ and the co
 	\lambda_{\ell,p} := \half (|p|^2 - |p-\ell|^2) \;, \qquad
 	g_\ell := \frac{\hat{V}(\ell) k_{\F}^{-1}}{2 (2 \pi)^2} \;.
 \end{equation}
-
-
-...
-
-For $ q \in B_{\F}^c $, we define the excitation energy as
+The errors will depend on inverses of the excitation energy
 \begin{equation} \label{eq:eq}
 	e(q)
 	:= \abs{|q|^2 - \inf_{p \in B_{\F}^c} |p|^2 + \half}
 	= \abs{|q|^2 - \sup_{h \in B_{\F}} |h|^2 - \half} \;,
 \end{equation}
-whence $ e(q) \ge \half $.
+which is evidently lower bounded by $ e(q) \ge \half $.
 
-...
+\begin{theorem}[Main result] \label{thm:main}
+Assume that the Fourier transformation of the interaction potential is $ \hat{V} \in \ell^1(\Z^3) $, $ \hat{V} \ge 0 $, $ \hat{V}(0) = 0 $ \textcolor{red}{and $ \hat{V}(k) = \hat{V}(-k) $}.
+Then, there exists a sequence of trial states $ (\Psi_N) $ with $ \Psi_N \in L^2(\TTT^3)^{\otimes_{\mathrm{a}} N} $ such that
+\begin{itemize}
+\item $ \Psi_N $ is energetically close to the ground state in the sense that there exists a $ \varepsilon > 0 $ and a $ C_\varepsilon > 0 $ such that for all $ N $, we have
+\begin{equation}
+	\eva{\Psi_N, H_N \Psi_N} - E_{\GS}
+	\le C k_{\F}^{1-\frac{1}{94} + \varepsilon} \;,
+\end{equation}
+\item There exists a constant $ C > 0 $ such that for all $ N $ and $ q \in \Z^3 $, the momentum distribution in $ \Psi_N $ satisfies
+\begin{equation}
+	\begin{cases}
+	\abs{\eva{\Psi_N, a_q^* a_q \Psi_N} - n_q^{\b}}
+	&\le C k_{\F}^{-\frac 32} e(q)^{-1} \quad
+		\textnormal{for } |q| \ge k_{\F} \\
+	\abs{1 - \eva{\Psi_N, a_q^* a_q \Psi_N} - n_q^{\b}}
+	&\le C k_{\F}^{-\frac 32} e(q)^{-1} \quad
+		\textnormal{for } |q| \ge k_{\F} 
+	\end{cases} \;,
+\end{equation}
+where $ n_q^{\b} $, defined in~\eqref{eq:nqb} satisfies $ |n_q^{\b}| \le C k_{\F}^{-1} e(q)^{-1} $.
+\end{itemize} 
+\end{theorem}
 
 \begin{itemize}
-\item Formulate the main result in the form ``There exists a state $ \Psi_{trial} $ such that it is energetically close to the GS and $ \langle \Psi_{\mathrm{trial}}, n_q \Psi_{\mathrm{trial}} \rangle = n_q^{\b} + error $.
 \item Add comments and remarks
 \end{itemize}
 
-Consider a trial state $\Psi_{\mathrm{trial}}$ such that $\braket{\Psi_{\mathrm{trial}},H\Psi_{\mathrm{trial}}} = E_{\mathrm{HF}} + E_{\mathrm{RPA}}+ o(\hbar) $, where $E_{\mathrm{HF}}$ is the Hartree-Fock energy and $E_{\mathrm{RPA}}$ is the correlation energy from \textit{Random Phase Approximation}...
 
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+...
+\end{proof}
 
 
 
@@ -382,7 +401,7 @@ satisfying $ K(-k)_{-p,-q} = K(k)_{p,q} $. This concludes the definition of the 
 
 
 
-We now extract the leading-order terms $ n_q^{\b} $ and $ n_q^{\ex} $ out of the momentum distribution $ \langle \Psi, a_q^* a_q \Psi \rangle $ with $ \Psi = \Psi_{\trial} = R e^{-\cK} \Omega $, compare~\eqref{eq:Psitrial}. The particle--hole transformation $ R $ can easily be dealt with, since by~\eqref{eq:R}, it only reverses the momentum distribution inside the Fermi ball as
+We now extract the bosonized and exchange contributions $ n_q^{\b} $ and $ n_q^{\ex} $ out of the momentum distribution $ \langle \Psi, a_q^* a_q \Psi \rangle $ with $ \Psi = \Psi_{\trial} = R e^{-\cK} \Omega $, compare~\eqref{eq:Psitrial}. The particle--hole transformation $ R $ can easily be dealt with, since by~\eqref{eq:R}, it only reverses the momentum distribution inside the Fermi ball as
 \begin{equation} \label{eq:momentum_dist_R_trafo}
 	\langle R \xi, a_q^* a_q R \xi \rangle
 	= \mathds{1}_{B_{\F}}(q) \big( 1 - \langle \xi, a_q^* a_q \xi \rangle \big)
@@ -401,7 +420,7 @@ So it suffices to consider the excitation vector $ \xi = \xi_{\trial} := e^{-\cK
 	= \ldots \;,
 \end{aligned}
 \end{equation}
-leading to Proposition~\ref{prop:finexpan}, which is the main result of this section. Note that $ a_q \Omega = 0 $, from which we immediately conclude $ \langle \Omega, a_q^* a_q \Omega \rangle = 0 $. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n_q^{\b} $ by bosonization, similarly as in~\cite{BL25}. The term $ n_q^{\ex} $ then appears when normal ordering the bosonization errors, similar to the exchange contribution to the correlation energy appearing in~\cite{CHN23}. Since $ n_q^{\ex} \ll n_q^{\b} $ (see Lemmas ???), we treat also $ n_q^{\ex} $ as a bosonization error.
+leading to Proposition~\ref{prop:finexpan}, which is the main result of this section. Note that $ a_q \Omega = 0 $, from which we immediately conclude $ \langle \Omega, a_q^* a_q \Omega \rangle = 0 $. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n_q^{\b} $ by bosonization, similarly as in~\cite{BL25}. The term $ n_q^{\ex} $ then appears when normal ordering the bosonization errors, similar to the exchange contribution to the correlation energy appearing in~\cite{CHN23}. Since $ n_q^{\ex} \ll n_q^{\b} $ (see Lemma~\ref{lem:estnqex} and Proposition~\ref{prop:nqb_bounds}), we treat also $ n_q^{\ex} $ as a bosonization error.
 
 
 
