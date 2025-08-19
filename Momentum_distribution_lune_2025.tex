@@ -378,7 +378,7 @@ satisfying $ K(-k)_{-p,-q} = K(k)_{p,q} $. This concludes the definition of the 
 
 
 
-\section{Extraction of the Leading-Order Terms}\label{sec:extraction}
+\section{Extraction of Bosonized and Exchange Contribution}\label{sec:extraction}
 
 
 
@@ -401,7 +401,7 @@ So it suffices to consider the excitation vector $ \xi = \xi_{\trial} := e^{-\cK
 	= \ldots \;,
 \end{aligned}
 \end{equation}
-leading to Proposition~\ref{prop:finexpan}, which is the main result of this section. Note that $ a_q \Omega = 0 $, from which we immediately conclude $ \langle \Omega, a_q^* a_q \Omega \rangle = 0 $. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n_q^{\b} $ by bosonization, similarly as in~\cite{BL25}. The term $ n_q^{\ex} $ then appears when normal ordering the bosonization errors, similar to the exchange contribution to the correlation energy appearing in~\cite{CHN23}.
+leading to Proposition~\ref{prop:finexpan}, which is the main result of this section. Note that $ a_q \Omega = 0 $, from which we immediately conclude $ \langle \Omega, a_q^* a_q \Omega \rangle = 0 $. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n_q^{\b} $ by bosonization, similarly as in~\cite{BL25}. The term $ n_q^{\ex} $ then appears when normal ordering the bosonization errors, similar to the exchange contribution to the correlation energy appearing in~\cite{CHN23}. Since $ n_q^{\ex} \ll n_q^{\b} $ (see Lemmas ???), we treat also $ n_q^{\ex} $ as a bosonization error.
 
 
 
@@ -580,10 +580,11 @@ Using reflection symmetry, we may replace $ \tilde{P}^q $ by $ P^q $. The desire
 
 
 
-\subsection{Extraction of the Exchange Contribution}
+\subsection{Normal Ordering the Many-Body Errors}
 \label{sec:extraction_ex}
 
-To facilitate bounding the many-body errors $ E_{Q_1} $ and $ E_{Q_2} $ in \eqref{eq:errKQ}, we normal-order them, which will at the same time extract the exchange contribution $ n_q^{\ex} $. Normal-ordering amounts to a lengthy but straightforward application of the CAR~\eqref{eq:CAR} with the following result.
+To facilitate bounding the many-body errors $ E_{Q_1} $ and $ E_{Q_2} $ in \eqref{eq:errKQ}, we normal-order them. The exchange contribution $ n_q^{\ex} $ then naturally appears by summing up the $ \C $-valued terms.
+
 \begin{lemma}[Normal-ordering many-body errors]
 Recall the definition~\eqref{eq:errKQ} of $ E_{Q_1} $ and $ E_{Q_2} $. Then, for $ m \in \NNN $ and $ q \in B_{\F}^c $, we may write
 \begin{equation} \label{eq:EQ1EQ2extension}
@@ -632,25 +633,27 @@ and
 	&:= \sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}} \!\!\!\Theta^m_{K}(P^q)(\ell)_{r,-r+\ell+\ell_1}K(\ell_1)_{r,-r+\ell+\ell_1} + \mathrm{h.c.} \;, \label{eq:expandedEQ2}
 \end{align}
 \end{lemma}
+\begin{proof}
+The result follows by a lengthy but straightforward calculation.
+\end{proof}
 
 We remark that the normal ordering can conveniently be executed and visualized in terms of Friedrichs diagrams~\cite{BL23}, where each term corresponds to a diagram in Figure ???.
 
-
-
-The exchange contribution $ n_q^{\ex} $ in (???) now follows as
+In particular, the exchange contribution $ n_q^{\ex} $ in (???) follows as
 \begin{equation}
 	n_q^{\ex}
 	= \sum_{m=1}^\infty \frac{1}{m!} n_q^{\ex,m} \;.
 \end{equation}
 
-The other 14 terms are many-body errors, which we will bound below.
+
+
 
 
 
 \section{Preliminary Bounds}
 \label{sec:prelim_bounds}
 
-In this section, we compile some estimates which we need to bound the many-body error terms in~\eqref{eq:finexpan}. We start with some bounds on norms of powers of the correlation structure $ K(\ell) $.
+We now compile some estimates which we need to bound the many-body error terms in~\eqref{eq:finexpan}. We start with some bounds on norms of powers of the correlation structure $ K(\ell) $.
 
 \begin{definition}
 For $k \in \Z^3_*$ and $A(k)\in \ell^2(L_k)\otimes \ell^2(L_k)$, we define the norms
@@ -915,10 +918,10 @@ The largest part of our many-body analysis addresses the estimation of the error
 \end{equation}
 \end{definition}
 
-The main bound of this subsection is then the following: \textcolor{red}{[SL: We must still subtract the contribution to $ n_q^{\ex} $ from $ E_m(P^q) $. Say, $ n_q^{\ex,m} $.]}
+The main bound of this subsection is then the following:
 
 \begin{proposition} \label{prop:finalEmest}
-Recall the bosonization error term $E_m(P^q)$\todo{subtract the $ n_q^{\ex} $}~\eqref{eq:errEm} with $ \Theta^n_K $, $ P^q $, $ \int_{\Delta^n} \di^n \ulambda $ and $ \sigma(n) $ defined within and above Proposition~\ref{prop:finexpan}. Then, there exists a constant $ C > 0 $ such that for all $ m \in \NNN $ and $ q \in B_{\F}^c $,
+Recall the bosonization error term $E_m(P^q)$~\eqref{eq:errEm} with $ \Theta^n_K $, $ P^q $, $ \int_{\Delta^n} \di^n \ulambda $ and $ \sigma(n) $ defined within and above Proposition~\ref{prop:finexpan}. Then, there exists a constant $ C > 0 $ such that for all $ m \in \NNN $ and $ q \in B_{\F}^c $,
 \begin{equation} \label{eq:finalEmest}
 	\abs{\eva{\Omega, E_m(P^q) \Omega}}
 	\leq \frac{C^m}{m!} \Vert \hat{V} \Vert_1
@@ -1480,11 +1483,53 @@ and the same bound applies to $ |\I_m(\ell)| $. Finally, for $ 1 \le j \le m-1 $
 \end{proof}
 
 
+Finally, we need to bound $ n_q^{\ex,m} $, which also turns out to be sub-leading to $ n_q^{\b} \sim k_{\F}^{-1} e(q)^{-1} $.
+
+\begin{lemma}[Exchange Contribution] \label{lem:estnqex}
+For $\xi_\lambda = e^{-\lambda \cK} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $,
+\begin{equation}
+	\abs{\eva{\xi_\lambda, n_q^{\ex,m} \xi_\lambda }}
+	\leq C^m \Bigg( \sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m \Bigg)
+		\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)
+		k_{\F}^{-2} e(q)^{-2} \;. \label{eq:estnqex}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+We recall definition~\eqref{eq:expandedEQ2} of $ n_q^{\ex,m} $, expand the multi-anticommutator via~\eqref{eq:q-q} and apply Lemma~\ref{lem:normsk} and $ \sum_{0 \le j \le m} {{m}\choose j} = 2^m $:
+\begin{equation}
+\begin{aligned}
+	|n_q^{\ex,m}|
+	&\leq 2 \sum_{\ell,\ell_1 \in \Z^3_*}
+		\abs{K(\ell)^m_{q,-q+\ell+\ell_1}}
+		\abs{K(\ell_1)_{q,-q+\ell+\ell_1}} \\
+		&\quad + \sum_{1 \le j \le m-1} {{m}\choose j} \sum_{\ell,\ell_1 \in \Z^3_*}
+		\sum_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}}
+		\abs{K(\ell)^{m-j}_{r,q}}
+		\abs{K(\ell)^j_{q,-r+\ell+\ell_1}}
+		\abs{K(\ell_1)_{r,-r+\ell+\ell_1}} \\
+	&\leq C^m k_{\F}^{-2} e(q)^{-2} \sum_{\ell,\ell_1 \in \Z^3_*}
+		\hat{V}(\ell)^m
+		\hat{V}(\ell_1)
+	+ C^m k_{\F}^{-2} e(q)^{-2} \sum_{\ell,\ell_1 \in \Z^3_*}
+		\hat{V}(\ell)^m
+		\norm{K(\ell_1)}_{\max,1} \\
+	&\leq C^m
+		\Bigg( \sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m \Bigg)
+		\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)
+		k_{\F}^{-2} e(q)^{-2} \;.
+\end{aligned}
+\end{equation}
+
+\end{proof}
+
 
 
 \begin{proof}[Proof of Proposition~\ref{prop:finEQ2est}]
-We add the bounds from Lemmas~\ref{lem:EQ211}--\ref{lem:EQ218}, and use $ e(q) \ge \half $, $ \Xi \le 1 $, as well as the Gr\"onwall bound, Lemma \ref{lem:gronNest}, to estimate $ \norm{(\NN+1)^2 \xi_\lambda} \le C $.
+We add the bounds from Lemmas~\ref{lem:EQ211}--\ref{lem:estnqex}, and use $ e(q) \ge \half $, $ \Xi \le 1 $, as well as the Gr\"onwall bound, Lemma \ref{lem:gronNest}, to estimate $ \norm{(\NN+1)^2 \xi_\lambda} \le C $.
 \end{proof}
+
+
 
 \begin{proof}[Proof of Proposition~\ref{prop:finalEmest}]
 Recall from~\eqref{eq:errEm2} that
@@ -1584,9 +1629,6 @@ Summing over $ \ell \in \Z^3_* $ with $ q \in L_\ell $ and comparing with~\eqref
 \end{proof}
 
 
-\subsection{Controlling $ n_q^{b} $ and $ n_q^{\ex} $}
-
-\textcolor{red}{[SL: This is Section~\ref{sec:leading_order_analysis}. We may wish to just leave it there and just refer to it in the proof of the main result.]}
 
 \subsection{Closing the Bootstrap}
 
@@ -1652,26 +1694,22 @@ For sufficiently large $k_F$ (or sufficiently large $N$), we have that $\Xi\leq 
 
 
 
-\section{Analysis of the Leading-Order Terms}
+\section{Analysis of the Leading-Order Term}
 \label{sec:leading_order_analysis}
 
 
-Finally, we prove the claimed scalings (???) of the leading-order terms $ n_q^{\b} $~\eqref{eq:nqb} and $ n_q^{\ex} $~\eqref{eq:???}.
+Finally, we prove the claimed scaling (???) of the leading-order term $ n_q^{\b} $~\eqref{eq:nqb}.
 
-\begin{proposition}[Control of the bosonized momentum distribution] \label{prop:nqb_nqex_bounds}
-Recall the definitions of the bosonized and exchange excitation densities $ n_q^{\b} $ (???) and $ n_q^{\ex} $ (???), as well as of the excitation energy $ e(q) := ||q|^2 - k_{\F}^2| $. Then, for any fixed potential $ \hat{V} \in L^1(\Z^3_*) $, there exists a constant $ C > 0 $ such that for all particle numbers $ N = |B_{\F}| \sim k_{\F}^3 $ and all $ q \in \Z^3 $,
-\begin{equation} \label{eq:nqb_nqex_upperbound}
+\begin{proposition}[Control of the bosonized momentum distribution] \label{prop:nqb_bounds}
+Recall the definitions of the bosonized excitation density $ n_q^{\b} $~\eqref{eq:nqb}, as well as of the excitation energy $ e(q) := ||q|^2 - k_{\F}^2| $. Then, for any fixed potential $ \hat{V} \in L^1(\Z^3_*) $, there exists a constant $ C > 0 $ such that for all particle numbers $ N = |B_{\F}| \sim k_{\F}^3 $ and all $ q \in \Z^3 $,
+\begin{equation} \label{eq:nqb_upperbound}
 	n_q^{\b}
-	\le C k_{\F}^{-1} e(q)^{-1} \;, \qquad
-	|n_q^{\ex}|
-	\le C k_{\F}^{-2} e(q)^{-2} \;.
+	\le C k_{\F}^{-1} e(q)^{-1} \;.
 \end{equation}
 Further, there exists a potential $ \hat{V} \in L^1(\Z^3_*) $, some $ c > 0 $, and two sequences $ (k_{\F}^{(n)})_{n \in \NNN} \subset (0,\infty) $ and $ (q_n)_{n \in \NNN} \subset \Z^3 $ with $ k_{\F}^{(n)} \to \infty $, such that for all $ n \in \NNN $,
-\begin{equation} \label{eq:nqb_nqex_lowerbound}
+\begin{equation} \label{eq:nqb_lowerbound}
 	n_{q_n}^{\b}
-	\ge c (k_{\F}^{(n)})^{-1} e(q_n)^{-1} \;, \qquad
-	\textcolor{red}{|n_q^{\ex}|
-	\ge c k_{\F}^{-2} e(q)^{-2}} \;.
+	\ge c (k_{\F}^{(n)})^{-1} e(q_n)^{-1} \;.
 \end{equation}
 \end{proposition}
 \begin{proof}
@@ -1682,31 +1720,6 @@ We focus on the case $ q \in B_{\F}^c $, as $ q \in B_{\F} $ is treated analogou
 	\le \sum_{\ell \in \Z^3_*} \frac{k_{\F}^{-1}}{\lambda_{\ell,q}} \sum_{m=1}^{\infty} \frac{C^m \hat{V}(\ell)^{2m}}{(2m)!}
 	\le C \frac{k_{\F}^{-1}}{e(q)} \;.
 \end{equation}
-For $ n_q^{\ex} $, we expand the anticommutator via~\eqref{eq:q-q} and then apply the buonds of Lemma~\ref{lem:normsk}, as well as~\cite[Prop.~A.2]{CHN21} $ \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \le C k_{\F} $
-\todo{Check the factor of $ \frac{2^m}{m!} $}
-\begin{equation}
-\begin{aligned}
-	|n_q^{\ex}|
-	&\le C \sum_{m=1}^\infty \frac{2^m}{m!} \sum_{\ell,\ell_1 \in \Z^3_*}
-		\abs{K(\ell)^m_{q,-q+\ell+\ell_1}}
-		\abs{K(\ell_1)_{q,-q+\ell+\ell_1}} \\
-		&\quad + C \sum_{1 \le j < m} \frac{2^m}{m!} {{m}\choose j} \sum_{\ell,\ell_1 \in \Z^3_*}
-		\sum_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}}
-		\abs{K(\ell)^{m-j}_{r,q}}
-		\abs{K(\ell)^j_{q,-r+\ell+\ell_1}}
-		\abs{K(\ell_1)_{r,-r+\ell+\ell_1}} \\
-	&\le C \frac{k_{\F}^{-2}}{e(q)^2} \sum_{m=1}^\infty \frac{2^m}{m!} \sum_{\ell,\ell_1 \in \Z^3_*}
-		\hat{V}(\ell)^m
-		\hat{V}(\ell_1)
-	+ C \frac{k_{\F}^{-3}}{e(q)^2} \sum_{m=1}^\infty \frac{4^m}{m!} \sum_{\ell,\ell_1 \in \Z^3_*}
-		\sum_{r\in L_{\ell_1}}
-		\frac{1}{\lambda_{\ell_1,r}}
-		\hat{V}(\ell)^m
-		\hat{V}(\ell_1) \\
-	&\le C \frac{k_{\F}^{-2}}{e(q)^2} \;.
-\end{aligned}
-\end{equation}
-
 For the lower bound, first observe that~\cite[Prop.~7.8]{CHN21} implies the matrix element bound \textcolor{red}{[SL: I would expect that the following bound holds true, but it might be cumbersome to show. Maybe, we do a numerical evaluation using the corresponding integral formula, instead.]}
 \begin{equation}
 	(\cosh(2K(\ell)) - 1)_{q,q}
@@ -1726,8 +1739,6 @@ As a potential, we now choose $ \hat{V}((1,0,0)) = \hat{V}((-1,0,0)) = 1 $ and $
 	\ge c \hat{V}(\ell^*) (k_{\F}^{(n)})^{-1}
 	\ge c (k_{\F}^{(n)})^{-1} e(q_n)^{-1} \;.
 \end{equation}
-
-\textcolor{red}{[SL: I am not so sure if an analogous bound for $ n_q^{\ex} $ can be shown that easily, as the positivity argument no longer holds, and the ``parallelogram condition'' $ -q+\ell+\ell_1 \in L_\ell \cap L_{\ell_1} $ makes the choice of the potential much harder. I am sure that such a bound should hold but is a bit tedious to work out.]}
 \end{proof}
 
 
