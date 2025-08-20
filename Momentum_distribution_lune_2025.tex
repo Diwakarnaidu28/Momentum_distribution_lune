@@ -173,6 +173,7 @@
 \newtheorem{problem}[theorem]{Problem}
 \newtheorem{assumption}[theorem]{Assumption}
 \newtheorem{example}[theorem]{Example}
+\newtheorem*{remarks}{Remarks}
 
 \theoremstyle{remark}
 \newtheorem{claim}[theorem]{Claim}
@@ -204,7 +205,8 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-To be written
+To be written.\\
+Add keywords and MSC identifiers.
 \end{abstract}
 
 
@@ -236,7 +238,7 @@ In this article we are interested in the momentum distribution of states $ \Psi 
 \begin{align}
 	n(q) := \eva{\Psi, a^*_q a_q \Psi} \;,
 \end{align}
-where $ a_q^*, a_q $ are the standard fermionic creation and annihilation operators of momentum $ q \in \ZZZ^3 $. As the momentum distribution of the true ground state is difficult to access~\cite{BL25}, we focus our attention on a trial state $ \Psi = \Psi_{\trial} $ that was constructed in~\cite{CHN???}.\\
+where $ a_q^*, a_q $ are the standard fermionic creation and annihilation operators of momentum $ q \in \ZZZ^3 $. As the momentum distribution of the true ground state is difficult to access~\cite{BL25}, we focus our attention on a trial state $ \Psi = \Psi_{\trial} $ that was constructed in~\cite{CHN23}.\\
 To better understand the shape of $ n(q) $, let us first consider the simple non-interacting case where $ V=0 $. Here, the ground state is exactly known to be a Slater determinant of $ N $ plane waves with momenta $ k_j \in \ZZZ^3 $:
 \begin{equation}
     \Psi_{\FS}(x_1, x_2, \ldots, x_N) := \frac{1}{\sqrt{N!}}\text{det}\left(\frac{1}{(2\pi)^{3/2}}e^{ik_j\cdot x_i}\right)^N_{j,i=1} \;.
@@ -296,12 +298,12 @@ which is evidently lower bounded by $ e(q) \ge \half $.
 Assume that the Fourier transformation of the interaction potential is $ \hat{V} \in \ell^1(\Z^3) $, $ \hat{V} \ge 0 $, $ \hat{V}(0) = 0 $ \textcolor{red}{and $ \hat{V}(k) = \hat{V}(-k) $}.
 Then, there exists a sequence of trial states $ (\Psi_N) $ with $ \Psi_N \in L^2(\TTT^3)^{\otimes_{\mathrm{a}} N} $ such that
 \begin{itemize}
-\item $ \Psi_N $ is energetically close to the ground state in the sense that there exists a $ \varepsilon > 0 $ and a $ C_\varepsilon > 0 $ such that for all $ N $, we have
+\item $ \Psi_N $ is energetically close to the ground state in the sense that for any $ \varepsilon > 0 $ there exists a $ C_\varepsilon > 0 $ such that for all $ N $, we have
 \begin{equation} \label{eq:main1}
 	\eva{\Psi_N, H_N \Psi_N} - E_{\GS}
 	\le C_\varepsilon k_{\F}^{1-\frac 16 + \varepsilon} \;,
 \end{equation}
-\item There exists a constant $ C_V > 0 $ such that for all $ N $ and $ q \in \Z^3 $, the momentum distribution in $ \Psi_N $ satisfies
+\item There exists a constant $ C > 0 $ such that for all $ N $ and $ q \in \Z^3 $, the momentum distribution in $ \Psi_N $ satisfies
 \begin{equation} \label{eq:main2}
 	\begin{cases}
 	\abs{\eva{\Psi_N, a_q^* a_q \Psi_N} - n_q^{\b}}
@@ -317,12 +319,21 @@ where $ n_q^{\b} $, defined in~\eqref{eq:nqb} satisfies $ |n_q^{\b}| \le C k_{\F
 \end{theorem}
 
 
-\begin{itemize}
-\item Add comments and remarks
-\end{itemize}
+\begin{remarks}
+\begin{enumerate}
+
+\item \textcolor{blue}{Exact scaling $ n_q^{\b} \sim k_{\F}^{-1} e(q)^{-1} $ is shown in Lemma~\ref{lem:nqb_bounds}. Comment on that~\cite{BL25} did not catch this, as $ e(q)^{-1} \sim 1 $, there.}
+
+\item \textcolor{blue}{Mention that we are able to extract $ n_q^{\ex} \sim k_{\F}^{-2} e(q)^{-2} $, so it is subleading for our potentials. Mention that for Coulomb, $ n_q^{\ex} \sim k_{\F}^{-1} e(q)^{-2} $, and that this is still under investigation.}
+
+\item \textcolor{blue}{Comparison to integral formula for $ n_q^{\b} $ in~\cite{BL25} and to the physics literature.}
+
+\end{enumerate}
+\end{remarks}
 
 
 
+\todo{Basic proof strategy and what to find in which section.}
 
 
 
@@ -422,7 +433,7 @@ So it suffices to consider the excitation vector $ \xi = \xi_{\trial} := e^{-\cK
 	= \ldots \;,
 \end{aligned}
 \end{equation}
-leading to Proposition~\ref{prop:finexpan}, which is the main result of this section. Note that $ a_q \Omega = 0 $, from which we immediately conclude $ \langle \Omega, a_q^* a_q \Omega \rangle = 0 $. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n_q^{\b} $ by bosonization, similarly as in~\cite{BL25}. The term $ n_q^{\ex} $ then appears when normal ordering the bosonization errors, similar to the exchange contribution to the correlation energy appearing in~\cite{CHN23}. Since $ n_q^{\ex} \ll n_q^{\b} $ (see Lemma~\ref{lem:estnqex} and Proposition~\ref{prop:nqb_bounds}), we treat also $ n_q^{\ex} $ as a bosonization error.
+leading to Proposition~\ref{prop:finexpan}, which is the main result of this section. Note that $ a_q \Omega = 0 $, from which we immediately conclude $ \langle \Omega, a_q^* a_q \Omega \rangle = 0 $. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n_q^{\b} $ by bosonization, similarly as in~\cite{BL25}. The term $ n_q^{\ex} $ then appears when normal ordering the bosonization errors, similar to the exchange contribution to the correlation energy appearing in~\cite{CHN23}. Since $ n_q^{\ex} \ll n_q^{\b} $ (see Lemma~\ref{lem:estnqex} and Lemma~\ref{lem:nqb_bounds}), we treat also $ n_q^{\ex} $ as a bosonization error.
 
 
 
@@ -939,7 +950,8 @@ The largest part of our many-body analysis addresses the estimation of the error
 \end{equation}
 \end{definition}
 
-The main bound of this subsection is then the following:
+Evidently, $ 0 \le a_q^* a_q \le 1 $ implies the trivial bound $ 0 \le \Xi \le 1 $. We will see in the proof of the main result that the optimal bound is even $ \Xi \le C k_{\F}^{-1} $.
+The main estimate of this subsection is now the following:
 
 \begin{proposition} \label{prop:finalEmest}
 Recall the bosonization error term $E_m(P^q)$~\eqref{eq:errEm} with $ \Theta^n_K $, $ P^q $, $ \int_{\Delta^n} \di^n \ulambda $ and $ \sigma(n) $ defined within and above Proposition~\ref{prop:finexpan}. Then, there exists a constant $ C > 0 $ such that for all $ m \in \NNN $ and $ q \in B_{\F}^c $,
@@ -952,14 +964,13 @@ Recall the bosonization error term $E_m(P^q)$~\eqref{eq:errEm} with $ \Theta^n_K
 \end{equation}
 \end{proposition}
 \todo{Comment on the fact that $ C \sim \Vert \hat{V} \Vert_1 $?}
-
-Using the parametrized excitation vector $ \xi_\lambda := e^{- \lambda \cK} \Omega $, we can write the term to be bounded as
+To prove this bound, we introduce the parametrized excitation vector $ \xi_\lambda := e^{- \lambda \cK} \Omega $ to write
 \begin{equation} \label{eq:errEm2}
 	\abs{\eva{\Omega, E_m(P^q) \Omega }}
 	\le \int_{\Delta^m} \di^m\underline{\lambda} \;
 		\abs{\eva{\xi_\lambda, E_{Q_{\sigma(m)}}\left(\Theta^{m}_{K}(P^q)\right) \xi_\lambda}} \;,
 \end{equation}
-where we recall~\eqref{eq:EQ1EQ2extension} that $ E_{Q_1}\left(\Theta^m_{K}(P^q)\right) $ and $ E_{Q_2}\left(\Theta^m_{K}(P^q)\right) $ expand into 14 error terms and an exchange terms. We will consecutively bound these terms.
+where we recall~\eqref{eq:EQ1EQ2extension} that $ E_{Q_1}\left(\Theta^m_{K}(P^q)\right) $ and $ E_{Q_2}\left(\Theta^m_{K}(P^q)\right) $ expand into 15 error terms. We will consecutively bound these terms.
 
 
 
@@ -975,6 +986,7 @@ For $\xi_\lambda = e^{-\lambda \cK} \Omega$, there exists a constant $ C > 0 $ s
 \end{equation}
 \end{proposition}
 
+To prove this proposition, we need to control the error terms $ E^{m,1}_{Q_1} $, $ E^{m,2}_{Q_1} $, and $ E^{m,1}_{Q_3} $.
 
 \begin{lemma} \label{lem:EQ111}
 For $\xi_\lambda = e^{-\lambda \cK} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $,
@@ -1161,7 +1173,7 @@ We add together the bounds from Lemmas~\ref{lem:EQ111} and~\ref{lem:EQ112} and u
 
 
 
-\subsubsection{$E_{Q_2}$ Estimates}
+\subsubsection{Bounding $E_{Q_2}$}
 
 
 \begin{proposition}[Bounding $E_{Q_2}(\Theta^m_{K}(P^q))$]\label{prop:finEQ2est}
@@ -1174,7 +1186,8 @@ For $\xi_\lambda = e^{-\lambda \cK} \Omega$, there exists a constant $ C > 0 $ s
 		+ k_{\F}^{-1} \Xi^{\frac{3}{4}} \right) \;. \\
 \end{equation}
 \end{proposition}
-\textcolor{red}{[SL: We must still subtract the contribution to $ n_q^{\ex} $ from $ E_m(P^q) $. Say, $ n_q^{\ex,m} $. Also, we should refer to the definitions of the $ E_{Q_1} $ and $ E_{Q_2} $-terms when we finalize the proofs of the two main propositions.]}
+
+To prove this proposition, we must control the error terms $ E^{m,1}_{Q_2} $ through $ E^{m,11}_{Q_2} $, and $ n_q^{\ex,m} $.
 
 
 \begin{lemma} \label{lem:EQ211}
@@ -1191,7 +1204,7 @@ For $\xi_\lambda = e^{-\lambda \cK} \Omega$, there exists a constant $ C > 0 $ s
 
 \begin{proof}
 The proof strategy is very similar to the one of Lemma~\ref{lem:EQ111}: We only focus on bounding $ E^{m,1}_{Q_2} $, since $ E^{m,2}_{Q_2} $ is controlled analogously.
-As in~\eqref{eq:EQ1111}, we split the anticommutator in $ E^{m,1}_{Q_2} $~\eqref{eq:expandedEQ2} using~\eqref{eq:q-q}:\todo{Check after re-defining $ E_{Q_2} $ that the factor of 4 is still correct.}
+As in~\eqref{eq:EQ1111}, we split the anticommutator in $ E^{m,1}_{Q_2} $~\eqref{eq:expandedEQ2} using~\eqref{eq:q-q}:
 \begin{equation} \label{eq:EQ2111}
 \begin{aligned}
 	\abs{\eva{\xi_\lambda,\left(E^{m,1}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }} 
@@ -1503,9 +1516,6 @@ and the same bound applies to $ |\I_m(\ell)| $. Finally, for $ 1 \le j \le m-1 $
 \end{equation}
 \end{proof}
 
-
-Finally, we need to bound $ n_q^{\ex,m} $, which also turns out to be sub-leading to $ n_q^{\b} \sim k_{\F}^{-1} e(q)^{-1} $.
-
 \begin{lemma}[Exchange Contribution] \label{lem:estnqex}
 For $\xi_\lambda = e^{-\lambda \cK} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $,
 \begin{equation}
@@ -1645,7 +1655,7 @@ Summing over $ \ell \in \Z^3_* $ with $ q \in L_\ell $ and comparing with~\eqref
 \subsection{Controlling the Leading-Order Term}
 \label{subsec:control_nqb}
 
-\begin{proposition}[Control of the bosonized momentum distribution] \label{prop:nqb_bounds}
+\begin{lemma}[Control of the bosonized momentum distribution] \label{lem:nqb_bounds}
 Recall the definitions of the bosonized excitation density $ n_q^{\b} $~\eqref{eq:nqb}, as well as of the excitation energy $ e(q) := ||q|^2 - k_{\F}^2| $. Then, for any fixed potential $ \hat{V} \in L^1(\Z^3_*) $, there exists a constant $ C > 0 $ such that for all particle numbers $ N = |B_{\F}| \sim k_{\F}^3 $ and all $ q \in \Z^3 $,
 \begin{equation} \label{eq:nqb_upperbound}
 	n_q^{\b}
@@ -1656,7 +1666,8 @@ Further, there exists a potential $ \hat{V} \in L^1(\Z^3_*) $, some $ c > 0 $, a
 	n_{q_n}^{\b}
 	\ge c (k_{\F}^{(n)})^{-1} e(q_n)^{-1} \;.
 \end{equation}
-\end{proposition}
+\end{lemma}
+
 \begin{proof}
 We focus on the case $ q \in B_{\F}^c $, as $ q \in B_{\F} $ is treated analogously. For the lowed bound on $ n_q^{\b} $, we expand the $ \cosh $ in~\eqref{eq:nqb_integralrecovery} and use Lemma~\ref{lem:normsk}, as well as $ 2 \lambda_{\ell,q} = e(q) + e(q - \ell) \ge e(q) $
 \begin{equation}
@@ -1720,14 +1731,14 @@ Bounding the $ E_m(P^q) $-term by Proposition~\ref{prop:finalEmest} renders
 		+ k_{\F}^{-1}\Xi^{\frac{3}{4}} \right) \;.
 \end{aligned}
 \end{equation}
-To control $ \Xi = \sup_{q \in \Z^3} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda \cK} a_q^* a_q e^{- \lambda \cK} \Omega} $, observe that the bound~\eqref{eq:main_errorbound_with_Xi} holds uniformly in $ q \in B_{\F}^c $, and it is not too difficult to show that it remains true for $ q \in B_{\F} $ or with $ \cK $ replaced by $ \lambda \cK $ with $ \lambda \in [0,1) $. Further, by definition~\eqref{eq:eq}, $ e(q) \ge 1/2 $, and since $ 0 \le a_q^* a_q \le 1 $, we have $ \Xi \le 1 $. So bounding $ n_q^{\b} $ by Proposition~\ref{prop:nqb_bounds}, we get
+To control $ \Xi = \sup_{q \in \Z^3} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda \cK} a_q^* a_q e^{- \lambda \cK} \Omega} $, observe that the bound~\eqref{eq:main_errorbound_with_Xi} holds uniformly in $ q \in B_{\F}^c $, and it is not too difficult to show that it remains true for $ q \in B_{\F} $ or with $ \cK $ replaced by $ \lambda \cK $ with $ \lambda \in [0,1) $. Further, by definition~\eqref{eq:eq}, $ e(q) \ge 1/2 $, and since $ 0 \le a_q^* a_q \le 1 $, we have $ \Xi \le 1 $. So bounding $ n_q^{\b} $ by Lemma~\ref{lem:nqb_bounds}, we get
 \begin{equation}
 	\Xi
 	\le n_q^{\b} + C \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
 		+ k_{\F}^{-1}\Xi^{\frac{3}{4}} \right)
 	\le C k_{\F} \;.
 \end{equation}
-Plugging this bound into~\eqref{eq:main_errorbound_with_Xi} renders the desired result.
+Plugging this bound into~\eqref{eq:main_errorbound_with_Xi} renders the desired formula~\eqref{eq:main2}. The claim $ |n_q^{\b}| \le C k_{\F} e(q)^{-1} $ was already proven in Lemma~\ref{prop:nqb_bounds}
 \textcolor{red}{[SL: Shall we comment on how $ C $ depends on $ V $? In that case, we actually get a double exponential.]}
 \end{proof}
 
