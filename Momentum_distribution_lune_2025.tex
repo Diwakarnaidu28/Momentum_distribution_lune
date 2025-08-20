@@ -79,6 +79,7 @@
 \newcommand{\ad}{\mathrm{ad}}
 \renewcommand{\b}{\textnormal{b}}
 \newcommand{\Bog}{\textnormal{Bog}}
+\newcommand{\corr}{\textnormal{corr}}
 \newcommand{\Coul}{\textnormal{Coul}}
 \renewcommand{\d}{\textnormal{d}}
 \newcommand{\di}{\textnormal{d}}
@@ -296,18 +297,18 @@ Assume that the Fourier transformation of the interaction potential is $ \hat{V}
 Then, there exists a sequence of trial states $ (\Psi_N) $ with $ \Psi_N \in L^2(\TTT^3)^{\otimes_{\mathrm{a}} N} $ such that
 \begin{itemize}
 \item $ \Psi_N $ is energetically close to the ground state in the sense that there exists a $ \varepsilon > 0 $ and a $ C_\varepsilon > 0 $ such that for all $ N $, we have
-\begin{equation}
+\begin{equation} \label{eq:main1}
 	\eva{\Psi_N, H_N \Psi_N} - E_{\GS}
-	\le C k_{\F}^{1-\frac{1}{94} + \varepsilon} \;,
+	\le C_\varepsilon k_{\F}^{1-\frac 16 + \varepsilon} \;,
 \end{equation}
-\item There exists a constant $ C > 0 $ such that for all $ N $ and $ q \in \Z^3 $, the momentum distribution in $ \Psi_N $ satisfies
-\begin{equation}
+\item There exists a constant $ C_V > 0 $ such that for all $ N $ and $ q \in \Z^3 $, the momentum distribution in $ \Psi_N $ satisfies
+\begin{equation} \label{eq:main2}
 	\begin{cases}
 	\abs{\eva{\Psi_N, a_q^* a_q \Psi_N} - n_q^{\b}}
-	&\le C k_{\F}^{-\frac 32} e(q)^{-1} \quad
+	&\le C k_{\F}^{-1 -\frac 34} e(q)^{-1} \quad
 		\textnormal{for } |q| \ge k_{\F} \\
 	\abs{1 - \eva{\Psi_N, a_q^* a_q \Psi_N} - n_q^{\b}}
-	&\le C k_{\F}^{-\frac 32} e(q)^{-1} \quad
+	&\le C k_{\F}^{-1 -\frac 34} e(q)^{-1} \quad
 		\textnormal{for } |q| \ge k_{\F} 
 	\end{cases} \;,
 \end{equation}
@@ -315,21 +316,22 @@ where $ n_q^{\b} $, defined in~\eqref{eq:nqb} satisfies $ |n_q^{\b}| \le C k_{\F
 \end{itemize} 
 \end{theorem}
 
+
 \begin{itemize}
 \item Add comments and remarks
 \end{itemize}
 
 
-\begin{proof}[Proof of Theorem~\ref{thm:main}]
-...
-\end{proof}
+
+
+
 
 
 
 \section{Trial State Definition}
 \label{sec:trialstate}
 
-Let us briefly recap the trial state construction of~\cite{CHN???}. To facilitate notation, we work in second quantization by introducing the fermionic Fock space
+Let us briefly recap the trial state construction of~\cite{CHN23}. To facilitate notation, we work in second quantization by introducing the fermionic Fock space
 \begin{equation}
 	\cF := \bigoplus_{N=0}^\infty L^2_a(\T^{3N}) \;,
 \end{equation}
@@ -949,7 +951,7 @@ Recall the bosonization error term $E_m(P^q)$~\eqref{eq:errEm} with $ \Theta^n_K
 		+ k_{\F}^{-1}\Xi^{\frac{3}{4}} \right) \;.
 \end{equation}
 \end{proposition}
-\todo{Comment on the fact that $ C \sim \Vert \hat{v} \Vert_1 $?}
+\todo{Comment on the fact that $ C \sim \Vert \hat{V} \Vert_1 $?}
 
 Using the parametrized excitation vector $ \xi_\lambda := e^{- \lambda \cK} \Omega $, we can write the term to be bounded as
 \begin{equation} \label{eq:errEm2}
@@ -1570,21 +1572,11 @@ uniformly in $ \lambda \in [0,1] $, $ m \in \mathbb{N} $, and $ q \in B_{\F}^c $
 
 
 
+\section{Analysis of the Leading-Order Term}
+\label{sec:leading_order_analysis}
 
 
-\section{Conclusion of Theorem ???}
-
-We will conclude the proof of our main result employing a bootstrap argument for the quantity $ \Xi = \sup_q \eva{\Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega}  $: We employ the Duhamel expansion~\eqref{eq:finexpan}, which gives 3 terms: The first one converges to $ n_q^{\b} $, the second amounts to $ n_q^{\ex} $ plus an error controlled against $ \Xi $ by Proposition~\ref{prop:finalEmest}, and the third one vanishes by Proposition~\ref{prop:headerr}.
-
-\begin{proposition}[Bootstrap Step] \label{prop:bootstrap}
-For $q \in B^c_{\F}$, recalling the definitions~\eqref{eq:T},~\eqref{eq:nqb} and~\eqref{eq:nqex} of $ \cK $, $ n_b^{\b} $ and $ n_q^{\ex} $, we have
-\begin{equation} \label{eq:bootstrap}
-	\eva{\Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega} 
-	\le n_q^{\b} + n_q^{\ex} + C k_{\F}^{-\half} \Xi \;.
-\end{equation} 
-\end{proposition} \todo{Put the proof of the main theorem up into Section 1?}
-
-In order to prove this bound, we must still make sure that the first term on the r.~h.~s. of~\eqref{eq:finexpan} indeed converges to $ n_q^{\b} $.
+Finally, we prove that the first term in~\eqref{eq:finexpan} indeed corresponds to the leading-order contribution $ n_q^{\b} $ defined via the integral formula~\eqref{eq:nqb}, and we establish the claimed scaling $ n_q^{\b} \sim C k_{\F}^{-1} $.
 
 
 \subsection{Recovering the Integral Representation for $ n_q^{\b} $}
@@ -1649,75 +1641,9 @@ Summing over $ \ell \in \Z^3_* $ with $ q \in L_\ell $ and comparing with~\eqref
 
 
 
-\subsection{Closing the Bootstrap}
 
-\textcolor{red}{[SL: We may move the conclusion of the main result up to Sect. 1 and just leave the proof of the bootstrap proposition here.]}
-
-
-
-We know that depending on $m$, we either have $E_m = E_{Q_1}(\Theta^m_K(P^q))$ or $E_{Q_2}(\Theta^m_K(P^q))$; $E_m$ being the error in Proposition~\ref{prop:finexpan}. We observe that the final $E_{Q_1}$ estimate is contained in the final $E_{Q_2}$ estimate, albeit for a different $m$. Hence we can write the estimate for $E_m$ for any $m$. 
-
-
-
-Next, in order to bound \eqref{eq:finalEmest} we will employ a bootstrap technique, as in [BL'23]. Before we do that, we simplify the expression so it is easier to work with it.
-We observe that 
-\begin{equation}
-	k_{\F}^{-\frac{3}{2}} \Xi^\half = (k_{\F}^{-\frac{3}{2} +\epsilon} ) (k_{\F}^{-\epsilon} \Xi^\half) \leq \half(k_{\F}^{-\frac{3}{2} +\epsilon} )^2 + \half(k_{\F}^{-\epsilon} \Xi^\half)^2 = \half(k_{\F}^{-3 +2\epsilon}) + \half(k_{\F}^{-2\epsilon} \Xi)
-\end{equation}
-We know that the leading order of \eqref{eq:inftylimexp} is of order $k_F^{-2}$, i.e., we optimise the above expression for the choice $\Xi \sim k_F^{-2}$. Then we have $-3 +2\epsilon = -2\epsilon -2 $, which implies $\epsilon =\frac{1}{4}$. 
-Then we have  
-\begin{equation} \label{eq:kfholder1}
-	k_{\F}^{-\frac{3}{2}} \Xi^\half \leq \half k_{\F}^{-\frac{5}{2}} + \half k_{\F}^{-\half} \Xi
-\end{equation}
-Similarly, we have
-\begin{equation}
-	k_{\F}^{-1} \Xi^{\frac{3}{4}} = (k_{\F}^{-1 +\epsilon} ) (k_{\F}^{-\epsilon} \Xi^{\frac{3}{4}}) \leq \frac{1}{4}(k_{\F}^{-1 +\epsilon} )^4 + \frac{3}{4}(k_{\F}^{-\epsilon} \Xi^{\frac{3}{4}})^\frac{4}{3} = \frac{1}{4}(k_{\F}^{-4 +4\epsilon}) + \frac{3}{4}(k_{\F}^{-\frac{4}{3}\epsilon} \Xi)
-\end{equation}
-Again optimizing for the choice $\Xi \sim k_F^{-2}$. Then we have $-4 +4\epsilon = -\frac{4}{3}\epsilon -2 $, which implies $\epsilon =\frac{3}{8}$. Then we have
-\begin{equation} \label{eq:kfholder2}
-	k_{\F}^{-1} \Xi^{\frac{3}{4}} \leq \frac{1}{4} k_{\F}^{-\frac{5}{2}} + \frac{3}{4} k_{\F}^{-\half} \Xi
-\end{equation}
-Now we use \eqref{eq:kfholder1} and \eqref{eq:kfholder2} to rewrite \eqref{eq:finalEmest} as
-\begin{equation}
-		\abs{\eva{\Omega, E_m(P^q) \Omega}} \leq \; C'_m(\ell,\ell_1) k_{\F}^{-\half}\Xi + C'_m(\ell,\ell_1)k_F^{-\frac{5}{2}} \label{eq:finalfinalEmest}
-\end{equation}
-Here we see that the second term is already sub-leading.
-Next we show that first term in \eqref{eq:finalfinalEmest} is also sub-leading using the bootstrap argument.
-
-\begin{lemma}[Bootstrap lemma]
-	For $q \in \Z^3$ and for the trial state $T_{\lambda}\Omega$, we have 
-	\begin{equation}
-		\eva{ T_{\lambda}\Omega. n_q T_{\lambda}\Omega} = n_q^{\b} + n_q^{ex} + C k_F^{-\frac{5}{2}}
-	\end{equation}
-where, 
-\begin{equation}
-	C = \sum\limits_{m=1}^\infty C'_m(\ell,\ell_1)
-\end{equation}
-\end{lemma}
-\begin{proof}
-	We begin with \eqref{eq:inftylimexp} with the leading order denoted as in Remark \ref{rem:leadorder} and the error estimate from \eqref{eq:finalfinalEmest} as
-	\begin{equation}\label{eq:prebootexp}
-		\eva{ T_{\lambda}\Omega. n_q T_{\lambda}\Omega} = n_q^{\b} + n_q^{ex} + C k_F^{-\frac{1}{2}}\Xi
-\end{equation}
-where C is as defined above. Next we take the supremum over this expression, which results in
-\begin{align}
-	&\Xi = \sup_{q \in \Z^3}(n_q^{\b} + n_q^{ex}) + C k_f^{-\frac{1}{2}}\Xi \nonumber\\
-	\implies &\Xi(1 - Ck_F^{-\frac{1}{2}}) = \sup_{q \in \Z^3}(n_q^{\b} + n_q^{ex})
-\end{align}
-We know that the leading order terms scale as $k_F^{-2}$, then we have 
-\begin{equation}
-	\Xi = \frac{k_F^{-2}}{(1 - Ck_F^{-\frac{1}{2}})}
-\end{equation}
-For sufficiently large $k_F$ (or sufficiently large $N$), we have that $\Xi\leq k_F^{-2}$. Next we use this bound again in \eqref{eq:prebootexp} to get the result.
-\end{proof}
-
-
-
-\section{Analysis of the Leading-Order Term}
-\label{sec:leading_order_analysis}
-
-
-Finally, we prove the claimed scaling (???) of the leading-order term $ n_q^{\b} $~\eqref{eq:nqb}.
+\subsection{Controlling the Leading-Order Term}
+\label{subsec:control_nqb}
 
 \begin{proposition}[Control of the bosonized momentum distribution] \label{prop:nqb_bounds}
 Recall the definitions of the bosonized excitation density $ n_q^{\b} $~\eqref{eq:nqb}, as well as of the excitation energy $ e(q) := ||q|^2 - k_{\F}^2| $. Then, for any fixed potential $ \hat{V} \in L^1(\Z^3_*) $, there exists a constant $ C > 0 $ such that for all particle numbers $ N = |B_{\F}| \sim k_{\F}^3 $ and all $ q \in \Z^3 $,
@@ -1758,6 +1684,51 @@ As a potential, we now choose $ \hat{V}((1,0,0)) = \hat{V}((-1,0,0)) = 1 $ and $
 	\ge c \hat{V}(\ell^*) (k_{\F}^{(n)})^{-1}
 	\ge c (k_{\F}^{(n)})^{-1} e(q_n)^{-1} \;.
 \end{equation}
+\end{proof}
+
+
+
+\section{Conclusion of Theorem~\ref{thm:main}}
+\label{sec:mainthmproof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+As a trial state, we consider $ \Psi_N = R e^{-\cK} \Omega $, from~\cite{CHN23} as defined in Section~\ref{sec:trialstate}. From~\cite[Corr.~1.3]{CHN24} we recover $ E_{\GS} = E_{\FS} + E_{\corr} + \cO(k_{\F}^{1 - \frac 16 + \varepsilon}) $, where $ E_{\FS} $ and $ E_{\corr} $ are the Fermi sea and correlation energy defined in that article. Note that this statement is even valid under the weaker assumption $ \sum_k \hat{V}(k)^2 < \infty $. Further,~\cite[Thm.~1.1]{CHN23} gives us $ \eva{\Psi_N, H_N \Psi_N} \le E_{\FS} + E_{\corr} + \cO(k_{\F}^{1 - \frac 12}) $, whence $ \eva{\Psi_N, H_N \Psi_N} \le E_{\GS} + \cO(k_{\F}^{1 - \frac 16 + \varepsilon}) $. By definition of the ground state energy, $ E_{\GS} \le \eva{\Psi_N, H_N \Psi_N} $, which concludes the energy estimate~\eqref{eq:main1}.\\
+
+It remains to prove the momentum distribution formula~\eqref{eq:main2}, where we focus on the case $ q \in B_{\F}^c $, since $ q \in B_{\F} $ is completely analogous. Here, $ \eva{\Psi_N, a_q^* a_q \Psi_N} = \eva{\Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega} $, where Proposition~\ref{prop:finexpan} gives us
+\begin{align*}
+	\eva{\Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega} 
+	&= \half\sum\limits_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \sum\limits_{\substack{m=2\\m:\textnormal{ even}}}^{n+1} \frac{((2K(\ell))^m)_{q,q}}{m!}
+		+ \half \sum\limits_{m=1}^{n} \eva{\Omega, E_m(P^q)\Omega}\nonumber\\
+	&\quad +\half \int_{\Delta^{n+1}} \di^{n+1}\underline{\lambda} \;
+		\eva{\Omega, e^{\lambda_{n+1} \cK}Q_{\sigma(n+1)}(\Theta^{n+1}_{K}(P^q)) e^{-\lambda_{n+1} \cK} \Omega} \;,
+\end{align*}
+for any $ n \in \N $. As $ n \to \infty $, the third term vanishes, while the first one converges towards
+\begin{equation*}
+	\half\sum\limits_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \big( \cosh(2K(\ell)) - 1 \big)_{q,q} 
+	\overset{\textnormal{Lemma}~\ref{lem:nqb_integralrecovery}}{=} n_q^{\b} \;.
+\end{equation*}
+Bounding the $ E_m(P^q) $-term by Proposition~\ref{prop:finalEmest} renders
+\begin{equation} \label{eq:main_errorbound_with_Xi}
+\begin{aligned}
+	\abs{\eva{\Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega} - n_q^b}
+	&\le \sum_{m=1}^\infty \frac{C^m}{m!} \Vert \hat{V} \Vert_1
+		\Bigg( \sum_{\ell \in \Z^3} \hat{V}(\ell)^m \Bigg)
+		e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
+		+ k_{\F}^{-1}\Xi^{\frac{3}{4}} \right) \\
+	&\le \Vert \hat{V} \Vert_1 \Vert (e^{C \hat{V}}-1) \Vert_1
+		e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
+		+ k_{\F}^{-1}\Xi^{\frac{3}{4}} \right) \;.
+\end{aligned}
+\end{equation}
+To control $ \Xi = \sup_{q \in \Z^3} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda \cK} a_q^* a_q e^{- \lambda \cK} \Omega} $, observe that the bound~\eqref{eq:main_errorbound_with_Xi} holds uniformly in $ q \in B_{\F}^c $, and it is not too difficult to show that it remains true for $ q \in B_{\F} $ or with $ \cK $ replaced by $ \lambda \cK $ with $ \lambda \in [0,1) $. Further, by definition~\eqref{eq:eq}, $ e(q) \ge 1/2 $, and since $ 0 \le a_q^* a_q \le 1 $, we have $ \Xi \le 1 $. So bounding $ n_q^{\b} $ by Proposition~\ref{prop:nqb_bounds}, we get
+\begin{equation}
+	\Xi
+	\le n_q^{\b} + C \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
+		+ k_{\F}^{-1}\Xi^{\frac{3}{4}} \right)
+	\le C k_{\F} \;.
+\end{equation}
+Plugging this bound into~\eqref{eq:main_errorbound_with_Xi} renders the desired result.
+\textcolor{red}{[SL: Shall we comment on how $ C $ depends on $ V $? In that case, we actually get a double exponential.]}
 \end{proof}
 
 
