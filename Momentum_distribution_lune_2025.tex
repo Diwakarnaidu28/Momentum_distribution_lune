@@ -675,9 +675,12 @@ and
 	E_{Q_2}^{m,10}
 	&\coloneq \textcolor{red}{1} \sum\limits_{\ell \in \Z^3_*} \sum\limits_{r\in L_{\ell}}\Theta^{m+1}_{K}(P^q)(\ell)_{r,r} a^*_{r-\ell}a_{r-\ell} \;, \nonumber\\
 	E_{Q_2}^{m,11}
-	&\coloneq \textcolor{red}{1} \sum\limits_{\ell \in \Z^3_*} \sum\limits_{r\in L_{\ell}}\Theta^{m+1}_{K}(P^q)(\ell)_{r,r} a^*_{r}a_{r} \;, \nonumber\\
+	&\coloneq \textcolor{red}{1} \sum\limits_{\ell \in \Z^3_*} \sum\limits_{r\in L_{\ell}}\Theta^{m+1}_{K}(P^q)(\ell)_{r,r} a^*_{r}a_{r} \;, \label{eq:expandedEQ2}\\
+\end{align}
+as well as
+\begin{align}
 	n_q^{\ex,m}
-	&\coloneq 2 \sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}} \!\!\!\Theta^m_{K}(P^q)(\ell)_{r,-r+\ell+\ell_1}K(\ell_1)_{r,-r+\ell+\ell_1} \;, \label{eq:expandedEQ2}
+	&\coloneq 2 \sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}} \!\!\!\Theta^m_{K}(P^q)(\ell)_{r,-r+\ell+\ell_1}K(\ell_1)_{r,-r+\ell+\ell_1} \;. \label{eq:nqexm}
 \end{align}
 \end{lemma}
 \begin{proof}
@@ -1549,7 +1552,7 @@ For $\xi_\lambda = e^{-\lambda \cK} \Omega$, there exists a constant $ C > 0 $ s
 \end{lemma}
 
 \begin{proof}
-We recall definition~\eqref{eq:expandedEQ2} of $ n_q^{\ex,m} $, expand the multi-anticommutator via~\eqref{eq:q-q} and apply Lemma~\ref{lem:normsk} and $ \sum_{0 \le j \le m} {{m}\choose j} = 2^m $:
+We recall definition~\eqref{eq:nqexm} of $ n_q^{\ex,m} $, expand the multi-anticommutator via~\eqref{eq:q-q} and apply Lemma~\ref{lem:normsk} and $ \sum_{0 \le j \le m} {{m}\choose j} = 2^m $:
 \begin{equation}
 \begin{aligned}
 	|n_q^{\ex,m}|
