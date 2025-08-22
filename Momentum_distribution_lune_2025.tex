@@ -281,7 +281,7 @@ We will prove that the momentum distribution $ n(q) $ for $ q \in B_{\F}^c $ is 
 	\coloneq \sum\limits_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \; \frac{1}{\pi}\int_0^\infty \frac{g_\ell (t^2-\lambda^2_{\ell,q}) (t^2 + \lambda^2_{\ell,q})^{-2}}{1 + 2g_\ell \sum_{p \in L_{\ell}}\lambda_{\ell,p} (t^2+\lambda^2_{\ell,p})^{-1}} \mathrm{d}t \;,
 \end{equation}
 where the lune $ L_\ell \in \Z^3 $, the excitation energy $ \lambda_{\ell,p} > 0 $ and $ g_\ell > 0 $ are defined by
-\begin{equation}
+\begin{equation} \label{eq:Lell}
 	L_\ell \coloneq B_{\F}^c \cap (B_{\F} + \ell) \;, \qquad
 	\lambda_{\ell,p} \coloneq \half (|p|^2 - |p-\ell|^2) \;, \qquad
 	g_\ell \coloneq \frac{\hat{V}(\ell) k_{\F}^{-1}}{2 (2 \pi)^2} \;.
@@ -402,14 +402,16 @@ with matrices $ h(k), P(k) \in \CCC^{|L_k| \times |L_k|} $ defined by
 	P(k)_{p,q} &\coloneq \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^2} \;,
 \end{aligned}
 \end{equation}
-where we recall $ \lambda_{k,p} = \frac 12 (|p|^2 - |p-k|^2) $. In particular $ P(k) $ is rank-one with $ P(k) \coloneq |v_k \rangle \langle v_k | $, where $ v_{k,p} \coloneq g_k^{1/2} = \left( \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^2} \right)^{1/2}  $. As the pair excitation operators satisfy approximate bosonic commutation relations, see Lemma~\ref{lem:paircomm}, one may treat $ H_{\Bog} $ as an approximately quadratic bosonic Hamiltonian, which is approximately diagonalized by the transformation~\cite[Thm.~1.4]{CHN23} \textcolor{red}{[SL: Actually, the trial state of [CHN] has $ \xi = e^{-\cK} \Omega $ and not $ \xi = e^{\cK} \Omega $. I fixed this.]}
+where we recall $ \lambda_{k,p} = \half (|p|^2 - |p-k|^2) $. In particular $ P(k) $ is rank-one with $ P(k) \coloneq |v_k \rangle \langle v_k | $, where $ v_{k,p} \coloneq g_k^{1/2} = \left( \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^2} \right)^{1/2}  $. As the pair excitation operators satisfy approximate bosonic commutation relations, see Lemma~\ref{lem:paircomm}, one may treat $ H_{\Bog} $ as an approximately quadratic bosonic Hamiltonian, which is approximately diagonalized by the transformation~\cite[Thm.~1.4]{CHN23} \textcolor{red}{[SL: Actually, the trial state of [CHN] has $ \xi = e^{-\cK} \Omega $ and not $ \xi = e^{\cK} \Omega $. I fixed this.]}
 \begin{equation} \label{eq:T}
 	T \coloneq e^{-\cK} \;, \qquad
 	\cK \coloneq \frac{1}{2}\sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell}K(\ell)_{r,s}\left(b_r(\ell)b_{-s}(-\ell)-b^*_{-s}(-\ell)b^*_{r}(\ell)\right) \;,
 \end{equation}
 with Bogoliubov kernel
 \begin{equation} \label{eq:K}
-	K(k) \coloneq - \frac 12 \log \Big( h(k)^{-\frac 12} \big( h(k)^{\frac 12} \big( h(k) + 2 P(k) \big) h(k)^{\frac 12}\big) h(k)^{-\frac 12} \Big) \;,
+	K(k) \coloneq - \half \log \Big( h(k)^{-\half}
+		\big( h(k)^{\half} \big( h(k) + 2 P(k) \big)^{\half} h(k)^{\half}\big)
+		h(k)^{-\half} \Big) \;,
 \end{equation}
 satisfying $ K(-k)_{-p,-q} = K(k)_{p,q} $. This concludes the definition of the trial state $ \Psi_N $ in~\eqref{eq:Psitrial}.
 
@@ -737,7 +739,7 @@ Further, we have the bounds
 	&\Vert K(\ell)^m \Vert_{\max}
 	&\le \; &(C \hat{V}(\ell))^m k_{\F}^{-1} \;, \qquad
 	&&\Vert K(\ell)^m \Vert_{\max,2}
-	&&\le (C \hat{V}(\ell))^m k_{\F}^{-\frac 12} \;, \\
+	&&\le (C \hat{V}(\ell))^m k_{\F}^{-\half} \;, \\
 	&\normmaxi{K(\ell)^m}
 	&\le \; &(C \hat{V}(\ell))^m \;, \qquad
 	&&\norm{K(\ell)^m}_{\HS}
@@ -769,7 +771,7 @@ From~\cite[Prop.~7.10]{CHN23} we readily retrieve \eqref{eq:K_element_bounds} fo
 		\frac{1}{\lambda_{\ell, r} + \lambda_{\ell, s}} \;.
 	\end{aligned}
 \end{equation}
-The first bounds in~\eqref{eq:K_max_bounds} and~\eqref{eq:e(q)_extraction_bounds} then follow immediately, noting that $ \lambda_{\ell,r} \ge 1 $ and $ \lambda_{\ell,q} \ge e(q) \ge \half $. The second bounds in~\eqref{eq:K_max_bounds} and~\eqref{eq:e(q)_extraction_bounds} follow from
+The first bounds in~\eqref{eq:K_max_bounds} and~\eqref{eq:e(q)_extraction_bounds} then follow immediately, noting that $ 2 \lambda_{\ell,q} \ge e(q) \ge \half $. The second bounds in~\eqref{eq:K_max_bounds} and~\eqref{eq:e(q)_extraction_bounds} follow from
 \begin{equation}
 \begin{aligned}
 	\sum_{r \in L_\ell} |(K(\ell)^m)_{q,r}|^2
@@ -987,8 +989,8 @@ Recall the bosonization error term $E_m(P^q)$~\eqref{eq:errEm} with $ \Theta^n_K
 To prove this bound, we introduce the parametrized excitation vector $ \xi_\lambda \coloneq e^{- \lambda \cK} \Omega $ to write
 \begin{equation} \label{eq:errEm2}
 	\abs{\eva{\Omega, E_m(P^q) \Omega }}
-	\le \int_{\Delta^m} \di^m\underline{\lambda} \;
-		\abs{\eva{\xi_\lambda, E_{Q_{\sigma(m)}}\left(\Theta^{m}_{K}(P^q)\right) \xi_\lambda}} \;,
+	\le \int_{\Delta^{m+1}} \di^{m+1} \underline{\lambda} \;
+		\abs{\eva{\xi_{\lambda_{m+1}}, E_{Q_{\sigma(m+1)}}\left(\Theta^{m}_{K}(P^q)\right) \xi_{\lambda_{m+1}}}} \;,
 \end{equation}
 where we recall~\eqref{eq:EQ1EQ2extension} that $ E_{Q_1}\left(\Theta^m_{K}(P^q)\right) $ and $ E_{Q_2}\left(\Theta^m_{K}(P^q)\right) $ expand into 15 error terms. We will consecutively bound these terms.
 
@@ -1586,18 +1588,18 @@ We add the bounds from Lemmas~\ref{lem:EQ211}--\ref{lem:estnqex}, and use $ e(q)
 Recall from~\eqref{eq:errEm2} that
 \begin{equation}
 	\abs{\eva{\Omega, E_m(P^q) \Omega }}
-	\le \int_{\Delta^m} \di^m\underline{\lambda} \;
-		\abs{\eva{\xi_\lambda, E_{Q_{\sigma(m)}}\left(\Theta^{m}_{K}(P^q)\right) \xi_\lambda}} \;.
+	\le \int_{\Delta^{m+1}} \di^{m+1}\underline{\lambda} \;
+		\abs{\eva{\xi_{\lambda_{m+1}}, E_{Q_{\sigma(m)}}\left(\Theta^{m}_{K}(P^q)\right) \xi_{\lambda_{m+1}}}} \;.
 \end{equation}		
-Using Propositions~\ref{prop:finEQ1est} and~\ref{prop:finEQ2est}, we arrive at
+Using Propositions~\ref{prop:finEQ1est} and~\ref{prop:finEQ2est}, we get, uniformly in $ \lambda \in [0,1] $, $ m \in \mathbb{N} $, and $ q \in B_{\F}^c $:
 \begin{equation}
 	\abs{\eva{\xi_\lambda, E_{Q_{\sigma(m)}}\left(\Theta^{m}_{K}(P^q)\right) \xi_\lambda}}
 	\le C^m \Vert \hat{V} \Vert_1
 		\Bigg( \sum_{\ell \in \Z^3} \hat{V}(\ell)^m \Bigg)
 		e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
-		+ k_{\F}^{-1}\Xi^{\frac{3}{4}} \right) \;,
+		+ k_{\F}^{-1}\Xi^{\frac{3}{4}} \right) \;.
 \end{equation}
-uniformly in $ \lambda \in [0,1] $, $ m \in \mathbb{N} $, and $ q \in B_{\F}^c $. Resolving the simplex integral $ \int_{\Delta^m} \di^m\underline{\lambda} = \frac{1}{m!} $ concludes the proof.
+Resolving the simplex integral $ \int_{\Delta^{m+1}} \di^{m+1} \underline{\lambda} = \frac{1}{(m+1)!} \le \frac{1}{m!} $ concludes the proof.
 \end{proof}
 
 
@@ -1631,20 +1633,20 @@ Using the notation $ P_w = |w \rangle \langle w| $, so $ P = P_v $, we readily r
 \end{equation}
 We then express $ (e^{-2K}-1)_{q,q} $ and $ (1-e^{2K})_{q,q} $ in terms of integrals, using the identities
 \begin{equation}\label{eq:intid}
-	A^\half = \frac{2}{\pi} \int_0^\infty \left(1- \frac{t^2}{A+t^2}\right)\mathrm{d}t\;,\qquad
-	A^{-\half} = \frac{2}{\pi} \int_0^\infty \frac{1}{A+t^2} \mathrm{d}t \;,
+	A^\half = \frac{2}{\pi} \int_0^\infty \left(1- \frac{t^2}{A+t^2}\right) \mathrm{d}t \;,\qquad
+	A^{-\half} = \frac{2}{\pi} \int_0^\infty \frac{\mathrm{d}t}{A+t^2} \;,
 \end{equation}
 for any matrix $ A: \ell^2(L_\ell) \to \ell^2(L_\ell) $, as well as the Sherman-Morrison formula
 \begin{equation}\label{eq:shermor}
 	(A+cP_w)^{-1} = A^{-1} - \frac{c}{1+c\eva{w, A^{-1}w}}P_{A^{-1}w} \;,
 \end{equation}
-for $ c \in \C $ and $ w \in \ell^2(L_\ell) $. We begin with 
+for any $ c \in \C $ and $ w \in \ell^2(L_\ell) $. We begin with 
 \begin{align}
 	\big(h^2 +2P_{h^{\half} v}\big)^{\half} &= \frac{2}{\pi} \int_0^\infty \left(1- \frac{t^2}{t^2+h^2 +2P_{h^{\half} v}}\right)\mathrm{d}t\nonumber\\
 	&= \frac{2}{\pi} \int_0^\infty \Bigg( \frac{h^2}{t^2+h^2} - \frac{2 t^2}{1+ 2\eva{h^{\half} v ,(t^2+h^2)^{-1} h^\half v}} P_{(t^2+h^2)^{-1}h^{\half} v} \Bigg) \mathrm{d}t \nonumber\\
 	&= h + \frac{2}{\pi} \int_0^\infty  \frac{2t^2}{1+ 2\eva{h^{\half} v ,(t^2+h^2)^{-1} h^\half v}}  P_{(t^2+h^2)^{-1}h^{\half} v}\mathrm{d}t \;. \label{eq:e-2k}
 \end{align}
-Using the canonical basis vectors $ (e_p)_{p \in L_\ell} $ with $ h e_q = \lambda_{\ell,q} e_q $, where we recall the definition~\eqref{eq:???} of $ \lambda_{\ell,q} $ and $ g_\ell $, the first desired matrix element then amounts to
+Recalling the definition~\eqref{eq:Lell} of $ \lambda_{\ell,q} $ and $ g_\ell $, and using the canonical basis vectors $ (e_p)_{p \in L_\ell} $ with $ h e_q = \lambda_{\ell,q} e_q $ and $ g_\ell = \langle e_p,v \rangle^2 $, the first desired matrix element then amounts to
 \begin{align}
 	(e^{-2K}-1)_{q,q}
 	&= \eva{e_q,  h^{-\half} \big(h^2 +2P_{h^{\half} v}\big)^{\half} h^{-\half} e_q} - 1\nonumber\\
@@ -1676,12 +1678,12 @@ Summing over $ \ell \in \Z^3_* $ with $ q \in L_\ell $ and comparing with~\eqref
 \label{subsec:control_nqb}
 
 \begin{lemma}[Control of the bosonized momentum distribution] \label{lem:nqb_bounds}
-Recall the definitions of the bosonized excitation density $ n_q^{\b} $~\eqref{eq:nqb}, as well as of the excitation energy $ e(q) \coloneq ||q|^2 - k_{\F}^2| $. Then, for any fixed potential $ \hat{V} \in L^1(\Z^3_*) $, there exists a constant $ C > 0 $ such that for all particle numbers $ N = |B_{\F}| \sim k_{\F}^3 $ and all $ q \in \Z^3 $,
+Recall the definitions of the bosonized excitation density $ n_q^{\b} $~\eqref{eq:nqb}, as well as of the excitation energy $ e(q) $~\eqref{eq:eq}. Then, for any fixed potential $ \hat{V} \in \ell^1(\Z^3_*) $, there exists a constant $ C > 0 $ such that for all particle numbers $ N = |B_{\F}| \sim k_{\F}^3 $ and all $ q \in \Z^3 $,
 \begin{equation} \label{eq:nqb_upperbound}
 	n_q^{\b}
 	\le C k_{\F}^{-1} e(q)^{-1} \;.
 \end{equation}
-Further, there exists a potential $ \hat{V} \in L^1(\Z^3_*) $, some $ c > 0 $, and two sequences $ (k_{\F}^{(n)})_{n \in \NNN} \subset (0,\infty) $ and $ (q_n)_{n \in \NNN} \subset \Z^3 $ with $ k_{\F}^{(n)} \to \infty $, such that for all $ n \in \NNN $,
+Further, there exists a potential $ \hat{V} \in \ell^1(\Z^3_*) $, some $ c > 0 $, and two sequences $ (k_{\F}^{(n)})_{n \in \NNN} \subset (0,\infty) $ with $ k_{\F}^{(n)} \to \infty $, and $ (q_n)_{n \in \NNN} \subset \Z^3 $, such that for all $ n \in \NNN $,
 \begin{equation} \label{eq:nqb_lowerbound}
 	n_{q_n}^{\b}
 	\ge c (k_{\F}^{(n)})^{-1} e(q_n)^{-1} \;.
@@ -1689,7 +1691,7 @@ Further, there exists a potential $ \hat{V} \in L^1(\Z^3_*) $, some $ c > 0 $, a
 \end{lemma}
 
 \begin{proof}
-We focus on the case $ q \in B_{\F}^c $, as $ q \in B_{\F} $ is treated analogously. For the lowed bound on $ n_q^{\b} $, we expand the $ \cosh $ in~\eqref{eq:nqb_integralrecovery} and use Lemma~\ref{lem:normsk}, as well as $ 2 \lambda_{\ell,q} = e(q) + e(q - \ell) \ge e(q) $
+We focus on the case $ q \in B_{\F}^c $, as $ q \in B_{\F} $ is treated analogously. For the lowed bound on $ n_q^{\b} $, we use the sum representation~\eqref{eq:nqb_integralrecovery}, where we expand the $ \cosh $ and use Lemma~\ref{lem:normsk}, as well as $ 2 \lambda_{\ell,q} = e(q) + e(q - \ell) \ge e(q) $
 \begin{equation}
 	n_q^{\b}
 	\le \half \sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum_{m=1}^{\infty} \frac{4^m |(K(\ell)^{2m})_{q,q}|}{(2m)!}
@@ -1723,15 +1725,15 @@ As a potential, we now choose $ \hat{V}((1,0,0)) = \hat{V}((-1,0,0)) = 1 $ and $
 \label{sec:mainthmproof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
-As a trial state, we consider $ \Psi_N = R e^{-\cK} \Omega $, from~\cite{CHN23} as defined in Section~\ref{sec:trialstate}. From~\cite[Corr.~1.3]{CHN24} we recover $ E_{\GS} = E_{\FS} + E_{\corr} + \cO(k_{\F}^{1 - \frac 16 + \varepsilon}) $, where $ E_{\FS} $ and $ E_{\corr} $ are the Fermi sea and correlation energy defined in that article. Note that this statement is even valid under the weaker assumption $ \sum_k \hat{V}(k)^2 < \infty $. Further,~\cite[Thm.~1.1]{CHN23} gives us $ \eva{\Psi_N, H_N \Psi_N} \le E_{\FS} + E_{\corr} + \cO(k_{\F}^{1 - \frac 12}) $, whence $ \eva{\Psi_N, H_N \Psi_N} \le E_{\GS} + \cO(k_{\F}^{1 - \frac 16 + \varepsilon}) $. By definition of the ground state energy, $ E_{\GS} \le \eva{\Psi_N, H_N \Psi_N} $, which concludes the energy estimate~\eqref{eq:main1}.\\
+As a trial state, we consider $ \Psi_N = R e^{-\cK} \Omega $, from~\cite{CHN23} as defined in Section~\ref{sec:trialstate}. From~\cite[Corr.~1.3]{CHN24} we recover $ E_{\GS} = E_{\FS} + E_{\corr} + \cO(k_{\F}^{1 - 1/6 + \varepsilon}) $, where $ E_{\FS} $ and $ E_{\corr} $ are the Fermi sea and correlation energy defined in~\cite[(1.2) and (1.11)]{CHN24}. Note that this statement is even valid under the weaker assumption $ \sum_k \hat{V}(k)^2 < \infty $. Further,~\cite[Thm.~1.1]{CHN23} gives us $ \eva{\Psi_N, H_N \Psi_N} \le E_{\FS} + E_{\corr} + \cO(k_{\F}^{1 - 1/2}) $, whence $ \eva{\Psi_N, H_N \Psi_N} \le E_{\GS} + \cO(k_{\F}^{1 - 1/6+ \varepsilon}) $. By definition of the ground state energy, $ E_{\GS} \le \eva{\Psi_N, H_N \Psi_N} $, which concludes the energy estimate~\eqref{eq:main1}.\\
 
 It remains to prove the momentum distribution formula~\eqref{eq:main2}, where we focus on the case $ q \in B_{\F}^c $, since $ q \in B_{\F} $ is completely analogous. Here, $ \eva{\Psi_N, a_q^* a_q \Psi_N} = \eva{\Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega} $, where Proposition~\ref{prop:finexpan} gives us
 \begin{align*}
 	\eva{\Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega} 
-	&= \half\sum\limits_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \sum\limits_{\substack{m=2\\m:\textnormal{ even}}}^{n+1} \frac{((2K(\ell))^m)_{q,q}}{m!}
-		+ \half \sum\limits_{m=1}^{n} \eva{\Omega, E_m(P^q)\Omega}\nonumber\\
-	&\quad +\half \int_{\Delta^{n+1}} \di^{n+1}\underline{\lambda} \;
-		\eva{\Omega, e^{\lambda_{n+1} \cK}Q_{\sigma(n+1)}(\Theta^{n+1}_{K}(P^q)) e^{-\lambda_{n+1} \cK} \Omega} \;,
+	&= \half\sum\limits_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \sum\limits_{\substack{m=2\\m:\textnormal{ even}}}^n \frac{((2K(\ell))^m)_{q,q}}{m!}
+		+ \half \sum\limits_{m=1}^{n-1} \eva{\Omega, E_m(P^q)\Omega}\nonumber\\
+	&\quad +\half \int_{\Delta^n} \di^n\underline{\lambda} \;
+		\eva{\Omega, e^{\lambda_n \cK}Q_{\sigma(n)}(\Theta^n_{K}(P^q)) e^{-\lambda_n \cK} \Omega} \;,
 \end{align*}
 for any $ n \in \N $. As $ n \to \infty $, the third term vanishes, while the first one converges towards
 \begin{equation*}
@@ -1751,14 +1753,14 @@ Bounding the $ E_m(P^q) $-term by Proposition~\ref{prop:finalEmest} renders
 		+ k_{\F}^{-1}\Xi^{\frac{3}{4}} \right) \;.
 \end{aligned}
 \end{equation}
-To control $ \Xi = \sup_{q \in \Z^3} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda \cK} a_q^* a_q e^{- \lambda \cK} \Omega} $, observe that the bound~\eqref{eq:main_errorbound_with_Xi} holds uniformly in $ q \in B_{\F}^c $, and it is not too difficult to show that it remains true for $ q \in B_{\F} $ or with $ \cK $ replaced by $ \lambda \cK $ with $ \lambda \in [0,1) $. Further, by definition~\eqref{eq:eq}, $ e(q) \ge 1/2 $, and since $ 0 \le a_q^* a_q \le 1 $, we have $ \Xi \le 1 $. So bounding $ n_q^{\b} $ by Lemma~\ref{lem:nqb_bounds}, we get
+To control $ \Xi = \sup_{q \in \Z^3} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda \cK} a_q^* a_q e^{- \lambda \cK} \Omega} $, observe that the bound~\eqref{eq:main_errorbound_with_Xi} holds uniformly in $ q \in B_{\F}^c $, and it is not too difficult to show that it remains true for $ q \in B_{\F} $ or with $ \cK $ replaced by $ \lambda \cK $ with $ \lambda \in [0,1] $. Further, by definition~\eqref{eq:eq}, $ e(q) \ge 1/2 $, and since $ 0 \le a_q^* a_q \le 1 $, we have $ \Xi \le 1 $. So bounding $ n_q^{\b} $ by Lemma~\ref{lem:nqb_bounds}, we get
 \begin{equation}
 	\Xi
 	\le n_q^{\b} + C \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
 		+ k_{\F}^{-1}\Xi^{\frac{3}{4}} \right)
 	\le C k_{\F} \;.
 \end{equation}
-Plugging this bound into~\eqref{eq:main_errorbound_with_Xi} renders the desired formula~\eqref{eq:main2}. The claim $ |n_q^{\b}| \le C k_{\F} e(q)^{-1} $ was already proven in Lemma~\ref{prop:nqb_bounds}
+Plugging this bound into~\eqref{eq:main_errorbound_with_Xi} renders the desired formula~\eqref{eq:main2}. The claim $ |n_q^{\b}| \le C k_{\F} e(q)^{-1} $ was already proven in Lemma~\ref{lem:nqb_bounds}
 \textcolor{red}{[SL: Shall we comment on how $ C $ depends on $ V $? In that case, we actually get a double exponential.]}
 \end{proof}
 
