@@ -223,34 +223,34 @@ We consider a quantum system of N spinless fermionic particles on $\mathbb{T}^3\
 \begin{equation}
     H_N = -\hbar^2\sum\limits_{j=1}^{N}\Delta_{x_j} + \lambda\!\!\!\sum\limits_{1\leq i < j \leq N } V(x_i - x_j) \;,
 \end{equation}
-acting on the wave functions in the anti-symmetric tensor product $L^2_a(\T^{3N}) = \bigwedge_{i=1}^N L^2(\T^3)$.
+acting on the wave functions in the anti-symmetric tensor product $L^2_a(\T^{3N}) = \bigwedge_{j=1}^N L^2(\T^3)$.
 We consider the \textit{mean-field limit} i.e. we set
 \begin{equation}
     \hbar\coloneq N^{-\frac{1}{3}}, \quad\text{and}\quad \lambda \coloneq N^{-1} \;,
 \end{equation}
-and let $ N \to \infty $. At zero temperature, the system will be in a ground state, that is, any vector $ \Psi_{\GS} \in L^2_a(\T^{3N}) $ which attains the ground state energy
+and let $ N \to \infty $. At zero temperature, the system will be in a ground state, that is, a vector $ \Psi_{\GS} \in L^2_a(\T^{3N}) $ which attains the ground state energy
 \begin{equation} \label{eq:EGS}
 	E_{\GS}
-	:= \inf \sigma(H_N)
+	\coloneq \inf \sigma(H_N)
 	= \inf_{\substack{\Psi \in L^2_a(\T^{3N})\\||\Psi|| = 1}} \langle \Psi, H_N \Psi \rangle \;.
 \end{equation}
 In this article we are interested in the momentum distribution of states $ \Psi $ close to $ \Psi_{\GS} $:
 \begin{align}
-	n(q) := \eva{\Psi, a^*_q a_q \Psi} \;,
+	n(q) \coloneq \eva{\Psi, a^*_q a_q \Psi} \;,
 \end{align}
-where $ a_q^*, a_q $ are the standard fermionic creation and annihilation operators of momentum $ q \in \ZZZ^3 $. As the momentum distribution of the true ground state is difficult to access~\cite{BL25}, we focus our attention on a trial state $ \Psi = \Psi_{\trial} $ that was constructed in~\cite{CHN23}.\\
-To better understand the shape of $ n(q) $, let us first consider the simple non-interacting case where $ V=0 $. Here, the ground state is exactly known to be a Slater determinant of $ N $ plane waves with momenta $ k_j \in \ZZZ^3 $:
+where $ a_q^*, a_q $ are the standard fermionic creation and annihilation operators of momentum $ q \in \ZZZ^3 $. As the momentum distribution of the true ground state is difficult to access, see also~\cite[Sect.~1]{BL25}, we focus our attention on a trial state $ \Psi = \Psi_N $. In contrast to~\cite{BL25}, here take the ``patchless'' trial state of ~\cite{CHN23}, which allows to investigate excitations much closer to the Fermi surface.\\
+To better understand the shape of $ n(q) $, let us first consider the simple non-interacting case where $ V=0 $. Here, a ground state is given by a Slater determinant of $ N $ plane waves with momenta $ k_j \in \ZZZ^3 $:
 \begin{equation}
-    \Psi_{\FS}(x_1, x_2, \ldots, x_N) := \frac{1}{\sqrt{N!}}\text{det}\left(\frac{1}{(2\pi)^{3/2}}e^{ik_j\cdot x_i}\right)^N_{j,i=1} \;.
+    \Psi_{\FS}(x_1, x_2, \ldots, x_N) \coloneq \frac{1}{\sqrt{N!}}\text{det}\left(\frac{1}{(2\pi)^{3/2}}e^{ik_j\cdot x_i}\right)^N_{j,i=1} \;.
 \end{equation}
-Here, $ k_j $ are chosen as to minimize the kinetic energy $ |k_j|^2 $, that is, we assume without loss of generality that they exactly fill up a Fermi ball
+The $ k_j $ are chosen as to minimize the kinetic energy $ \sum_{j \in B_{\F}}] |k_j|^2 $. Without loss of generality,  we assume that they exactly fill up a Fermi ball
 \begin{equation}
-	B_{\F} := \{ k \in \ZZZ^3 : |k| \le k_{\F} \} \;, \qquad
-	|B_{\F}| = N \qquad \textnormal{for some} k_{\F} > 0 \;.
+	B_{\F} \coloneq \{ k \in \ZZZ^3 : |k| < k_{\F} \} \;, \qquad
+	|B_{\F}| = N \qquad \textnormal{for some } k_{\F} > 0 \;.
 \end{equation}
 Here, $ k_{\F} $ is also called the Fermi momentum, scaling as
 \begin{equation}
-    k_{\F} \sim \left(\frac{3}{4\pi}\right)^\frac{1}{3}N^\frac{1}{3} + \mathcal{O}(1) \;,
+    k_{\F} = \left(\frac{3}{4\pi}\right)^\frac{1}{3}N^\frac{1}{3} + \mathcal{O}_N(1) \;,
 \end{equation}
 and we define the complement of the Fermi ball as 
 \begin{equation}
@@ -275,46 +275,52 @@ Then, $ \Psi_{\FS} $ is called the Fermi ball state or Fermi sea state. As exact
 \label{subsec:mainresult}
 
 
-We will prove that the momentum distribution for $ q \in B_{\F}^c $ is approximately given by its bosonized approximation
+We will prove that the momentum distribution $ n(q) $ for $ q \in B_{\F}^c $ is approximately given by its bosonized excitation density
 \begin{equation} \label{eq:nqb}
 	n_q^{\b}
-	:= \sum\limits_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \; \frac{1}{\pi}\int_0^\infty \frac{g_\ell (t^2-\lambda^2_{\ell,q}) (t^2 + \lambda^2_{\ell,q})^{-2}}{1 + 2g_\ell \sum_{p \in L_{\ell}}\lambda_{\ell,p} (t^2+\lambda^2_{\ell,p})^{-1}} \mathrm{d}t \;,
+	\coloneq \sum\limits_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \; \frac{1}{\pi}\int_0^\infty \frac{g_\ell (t^2-\lambda^2_{\ell,q}) (t^2 + \lambda^2_{\ell,q})^{-2}}{1 + 2g_\ell \sum_{p \in L_{\ell}}\lambda_{\ell,p} (t^2+\lambda^2_{\ell,p})^{-1}} \mathrm{d}t \;,
 \end{equation}
-where the lune $ L_\ell $, the excitation energy $ \lambda_{\ell,p} $ and the coupling quantity $ g_\ell $ are defined by
+where the lune $ L_\ell \in \Z^3 $, the excitation energy $ \lambda_{\ell,p} > 0 $ and $ g_\ell > 0 $ are defined by
 \begin{equation}
-	L_\ell := B_{\F}^c \cap (B_{\F} + \ell) \;, \qquad
-	\lambda_{\ell,p} := \half (|p|^2 - |p-\ell|^2) \;, \qquad
-	g_\ell := \frac{\hat{V}(\ell) k_{\F}^{-1}}{2 (2 \pi)^2} \;.
+	L_\ell \coloneq B_{\F}^c \cap (B_{\F} + \ell) \;, \qquad
+	\lambda_{\ell,p} \coloneq \half (|p|^2 - |p-\ell|^2) \;, \qquad
+	g_\ell \coloneq \frac{\hat{V}(\ell) k_{\F}^{-1}}{2 (2 \pi)^2} \;.
 \end{equation}
-The errors will depend on inverses of the excitation energy
+For $ q \in B_{\F} $, we analogously have
+\begin{equation}
+	n(q) \approx 1 - n_q^{\b} \;, \qquad
+	n_q^{\b}
+	\coloneq \sum\limits_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q+\ell) \; \frac{1}{\pi}\int_0^\infty \frac{g_\ell (t^2-\lambda^2_{\ell,q+\ell}) (t^2 + \lambda^2_{\ell,q+\ell})^{-2}}{1 + 2g_\ell \sum_{p \in L_{\ell}}\lambda_{\ell,p+\ell} (t^2+\lambda^2_{\ell,p+\ell})^{-1}} \mathrm{d}t \;,
+\end{equation}
+so the bosonized excitation density $ n_q^{\b} $ measures the deviation of $ n(q) $ from an indicator function $ \mathds{1}_{B_{\F}}(q) $, and we expect $ n_q^{\b} $ to be small (in contrast to $ n(q) $). The scaling of $ n_q^{\b} $ and error terms will depend on inverses of the excitation energy
 \begin{equation} \label{eq:eq}
 	e(q)
-	:= \abs{|q|^2 - \inf_{p \in B_{\F}^c} |p|^2 + \half}
+	\coloneq \abs{|q|^2 - \inf_{p \in B_{\F}^c} |p|^2 + \half}
 	= \abs{|q|^2 - \sup_{h \in B_{\F}} |h|^2 - \half} \;,
 \end{equation}
 which is evidently lower bounded by $ e(q) \ge \half $.
 
 \begin{theorem}[Main result] \label{thm:main}
-Assume that the Fourier transformation of the interaction potential is $ \hat{V} \in \ell^1(\Z^3) $, $ \hat{V} \ge 0 $, $ \hat{V}(0) = 0 $ \textcolor{red}{and $ \hat{V}(k) = \hat{V}(-k) $}.
+Assume that the Fourier transform of the interaction potential satisfies $ \hat{V} \in \ell^1(\Z^3) $, $ \hat{V} \ge 0 $, $ \hat{V}(0) = 0 $ \textcolor{red}{and $ \hat{V}(k) = \hat{V}(-k) $}.
 Then, there exists a sequence of trial states $ (\Psi_N) $ with $ \Psi_N \in L^2(\TTT^3)^{\otimes_{\mathrm{a}} N} $ such that
 \begin{itemize}
-\item $ \Psi_N $ is energetically close to the ground state in the sense that for any $ \varepsilon > 0 $ there exists a $ C_\varepsilon > 0 $ such that for all $ N $, we have
+\item $ \Psi_N $ is energetically close to the ground state in the sense that for any $ \varepsilon > 0 $ there exists a $ C_\varepsilon > 0 $ such that for all $ N $ we have
 \begin{equation} \label{eq:main1}
 	\eva{\Psi_N, H_N \Psi_N} - E_{\GS}
 	\le C_\varepsilon k_{\F}^{1-\frac 16 + \varepsilon} \;,
 \end{equation}
 \item There exists a constant $ C > 0 $ such that for all $ N $ and $ q \in \Z^3 $, the momentum distribution in $ \Psi_N $ satisfies
 \begin{equation} \label{eq:main2}
-	\begin{cases}
-	\abs{\eva{\Psi_N, a_q^* a_q \Psi_N} - n_q^{\b}}
-	&\le C k_{\F}^{-1 -\frac 34} e(q)^{-1} \quad
+	n(q) = \eva{\Psi_N, a_q^* a_q \Psi_N}
+	= \begin{cases}
+	n_q^{\b} + \cE_q& \quad
 		\textnormal{for } |q| \ge k_{\F} \\
-	\abs{1 - \eva{\Psi_N, a_q^* a_q \Psi_N} - n_q^{\b}}
-	&\le C k_{\F}^{-1 -\frac 34} e(q)^{-1} \quad
-		\textnormal{for } |q| \ge k_{\F} 
-	\end{cases} \;,
+	1 - n_q^{\b}  + \cE_q& \quad
+		\textnormal{for } |q| < k_{\F} 
+	\end{cases} \;, \qquad
+	|\cE_q| \le C k_{\F}^{-1 -\frac 34} e(q)^{-1}
 \end{equation}
-where $ n_q^{\b} $, defined in~\eqref{eq:nqb} satisfies $ |n_q^{\b}| \le C k_{\F}^{-1} e(q)^{-1} $.
+where the bosonized excitation density $ n_q^{\b} $, defined in~\eqref{eq:nqb}, satisfies $ |n_q^{\b}| \le C k_{\F}^{-1} e(q)^{-1} $.
 \end{itemize} 
 \end{theorem}
 
@@ -325,6 +331,12 @@ where $ n_q^{\b} $, defined in~\eqref{eq:nqb} satisfies $ |n_q^{\b}| \le C k_{\F
 \item \textcolor{blue}{Exact scaling $ n_q^{\b} \sim k_{\F}^{-1} e(q)^{-1} $ is shown in Lemma~\ref{lem:nqb_bounds}. Comment on that~\cite{BL25} did not catch this, as $ e(q)^{-1} \sim 1 $, there.}
 
 \item \textcolor{blue}{Mention that we are able to extract $ n_q^{\ex} \sim k_{\F}^{-2} e(q)^{-2} $, so it is subleading for our potentials. Mention that for Coulomb, $ n_q^{\ex} \sim k_{\F}^{-1} e(q)^{-2} $, and that this is still under investigation.}
+\begin{equation} \label{eq:nqex}
+	n_q^{\ex}
+	\coloneq \sum_{\substack{m=2\\m:\textnormal{ odd}}}^\infty \frac{1}{(m+1)!}
+		\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}} \!\!\!\Theta^m_{K}(P^q)(\ell)_{r,-r+\ell+\ell_1}K(\ell_1)_{r,-r+\ell+\ell_1} \;.
+\end{equation}
+\todo{Maybe, write this in a nicer form, if possible.}
 
 \item \textcolor{blue}{Comparison to integral formula for $ n_q^{\b} $ in~\cite{BL25} and to the physics literature.}
 
@@ -342,26 +354,26 @@ where $ n_q^{\b} $, defined in~\eqref{eq:nqb} satisfies $ |n_q^{\b}| \le C k_{\F
 \section{Trial State Definition}
 \label{sec:trialstate}
 
-Let us briefly recap the trial state construction of~\cite{CHN23}. To facilitate notation, we work in second quantization by introducing the fermionic Fock space
+Let us briefly recap the trial state construction of~\cite{CHN23}. To facilitate notation, we work in second quantization, introducing the fermionic Fock space
 \begin{equation}
-	\cF := \bigoplus_{N=0}^\infty L^2_a(\T^{3N}) \;,
+	\cF \coloneq \bigoplus_{N=0}^\infty L^2_a(\T^{3N}) \;,
 \end{equation}
-with vacuum vector $ \Omega = (1,0,0,\ldots) \in \cF $ and the standard fermionic creation/annihilation operators $ a^*(f), a(f) $ for $ f \in L^2(\TTT) $. To each momentum $ q \in \ZZZ^3 $, we assign a plane wave
+with vacuum vector $ \Omega = (1,0,0,\ldots) \in \cF $ and the standard fermionic creation/annihilation operators $ a^*(f), a(f) $ for $ f \in L^2(\TTT^3) $. To each momentum $ q \in \ZZZ^3 $, we assign a plane wave
 \begin{equation}
 	f_q \in L^2(\TTT^3) \;, \qquad
-	f_q(x) := (2 \pi)^{-3/2} e^{i q \cdot x} \;,
+	f_q(x) \coloneq (2 \pi)^{-3/2} e^{i q \cdot x} \;,
 \end{equation}
 and the associated creation/annihilation operators
 \begin{equation}
-	a^*_q := a^*(f_q) \;, \qquad
-	a_q := a(f_q) \;,
+	a^*_q \coloneq a^*(f_q) \;, \qquad
+	a_q \coloneq a(f_q) \;,
 \end{equation}
-satisfying the canonical anticommutation relations (CAR)
+with $ \Vert a_q^* \Vert, \Vert a_q \Vert \le 1 $, satisfying the canonical anticommutation relations (CAR)
 \begin{equation} \label{eq:CAR}
-	\{a_q, a_{q'}^*\} = \delta_{q, q'}, \qquad
+	\{a_q, a_{q'}^*\} = \delta_{q, q'} \;, \qquad
 	\{a_q, a_{q'}\} = \{a_q^*, a_{q'}^*\} = 0 \qquad \text{for all } q, q' \in \ZZZ^3\;.
 \end{equation}
-This notation allows us to conveniently write the Fermi sea state $ \Psi_{\FS} $ as $ \Psi_{\FS} = R \Omega $ where $ R: \cF \to \cF $ is the unitary particle--hole transformation defined by
+This notation allows us to conveniently write the Fermi sea state as $ \Psi_{\FS} = R \Omega $ where $ R: \cF \to \cF $ is the unitary particle--hole transformation defined by
 \begin{equation} \label{eq:R}
 	R^* a_q^* R
 	= \mathds{1}_{B_{\F}^c}(q) \; a_q^*
@@ -369,37 +381,37 @@ This notation allows us to conveniently write the Fermi sea state $ \Psi_{\FS} $
 \end{equation}
 Note that $ R^{-1} = R = R^* $. The \textbf{trial state} of~\cite{CHN23} now takes the form\todo{Check if $ T $ shall be replaced by $ \mathcal{U} $ or similar.}
 \begin{equation} \label{eq:Psitrial}
-	\Psi_{\trial} = R T \Omega \;,
+	\Psi_N = R T \Omega \;,
 \end{equation}
-where $ T: \cF \to \cF $ is another unitary transformation motivated as follows: We expect the interaction to generate many pair excitations, where a particle from inside the Fermi ball $ B_{\F} $ is shifted by some momentum $ k \in \ZZZ^3 $ to some momentum $ p \in B_{\F}^c $, leaving a hole at $ p-k \in B_{\F} $. After the particle--hole transformation $ R $, this corresponds to a creation of a pair of excitations, described by the pair creation operator
+where $ T: \cF \to \cF $ is another unitary transformation motivated as follows: We expect the interaction to generate many pair excitations, where a particle from inside the Fermi ball $ B_{\F} $ is shifted by some momentum $ k \in \Z^3_* = \Z \setminus \{ 0 \} $ to another momentum $ p \in B_{\F}^c $, leaving a hole at $ p-k \in B_{\F} $. After the particle--hole transformation $ R $, this corresponds to a creation of a pair of excitations at $ p $ and $ p-k $, described by the pair creation operator
 \begin{equation} \label{eq:b}
-	b^*_p(k) := a_p^* a_{p-k}^* 
+	b^*_p(k) \coloneq a_p^* a_{p-k}^* 
 	\qquad \textnormal{with adjoint} \qquad
-	b_p(k) := a_{p-k} a_p \;.
+	b_p(k) \coloneq a_{p-k} a_p \;.
 \end{equation}
 The constraint on $ (p,k) $ can be written as $ p \in L_k $, where we recall $ L_k = B_{\F}^c \cap (B_{\F} + k) $ with $ L_{-k} = - L_k $. Indeed, one may now approximate $ H_N $ by an effective Bogoliubov-type Hamiltonian~\cite[(1.34)]{CHN23} \todo{Why don't we use the notation $ b_{k,p} $ instead of $ b_p(k) $? And also $ h_k, P_k $ I think, it might make some things a bit shorter and also easier for a reader to switch.}
 \begin{equation} \label{eq:HBog}
 	H_{\Bog}
-	:= \sum_{k \in \ZZZ^3_*} \left( \sum_{p,q \in L_k} 2 (h(k) + P(k))_{p,q} b^*_p(k) b_q(k)
+	\coloneq \sum_{k \in \ZZZ^3_*} \left( \sum_{p,q \in L_k} 2 (h(k) + P(k))_{p,q} b^*_p(k) b_q(k)
 		+ \sum_{p,q \in L_k} P(k)_{p,q} (b_p(k) b_{-q}(-k) + b^*_{-q}(-k) b^*_p(k)) \right) \;,
 \end{equation}
-where $ \ZZZ^3_* := \ZZZ^3 \setminus \{0\} $, and with matrices $ h(k), P(k) \in \CCC^{|L_k| \times |L_k|} $ defined by
+with matrices $ h(k), P(k) \in \CCC^{|L_k| \times |L_k|} $ defined by
 \begin{equation} \label{eq:HkPk}
 \begin{aligned}
-	h(k)_{p,q} &:= \delta_{p,q} \lambda_{k,p} \;, \qquad
-	P(k)_{p,q} &:= \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^2} \;,
+	h(k)_{p,q} &\coloneq \delta_{p,q} \lambda_{k,p} \;, \qquad
+	P(k)_{p,q} &\coloneq \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^2} \;,
 \end{aligned}
 \end{equation}
-where we recall $ \lambda_{k,p} = \frac 12 (|p|^2 - |p-k|^2) $. In particular $ P(k) $ is rank-one with $ P(k) := |v_k \rangle \langle v_k | $, where $ v_{k,p} := g_k^{\frac 12} = \left( \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^2} \right)^{1/2}  $. As the pair excitation operators satisfy approximate bosonic commutation relations, see Lemma~\ref{lem:paircomm}, one may treat $ H_{\Bog} $ as an approximately quadratic bosonic Hamiltonian, which is approximately diagonalized by the transformation~\cite[Thm.~1.4]{CHN23} \textcolor{red}{[SL: Actually, the trial state of [CHN] has $ \xi = e^{-\cK} \Omega $ and not $ \xi = e^{\cK} \Omega $. I fixed this.]}
+where we recall $ \lambda_{k,p} = \frac 12 (|p|^2 - |p-k|^2) $. In particular $ P(k) $ is rank-one with $ P(k) \coloneq |v_k \rangle \langle v_k | $, where $ v_{k,p} \coloneq g_k^{1/2} = \left( \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^2} \right)^{1/2}  $. As the pair excitation operators satisfy approximate bosonic commutation relations, see Lemma~\ref{lem:paircomm}, one may treat $ H_{\Bog} $ as an approximately quadratic bosonic Hamiltonian, which is approximately diagonalized by the transformation~\cite[Thm.~1.4]{CHN23} \textcolor{red}{[SL: Actually, the trial state of [CHN] has $ \xi = e^{-\cK} \Omega $ and not $ \xi = e^{\cK} \Omega $. I fixed this.]}
 \begin{equation} \label{eq:T}
-	T := e^{-\cK} \;, \qquad
-	\cK := \frac{1}{2}\sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell}K(\ell)_{r,s}\left(b_r(\ell)b_{-s}(-\ell)-b^*_{-s}(-\ell)b^*_{r}(\ell)\right) \;,
+	T \coloneq e^{-\cK} \;, \qquad
+	\cK \coloneq \frac{1}{2}\sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell}K(\ell)_{r,s}\left(b_r(\ell)b_{-s}(-\ell)-b^*_{-s}(-\ell)b^*_{r}(\ell)\right) \;,
 \end{equation}
 with Bogoliubov kernel
 \begin{equation} \label{eq:K}
-	K(k) := - \frac 12 \log \Big( h(k)^{-\frac 12} \big( h(k)^{\frac 12} \big( h(k) + 2 P(k) \big) h(k)^{\frac 12}\big) h(k)^{-\frac 12} \Big) \;,
+	K(k) \coloneq - \frac 12 \log \Big( h(k)^{-\frac 12} \big( h(k)^{\frac 12} \big( h(k) + 2 P(k) \big) h(k)^{\frac 12}\big) h(k)^{-\frac 12} \Big) \;,
 \end{equation}
-satisfying $ K(-k)_{-p,-q} = K(k)_{p,q} $. This concludes the definition of the trial state $ \Psi_{\trial} $ in~\eqref{eq:Psitrial}.
+satisfying $ K(-k)_{-p,-q} = K(k)_{p,q} $. This concludes the definition of the trial state $ \Psi_N $ in~\eqref{eq:Psitrial}.
 
 
 
@@ -414,14 +426,14 @@ satisfying $ K(-k)_{-p,-q} = K(k)_{p,q} $. This concludes the definition of the 
 
 
 
-We now extract the bosonized and exchange contributions $ n_q^{\b} $ and $ n_q^{\ex} $ out of the momentum distribution $ \langle \Psi, a_q^* a_q \Psi \rangle $ with $ \Psi = \Psi_{\trial} = R e^{-\cK} \Omega $, compare~\eqref{eq:Psitrial}. The particle--hole transformation $ R $ can easily be dealt with, since by~\eqref{eq:R}, it only reverses the momentum distribution inside the Fermi ball as
+We now extract the bosonized and exchange contributions $ n_q^{\b} $ and $ n_q^{\ex} $ from the momentum distribution $ \langle \Psi, a_q^* a_q \Psi \rangle $ with $ \Psi = \Psi_N = R e^{-\cK} \Omega $, compare~\eqref{eq:Psitrial}. The particle--hole transformation $ R $ can easily be dealt with, since by~\eqref{eq:R}, it only reverses the momentum distribution inside the Fermi ball as
 \begin{equation} \label{eq:momentum_dist_R_trafo}
 	\langle R \xi, a_q^* a_q R \xi \rangle
 	= \mathds{1}_{B_{\F}}(q) \big( 1 - \langle \xi, a_q^* a_q \xi \rangle \big)
 		+ \mathds{1}_{B_{\F}^c}(q) \langle \xi, a_q^* a_q \xi \rangle \qquad
 		\forall \xi \in \cF \;.
 \end{equation}
-So it suffices to consider the excitation vector $ \xi = \xi_{\trial} := e^{-\cK} \Omega $ and to compute the excitation density $ \langle \xi, a_q^* a_q \xi \rangle $. As in~\cite{BL25}, we do so by iterative Duhamel expansion as
+So it suffices to consider the excitation vector $ \xi \coloneq e^{-\cK} \Omega = R^* \Psi_N $ and to compute the excitation density $ \langle \xi, a_q^* a_q \xi \rangle $. As in~\cite{BL25}, we do so by iterative Duhamel expansion as
 \begin{equation} \label{eq:duhamelexpansion_blueprint}
 \begin{aligned}
 	&\langle \Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega \rangle
@@ -433,25 +445,25 @@ So it suffices to consider the excitation vector $ \xi = \xi_{\trial} := e^{-\cK
 	= \ldots \;,
 \end{aligned}
 \end{equation}
-leading to Proposition~\ref{prop:finexpan}, which is the main result of this section. Note that $ a_q \Omega = 0 $, from which we immediately conclude $ \langle \Omega, a_q^* a_q \Omega \rangle = 0 $. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n_q^{\b} $ by bosonization, similarly as in~\cite{BL25}. The term $ n_q^{\ex} $ then appears when normal ordering the bosonization errors, similar to the exchange contribution to the correlation energy appearing in~\cite{CHN23}. Since $ n_q^{\ex} \ll n_q^{\b} $ (see Lemma~\ref{lem:estnqex} and Lemma~\ref{lem:nqb_bounds}), we treat also $ n_q^{\ex} $ as a bosonization error.
+leading to Proposition~\ref{prop:finexpan}, which is the main result of this section. Note that $ a_q \Omega = 0 $, from which we immediately conclude $ \langle \Omega, a_q^* a_q \Omega \rangle = 0 $. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n_q^{\b} $ by bosonization, similarly as in~\cite{BL25}. The term $ n_q^{\ex} $ then appears when normal ordering the bosonization errors, similar to the exchange contribution to the correlation energy appearing in~\cite{CHN23}. Since $ n_q^{\ex} \ll n_q^{\b} $ (compare Lemmas~\ref{lem:estnqex} and~\ref{lem:nqb_bounds}), we will treat $ n_q^{\ex} $ as a bosonization error.
 
 
 
 \subsection{Extraction of the Bosonized Contribution}
 \label{sec:extraction_bos}
 
-To compute the multicommutators in~\eqref{eq:duhamelexpansion_blueprint}, we use the CAR~\eqref{eq:CAR}, which will produce several quadratic pseudo-bosonic expressions, for which we adopt the notation of~\cite{CHN21}.
+To compute the multicommutators in~\eqref{eq:duhamelexpansion_blueprint}, we use the CAR~\eqref{eq:CAR}, which will produce several quadratic pseudo-bosonic expressions, for which we adopt a similar notation as in~\cite{CHN21}.
 
 \begin{definition} \label{def:Q}
-Let $A=(A(\ell))_{\ell \in \Z^3_*} $ be a family of symmetric operators with $A(\ell): \ell^2(L_\ell)\rightarrow \ell^2(L_\ell)$. We, the quadratic pseudo-bosonic operators are given by
+Let $A=(A(\ell))_{\ell \in \Z^3_*} $ be a family of symmetric operators with $A(\ell): \ell^2(L_\ell)\rightarrow \ell^2(L_\ell)$. The quadratic pseudo-bosonic operators are given by
 \begin{equation} \label{eq:Q}
 \begin{aligned}
-    Q_1(A)&\coloneq  \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s} \left(b^*_r(\ell)b_{s}(\ell)+b^*_{s}(\ell)b_{r}(\ell)\right) \;,\\ 
+    Q_1(A)&\coloneq 2 \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s} b^*_r(\ell)b_{s}(\ell) \;,\\ 
     Q_2(A)&\coloneq  \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s} \left(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell)\right) \;.
 \end{aligned}
 \end{equation} 
 \end{definition}
-We will further make frequent use of the following ``almost-CCR'' for the pair operators~\eqref{eq:b}, compare also~\cite[(1.66)]{CHN21}.
+Note that our $ Q_1 $ corresponds to $ 2 \tilde Q_1 $ in~\cite{CHN21}, while the definition of $ Q_2 $ is identical. Also note that our $ a_p $ agrees with $ R^* c_p R $ in~\cite{CHN21,CHN23}\todo{Put here all references by [CHN] that have been cited.}. We will further make frequent use of the following ``almost-CCR'' for the pair operators~\eqref{eq:b}, compare also~\cite[(1.66)]{CHN21}.
 
 \begin{lemma}[Quasi-Bosonic commutation relations]\label{lem:paircomm}
 For $k,\ell \in \Z^3_*$ and $p \in L_{k}$, $q\in L_{\ell}$, we have the approximate commutation relations\todo{Unify the notation ``quasi-bosonic'' / ``pseudo-bosonic'' / ...}
@@ -462,21 +474,22 @@ For $k,\ell \in \Z^3_*$ and $p \in L_{k}$, $q\in L_{\ell}$, we have the approxim
 with $ b_p(k) $ defined in~\eqref{eq:b}, and with commutation error \textcolor{red}{[SL: Some signs changed in this and the subsequent lemmas, when replacing $ e^{\cK} \mapsto e^{-\cK} $.}
 \begin{equation}
 	\epsilon_{p,q}(k,\ell)
-	:= -\left(\delta_{p,q}a^*_{q-\ell}a_{p-k} + \delta_{p-k,q-\ell}a^*_{q}a_{p}\right) \;.
+	\coloneq -\left(\delta_{p,q}a^*_{q-\ell}a_{p-k} + \delta_{p-k,q-\ell}a^*_{q}a_{p}\right) \;.
 \end{equation}
 \end{lemma}
-The proof is an immediate application of the CAR~\eqref{eq:CAR}. Also, note that evidently $\epsilon_{p,q}(l,k) = \epsilon^*_{q,p}(k,l) $ and $\epsilon_{p,p}(k,k)\leq 0$. As an immediate consequence of Lemma~\ref{lem:paircomm}, we obtain the following commutation relations.
+The proof is an immediate application of the CAR~\eqref{eq:CAR}. Also, note that evidently $\epsilon_{p,q}(\ell,k) = \epsilon^*_{q,p}(k,\ell) $ and $\epsilon_{p,p}(k,k)\leq 0$. As an immediate consequence of Lemma~\ref{lem:paircomm}, we obtain the following commutation relations.
 
 \begin{lemma}[Commutator between $\cK $ and Pair Operators]
 For $k \in \Z^3_*$ and $p \in L_k$ we have
 \begin{equation} \label{eq:comm_Kb}
 	[\cK, b^*_p(k)]
 	= \sum\limits_{s\in L_{k}}K(k)_{p,s}b_{-s}(-k)
-		- \mathcal{E}_{p}(k) \;,
+		\textcolor{red}{+} \mathcal{E}_{p}(k) \;,
 \end{equation}
 with commutation error
 \begin{equation}\label{eq:commerrKb}
-    \mathcal{E}_{p}(k) := -\frac{1}{2}\sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell}K(\ell)_{r,s}\left\{\epsilon_{r,p}(\ell,k),b_{-s}(-\ell)\right\} 
+    \mathcal{E}_{p}(k)
+    \coloneq \textcolor{red}{+} \frac{1}{2}\sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell}K(\ell)_{r,s}\left\{\epsilon_{r,p}(\ell,k),b_{-s}(-\ell)\right\} 
 \end{equation}
 \end{lemma}
 
@@ -491,61 +504,63 @@ Let $ A = (A(\ell))_{\ell \in \Z^3_*} $, $ A(\ell) : \ell^2(L_\ell) \to \ell^2(L
 	[\cK, Q_2(A)] 
 	&= Q_1\left(\{A,K\} \right) 
 		+ \sum\limits_{\ell \in \Z^3_*} \sum\limits_{r \in L_{\ell}} \big\{ A(\ell), K(\ell) \big\}_{r,r}
-		- E_{Q_2}(A) \;,
+		\textcolor{red}{+} E_{Q_2}(A) \;,
 \end{aligned}
 \end{equation}
 with the family $ \{A,K\} = (\{A(\ell),K(\ell)\})_{\ell \in \Z^3_*} $ and with the commutation errors
 \begin{equation}\label{eq:errKQ}
 \begin{aligned}
 	E_{Q_1}(A)
-	&:= - 2 \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(\mathcal{E}_{r}(\ell)b_{s}(\ell) + b^*_{s}(\ell)\mathcal{E}^*_{r}(\ell)\Big) \;, \\
+	&\coloneq \textcolor{red}{+} 2 \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(\mathcal{E}_{r}(\ell)b_{s}(\ell) + b^*_{s}(\ell)\mathcal{E}^*_{r}(\ell)\Big) \;, \\
 	E_{Q_2}(A)
-	& := \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\Big(A(\ell)_{r,s}\big(\big\{\mathcal{E}^*_{r}(\ell), b_{-s}(-\ell)\big\} + \big\{ b^*_{-s}(-\ell) , \mathcal{E}_r(\ell) \big\} \big)-\big\{A(\ell)_,K(\ell)\big\}_{r,s}\epsilon_{r,s}(\ell,\ell)\Big) \;. \\
+	& \coloneq \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\Big(A(\ell)_{r,s}\big(\big\{\mathcal{E}^*_{r}(\ell), b_{-s}(-\ell)\big\}
+		+ \big\{ b^*_{-s}(-\ell) , \mathcal{E}_r(\ell) \big\} \big)
+		\textcolor{red}{+} \big\{A(\ell)_,K(\ell)\big\}_{r,s}\epsilon_{r,s}(\ell,\ell)\Big) \;. \\
 \end{aligned} 
 \end{equation}
 \end{lemma}
 
 
-To compactify notation in the Duhamel expansion, we introduce the iterated anticommutator
+To simplify the Duhamel expansion, we introduce the iterated anticommutator
 \begin{equation} \label{eq:Theta}
 	\Theta_K^n (A)
-	:= \underbrace{\{ K, \{ K , \ldots \{K}_{n \in \N \textnormal{ times}} , A\} \ldots \} \} \;, \qquad
+	\coloneq \underbrace{\{ K, \{ K , \ldots \{K}_{n \in \N \textnormal{ times}} , A\} \ldots \} \} \;, \qquad
 	\textnormal{with }
 	\Theta_K^0 (A)
-	:= A \;,
+	\coloneq A \;,
 \end{equation}
 the projection matrix \textcolor{red}{[SL: I changed this notation: $ P_q $ is now only the projection to $ q $, while $ \tilde{P}_q $ is the projection to $ q $ and $ -q $. This makes the proposition easier to read and avoids a later discussion, why we only need to fix $ q $ when writing down the error terms.]}
 \begin{equation} \label{eq:Pq}
 	P^q(\ell) : \ell^2(L_\ell) \to \ell^2(L_\ell) \;, \qquad
-	P^q(\ell)_{r,s} := \delta_{q,r} \delta_{q,s} \qquad
+	P^q(\ell)_{r,s} \coloneq \delta_{q,r} \delta_{q,s} \qquad
 	\textnormal{for } \ell \in \Z^3_* \;,
 \end{equation}
 as well as the simplex integral
 \begin{equation} \label{eq:Deltan}
 	\int_{\Delta^n} \di^n \ulambda
-	:= \int_0^1 \di \lambda_1 \int_0^{\lambda_1} \di \lambda_2 \ldots \int_0^{\lambda_{n-1}} \di \lambda_n \;, \qquad
-	\ulambda := (\lambda_1, \ldots, \lambda_n) \;.
+	\coloneq \int_0^1 \di \lambda_1 \int_0^{\lambda_1} \di \lambda_2 \ldots \int_0^{\lambda_{n-1}} \di \lambda_n \;, \qquad
+	\ulambda \coloneq (\lambda_1, \ldots, \lambda_n) \;.
 \end{equation}
-The final result is then the following.
+The final expansion is then the following.
 
-\begin{proposition}[Extraction of the Bosonized Contribution]\label{prop:finexpan}
+\begin{proposition}[Duhamel expansion]\label{prop:finexpan}
 For $q \in B^c_{\F}$, we have
 \begin{align} \label{eq:finexpan}
 	\eva{\Omega, e^{\cK} a_q^* a_q e^{-\cK} \Omega} 
-	&= \half\sum\limits_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \sum\limits_{\substack{m=2\\m:\textnormal{ even}}}^{n+1} \frac{((2K(\ell))^m)_{q,q}}{m!}
-		+ \half \sum\limits_{m=1}^{n} \eva{\Omega, E_m(P^q)\Omega}\nonumber\\
-	&\quad +\half \int_{\Delta^{n+1}} \di^{n+1}\underline{\lambda} \;
-		\eva{\Omega, e^{\lambda_{n+1} \cK}Q_{\sigma(n+1)}(\Theta^{n+1}_{K}(P^q)) e^{-\lambda_{n+1} \cK} \Omega} \;,
+	&= \half\sum\limits_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \sum\limits_{\substack{m=2\\m:\textnormal{ even}}}^n \frac{((2K(\ell))^m)_{q,q}}{m!}
+		+ \half \sum\limits_{m=1}^{n-1} \eva{\Omega, E_m(P^q)\Omega}\nonumber\\
+	&\quad +\half \int_{\Delta^n} \di^n\underline{\lambda} \;
+		\eva{\Omega, e^{\lambda_n \cK}Q_{\sigma(n)}(\Theta^n_{K}(P^q)) e^{-\lambda_n \cK} \Omega} \;,
 \end{align}
 where $ \sigma(n) = 1 $ if $ n $ is even and $ \sigma(n) = 2 $ otherwise, and where
 \begin{equation}\label{eq:errEm}
-	E_m(P^q) \coloneq (-1)^m \int_{\Delta^m} \di^m\underline{\lambda} \;
-		e^{\lambda_n \cK} E_{Q_{\sigma(m)}}\left(\Theta^{m}_{K}(P^q)\right) e^{-\lambda_n \cK}
+	E_m(P^q) \coloneq \int_{\Delta^{m+1}} \di^{m+1} \underline{\lambda} \;
+		e^{\lambda_{m+1} \cK} E_{Q_{\sigma(m)}}\left(\Theta^{m}_{K}(P^q)\right) e^{-\lambda_{m+1} \cK}
 \end{equation}
 is the total commutation error.
 \end{proposition}
 
-Note that in Lemma~\ref{lem:nqb_integralrecovery}, we will see that the first term on the r.~h.~s. of~\eqref{eq:finexpan} converges to $ n_b^q $ as $ n \to \infty $. The other two terms are error terms which we bound below.
+In Lemma~\ref{lem:nqb_integralrecovery}, we will see that the first term on the r.~h.~s. of~\eqref{eq:finexpan} converges to $ n_q^{\b} $ as $ n \to \infty $. The other two terms are error terms which we bound below.
 
 
 \begin{proof}
@@ -553,9 +568,9 @@ First, note that for the first commutator in the expansion~\eqref{eq:duhamelexpa
 \begin{equation} \label{eq:firstcommutator}
 	[\cK, a_q^* a_q] + [\cK, a_{-q}^* a_{-q}]
 	= Q_2(\{K,\tilde{P}^q\}) \;, \qquad
-	\tilde{P}^q := \half(P^q + P^{-q}) \;,
+	\tilde{P}^q \coloneq \half(P^q + P^{-q}) \;,
 \end{equation}
-while $ [\cK, a_q^* a_q] $ itself does not allow for an equally convenient rewriting. Nevertheless, our trial state and excitation density are reflection symmetric, that is, if we define the unitary reflection transformation $ \fR: \cF \to \cF $ by $ \fR^* a_q \fR = a_{-q} $, then one easily checks
+while $ [\cK, a_q^* a_q] $ itself does not allow for an equally convenient rewriting. Nevertheless, our trial state and excitation density are reflection symmetric, that is, if we define the unitary reflection transformation $ \fR: \cF \to \cF $ by $ \fR^* a_q^* \fR = a^*_{-q} $ and $ \fR \Omega = \Omega $, then one easily checks
 \begin{equation} \label{eq:reflectionsymmetry}
 	\fR e^{-\cK} \Omega = e^{-\cK} \Omega \qquad \Rightarrow \qquad
 	\eva{\Omega, e^{\cK} a^*_q a_q e^{-\cK}\Omega} = \eva{\Omega, e^{\cK} a^*_{-q} a_{-q} e^{-\cK} \Omega} \;.
@@ -577,32 +592,30 @@ where the first commutator is evaluated via~\eqref{eq:firstcommutator}. We then 
 	&\quad + \lambda \sum\limits_{\ell \in \Z^3_*} \sum\limits_{r \in L_{\ell}} \big\{ A(\ell), K(\ell) \big\}_{r,r} \;.
 \end{aligned}
 \end{equation}
-The $ E_{Q_1} $ and $ E_{Q_2} $-terms are not expanded but collected as errors, while the $ \{A,K\} $-terms are extracted as the leading-order contribution. The result after $ n $ expansion steps is
+The $ E_{Q_1} $ and $ E_{Q_2} $-terms are not expanded but collected as errors, and the $ \{A,K\} $-terms are extracted as leading-order contributions. The result after $ n $ expansion steps is
 \begin{equation}
 \begin{aligned}
 	&e^{\cK} (a_q^* a_q + a_{-q}^* a_{-q}) e^{-\cK} \\
 	&= a_q^* a_q + a_{-q}^* a_{-q}
-		+ \sum\limits_{\ell\in \Z^3_*} \mathds{1}_{L_\ell \cup L_{-\ell}}(q) \sum\limits_{\substack{m=2\\m:\textnormal{ even}}}^{n+1} \frac{\mathrm{Tr} \,\Theta^m_{K(\ell)} \big( \tilde{P}^q(\ell) \big)}{m!}
-		+ \sum\limits_{m=1}^n E_m(\tilde{P}^q)
-		+ \sum\limits_{\substack{m=2\\m:\textnormal{ even}}}^n
-		Q_1\left( \frac{\Theta^m_{K}(\tilde{P}^q)}{m!}\right) \\
-	&\quad+ \sum\limits_{\substack{m=1\\m:\textnormal{ odd}}}^n
-		Q_2\left( \frac{\Theta^m_{K}(\tilde{P}^q)} {m!}\right)
-		+\int_{\Delta^{n+1}} \di^{n+1}\underline{\lambda} \;
-		e^{\lambda_{n+1} \cK}Q_{\sigma(n+1)}(\Theta^{n+1}_{K}(\tilde{P}^q)) e^{-\lambda_{n+1} \cK} \;.
+		+ \sum\limits_{\ell\in \Z^3_*} \mathds{1}_{L_\ell \cup L_{-\ell}}(q) \sum\limits_{\substack{m=2\\m:\textnormal{ even}}}^n \frac{\mathrm{Tr} \big(\Theta^m_{K(\ell)} \big( \tilde{P}^q(\ell) \big) \big)}{m!}
+		+ \sum\limits_{m=1}^{n-1} E_m(\tilde{P}^q) \\
+	&\quad+ \sum\limits_{m=1}^{n-1}
+		Q_{\sigma(m)} \Big( \frac{\Theta^m_{K}(\tilde{P}^q)}{m!} \Big)
+		+\int_{\Delta^n} \di^n \underline{\lambda} \;
+		e^{\lambda_n \cK}Q_{\sigma(n)}(\Theta^n_K (\tilde{P}^q)) e^{-\lambda_n \cK} \;.
 \end{aligned}
 \end{equation}
-Taking the vacuum expectation, the terms $ a_q^* a_q + a_{-q}^* a_{-q} $, as well as the $ Q_1 $- and $ Q_2 $-terms now vanish, since $ a_q \Omega = 0 $. Thus,
+Taking the vacuum expectation, the terms $ a_q^* a_q + a_{-q}^* a_{-q} $, as well as the $ Q_{\sigma(m)} $-terms now vanish, since $ a_q \Omega = 0 $. Thus,
 \begin{equation}
 \begin{aligned}
 	\half \langle \Omega, e^{\cK} (a_q^* a_q + a_{-q}^* a_{-q}) e^{-\cK} \Omega \rangle
-	&= \half \sum\limits_{\ell\in \Z^3_*} \mathds{1}_{L_\ell \cup L_{-\ell}}(q) \sum\limits_{\substack{m=2\\m:\textnormal{ even}}}^{n+1} \frac{\mathrm{Tr} \,\Theta^m_{K(\ell)} \big( \tilde{P}^q(\ell) \big)}{m!}
-		+ \half \sum\limits_{m=1}^n \langle \Omega, E_m(\tilde{P}^q) \Omega \rangle \\
-	&\quad +\half \int_{\Delta^{n+1}} \di^{n+1}\underline{\lambda} \;
-		\langle \Omega, e^{\lambda_{n+1} \cK}Q_{\sigma(n+1)}(\Theta^{n+1}_{K}(\tilde{P}^q)) e^{-\lambda_{n+1} \cK} \Omega \rangle \;.
+	&= \half \sum\limits_{\ell\in \Z^3_*} \mathds{1}_{L_\ell \cup L_{-\ell}}(q) \sum\limits_{\substack{m=2\\m:\textnormal{ even}}}^n \frac{\mathrm{Tr} \big(\Theta^m_{K(\ell)} \big( \tilde{P}^q(\ell) \big) \big)}{m!}
+	+ \half \sum\limits_{m=1}^{n-1} \langle \Omega, E_m(\tilde{P}^q) \Omega \rangle \\
+	&\quad + \half \int_{\Delta^n} \di^n \underline{\lambda} \;
+		\langle \Omega, e^{\lambda_n \cK}Q_{\sigma(n)}(\Theta^n_{K}(\tilde{P}^q)) e^{-\lambda_n \cK} \Omega \rangle \;.
 \end{aligned}
 \end{equation}
-Using reflection symmetry, we may replace $ \tilde{P}^q $ by $ P^q $. The desired result then follows, noting that by cyclicity of the trace, $ \mathrm{Tr} \,\Theta^m_{K(\ell)} (P^q(\ell)) = ((2K(\ell))^m)_{q,q} $.
+Using reflection symmetry, we may replace $ \tilde{P}^q $ by $ P^q $. The desired result then follows, noting that by cyclicity of the trace, $ \mathrm{Tr} \big(\Theta^m_{K(\ell)} \big( \tilde{P}^q(\ell) \big) \big) = ((2K(\ell))^m)_{q,q} $.
 \end{proof}
 
 
@@ -623,59 +636,59 @@ Recall the definition~\eqref{eq:errKQ} of $ E_{Q_1} $ and $ E_{Q_2} $. Then, for
 	E_{Q_1}(\Theta^m_{K}(P^q))
 	= \sum_{j=1}^3 E_{Q_1}^{m,j} + \mathrm{h.c.} \;, \qquad
 	E_{Q_2}(\Theta^m_{K}(P^q)) 
-	= \sum_{j=1}^{11} E_{Q_1}^{m,j} + \mathrm{h.c.} + n_q^{\ex,m} \;,
+	= \Bigg( \sum_{j=1}^{11} E_{Q_2}^{m,j} \Bigg) + \mathrm{h.c.} + n_q^{\ex,m} \;,
 \end{equation}
 with
 \begin{align}
 	E_{Q_1}^{m,1}
-	&:= -2 \sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}} \Theta^m_{K}(P^q)(\ell)_{r,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r-\ell} 
+	&\coloneq -2 \sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}} \Theta^m_{K}(P^q)(\ell)_{r,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r-\ell} 
 	\;, \nonumber\\
 	E_{Q_1}^{m,2}
-	&:= -2 \sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1} }} \Theta^m_{K}(P^q)(\ell)_{r+\ell,s}K(\ell_1)_{r+\ell_1,s_1}
+	&\coloneq -2 \sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1} }} \Theta^m_{K}(P^q)(\ell)_{r+\ell,s}K(\ell_1)_{r+\ell_1,s_1}
 	a^*_{r+\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r+\ell}
 	\;, \nonumber\\
 	E_{Q_1}^{m,3}
-	&:= \textcolor{red}{+} 2 \sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1} \cap (-L_{\ell_1}+\ell+\ell_1)\\ s \in L_{\ell}}} \Theta^m_{K}(P^q)(\ell)_{r,s}K(\ell_1)_{r,-r+\ell+\ell_1} b^*_{s}(\ell) a^*_{r-\ell_1}a^*_{r-\ell-\ell_1} \;. \label{eq:expandedEQ1}
+	&\coloneq \textcolor{red}{+} 2 \sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1} \cap (-L_{\ell_1}+\ell+\ell_1)\\ s \in L_{\ell}}} \Theta^m_{K}(P^q)(\ell)_{r,s}K(\ell_1)_{r,-r+\ell+\ell_1} b^*_{s}(\ell) a^*_{r-\ell_1}a^*_{r-\ell-\ell_1} \;. \label{eq:expandedEQ1}
 \end{align}
 and
 \begin{align}
 	E_{Q_2}^{m,1}
-	&:= 2\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}} \Theta^m_{K}(P^q)_{r,s}K(\ell_1)_{r,s_1} a^*_{r-\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{r-\ell} \;, \nonumber\\
+	&\coloneq 2\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}} \Theta^m_{K}(P^q)_{r,s}K(\ell_1)_{r,s_1} a^*_{r-\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{r-\ell} \;, \nonumber\\
 	E_{Q_2}^{m,2}
-	&:= 2\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1}}} \Theta^m_{K}(P^q)_{r+\ell,s} K(\ell_1)_{r+\ell_1,s_1} a^*_{r+\ell_1} b^*_{-s_1}(-\ell_1) b_{-s}(-\ell) a_{r+\ell}\;, \nonumber\\
+	&\coloneq 2\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)\\ s \in L_{\ell},s_1\in L_{\ell_1}}} \Theta^m_{K}(P^q)_{r+\ell,s} K(\ell_1)_{r+\ell_1,s_1} a^*_{r+\ell_1} b^*_{-s_1}(-\ell_1) b_{-s}(-\ell) a_{r+\ell}\;, \nonumber\\
 	E_{Q_2}^{m,3}
-	&:= -2\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1} \cap (-L_{\ell_1}+\ell+\ell_1)\\ s \in L_{\ell}}} \Theta^m_{K}(P^q)_{r,s} K(\ell_1)_{r,-r+\ell+\ell_1}  a^*_{r-\ell_1}a^*_{r-\ell-\ell_1}b_{-s}(-\ell)\;, \nonumber\\
+	&\coloneq -2\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1} \cap (-L_{\ell_1}+\ell+\ell_1)\\ s \in L_{\ell}}} \Theta^m_{K}(P^q)_{r,s} K(\ell_1)_{r,-r+\ell+\ell_1}  a^*_{r-\ell_1}a^*_{r-\ell-\ell_1}b_{-s}(-\ell)\;, \nonumber\\
 	E_{Q_2}^{m,4}
-	&:= -2 \sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\cap (-L_{\ell}+\ell+\ell_1)\\s_1\in L_{\ell_1}}} \Theta^m_{K}(P^q)_{r,-r+\ell+\ell_1} K(\ell_1)_{r,s_1} b^*_{-s_1}(-\ell_1)a_{r-\ell-\ell_1}a_{r-\ell}\;, \nonumber\\
+	&\coloneq -2 \sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\cap (-L_{\ell}+\ell+\ell_1)\\s_1\in L_{\ell_1}}} \Theta^m_{K}(P^q)_{r,-r+\ell+\ell_1} K(\ell_1)_{r,s_1} b^*_{-s_1}(-\ell_1)a_{r-\ell-\ell_1}a_{r-\ell}\;, \nonumber\\
 	E_{Q_2}^{m,5}
-	&:= - 2\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)}} \Theta^m_{K}(P^q)_{r,s+\ell}K(\ell_1)_{r,s+\ell_1}a^*_{r-\ell_1}a^*_{-s-\ell_1} a_{-s-\ell}a_{r-\ell}\;, \nonumber\\
+	&\coloneq - 2\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in (L_{\ell}-\ell) \cap (L_{\ell_1}-\ell_1)}} \Theta^m_{K}(P^q)_{r,s+\ell}K(\ell_1)_{r,s+\ell_1}a^*_{r-\ell_1}a^*_{-s-\ell_1} a_{-s-\ell}a_{r-\ell}\;, \nonumber\\
 	E_{Q_2}^{m,6}
-	&:= -\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{r,s\in L_{\ell} \cap L_{\ell_1}} \Theta^m_{K}(P^q)_{r,s}K(\ell_1)_{r,s}a^*_{r-\ell_1}a^*_{-s+\ell_1} a_{-s+\ell}a_{r-\ell}\;, \nonumber\\
+	&\coloneq -\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{r,s\in L_{\ell} \cap L_{\ell_1}} \Theta^m_{K}(P^q)_{r,s}K(\ell_1)_{r,s}a^*_{r-\ell_1}a^*_{-s+\ell_1} a_{-s+\ell}a_{r-\ell}\;, \nonumber\\
 	E_{Q_2}^{m,7}
-	&:= -\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{r,s\in (L_{\ell}-\ell)\cap (L_{\ell_1}-\ell_1)} \Theta^m_{K}(P^q)_{r+\ell,s+\ell} K(\ell_1)_{r+\ell_1,s+\ell_1}  a^*_{r+\ell_1}a^*_{-s-\ell_1}a_{-s-\ell}a_{r+\ell}\;, \nonumber\\
+	&\coloneq -\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{r,s\in (L_{\ell}-\ell)\cap (L_{\ell_1}-\ell_1)} \Theta^m_{K}(P^q)_{r+\ell,s+\ell} K(\ell_1)_{r+\ell_1,s+\ell_1}  a^*_{r+\ell_1}a^*_{-s-\ell_1}a_{-s-\ell}a_{r+\ell}\;, \nonumber\\
 	E_{Q_2}^{m,8}
-	&:= -2\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \cap (-L_{\ell_1}+\ell+\ell_1)}} \Theta^m_{K}(P^q)_{r,-r+\ell+\ell_1}K(\ell_1)_{r,-r+\ell+\ell_1} a^*_{r-\ell_1}a_{r-\ell_1}\;, \nonumber\\
+	&\coloneq -2\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \cap (-L_{\ell_1}+\ell+\ell_1)}} \Theta^m_{K}(P^q)_{r,-r+\ell+\ell_1}K(\ell_1)_{r,-r+\ell+\ell_1} a^*_{r-\ell_1}a_{r-\ell_1}\;, \nonumber\\
 	E_{Q_2}^{m,9}
-	&:= -2\sum\limits_{\ell,\ell_1 \in \Z^3_*} \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell +\ell_1) \cap (-L_{\ell_1}+\ell+\ell_1)}} \Theta^m_{K}(P^q)_{r,-r+\ell+\ell_1}K(\ell_1)_{r,-r+\ell+\ell_1} a^*_{r-\ell-\ell_1}a_{r-\ell-\ell_1} \;, \nonumber\\
+	&\coloneq -2\sum\limits_{\ell,\ell_1 \in \Z^3_*} \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell +\ell_1) \cap (-L_{\ell_1}+\ell+\ell_1)}} \Theta^m_{K}(P^q)_{r,-r+\ell+\ell_1}K(\ell_1)_{r,-r+\ell+\ell_1} a^*_{r-\ell-\ell_1}a_{r-\ell-\ell_1} \;, \nonumber\\
 	E_{Q_2}^{m,10}
-	&:= \textcolor{red}{1} \sum\limits_{\ell \in \Z^3_*} \sum\limits_{r\in L_{\ell}}\Theta^{m+1}_{K}(P^q)(\ell)_{r,r} a^*_{r-\ell}a_{r-\ell} \;, \nonumber\\
+	&\coloneq \textcolor{red}{1} \sum\limits_{\ell \in \Z^3_*} \sum\limits_{r\in L_{\ell}}\Theta^{m+1}_{K}(P^q)(\ell)_{r,r} a^*_{r-\ell}a_{r-\ell} \;, \nonumber\\
 	E_{Q_2}^{m,11}
-	&:= \textcolor{red}{1} \sum\limits_{\ell \in \Z^3_*} \sum\limits_{r\in L_{\ell}}\Theta^{m+1}_{K}(P^q)(\ell)_{r,r} a^*_{r}a_{r} \;, \nonumber\\
+	&\coloneq \textcolor{red}{1} \sum\limits_{\ell \in \Z^3_*} \sum\limits_{r\in L_{\ell}}\Theta^{m+1}_{K}(P^q)(\ell)_{r,r} a^*_{r}a_{r} \;, \nonumber\\
 	n_q^{\ex,m}
-	&:= \sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}} \!\!\!\Theta^m_{K}(P^q)(\ell)_{r,-r+\ell+\ell_1}K(\ell_1)_{r,-r+\ell+\ell_1} + \mathrm{h.c.} \;, \label{eq:expandedEQ2}
+	&\coloneq 2 \sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}} \!\!\!\Theta^m_{K}(P^q)(\ell)_{r,-r+\ell+\ell_1}K(\ell_1)_{r,-r+\ell+\ell_1} \;, \label{eq:expandedEQ2}
 \end{align}
 \end{lemma}
 \begin{proof}
-The result follows by a lengthy but straightforward calculation.
+The result follows by a lengthy but straightforward application of the CAR~\eqref{eq:CAR}.
 \end{proof}
 
 We remark that the normal ordering can conveniently be executed and visualized in terms of Friedrichs diagrams~\cite{BL23}, where each term corresponds to a diagram in Figure ???.
 
-In particular, the exchange contribution $ n_q^{\ex} $ in (???) follows as
-\begin{equation}
+In particular, the exchange contribution $ n_q^{\ex} $ in~\eqref{eq:nqex} follows as
+\begin{equation*}
 	n_q^{\ex}
-	= \sum_{m=1}^\infty \frac{1}{m!} n_q^{\ex,m} \;.
-\end{equation}
+	= \half \sum_{\substack{m=2\\m:\textnormal{ odd}}}^\infty \frac{1}{(m+1)!} n_q^{\ex,m} \;.
+\end{equation*}
 
 
 
@@ -685,10 +698,10 @@ In particular, the exchange contribution $ n_q^{\ex} $ in (???) follows as
 \section{Preliminary Bounds}
 \label{sec:prelim_bounds}
 
-We now compile some estimates which we need to bound the many-body error terms in~\eqref{eq:finexpan}. We start with some bounds on norms of powers of the correlation structure $ K(\ell) $.
+We now compile some preliminary estimates for bounding the many-body error terms in~\eqref{eq:finexpan}. We start with some bounds on norms of powers of the correlation structure $ K(\ell) $.
 
 \begin{definition}
-For $k \in \Z^3_*$ and $A(k)\in \ell^2(L_k)\otimes \ell^2(L_k)$, we define the norms
+For $k \in \Z^3_*$ and $A(k) : \ell^2(L_k) \to \ell^2(L_k)$, we define the norms
 \begin{equation}
 \begin{aligned}
 	\norm{A(k)}_{\max}
@@ -699,19 +712,21 @@ For $k \in \Z^3_*$ and $A(k)\in \ell^2(L_k)\otimes \ell^2(L_k)$, we define the n
 	&\coloneq \sup\limits_{q \in L_k}\sum\limits_{p \in L_k}\abs{A(k)_{p,q}} \;.
 \end{aligned}
 \end{equation}
+We further denote the Hilbert--Schmidt norm as $ \norm{A(k)}_{\HS} = \Big( \sum_{p,q \in L_k} |A(k)_{p,q}|^2 \Big)^{1/2} $.
 \end{definition}
-We will further denote the Hilbert--Schmidt norm as $ \norm{A(k)}_{\HS} = \Big( \sum_{p,q \in L_k} |A(k)_{p,q}|^2 \Big)^{1/2} $.
 
+\textcolor{red}{
 \begin{remark}
 	In the error estimates we sometimes write the supremum over all $p$ and/or $q$ in $\Z^3$, which is understood as follows.
 \begin{equation}
 	\norm{A(k)}_{\max} = \mathds{1}_{L_k}(p)\mathds{1}_{L_k}(q) \sup\limits_{p,q \in \Z^3}\abs{A(k)_{p,q}} \;.
 \end{equation} 	
 \end{remark}	
+}
 
 
 \begin{lemma}[Bounds on $ K $]\label{lem:normsk}
-Let $ \ell \in \Z^3_* $, $ m \in \mathbb{N} $ and $ r,s \in L_\ell $. We, for $ K $ in~\eqref{eq:K}, we have the pointwise estimate
+Let $ \ell \in \Z^3_* $, $ m \in \mathbb{N} $ and $ r,s \in L_\ell $. For $ K $ in~\eqref{eq:K}, we then have the pointwise estimate
 \begin{equation} \label{eq:K_element_bounds}
 	|(K(\ell)^m)_{r,s}|
 	\le \frac{(C \hat{V}(\ell))^m k_{\F}^{-1}}{\lambda_{\ell,r} + \lambda_{\ell,s}} \;.
@@ -729,7 +744,7 @@ Further, we have the bounds
 	&&\le (C \hat{V}(\ell))^m \;,
 \end{aligned}   
 \end{equation}
-as well as for $ q, r \in L_\ell $,
+as well as for $ q \in L_\ell $,
 \begin{equation} \label{eq:e(q)_extraction_bounds}
 	|(K(\ell)^m)_{r,q}|
 	\le (C \hat{V}(\ell))^m k_{\F}^{-1} e(q)^{-1} \;, \qquad
@@ -754,12 +769,12 @@ From~\cite[Prop.~7.10]{CHN23} we readily retrieve \eqref{eq:K_element_bounds} fo
 		\frac{1}{\lambda_{\ell, r} + \lambda_{\ell, s}} \;.
 	\end{aligned}
 \end{equation}
-The first bounds in~\eqref{eq:K_max_bounds} and~\ref{eq:e(q)_extraction_bounds} then follow immediately noting that $ \lambda_{\ell,r} \ge 1 $ and $ \lambda_{\ell,q} \ge e(q) \ge \half $. The second bounds in ~\eqref{eq:K_max_bounds} and~\ref{eq:e(q)_extraction_bounds} follow from
+The first bounds in~\eqref{eq:K_max_bounds} and~\eqref{eq:e(q)_extraction_bounds} then follow immediately, noting that $ \lambda_{\ell,r} \ge 1 $ and $ \lambda_{\ell,q} \ge e(q) \ge \half $. The second bounds in~\eqref{eq:K_max_bounds} and~\eqref{eq:e(q)_extraction_bounds} follow from
 \begin{equation}
 \begin{aligned}
 	\sum_{r \in L_\ell} |(K(\ell)^m)_{q,r}|^2
 	&\le \sum_{r \in L_\ell} (C \hat{V}(\ell))^{2m} k_{\F}^{-2} (\lambda_{\ell,r} + \lambda_{\ell,q})^{-2}
-	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} \lambda_{\ell,q} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \\
+	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} \lambda_{\ell,q}^{-1} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \\
 	&\le (C \hat{V}(\ell))^{2m} k_{\F}^{-1} e(q)^{-1} \;.
 \end{aligned}
 \end{equation}
@@ -779,7 +794,7 @@ Finally, the third and fourth bound in~\eqref{eq:K_max_bounds} follow from:
 
 Next, we compile some bounds against the number operator
 \begin{equation} \label{eq:cN}
-	\cN := \sum_{q \in \Z^3} a_q^* a_q \;.
+	\cN \coloneq \sum_{q \in \Z^3} a_q^* a_q \;.
 \end{equation}
 \todo{Check if the first bound is not also well-known.}
   
@@ -807,10 +822,10 @@ For the first estimate, we use definition~\eqref{eq:b} and $a^*_{p-k}a_{p-k} \le
 The bound~\eqref{eq:estb} is well-known~\cite[Prop.~4.2]{CHN21}.
 \end{proof}
 
-The following bounds were proven in~\cite[Props.~4.5~and~4.7]{CHN21}.
+The following bounds were proven in a very similar form in~\cite[Prop.~4.7]{CHN21}.
 
 \begin{lemma}\label{lem:estQ2}
-Let $A = (A(\ell))_{\ell \in \Z^3_*}$ be a family of symmetric matrices $ A(\ell) : \ell^2(L_\ell) \to \ell^2(L_\ell) $. Then for $ \Psi \in \cF $,
+Let $A = (A(\ell))_{\ell \in \Z^3_*}$ be a family of symmetric matrices $ A(\ell) : \ell^2(L_\ell) \to \ell^2(L_\ell) $ and recall the definition~\eqref{eq:Q} of $ Q_1(A) $ and $ Q_2(A) $. Then for $ \Psi \in \cF $,
 \begin{equation} \label{eq:Qest}
 \begin{aligned}
 	|\eva{\Psi,Q_1(A)\Psi}|
@@ -821,6 +836,11 @@ Let $A = (A(\ell))_{\ell \in \Z^3_*}$ be a family of symmetric matrices $ A(\ell
 \end{equation}
 \end{lemma}
 
+\begin{proof}
+The first bound is given in~\cite[Prop.~4.7]{CHN21}, and the second one follows by the same strategy.
+\end{proof}
+
+
 The next estimate is a straightforward generalization of~\cite[Prop.~5.8]{CHN21}, which allows us to control $ \langle \Omega, e^{\lambda \cK} (\mathcal{N} + 1)^m e^{-\lambda \cK} \Omega \rangle \sim 1 $, irrespectively of $ m $.
 
 \begin{lemma}[Gr\"onwall Estimate]\label{lem:gronNest}
@@ -829,7 +849,7 @@ For every $ m \in \NNN $, there exists a constant $ C_m > 0 $ such that for all 
 	e^{\lambda \cK} (\mathcal{N} +1)^m e^{-\lambda \cK}
 	\leq C_m (\NN+1)^m \;,
 \end{equation}
-as an operator inequality. More precisely, $ C_m $ depends on $ K $ as $C_m = \mathrm{exp}(C'_m\sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\HS}) $ \todo{Shall we remove this in the end?}.
+as an operator inequality. More precisely, $ C_m $ depends on $ K $ as $C_m = \mathrm{exp}(C'_m\sum\limits_{\ell \in \Z^3_*} \norm{K(\ell)}_{\HS}) $.\todo{Shall we remove this in the end?}
 \end{lemma}
 \begin{proof}
 First, observe that by the pull-through formula, we have
@@ -837,14 +857,14 @@ First, observe that by the pull-through formula, we have
 	\left[(\NN+4)^m, b^*_{-s}(-\ell)b^*_{r}(\ell)\right] &= \left( (\NN+4)^m - \NN^m \right) b^*_{-s}(-\ell)b^*_{r}(\ell) \nonumber \\
 	&= \left( \left(\NN+4\right)^m - \NN^m \right)^\half b^*_{-s}(-\ell)b^*_{r}(\ell) \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \;.
 \end{align}
-Further, note that
+Further, note that there exists some $ C_m' > 0 $ such that
 \begin{equation}
 	\left( \left(\NN+4\right)^m - \NN^m \right)
-	\leq C'_m \left(\NN+4\right)^{m-1} \;, \qquad
+	\leq \left(\NN+4\right)^{m-1} \;, \qquad
 	\left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)
 	\leq  C'_m \left(\NN+4\right)^{m-1} \;.
 \end{equation}
-For $ \Psi_0 \in \cF $ and $ \Psi_\lambda := e^{-\lambda \cK} \Psi_0 $, using the definition~\eqref{eq:T} of $ \cK $, then the Cauchy--Schwarz inequality and then Lemma~\ref{lem:pairest}, we get
+For $ \Psi_0 \in \cF $ and $ \Psi_\lambda \coloneq e^{-\lambda \cK} \Psi_0 $, using the definition~\eqref{eq:T} of $ \cK $, then the Cauchy--Schwarz inequality and then Lemma~\ref{lem:pairest}, we get
 \begin{align}
 	&\left|\frac{\di}{\di\lambda}\eva{\Psi_0, e^{\lambda \cK} (\mathcal{N}+4)^m e^{-\lambda \cK} \Psi_0 }\right|
 	= \left| \eva{\Psi_0, e^{\lambda \cK} \left[\KK, (\NN+4)^m\right] e^{-\lambda \cK} \Psi_0}\right|\nonumber\\
@@ -862,7 +882,7 @@ For $ \Psi_0 \in \cF $ and $ \Psi_\lambda := e^{-\lambda \cK} \Psi_0 $, using th
 		\norm{K(\ell)}_{\HS}
 		\norm{ \left(\NN+4\right)^\frac{m}{2} \Psi_\lambda}^2 \;.
 \end{align}
-We conclude the bound using Gr\"onwall's lemma.
+We conclude the bound using Gr\"onwall's lemma and $ (\cN+1)^m \le (\cN+4)^m \le C_m' (\cN+1)^m $.
 \end{proof}
 
 
@@ -964,7 +984,7 @@ Recall the bosonization error term $E_m(P^q)$~\eqref{eq:errEm} with $ \Theta^n_K
 \end{equation}
 \end{proposition}
 \todo{Comment on the fact that $ C \sim \Vert \hat{V} \Vert_1 $?}
-To prove this bound, we introduce the parametrized excitation vector $ \xi_\lambda := e^{- \lambda \cK} \Omega $ to write
+To prove this bound, we introduce the parametrized excitation vector $ \xi_\lambda \coloneq e^{- \lambda \cK} \Omega $ to write
 \begin{equation} \label{eq:errEm2}
 	\abs{\eva{\Omega, E_m(P^q) \Omega }}
 	\le \int_{\Delta^m} \di^m\underline{\lambda} \;
@@ -1015,7 +1035,7 @@ with $ K^0 = 1 $ being the identity matrix, we obtain
 	= 2\abs{\eva{\xi_\lambda, E^{m,1}_{Q_1} \xi_\lambda }}
 	\le 4 \sum_{j=0}^m {{m}\choose j} \sum\limits_{\ell,\ell_1  \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,\\
 	\I_j(\ell, \ell_1)
-	:= \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}
+	\coloneq \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r-\ell} \xi_\lambda} \;. \\
 \end{aligned}
 \end{equation}
@@ -1094,7 +1114,7 @@ As in the proof of Lemma~\ref{lem:EQ111}, we split
 	= 2\abs{\eva{\xi_\lambda, E^{m,3}_{Q_1} \xi_\lambda }}
 	\le 4 \sum_{j=0}^m {{m}\choose j} \sum\limits_{\ell,\ell_1  \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,\\
 	\I_j(\ell, \ell_1)
-	:= \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell_1}+\ell+\ell_1)\\ s \in L_{\ell}}} 
+	\coloneq \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell_1}+\ell+\ell_1)\\ s \in L_{\ell}}} 
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s}K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell-\ell_1} a_{r-\ell_1} b_{s}(\ell) \xi_\lambda} \;. \\
 \end{aligned}
 \end{equation}
@@ -1211,7 +1231,7 @@ As in~\eqref{eq:EQ1111}, we split the anticommutator in $ E^{m,1}_{Q_2} $~\eqref
 	= 2\abs{\eva{\xi_\lambda, E^{m,1}_{Q_2} \xi_\lambda }}
 	\le 4 \sum_{j=0}^m {{m}\choose j} \sum\limits_{\ell,\ell_1  \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,\\
 	\I_j(\ell, \ell_1)
-	:= \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}
+	\coloneq \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{-s_1}(-\ell_1) b_{-s}(-\ell) a_{r-\ell} \xi_\lambda} \;. \\
 \end{aligned}
 \end{equation}
@@ -1283,7 +1303,7 @@ Splitting the anticommutator in $ E^{m,3}_{Q_2} $~\eqref{eq:expandedEQ2} via~\eq
 	= 2\abs{\eva{\xi_\lambda, E^{m,3}_{Q_2} \xi_\lambda }}
 	\le 4 \sum_{j=0}^m {{m}\choose j} \sum\limits_{\ell,\ell_1  \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,\\
 	\I_j(\ell, \ell_1)
-	:= \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell_1}+\ell+\ell_1)\\ s \in L_{\ell}}} 
+	\coloneq \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell_1}+\ell+\ell_1)\\ s \in L_{\ell}}} 
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,-r+\ell+\ell_1} a^*_{r-\ell_1} a^*_{r-\ell-\ell_1} b_{-s}(-\ell) \xi_\lambda} \;. \\
 \end{aligned}
 \end{equation}
@@ -1346,7 +1366,7 @@ Splitting the anticommutator in $ E^{m,4}_{Q_2} $~\eqref{eq:expandedEQ2} via~\eq
 	= 2\abs{\eva{\xi_\lambda, E^{m,4}_{Q_2} \xi_\lambda }}
 	\le 4 \sum_{j=0}^m {{m}\choose j} \sum\limits_{\ell,\ell_1  \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,\\
 	\I_j(\ell, \ell_1)
-	:= \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell_1}+\ell+\ell_1)\\ s_1 \in L_{\ell_1}}} 
+	\coloneq \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell_1}+\ell+\ell_1)\\ s_1 \in L_{\ell_1}}} 
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,-r+\ell+\ell_1} K(\ell_1)_{r,s_1} b^*_{-s_1}(-\ell_1) a_{r-\ell-\ell_1} a_{r-\ell} \xi_\lambda} \;. \\
 \end{aligned}
 \end{equation}
@@ -1404,7 +1424,7 @@ We only focus on $ E^{m,5}_{Q_2} $ as the bounds for $ E^{m,6}_{Q_2} $ and $ E^{
 	= 2\abs{\eva{\xi_\lambda, E^{m,5}_{Q_2} \xi_\lambda }}
 	\le 4 \sum_{j=0}^m {{m}\choose j} \sum\limits_{\ell,\ell_1  \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,\\
 	\I_j(\ell, \ell_1)
-	:= \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in (L_{\ell} - \ell) \cap (L_{\ell_1} - \ell_1)}}
+	\coloneq \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in (L_{\ell} - \ell) \cap (L_{\ell_1} - \ell_1)}}
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s+\ell} K(\ell_1)_{r,s+\ell_1} a^*_{r-\ell_1} a^*_{-s-\ell_1} a_{-s-\ell} a_{r-\ell} \xi_\lambda} \;. \\
 \end{aligned}
 \end{equation}
@@ -1455,7 +1475,7 @@ Splitting again the anticommutator in $ E^{m,8}_{Q_2} $~\eqref{eq:expandedEQ2} v
 	= 2\abs{\eva{\xi_\lambda, E^{m,8}_{Q_2} \xi_\lambda }}
 	\le 4 \sum_{j=0}^m {{m}\choose j} \sum\limits_{\ell,\ell_1  \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,\\
 	\I_j(\ell, \ell_1)
-	:= \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}
+	\coloneq \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,-r+\ell+\ell_1} K(\ell_1)_{r,-r+\ell+\ell_1} a^*_{r-\ell} a_{r-\ell} \xi_\lambda} \;. \\
 \end{aligned}
 \end{equation}
@@ -1496,7 +1516,7 @@ Splitting the multicommutator in $ E^{m,10}_{Q_2} $~\eqref{eq:expandedEQ2} via~\
 	= 2\abs{\eva{\xi_\lambda, E^{m,10}_{Q_2} \xi_\lambda }}
 	\le 4 \sum_{j=0}^m {{m}\choose j} \sum\limits_{\ell,\ell_1  \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell)| \;,\\
 	\I_j(\ell)
-	:= \sum\limits_{r,s\in L_{\ell}}
+	\coloneq \sum\limits_{r,s\in L_{\ell}}
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell)_{r,s} a^*_{r-\ell} a_{r-\ell} \xi_\lambda} \;. \\
 \end{aligned}
 \end{equation}
@@ -1656,7 +1676,7 @@ Summing over $ \ell \in \Z^3_* $ with $ q \in L_\ell $ and comparing with~\eqref
 \label{subsec:control_nqb}
 
 \begin{lemma}[Control of the bosonized momentum distribution] \label{lem:nqb_bounds}
-Recall the definitions of the bosonized excitation density $ n_q^{\b} $~\eqref{eq:nqb}, as well as of the excitation energy $ e(q) := ||q|^2 - k_{\F}^2| $. Then, for any fixed potential $ \hat{V} \in L^1(\Z^3_*) $, there exists a constant $ C > 0 $ such that for all particle numbers $ N = |B_{\F}| \sim k_{\F}^3 $ and all $ q \in \Z^3 $,
+Recall the definitions of the bosonized excitation density $ n_q^{\b} $~\eqref{eq:nqb}, as well as of the excitation energy $ e(q) \coloneq ||q|^2 - k_{\F}^2| $. Then, for any fixed potential $ \hat{V} \in L^1(\Z^3_*) $, there exists a constant $ C > 0 $ such that for all particle numbers $ N = |B_{\F}| \sim k_{\F}^3 $ and all $ q \in \Z^3 $,
 \begin{equation} \label{eq:nqb_upperbound}
 	n_q^{\b}
 	\le C k_{\F}^{-1} e(q)^{-1} \;.
@@ -1689,7 +1709,7 @@ with $ v_\ell $ and $ h(\ell) $ defined in~\eqref{eq:HkPk}. We bound the denomin
 	\ge c \sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q)
 		\frac{\hat{V}(\ell) k_{\F}^{-1}}{\lambda_{\ell,q}} \;.
 \end{equation}
-As a potential, we now choose $ \hat{V}((1,0,0)) = \hat{V}((-1,0,0)) = 1 $ and $ \hat{V}(\ell) = 0 $ on all other momenta $ \ell \in \ZZZ^3 $. Then, we choose $ k_{\F}^{(n)} $ slightly larger than $ n $, such that $ (0,0,n) \in B_{\F} $ while $ q_n := (1,0,n) \notin B_{\F} $ with $ e(q_n) \ge \half $. Evidently, with $ \ell^* := (1,0,0) $ we then get $ \lambda_{\ell^*, q_n} = 1 $, so
+As a potential, we now choose $ \hat{V}((1,0,0)) = \hat{V}((-1,0,0)) = 1 $ and $ \hat{V}(\ell) = 0 $ on all other momenta $ \ell \in \ZZZ^3 $. Then, we choose $ k_{\F}^{(n)} $ slightly larger than $ n $, such that $ (0,0,n) \in B_{\F} $ while $ q_n \coloneq (1,0,n) \notin B_{\F} $ with $ e(q_n) \ge \half $. Evidently, with $ \ell^* \coloneq (1,0,0) $ we then get $ \lambda_{\ell^*, q_n} = 1 $, so
 \begin{equation}
 	n_q^{\b}
 	\ge c \hat{V}(\ell^*) (k_{\F}^{(n)})^{-1}
