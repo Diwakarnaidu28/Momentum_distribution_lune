@@ -308,14 +308,14 @@ which is evidently lower bounded by $ e(q) \ge \half $.
 
 \begin{theorem}[Main result] \label{thm:main}
 Assume that the Fourier transform of the interaction potential satisfies $ \hat{V} \in \ell^1(\Z^3) $, $ \hat{V} \ge 0 $, $ \hat{V}(0) = 0 $ \textcolor{red}{and $ \hat{V}(k) = \hat{V}(-k) $}.
-Then, there exists a sequence of trial states $ (\Psi_N) $ with $ \Psi_N \in L^2(\TTT^3)^{\otimes_{\mathrm{a}} N} $ such that
+Then, for any sequence\todo{This is a slight abuse of notation. Shall we leave it like this?} $ k_{\F} \to \infty $ with $ N = N(k_{\F}) := |B_{k_{\F}}(0)| $, there exists a sequence of trial states $ (\Psi_{N(k_{\F})})_{k_{\F}} $ with $ \Psi_N  \in L^2(\TTT^3)^{\otimes_{\mathrm{a}} N} $ such that
 \begin{itemize}
-\item $ \Psi_N $ is energetically close to the ground state in the sense that for any $ \varepsilon > 0 $ there exists a $ C_\varepsilon > 0 $ such that for all $ N $ we have
+\item $ \Psi_N $ is energetically close to the ground state in the sense that for any $ \varepsilon > 0 $ there exists a $ C_\varepsilon > 0 $ such that for all $ k_{\F} $ we have
 \begin{equation} \label{eq:main1}
 	\eva{\Psi_N, H_N \Psi_N} - E_{\GS}
 	\le C_\varepsilon k_{\F}^{1-\frac 16 + \varepsilon} \;,
 \end{equation}
-\item There exists a constant $ C > 0 $, depending on $ \Vert \hat{V} \Vert_1 $, such that for all $ N $ and $ q \in \Z^3 $, the momentum distribution in $ \Psi_N $ satisfies
+\item There exists a constant $ C > 0 $, depending on $ \Vert \hat{V} \Vert_1 $, such that for all $ k_{\F} $ and $ q \in \Z^3 $, the momentum distribution in $ \Psi_N $ satisfies
 \begin{equation} \label{eq:main2}
 	n(q) = \eva{\Psi_N, a_q^* a_q \Psi_N}
 	= \begin{cases}
@@ -385,9 +385,9 @@ and the associated creation/annihilation operators
 with $ \Vert a_q^* \Vert, \Vert a_q \Vert \le 1 $, satisfying the canonical anticommutation relations (CAR)
 \begin{equation} \label{eq:CAR}
 	\{a_q, a_{q'}^*\} = \delta_{q, q'} \;, \qquad
-	\{a_q, a_{q'}\} = \{a_q^*, a_{q'}^*\} = 0 \qquad \text{for all } q, q' \in \ZZZ^3\;.
+	\{a_q, a_{q'}\} = \{a_q^*, a_{q'}^*\} = 0 \qquad \text{for all } q, q' \in \ZZZ^3\;,
 \end{equation}
-This notation allows us to conveniently write the Fermi sea state as $ \Psi_{\FS} = R \Omega $ where $ R: \cF \to \cF $ is the unitary particle--hole transformation defined by
+which imply the bound $ \norm{a_p}, \norm{a_p^*} \le 1 $. This notation allows us to conveniently write the Fermi sea state as $ \Psi_{\FS} = R \Omega $ where $ R: \cF \to \cF $ is the unitary particle--hole transformation defined by
 \begin{equation} \label{eq:R}
 	R^* a_q^* R
 	= \mathds{1}_{B_{\F}^c}(q) \; a_q^*
@@ -1066,25 +1066,20 @@ Choosing $\alpha = 1$ and applying Lemma~\ref{lem:normsk} and $ (\cN+5)^m \le C 
 	 	\norm { (\NN+1)^{\frac{3}{2}} \xi_\lambda } \;. \label{eq:estEQ1111} 
 \end{equation}
 Note that since $ m \ge 1 $, we were able to absorb an arbitrary constant $ C $ into $ C^m $.
-In case $ 1 \le j \le m-1 $, we again employ the Cauchy--Schwarz inequality and Lemmas~\ref{lem:normsk} and~\ref{lem:pairest}, but convert an operator $ a_r $ instead of $ a_q $ into the bootstrap quantity $ \Xi $:
+In case $ 1 \le j \le m-1 $, we again employ the Cauchy--Schwarz inequality and Lemmas~\ref{lem:normsk} and~\ref{lem:pairest}, but convert an operator $ a_{r-\ell} $ instead of $ a_q $ into the bootstrap quantity $ \Xi $:
 \begin{align}
 	&|\I_j(\ell, \ell_1)| \nonumber\\
-	&\leq \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}\! \Bigg( \sum\limits_{s \in L_\ell}\abs{K^{j}(\ell)_{q,s}}^2\Bigg)^\half
-		\Bigg\Vert \sum\limits_{s_1 \in L_{\ell_1}}  K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1)  a_{r-\ell_1}(\NN+1)^\half\xi_\lambda \Bigg\Vert
-	\norm{  K^{m-j}(\ell)_{r,q} a_{r-\ell} \xi_\lambda } \nonumber\\
-	&\leq (C \hat{V}(\ell))^j k_{\F}^{-\half} e(q)^{-\half} \Bigg( \sum\limits_{r \in L_{\ell_1}}
-		\Bigg\Vert \sum\limits_{ s_1 \in L_{\ell_1}}  K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1)  a_{r-\ell_1}(\NN+1)^\half\xi_\lambda \Bigg\Vert^2\Bigg)^\half \times\nonumber\\
-	&\quad \times \Bigg( \sum\limits_{r\in L_{\ell}}\!\norm{  K^{m-j}(\ell)_{r,q} a_{r-\ell} \xi_\lambda }^2\Bigg)^\half \nonumber\\
-	&\leq (C \hat{V}(\ell))^m k_{\F}^{-1} e(q)^{-1} \Bigg(\sup_{r \in L_{\ell_1}} \sum\limits_{ s_1 \in L_{\ell_1}}\abs{  K(\ell_1)_{r,s_1} }^2\Bigg)^\half
-		\Bigg( \sum\limits_{ s_1 \in L_{\ell_1}}\norm{ b_{-s_1}(-\ell_1)  (\NN+1)\xi_\lambda} ^2\Bigg)^\half
-	\sup_{r \in \Z^3}\norm{a_r\xi_\lambda} \nonumber\\
-	&\leq (C \hat{V}(\ell))^m k_{\F}^{-1} e(q)^{-1}
-		\norm{ K(\ell_1)}_{\mathrm{max,2}}
-		\norm{(\NN+1)^\frac{3}{2} \xi_\lambda} \Xi^\half \nonumber \\
+	&\leq \Bigg( \sum\limits_{r \in L_{\ell_1}} 
+		\sum\limits_{s \in L_\ell} \abs{K^j(\ell)_{q,s}}^2
+		\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{r,s_1}}^2
+		\sum\limits_{s' \in L_\ell} \sum\limits_{s_1' \in L_{\ell_1}} \norm{a_{r-\ell_1} b_{s'}(\ell) b_{-s_1'}(-\ell_1) \xi_\lambda}^2 \Bigg)^\half \times \nonumber\\
+	&\quad \times \Bigg( \sum\limits_{r\in L_{\ell}} \abs{K^{m-j}(\ell)_{r,q}}^2 \norm{a_{r-\ell} \xi_\lambda }^2 \Bigg)^\half\nonumber\\
+	&\leq (C \hat{V}(\ell))^m \hat{V}(\ell_1) k_{\F}^{-\frac 32} e(q)^{-1}
+		\Bigg( \sum_{r \in \Z^3} \norm{a_{r-\ell_1} \cN \xi_\lambda}^2 \Bigg)^\half \Xi^\half \nonumber\\
 	&\leq (C \hat{V}(\ell))^m
 		\hat{V}(\ell_1)
-		k_{\F}^{-\frac 32} e(q)^{-1} \Xi^\half
-		\norm{(\NN+1)^\frac{3}{2} \xi_\lambda} \;. \label{eq:estEQ1112}
+		k_{\F}^{-\frac 32} e(q)^{-1}
+		\norm{(\NN+1)^\frac{3}{2} \xi_\lambda} \Xi^\half \;. \label{eq:estEQ1112}
 \end{align}
 For $ j = m $, we employ a similar estimation strategy, using that $ [a_q^* a_q, \cN] = 0 $ implies
 \begin{equation}
