@@ -307,7 +307,7 @@ so the bosonized excitation density $ n_q^{\b} $ measures the deviation of $ n(q
 which is evidently lower bounded by $ e(q) \ge \half $.
 
 \begin{theorem}[Main result] \label{thm:main}
-Assume that the Fourier transform of the interaction potential satisfies $ \hat{V} \in \ell^1(\Z^3) $, $ \hat{V} \ge 0 $, $ \hat{V}(0) = 0 $ and $ \hat{V}(k) = \hat{V}(-k) $.
+Assume that the Fourier transform of the interaction potential satisfies $ \hat{V} \in \ell^1(\Z^3) $, $ \hat{V} \ge 0 $, $ \hat{V}(0) = 0 $ \textcolor{red}{and $ \hat{V}(k) = \hat{V}(-k) $}.
 Then, for any sequence\todo{This is a slight abuse of notation. Shall we leave it like this?} $ k_{\F} \to \infty $ with $ N = N(k_{\F}) := |B_{k_{\F}}(0)| $, there exists a sequence of trial states $ (\Psi_{N(k_{\F})})_{k_{\F}} $ with $ \Psi_N  \in L^2(\TTT^3)^{\otimes_{\mathrm{a}} N} $ such that
 \begin{itemize}
 \item $ \Psi_N $ is energetically close to the ground state in the sense that for any $ \varepsilon > 0 $ there exists a $ C_\varepsilon > 0 $ such that for all $ k_{\F} $ we have
@@ -393,7 +393,7 @@ which imply the bound $ \norm{a_p}, \norm{a_p^*} \le 1 $. This notation allows u
 	= \mathds{1}_{B_{\F}^c}(q) \; a_q^*
 		+ \mathds{1}_{B_{\F}}(q) \; a_q \;.
 \end{equation}
-Note that $ R^{-1} = R = R^* $. The \textbf{trial state} of~\cite{CHN23} now takes the form
+Note that $ R^{-1} = R = R^* $. The \textbf{trial state} of~\cite{CHN23} now takes the form\todo{Check if $ T $ shall be replaced by $ \mathcal{U} $ or similar.}
 \begin{equation} \label{eq:Psitrial}
 	\Psi_N = R T \Omega \;,
 \end{equation}
@@ -403,7 +403,7 @@ where $ T: \cF \to \cF $ is another unitary transformation motivated as follows:
 	\qquad \textnormal{with adjoint} \qquad
 	b_p(k) \coloneq a_{p-k} a_p \;.
 \end{equation}
-The constraint on $ (p,k) $ can be written as $ p \in L_k $, where we recall $ L_k = B_{\F}^c \cap (B_{\F} + k) $ with $ L_{-k} = - L_k $. Indeed, one may now approximate $ H_N $ by an effective Bogoliubov-type Hamiltonian~\cite[(1.34)]{CHN23}
+The constraint on $ (p,k) $ can be written as $ p \in L_k $, where we recall $ L_k = B_{\F}^c \cap (B_{\F} + k) $ with $ L_{-k} = - L_k $. Indeed, one may now approximate $ H_N $ by an effective Bogoliubov-type Hamiltonian~\cite[(1.34)]{CHN23} \todo{Why don't we use the notation $ b_{k,p} $ instead of $ b_p(k) $? And also $ h_k, P_k $ I think, it might make some things a bit shorter and also easier for a reader to switch.}
 \begin{equation} \label{eq:HBog}
 	H_{\Bog}
 	\coloneq \sum_{k \in \ZZZ^3_*} \left( \sum_{p,q \in L_k} 2 (h(k) + P(k))_{p,q} b^*_p(k) b_q(k)
@@ -416,7 +416,8 @@ with matrices $ h(k), P(k) \in \CCC^{|L_k| \times |L_k|} $ defined by
 	P(k)_{p,q} &\coloneq \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^2} \;,
 \end{aligned}
 \end{equation}
-where we recall $ \lambda_{k,p} = \half (|p|^2 - |p-k|^2) $. In particular $ P(k) $ is rank-one with $ P(k) \coloneq |v_k \rangle \langle v_k | $, where $ v_{k,p} \coloneq g_k^{1/2} = \left( \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^2} \right)^{1/2}  $. As the pair excitation operators satisfy approximate bosonic commutation relations, see Lemma~\ref{lem:paircomm}, one may treat $ H_{\Bog} $ as an approximately quadratic bosonic Hamiltonian, which is approximately diagonalized by the transformation\footnote{Note that our exponent $ S $ corresponds to $ R^* \cK R $ in the notation of~\cite{CHN23}.}~\cite[Thm.~1.4]{CHN23}.
+where we recall $ \lambda_{k,p} = \half (|p|^2 - |p-k|^2) $. In particular $ P(k) $ is rank-one with $ P(k) \coloneq |v_k \rangle \langle v_k | $, where $ v_{k,p} \coloneq g_k^{1/2} = \left( \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^2} \right)^{1/2}  $. As the pair excitation operators satisfy approximate bosonic commutation relations, see Lemma~\ref{lem:paircomm}, one may treat $ H_{\Bog} $ as an approximately quadratic bosonic Hamiltonian, which is approximately diagonalized by the transformation\footnote{Note that our exponent $ S $ corresponds to $ R^* \cK R $ in the notation of~\cite{CHN23}.}~\cite[Thm.~1.4]{CHN23}
+\textcolor{red}{[SL: $ S $ corresponds to $ - \cK $ in sn-article.]}
 \begin{equation} \label{eq:T}
 	T \coloneq e^{-S} \;, \qquad
 	S \coloneq \frac{1}{2}\sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell}K(\ell)_{r,s}\left(b_r(\ell)b_{-s}(-\ell)-b^*_{-s}(-\ell)b^*_{r}(\ell)\right) \;,
@@ -481,7 +482,7 @@ For $k,\ell \in \Z^3_*$ and $p \in L_{k}$, $q\in L_{\ell}$, we have the approxim
        [b_{p}(k),b_{q}(\ell)] = [b^*_{p}(k),b^*_{q}(\ell)] = 0 \;, \qquad
        [b_{p}(k),b^*_{q}(\ell)] = \delta_{p,q}\delta_{k,\ell} + \epsilon_{p,q}(k,\ell) \;,
 \end{equation}
-with $ b_p(k) $ defined in~\eqref{eq:b}, and with commutation error
+with $ b_p(k) $ defined in~\eqref{eq:b}, and with commutation error \textcolor{red}{[SL: Some signs changed in this and the subsequent lemmas, when replacing $ e^{S} \mapsto e^{-S} $.}
 \begin{equation}
 	\epsilon_{p,q}(k,\ell)
 	\coloneq -\left(\delta_{p,q}a^*_{q-\ell}a_{p-k} + \delta_{p-k,q-\ell}a^*_{q}a_{p}\right) \;.
@@ -494,12 +495,12 @@ For $k \in \Z^3_*$ and $p \in L_k$ we have
 \begin{equation} \label{eq:comm_Kb}
 	[S, b^*_p(k)]
 	= \sum\limits_{s\in L_{k}}K(k)_{p,s}b_{-s}(-k)
-		+ \mathcal{E}_{p}(k) \;,
+		\textcolor{red}{+} \mathcal{E}_{p}(k) \;,
 \end{equation}
 with commutation error
 \begin{equation}\label{eq:commerrKb}
     \mathcal{E}_{p}(k)
-    \coloneq + \frac{1}{2}\sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell}K(\ell)_{r,s}\left\{\epsilon_{r,p}(\ell,k),b_{-s}(-\ell)\right\} 
+    \coloneq \textcolor{red}{+} \frac{1}{2}\sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell}K(\ell)_{r,s}\left\{\epsilon_{r,p}(\ell,k),b_{-s}(-\ell)\right\} 
 \end{equation}
 \end{lemma}
 
@@ -514,18 +515,18 @@ Let $ A = (A(\ell))_{\ell \in \Z^3_*} $, $ A(\ell) : \ell^2(L_\ell) \to \ell^2(L
 	[S, Q_2(A)] 
 	&= Q_1\left(\{A,K\} \right) 
 		+ \sum\limits_{\ell \in \Z^3_*} \sum\limits_{r \in L_{\ell}} \big\{ A(\ell), K(\ell) \big\}_{r,r}
-		+ E_{Q_2}(A) \;,
+		\textcolor{red}{+} E_{Q_2}(A) \;,
 \end{aligned}
 \end{equation}
 with the family $ \{A,K\} = (\{A(\ell),K(\ell)\})_{\ell \in \Z^3_*} $ and with the commutation errors
 \begin{equation}\label{eq:errKQ}
 \begin{aligned}
 	E_{Q_1}(A)
-	&\coloneq + 2 \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(\mathcal{E}_{r}(\ell)b_{s}(\ell) + b^*_{s}(\ell)\mathcal{E}^*_{r}(\ell)\Big) \;, \\
+	&\coloneq \textcolor{red}{+} 2 \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(\mathcal{E}_{r}(\ell)b_{s}(\ell) + b^*_{s}(\ell)\mathcal{E}^*_{r}(\ell)\Big) \;, \\
 	E_{Q_2}(A)
 	& \coloneq \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\Big(A(\ell)_{r,s}\big(\big\{\mathcal{E}^*_{r}(\ell), b_{-s}(-\ell)\big\}
 		+ \big\{ b^*_{-s}(-\ell) , \mathcal{E}_r(\ell) \big\} \big)
-		+ \big\{A(\ell)_,K(\ell)\big\}_{r,s}\epsilon_{r,s}(\ell,\ell)\Big) \;. \\
+		\textcolor{red}{+} \big\{A(\ell)_,K(\ell)\big\}_{r,s}\epsilon_{r,s}(\ell,\ell)\Big) \;. \\
 \end{aligned} 
 \end{equation}
 \end{lemma}
@@ -539,7 +540,7 @@ To simplify the Duhamel expansion, we introduce the iterated anticommutator
 	\Theta_K^0 (A)
 	\coloneq A \;,
 \end{equation}
-where $ A, K $ are understood either as matrices $ A: \ell^2(L_\ell) \to \ell^2(L_\ell) $, or families thereof, i.e., $ A = (A(\ell))_{\ell \in \Z^3_*} $. We further introduce the projection matrix
+where $ A, K $ are understood either as matrices $ A: \ell^2(L_\ell) \to \ell^2(L_\ell) $, or families thereof, i.e., $ A = (A(\ell))_{\ell \in \Z^3_*} $. We further introduce the projection matrix \textcolor{red}{[SL: I changed this notation: $ P_q $ is now only the projection to $ q $, while $ \tilde{P}_q $ is the projection to $ q $ and $ -q $. This makes the proposition easier to read and avoids a later discussion, why we only need to fix $ q $ when writing down the error terms.]}
 \begin{equation} \label{eq:Pq}
 	P^q(\ell) : \ell^2(L_\ell) \to \ell^2(L_\ell) \;, \qquad
 	P^q(\ell)_{r,s} \coloneq \delta_{q,r} \delta_{q,s} \qquad
@@ -658,7 +659,7 @@ with
 	a^*_{r+\ell_1}b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r+\ell}
 	\;, \nonumber\\
 	E_{Q_1}^{m,3}
-	&\coloneq + 2 \sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1} \cap (-L_{\ell_1}+\ell+\ell_1)\\ s \in L_{\ell}}} \Theta^m_{K}(P^q)(\ell)_{r,s}K(\ell_1)_{r,-r+\ell+\ell_1} b^*_{s}(\ell) a^*_{r-\ell_1}a^*_{r-\ell-\ell_1} \;. \label{eq:expandedEQ1}
+	&\coloneq \textcolor{red}{+} 2 \sum\limits_{\ell, \ell_1\in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1} \cap (-L_{\ell_1}+\ell+\ell_1)\\ s \in L_{\ell}}} \Theta^m_{K}(P^q)(\ell)_{r,s}K(\ell_1)_{r,-r+\ell+\ell_1} b^*_{s}(\ell) a^*_{r-\ell_1}a^*_{r-\ell-\ell_1} \;. \label{eq:expandedEQ1}
 \end{align}
 and
 \begin{align}
@@ -681,9 +682,9 @@ and
 	E_{Q_2}^{m,9}
 	&\coloneq -2\sum\limits_{\ell,\ell_1 \in \Z^3_*} \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell +\ell_1) \cap (-L_{\ell_1}+\ell+\ell_1)}} \Theta^m_{K}(P^q)(\ell)_{r,-r+\ell+\ell_1}K(\ell_1)_{r,-r+\ell+\ell_1} a^*_{r-\ell-\ell_1}a_{r-\ell-\ell_1} \;, \nonumber\\
 	E_{Q_2}^{m,10}
-	&\coloneq \sum\limits_{\ell \in \Z^3_*} \sum\limits_{r\in L_{\ell}}\Theta^{m+1}_{K}(P^q)(\ell)_{r,r} a^*_{r-\ell}a_{r-\ell} \;, \nonumber\\
+	&\coloneq \textcolor{red}{1} \sum\limits_{\ell \in \Z^3_*} \sum\limits_{r\in L_{\ell}}\Theta^{m+1}_{K}(P^q)(\ell)_{r,r} a^*_{r-\ell}a_{r-\ell} \;, \nonumber\\
 	E_{Q_2}^{m,11}
-	&\coloneq \sum\limits_{\ell \in \Z^3_*} \sum\limits_{r\in L_{\ell}}\Theta^{m+1}_{K}(P^q)(\ell)_{r,r} a^*_{r}a_{r} \;, \label{eq:expandedEQ2}\\
+	&\coloneq \textcolor{red}{1} \sum\limits_{\ell \in \Z^3_*} \sum\limits_{r\in L_{\ell}}\Theta^{m+1}_{K}(P^q)(\ell)_{r,r} a^*_{r}a_{r} \;, \label{eq:expandedEQ2}\\
 \end{align}
 as well as
 \begin{align}
@@ -800,6 +801,7 @@ Next, we compile some bounds against the number operator
 \begin{equation} \label{eq:cN}
 	\cN \coloneq \sum_{q \in \Z^3} a_q^* a_q \;.
 \end{equation}
+\todo{Check if the first bound is not also well-known.}
   
 \begin{lemma}[Bounds on pair operators]\label{lem:pairest}
 Let $\ell \in \Z^3_*$ and $ \Psi \in \cF $. Then,
@@ -1769,6 +1771,7 @@ To control $ \Xi = \sup_{q \in \Z^3} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\l
 	\le C k_{\F}^{-1} \;.
 \end{equation}
 In other words, we reach the optimal estimate after one bootstrap step. Plugging this bound into~\eqref{eq:main_errorbound_with_Xi} renders the desired formula~\eqref{eq:main2}. The claim $ |n_q^{\b}| \le C k_{\F} e(q)^{-1} $ was already proven in Lemma~\ref{lem:nqb_bounds}
+\textcolor{red}{[SL: Shall we comment on how $ C $ depends on $ V $? In that case, we actually get a double exponential.]}
 \end{proof}
 
 
