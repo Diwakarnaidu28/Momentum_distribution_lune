@@ -229,32 +229,32 @@ We consider a quantum system of N spinless fermionic particles on $\mathbb{T}^3\
 \begin{equation}
     H_N = -\hbar^2\sum\limits_{j=1}^{N}\Delta_{x_j} + \lambda\!\!\!\sum\limits_{1\leq i < j \leq N } V(x_i - x_j) \;,
 \end{equation}
-acting on the wave functions in the anti-symmetric tensor product $L^2_a(\T^{3N}) = \bigwedge_{j=1}^N L^2(\T^3)$.
+acting on wave functions in the antisymmetric tensor product $L^2_{\mathrm{a}}(\T^{3N}) = \bigwedge_{j=1}^N L^2(\T^3)$.
 We consider the \textit{mean-field limit} i.e. we set
 \begin{equation}
     \hbar\coloneq N^{-\frac{1}{3}}, \quad\text{and}\quad \lambda \coloneq N^{-1} \;,
 \end{equation}
-and let $ N \to \infty $. At zero temperature, the system will be in a ground state, that is, a vector $ \Psi_{\GS} \in L^2_a(\T^{3N}) $ which attains the ground state energy
+and let $ N \to \infty $. At zero temperature, the system will be in a ground state, that is, a vector $ \Psi_{\GS} \in L^2_{\mathrm{a}}(\T^{3N}) $ which attains the ground state energy
 \begin{equation} \label{eq:EGS}
 	E_{\GS}
 	\coloneq \inf \sigma(H_N)
-	= \inf_{\substack{\Psi \in L^2_a(\T^{3N})\\||\Psi|| = 1}} \langle \Psi, H_N \Psi \rangle \;.
+	= \inf_{\substack{\Psi \in L^2_{\mathrm{a}}(\T^{3N}) \\||\Psi|| = 1}} \langle \Psi, H_N \Psi \rangle \;.
 \end{equation}
 In this article we are interested in the momentum distribution of states $ \Psi $ close to $ \Psi_{\GS} $:
 \begin{align}
 	n(q) \coloneq \eva{\Psi, a^*_q a_q \Psi} \;,
 \end{align}
-where $ a_q^*, a_q $ are the standard fermionic creation and annihilation operators of momentum $ q \in \ZZZ^3 $. As the momentum distribution of the true ground state is difficult to access, see also~\cite[Sect.~1]{BL25}, we focus our attention on a trial state $ \Psi = \Psi_N $. In contrast to~\cite{BL25}, here take the ``patchless'' trial state of ~\cite{CHN23}, which allows to investigate excitations much closer to the Fermi surface.\\
+where $ a_q^*, a_q $ are the standard fermionic creation and annihilation operators of momentum $ q \in \ZZZ^3 $. As the momentum distribution of the true ground state is difficult to access, see also~\cite[Sect.~1]{BL25}, we focus our attention on a trial state $ \Psi = \Psi_N $. In contrast to~\cite{BL25}, we consider the ``patchless'' trial state of~\cite{CHN23}, which allows to investigate excitations much closer to the Fermi surface.\\
 To better understand the shape of $ n(q) $, let us first consider the simple non-interacting case where $ V=0 $. Here, a ground state is given by a Slater determinant of $ N $ plane waves with momenta $ k_j \in \ZZZ^3 $:
 \begin{equation}
     \Psi_{\FS}(x_1, x_2, \ldots, x_N) \coloneq \frac{1}{\sqrt{N!}}\text{det}\left(\frac{1}{(2\pi)^{3/2}}e^{ik_j\cdot x_i}\right)^N_{j,i=1} \;.
 \end{equation}
-The $ k_j $ are chosen as to minimize the kinetic energy $ \sum_{j \in B_{\F}}] |k_j|^2 $. Without loss of generality,  we assume that they exactly fill up a Fermi ball
+The $ k_j $ are chosen to minimize the kinetic energy $ \sum_{j=1}^N |k_j|^2 $. Without loss of generality,  we assume that they exactly fill up a Fermi ball
 \begin{equation}
 	B_{\F} \coloneq \{ k \in \ZZZ^3 : |k| < k_{\F} \} \;, \qquad
 	|B_{\F}| = N \qquad \textnormal{for some } k_{\F} > 0 \;.
 \end{equation}
-Here, $ k_{\F} $ is also called the Fermi momentum, scaling as
+Here, $ k_{\F} $ is also called the Fermi momentum, scaling as~\cite[(3.2)]{BNPSS20}
 \begin{equation}
     k_{\F} = \left(\frac{3}{4\pi}\right)^\frac{1}{3}N^\frac{1}{3} + \mathcal{O}_N(1) \;,
 \end{equation}
@@ -286,19 +286,19 @@ We will prove that the momentum distribution $ n(q) $ for $ q \in B_{\F}^c $ is 
 	n_q^{\b}
 	\coloneq \sum\limits_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \; \frac{1}{\pi}\int_0^\infty \frac{g_\ell (t^2-\lambda^2_{\ell,q}) (t^2 + \lambda^2_{\ell,q})^{-2}}{1 + 2g_\ell \sum_{p \in L_{\ell}}\lambda_{\ell,p} (t^2+\lambda^2_{\ell,p})^{-1}} \mathrm{d}t \;,
 \end{equation}
-where the lune $ L_\ell \in \Z^3 $, the excitation energy $ \lambda_{\ell,p} > 0 $ and $ g_\ell > 0 $ are defined by
+where the lune $ L_\ell \in \Z^3 $, the excitation energy $ \lambda_{\ell,p} > 0 $, and $ g_\ell > 0 $ are defined by
 \begin{equation} \label{eq:Lell}
 	L_\ell \coloneq B_{\F}^c \cap (B_{\F} + \ell) \;, \qquad
 	\lambda_{\ell,p} \coloneq \half (|p|^2 - |p-\ell|^2) \;, \qquad
-	g_\ell \coloneq \frac{\hat{V}(\ell) k_{\F}^{-1}}{2 (2 \pi)^2} \;,
+	g_\ell \coloneq \frac{\hat{V}(\ell) k_{\F}^{-1}}{2 (2 \pi)^3} \;,
 \end{equation}
 and where $ \Z^3_* := \Z^3 \setminus \{0\} $. For $ q \in B_{\F} $, we analogously have
 \begin{equation}
 	n(q) \approx 1 - n_q^{\b} \;, \qquad
 	n_q^{\b}
-	\coloneq \sum\limits_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q+\ell) \; \frac{1}{\pi}\int_0^\infty \frac{g_\ell (t^2-\lambda^2_{\ell,q+\ell}) (t^2 + \lambda^2_{\ell,q+\ell})^{-2}}{1 + 2g_\ell \sum_{p \in L_{\ell}}\lambda_{\ell,p+\ell} (t^2+\lambda^2_{\ell,p+\ell})^{-1}} \mathrm{d}t \;,
+	\coloneq \sum\limits_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q+\ell) \; \frac{1}{\pi}\int_0^\infty \frac{g_\ell (t^2-\lambda^2_{\ell,q+\ell}) (t^2 + \lambda^2_{\ell,q+\ell})^{-2}}{1 + 2g_\ell \sum_{p \in L_{\ell}}\lambda_{\ell,p} (t^2+\lambda^2_{\ell,p})^{-1}} \mathrm{d}t \;,
 \end{equation}
-so the bosonized excitation density $ n_q^{\b} $ measures the deviation of $ n(q) $ from an indicator function $ \mathds{1}_{B_{\F}}(q) $, and we expect $ n_q^{\b} $ to be small (in contrast to $ n(q) $). The scaling of $ n_q^{\b} $ and error terms will depend on inverses of the excitation energy
+so the bosonized excitation density $ n_q^{\b} $ measures the deviation of $ n(q) $ from an indicator function $ \mathds{1}_{B_{\F}}(q) $, and we expect $ n_q^{\b} $ to be small for all $ q $. The scaling of $ n_q^{\b} $ and error terms will depend on inverses of the excitation energy
 \begin{equation} \label{eq:eq}
 	e(q)
 	\coloneq \abs{|q|^2 - \inf_{p \in B_{\F}^c} |p|^2 + \half}
@@ -308,14 +308,14 @@ which is evidently lower bounded by $ e(q) \ge \half $.
 
 \begin{theorem}[Main result] \label{thm:main}
 Assume that the Fourier transform of the interaction potential satisfies $ \hat{V} \in \ell^1(\Z^3) $, $ \hat{V} \ge 0 $, $ \hat{V}(0) = 0 $ and $ \hat{V}(k) = \hat{V}(-k) $.
-Then, for any sequence\todo{This is a slight abuse of notation. Shall we leave it like this?} $ k_{\F} \to \infty $ with $ N = N(k_{\F}) := |B_{k_{\F}}(0)| $, there exists a sequence of trial states $ (\Psi_{N(k_{\F})})_{k_{\F}} $ with $ \Psi_N  \in L^2(\TTT^3)^{\otimes_{\mathrm{a}} N} $ such that
+Then, for any sequence for $ k_{\F} $ with\todo{This is a slight abuse of notation. Shall we leave it like this?} $ k_{\F} \to \infty $ and $ N = N(k_{\F}) := |B_{k_{\F}}(0)| $, there exists a sequence of trial states $ (\Psi_{N(k_{\F})})_{k_{\F}} $ with $ \Psi_N  \in L^2_{\mathrm{a}}(\T^{3N}) $ such that
 \begin{itemize}
 \item $ \Psi_N $ is energetically close to the ground state in the sense that for any $ \varepsilon > 0 $ there exists a $ C_\varepsilon > 0 $ such that for all $ k_{\F} $ we have
 \begin{equation} \label{eq:main1}
 	\eva{\Psi_N, H_N \Psi_N} - E_{\GS}
 	\le C_\varepsilon k_{\F}^{1-\frac 16 + \varepsilon} \;,
 \end{equation}
-\item There exists a constant $ C > 0 $, depending on $ \Vert \hat{V} \Vert_1 $, such that for all $ k_{\F} $ and $ q \in \Z^3 $, the momentum distribution in $ \Psi_N $ satisfies
+\item and there exists a constant $ C > 0 $, depending on $ \Vert \hat{V} \Vert_1 $, such that for all $ k_{\F} $ and $ q \in \Z^3 $, the momentum distribution in $ \Psi_N $ satisfies
 \begin{equation} \label{eq:main2}
 	n(q) = \eva{\Psi_N, a_q^* a_q \Psi_N}
 	= \begin{cases}
@@ -324,7 +324,7 @@ Then, for any sequence\todo{This is a slight abuse of notation. Shall we leave i
 	1 - n_q^{\b}  + \cE_q& \quad
 		\textnormal{for } |q| < k_{\F} 
 	\end{cases} \;, \qquad
-	|\cE_q| \le C k_{\F}^{-1 -\frac 34} e(q)^{-1}
+	|\cE_q| \le C k_{\F}^{-1 -\frac 34} e(q)^{-1} \;,
 \end{equation}
 where the bosonized excitation density $ n_q^{\b} $, defined in~\eqref{eq:nqb}, satisfies $ |n_q^{\b}| \le C k_{\F}^{-1} e(q)^{-1} $.
 \end{itemize} 
@@ -334,14 +334,14 @@ where the bosonized excitation density $ n_q^{\b} $, defined in~\eqref{eq:nqb}, 
 \begin{remarks}
 \begin{enumerate}
 
-\item In Lemma~\ref{lem:nqb_bounds}, we even show that the scaling $ n_q^{\b} \sim k_{\F}^{-1} e(q)^{-1} $ is exact for our mean-field setting, in the sense that there exist potentials for which $ n_q^{\b} \ge c k_{\F}^{-1} e(q)^{-1} $. \todo{Make sure that $ n_q^{\b} \ge c k_{\F}^{-1} e(q)^{-1} $ is true. Maybe, put this into Thm. 1.1.}
+\item In Lemma~\ref{lem:nqb_bounds}, we even show that the scaling $ n_q^{\b} \sim k_{\F}^{-1} e(q)^{-1} $ is exact for our mean-field setting, in the sense that there exist $ V $ and $ q $ for which $ n_q^{\b} \ge c k_{\F}^{-1} e(q)^{-1} $. \todo{Make sure that $ n_q^{\b} \ge c k_{\F}^{-1} e(q)^{-1} $ is true. Maybe, put this into Thm. 1.1.}
 
-\item \textit{The factor of $ e(q)^{-1} $}: In~\cite{BL25}, The scaling of the leading-order term is $ n_q^{\b} \le C k_{\F}^{-2} $ without any factors of $ e(q) $. This is because~\cite{BL25} assumes $ |\ell| \le C $ and $ |\ell \cdot q| \ge c $ in the analogue of~\eqref{eq:nqb}, leading to $ e(q) \sim k_{\F} $. In other words,~\cite{BL25} only allows for probing the momentum distribution at distances from the Fermi surface $ ||q|-k_{\F}| \sim 1 $, while we can go down to distances of order $ k_{\F}^{-1} $ and up to arbitrarily large distances.\\
-To probe lower distances, one would need to increase the size of the torus, thus refining the momentum lattice. It is known~\cite{DV60} that for Coulomb potentials, the analogue of $ n_q^{\b} $ in continuous momentum space attains some finite value at the Fermi surface, scaling like $ \lim_{||q|-k_{\F}| \to \pm 0} n_q^{\b} \sim k_{\F}^{-1} $. We therefore expect that in the large-volume limit, $ e(q)^{-1} $ must be replaced by $ (e(q)+1)^{-1} $ for $ q $ close to the Fermi surface. The reason for the bad scaling in the mean-field regime is that the sum $ \sum_{\ell} $ in~\eqref{eq:nqb}, when compared to an integral $ \int \di \ell $, may give excessively large weight to single points that are extremely close to the Fermi surface.\\
+\item \textit{The factor of $ e(q)^{-1} $}: In~\cite{BL25}, The scaling of the leading-order term is $ n_q^{\b} \sim k_{\F}^{-2} $ without any factors of $ e(q) $. This is because~\cite{BL25} assumes $ |\ell| \le C $ and $ |\ell \cdot q| \ge c $ in the analogue of~\eqref{eq:nqb}, leading to $ e(q) \sim k_{\F} $. In other words,~\cite{BL25} only allows for probing the momentum distribution at distances $ ||q|-k_{\F}| \sim 1 $ from the Fermi surface, while we can go down to distances of order $ k_{\F}^{-1} $ and up to arbitrarily large distances.\\
+To probe lower distances, one would need to increase the size of the torus, thus refining the momentum lattice. It is known~\cite{DV60} that for Coulomb potentials, the analogue of $ n_q^{\b} $ in continuous momentum space attains some finite value at the Fermi surface, scaling like $ \lim_{||q|-k_{\F}| \to \pm 0} n_q^{\b} \sim k_{\F}^{-1} $. We therefore expect that in the large-volume limit, $ e(q)^{-1} $ must be replaced by $ (e(q)+1)^{-1} $ for $ q $ close to the Fermi surface. The reason for the bad scaling in the mean-field regime is that the sum $ \sum_{\ell} $ in~\eqref{eq:nqb}, when compared to an integral $ \int \di \ell $, may give excessively large weight to single points that are as close to the Fermi surface as $ \sim k_{\F}^{-1} $.\\
 
 
 
-\item \textcolor{blue}{Mention that we are able to extract $ n_q^{\ex} \sim k_{\F}^{-2} e(q)^{-2} $, so it is subleading for our potentials. Mention that for Coulomb, $ n_q^{\ex} \sim k_{\F}^{-1} e(q)^{-2} $, and that this is still under investigation.}
+\item \textit{Excitation contribution:} In~\cite{CHN23,CHN24}, both a bosonized and an exchange contribution were extracted for the correlation energy $ E_{\corr} = E_{\corr,\b} + E_{\corr,\ex} $. Here, in addition to our bosonized contribution $ n_q^{\b} $, we are also able to extract an exchange contribution $ n_q^{\ex} $ in Lemma~\ref{lem:normalordering_errors}:
 \begin{equation} \label{eq:nqex}
 	n_q^{\ex}
 	\coloneq \sum_{\substack{m=1\\m:\textnormal{ odd}}}^\infty \frac{1}{(m+1)!} \sum_{j=0}^m {{m} \choose {j}}
@@ -351,15 +351,30 @@ To probe lower distances, one would need to increase the size of the torus, thus
 		K(\ell_1)_{r,-r+\ell+\ell_1} \;.
 \end{equation}
 \todo{Maybe, write this in a nicer form, if possible.}
+From Lemma~\ref{lem:estnqex}, it follows that $ n_q^{\ex} \le C k_{\F}^{-2} e(q)^{-2} $ for our case $ \hat{V} \in \ell^1 $, so $ n_q^{\ex} $ can be treated as an error. However, for Coulomb potentials $ \hat{V}(k) \sim |k|^{-2} $, we expect $ n_q^{\ex} \le C k_{\F}^{-1} e(q)^{-2} $, so the exchange term \emph{does} matter close to the Fermi surface.\\
+This situation is analogous to the correlation energy: For $ \sum_k \hat{V}(k) |k| $ (as in~\cite{CHN21}), one has $ E_{\corr,\b} \sim \hbar^2 k_{\F} $ and $ E_{\corr,\ex} \sim \hbar^2 k_{\F}^{-1} $, so the exchange term is an error. However, for Coulomb potentials~\cite{CHN23,CHN24}, $ E_{\corr,\b} \sim \hbar^2 k_{\F} \log(k_{\F}) $ and $ E_{\corr,\ex} \sim \hbar^2 k_{\F} $, so the exchange contribution is only marginally subleading to the bosonized one.
 
-\item \textcolor{blue}{Comparison to integral formula for $ n_q^{\b} $ in~\cite{BL25} and to the physics literature.}
+
+\item In analogy to~\cite[Sect.~1.1]{BL25}, in $ n_q^{\b} $~\eqref{eq:nqb}, we may approximate $ \lambda{\ell,q} \approx 2 k_{\F} |\hat{\ell} \cdot \hat{q}| $ with $ \hat{q} := \frac{q}{|q|} $, then set $ \mu := t (2 k_{\F} |\ell|) $ and take the continuum limits $ \sum_{p \in L_\ell} \approx \int_{L_\ell} \di p $ and $ \sum_\ell \approx \int \di \ell $. The result is 
+\begin{equation}
+\begin{aligned}
+	n_q^{\b}
+	&\approx \int_{\R^3} \di \ell \; \mathds{1}_{L_{\ell}}(q) \; \frac{\hat{V}(\ell) k_{\F}^{-2}}{\pi (2 \pi)^3 |\ell|}
+		\int_0^\infty \di \mu \frac{(\mu^2-|\hat{\ell} \cdot \hat{q}|^2) (\mu^2 + |\hat{\ell} \cdot \hat{q}|^2)^{-2}}{1 + Q_\ell(\mu)} \;, \\
+	Q_\ell(\mu) &:= \frac{\hat{V}(\ell)}{2 (2 \pi)^2} \left( 1 - \mu \arctan \left( \frac{1}{\mu} \right) \right) \;.
+\end{aligned}
+\end{equation}
+\textcolor{red}{This does not match with~\cite{BL25}!!!}
 
 \end{enumerate}
 \end{remarks}
 
 
+\begin{itemize}
+\item Add a basic proof strategy.
 
-\todo{Basic proof strategy and what to find in which section.}
+\item Say in which section we are doing what.
+\end{itemize}
 
 
 
@@ -368,9 +383,9 @@ To probe lower distances, one would need to increase the size of the torus, thus
 \section{Trial State Definition}
 \label{sec:trialstate}
 
-Let us briefly recap the trial state construction of~\cite{CHN23}. To facilitate notation, we work in second quantization, introducing the fermionic Fock space
+Let us briefly recap the trial state construction of~\cite{CHN23}. To facilitate notation, we work in second quantization, where the fermionic Fock space is
 \begin{equation}
-	\cF \coloneq \bigoplus_{N=0}^\infty L^2_a(\T^{3N}) \;,
+	\cF \coloneq \bigoplus_{N=0}^\infty L^2_{\mathrm{a}}(\T^{3N}) \;,
 \end{equation}
 with vacuum vector $ \Omega = (1,0,0,\ldots) \in \cF $ and the standard fermionic creation/annihilation operators $ a^*(f), a(f) $ for $ f \in L^2(\TTT^3) $. To each momentum $ q \in \ZZZ^3 $, we assign a plane wave
 \begin{equation}
@@ -385,9 +400,9 @@ and the associated creation/annihilation operators
 with $ \Vert a_q^* \Vert, \Vert a_q \Vert \le 1 $, satisfying the canonical anticommutation relations (CAR)
 \begin{equation} \label{eq:CAR}
 	\{a_q, a_{q'}^*\} = \delta_{q, q'} \;, \qquad
-	\{a_q, a_{q'}\} = \{a_q^*, a_{q'}^*\} = 0 \qquad \text{for all } q, q' \in \ZZZ^3\;,
+	\{a_q, a_{q'}\} = \{a_q^*, a_{q'}^*\} = 0 \qquad \text{for all } q, q' \in \ZZZ^3\;.
 \end{equation}
-which imply the bound $ \norm{a_p}, \norm{a_p^*} \le 1 $. This notation allows us to conveniently write the Fermi sea state as $ \Psi_{\FS} = R \Omega $ where $ R: \cF \to \cF $ is the unitary particle--hole transformation defined by
+This notation allows us to conveniently write the Fermi sea state as $ \Psi_{\FS} = R \Omega $ where $ R: \cF \to \cF $ is the unitary particle--hole transformation defined by
 \begin{equation} \label{eq:R}
 	R^* a_q^* R
 	= \mathds{1}_{B_{\F}^c}(q) \; a_q^*
@@ -397,7 +412,7 @@ Note that $ R^{-1} = R = R^* $. The \textbf{trial state} of~\cite{CHN23} now tak
 \begin{equation} \label{eq:Psitrial}
 	\Psi_N = R T \Omega \;,
 \end{equation}
-where $ T: \cF \to \cF $ is another unitary transformation motivated as follows: We expect the interaction to generate many pair excitations, where a particle from inside the Fermi ball $ B_{\F} $ is shifted by some momentum $ k \in \Z^3_* = \Z \setminus \{ 0 \} $ to another momentum $ p \in B_{\F}^c $, leaving a hole at $ p-k \in B_{\F} $. After the particle--hole transformation $ R $, this corresponds to a creation of a pair of excitations at $ p $ and $ p-k $, described by the pair creation operator
+where $ T: \cF \to \cF $ is another unitary transformation motivated as follows: We expect the interaction to generate many pair excitations, where a particle from inside the Fermi ball $ B_{\F} $ is shifted by some momentum $ k \in \Z^3_* = \Z^3 \setminus \{ 0 \} $ to another momentum $ p \in B_{\F}^c $, leaving a hole at $ p-k \in B_{\F} $. After the particle--hole transformation $ R $, this corresponds to a creation of a pair of excitations at $ p $ and $ p-k $, described by the pair creation operator
 \begin{equation} \label{eq:b}
 	b^*_p(k) \coloneq a_p^* a_{p-k}^* 
 	\qquad \textnormal{with adjoint} \qquad
@@ -413,15 +428,15 @@ with matrices $ h(k), P(k) \in \CCC^{|L_k| \times |L_k|} $ defined by
 \begin{equation} \label{eq:HkPk}
 \begin{aligned}
 	h(k)_{p,q} &\coloneq \delta_{p,q} \lambda_{k,p} \;, \qquad
-	P(k)_{p,q} &\coloneq \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^2} \;,
+	P(k)_{p,q} &\coloneq \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^3} \;,
 \end{aligned}
 \end{equation}
-where we recall $ \lambda_{k,p} = \half (|p|^2 - |p-k|^2) $. In particular $ P(k) $ is rank-one with $ P(k) \coloneq |v_k \rangle \langle v_k | $, where $ v_{k,p} \coloneq g_k^{1/2} = \left( \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^2} \right)^{1/2}  $. As the pair excitation operators satisfy approximate bosonic commutation relations, see Lemma~\ref{lem:paircomm}, one may treat $ H_{\Bog} $ as an approximately quadratic bosonic Hamiltonian, which is approximately diagonalized by the transformation\footnote{Note that our exponent $ S $ corresponds to $ R^* \cK R $ in the notation of~\cite{CHN23}.}~\cite[Thm.~1.4]{CHN23}.
+where we recall $ \lambda_{k,p} = \half (|p|^2 - |p-k|^2) $. In particular $ P(k) $ is rank-one with $ P(k) \coloneq |v_k \rangle \langle v_k | $, where $ v_{k,p} \coloneq g_k^{1/2} = \left( \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^3} \right)^{1/2}  $. As the pair excitation operators satisfy approximate bosonic commutation relations, see Lemma~\ref{lem:paircomm}, one may treat $ H_{\Bog} $ as an approximately quadratic bosonic Hamiltonian, which is approximately diagonalized by the transformation\footnote{Note that our exponent $ S $ corresponds to $ R^* \cK R $ in the notation of~\cite{CHN23}.}~\cite[Thm.~1.4]{CHN23}.
 \begin{equation} \label{eq:T}
 	T \coloneq e^{-S} \;, \qquad
 	S \coloneq \frac{1}{2}\sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell}K(\ell)_{r,s}\left(b_r(\ell)b_{-s}(-\ell)-b^*_{-s}(-\ell)b^*_{r}(\ell)\right) \;,
 \end{equation}
-with Bogoliubov kernel
+with the symmetric Bogoliubov kernel
 \begin{equation} \label{eq:K}
 	K(\ell) \coloneq - \half \log \Big( h(\ell)^{-\half}
 		\big( h(\ell)^{\half} \big( h(\ell) + 2 P(\ell) \big)^{\half} h(\ell)^{\half}\big)
@@ -640,7 +655,7 @@ Using reflection symmetry, we may replace $ \tilde{P}^q $ by $ P^q $. The desire
 
 To facilitate bounding the many-body errors $ E_{Q_1} $ and $ E_{Q_2} $ in \eqref{eq:errKQ}, we normal-order them. The exchange contribution $ n_q^{\ex} $ then naturally appears by summing up the $ \C $-valued terms.
 
-\begin{lemma}[Normal ordering many-body errors]
+\begin{lemma}[Normal ordering many-body errors] \label{lem:normalordering_errors}
 Recall the definition~\eqref{eq:errKQ} of $ E_{Q_1} $ and $ E_{Q_2} $. Then, for $ m \in \NNN $ and $ q \in B_{\F}^c $, we may write
 \begin{equation} \label{eq:EQ1EQ2extension}
 	E_{Q_1}(\Theta^m_{K}(P^q))
