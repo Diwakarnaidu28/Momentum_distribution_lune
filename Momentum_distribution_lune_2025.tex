@@ -345,7 +345,7 @@ To probe lower distances, one would need to increase the size of the torus, thus
 \begin{equation} \label{eq:nqex}
 	n_q^{\ex}
 	\coloneq \sum_{\substack{m=1\\m:\textnormal{ odd}}}^\infty \frac{1}{(m+1)!} \sum_{j=0}^m {{m} \choose {j}}
-		\sum\limits_{\substack{\ell,\ell_1 \in \Z^3_* \\ q \in L_\ell}}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}} \!\!\!
+		\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}} \!\!\!
 		K^{m-j}(\ell)_{r,q}
 		K^j(\ell)_{q,-r+\ell+\ell_1}
 		K(\ell_1)_{r,-r+\ell+\ell_1} \;.
@@ -355,7 +355,7 @@ From Lemma~\ref{lem:estnqex}, it follows that $ n_q^{\ex} \le C k_{\F}^{-2} e(q)
 This situation is analogous to the correlation energy: For $ \sum_k \hat{V}(k) |k| $ (as in~\cite{CHN21}), one has $ E_{\corr,\b} \sim \hbar^2 k_{\F} $ and $ E_{\corr,\ex} \sim \hbar^2 k_{\F}^{-1} $, so the exchange term is an error. However, for Coulomb potentials~\cite{CHN23,CHN24}, $ E_{\corr,\b} \sim \hbar^2 k_{\F} \log(k_{\F}) $ and $ E_{\corr,\ex} \sim \hbar^2 k_{\F} $, so the exchange contribution is only marginally subleading to the bosonized one.
 
 
-\item In analogy to~\cite[Sect.~1.1]{BL25}, in $ n_q^{\b} $~\eqref{eq:nqb}, we may approximate $ \lambda{\ell,q} \approx 2 k_{\F} |\hat{\ell} \cdot \hat{q}| $ with $ \hat{q} := \frac{q}{|q|} $, then set $ \mu := t (2 k_{\F} |\ell|) $ and take the continuum limits $ \sum_{p \in L_\ell} \approx \int_{L_\ell} \di p $ and $ \sum_\ell \approx \int \di \ell $. The result is 
+\item In analogy to~\cite[Sect.~1.1]{BL25}, in $ n_q^{\b} $~\eqref{eq:nqb}, we may approximate $ \lambda_{\ell,q} \approx 2 k_{\F} |\ell| |\hat{\ell} \cdot \hat{q}| $ with $ \hat{q} := \frac{q}{|q|} $, then set $ \mu := t (2 k_{\F} |\ell|) $ and take the continuum limits $ \sum_{p \in L_\ell} \approx \int_{L_\ell} \di p $ and $ \sum_\ell \approx \int \di \ell $. The result is 
 \begin{equation}
 \begin{aligned}
 	n_q^{\b}
@@ -735,9 +735,13 @@ For $ \ell \in \Z^3_*$ and $A(\ell) : \ell^2(L_\ell) \to \ell^2(L_\ell)$, we def
 	\norm{A(\ell)}_{\max}
 	&\coloneq \sup\limits_{p,q \in L_\ell}\abs{A(\ell)_{p,q}} \;, \qquad
 	\norm{A(\ell)}_{\max,2}
-	\coloneq \sup\limits_{q \in L_\ell}\bigg(\sum\limits_{p \in L_\ell}\abs{A(\ell)_{p,q}}^2\bigg)^\half \;, \\
+	\coloneq \bigg(\sum\limits_{p \in L_\ell} 
+	\sup\limits_{q \in L_\ell}
+	\abs{A(\ell)_{p,q}}^2\bigg)^\half \;, \\
 	\norm{A(\ell)}_{\mathrm{max,1}}
-	&\coloneq \sup\limits_{q \in L_\ell}\sum\limits_{p \in L_\ell}\abs{A(\ell)_{p,q}} \;.
+	&\coloneq \sum\limits_{p \in L_\ell}
+	\sup\limits_{q \in L_\ell}
+	\abs{A(\ell)_{p,q}} \;.
 \end{aligned}
 \end{equation}
 We further denote the Hilbert--Schmidt norm as $ \norm{A(\ell)}_{\HS} = \Big( \sum_{p,q \in L_\ell} |A(\ell)_{p,q}|^2 \Big)^{1/2} $.
