@@ -792,14 +792,21 @@ From~\cite[Prop.~7.10]{CHN23} we readily retrieve \eqref{eq:K_element_bounds} fo
 		\frac{1}{\lambda_{\ell, r} + \lambda_{\ell, s}} \;.
 	\end{aligned}
 \end{equation}
-The first bounds in~\eqref{eq:K_max_bounds} and~\eqref{eq:e(q)_extraction_bounds} then follow immediately, noting that $ 2 \lambda_{\ell,q} \ge e(q) \ge \half $. The second bounds in~\eqref{eq:K_max_bounds} and~\eqref{eq:e(q)_extraction_bounds} follow from
+The first bounds in~\eqref{eq:K_max_bounds} and~\eqref{eq:e(q)_extraction_bounds} then follow immediately, noting that $ 2 \lambda_{\ell,q} \ge e(q) \ge \half $. The second bound in~\eqref{eq:e(q)_extraction_bounds} follows from
 \begin{equation}
 \begin{aligned}
 	\sum_{r \in L_\ell} |(K(\ell)^m)_{q,r}|^2
 	&\le \sum_{r \in L_\ell} (C \hat{V}(\ell))^{2m} k_{\F}^{-2} (\lambda_{\ell,r} + \lambda_{\ell,q})^{-2}
-	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} \lambda_{\ell,q}^{-1} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \\
-	&\le (C \hat{V}(\ell))^{2m} k_{\F}^{-1} e(q)^{-1} \;.
+	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \lambda_{\ell,q}^{-1} \\
+	&\le (C \hat{V}(\ell))^{2m} k_{\F}^{-1} e(q)^{-1} \;,
 \end{aligned}
+\end{equation}
+and the second one in~\eqref{eq:K_max_bounds} by
+\begin{equation}
+	\sum_{r \in L_\ell} \sup_{q \in L_\ell} |(K(\ell)^m)_{q,r}|^2
+	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} 
+		\sup_{q \in L_\ell} \lambda_{\ell,q}^{-1}
+	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-1} \;.
 \end{equation}
 Finally, the third and fourth bound in~\eqref{eq:K_max_bounds} follow from:
 \begin{equation} \label{eq:max2_HS_bound}
@@ -809,7 +816,7 @@ Finally, the third and fourth bound in~\eqref{eq:K_max_bounds} follow from:
 	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} \Big( \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \Big)^2
 	\le (C \hat{V}(\ell))^{2m} \;, \\
 	\normmaxi{K(\ell)^m} 
-	&\leq \sup_{q \in \Z^3} \sum_{r \in L_\ell} (C \hat{V}(\ell))^{m} k_{\F}^{-1} (\lambda_{\ell,r} + \lambda_{\ell,q})^{-1} \le (C \hat{V}(\ell))^{m} k_{\F}^{-1} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \leq (C \hat{V}(\ell))^{m} \;.
+	&\leq \sum_{r \in L_\ell} \sup_{q \in L_\ell} (C \hat{V}(\ell))^{m} k_{\F}^{-1} (\lambda_{\ell,r} + \lambda_{\ell,q})^{-1} \le (C \hat{V}(\ell))^{m} k_{\F}^{-1} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \leq (C \hat{V}(\ell))^{m} \;.
 \end{aligned}
 \end{equation}
 \end{proof}
