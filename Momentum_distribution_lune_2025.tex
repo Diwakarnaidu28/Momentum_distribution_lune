@@ -315,7 +315,7 @@ Then, for any sequence for $ k_{\F} $ with\todo{This is a slight abuse of notati
 	\eva{\Psi_N, H_N \Psi_N} - E_{\GS}
 	\le C_\varepsilon k_{\F}^{1-\frac 16 + \varepsilon} \;,
 \end{equation}
-\item and there exists a constant $ C > 0 $, depending on $ \Vert \hat{V} \Vert_1 $, such that for all $ k_{\F} $ and $ q \in \Z^3 $, the momentum distribution in $ \Psi_N $ satisfies
+\item and given $ \varepsilon > 0 $, there exist constants $ C, C_\varepsilon > 0 $, depending on $ \Vert \hat{V} \Vert_1 $, such that for all $ k_{\F} $ and $ q \in \Z^3 $, the momentum distribution in $ \Psi_N $ satisfies
 \begin{equation} \label{eq:main2}
 	n(q) = \eva{\Psi_N, a_q^* a_q \Psi_N}
 	= \begin{cases}
@@ -324,7 +324,7 @@ Then, for any sequence for $ k_{\F} $ with\todo{This is a slight abuse of notati
 	1 - n_q^{\b} + \cE_q& \quad
 		\textnormal{for } |q| < k_{\F} 
 	\end{cases} \;, \qquad
-	|\cE_q| \le C k_{\F}^{-1 -\frac 34} e(q)^{-1} \;,
+	|\cE_q| \le C_\varepsilon k_{\F}^{-2 +\varepsilon} e(q)^{-1} \;,
 \end{equation}
 where the bosonized excitation density $ n_q^{\b} $, defined in~\eqref{eq:nqb}, satisfies $ |n_q^{\b}| \le C k_{\F}^{-1} e(q)^{-1} $.
 \end{itemize} 
@@ -1007,13 +1007,13 @@ Evidently, $ 0 \le a_q^* a_q \le 1 $ implies the trivial bound $ 0 \le \Xi \le 1
 The main result of this subsection is the following:
 
 \begin{proposition} \label{prop:finalEmest}
-Recall the bosonization error term $E_m(P^q)$~\eqref{eq:errEm} with $ \Theta^n_K $, $ P^q $, $ \int_{\Delta^n} \di^n \ulambda $ and $ \sigma(n) $ defined within and above Proposition~\ref{prop:finexpan}. Then, there exists a constant $ C > 0 $ such that for all $ m \in \NNN $ and $ q \in B_{\F}^c $,
+Recall the bosonization error term $E_m(P^q)$~\eqref{eq:errEm} with $ \Theta^n_K $, $ P^q $, $ \int_{\Delta^n} \di^n \ulambda $ and $ \sigma(n) $ defined within and above Proposition~\ref{prop:finexpan}. Then, given $ \varepsilon > 0 $, there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $ and $ q \in B_{\F}^c $,
 \begin{equation} \label{eq:finalEmest}
 	\abs{\eva{\Omega, E_m(P^q) \Omega}}
-	\leq \frac{C^m}{m!} \Vert \hat{V} \Vert_1
+	\leq C_\varepsilon \frac{C^m}{m!} \Vert \hat{V} \Vert_1
 		\Bigg( \sum_{\ell \in \Z^3} \hat{V}(\ell)^m \Bigg)
 		e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
-		+ k_{\F}^{-1}\Xi^{\frac{3}{4}} \right) \;.
+		+ k_{\F}^{-1}\Xi^{1-\varepsilon} \right) \;.
 \end{equation}
 \end{proposition}
 To prove this bound, we introduce the parametrized excitation vector $ \xi_\lambda \coloneq e^{- \lambda S} \Omega $ to write
@@ -1029,28 +1029,53 @@ where we recall~\eqref{eq:EQ1EQ2extension} that $ E_{Q_1}\left(\Theta^m_{K}(P^q)
 \subsubsection{Bounding $E_{Q_1}$}
 
 \begin{proposition}[Bounding $E_{Q_1}(\Theta^m_{K}(P^q))$]\label{prop:finEQ1est}
-For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ m \in \NNN $, $ \lambda \in [0,1] $, and $ q \in B_{\F}^c $,
+For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $ there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $, $ \lambda \in [0,1] $, and $ q \in B_{\F}^c $,
 \begin{equation} \label{eq:finalEQ1est}
 	\abs{\eva{\xi_\lambda, E_{Q_1}\!\left(\Theta^m_K(P^q)\right) \xi_\lambda}}
-	\leq C^m \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)
+	\leq C_\varepsilon C^m \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)
 		\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)
-		e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half + k_{\F}^{-1}\Xi^{\frac{3}{4}} \right) \;.
+		e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half + k_{\F}^{-1}\Xi^{1-\varepsilon} \right) \;.
 \end{equation}
 \end{proposition}
 
-To prove this proposition, we need to control the error terms $ E^{m,1}_{Q_1} $, $ E^{m,2}_{Q_1} $, and $ E^{m,3}_{Q_1} $.
+To prove this proposition, we need to control the error terms $ E^{m,1}_{Q_1} $, $ E^{m,2}_{Q_1} $, and $ E^{m,3}_{Q_1} $. For this, we will need the following lemma.
+
+\begin{lemma} [Extracting $ \Xi^{\half-\varepsilon} $] \label{lem:Xi_halfminusepsilon}
+Recall $ \xi_\lambda = e^{-\lambda S} \Omega $. For $ q \in \Z^3 $, given any $ \varepsilon > 0 $ and $ a \in \N $, there exists a constant $ C_{a,\varepsilon} $ such that for all $ \lambda \in [0,1] $
+\begin{equation} \label{eq:Xi_halfminusepsilon}
+	\Vert a_q (\cN + 1)^a \xi_\lambda \Vert
+	\le C_{a,\varepsilon} \Xi^{\half-\varepsilon} \;.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+We iteratively apply the following bound, which follows from $ [\cN, a_q^* a_q] = 0 $:
+\begin{equation}
+	\Vert a_q (\cN + 1)^a \xi_\lambda \Vert^2
+	= \eva{\xi_\lambda, (\cN + 1)^{2a} a_q^* a_q \xi_\lambda}
+	\le \Vert a_q (\cN + 1)^{2a} \xi_\lambda \Vert \Xi^{\frac 12} \;.
+\end{equation}
+After $ n $ iterations,
+\begin{equation}
+	\Vert a_q (\cN + 1)^a \xi_\lambda \Vert
+	\le \Vert a_q (\cN + 1)^{2^n a} \xi_\lambda \Vert^{2^{-n}} \Xi^{\half (1-2^{-n})} \;.
+\end{equation}
+We conclude using $ \Vert a_q \Vert \le 1 $ and Lemma~\ref{lem:gronNest}, and choosing $ n $ large enough.
+\end{proof}
+
+
 
 \begin{lemma} \label{lem:EQ111}
-For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $,
+For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $ there exist constants $ C, C_\varepsilon > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $,
 \begin{equation} \label{eq:estEQ111}
 \begin{aligned}
 	&\abs{\eva{\xi_\lambda,\left(E^{m,1}_{Q_1}+E^{m,2}_{Q_1}+\mathrm{h.c.}\right) \xi_\lambda }} \\
-	&\leq C^m \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)
+	&\leq C_\varepsilon C^m \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)
 		\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)
 		e(q)^{-1} \left(
 		k_{\F}^{-\frac{3}{2}} \Xi^\half
-		+ k_{\F}^{-1}\Xi^{\frac{3}{4}} \right)
-		\norm{ (\NN+1)^2\xi_\lambda} \;.
+		+ k_{\F}^{-1}\Xi^{1-\varepsilon} \right)
+		\norm{ (\NN+1)^{\frac 32} \xi_\lambda} \;.
 \end{aligned}
 \end{equation}
 \end{lemma}
@@ -1105,14 +1130,7 @@ In case $ 1 \le j \le m-1 $, we again employ the Cauchy--Schwarz inequality and 
 		k_{\F}^{-\frac 32} e(q)^{-1}
 		\norm{(\NN+1)^\frac{3}{2} \xi_\lambda} \Xi^\half \;. \label{eq:estEQ1112}
 \end{align}
-For $ j = m $, we employ a similar estimation strategy, using that $ [a_q^* a_q, \cN] = 0 $ implies
-\begin{equation}
-	\norm{a_q (\cN+1) \xi_\lambda}^2
-	\le \eva{\xi_\lambda, a_q^* a_q a_q^* a_q \xi_\lambda}^{\half}
-		\eva{\xi_\lambda, (\cN+1)^4 \xi_\lambda}^{\half}
-	= \norm{a_q \xi_\lambda} \norm{(\cN+1)^2 \xi_\lambda} \;,
-\end{equation}
-whence
+For $ j = m $, we employ a similar estimation strategy, using Lemma~\ref{lem:Xi_halfminusepsilon}:
 \begin{align}
 	|\I_m(\ell, \ell_1)|
 	&\leq \mathds{1}_{L_{\ell_1}}(q)
@@ -1121,9 +1139,7 @@ whence
 	&\leq \mathds{1}_{L_{\ell_1}}(q)
 		\Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half \Bigg(\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{q,s_1}}^2\Bigg)^\half \norm{ a_{q-\ell_1} (\NN+1)\xi_\lambda} \norm{ a_{q-\ell}\xi_\lambda }\nonumber\\
 	&\leq (C \hat{V}(\ell))^m \hat{V}(\ell_1) k_{\F}^{-1} e(q)^{-1} \sup_{q \in \Z^3}\norm{ a_{q} (\NN+1) \xi_\lambda}\Xi^\half\nonumber\\
-	&\leq (C \hat{V}(\ell))^m \hat{V}(\ell_1) k_{\F}^{-1} e(q)^{-1} \Xi^\half \sup_{q \in \Z^3}\norm{ a_{q} \xi_\lambda}^\half \norm{ (\NN+1)^2\xi_\lambda}^\half \nonumber\\
-	&\leq (C \hat{V}(\ell))^m \hat{V}(\ell_1) k_{\F}^{-1} e(q)^{-1} \Xi^{\frac{3}{4}}
-		\norm{(\NN+1)^2\xi_\lambda}^\half \;. \label{eq:estEQ1113}
+	&\leq C_\varepsilon (C \hat{V}(\ell))^m \hat{V}(\ell_1) k_{\F}^{-1} e(q)^{-1} \Xi^{1-\varepsilon} \;. \label{eq:estEQ1113}
 \end{align}
 Summing up all bounds and using $\sum_{j=1}^{m-1} {{m}\choose j} \le C^m $ and $ (\cN+1) \ge 1 $ concludes the proof.
 \end{proof}
@@ -1219,7 +1235,7 @@ Adding up all bounds and using $ e(q) \ge \half $ yields the claimed result.
 
 
 \begin{proof}[Proof of Proposition~\ref{prop:finEQ1est}]
-We add together the bounds from Lemmas~\ref{lem:EQ111} and~\ref{lem:EQ112} and use the Gr\"onwall bound, Lemma \ref{lem:gronNest}, to get $ \norm{(\NN+1)^2 \xi_\lambda} \le C $.
+We add together the bounds from Lemmas~\ref{lem:EQ111} and~\ref{lem:EQ112} and use the Gr\"onwall bound, Lemma \ref{lem:gronNest}, to get $ \norm{(\NN+1)^{\frac 32} \xi_\lambda} \le C $.
 \end{proof}
 
 
@@ -1231,13 +1247,13 @@ We add together the bounds from Lemmas~\ref{lem:EQ111} and~\ref{lem:EQ112} and u
 
 
 \begin{proposition}[Bounding $E_{Q_2}(\Theta^m_{K}(P^q))$]\label{prop:finEQ2est}
-For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ m \in \NNN $, $ \lambda \in [0,1] $, and $ q \in B_{\F}^c $,
+For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $ there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $, $ \lambda \in [0,1] $, and $ q \in B_{\F}^c $,
 \begin{equation}\label{eq:finEQ2est}
 	\abs{\eva{\xi_\lambda, E_{Q_2}\!\left(\Theta^m_K(P^q)\right) \xi_\lambda}} 
-	\leq C^m \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)
+	\leq C_\varepsilon C^m \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)
 		\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)
 		e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
-		+ k_{\F}^{-1} \Xi^{\frac{3}{4}} \right) \;. \\
+		+ k_{\F}^{-1} \Xi^{1-\varepsilon} \right) \;. \\
 \end{equation}
 \end{proposition}
 
@@ -1245,14 +1261,14 @@ To prove this proposition, we must control the error terms $ E^{m,1}_{Q_2} $ thr
 
 
 \begin{lemma} \label{lem:EQ211}
-For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $,
+For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $ there exist constants $ C, C_\varepsilon > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $,
 \begin{align}
 	&\abs{\eva{\xi_\lambda,\left(E^{m,1}_{Q_2}+E^{m,2}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }} \nonumber \\
-	&\leq C^m \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)
+	&\leq C_\varepsilon C^m \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)
 		\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)
 		e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half 
-		+ k_{\F}^{-1}\Xi^{\frac{3}{4}} \right)
-		\norm { (\NN+1)^2 \xi_\lambda } \;. \label{eq:estEQ211}
+		+ k_{\F}^{-1}\Xi^{1-\varepsilon} \right)
+		\norm { (\NN+1)^{\frac 32} \xi_\lambda } \;. \label{eq:estEQ211}
 \end{align}
 \end{lemma}
 
@@ -1300,7 +1316,7 @@ The case $ 1 \le j \le m-1 $ is treated as follows:
 		k_{\F}^{-\frac 32} e(q)^{-1}
 		\norm{ (\NN+1)^{\frac 32}\xi_\lambda } \Xi^{\half} \;. \label{eq:estEQ2112}
 \end{align}
-Finally, for $ j = m $ we extract a $ \Xi^{\frac 34} $ similarly as in~\eqref{eq:estEQ1113}
+Finally, for $ j = m $ we extract a $ \Xi^{1-\varepsilon} $ via Lemma~\ref{lem:Xi_halfminusepsilon}
 \begin{align}
 	|\I_m(\ell, \ell_1)|
 	&\leq \mathds{1}_{L_{\ell_1}}(q) \Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half
@@ -1309,10 +1325,9 @@ Finally, for $ j = m $ we extract a $ \Xi^{\frac 34} $ similarly as in~\eqref{eq
 		\norm{ a_{q-\ell_1} \xi_\lambda }\nonumber\\
 	&\leq (C \hat{V}(\ell))^m \hat{V}(\ell_1) k_{\F}^{-1} e(q)^{-1}
 		\sup_{q \in \Z^3} \norm{ a_q (\NN+1) \xi_\lambda }\Xi^{\half} \nonumber\\
-	&\leq (C \hat{V}(\ell))^m
+	&\leq C_\varepsilon (C \hat{V}(\ell))^m
 		\hat{V}(\ell_1)
-		k_{\F}^{-1} e(q)^{-1}
-		\norm{ (\NN+1)^2 \xi_\lambda }^{\half} \Xi^{\frac 34} \;. \label{eq:estEQ2113}
+		k_{\F}^{-1} e(q)^{-1} \Xi^{1-\varepsilon} \;. \label{eq:estEQ2113}
 \end{align}
 Summing up the three bounds concludes the proof.
 \end{proof}
@@ -1627,10 +1642,10 @@ Recall from~\eqref{eq:errEm2} that
 Using Propositions~\ref{prop:finEQ1est} and~\ref{prop:finEQ2est}, we get, uniformly in $ \lambda \in [0,1] $, $ m \in \mathbb{N} $, and $ q \in B_{\F}^c $:
 \begin{equation}
 	\abs{\eva{\xi_\lambda, E_{Q_{\sigma(m)}}\left(\Theta^{m}_{K}(P^q)\right) \xi_\lambda}}
-	\le C^m \Vert \hat{V} \Vert_1
+	\le C_\varepsilon C^m \Vert \hat{V} \Vert_1
 		\Bigg( \sum_{\ell \in \Z^3} \hat{V}(\ell)^m \Bigg)
 		e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
-		+ k_{\F}^{-1}\Xi^{\frac{3}{4}} \right) \;.
+		+ k_{\F}^{-1}\Xi^{1-\varepsilon} \right) \;.
 \end{equation}
 Resolving the simplex integral $ \int_{\Delta^{m+1}} \di^{m+1} \underline{\lambda} = \frac{1}{(m+1)!} \le \frac{1}{m!} $ concludes the proof.
 \end{proof}
@@ -1777,21 +1792,21 @@ Bounding the $ E_m(P^q) $-term by Proposition~\ref{prop:finalEmest} renders
 \begin{equation} \label{eq:main_errorbound_with_Xi}
 \begin{aligned}
 	\abs{\eva{\Omega, e^{S} a_q^* a_q e^{-S} \Omega} - n_q^b}
-	&\le \sum_{m=1}^\infty \frac{C^m}{m!} \Vert \hat{V} \Vert_1
+	&\le C_\varepsilon \sum_{m=1}^\infty \frac{C^m}{m!} \Vert \hat{V} \Vert_1
 		\Bigg( \sum_{\ell \in \Z^3} \hat{V}(\ell)^m \Bigg)
 		e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
-		+ k_{\F}^{-1}\Xi^{\frac{3}{4}} \right) \\
-	&\le \Vert \hat{V} \Vert_1 \Vert (e^{C \hat{V}}-1) \Vert_1
+		+ k_{\F}^{-1}\Xi^{1-\varepsilon} \right) \\
+	&\le C_\varepsilon \Vert \hat{V} \Vert_1 \Vert (e^{C \hat{V}}-1) \Vert_1
 		e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
-		+ k_{\F}^{-1}\Xi^{\frac{3}{4}} \right) \;.
+		+ k_{\F}^{-1}\Xi^{1-\varepsilon} \right) \;.
 \end{aligned}
 \end{equation}
 To control $ \Xi = \sup_{q \in \Z^3} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{- \lambda S} \Omega} $, observe that the bound~\eqref{eq:main_errorbound_with_Xi} holds uniformly in $ q \in B_{\F}^c $, and it is not too difficult to show that it remains true for $ q \in B_{\F} $ or with $ S $ replaced by $ \lambda S $ with $ \lambda \in [0,1] $. Further, by definition~\eqref{eq:eq}, $ e(q) \ge 1/2 $, and since $ 0 \le a_q^* a_q \le 1 $, we have $ \Xi \le 1 $. So bounding $ n_q^{\b} $ by Lemma~\ref{lem:nqb_bounds}, the bootstrap quantity is controlled by
 \begin{equation}
 	\Xi
-	\le \sup_{q \in \Z^3} n_q^{\b} + C \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
-		+ k_{\F}^{-1}\Xi^{\frac{3}{4}} \right)
-	\le C k_{\F}^{-1} \;.
+	\le \sup_{q \in \Z^3} n_q^{\b} + C_\varepsilon \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
+		+ k_{\F}^{-1}\Xi^{1-\varepsilon} \right)
+	\le C_\varepsilon k_{\F}^{-1} \;.
 \end{equation}
 In other words, we reach the optimal estimate after one bootstrap step. Plugging this bound again into~\eqref{eq:main_errorbound_with_Xi} renders the desired formula~\eqref{eq:main2}. The claim $ |n_q^{\b}| \le C k_{\F}^{-1} e(q)^{-1} $ was already proven in Lemma~\ref{lem:nqb_bounds}
 \end{proof}
