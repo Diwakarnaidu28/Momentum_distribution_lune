@@ -19,7 +19,7 @@
 \usepackage{capt-of, caption} %for captions in minipages
 \usepackage[capitalise]{cleveref}
 \crefname{equation}{}{}
-\usepackage[textsize=footnotesize,textwidth=2.5cm]{todonotes}
+\usepackage[textsize=footnotesize,textwidth=2cm]{todonotes}
 % \usepackage[color]{showkeys}
 
 \numberwithin{equation}{section}
@@ -39,10 +39,10 @@
 \affil[*]{Università degli Studi di Milano, Via Cesare Saldini 50, 20133 Milano, Italy}
 \affil[**]{University of Copenhagen, Universitetsparken 5, DK-2100 Copenhagen, Denmark}
 
-\addtolength{\textwidth}{2.0cm}
-\addtolength{\hoffset}{-1.0cm}
-\addtolength{\textheight}{2.4cm}
-\addtolength{\voffset}{-1.5cm} 
+% \addtolength{\textwidth}{2.0cm}
+% \addtolength{\hoffset}{-1.0cm}
+% \addtolength{\textheight}{2.4cm}
+% \addtolength{\voffset}{-1.5cm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\bA}{\boldsymbol{A}}
@@ -350,7 +350,7 @@ Moreover we have \todo{move to Remark}
 To study the momentum distribution even closer to the Fermi surface, one would need to increase the size of the torus, as to refine the momentum lattice. It is expected \cite{DV60} that the analogue of $ n^{\RPA}(q) $ in continuous momentum space attains a value scaling like $ \lim_{||q|-k_{\F}| \to \pm 0} n^{\RPA}(q) \sim k_{\F}^{-1} $ at the Fermi surface. We therefore expect that for a large-volume limit, $ e(q)^{-1} $ both in the leading term and in the error estimate should be replaced by $ (e(q)+1)^{-1} $.
 
 
-\item In~\cite{CHN23,CHN24}, both a bosonized and an exchange contribution were extracted for the correlation energy. Here, in addition to the bosonization contribution $ n^{\RPA}(q) $, we also find an exchange contribution $ n^{\ex}(q) $ in Lemma~\ref{lem:normalordering_errors}, given by
+\item In~\cite{CHN23,CHN24}, both a bosonized and an exchange contribution were extracted for the correlation energy. For the momentum distribution likewise, in addition to the bosonization contribution $ n^{\RPA}(q) $, we find an exchange contribution $ n^{\ex}(q) $, according to Lemma~\ref{lem:normalordering_errors} given by
 \begin{equation} \label{eq:nqex}
 	n^{\ex}(q)
 	\coloneq \sum_{\substack{m=1\\m:\textnormal{ odd}}}^\infty \frac{1}{(m+1)!} \sum_{j=0}^m {{m} \choose {j}}
@@ -359,12 +359,12 @@ To study the momentum distribution even closer to the Fermi surface, one would n
 		K^j(\ell)_{q,-r+\ell+\ell_1}
 		K(\ell_1)_{r,-r+\ell+\ell_1} \;.
 \end{equation}
-From Lemma~\ref{lem:estnqex}, it follows that $ n^{\ex}(q) \le C k_{\F}^{-2} e(q)^{-2} $ for $ \hat{V} \in \ell^1 $, so $ n^{\ex}(q) $ is subleading. However, for Coulomb potentials $ \hat{V}(k) \sim |k|^{-2} $, we expect $ n^{\ex}(q) \le C k_{\F}^{-1} e(q)^{-2} $, so the exchange term should become observable close to the Fermi surface.
+From Lemma~\ref{lem:estnqex}, it follows that $ n^{\ex}(q) \le C k_{\F}^{-2} e(q)^{-2} $ for $ \hat{V} \in \ell^1 $, so $ n^{\ex}(q) $ is subleading. However, for the Coulomb potential $ \hat{V}(k) \sim |k|^{-2} $, we expect $ n^{\ex}(q) \le C k_{\F}^{-1} e(q)^{-2} $, so the exchange term should become observable close to the Fermi surface.
 
 % This situation is analogous to the correlation energy: For $ \sum_k \hat{V}(k) |k| $ (as in~\cite{CHN21}), one has $ E_{\corr,\b} \sim \hbar^2 k_{\F} $ and $ E_{\corr,\ex} \sim \hbar^2 k_{\F}^{-1} $, so the exchange term is an error. However, for Coulomb potentials~\cite{CHN23,CHN24}, $ E_{\corr,\b} \sim \hbar^2 k_{\F} \log(k_{\F}) $ and $ E_{\corr,\ex} \sim \hbar^2 k_{\F} $, so the exchange contribution is only marginally subleading to the bosonized one.
 
 
-\item In analogy to~\cite[Section~1.1]{BL25}, in $ n^{\RPA}(q) $, we may approximate $ \lambda_{\ell,q} \approx 2 k_{\F} |\ell| |\hat{\ell} \cdot \hat{q}| $ with $ \hat{q} := {q}/{|q|} $, then set $ \mu := t (2 k_{\F} |\ell|) $ and take the continuum limit $ \sum_{p \in L_\ell} \approx \int_{L_\ell} \di p $ and $ \sum_\ell \approx \int \di \ell $. The result is
+\item In analogy to~\cite[Section~1.1]{BL25} we may approximate $ \lambda_{\ell,q} \approx 2 k_{\F} |\ell| |\hat{\ell} \cdot \hat{q}| $ with $ \hat{q} := {q}/{|q|} $, then set $ \mu := t (2 k_{\F} |\ell|) $ and take the continuum limit $ \sum_{p \in L_\ell} \approx \int_{L_\ell} \di p $ and $ \sum_\ell \approx \int \di \ell $. The result is
 \begin{equation}
 \begin{aligned}
 	n^{\RPA}(q)
