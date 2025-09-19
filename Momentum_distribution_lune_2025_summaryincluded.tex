@@ -398,12 +398,15 @@ In Section~\ref{sec:trialstate}, we review the construction of the trial state f
 \section{Trial State Construction}
 \label{sec:trialstate}
 
-In this section we review the trial state construction of~\cite{CHN23}. We introduce fermionic Fock space as
+In this section we review the trial state construction of~\cite{CHN23}. We introduce the fermionic Fock space
 \begin{equation}
-	\cF \coloneq \bigoplus_{N=0}^\infty L^2_{\mathrm{a}}(\T^{3N}) \;,
+	\cF \coloneq \bigoplus_{N=0}^\infty L^2_{\mathrm{a}}(\T^{3N}) \;.
 \end{equation}
-with vacuum vector $ \Omega = (1,0,0,\ldots) \in \cF $.
-To each momentum $ q \in \ZZZ^3 $, we assign a plane wave
+The vector
+\begin{equation}
+\Omega = (1,0,0,\ldots) \in \cF
+\end{equation}
+is called the vacuum. To each momentum $ q \in \ZZZ^3 $, we assign a plane wave
 \begin{equation}
 	f_q \in L^2(\TTT^3) \;, \qquad
 	f_q(x) \coloneq (2 \pi)^{-3/2} e^{i q \cdot x} \;,
@@ -464,42 +467,41 @@ with the Bogoliubov kernel
 		\big( h(\ell)^{\half} \big( h(\ell) + 2 P(\ell) \big)^{\half} h(\ell)^{\half}\big)
 		h(\ell)^{-\half} \Big) \;.
 \end{equation}
-(Our exponent $ S $ corresponds to $ R^* \cK R $ in the notation of~\cite{CHN23} since we prefer to use a particle-hole transformation instead of  the Wick ordering.)
+(The exponent $ S $ corresponds to $ R^* \cK R $ in the notation of~\cite{CHN23} since we prefer to use a particle-hole transformation instead of the normal ordering with respect to the Fermi ball state.)
 One observes that $K(\ell)$ is a symmetric matrix and moreover posesses the reflection invariance $ K(-\ell)_{-p,-q} = K(\ell)_{p,q} $. This concludes the definition of the trial state.
 
 
 
-\section{Extraction of Bosonized and Exchange Contribution}\label{sec:extraction}
+\section{Duhamel Expansion of the Momentum Distribution}\label{sec:extraction}
 
+In this section we expand the momentum distribution $ \langle \Psi_N, a_q^* a_q \Psi_N \rangle $ of the trial state $ \Psi_N = R e^{-S} \Omega $ constructed in the previous section. In the expansion we then identify the explicit contributions of $ n^{\RPA}(q) $ and $ n^{\ex}(q) $.
 
-
-We now extract the bosonized and exchange contributions $ n^{\RPA}(q) $ and $ n^{\ex}(q) $ from the momentum distribution $ \langle \Psi, a_q^* a_q \Psi \rangle $ with $ \Psi = \Psi_N = R e^{-S} \Omega $, compare~\eqref{eq:Psitrial}. The particle--hole transformation $ R $ can easily be dealt with, since by~\eqref{eq:R}, it only reverses the momentum distribution inside the Fermi ball as
+The particle--hole transformation $ R $ acts in a simple way: by~\eqref{eq:R} we have
 \begin{equation} \label{eq:momentum_dist_R_trafo}
-	\langle R \xi, a_q^* a_q R \xi \rangle
-	= \mathds{1}_{B_{\F}}(q) \big( 1 - \langle \xi, a_q^* a_q \xi \rangle \big)
-		+ \mathds{1}_{B_{\F}^c}(q) \langle \xi, a_q^* a_q \xi \rangle \qquad
-		\forall \xi \in \cF \;.
+	R^* a_q^* a_q R
+	= \mathds{1}_{B_{\F}}(q) \big( 1 - a_q^* a_q  \big)
+		+ \mathds{1}_{B_{\F}^c}(q)  a_q^* a_q \;.
 \end{equation}
-So it suffices to consider the excitation vector $ \xi \coloneq e^{-S} \Omega = R^* \Psi_N $ and to compute the excitation density $ \langle \xi, a_q^* a_q \xi \rangle $. As in~\cite{BL25}, we do so by iterative Duhamel expansion as
+So it suffices to consider the excitation vector $ \xi \coloneq e^{-S} \Omega $ and compute the excitation distribution $ \langle \xi, a_q^* a_q \xi \rangle $. The fundamental theorem of calculus implies the Duhamel formula
 \begin{equation} \label{eq:duhamelexpansion_blueprint}
 \begin{aligned}
-	&\langle \Omega, e^{S} a_q^* a_q e^{-S} \Omega \rangle
-	= \langle \Omega, a_q^* a_q \Omega \rangle
-		+ \int_0^1 \di \lambda_1 \langle \Omega, e^{\lambda_1 S} [S, a_q^* a_q] e^{-\lambda_1 S} \Omega \rangle \\
-	&= \langle \Omega, a_q^* a_q \Omega \rangle
-		+ \langle \Omega, [S, a_q^* a_q] \Omega \rangle
-		+ \int_0^1 \di \lambda_1 \int_0^{\lambda_1} \di \lambda_2 \langle \Omega, e^{\lambda_2 S} [S,[S, a_q^* a_q]] e^{-\lambda_2 S} \Omega \rangle
-	= \ldots \;,
+	e^{S} a_q^* a_q e^{-S}
+% 	& = a_q^* a_q
+% 		+ \int_0^1 \di \lambda_1  e^{\lambda_1 S} [S, a_q^* a_q] e^{-\lambda_1 S}
+& = a_q^* a_q
+		+ \int_0^1 \di \lambda_1   [S, e^{\lambda_1 S} a_q^* a_q e^{-\lambda_1 S}] \;.
+		% 	&=  \langle \Omega, a_q^* a_q \Omega \rangle
+% % 		+ \langle \Omega, [S, a_q^* a_q] \Omega \rangle
+% 		+ \int_0^1 \di \lambda_1 \int_0^{\lambda_1} \di \lambda_2 \langle \Omega, e^{\lambda_2 S} [S,[S, a_q^* a_q]] e^{-\lambda_2 S} \Omega \rangle \;.
 \end{aligned}
 \end{equation}
-leading to Proposition~\ref{prop:finexpan}, which is the main result of this section. Note that $ a_q \Omega = 0 $, from which we immediately conclude $ \langle \Omega, a_q^* a_q \Omega \rangle = 0 $. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n^{\RPA}(q) $ by bosonization, similarly as in~\cite{BL25}. The term $ n^{\ex}(q) $ then appears when normal ordering the bosonization errors, similar to the exchange contribution to the correlation energy appearing in~\cite{CHN23}. Since $ n^{\ex}(q) \ll n^{\RPA}(q) $ (compare Lemmas~\ref{lem:estnqex} and~\ref{lem:nqb_bounds}), we will treat $ n^{\ex}(q) $ as a bosonization error.
-
+Iteration of this formula leads to the series expansion given in Proposition~\ref{prop:finexpan}, the main result of this section. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n^{\RPA}(q) $ as the terms that could be expected treating the pair operators as exactly bosonic, similarly as in~\cite{BL25}. The term $ n^{\ex}(q) $ instead appears when normal ordering the remaining terms. This is similar to the exchange contribution to the correlation energy appearing in~\cite{CHN23}.
 
 
 \subsection{Extraction of the Bosonized Contribution}
 \label{sec:extraction_bos}
 
-To compute the multicommutators in~\eqref{eq:duhamelexpansion_blueprint}, we use the CAR~\eqref{eq:CAR}, which will produce several quadratic quasi-bosonic expressions, for which we adopt a similar notation as in~\cite{CHN21}.
+To compute the multicommutators in~\eqref{eq:duhamelexpansion_blueprint} we use the CAR, which will produce quadratic quasi-bosonic expressions, for which we adopt notation similar to~\cite{CHN21}.
 
 \begin{definition} \label{def:Q}
 Let $A=(A(\ell))_{\ell \in \Z^3_*} $ be a family of symmetric operators with $A(\ell): \ell^2(L_\ell)\rightarrow \ell^2(L_\ell)$. The quadratic quasi-bosonic operators are given by
@@ -510,30 +512,32 @@ Let $A=(A(\ell))_{\ell \in \Z^3_*} $ be a family of symmetric operators with $A(
 \end{aligned}
 \end{equation} 
 \end{definition}
-Note that our $ Q_1 $ corresponds to $ 2 \tilde Q_1 $ in~\cite{CHN21}, while the definition of $ Q_2 $ is identical to that in~\cite{CHN21}. Also note that our $ a_p $ agrees with $ R^* c_p R $ in~\cite{CHN21,CHN23,CHN24}. We will further make frequent use of the following ``almost-CCR'' for the pair operators~\eqref{eq:b}, compare also~\cite[(1.66)]{CHN21}.
+Our $ Q_1 $ corresponds to $ 2 \tilde Q_1 $ in~\cite{CHN21}, while the definition of $ Q_2 $ is identical to \cite{CHN21}. (Due to the particle-hole transformation, our $ a_p $ agrees with $ R^* c_p R $ in~\cite{CHN21,CHN23,CHN24}. We will use the following approximate CCR for the pair operators (compare to \cite[(1.66)]{CHN21}):
 
-\begin{lemma}[Quasi-bosonic commutation relations]\label{lem:paircomm}
-For $k,\ell \in \Z^3_*$ and $p \in L_{k}$, $q\in L_{\ell}$, we have the approximate commutation relations
+\begin{lemma}[Approximate CCR]\label{lem:paircomm}
+For $k,\ell \in \Z^3_*$ and $p \in L_{k}$, $q\in L_{\ell}$, we have
 \begin{equation}
 	[b_{p}(k),b_{q}(\ell)]
 	= [b^*_{p}(k),b^*_{q}(\ell)] = 0 \;, \qquad
 	[b_{p}(k),b^*_{q}(\ell)]
 	= \delta_{p,q}\delta_{k,\ell} + \epsilon_{p,q}(k,\ell) \;,
 \end{equation}
-with $ b_p(k) $ defined in~\eqref{eq:b}, and with commutation error
+ with commutation error
 \begin{equation}
 	\epsilon_{p,q}(k,\ell)
 	\coloneq -\left(\delta_{p,q}a^*_{q-\ell}a_{p-k} + \delta_{p-k,q-\ell}a^*_{q}a_{p}\right) \;.
 \end{equation}
+We have
+\[\epsilon_{p,q}(\ell,k) = \epsilon^*_{q,p}(k,\ell) \qquad \textnormal{and} \qquad \epsilon_{p,p}(k,k)\leq 0 \;.\]
 \end{lemma}
-The proof is by immediate application of the CAR~\eqref{eq:CAR}. Also, note that evidently $\epsilon_{p,q}(\ell,k) = \epsilon^*_{q,p}(k,\ell) $ and $\epsilon_{p,p}(k,k)\leq 0$. As an immediate consequence of Lemma~\ref{lem:paircomm}, we obtain the following commutation relations.
+The proof is simple by the CAR. As an immediate consequence we obtain the following commutation lemma.
 
-\begin{lemma}[Commutator between $S $ and pair operators]
+\begin{lemma}[Commutator of $S $ and $b^*_p(k)$]
 For $k \in \Z^3_*$ and $p \in L_k$ we have
 \begin{equation} \label{eq:comm_Kb}
 	[S, b^*_p(k)]
 	= \sum\limits_{s\in L_{k}}K(k)_{p,s}b_{-s}(-k)
-		+ \mathcal{E}_{p}(k) \;,
+		+ \mathcal{E}_{p}(k)
 \end{equation}
 with commutation error
 \begin{equation}\label{eq:commerrKb}
@@ -542,9 +546,11 @@ with commutation error
 \end{equation}
 \end{lemma}
 
+For the quadratic quasi-bosonic operators, this implies the following formulas.
 
-\begin{lemma}[Commutator between $S$ and $Q$]\label{lem:Q1Kcomm}
-Let $ A = (A(\ell))_{\ell \in \Z^3_*} $, $ A(\ell) : \ell^2(L_\ell) \to \ell^2(L_\ell) $ be a family of symmetric operators satisfying $A(\ell)_{r,s} = A(-\ell)_{-r,-s}$. Then, with definition~\eqref{eq:T} of $ S $ and~\eqref{eq:Q} of $ Q_1(A) $ and $ Q_2(A) $, we have
+\begin{lemma}[Commutator of $S$ and $Q$]\label{lem:Q1Kcomm}
+Let $ A = (A(\ell))_{\ell \in \Z^3_*} $ be a family of symmetric operators $ A(\ell) : \ell^2(L_\ell) \to \ell^2(L_\ell) $ satisfying $A(\ell)_{r,s} = A(-\ell)_{-r,-s}$. Then
+% , with definition~\eqref{eq:T} of $ S $ and~\eqref{eq:Q} of $ Q_1(A) $ and $ Q_2(A) $, we have
 \begin{equation}
 \begin{aligned}
 	[S, Q_1(A)] 
@@ -563,34 +569,38 @@ with the family $ \{A,K\} = (\{A(\ell),K(\ell)\})_{\ell \in \Z^3_*} $ and with t
 	&\coloneq 2 \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}A(\ell)_{r,s}\Big(\mathcal{E}_{r}(\ell)b_{s}(\ell) + b^*_{s}(\ell)\mathcal{E}^*_{r}(\ell)\Big) \;, \\
 	E_{Q_2}(A)
 	& \coloneq \sum\limits_{\ell \in \Z^3_*}\sum\limits_{r,s \in L_{\ell}}\Big(A(\ell)_{r,s}\big(\big\{\mathcal{E}^*_{r}(\ell), b_{-s}(-\ell)\big\}
-		+ \big\{ b^*_{-s}(-\ell) , \mathcal{E}_r(\ell) \big\} \big)
+		+ \big\{ b^*_{-s}(-\ell) , \mathcal{E}_r(\ell) \big\} \big) \\
+		& \hspace{15em}
 		+ \big\{A(\ell)_,K(\ell)\big\}_{r,s}\epsilon_{r,s}(\ell,\ell)\Big) \;. \\
 \end{aligned} 
 \end{equation}
 \end{lemma}
 
 
-To simplify the Duhamel expansion, we introduce the multi-anticommutator
+To simplify the Duhamel expansion, we introduce the $n$-fold anticommutator
 \begin{equation} \label{eq:Theta}
 	\Theta_K^n (A)
-	\coloneq \underbrace{\{ K, \{ K , \ldots \{K}_{n \in \N \textnormal{ times}} , A\} \ldots \} \} \;, \qquad
+	\coloneq \{ K, \Theta_K^{n-1} (A) \} \;, \qquad
 	\textnormal{with }
 	\Theta_K^0 (A)
 	\coloneq A \;,
 \end{equation}
-where $ A, K $ are understood either as matrices $ A: \ell^2(L_\ell) \to \ell^2(L_\ell) $, or families thereof, i.e., $ A = (A(\ell))_{\ell \in \Z^3_*} $. We further introduce the projection matrix
+understood pointwise for every $\ell \in \Zbb^3_\ast$.
+% where $ A, K $ are understood either as matrices $ A: \ell^2(L_\ell) \to \ell^2(L_\ell) $, or families thereof, i.e., $ A = (A(\ell))_{\ell \in \Z^3_*} $.
+We further introduce the projection matrix
 \begin{equation} \label{eq:Pq}
 	P^q(\ell) : \ell^2(L_\ell) \to \ell^2(L_\ell) \;, \qquad
 	P^q(\ell)_{r,s} \coloneq \delta_{q,r} \delta_{q,s} \qquad
 	\textnormal{for } \ell \in \Z^3_* \;,
 \end{equation}
-as well as the simplex integral
+understood as $ P^q = 0 $ if $ q \notin L_\ell $.
+Moreover we define the simplex integral
 \begin{equation} \label{eq:Deltan}
 	\int_{\Delta^n} \di^n \ulambda
 	\coloneq \int_0^1 \di \lambda_1 \int_0^{\lambda_1} \di \lambda_2 \ldots \int_0^{\lambda_{n-1}} \di \lambda_n \;, \qquad
 	\ulambda \coloneq (\lambda_1, \ldots, \lambda_n) \;.
 \end{equation}
-Note that $ P^q = 0 $ if $ q \notin L_\ell $. The final expansion is then the following.
+ The final expansion is then the following.
 
 \begin{proposition}[Duhamel expansion]\label{prop:finexpan}
 For $q \in B^c_{\F}$, we have
