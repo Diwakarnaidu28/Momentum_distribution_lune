@@ -294,9 +294,10 @@ where the lense $ L_\ell \in \Z^3 $, the excitation energy $ \lambda_{\ell,p} > 
 \end{equation}
 and where $ \Z^3_* := \Z^3 \setminus \{0\} $. For $ q \in B_{\F} $, we analogously have
 \begin{equation}
-	n(q) \approx 1 - n^{\RPA}(q) \;, \quad
-	n^{\RPA}(q)
-	\coloneq \sum_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q+\ell) \; \frac{1}{\pi}\int_0^\infty \frac{g_\ell (t^2-\lambda^2_{\ell,q+\ell}) (t^2 + \lambda^2_{\ell,q+\ell})^{-2}}{1 + 2g_\ell \sum_{p \in L_{\ell}}\lambda_{\ell,p} (t^2+\lambda^2_{\ell,p})^{-1}} \mathrm{d}t \;.
+\begin{split}
+	n(q) & \approx 1 - n^{\RPA}(q) \;, \\
+	n^{\RPA}(q) & 	\coloneq \sum_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q+\ell) \; \frac{1}{\pi}\int_0^\infty \frac{g_\ell (t^2-\lambda^2_{\ell,q+\ell}) (t^2 + \lambda^2_{\ell,q+\ell})^{-2}}{1 + 2g_\ell \sum_{p \in L_{\ell}}\lambda_{\ell,p} (t^2+\lambda^2_{\ell,p})^{-1}} \mathrm{d}t \;.
+\end{split}
 \end{equation}
 Therefore $ n^{\RPA}(q) $ represents the deviation of $ n(q) $ from the indicator function $ \mathds{1}_{B_{\F}}(q) $ we had in the non-interacting case. The scaling of $ n^{\RPA}(q) $ and of the error terms will depend on
 \begin{equation} \label{eq:eq}
@@ -388,76 +389,83 @@ Next, due to the difference in the definition of $\mathcal{S}$, the commutation 
 \end{enumerate}
 \end{remarks}
 
-In the introduction, we present a pedagogical review and the main result. In Section~\ref{sec:trialstate}, we show the construction of the trial state over which we find the momentum distribution. In Section~\ref{sec:extraction}, we derive the iterated Duhamel expansion for the momentum distribution and differentiate between the leading order, the errors and the tail term resulting from the iterations. In Sections~\ref{sec:prelim_bounds} and~\ref{subsec:manybody_estimates}, we do the many-body error analysis, where in Section~\ref{sec:prelim_bounds} we perform some preliminary error estimates which we use throughout in the later sections. In Section~\ref{subsec:manybody_estimates}, we bound the tail term of the expansion in Section~\ref{subsec:tailestimate} and then perform estimates on the bosonization errors in Section~\ref{subsec:bos_error} while retaining a bootstrap quantity. In Section \ref{sec:leading_order_analysis}, we recover the integral representation of the leading order term in Section~\ref{subsec:integralrep} and we find the relative order of the leading order term in Section~\ref{subsec:control_nqb}. In Section~\ref{sec:mainthmproof}, we finally prove the main result using analysis done in previous sections and show the errors are sub-leading using a bootstrap argument.
+In Section~\ref{sec:trialstate}, we review the construction of the trial state from \cite{CHN23}. In Section~\ref{sec:extraction}, we derive the iterated Duhamel expansion for the momentum distribution and identify the leading order. Section~\ref{sec:prelim_bounds} provides preliminary error estimates which we use in the later sections. In Section~\ref{subsec:manybody_estimates} we bound the error terms using $\sup_q n(q)$. In Section \ref{sec:leading_order_analysis} we compute the leading order. The proof is concluded in Section~\ref{sec:mainthmproof} by a bootstrap of $\sup_q n(q)$.
 
 
 
 
 
-\section{Trial State Definition}
+\section{Trial State Construction}
 \label{sec:trialstate}
 
-Let us briefly recap the trial state construction of~\cite{CHN23}. To facilitate notation, we work in second quantization, where the fermionic Fock space is
+In this section we review the trial state construction of~\cite{CHN23}. We introduce fermionic Fock space as
 \begin{equation}
 	\cF \coloneq \bigoplus_{N=0}^\infty L^2_{\mathrm{a}}(\T^{3N}) \;,
 \end{equation}
-with vacuum vector $ \Omega = (1,0,0,\ldots) \in \cF $ and the standard fermionic creation/annihilation operators $ a^*(f), a(f) $ for $ f \in L^2(\TTT^3) $. To each momentum $ q \in \ZZZ^3 $, we assign a plane wave
+with vacuum vector $ \Omega = (1,0,0,\ldots) \in \cF $.
+To each momentum $ q \in \ZZZ^3 $, we assign a plane wave
 \begin{equation}
 	f_q \in L^2(\TTT^3) \;, \qquad
 	f_q(x) \coloneq (2 \pi)^{-3/2} e^{i q \cdot x} \;,
 \end{equation}
-and the associated creation/annihilation operators
+and the associated creation and annihilation operators
 \begin{equation}
 	a^*_q \coloneq a^*(f_q) \;, \qquad
-	a_q \coloneq a(f_q) \;,
+	a_q \coloneq a(f_q) \;.
 \end{equation}
-with $ \Vert a_q^* \Vert, \Vert a_q \Vert \le 1 $, satisfying the canonical anticommutation relations (CAR)
+These operators satisfy the canonical anticommutation relations (CAR)
 \begin{equation} \label{eq:CAR}
 	\{a_q, a_{q'}^*\} = \delta_{q, q'} \;, \qquad
 	\{a_q, a_{q'}\} = \{a_q^*, a_{q'}^*\} = 0 \qquad \text{for all } q, q' \in \ZZZ^3\;.
 \end{equation}
-This notation allows us to conveniently write the Fermi sea state as $ \Psi_{\FS} = R \Omega $ where $ R: \cF \to \cF $ is the unitary particle--hole transformation defined by
+Moreover they are bounded in operator norm by $ \Vert a_q^* \Vert \leq 1$ and $\Vert a_q \Vert \le 1 $.
+The Fermi ball state can be written as $ \Psi_{\FS} = R \Omega $ where $ R: \cF \to \cF $ is the unitary particle--hole transformation acting by
 \begin{equation} \label{eq:R}
-	R^* a_q^* R
-	= \mathds{1}_{B_{\F}^c}(q) \; a_q^*
-		+ \mathds{1}_{B_{\F}}(q) \; a_q \;.
+	R^* a_q^* R 	= \mathds{1}_{B_{\F}^c}(q) \, a_q^* 	+ \mathds{1}_{B_{\F}}(q) \, a_q \;.
 \end{equation}
-Note that $ R^{-1} = R = R^* $. The \textbf{trial state} of~\cite{CHN23} now takes the form
+Note that $ R^{-1} = R = R^* $. The trial state of~\cite{CHN23} is constructed as
 \begin{equation} \label{eq:Psitrial}
-	\Psi_N = R T \Omega \;,
+	\Psi_N := R T \Omega \;,
 \end{equation}
-where $ T: \cF \to \cF $ is another unitary transformation motivated as follows: We expect the interaction to generate many pair excitations, where a particle from inside the Fermi ball $ B_{\F} $ is shifted by some momentum $ k \in \Z^3_* = \Z^3 \setminus \{ 0 \} $ to another momentum $ p \in B_{\F}^c $, leaving a hole at $ p-k \in B_{\F} $. After the particle--hole transformation $ R $, this corresponds to a creation of a pair of excitations at $ p $ and $ p-k $, described by the pair creation operator
+where $ T: \cF \to \cF $ is another unitary transformation motivated as follows: We expect the interaction to act predominantly by generating pair excitations, where a particle from inside the Fermi ball $ B_{\F} $ is moved by some momentum $ k \in \Z^3 \setminus \{ 0 \} $ to another momentum $ p \in B_{\F}^c $, leaving a ``hole'' in the Fermi ball at $ p-k \in B_{\F} $. After the particle--hole transformation $ R $, this corresponds to a creation of a pair of excitations at $ p $ and $ p-k $, described by the pair creation operator
 \begin{equation} \label{eq:b}
 	b^*_p(k) \coloneq a_p^* a_{p-k}^* 
 	\qquad \textnormal{with adjoint} \qquad
 	b_p(k) \coloneq a_{p-k} a_p \;.
 \end{equation}
-The constraint on $ (p,k) $ can be written as $ p \in L_k $, where we recall $ L_k = B_{\F}^c \cap (B_{\F} + k) $ with $ L_{-k} = - L_k $. Indeed, one may now approximate $ H_N $ by an effective Bogoliubov-type Hamiltonian~\cite[(1.34)]{CHN23}
+The constraint on $ (p,k) $ can be written as $ p \in L_k $, where we recall $ L_k = B_{\F}^c \cap (B_{\F} + k) $.
+% with $ L_{-k} = - L_k $.
+Dropping other contributions to the interaction, $ H_N $ is formally reduced to a Bogoliubov-type Hamiltonian~\cite[(1.34)]{CHN23}
 \begin{equation} \label{eq:HBog}
+\begin{split}
 	H_{\Bog}
-	\coloneq \sum_{k \in \ZZZ^3_*} \left( \sum_{p,q \in L_k} 2 (h(k) + P(k))_{p,q} b^*_p(k) b_q(k)
-		+ \sum_{p,q \in L_k} P(k)_{p,q} (b_p(k) b_{-q}(-k) + b^*_{-q}(-k) b^*_p(k)) \right) \;,
+	\coloneq \sum_{k \in \ZZZ^3_*} \Big( & \sum_{p,q \in L_k} 2 (h(k) + P(k))_{p,q} b^*_p(k) b_q(k) \\
+	& 		+ \sum_{p,q \in L_k} P(k)_{p,q} (b_p(k) b_{-q}(-k) + b^*_{-q}(-k) b^*_p(k)) \Big) \;,
+\end{split}
 \end{equation}
-with matrices $ h(k), P(k) \in \CCC^{|L_k| \times |L_k|} $ defined by
+with matrices $ h(k) \in \CCC^{|L_k| \times |L_k|}$ and $P(k) \in \CCC^{|L_k| \times |L_k|} $ defined by
 \begin{equation} \label{eq:HkPk}
 \begin{aligned}
 	h(k)_{p,q} &\coloneq \delta_{p,q} \lambda_{k,p} \;, \qquad
-	P(k)_{p,q} &\coloneq \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^3} \;,
+	P(k)_{p,q} &\coloneq \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^3} \;.
 \end{aligned}
 \end{equation}
-where we recall $ \lambda_{k,p} = \half (|p|^2 - |p-k|^2) $. In particular $ P(k) $ is rank-one with $ P(k) \coloneq |v_k \rangle \langle v_k | $, where $ v_{k,p} \coloneq g_k^{1/2} = \left( \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^3} \right)^\half $. As the pair excitation operators satisfy approximate bosonic commutation relations, see Lemma~\ref{lem:paircomm}, one may treat $ H_{\Bog} $ as an approximately quadratic bosonic Hamiltonian, which is approximately diagonalized by the transformation\footnote{Note that our exponent $ S $ corresponds to $ R^* \cK R $ in the notation of~\cite{CHN23}.}~\cite[Thm.~1.4]{CHN23}.
+The matrix $ P(k) $ is rank-one and can also be written as
+\begin{equation}P(k) = \lvert v_k \rangle \langle v_k \rvert \;, \quad \textnormal{where} \quad v_{k,p} \coloneq g_k^{1/2} = \Big( \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^3} \Big)^\half \;.
+\end{equation}
+ As the pair operators satisfy approximate bosonic commutation relations (see Lemma~\ref{lem:paircomm}), $ H_{\Bog} $ can be approximately diagonalized by an approximate Bogoliubov transformation ~\cite[Thm.~1.4]{CHN23}.
 \begin{equation} \label{eq:T}
 	T \coloneq e^{-S} \;, \qquad
 	S \coloneq \frac{1}{2}\sum\limits_{\ell\in \mathbb{Z}^3_*}\sum\limits_{r,s\in L_\ell}K(\ell)_{r,s}\left(b_r(\ell)b_{-s}(-\ell)-b^*_{-s}(-\ell)b^*_{r}(\ell)\right) \;,
 \end{equation}
-with the symmetric Bogoliubov kernel
+with the Bogoliubov kernel
 \begin{equation} \label{eq:K}
 	K(\ell) \coloneq - \half \log \Big( h(\ell)^{-\half}
 		\big( h(\ell)^{\half} \big( h(\ell) + 2 P(\ell) \big)^{\half} h(\ell)^{\half}\big)
-		h(\ell)^{-\half} \Big) \;,
+		h(\ell)^{-\half} \Big) \;.
 \end{equation}
-satisfying $ K(-\ell)_{-p,-q} = K(\ell)_{p,q} $. This concludes the definition of the trial state $ \Psi_N $ in~\eqref{eq:Psitrial}.
-
+(Our exponent $ S $ corresponds to $ R^* \cK R $ in the notation of~\cite{CHN23} since we prefer to use a particle-hole transformation instead of  the Wick ordering.)
+One observes that $K(\ell)$ is a symmetric matrix and moreover posesses the reflection invariance $ K(-\ell)_{-p,-q} = K(\ell)_{p,q} $. This concludes the definition of the trial state.
 
 
 
