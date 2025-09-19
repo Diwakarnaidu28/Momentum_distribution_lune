@@ -344,26 +344,27 @@ Moreover we have \todo{move to Remark}
 
 \item In Lemma~\ref{lem:nqb_bounds}, we show that the scaling $ n^{\RPA}(q) \sim k_{\F}^{-1} e(q)^{-1} $ is sharp, in the sense that there exist $ V $ and $ q $ \todo{(sequence of $q$?)} for which $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $. \todo{Make sure that $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $ is true.}
 
-\item \textit{The factor of $ e(q)^{-1} $}: In~\cite{BL25}, The scaling of the leading-order term is $ n^{\RPA}(q) \sim k_{\F}^{-2} $ without any factors of $ e(q) $. This is because~\cite{BL25} assumes $ |\ell| \le C $ and $ |\ell \cdot q| \ge c $ in the analogue of~\eqref{eq:nqb}, leading to $ e(q) \sim k_{\F} $. In other words,~\cite{BL25} only allows for probing the momentum distribution at distances $ ||q|-k_{\F}| \sim 1 $ from the Fermi surface, while we can go down to distances of order $ k_{\F}^{-1} $ and up to arbitrarily large distances.\\
-To probe lower distances, one would need to increase the size of the torus, thus refining the momentum lattice. It is known~\cite{DV60} that for Coulomb potentials, the analogue of $ n^{\RPA}(q) $ in continuous momentum space attains some finite value at the Fermi surface, scaling like $ \lim_{||q|-k_{\F}| \to \pm 0} n^{\RPA}(q) \sim k_{\F}^{-1} $. We therefore expect that in the large-volume limit, $ e(q)^{-1} $ must be replaced by $ (e(q)+1)^{-1} $ for $ q $ close to the Fermi surface. The reason for the bad scaling in the mean-field regime is that the sum $ \sum_{\ell} $ in~\eqref{eq:nqb}, when compared to an integral $ \int \di \ell $, may give excessively large weight to single points that are as close to the Fermi surface as $ \sim k_{\F}^{-1} $.\\
+\item In~\cite{BL25}, the scaling of the leading term is $ n^{\RPA}(q) \sim k_{\F}^{-2} $ without any factors of $ e(q) $. This is because~\cite{BL25} assumes $ |\ell| \le C $ and $ |\ell \cdot q| \ge c $ in the analogue of~\eqref{eq:nqb}, leading to $ e(q) \sim k_{\F} $. In other words, it considers only momenta at distances $ ||q|-k_{\F}| \sim 1 $ from the Fermi surface, while the present result admits distances as small as $ k_{\F}^{-1} $.
+% (and up to arbitrarily large distances.\\
+
+To study the momentum distribution even closer to the Fermi surface, one would need to increase the size of the torus, as to refine the momentum lattice. It is expected \cite{DV60} that the analogue of $ n^{\RPA}(q) $ in continuous momentum space attains a value scaling like $ \lim_{||q|-k_{\F}| \to \pm 0} n^{\RPA}(q) \sim k_{\F}^{-1} $ at the Fermi surface. We therefore expect that for a large-volume limit, $ e(q)^{-1} $ both in the leading term and in the error estimate should be replaced by $ (e(q)+1)^{-1} $.
 
 
-
-\item \textit{Excitation contribution:} In~\cite{CHN23,CHN24}, both a bosonized and an exchange contribution were extracted for the correlation energy $ E_{\corr} = E_{\corr,\b} + E_{\corr,\ex} $. Here, in addition to our bosonized contribution $ n^{\RPA}(q) $, we are also able to extract an exchange contribution $ n_q^{\ex} $ in Lemma~\ref{lem:normalordering_errors}:
+\item In~\cite{CHN23,CHN24}, both a bosonized and an exchange contribution were extracted for the correlation energy. Here, in addition to the bosonization contribution $ n^{\RPA}(q) $, we also find an exchange contribution $ n^{\ex}(q) $ in Lemma~\ref{lem:normalordering_errors}, given by
 \begin{equation} \label{eq:nqex}
-	n_q^{\ex}
+	n^{\ex}(q)
 	\coloneq \sum_{\substack{m=1\\m:\textnormal{ odd}}}^\infty \frac{1}{(m+1)!} \sum_{j=0}^m {{m} \choose {j}}
 		\sum\limits_{\ell,\ell_1 \in \Z^3_*}\sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}} \!\!\!
 		K^{m-j}(\ell)_{r,q}
 		K^j(\ell)_{q,-r+\ell+\ell_1}
 		K(\ell_1)_{r,-r+\ell+\ell_1} \;.
 \end{equation}
-\todo{Maybe, write this in a nicer form, if possible.}
-From Lemma~\ref{lem:estnqex}, it follows that $ n_q^{\ex} \le C k_{\F}^{-2} e(q)^{-2} $ for our case $ \hat{V} \in \ell^1 $, so $ n_q^{\ex} $ can be treated as an error. However, for Coulomb potentials $ \hat{V}(k) \sim |k|^{-2} $, we expect $ n_q^{\ex} \le C k_{\F}^{-1} e(q)^{-2} $, so the exchange term \emph{does} matter close to the Fermi surface.\\
-This situation is analogous to the correlation energy: For $ \sum_k \hat{V}(k) |k| $ (as in~\cite{CHN21}), one has $ E_{\corr,\b} \sim \hbar^2 k_{\F} $ and $ E_{\corr,\ex} \sim \hbar^2 k_{\F}^{-1} $, so the exchange term is an error. However, for Coulomb potentials~\cite{CHN23,CHN24}, $ E_{\corr,\b} \sim \hbar^2 k_{\F} \log(k_{\F}) $ and $ E_{\corr,\ex} \sim \hbar^2 k_{\F} $, so the exchange contribution is only marginally subleading to the bosonized one.
+From Lemma~\ref{lem:estnqex}, it follows that $ n^{\ex}(q) \le C k_{\F}^{-2} e(q)^{-2} $ for $ \hat{V} \in \ell^1 $, so $ n^{\ex}(q) $ is subleading. However, for Coulomb potentials $ \hat{V}(k) \sim |k|^{-2} $, we expect $ n^{\ex}(q) \le C k_{\F}^{-1} e(q)^{-2} $, so the exchange term should become observable close to the Fermi surface.
+
+% This situation is analogous to the correlation energy: For $ \sum_k \hat{V}(k) |k| $ (as in~\cite{CHN21}), one has $ E_{\corr,\b} \sim \hbar^2 k_{\F} $ and $ E_{\corr,\ex} \sim \hbar^2 k_{\F}^{-1} $, so the exchange term is an error. However, for Coulomb potentials~\cite{CHN23,CHN24}, $ E_{\corr,\b} \sim \hbar^2 k_{\F} \log(k_{\F}) $ and $ E_{\corr,\ex} \sim \hbar^2 k_{\F} $, so the exchange contribution is only marginally subleading to the bosonized one.
 
 
-\item In analogy to~\cite[Sect.~1.1]{BL25}, in $ n^{\RPA}(q) $~\eqref{eq:nqb}, we may approximate $ \lambda_{\ell,q} \approx 2 k_{\F} |\ell| |\hat{\ell} \cdot \hat{q}| $ with $ \hat{q} := \frac{q}{|q|} $, then set $ \mu := t (2 k_{\F} |\ell|) $ and take the continuum limits $ \sum_{p \in L_\ell} \approx \int_{L_\ell} \di p $ and $ \sum_\ell \approx \int \di \ell $. The result is
+\item In analogy to~\cite[Section~1.1]{BL25}, in $ n^{\RPA}(q) $, we may approximate $ \lambda_{\ell,q} \approx 2 k_{\F} |\ell| |\hat{\ell} \cdot \hat{q}| $ with $ \hat{q} := {q}/{|q|} $, then set $ \mu := t (2 k_{\F} |\ell|) $ and take the continuum limit $ \sum_{p \in L_\ell} \approx \int_{L_\ell} \di p $ and $ \sum_\ell \approx \int \di \ell $. The result is
 \begin{equation}
 \begin{aligned}
 	n^{\RPA}(q)
@@ -372,16 +373,18 @@ This situation is analogous to the correlation energy: For $ \sum_k \hat{V}(k) |
 	Q_\ell(\mu) &:= \frac{\hat{V}(\ell)}{2 (2 \pi)^2} \left( 1 - \mu \arctan \left( \frac{1}{\mu} \right) \right) \;.
 \end{aligned}
 \end{equation}
-\textcolor{red}{This does not match with~\cite{BL25}. Reason: Our coupling is smaller by a factor of $ (2 \pi)^3 \kappa $.}
+This agrees with \cite{BL25} up to a factor $ (2 \pi)^3 \kappa $ multiplying $\hat{V}$, explained by the choice of coupling constant $k_\F^{-1}$ here compared to $N^{-1/3}$ there.
 
-\item \textit{Proof strategy:} The proof for main result for $q \in B_F^c$ follows firstly from a lengthy computation involving iterated application of Duhamel's formula and commutation relations detailed below. This results in an expansion containing a leading order term, errors generated at every iteration and a tail term which depends on the order of iteration. Then, we take the infinite $n$ limit, where $n$ is the number of iteration to infinity, which results in an expansion containing the leading order term and the errors, where the tail term goes to zero in the limit. Next we bound the errors against a bootstrap quantity which in turn depends on the momentum distribution itself. Then we recover the integral representation of the leading order and establish the scaling of the leading order. Finally with the use of a bootstrap argument,  we show that our errors are much smaller than the leading order.
+\item
+% \textit{Proof strategy:} The proof for main result for $q \in B_F^c$ follows firstly from a lengthy computation involving iterated application of Duhamel's formula and commutation relations detailed below. This results in an expansion containing a leading order term, errors generated at every iteration and a tail term which depends on the order of iteration. Then, we take the infinite $n$ limit, where $n$ is the number of iteration to infinity, which results in an expansion containing the leading order term and the errors, where the tail term goes to zero in the limit. Next we bound the errors against a bootstrap quantity which in turn depends on the momentum distribution itself. Then we recover the integral representation of the leading order and establish the scaling of the leading order. Finally with the use of a bootstrap argument,  we show that our errors are much smaller than the leading order.
 
-For $q \in B_F$, the analysis and the proof proceeds exactly as for $q \in B_F^c$, apart from a few key differences. The first difference Bogoliubov kernel, where the sum of the indices run over lenses shifted inside the Fermi ball or crescent sets:
+For $q \in B_F$, the proof is very similar to the case $q \in B_F^c$. Sums over lenses are shifted inside the Fermi ball to
 \begin{equation}
 	T_\ell \coloneq L_\ell -\ell = B_F \cap (B_F^c-\ell)\,.
 \end{equation}
 The quasi-bosonic creation-annihilation operators are defined in these crescent sets as well and all the other quantities defined with a sum over the momenta gets changed to be summed over the crescent sets.
-Next, due to the difference in the definition of $\mathcal{S}$, the commutation relation between $a^*_qa_q$ and $\mathcal{S}$ changes and it now fixes the momentum within the Fermi ball. The final expansion and the errors analysis of the many-body and the bosonization error follows exactly as the former case with the momenta beimg summed over these crescent sets. And we see that the bootstrap argument is independent of where $q$ lies, hence works in this latter case. And keeping these differences and following the proof gives us the result for all $q \in \Z^3$.
+\todo{The pair operators and trial state don't change, also definition of $S$ remains the same as before!}
+Next, due to the difference in the definition of $\mathcal{S}$, the commutation relation between $a^*_qa_q$ and $\mathcal{S}$ changes and it now fixes the momentum within the Fermi ball.
 \end{enumerate}
 \end{remarks}
 
@@ -462,7 +465,7 @@ satisfying $ K(-\ell)_{-p,-q} = K(\ell)_{p,q} $. This concludes the definition o
 
 
 
-We now extract the bosonized and exchange contributions $ n^{\RPA}(q) $ and $ n_q^{\ex} $ from the momentum distribution $ \langle \Psi, a_q^* a_q \Psi \rangle $ with $ \Psi = \Psi_N = R e^{-S} \Omega $, compare~\eqref{eq:Psitrial}. The particle--hole transformation $ R $ can easily be dealt with, since by~\eqref{eq:R}, it only reverses the momentum distribution inside the Fermi ball as
+We now extract the bosonized and exchange contributions $ n^{\RPA}(q) $ and $ n^{\ex}(q) $ from the momentum distribution $ \langle \Psi, a_q^* a_q \Psi \rangle $ with $ \Psi = \Psi_N = R e^{-S} \Omega $, compare~\eqref{eq:Psitrial}. The particle--hole transformation $ R $ can easily be dealt with, since by~\eqref{eq:R}, it only reverses the momentum distribution inside the Fermi ball as
 \begin{equation} \label{eq:momentum_dist_R_trafo}
 	\langle R \xi, a_q^* a_q R \xi \rangle
 	= \mathds{1}_{B_{\F}}(q) \big( 1 - \langle \xi, a_q^* a_q \xi \rangle \big)
@@ -481,7 +484,7 @@ So it suffices to consider the excitation vector $ \xi \coloneq e^{-S} \Omega = 
 	= \ldots \;,
 \end{aligned}
 \end{equation}
-leading to Proposition~\ref{prop:finexpan}, which is the main result of this section. Note that $ a_q \Omega = 0 $, from which we immediately conclude $ \langle \Omega, a_q^* a_q \Omega \rangle = 0 $. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n^{\RPA}(q) $ by bosonization, similarly as in~\cite{BL25}. The term $ n_q^{\ex} $ then appears when normal ordering the bosonization errors, similar to the exchange contribution to the correlation energy appearing in~\cite{CHN23}. Since $ n_q^{\ex} \ll n^{\RPA}(q) $ (compare Lemmas~\ref{lem:estnqex} and~\ref{lem:nqb_bounds}), we will treat $ n_q^{\ex} $ as a bosonization error.
+leading to Proposition~\ref{prop:finexpan}, which is the main result of this section. Note that $ a_q \Omega = 0 $, from which we immediately conclude $ \langle \Omega, a_q^* a_q \Omega \rangle = 0 $. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n^{\RPA}(q) $ by bosonization, similarly as in~\cite{BL25}. The term $ n^{\ex}(q) $ then appears when normal ordering the bosonization errors, similar to the exchange contribution to the correlation energy appearing in~\cite{CHN23}. Since $ n^{\ex}(q) \ll n^{\RPA}(q) $ (compare Lemmas~\ref{lem:estnqex} and~\ref{lem:nqb_bounds}), we will treat $ n^{\ex}(q) $ as a bosonization error.
 
 
 
@@ -664,7 +667,7 @@ Using reflection symmetry, we may replace $ \tilde{P}^q $ by $ P^q $ and restric
 \subsection{Normal Ordering the Many-Body Errors}
 \label{sec:extraction_ex}
 
-To facilitate bounding the many-body errors $ E_{Q_1} $ and $ E_{Q_2} $ in \eqref{eq:errKQ}, we normal-order them. The exchange contribution $ n_q^{\ex} $ then naturally appears by summing up the $ \C $-valued terms.
+To facilitate bounding the many-body errors $ E_{Q_1} $ and $ E_{Q_2} $ in \eqref{eq:errKQ}, we normal-order them. The exchange contribution $ n^{\ex}(q) $ then naturally appears by summing up the $ \C $-valued terms.
 
 \begin{lemma}[Normal ordering many-body errors] \label{lem:normalordering_errors}
 Recall the definition~\eqref{eq:errKQ} of $ E_{Q_1} $ and $ E_{Q_2} $. Then, for $ m \in \NNN $ and $ q \in B_{\F}^c $, we may write
@@ -723,9 +726,9 @@ The result follows by a lengthy but straightforward application of the CAR~\eqre
 
 We remark that the normal ordering can conveniently be executed and visualized in terms of Friedrichs diagrams~\cite{BL23}.
 
-In particular, the exchange contribution $ n_q^{\ex} $ in~\eqref{eq:nqex} follows as
+In particular, the exchange contribution $ n^{\ex}(q) $ in~\eqref{eq:nqex} follows as
 \begin{equation*}
-	n_q^{\ex}
+	n^{\ex}(q)
 	= \half \sum_{\substack{m=1\\m:\textnormal{ odd}}}^\infty \frac{1}{(m+1)!} n_q^{\ex,m} \;.
 \end{equation*}
 
