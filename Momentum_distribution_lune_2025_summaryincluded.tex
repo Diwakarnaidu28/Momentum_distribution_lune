@@ -300,7 +300,9 @@ and where $ \Z^3_* := \Z^3 \setminus \{0\} $. For $ q \in B_{\F} $, we analogous
 	n^{\RPA}(q) & 	\coloneq \sum_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q+\ell) \; \frac{1}{\pi}\int_0^\infty \frac{g_\ell (t^2-\lambda^2_{\ell,q+\ell}) (t^2 + \lambda^2_{\ell,q+\ell})^{-2}}{1 + 2g_\ell \sum_{p \in L_{\ell}}\lambda_{\ell,p} (t^2+\lambda^2_{\ell,p})^{-1}} \mathrm{d}t \;.
 \end{split}
 \end{equation}
-Therefore $ n^{\RPA}(q) $ represents the deviation of $ n(q) $ from the indicator function $ \mathds{1}_{B_{\F}}(q) $ we had in the non-interacting case. The scaling of $ n^{\RPA}(q) $ and of the error terms will depend on
+Therefore $ n^{\RPA}(q) $ represents the deviation of $ n(q) $ from the indicator function $ \mathds{1}_{B_{\F}}(q) $ we found in the non-interacting case.
+
+The scaling of $ n^{\RPA}(q) $ and of the error terms will depend on
 \begin{equation} \label{eq:eq}
 	e(q)
 	\coloneq \abs{|q|^2 - \inf_{p \in B_{\F}^c} |p|^2 + \half}
@@ -654,7 +656,7 @@ We then iteratively Duhamel-expand the $ Q_1$-- and $ Q_2 $--terms using Lemma~\
 	&\quad + \lambda \sum_{\ell \in \Z^3_*} \sum_{r \in L_{\ell}} \big\{ A(\ell), K(\ell) \big\}_{r,r} \;.
 \end{aligned}
 \end{equation}
-The $ E_{Q_1} $ and $ E_{Q_2} $-terms are not further expanded but collected in the error operator, and the $ \{A,K\} $-terms are extracted as leading-order contributions. The result after $ n $ steps is
+The $ E_{Q_1} $ and $ E_{Q_2} $-terms are not further expanded but collected in the error operator, and the $ \{A,K\} $-terms are extracted as leading-order contributions. The result after $ n $ expansion steps is
 \begin{equation}
 \begin{aligned}
 	&e^{S} (a_q^* a_q + a_{-q}^* a_{-q}) e^{-S} \\
