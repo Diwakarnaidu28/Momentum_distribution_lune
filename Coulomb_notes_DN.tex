@@ -265,18 +265,20 @@
 		&\leq \sum\limits_{j=1}^{m-1} \begin{aligned}[t] {{m}\choose j} &\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)\!\! 
 			\sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}\! \Bigg( \sum\limits_{s \in L_\ell} \abs{K^{j}(\ell)_{q,s}}^2\Bigg)^\half \bigg( \sum\limits_{s \in L_\ell}\norm{  b_{-s}(-\ell) a_{r-\ell} (\NN+1)^{\alpha}\psi}^2\bigg)^\half \times\nonumber\\ \times \Bigg( &\sum\limits_{s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r,s_1}}^2\Bigg)^\half \bigg(\sum\limits_{s_1 \in L_{\ell_1}}\norm{ K^{m-j}(\ell)_{r,q}  b_{-s_1}(-\ell_1)  a_{r-\ell_1} (\NN+1)^{-\alpha}\psi }^2\bigg)^\half
 		\end{aligned} \nonumber\\   
-		&\leq C\, \sum\limits_{j=1}^{m-1} \begin{aligned}[t]{{m}\choose j} &\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) k_F^{-\half}\, e(q)^{-\half} \hat{V}^{j}(\ell) \normmaxii{K(\ell_1)} \bigg( \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \norm{ a_{r-\ell} (\NN+1)^{\half+\alpha}\psi}^2\bigg)^\half \times \nonumber\\ \times 
-			\bigg( &\sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \sum\limits_{s_1 \in L_{\ell_1}}\norm{ K^{m-j}(\ell)_{r,q}  b_{-s_1}(-\ell_1)  a_{r-\ell_1} (\NN+1)^{-\alpha}\psi }^2\bigg)^\half
-		\end{aligned} \nonumber\\
-		&\leq C\, \sum\limits_{j=1}^{m-1} \begin{aligned}[t]{{m}\choose j} &\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_{\ell}}(q)  k_F^{-\half}\, e(q)^{-\half} \hat{V}^{j}(\ell) \normmaxii{K(\ell_1)}  
-			\norm{ (\NN+1)^{1+\alpha}\psi} \times \nonumber\\ \times 
-			\bigg( &\sum\limits_{r\in L_{\ell}\cap L_{\ell_1}}  \norm{ K^{m-j}(\ell)_{r,q} a_{r-\ell_1} (\NN+1)^{\half-\alpha}\psi }^2\bigg)^\half \end{aligned} \nonumber\\
 	\end{alignat}
-	We know that $\NN<(\NN+1)$, then for $\alpha = \half$, we have
+Now we do the split in the sum over $\ell_1$
+\begin{alignat}{2}
+	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\substack{\ell \in \Z^3_*,\\\ell_1 \in S}} \mathds{1}_{L_{\ell}}(q) 
+	\Bigg( \sum\limits_{s \in L_\ell} \abs{K^{j}(\ell)_{q,s}}^2\Bigg)^\half \bigg( \sum\limits_{r,s \in L_\ell}\norm{  b_{-s}(-\ell) a_{r-\ell} (\NN+1)^{\alpha}\psi}^2\bigg)^\half \times\nonumber\\ &\quad\times \Bigg( \sum\limits_{s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r,s_1}}^2\Bigg)^\half \bigg(\sum\limits_{r \in L_{\ell}}\abs{ K^{m-j}(\ell)_{r,q}  }^2\bigg)^\half \sup_{r' \in \Z^3}\bigg(\sum\limits_{s_1 \in L_{\ell_1}}\norm{ b_{-s_1}(-\ell_1)  a_{r'} (\NN+1)^{-\alpha}\psi }^2\bigg)^\half\nonumber\\ 
+	&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) 
+	\Bigg( \sum\limits_{s \in L_\ell} \abs{K^{j}(\ell)_{q,s}}^2\Bigg)^\half \bigg( \sum\limits_{r,s \in L_\ell}\norm{  b_{-s}(-\ell) a_{r-\ell} (\NN+1)^{\alpha}\psi}^2\bigg)^\half \times\nonumber\\ &\quad\times \Bigg(\sum\limits_{\ell_1 \in S} \sum\limits_{s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r,s_1}}^2\Bigg)^\half \bigg(\sum\limits_{r \in L_{\ell}}\abs{ K^{m-j}(\ell)_{r,q}  }^2\bigg)^\half \sup_{r' \in \Z^3}\bigg(\sum\limits_{s_1 \in \Z^3} \sum\limits_{\ell_1 \in S}\mathds{1}_{L_{\ell_1}}(s_1) \norm{ b_{-s_1}(-\ell_1)  a_{r'} (\NN+1)^{-\alpha}\psi }^2\bigg)^\half\nonumber\\ 
+	\end{alignat}
+	We know that $\NN<(\NN+1)$, then for $\alpha = 1$, we have
 	\begin{alignat}{2}
-		&\leq C\, \Xi_{\psi}^\half\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}  k_F^{-\half}\, e(q)^{-\half} \hat{V}^{j}(\ell)  \normmaxii{K(\ell_1)} \bigg(\sum\limits_{r\in L_\ell}  \abs{ K^{m-j}(\ell)_{r,q} }^2\bigg)^\half \norm{(\NN+1)^\frac{3}{2} \psi}  \nonumber\\
-		\eqref{eq:EQ2112}&\leq C\; k_F^{-\frac{3}{2}}\, e(q)^{-1} \Xi_{\psi}^\half \Bigg( \sum\limits_{\ell \in \Z^3_*}  \hat{V}^{m}(\ell) \Bigg) \Bigg(\sum\limits_{ \ell_1\in \Z^3_*} \hat{V}(\ell_1)\Bigg)  \norm{(\NN+1)^{\frac{3}{2}} \psi} \label{eq:estEQ2112}
-	\end{alignat} 
+	&\leq C \Xi^\half \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) 
+	\Bigg( \sum\limits_{s \in L_\ell} \abs{K^{j}(\ell)_{q,s}}^2\Bigg)^\half \bigg(\sum\limits_{r \in L_{\ell}}\abs{ K^{m-j}(\ell)_{r,q}  }^2\bigg)^\half\norm{  (\NN+1)^{2}\psi} \times\nonumber\\ &\quad\times \Bigg(\sum\limits_{\ell_1 \in S} \normmaxii{K(\ell_1)}^2\Bigg)^\half \nonumber\\ \label{eq:estEQ2112}
+	\end{alignat}
+Similarly for $\ell_1 \in S^c$, one only needs to do an extra Cauchy-Schwarz in $\ell$ and one has the estimate with $\ell^2$ norms in $\hat{V}$'s.\newline 
 	We estimate \eqref{eq:EQ2113} for $\ell_1 \in S$ as
 	\begin{align}
 		&\eqref{eq:EQ2113}\nonumber\\
@@ -296,7 +298,7 @@
 	\end{align}
 	We know that $\NN<(\NN+1)$, then for $\alpha = 1$, we have
 	\begin{align}
-		&\leq C \Bigg(\sum\limits_{\ell\in \Z^3_*}  \mathds{1}_{L_{\ell}}(q) \sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half \Bigg(\sum\limits_{ \ell_1\in S} \mathds{1}_{L_{\ell_1}}(q)\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{q,s_1}}^2\Bigg)^\half\norm{ (\NN+1)^2\psi}  \label{eq:estEQ2113c}
+		&\leq Ct  \Bigg(\sum\limits_{\ell\in \Z^3_*}  \mathds{1}_{L_{\ell}}(q) \sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half \Bigg(\sum\limits_{ \ell_1\in S} \mathds{1}_{L_{\ell_1}}(q)\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{q,s_1}}^2\Bigg)^\half\norm{ (\NN+1)^2\psi}  \label{eq:estEQ2113c}
 	\end{align}
 	Then adding \eqref{eq:estEQ2111},\eqref{eq:estEQ2112} and \eqref{eq:estEQ2113} and using Lemma \ref{lem:normsk}, we arrive at the bound above \eqref{eq:estEQ211}. One can bound $\abs{\eva{\psi,\left(E^{\,2}_{Q_2}+\mathrm{h.c.}\right) \psi }}$ similarly.
 \end{proof}
