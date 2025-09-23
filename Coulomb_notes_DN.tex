@@ -1,0 +1,306 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage{amsmath, amssymb, amsfonts, physics, braket, hhline, mathtools, cancel, bigints,geometry}
+\usepackage{amsthm}
+\usepackage{pgfplots, subcaption, floatrow, footnote, adjustbox,float,fancyvrb, colonequals}
+\usepackage{graphicx, grffile, epsfig, listings}
+\usepackage{verbatim, dsfont, accents}
+\usepackage{textcomp}
+\usepackage{pdfpages}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage[toc,page]{appendix}
+\usepackage{authblk}
+\usepackage[bookmarksnumbered=true]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing, patterns}
+\usepackage{capt-of, caption}  %for captions in minipages
+\usepackage[capitalise]{cleveref}
+\crefname{equation}{}{}
+\usepackage[textsize=footnotesize,textwidth=2.5cm]{todonotes}
+% \usepackage[color]{showkeys}
+
+\numberwithin{equation}{section}
+\setcounter{tocdepth}{1}
+\renewcommand\Affilfont{\itshape\footnotesize}
+
+
+
+\title{Coulomb Estimates}
+
+\author[1,*]{Niels Benedikter}
+\author[2,**]{Sascha Lill}
+\author[3,*]{Diwakar Naidu}
+\affil[1]{ORCID: \href{https://orcid.org/0000-0002-1071-6091}{0000-0002-1071-6091}, e--mail: \href{mailto:niels.benedikter@unimi.it}{niels.benedikter@unimi.it}}
+\affil[2]{ORCID: \href{https://orcid.org/0000-0002-9474-9914}{0000-0002-9474-9914}, e--mail: \href{mailto:sali@math.ku.dk}{sali@math.ku.dk}}
+\affil[3]{e--mail: \href{mailto:diwakar.naidu@unimi.it}{diwakar.naidu@unimi.it}}
+\affil[*]{Università degli Studi di Milano, Via Cesare Saldini 50, 20133 Milano, Italy}
+\affil[**]{University of Copenhagen, Universitetsparken 5, DK-2100 Copenhagen, Denmark}
+
+\addtolength{\textwidth}{2.0cm}
+\addtolength{\hoffset}{-1.0cm}
+\addtolength{\textheight}{2.4cm}
+\addtolength{\voffset}{-1.5cm} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bA}{\boldsymbol{A}}
+\newcommand{\bB}{\boldsymbol{B}}
+\newcommand{\bC}{\boldsymbol{C}}
+\newcommand{\bD}{\boldsymbol{D}}
+\newcommand{\bE}{\boldsymbol{E}}
+\newcommand{\bF}{\boldsymbol{F}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\fn}{\mathfrak{n}}
+\newcommand{\fC}{\mathfrak{C}}
+\newcommand{\fR}{\mathfrak{R}}
+
+\newcommand{\CCC}{\mathbb{C}}
+\newcommand{\NNN}{\mathbb{N}}
+\newcommand{\RRR}{\mathbb{R}}
+\newcommand{\TTT}{\mathbb{T}}
+\newcommand{\ZZZ}{\mathbb{Z}}
+\newcommand{\Zbb}{\mathbb{Z}}
+
+\newcommand{\ulambda}{\underline{\lambda}}
+
+\newcommand{\1}{\mathbb{I}}
+\renewcommand{\a}{\textnormal{a}}
+\newcommand{\ad}{\mathrm{ad}}
+\renewcommand{\b}{\textnormal{b}}
+\newcommand{\Bog}{\textnormal{Bog}}
+\newcommand{\corr}{\textnormal{corr}}
+\newcommand{\Coul}{\textnormal{Coul}}
+\renewcommand{\d}{\textnormal{d}}
+\newcommand{\di}{\textnormal{d}}
+\newcommand{\DV}{\mathrm{DV}}
+\newcommand{\diam}{\mathrm{diam}}
+\newcommand{\eff}{\mathrm{eff}}
+\newcommand{\ex}{\mathrm{ex}}
+\newcommand{\F}{\mathrm{F}}
+\newcommand{\FS}{\mathrm{FS}}
+\newcommand{\GS}{\mathrm{GS}}
+\newcommand{\HF}{\mathrm{HF}}
+\newcommand{\HS}{\mathrm{HS}}
+\newcommand{\I}{\mathrm{I}}
+\newcommand{\II}{\mathrm{II}}
+\newcommand{\III}{\mathrm{III}}
+\newcommand{\IV}{\mathrm{IV}}
+\newcommand{\V}{\mathrm{V}}
+\newcommand{\IIa}{\mathrm{IIa}}
+\newcommand{\IIb}{\mathrm{IIb}}
+\newcommand{\IIc}{\mathrm{IIc}}
+\newcommand{\IId}{\mathrm{IId}}
+\renewcommand{\Im}{\mathrm{Im}}
+\newcommand{\nor}{\mathrm{nor}}
+\renewcommand{\Re}{\mathrm{Re}}
+\newcommand{\RPA}{\mathrm{RPA}}
+\newcommand{\SR}{\mathrm{SR}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\trial}{\mathrm{trial}}
+%\newcommand{\tr}{\mathrm{Tr}}
+\newcommand{\kF}{k_\F}
+\newcommand{\BF}{B_\F}
+\newcommand{\BFc}{B_\F^c}
+\newcommand{\Ik}{\mathcal{I}_k}
+\newcommand{\north}{\Gamma^{\textnormal{nor}}}
+\newcommand{\fock}{\mathcal{F}}
+\newcommand{\Ncal}{\mathcal{N}}
+\newcommand{\Ecal}{\mathcal{E}}
+\newcommand{\Nbb}{\mathbb{N}}
+\newcommand{\Ical}{\mathcal{I}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Cbb}{\mathbb{C}}
+\newcommand{\tagg}[1]{ \stepcounter{equation} \tag{\theequation}
+\label{#1} } % add tag and label in align*-environments
+
+
+\DeclareMathOperator{\R}{\mathbb{R}}
+\DeclareMathOperator{\C}{\mathbb{C}}
+\DeclareMathOperator{\N}{\mathbb{N}}
+\DeclareMathOperator{\Z}{\mathbb{Z}}
+\DeclareMathOperator{\T}{\mathbb{T}}
+
+\DeclareMathOperator{\QQ}{\mathcal{Q}}
+\DeclareMathOperator{\HH}{\mathcal{H}}
+\DeclareMathOperator{\LL}{\mathcal{L}}
+\DeclareMathOperator{\KK}{\mathcal{K}}
+\DeclareMathOperator{\NN}{\mathcal{N}}
+
+\DeclareMathOperator{\SH}{\mathscr{H}}
+\DeclareMathOperator{\Psis}{\Psi^*}
+\newcommand{\bint}{\bigintssss}
+\newcommand\Item[1][]{%
+  \ifx\relax#1\relax  \item \else \item[#1] \fi
+  \abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\dg}{^\dagger}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\eva}[1]{\left\langle #1 \right\rangle}
+\newcommand{\bracket}[2]{\left\langle #1 | #2 \right\rangle}
+\renewcommand{\det}[1]{\mathrm{det}\left( #1 \right)}
+\newcommand{\del}[1]{\frac{\partial}{\partial #1}}
+\newcommand{\fulld}[1]{\frac{d}{d #1}}
+\newcommand{\fulldd}[2]{\frac{d #1}{d #2}}
+\newcommand{\dell}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\delltwo}[2]{\frac{\partial^2 #1}{\partial #2 ^2}}  
+\newcommand{\com}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\normmax}[1]{\norm{#1}_{\max}}
+\newcommand{\normmaxi}[1]{\norm{#1}_{\mathrm{max,1}}}
+\newcommand{\normmaxii}[1]{\norm{#1}_{\mathrm{max,2}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THEOREMSTYLES
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{remarks}{Remarks}
+
+\theoremstyle{remark}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{remark}[theorem]{Remark}
+
+% UNNUMBERED VERSIONS
+\theoremstyle{plain}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem*{proposition*}{Proposition}
+
+
+\theoremstyle{definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem*{problem*}{Problem}
+\newtheorem*{assumption*}{Assumption}
+\newtheorem*{example*}{Example}
+
+\theoremstyle{remark}
+\newtheorem*{claim*}{Claim}
+\newtheorem*{remark*}{Remark}
+%%\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
+%% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+\maketitle
+\section{Coulomb estimates}
+\begin{lemma}[$E_{Q_2}^{\,1}$]\label{lem:EQ211}
+	For any $\psi \in \HH_N$, we have
+	\begin{align}
+		\abs{\eva{\psi,\left(E^{\,1}_{Q_2}+E^{\,2}_{Q_2}+\mathrm{h.c.}\right) \psi }}
+		\leq \label{eq:estEQ211}
+	\end{align}
+\end{lemma}
+\begin{proof}
+	We start with the L.H.S. of \eqref{eq:estEQ211}.
+	\begin{align}
+		&\abs{\eva{\psi,\left(E^{\,1}_{Q_2}+\mathrm{h.c.}\right) \psi }} = \abs{\eva{\psi,2\mathrm{Re}\left(E^{\,1}_{Q_2}\right) \psi }} = 2\abs{\eva{\psi, E^{\,1}_{Q_2} \psi }}\nonumber\\
+		\leq\,\;4& \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \abs{\eva{\psi, \sum\limits_{s_1\in L_{\ell_1}} K^m(\ell )_{r,q} K(\ell_1)_{r,s_1} a^*_{r-\ell_1}  b^*_{-s_1}(-\ell_1) b_{-q}(-\ell) a_{r-\ell}  \psi }}\label{eq:EQ2111}\\
+		+\,4& \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}  \abs{\eva{\psi, \sum\limits_{\substack{s \in L_{\ell},\\ s_1\in L_{\ell_1}}} K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{-s_1}(-\ell_1) b_{-s}(-\ell) a_{r-\ell} \psi }}\label{eq:EQ2112}\\
+		+\,4&\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q) \mathds{1}_{L_{\ell_1}}(q) \abs{\eva{\psi,  \sum\limits_{s \in L_{\ell}, s_1\in L_{\ell_1}} K^m(\ell)_{q,s}K(\ell_1)_{q,s_1}
+				a^*_{q-\ell_1} b^*_{-s_1}(-\ell_1) b_{-s}(-\ell) a_{q-\ell} \psi}} \label{eq:EQ2113}
+	\end{align}
+	where the last inequality is implied by Remark \ref{q-q} and we used \eqref{eq:decomptheta}.
+	For \eqref{eq:EQ2111}-\eqref{eq:EQ2113}, we start by using resolution of the identity $\mathds{1} = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$. Then we use the Cauchy-Schwarz inequality, Lemma \ref{lem:commNab} and the bounds from Lemma \ref{lem:pairest}. We estimate \eqref{eq:EQ2111} differently for when $\ell_1 \in S$ and $\ell_1 \in S^c$ as
+	\begin{align}
+		&\eqref{eq:EQ2111}\nonumber\\
+		&\leq\sum\limits_{\substack{\ell \in \Z^3_*,\\\ell_1 \in S}} \!\!\mathds{1}_{L_\ell}(q) \sum\limits_{ r \in L_\ell \cap L_{\ell_1}}    \norm{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1)  a_{r-\ell_1} (\NN+1)^{\alpha}\psi}\norm{ K^{m}(\ell)_{r,q}   b_{-q}(-\ell) a_{r-\ell} (\NN+1)^{-\alpha}\psi } \nonumber\\
+		&\leq \sum\limits_{\substack{\ell \in \Z^3_*,\\\ell_1 \in S}} \!\!\mathds{1}_{L_\ell}(q) \Bigg( \sum\limits_{r \in L_{\ell_1}} \norm{\sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} (\NN+1)^{\alpha}\psi}^2\Bigg)^\half \times\nonumber\\
+		&\quad \times \Bigg( \sum\limits_{r \in L_\ell}  \norm{  K^{m}(\ell)_{r,q}  b_{-q}(-\ell) a_{r-\ell} (\NN+1)^{-\alpha}\psi }^2\Bigg)^\half \nonumber\\
+		&\leq \sum\limits_{\substack{\ell \in \Z^3_*,\\ \ell_1 \in S}} \!\!\mathds{1}_{L_\ell}(q) \Bigg( \sum\limits_{r \in L_{\ell_1}} \bigg( \sum\limits_{s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r,s_1}}^2\bigg) \sum\limits_{s_1 \in L_{\ell_1}} \norm{ b_{-s_1}(-\ell_1)  a_{r-\ell_1} (\NN+1)^{\alpha}\psi}^2\Bigg)^\half \times\nonumber\\
+		&\quad \times  \abs{  K^{m}(\ell)_{r,q}} \norm{b_{-q}(-\ell) (\NN+1)^{\half-\alpha}\psi } \nonumber\\
+		&\leq \sum\limits_{\ell \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \Bigg( \sum\limits_{ \ell_1 \in S}  \sum\limits_{s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r,s_1}}^2\Bigg)^\half \Bigg(\sum\limits_{ \ell_1 \in S}  \sum\limits_{s_1 \in L_{\ell_1}} \sum\limits_{r \in L_{\ell_1}}\norm{ b_{-s_1}(-\ell_1)  a_{r-\ell_1} (\NN+1)^{\alpha}\psi}^2\Bigg)^\half \times\nonumber\\
+		&\quad \times  \abs{  K^{m}(\ell)_{r,q}} \norm{a_{-q} (\NN+1)^{\half-\alpha}\psi } \nonumber\\
+		&\leq \sum\limits_{\ell \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \Bigg( \sum\limits_{ \ell_1 \in S}  \sum\limits_{s_1 \in L_{\ell_1}}  \abs{K(\ell_1)_{r,s_1}}^2\Bigg)^\half \Bigg(  \sum\limits_{s_1 \in \Z^3} \sum\limits_{ \ell_1 \in S} \mathds{1}_{L_{\ell_1}}(s) \sum\limits_{r \in L_{\ell_1}} \norm{ a_{r-\ell_1} a_{-s_1+\ell_1}a_{-s_1}   (\NN+1)^{\alpha}\psi}^2\Bigg)^\half \times\nonumber\\
+		&\quad \times  \abs{  K^{m}(\ell)_{r,q}} \norm{a_{-q} (\NN+1)^{\half-\alpha}\psi } \nonumber\\
+	\end{align}
+	Then for $\alpha = \half$, we have 
+	\begin{align}
+		&\leq C \Xi^{\half} \Bigg(\sum\limits_{\ell \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \abs{  K^{m}(\ell)_{r,q}}\Bigg)  \Bigg( \sum\limits_{ \ell_1 \in S}    \normmaxii{K(\ell_1)}^2\Bigg)^\half  \norm{    (\NN+1)^{2}\psi} 
+	\end{align}
+	wherein we use $\NN<(\NN+1)$. For $\ell_1 \in S^c$. 
+	\begin{align}
+		&\eqref{eq:EQ2111}\nonumber\\
+		&\leq\sum\limits_{\substack{\ell \in \Z^3_*,\\\ell_1 \in S^c}} \!\!\mathds{1}_{L_\ell}(q) \sum\limits_{ r \in L_\ell \cap L_{\ell_1}}    \norm{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1)  a_{r-\ell_1} (\NN+1)^{\alpha}\psi}\norm{ K^{m}(\ell)_{r,q}   b_{-q}(-\ell) a_{r-\ell} (\NN+1)^{-\alpha}\psi } \nonumber\\
+		&\leq \sum\limits_{\substack{\ell \in \Z^3_*,\\\ell_1 \in S^c}} \!\!\mathds{1}_{L_\ell}(q) \Bigg( \sum\limits_{r \in L_{\ell_1}} \norm{\sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} (\NN+1)^{\alpha}\psi}^2\Bigg)^\half \times\nonumber\\
+		&\quad \times \Bigg( \sum\limits_{r \in L_\ell}  \norm{  K^{m}(\ell)_{r,q}  b_{-q}(-\ell) a_{r-\ell} (\NN+1)^{-\alpha}\psi }^2\Bigg)^\half \nonumber\\
+		&\leq \sum\limits_{\substack{\ell \in \Z^3_*,\\ \ell_1 \in S^c}} \!\!\mathds{1}_{L_\ell}(q) \Bigg( \sum\limits_{r \in L_{\ell_1}} \bigg( \sum\limits_{s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r,s_1}}^2\bigg) \sum\limits_{s_1 \in L_{\ell_1}} \norm{ b_{-s_1}(-\ell_1)  a_{r-\ell_1} (\NN+1)^{\alpha}\psi}^2\Bigg)^\half \times\nonumber\\
+		&\quad \times  \abs{  K^{m}(\ell)_{r,q}} \norm{a_{-q+\ell}a_{-q} (\NN+1)^{\half-\alpha}\psi } \nonumber\\
+		&\leq  \Bigg( \sum\limits_{ \ell_1 \in S^c}  \sum\limits_{s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r,s_1}}^2\Bigg)^\half \Bigg(\sum\limits_{ \ell_1 \in S^c}  \sum\limits_{s_1 \in L_{\ell_1}} \sum\limits_{r \in L_{\ell_1}}\norm{ b_{-s_1}(-\ell_1)  a_{r-\ell_1} (\NN+1)^{\alpha}\psi}^2\Bigg)^\half \times\nonumber\\
+		&\quad \times  \bigg(\sum\limits_{\ell \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q)\abs{  K^{m}(\ell)_{r,q}}^2\bigg)^\half \bigg(\sum\limits_{\ell \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q)\norm{a_{-q+\ell}a_{-q} (\NN+1)^{\half-\alpha}\psi }^2\bigg)^\half \nonumber\\
+		&\leq\Bigg( \sum\limits_{ \ell_1 \in S^c}    \normmaxii{K(\ell_1)}^2\Bigg)^\half \Bigg(  \sum\limits_{s_1 \in \Z^3} \sum\limits_{ \ell_1 \in S^c} \mathds{1}_{L_{\ell_1}}(s) \sum\limits_{r \in L_{\ell_1}} \norm{ a_{r-\ell_1} a_{-s_1+\ell_1}a_{-s_1}   (\NN+1)^{\alpha}\psi}^2\Bigg)^\half \times\nonumber\\
+		&\quad \times \bigg(\sum\limits_{\ell \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q)\abs{  K^{m}(\ell)_{r,q}}^2\bigg)^\half \norm{a_{q} (\NN+1)^{1-\alpha}\psi } \nonumber\\
+	\end{align}
+	Then for $\alpha = 1$, we have 
+	\begin{align}
+		&\leq C \Xi^{\half}\bigg(\sum\limits_{\ell \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q)\abs{  K^{m}(\ell)_{r,q}}^2\bigg)^\half \Bigg( \sum\limits_{ \ell_1 \in S^c}    \normmaxii{K(\ell_1)}^2\Bigg)^\half  \norm{    (\NN+1)^{\frac{5}{2}}\psi} \labelcpageref{eq:estEQ2111c}
+	\end{align}
+	We estimate \eqref{eq:EQ2112} as 
+	\begin{alignat}{2}
+		&\eqref{eq:EQ2112}\nonumber\\
+		&\leq \sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)\!\! \begin{aligned}[t]
+			\sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}\! &\norm{  \sum\limits_{s_1 \in L_{\ell_1}} K^{m-j}(\ell)_{r,q} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) a_{r-\ell_1} (\NN+1)^{-\alpha}\psi}\times\nonumber \\\times &\norm{\sum\limits_{s \in L_\ell} K^{j}(\ell)_{q,s}  b_{-s}(-\ell)  a_{r-\ell} (\NN+1)^{\alpha}\psi }
+		\end{aligned} \nonumber\\
+		&\leq \sum\limits_{j=1}^{m-1} \begin{aligned}[t] {{m}\choose j} &\sum\limits_{\ell, \ell_1\in \Z^3_*} \mathds{1}_{L_{\ell}}(q)\!\! 
+			\sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}\! \Bigg( \sum\limits_{s \in L_\ell} \abs{K^{j}(\ell)_{q,s}}^2\Bigg)^\half \bigg( \sum\limits_{s \in L_\ell}\norm{  b_{-s}(-\ell) a_{r-\ell} (\NN+1)^{\alpha}\psi}^2\bigg)^\half \times\nonumber\\ \times \Bigg( &\sum\limits_{s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r,s_1}}^2\Bigg)^\half \bigg(\sum\limits_{s_1 \in L_{\ell_1}}\norm{ K^{m-j}(\ell)_{r,q}  b_{-s_1}(-\ell_1)  a_{r-\ell_1} (\NN+1)^{-\alpha}\psi }^2\bigg)^\half
+		\end{aligned} \nonumber\\   
+		&\leq C\, \sum\limits_{j=1}^{m-1} \begin{aligned}[t]{{m}\choose j} &\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_{\ell}}(q) k_F^{-\half}\, e(q)^{-\half} \hat{V}^{j}(\ell) \normmaxii{K(\ell_1)} \bigg( \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \norm{ a_{r-\ell} (\NN+1)^{\half+\alpha}\psi}^2\bigg)^\half \times \nonumber\\ \times 
+			\bigg( &\sum\limits_{r\in L_{\ell} \cap L_{\ell_1}} \sum\limits_{s_1 \in L_{\ell_1}}\norm{ K^{m-j}(\ell)_{r,q}  b_{-s_1}(-\ell_1)  a_{r-\ell_1} (\NN+1)^{-\alpha}\psi }^2\bigg)^\half
+		\end{aligned} \nonumber\\
+		&\leq C\, \sum\limits_{j=1}^{m-1} \begin{aligned}[t]{{m}\choose j} &\sum\limits_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_{\ell}}(q)  k_F^{-\half}\, e(q)^{-\half} \hat{V}^{j}(\ell) \normmaxii{K(\ell_1)}  
+			\norm{ (\NN+1)^{1+\alpha}\psi} \times \nonumber\\ \times 
+			\bigg( &\sum\limits_{r\in L_{\ell}\cap L_{\ell_1}}  \norm{ K^{m-j}(\ell)_{r,q} a_{r-\ell_1} (\NN+1)^{\half-\alpha}\psi }^2\bigg)^\half \end{aligned} \nonumber\\
+	\end{alignat}
+	We know that $\NN<(\NN+1)$, then for $\alpha = \half$, we have
+	\begin{alignat}{2}
+		&\leq C\, \Xi_{\psi}^\half\sum\limits_{j=1}^{m-1} {{m}\choose j} \sum\limits_{\ell, \ell_1\in \Z^3_*}  k_F^{-\half}\, e(q)^{-\half} \hat{V}^{j}(\ell)  \normmaxii{K(\ell_1)} \bigg(\sum\limits_{r\in L_\ell}  \abs{ K^{m-j}(\ell)_{r,q} }^2\bigg)^\half \norm{(\NN+1)^\frac{3}{2} \psi}  \nonumber\\
+		\eqref{eq:EQ2112}&\leq C\; k_F^{-\frac{3}{2}}\, e(q)^{-1} \Xi_{\psi}^\half \Bigg( \sum\limits_{\ell \in \Z^3_*}  \hat{V}^{m}(\ell) \Bigg) \Bigg(\sum\limits_{ \ell_1\in \Z^3_*} \hat{V}(\ell_1)\Bigg)  \norm{(\NN+1)^{\frac{3}{2}} \psi} \label{eq:estEQ2112}
+	\end{alignat} 
+	We estimate \eqref{eq:EQ2113} for $\ell_1 \in S$ as
+	\begin{align}
+		&\eqref{eq:EQ2113}\nonumber\\
+		&\leq\sum\limits_{\substack{\ell\in \Z^3_*,\\ \ell_1\in S}} \mathds{1}_{L_{\ell_1}}(q) \mathds{1}_{L_{\ell}}(q)  \norm{ \sum\limits_{s\in L_{\ell}} K^m(\ell)_{q,s} b_{-s}(-\ell) a_{q-\ell}(\NN+1)^{-\alpha}\psi}\norm{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{q,s_1} b_{-s_1}(-\ell_1)a_{q-\ell_1} (\NN+5)^{\alpha} \psi }\nonumber\\
+		&\leq\sum\limits_{\substack{\ell\in \Z^3_*,\\ \ell_1\in S}} \mathds{1}_{L_{\ell_1}}(q) \mathds{1}_{L_{\ell}}(q)  \bigg(\sum\limits_{s\in L_{\ell}}\abs{  K^m(\ell)_{q,s}}^2 \bigg)^\half \bigg(\sum\limits_{s\in L_{\ell}}\norm{   b_{-s}(-\ell) a_{q-\ell}(\NN+1)^{-\alpha}\psi}^2\bigg)^\half \times \\ &\quad \times\bigg(\sum\limits_{s_1\in L_{\ell_1}}\abs{  K(\ell_1)_{q,s_1}}^2 \bigg)^\half \bigg(\sum\limits_{s_1 \in L_{\ell_1}}\norm{ b_{-s_1}(-\ell_1)a_{q-\ell_1} (\NN+5)^{\alpha} \psi }^2\bigg)^\half\nonumber\\
+		&\leq\sum\limits_{\ell\in \Z^3_*}  \mathds{1}_{L_{\ell}}(q) \Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half \Bigg(\sum\limits_{ \ell_1\in S} \mathds{1}_{L_{\ell_1}}(q)\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{q,s_1}}^2\Bigg)^\half \times \\ &\quad\times \norm{ a_{q-\ell} \NN^\half (\NN+1)^{-\alpha}\psi} \bigg(\sum\limits_{ \ell_1\in S} \mathds{1}_{L_{\ell_1}}(q) \norm{ a_{q-\ell_1} \NN^\half (\NN+5)^{\alpha} \psi }^2\bigg)^\half\nonumber\\
+	\end{align}
+	We know that $\NN<(\NN+1)$, then for $\alpha = \half$, we have
+	\begin{align}
+		&\leq C \Xi_{\psi}^\half \sum\limits_{\ell\in \Z^3_*}  \mathds{1}_{L_{\ell}}(q) \Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half \Bigg(\sum\limits_{ \ell_1\in S} \mathds{1}_{L_{\ell_1}}(q)\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{q,s_1}}^2\Bigg)^\half\norm{ (\NN+1)^{\frac{3}{2}}\psi}^\half  \label{eq:estEQ2113}
+	\end{align}
+	For $\ell \in S^c$
+	\begin{align}
+		&\eqref{eq:EQ2113}\nonumber\\
+		&\leq\sum\limits_{\substack{\ell\in \Z^3_*,\\ \ell_1\in S^c}} \mathds{1}_{L_{\ell_1}}(q) \mathds{1}_{L_{\ell}}(q)  \norm{ \sum\limits_{s\in L_{\ell}} K^m(\ell)_{q,s} b_{-s}(-\ell) a_{q-\ell}(\NN+1)^{-\alpha}\psi}\norm{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{q,s_1} b_{-s_1}(-\ell_1)a_{q-\ell_1} (\NN+5)^{\alpha} \psi }\nonumber\\
+		&\leq\sum\limits_{\ell\in \Z^3_*}  \mathds{1}_{L_{\ell}}(q) \Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half \Bigg(\sum\limits_{ \ell_1\in S^c} \mathds{1}_{L_{\ell_1}}(q)\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{q,s_1}}^2\Bigg)^\half \times \\ &\quad\times \norm{ a_{q-\ell} \NN^\half (\NN+1)^{-\alpha}\psi} \bigg(\sum\limits_{ \ell_1\in S^c} \mathds{1}_{L_{\ell_1}}(q) \norm{ a_{q-\ell_1} \NN^\half (\NN+5)^{\alpha} \psi }^2\bigg)^\half\nonumber\\
+	\end{align}
+	We know that $\NN<(\NN+1)$, then for $\alpha = 1$, we have
+	\begin{align}
+		&\leq C \Bigg(\sum\limits_{\ell\in \Z^3_*}  \mathds{1}_{L_{\ell}}(q) \sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half \Bigg(\sum\limits_{ \ell_1\in S} \mathds{1}_{L_{\ell_1}}(q)\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{q,s_1}}^2\Bigg)^\half\norm{ (\NN+1)^2\psi}  \label{eq:estEQ2113c}
+	\end{align}
+	Then adding \eqref{eq:estEQ2111},\eqref{eq:estEQ2112} and \eqref{eq:estEQ2113} and using Lemma \ref{lem:normsk}, we arrive at the bound above \eqref{eq:estEQ211}. One can bound $\abs{\eva{\psi,\left(E^{\,2}_{Q_2}+\mathrm{h.c.}\right) \psi }}$ similarly.
+\end{proof}
+
+
+
+\end{document}
