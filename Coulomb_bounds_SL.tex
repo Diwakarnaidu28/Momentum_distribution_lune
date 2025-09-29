@@ -1181,7 +1181,7 @@ Let $ \sum_{\ell \in \Z_3^*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-
 	\leq C^m \big( k_{\F}^{-\frac 32 + \varepsilon}
 		+ k_{\F}^{-1 + \varepsilon} \Xi^\half \big)
 		e(q)^{-1} \Xi^{\half}
-		\norm{(\NN+1)^{\frac 32} \xi_\lambda } \;.
+		\norm{(\NN+1)^{\frac 32} \xi_\lambda }^2 \;.
 \end{aligned}
 \end{equation}
 If $ \sum_{\ell \in \Z_3^*} \hat{V}(\ell) < \infty $, then we have the even better bound
@@ -1334,7 +1334,7 @@ Adding up all bounds yields the claimed result.
 
 
 \begin{proof}[Proof of Proposition~\ref{prop:finEQ1est}]
-We add together the bounds from Lemmas~\ref{lem:EQ111} and~\ref{lem:EQ112} and use the Gr\"onwall bound, Lemma \ref{lem:gronNest}, to get $ \norm{(\NN+1)^{\frac 32} \xi_\lambda} \le C $.
+We add together the bounds from Lemmas~\ref{lem:EQ111} and~\ref{lem:EQ112} and use the Gr\"onwall bound, Lemma \ref{lem:gronNest}, to get $ \norm{(\NN+1)^{\frac{a}{2}} \xi_\lambda} \le C $ for any $ a \in \NN $.
 \end{proof}
 
 
@@ -1360,16 +1360,7 @@ To prove this proposition, we must control the error terms $ E^{m,1}_{Q_2} $ thr
 
 
 \begin{lemma} \label{lem:EQ211}
-For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $ there exist constants $ C, C_\varepsilon > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $,
-\begin{align}
-	&\abs{\eva{\xi_\lambda,\left(E^{m,1}_{Q_2}+E^{m,2}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }} \nonumber \\
-	&\leq C_\varepsilon C^m \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)
-		\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)
-		e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half 
-		+ k_{\F}^{-1}\Xi^{1-\varepsilon} \right)
-		\norm { (\NN+1)^{\frac 52} \xi_\lambda } \;. \label{eq:estEQ211}
-\end{align}
-\textcolor{green!30!black}{Moreover, in the Coulomb case $ \hat{V}(\ell) \le C |\ell|^{-2} $, the following bound holds true for any $ \alpha \ge 0 $:
+Let $ \sum_{\ell \in \Z_3^*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $, the following bound is true for any $ \alpha \ge 0 $:
 \begin{align}
 	\abs{\eva{\xi_\lambda,\left(E^{m,1}_{Q_2}+E^{m,2}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }}
 	\leq C^m
@@ -1378,9 +1369,14 @@ For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $ there exist
 		+ k_{\F}^{-1-\frac{\alpha}{2}} 
 		+ k_{\F}^{-1+\alpha} \Xi^{\half} \big)
 		\norm { (\NN+1)^{\frac 52} \xi_\lambda }^2 \;. \label{eq:estEQ211_Coulomb}
-\end{align}}
-
-
+\end{align}
+If $ \sum_{\ell \in \Z_3^*} \hat{V}(\ell) < \infty $, given $ \varepsilon > 0 $, there exists $ C_\varepsilon > 0 $ such that we have the even better bound
+\begin{align}
+	\abs{\eva{\xi_\lambda,\left(E^{m,1}_{Q_2}+E^{m,2}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }}
+	\leq C_\varepsilon C^m e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half 
+		+ k_{\F}^{-1}\Xi^{1-\varepsilon} \right)
+		\norm { (\NN+1)^{\frac 52} \xi_\lambda } \;. \label{eq:estEQ211}
+\end{align}
 \end{lemma}
 
 \begin{proof}
