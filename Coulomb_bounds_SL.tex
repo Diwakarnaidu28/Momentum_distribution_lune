@@ -1178,7 +1178,7 @@ Let $ \sum_{\ell \in \Z_3^*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-
 \begin{equation} \label{eq:estEQ112_Coulomb}
 \begin{aligned}
 	\abs{\eva{\xi_\lambda,\left(E^{m,3}_{Q_1}+\mathrm{h.c.}\right) \xi_\lambda }}\nonumber
-	\leq C^m \big( k_{\F}^{-\frac 32 + \varepsilon}
+	\leq C_\varepsilon C^m \big( k_{\F}^{-\frac 32 + \varepsilon}
 		+ k_{\F}^{-1 + \varepsilon} \Xi^\half \big)
 		e(q)^{-1} \Xi^{\half}
 		\norm{(\NN+1)^{\frac 32} \xi_\lambda }^2 \;.
@@ -1501,14 +1501,24 @@ Summing up the three bounds, respectively, concludes the proof.
 
 
 \begin{lemma} \label{lem:EQ215}
-For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $,
-\begin{align}
-	\abs{\eva{\xi_\lambda,\left(E^{m,3}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }}
-	\leq C^m \Bigg(\sum\limits_{\ell\in \Z^3_*} \hat{V}(\ell)^m \Bigg)
-		\Bigg(\sum\limits_{\ell_1\in \Z^3_*} \hat{V}(\ell_1) \Bigg)
-		k_{\F}^{-\frac{3}{2}} e(q)^{-1} \Xi^{\half}
-		\norm{(\NN+1)^\half \xi_\lambda } \;. \label{eq:estEQ215}
-\end{align}
+Let $ \sum_{\ell \in \Z_3^*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $, there exist $ C, C_\varepsilon > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $,
+\begin{equation} \label{eq:estEQ215_Coulomb}
+\begin{aligned}
+	\abs{\eva{\xi_\lambda,\left(E^{m,3}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }}\nonumber
+	\leq C_\varepsilon C^m \big( k_{\F}^{-\frac 32}
+		+ k_{\F}^{-1 + \varepsilon} \Xi^\half \big)
+		e(q)^{-1} \Xi^{\half}
+		\norm{(\NN+1)^{\frac 32} \xi_\lambda }^2 \;.
+\end{aligned}
+\end{equation}
+If $ \sum_{\ell \in \Z_3^*} \hat{V}(\ell) < \infty $, then we have the even better bound
+\begin{equation} \label{eq:estEQ215}
+\begin{aligned}
+	\abs{\eva{\xi_\lambda,\left(E^{m,3}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }}\nonumber
+	\leq C^m k_{\F}^{-\frac{3}{2}} e(q)^{-1} \Xi^{\half}
+		\norm{(\NN+1)^\half \xi_\lambda } \;.
+\end{aligned}
+\end{equation}
 \end{lemma}
 
 \begin{proof}
@@ -1523,7 +1533,29 @@ Splitting the anticommutator in $ E^{m,3}_{Q_2} $~\eqref{eq:expandedEQ2} via~\eq
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,-r+\ell+\ell_1} a^*_{r-\ell_1} a^*_{r-\ell-\ell_1} b_{-s}(-\ell) \xi_\lambda} \;. \\
 \end{aligned}
 \end{equation}
-Using the Cauchy--Schwarz inequality and Lemmas~\ref{lem:normsk} and~\ref{lem:pairest} we get
+Using the Cauchy--Schwarz inequality, Lemmas~\ref{lem:normsk} and~\ref{lem:pairest}, as well as $ \norm{a_q} \le 1 $, we get
+\textcolor{green!30!black}{
+\begin{align}
+	&\sum_{\ell,\ell_1 \in \Z^3_*} |\I_0(\ell, \ell_1)| \nonumber\\
+	&\leq \sum_{\ell,\ell_1 \in \Z^3_*} \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1} \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}
+		\norm{K^m(\ell)_{r,q} K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell-\ell_1} a_{r-\ell_1} (\NN+1)^\half \xi_\lambda}
+		\norm{ b_{-q}(-\ell) (\NN+1)^{-\half} \xi_\lambda}\nonumber\\
+	&\leq \sum_{\ell \in \Z^3_*} (C \hat{V}(\ell))^m 
+		k_{\F}^{-1} e(q)^{-1} \sum\limits_{r \in \Z^3}
+		\Bigg( \sum_{\ell_1 \in \Z^3_*} \mathds{1}_{L_{\ell_1} \cap -L_{\ell_1}+\ell+\ell_1 }(r) |K(\ell_1)_{r,-r+\ell+\ell_1}|^2 \Bigg)^{\half} \times \nonumber\\
+	&\quad \times \Bigg( \sum_{\ell_1 \in \Z^3_*} \norm{a_{r-\ell_1} (\NN+1)^\half \xi_\lambda}^2 \Bigg)^{\half}
+		\norm{ a_{-q} a_{-q-\ell} (\NN+1)^{-\half} \xi_\lambda}\nonumber\\
+	&\leq \Bigg( \sum_{\ell \in \Z^3_*} (C \hat{V}(\ell))^{2m} \Bigg)^{\half} 
+		k_{\F}^{-1} e(q)^{-1} \sum\limits_{r \in \Z^3} e(r)^{-1} k_{\F}^{-1}
+		\Bigg( \sum_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1)^2 \Bigg)^{\half} \times \nonumber\\
+	&\quad \times \norm{(\NN+1) \xi_\lambda}
+		\Bigg( \sum_{\ell \in \Z^3_*} \norm{ a_{-q} a_{-q-\ell} (\NN+1)^{-\half} \xi_\lambda}^2 \Bigg)^{\half} \nonumber\\
+	&\leq C_\varepsilon C^m k_{\F}^{-1 + \varepsilon} e(q)^{-1}
+		\norm{ (\NN+1) \xi_\lambda } \Xi^{\half} \;. \label{eq:estEQ2151_Coulomb}
+\end{align}
+Note that we used $ |K(\ell_1)_{r,-r+\ell+\ell_1}| \le C k_{\F}^{-1} \hat{V}(\ell_1) \lambda_{\ell_1,r}^{-1} $ with $ \lambda_{\ell_1,r} \ge C e(r) $ and that~\cite[Lemma~3.2]{CHN24} $ \sum_{r \in \Z^3} e(r)^{-1} \le C_\varepsilon k_{\F}^{1+\varepsilon} $.\\
+The bound for $ \sum_{\ell} \hat{V}(\ell) < \infty $ is considerably easier and stronger:
+}
 \begin{align}
 	|\I_0(\ell, \ell_1)|
 	&\leq \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1} \\ \cap (-L_{\ell_1}+\ell+\ell_1)}} \norm{K^m(\ell)_{r,q} K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell-\ell_1} a_{r-\ell_1} \xi_\lambda}\norm{ b_{-q}(-\ell) \xi_\lambda}\nonumber\\
@@ -1534,7 +1566,32 @@ Using the Cauchy--Schwarz inequality and Lemmas~\ref{lem:normsk} and~\ref{lem:pa
 		k_{\F}^{-\frac 32} e(q)^{-1}
 		\norm{ (\NN+1)^\half \xi_\lambda } \Xi^{\half} \;. \label{eq:estEQ2151}
 \end{align}
+\textcolor{green!30!black}{
 For $ 1 \le j \le m-1 $, we proceed as follows:
+\begin{align}
+	&\sum_{\ell,\ell_1 \in \Z^3_*} |\I_j(\ell, \ell_1)| \nonumber\\
+	&\leq \sum_{\ell,\ell_1 \in \Z^3_*} \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell_1}+\ell+\ell_1)}}
+		\norm{ K^{m-j}(\ell)_{r,q} K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell-\ell_1} a_{r-\ell_1} \xi_\lambda}
+		\sum\limits_{s \in L_{\ell}}
+		\norm{ K^j(\ell)_{q,s} b_{-s}(-\ell) \xi_\lambda }\nonumber\\
+	&\leq \sum_{\ell \in \Z^3_*} (C \hat{V}(\ell))^m k_{\F}^{-1} e(q)^{-1}
+		\sum_{r \in \Z^3}
+		\Bigg( \sum_{\ell_1 \in \Z^3_*} \mathds{1}_{L_{\ell_1} \cap -L_{\ell_1}+\ell+\ell_1 }(r) |K(\ell_1)_{r,-r+\ell+\ell_1}|^2 \Bigg)^{\half} \times \nonumber\\
+	&\quad \times \Bigg( \sum_{\ell_1 \in \Z^3_*} \norm{ a_{r-\ell-\ell_1} a_{r-\ell_1} \xi_\lambda}^2 \Bigg)^{\half}
+		\Xi^\half \nonumber\\
+	&\leq \sum_{\ell \in \Z^3_*} (C \hat{V}(\ell))^m k_{\F}^{-1} e(q)^{-1}
+		\sum_{r \in \Z^3} e(r)^{-1} k_{\F}^{-1}
+		\Bigg( \sum_{\ell_1 \in \Z^3_*} \norm{ a_{r-\ell-\ell_1} a_{r-\ell_1} \xi_\lambda}^2 \Bigg)^{\half}
+		\Xi^\half \nonumber\\
+	&\leq C^m k_{\F}^{-1} e(q)^{-1}
+		\sum_{r \in \Z^3} e(r)^{-1} k_{\F}^{-1}
+		\Bigg( \sum_{\ell,\ell_1 \in \Z^3_*} \norm{ a_{r-\ell-\ell_1} a_{r-\ell_1} \xi_\lambda}^2 \Bigg)^{\half}
+		\Xi^\half \nonumber\\
+	&\leq C^m k_{\F}^{-1+\varepsilon} e(q)^{-1}
+		\norm{ (\NN+1) \xi_\lambda}
+		\Xi^\half \;. \label{eq:estEQ2152_Coulomb}
+\end{align}
+The corresponding bound for $ \sum_\ell \hat{V}(\ell) < \infty $ is}
 \begin{align}
 	|\I_j(\ell, \ell_1)|
 	&\leq \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell_1}+\ell+\ell_1)}}
@@ -1550,6 +1607,21 @@ For $ 1 \le j \le m-1 $, we proceed as follows:
 		\norm{ (\NN+1)^\half \xi_\lambda} \;. \label{eq:estEQ2152}
 \end{align}
 Finally, for $ j = m $,
+\textcolor{green!30!black}{
+\begin{align}
+	\sum_{\ell,\ell_1 \in \Z^3_*} |\I_m(\ell, \ell_1)|
+	&\leq \sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_{\ell_1} \cap (-L_{\ell_1} + \ell + \ell_1)}(q) \norm{K(\ell_1)_{q,-q+\ell+\ell_1} a_{q-\ell-\ell_1} a_{q-\ell_1} (\NN+1)^{\half} \xi_\lambda} \times \nonumber\\
+	&\quad \times \sum\limits_{ s \in L_{\ell}}
+		\norm{ K^m(\ell)_{q,s} b_{-s}(-\ell) (\NN+1)^{-\half} \xi_\lambda }\nonumber\\
+	&\leq \Bigg( \sum_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1)^2 \Bigg)^{\half} 
+		k_{\F}^{-\frac 32} e(q)^{-1}
+		\Bigg( \sum_{\ell,\ell_1 \in \Z^3_*} \norm{a_{q-\ell-\ell_1} a_{q-\ell_1} (\NN+1)^{\half} \xi_\lambda}^2 \Bigg)^{\half} \times \nonumber\\
+	&\quad \times \Bigg( \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^{2m} \Bigg)^{\half} 
+		\Bigg( \sum\limits_{ s \in L_{\ell}} \norm{ a_{-s} a_{-s+\ell} (\NN+1)^{-\half} \xi_\lambda }^2 \Bigg)^{\half} \nonumber\\
+	&\leq C^m k_{\F}^{-\frac 32} e(q)^{-\frac 32}
+		\norm{(\NN+1)^{\frac 32} \xi_\lambda} \;. \label{eq:estEQ2153_Coulomb}
+\end{align}
+The improved bound for $ \sum_\ell \hat{V}(\ell) < \infty $ works as follows:}
 \begin{align}
 	|\I_m(\ell, \ell_1)|
 	&\leq \mathds{1}_{L_{\ell_1} \cap (-L_{\ell_1} + \ell + \ell_1)}(q) \norm{K(\ell_1)_{q,-q+\ell+\ell_1} a_{q-\ell-\ell_1} a_{q-\ell_1} \xi_\lambda}
