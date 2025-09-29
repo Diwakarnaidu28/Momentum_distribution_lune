@@ -1098,23 +1098,28 @@ with $ K^0 = 1 $ being the identity matrix, we obtain
 \end{aligned}
 \end{equation}
 We will need to employ three different estimation strategies for $ j = 0 $, for $ 1 \le j \le m-1 $ and $ j = m $. For $ j = 0 $, we start with splitting $1 = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$ to be fixed later. Then we use the Cauchy--Schwarz inequality and Lemma~\ref{lem:normsk}.
+\textcolor{green!30!black}{
 \begin{align}
-	&|\I_0(\ell, \ell_1)| \nonumber\\
-	&\le \sum\limits_{r \in L_\ell \cap L_{\ell_1}} \abs{\eva{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{\alpha} (\NN+1)^{-\alpha} \xi_\lambda, K^{m}(\ell)_{r,q} a_{r-\ell} \xi_\lambda }}\nonumber\\
-	&\leq \Bigg( \sum\limits_{r \in L_{\ell_1}} \Bigg\Vert \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{-\alpha}\xi_\lambda \Bigg\Vert^2\Bigg)^\half \times\nonumber\\
+	&\sum_{\ell,\ell_1 \in \Z^3_*} |\I_0(\ell, \ell_1)| \nonumber\\
+	&\le \sum_{\ell,\ell_1 \in \Z^3_*} \sum\limits_{r \in L_\ell \cap L_{\ell_1}} \abs{\eva{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{\alpha} (\NN+1)^{-\alpha} \xi_\lambda, K^{m}(\ell)_{r,q} a_{r-\ell} \xi_\lambda }}\nonumber\\
+	&\leq \sum_{\ell,\ell_1 \in \Z^3_*} \Bigg( \sum\limits_{r \in L_{\ell_1}} \Bigg\Vert \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{-\alpha}\xi_\lambda \Bigg\Vert^2\Bigg)^\half \times\nonumber\\
 	&\quad \times \Bigg( \sum\limits_{r \in L_\ell} \norm{  K^{m}(\ell)_{r,q} a_{r-\ell} (\NN+5)^{\alpha}\xi_\lambda }^2\Bigg)^\half \nonumber\\
-	&\leq \Bigg( \sum\limits_{r,s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r,s_1}}^2 \sum\limits_{s_1' \in L_{\ell_1}} \norm{ b_{-s_1'}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{-\alpha}\xi_\lambda}^2\Bigg)^\half \times\nonumber\\
+	&\leq \sum_{\ell,\ell_1 \in \Z^3_*} \Bigg( \sum\limits_{r,s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r,s_1}}^2 \sum\limits_{s_1' \in L_{\ell_1}} \norm{ b_{-s_1'}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{-\alpha}\xi_\lambda}^2\Bigg)^\half \times\nonumber\\
 	& \quad \times (C \hat{V}(\ell))^m k_{\F}^{-1} e(q)^{-1} \norm{ \NN^\half(\NN+5)^{\alpha}\xi_\lambda } \nonumber\\
-	&\leq (C \hat{V}(\ell))^m k_{\F}^{-1} e(q)^{-1}  \norm{K(\ell_1)}_{\mathrm{max,2}} \norm{ a_{q}(\NN+1)^{1-\alpha}\xi_\lambda} \norm{ (\NN+5)^{\half+\alpha}\xi_\lambda } \nonumber \;.\\
+	&\leq k_{\F}^{-\half} \Bigg( \sum_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1)^2 \Bigg)^{\half}
+		\Bigg( \sum_{r,\ell,\ell_1,s_1' \in \Z^3_*}
+		\norm{ a_{-s_1'+\ell_1} a_{-s_1'} a_{q-\ell} a_q a_{r-\ell_1} (\NN+1)^{-\alpha}\xi_\lambda}^2\Bigg)^\half \times\nonumber\\
+	& \quad \times \Bigg( \sum_{\ell \in \Z^3_*} (C \hat{V}(\ell))^{2m} \Bigg)^{\half} k_{\F}^{-\frac 32} e(q)^{-1} \norm{ (\NN+5)^{\half + \alpha}\xi_\lambda } \nonumber\\
+	&\leq C_V k_{\F}^{-\frac 32} e(q)^{-1}
+		\norm{ (\NN+1)^{2-\alpha} a_q \xi_\lambda} \norm{ (\NN+5)^{\half+\alpha}\xi_\lambda } \nonumber \;.\\
 \end{align}
-Choosing $\alpha = 1$ and applying Lemma~\ref{lem:normsk} and $ (\cN+5)^m \le C (\cN+1)^m $, we get
+Choosing $\alpha = 2$ and applying Lemma~\ref{lem:normsk} and $ (\cN+5)^m \le C (\cN+1)^m $, we get
 \begin{equation}
-	 |\I_0(\ell, \ell_1)|
-	 \leq (C \hat{V}(\ell))^m
-	 	\hat{V}(\ell_1)
-	 	k_{\F}^{-\frac{3}{2}} e(q)^{-1} \Xi^\half
-	 	\norm { (\NN+1)^{\frac{3}{2}} \xi_\lambda } \;. \label{eq:estEQ1111} 
+	 \sum_{\ell,\ell_1 \in \Z^3_*} |\I_0(\ell, \ell_1)|
+	 \leq C_V k_{\F}^{-\frac 32} e(q)^{-1} \Xi^\half
+	 	\norm { (\NN+1)^{\frac 52} \xi_\lambda } \;. \label{eq:estEQ1111} 
 \end{equation}
+}
 Note that since $ m \ge 1 $, we were able to absorb an arbitrary constant $ C $ into $ C^m $.
 In case $ 1 \le j \le m-1 $, we again employ the Cauchy--Schwarz inequality and Lemmas~\ref{lem:normsk} and~\ref{lem:pairest}, but convert an operator $ a_{r-\ell} $ instead of $ a_q $ into the bootstrap quantity $ \Xi $:
 \begin{align}
