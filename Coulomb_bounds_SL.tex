@@ -1343,17 +1343,24 @@ We add together the bounds from Lemmas~\ref{lem:EQ111} and~\ref{lem:EQ112} and u
 \subsubsection{Bounding $E_{Q_2}$}
 
 \begin{proposition}[Bounding $E_{Q_2}(\Theta^m_{K}(P^q))$]\label{prop:finEQ2est}
-For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $ there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $, $ \lambda \in [0,1] $, and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Z_3^*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $ there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $, $ \lambda \in [0,1] $, and $ q \in B_{\F}^c $, the following bound is true for any $ \alpha \ge 0 $:
+\begin{equation}\label{eq:finEQ2est_Coulomb}
+	\abs{\eva{\xi_\lambda, E_{Q_2}\!\left(\Theta^m_K(P^q)- n_q^{\ex,m} \right) \xi_\lambda}} 
+	\leq C_\varepsilon C^m \left( k_{\F}^{-\frac 32} 
+		+ k_{\F}^{-1 - \frac{\alpha}{2}} 
+		+ k_{\F}^{-1+\alpha} \Xi^\half
+		+ k_{\F}^{-1+\varepsilon} \Xi^\half
+		+ k_{\F}^{-1} \Xi \right) e(q)^{-1} \;. \\
+\end{equation}
+If $ \sum_{\ell \in \Z_3^*} \hat{V}(\ell) < \infty $, we have the even better bound
 \begin{equation}\label{eq:finEQ2est}
 	\abs{\eva{\xi_\lambda, E_{Q_2}\!\left(\Theta^m_K(P^q)\right) \xi_\lambda}} 
-	\leq C_\varepsilon C^m \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)
-		\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)
-		e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
-		+ k_{\F}^{-1} \Xi^{1-\varepsilon} \right) \;. \\
+	\leq C_\varepsilon C^m \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
+		+ k_{\F}^{-1} \Xi^{1-\varepsilon} \right) e(q)^{-1} \;. \\
 \end{equation}
 \end{proposition}
 
-\textcolor{green!30!black}{Note that here, $ m = 1 $ and thus $ \sum_\ell \hat{V}(\ell) = \infty $ can occur for Coulomb.} To prove this proposition, we must control the error terms $ E^{m,1}_{Q_2} $ through $ E^{m,11}_{Q_2} $, and $ n_q^{\ex,m} $. \textcolor{green!30!black}{For Coulomb, the error terms $ E^{m,1}_{Q_2} $ and $ E^{m,2}_{Q_2} $ turn out most difficult:}
+\textcolor{green!30!black}{Note that here, $ m = 1 $ and thus $ \sum_\ell \hat{V}(\ell) = \infty $ can occur for Coulomb. In the end, we will choose $ \alpha = \frac 13 $ as explained below. Then, the error in the Coulomb bound~\eqref{eq:finEQ2est_Coulomb} is $ \sim k_{\F}^{-1-\frac 16} $, whereas the exchange contribution is $ n_q^{\ex,m} \le C k_{\F}^{-1} $ (see Lemma~\ref{lem:estnqex}), so we cannot treat $ n_q^{\ex,m} $ as an error. By contrast, for $ \sum_\ell \hat{V}(\ell) < \infty $, the bound~\eqref{eq:finEQ2est} scales like $ \sim k_{\F}^{-2+\varepsilon} $, while $ n_q^{\ex,m} \le C k_{\F}^{-2} $, so the exchange contribution is an error.} To prove this proposition, we must control the error terms $ E^{m,1}_{Q_2} $ through $ E^{m,11}_{Q_2} $, and $ n_q^{\ex,m} $. \textcolor{green!30!black}{For Coulomb, the error terms $ E^{m,1}_{Q_2} $ and $ E^{m,2}_{Q_2} $ turn out most difficult:}
 
 
 \begin{lemma} \label{lem:EQ211}
@@ -1782,7 +1789,7 @@ The bound for $ |\I_m(\ell, \ell_1)| $ is analogous. For $ 1 \le j \le m-1 $, we
 Let $ \sum_{\ell \in \Z_3^*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $,
 \begin{align}
 	\abs{\eva{\xi_\lambda,\left(E^{m,8}_{Q_2}+E^{m,9}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }}
-	\leq C^m k_{\F}^{-\frac 32} e(q)^{-\1} \Xi^\half \norm{(\NN+1)^{\half} \xi_\lambda} \;.\label{eq:estEQ218}
+	\leq C^m k_{\F}^{-\frac 32} e(q)^{-1} \Xi^\half \norm{(\NN+1)^{\half} \xi_\lambda} \;.\label{eq:estEQ218}
 \end{align}
 \end{lemma}
 
