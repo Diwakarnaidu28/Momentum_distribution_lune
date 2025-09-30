@@ -1007,11 +1007,18 @@ Evidently, $ 0 \le a_q^* a_q \le 1 $ implies the trivial bound $ 0 \le \Xi \le 1
 The main result of this subsection is the following:
 
 \begin{proposition} \label{prop:finalEmest}
-Recall the bosonization error term $E_m(P^q)$~\eqref{eq:errEm} with $ \Theta^n_K $, $ P^q $, $ \int_{\Delta^n} \di^n \ulambda $ and $ \sigma(n) $ defined within and above Proposition~\ref{prop:finexpan}. Then, given $ \varepsilon > 0 $, there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $ and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Z_3^*} \hat{V}(\ell)^2 < \infty $. Recall the bosonization error term $E_m(P^q)$~\eqref{eq:errEm} with $ \Theta^n_K $, $ P^q $, $ \int_{\Delta^n} \di^n \ulambda $ and $ \sigma(n) $ defined within and above Proposition~\ref{prop:finexpan}. Then, given $ \varepsilon > 0 $, there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $ and $ q \in B_{\F}^c $,
+\begin{equation} \label{eq:finalEmest_Coulomb}
+	\abs{\eva{\Omega, E_m(P^q) \Omega} - \frac{1}{(m+1)!} n_q^{\ex,m}}
+	\leq C_\varepsilon \frac{C^m}{m!}
+		e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
+		+ k_{\F}^{-1}\Xi^{1-\varepsilon} \right) \;,
+\end{equation}
+where $ n_q^{\ex,m} = 0 $ for $ m $ being odd.
+Moreover, if $ \sum_{\ell \in \Z_3^*} \hat{V}(\ell) < \infty $, we have the bound
 \begin{equation} \label{eq:finalEmest}
 	\abs{\eva{\Omega, E_m(P^q) \Omega}}
-	\leq C_\varepsilon \frac{C^m}{m!} \Vert \hat{V} \Vert_1
-		\Bigg( \sum_{\ell \in \Z^3} \hat{V}(\ell)^m \Bigg)
+	\leq C_\varepsilon \frac{C^m}{m!}
 		e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
 		+ k_{\F}^{-1}\Xi^{1-\varepsilon} \right) \;.
 \end{equation}
