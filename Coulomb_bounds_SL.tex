@@ -1028,16 +1028,27 @@ where we recall~\eqref{eq:EQ1EQ2extension} that $ E_{Q_1}\left(\Theta^m_{K}(P^q)
 
 \subsubsection{Bounding $E_{Q_1}$}
 
+\textcolor{green!30!black}{Here, only the case $ m \ge 2 $ occurs, which will make bounds slightly easier, since $ \sum_\ell \hat{V}(\ell)^m < \infty $ is always true.}
+
 \begin{proposition}[Bounding $E_{Q_1}(\Theta^m_{K}(P^q))$]\label{prop:finEQ1est}
-For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $ there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $, $ \lambda \in [0,1] $, and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Z_3^*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $ there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $, $ m \ge 2 $, $ \lambda \in [0,1] $, and $ q \in B_{\F}^c $,
+\begin{equation} \label{eq:finalEQ1est_Coulomb}
+	\abs{\eva{\xi_\lambda, E_{Q_1}\!\left(\Theta^m_K(P^q)\right) \xi_\lambda}}
+	\leq C_\varepsilon C^m \big( k_{\F}^{-\frac 32 + \varepsilon}
+		+ k_{\F}^{-1 + \varepsilon} \Xi^\half \big)
+		e(q)^{-1} \;.
+\end{equation}
+If $ \sum_{\ell \in \Z_3^*} \hat{V}(\ell) < \infty $, we have the even better bound
 \begin{equation} \label{eq:finalEQ1est}
 	\abs{\eva{\xi_\lambda, E_{Q_1}\!\left(\Theta^m_K(P^q)\right) \xi_\lambda}}
-	\leq C_\varepsilon C^m \Bigg(\sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m\Bigg)
-		\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)
-		e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half + k_{\F}^{-1}\Xi^{1-\varepsilon} \right) \;.
+	\leq C^m \left(
+		k_{\F}^{-\frac{3}{2}} \Xi^\half
+		+ k_{\F}^{-1}\Xi^{1-\varepsilon} \right) e(q)^{-1} \;.
 \end{equation}
 \end{proposition}
 
+
+\textcolor{green!30!black}{Note that since we expect $ \Xi \sim k_{\F}^{-1} $, the ``Coulomb bound''~\eqref{eq:finalEQ1est_Coulomb} is of order $ \sim k_{\F}^{-\frac 32 + \varepsilon} $, while~\eqref{eq:finalEQ1est} is even of order $ \sim k_{\F}^{-2 + \varepsilon} $.}
 To prove this proposition, we need to control the error terms $ E^{m,1}_{Q_1} $, $ E^{m,2}_{Q_1} $, and $ E^{m,3}_{Q_1} $. For this, we will need the following lemma.
 
 \begin{lemma} [Extracting $ \Xi^{\half-\varepsilon} $] \label{lem:Xi_halfminusepsilon}
@@ -1085,7 +1096,6 @@ If $ \sum_{\ell \in \Z_3^*} \hat{V}(\ell) < \infty $, given $ \varepsilon > 0 $,
 \end{aligned}
 \end{equation}
 \end{lemma}
-\textcolor{green!30!black}{Note that, as mentioned above, we expect $ \Xi \sim k_{\F}^{-1} $, so the ``Coulomb bound''~\eqref{eq:estEQ111_Coulomb} is of order $ \sim k_{\F}^{-\frac 32} $, while~\eqref{eq:estEQ1111} is even of order $ \sim k_{\F}^{-2+\varepsilon} $. Also, the case $ m = 1 $ never occurs for $ E_{Q_1} $-error terms, which slightly simplifies the bounds, since $ \sum_\ell \hat{V}(\ell)^m < \infty $ is always true.}
 
 \begin{proof}
 We focus on the bound for $ E^{m,1}_{Q_1} $ as that one for $ E^{m,2}_{Q_1} $ is analogous. Splitting the anticommutator in $ E^{m,1}_{Q_1} $~\eqref{eq:expandedEQ1} as
@@ -1180,7 +1190,7 @@ Let $ \sum_{\ell \in \Z_3^*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-
 	\abs{\eva{\xi_\lambda,\left(E^{m,3}_{Q_1}+\mathrm{h.c.}\right) \xi_\lambda }}\nonumber
 	\leq C_\varepsilon C^m \big( k_{\F}^{-\frac 32 + \varepsilon}
 		+ k_{\F}^{-1 + \varepsilon} \Xi^\half \big)
-		e(q)^{-1} \Xi^{\half}
+		e(q)^{-1}
 		\norm{(\NN+1) \xi_\lambda }^2 \;.
 \end{aligned}
 \end{equation}
@@ -1188,7 +1198,7 @@ If $ \sum_{\ell \in \Z_3^*} \hat{V}(\ell) < \infty $, then we have the even bett
 \begin{equation} \label{eq:estEQ112}
 \begin{aligned}
 	\abs{\eva{\xi_\lambda,\left(E^{m,3}_{Q_1}+\mathrm{h.c.}\right) \xi_\lambda }}\nonumber
-	\leq C^m k_{\F}^{-\frac{3}{2}} e(q)^{-1} \Xi^{\half}
+	\leq C^m k_{\F}^{-\frac{3}{2}} \Xi^{\half} e(q)^{-1}
 		\norm{(\NN+1)^\half \xi_\lambda } \;.
 \end{aligned}
 \end{equation}
