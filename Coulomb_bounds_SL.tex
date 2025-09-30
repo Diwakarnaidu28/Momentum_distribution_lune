@@ -1779,10 +1779,10 @@ The bound for $ |\I_m(\ell, \ell_1)| $ is analogous. For $ 1 \le j \le m-1 $, we
 
 
 \begin{lemma} \label{lem:EQ218}
-For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Z_3^*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $,
 \begin{align}
 	\abs{\eva{\xi_\lambda,\left(E^{m,8}_{Q_2}+E^{m,9}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }}
-	\leq C^m k_{\F}^{-2} e(q)^{-\frac 32} \Xi \;.\label{eq:estEQ218}
+	\leq C^m k_{\F}^{-\frac 32} e(q)^{-\1} \Xi^\half \norm{(\NN+1)^{\half} \xi_\lambda} \;.\label{eq:estEQ218}
 \end{align}
 \end{lemma}
 
@@ -1799,22 +1799,37 @@ Splitting again the anticommutator in $ E^{m,8}_{Q_2} $~\eqref{eq:expandedEQ2} v
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,-r+\ell+\ell_1} K(\ell_1)_{r,-r+\ell+\ell_1} a^*_{r-\ell_1} a_{r-\ell_1} \xi_\lambda} \;. \\
 \end{aligned}
 \end{equation}
-For $ j = 0 $, the term $ K^0(\ell)_{q,-r+\ell+\ell_1} = \delta_{q,-r+\ell+\ell_1} $ eliminates the sum over $ r $, so for $ q \in L_{\ell_1} \cap (-L_{\ell_1} + \ell + \ell_1) \cap (-L_\ell + \ell + \ell_1) $ with the Cauchy--Schwarz inequality and Lemma~\ref{lem:normsk} we immediately get
-\begin{equation}
-	|\I_0(\ell, \ell_1)|
-	= \abs{\eva{ K(\ell_1)_{-q+\ell+\ell_1,q} a_{-q+\ell} \xi_\lambda, K^m(\ell)_{-q+\ell+\ell_1,q} a_{-q+\ell} \xi_\lambda }}
-	\leq (C \hat{V}(\ell))^m
-		\hat{V}(\ell_1)
-		k_{\F}^{-2} e(q)^{-2} \Xi \;. \label{eq:estEQ2181}
-\end{equation}
-An analogous bound holds for $ j = m $. Finally, for $ 1 \le j \le m-1 $, the Cauchy--Schwarz inequality, followed by Lemmas~\ref{lem:normsk} and~\ref{lem:pairest}, yields
+For $ j = 0 $, with the Cauchy--Schwarz inequality and Lemma~\ref{lem:normsk} we get
+\textcolor{green!30!black}{
 \begin{align}
-	|\I_j(\ell, \ell_1)|
-	&\leq \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}} \norm{ K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell_1} \xi_\lambda} \norm{ K^{m-j}(\ell)_{r,q} K^j(\ell)_{q,-r+\ell+\ell_1} a_{r-\ell_1} \xi_\lambda} \nonumber\\
-	&\leq (C \hat{V}(\ell))^m
-		\hat{V}(\ell_1)
-		k_{\F}^{-2} e(q)^{-\frac 32} \Xi \;. \label{eq:estEQ2182}
+	&\sum_{\ell,\ell_1 \in \Z^3_*} |\I_0(\ell, \ell_1)| \nonumber\\
+	&\le \sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{(-L_{\ell_1} + \ell + \ell_1) \cap (-L_\ell + \ell + \ell_1)}(q)
+		\norm{ K(\ell_1)_{-q+\ell+\ell_1,q} a_{-q+\ell} \xi_\lambda}
+		\norm{ K^m(\ell)_{-q+\ell+\ell_1,q} a_{-q+\ell} \xi_\lambda } \nonumber\\
+	&\le C \sum_{\ell \in \Z^3_*} k_{\F}^{-1} e(q)^{-1}
+		\Bigg( \sum_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1)^2 \Bigg)^{\half}
+		\norm{ a_{-q+\ell} \xi_\lambda} \times \nonumber\\
+	&\quad \times \Bigg( \sum_{\ell_1 \in \Z^3_*} \mathds{1}_{-L_\ell + \ell + \ell_1}(q) |K^m(\ell)_{-q+\ell+\ell_1,q}|^2 \Bigg)^{\half}
+		\norm{ a_{-q+\ell} \xi_\lambda } \nonumber\\
+	&\le C k_{\F}^{-\frac 32} e(q)^{-1} \Xi^\half
+		\Bigg( \sum_{\ell \in \Z^3_*} (\hat{V}(\ell))^{2m} \Bigg)^{\half}
+		\Bigg( \sum_{\ell \in \Z^3_*} \norm{a_{-q+\ell} \xi_\lambda }^2 \Bigg)^{\half} \nonumber\\
+	&\leq C^m k_{\F}^{-\frac 32} e(q)^{-1} \Xi^{\half} \norm{(\NN+1)^{\half} \xi_\lambda} \;. \label{eq:estEQ2181}
 \end{align}
+}
+An analogous bound holds for $ j = m $. Finally, for $ 1 \le j \le m-1 $, which only happens for $ m \ge 2 $, the Cauchy--Schwarz inequality, followed by Lemmas~\ref{lem:normsk} and~\ref{lem:pairest}, yields
+\textcolor{green!30!black}{
+\begin{align}
+	&\sum_{\ell,\ell_1 \in \Z^3_*}|\I_j(\ell, \ell_1)| \nonumber\\
+	&\leq \sum_{\ell,\ell_1 \in \Z^3_*} \sum\limits_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}} \norm{ K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell_1} \xi_\lambda} \norm{ K^{m-j}(\ell)_{r,q} K^j(\ell)_{q,-r+\ell+\ell_1} a_{r-\ell_1} \xi_\lambda} \nonumber\\
+	&\leq \sum_{\ell \in \Z^3_*}
+		\Bigg( \sum_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)^{\half}
+		\Xi^{\half} k_{\F}^{-\frac 32} e(q)^{-1} (C \hat{V}(\ell))^j
+		\Bigg( \sum_{r \in L_{\ell}} |K^{m-j}(\ell)_{q,r}|^2 
+		\sum_{\ell_1 \in \Z^3_*} \norm{a_{r-\ell_1} \xi_\lambda}^2 \Bigg)^{\half} \nonumber\\
+	&\leq C^m k_{\F}^{-2} \Xi^{\half} e(q)^{-1} \norm{(\NN+1)^{\half} \xi_\lambda} \;. \label{eq:estEQ2182}
+\end{align}
+}
 \end{proof}
 
 
