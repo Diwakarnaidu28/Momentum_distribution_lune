@@ -1919,12 +1919,12 @@ Since $ m+1 \ge 2 $, we get $ \sum_{\ell \in \Z^3_*} (C \hat{V}(\ell))^{m+1} \le
 \end{proof}
 
 \begin{lemma}[Exchange contribution] \label{lem:estnqex}
-Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $ there exist $ C, C_\varepsilon > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, $ m > 1 $ and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $, there exist $ C, C_\varepsilon > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, $ m > 1 $ and $ q \in B_{\F}^c $,
 \begin{equation}
 	\abs{\eva{\xi_\lambda, n_q^{\ex,m} \xi_\lambda }}
-	\leq C_\varepsilon C^m k_{\F}^{-\frac 32} e(q)^{-\frac 32} \;. \label{eq:estnqex_Coulomb}
+	\leq C_\varepsilon C^m k_{\F}^{-\frac 32 + \varepsilon} e(q)^{-\frac 32} \;. \label{eq:estnqex_Coulomb}
 \end{equation}
-In case $ m = 1 $, if $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |k|^\alpha < \infty $ with $ \alpha \in [0,2] $, we have
+In case $ m = 1 $, if $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |k|^\alpha < \infty $ with $ \alpha \in [0,2] $, then we have
 \begin{equation}
 	\abs{\eva{\xi_\lambda, n_q^{\ex,1} \xi_\lambda }}
 	\leq C_\varepsilon k_{\F}^{-1 - \frac{\alpha}{2} + \varepsilon} e(q)^{-1} \;. \label{eq:estnqex_Coulomb_1}
@@ -1936,7 +1936,7 @@ Further, if $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, we have the follo
 \end{equation}
 \end{lemma}
 
-Note that since by definition, $ n_q^{\ex,m} \in \RRR $ and $ \norm{\xi_\lambda} = 1 $, we have $ \abs{\eva{\xi_\lambda, n_q^{\ex,m} \xi_\lambda }} = |n_q^{\ex,m}| $.
+Note that since by definition, $ n_q^{\ex,m} $ and $ \norm{\xi_\lambda} = 1 $, we have $ \abs{\eva{\xi_\lambda, n_q^{\ex,m} \xi_\lambda }} = |n_q^{\ex,m}| $.
 
 \begin{proof}
 We recall definition~\eqref{eq:nqexm} of $ n_q^{\ex,m} \in \RRR $ and expand the multi-anticommutator via~\eqref{eq:q-q}:
@@ -1958,7 +1958,7 @@ We recall definition~\eqref{eq:nqexm} of $ n_q^{\ex,m} \in \RRR $ and expand the
 		\abs{K(\ell_1)_{r,-r+\ell+\ell_1}} \;.
 \end{aligned}
 \end{equation}
-We first consider $ m > 1 $, where $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^m < \infty $. Here, Lemma~\ref{lem:normsk} and $  \lambda_{\ell,q} \geq C e(q) $, $ \lambda_{\ell_1,q} \geq C e(q) $ give
+We first consider $ m > 1 $, so $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^m < \infty $ always holds true. Here, Lemma~\ref{lem:normsk} and $  \lambda_{\ell,q} \geq C e(q) $, $ \lambda_{\ell_1,q} \geq C e(q) $ give
 \begin{equation}
 \begin{aligned}
 	\I
@@ -1970,7 +1970,7 @@ We first consider $ m > 1 $, where $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^m < \i
 		\lambda_{\ell,-q+\ell+\ell_1}^{-\frac 12} \\ 
 	&\leq C k_{\F}^{-2} e(q)^{-\frac 32} \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^m
 		\Bigg( \sum_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1)^2 \Bigg)^{\half}
-		\Bigg( \sum_{\ell_1 \in \Z^3_*} \mathds{1}_{-L_\ell + \ell + \ell_1}(q)
+		\Bigg( \sum_{\ell_1 \in \Z^3} \mathds{1}_{-L_\ell + \ell + \ell_1}(q)
 		\lambda_{\ell,-q+\ell+\ell_1}^{-1} \Bigg)^{\half} \\
 	&\leq C k_{\F}^{-\frac 32} e(q)^{-\frac 32} \;,
 \end{aligned}
@@ -1991,7 +1991,7 @@ where we used~\cite[Prop.~A.2]{CHN21} $ \sum_{s \in L_\ell} \lambda_{\ell,s}^{-1
 	&\leq C k_{\F}^{-3} e(q)^{-\frac 32} \sum_{\ell \in \Z^3_*} \sum_{r \in L_\ell}
 		\hat{V}(\ell)^m
 		\Bigg( \sum_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1)^2  \Bigg)^{\half}
-		\Bigg( \sum_{\ell_1 \in \Z^3_*} \mathds{1}_{-L_{\ell}+\ell+\ell_1}(r) \lambda_{\ell,-r+\ell+\ell_1}^{-1} \Bigg)^{\half}
+		\Bigg( \sum_{\ell_1 \in \Z^3} \mathds{1}_{-L_{\ell}+\ell+\ell_1}(r) \lambda_{\ell,-r+\ell+\ell_1}^{-1} \Bigg)^{\half}
 		 e(r)^{-1} \\
 	&\leq C k_{\F}^{-\frac 52} e(q)^{-\frac 32} \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^m
 	\sum_{r \in L_\ell} e(r)^{-1}
@@ -1999,7 +1999,7 @@ where we used~\cite[Prop.~A.2]{CHN21} $ \sum_{s \in L_\ell} \lambda_{\ell,s}^{-1
 \end{aligned}
 \end{equation}
 where in the last line, we used~\cite[Lemma~3.2]{CHN24} $ \sum_{r \in L_\ell} e(r)^{-1} \le C_\varepsilon k_{\F}^{1+\varepsilon} $. Summing over $ j $, with $ \sum_{0 \le j \le m} {{m}\choose j} = 2^m $, concludes the estimate for $ \II $ and thus~\eqref{eq:estnqex_Coulomb}.\\
-Next, we consider $ m = 1 $, where $ \II = 0 $ as the sum over $ j $ is empty. Hence, with Lemma~\ref{lem:normsk},
+Next, we consider $ m = 1 $, where $ \II = 0 $, as the sum over $ j $ is empty. Hence, with Lemma~\ref{lem:normsk} and $ \lambda_{\ell,q} \ge C e(q)^{\half} e(q-\ell)^{\half} $,
 \begin{equation}
 \begin{aligned}
 	|n_q^{\ex,1}|
@@ -2013,29 +2013,34 @@ Next, we consider $ m = 1 $, where $ \II = 0 $ as the sum over $ j $ is empty. H
 		\Bigg( \sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) e(q-\ell)^{-1} |\ell|^{-\alpha} \Bigg) \;.
 \end{aligned}
 \end{equation}
-The first bracket was assumed to be finite. To bound the second bracket, we split the summation region as $ S := \{ \ell \in \Z^3_* : q \in L_\ell \} = S_1 \cup S_2 \cup S_3 $ with
+The first bracket on the r.~h.~s. was assumed to be finite. To bound the second bracket, we split the summation region as $ S := \{ \ell \in \Z^3_* : q \in L_\ell \} = S_1 \cup S_2 \cup S_3 $ with
 \begin{equation}
 	S_1 := \{ \ell \in S : |\ell| \le k_{\F}^\beta, \; ||q-\ell|-k_{\F}| \le 2 \} \;, \quad
 	S_2 := \{ \ell \in S \setminus S_1 : |\ell| \le k_{\F}^\beta \} \;, \quad
 	S_3 := S \setminus (S_1 \cup S_2) \;,
 \end{equation}
-for some $ \beta > 0 $ to be optimized later. For $ \ell \in S_1 $, we use $ e(q-\ell) \ge C $ and that the area of the intersection with a shell around $ q $ is bounded by $ |S_1 \cap \partial B_{|\ell|}(q)| \le C |\ell| $:
+for some $ \beta > 0 $ to be optimized later. For $ \ell \in S_1 $, we use $ e(q-\ell) \ge C $ and that the area of the intersection with a sphere around $ q $ is bounded by
+\begin{equation*}
+	\textnormal{Area} \big( \big\{ \ell' \in \R^3 : |\ell'| \le k_{\F}^\beta, \; ||q-\ell'|-k_{\F}| \le 2, \; |\ell'| = |\ell| \big\} \big)
+	\leq C |\ell| \;,
+\end{equation*}
+whence
 \begin{equation}
 	\sum_{\ell \in S_1} e(q-\ell)^{-1} |\ell|^{-\alpha}
 	\leq \sum_{\ell \in S_1} |\ell|^{-\alpha}
-	\leq C + C \int_1^{k_{\F}^\beta} |\ell|^{1-\alpha}  \di |\ell|
+	\leq C + C \int_C^{k_{\F}^\beta} |\ell|^{1-\alpha}  \di |\ell|
 	\le C k_{\F}^{2 \beta - \alpha \beta} \;.
 \end{equation}
 Note that $ \alpha \in [0,2] $ is needed for the discretization error $ C $ to be smaller than $C k_{\F}^{2 \beta - \alpha \beta} $.\\
-For $ \ell \in S_2 $, we have $ e(q-\ell) \ge C k_{\F} $, while $ |S_2 \cap \partial B_{|\ell|}(q)| \le C |\ell|^2 $:
+For $ \ell \in S_2 $, we have $ e(q-\ell) \ge C k_{\F} $, while the sphere intersection area is now $ \leq C |\ell|^2 $:
 \begin{equation}
 	\sum_{\ell \in S_2} e(q-\ell)^{-1} |\ell|^{-\alpha}
-	\leq C k_{\F}^{-1} \Bigg( 1 + \int_1^{k_{\F}^\beta} |\ell|^{2-\alpha} \di |\ell| \Bigg)
+	\leq C k_{\F}^{-1} \Bigg( 1 + \int_C^{k_{\F}^\beta} |\ell|^{2-\alpha} \di |\ell| \Bigg)
 	\le C k_{\F}^{-1 + 3 \beta - \alpha \beta} \;.
 \end{equation}
-Finally, for $ \ell \in S_3 $,
+Finally, for $ \ell \in S_3 $, we have $ |\ell|^{-\alpha} \le C k_{\F}^{-\alpha \beta} $:
 \begin{equation}
-	\sum_{\ell \in S_1} e(q-\ell)^{-1} |\ell|^{-\alpha}
+	\sum_{\ell \in S_3} e(q-\ell)^{-1} |\ell|^{-\alpha}
 	\le k_{\F}^{-\alpha \beta} \sum_{\ell \in S_1} e(q-\ell)^{-1}
 	\le C_\varepsilon k_{\F}^{1 + \varepsilon - \alpha \beta} \;,
 \end{equation}
@@ -2047,7 +2052,7 @@ where we used again~\cite[Lemma~3.2]{CHN24} in the last step. Optimizing $ \beta
 	\leq C_\varepsilon k_{\F}^{-1 - \frac{\alpha}{2} + \varepsilon} \;.
 \end{equation}
 \textcolor{red}{[SL: The above estimate may require some additional attention if $ q \in B_{\F} $.]}
-Finally, in case $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, we get the simpler bound~\eqref{eq:estnqex} using again Lemma~\ref{lem:normsk} and $ \sum_{0 \le j \le m} {{m}\choose j} = 2^m $:
+Finally, in case $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, we get the simpler bound~\eqref{eq:estnqex} using Lemma~\ref{lem:normsk} and $ \sum_{0 \le j \le m} {{m}\choose j} = 2^m $:
 \begin{equation}
 \begin{aligned}
 	\I + \II
@@ -2060,7 +2065,8 @@ Finally, in case $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, we get the s
 	&\leq C^m
 		\Bigg( \sum\limits_{\ell \in \Z^3_*} \hat{V}(\ell)^m \Bigg)
 		\Bigg( \sum\limits_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)
-		k_{\F}^{-2} e(q)^{-2} \;.
+		k_{\F}^{-2} e(q)^{-2}
+	\leq C^m k_{\F}^{-2} e(q)^{-2} \;.
 \end{aligned}
 \end{equation}
 \end{proof}
