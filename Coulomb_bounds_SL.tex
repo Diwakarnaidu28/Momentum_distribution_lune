@@ -1831,7 +1831,7 @@ Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-
 \end{lemma}
 
 \begin{proof}
-We focus on $ E^{m,8}_{Q_2} $, since the proof for $ E^{m,9}_{Q_2} $ is analogous.
+We first focus on $ E^{m,8}_{Q_2} $.
 Splitting again the anticommutator in $ E^{m,8}_{Q_2} $~\eqref{eq:expandedEQ2} via~\eqref{eq:q-q} we get
 \begin{equation} \label{eq:EQ2181}
 \begin{aligned}
@@ -1874,6 +1874,27 @@ An analogous bound holds for $ j = m $. Finally, for $ 1 \le j \le m-1 $, which 
 	&\leq C^m k_{\F}^{-2} \Xi^{\half} e(q)^{-1} \norm{(\NN+1)^{\half} \xi_\lambda} \;. \label{eq:estEQ2182}
 \end{align}
 }
+For $ E_{Q_2}^{m,9} $, the bound is analogous up to the following modification: The term for $ j = 0 $ is
+\begin{equation}
+	I_0(\ell,\ell_1)
+	\coloneq \mathds{1}_{L_{\ell_1} \cap (-L_{\ell_1} + \ell+\ell_1) \cap (-L_\ell + \ell+\ell_1)}(q)
+		K(\ell)^m_{q,-q+\ell+\ell_1}
+		K(\ell_1)_{q,-q+\ell+\ell_1}
+		\eva{\xi_\lambda, a_{-q}^* a_{-q} \xi_\lambda} \;,
+\end{equation}
+and we bound it as
+\begin{align}
+	&\sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) |\I_0(\ell,\ell_1)| \nonumber\\
+	&\leq \Bigg( \sum_{\ell, \ell_1 \in \Z^3_*} \mathds{1}_{-L_\ell + \ell+\ell_1}(q) |K(\ell)^m_{q,-q+\ell+\ell_1}|^2 \Bigg)^{\half}
+		\Bigg( \sum_{\ell, \ell_1 \in \Z^3_*} \mathds{1}_{-L_{\ell_1} + \ell+\ell_1}(q) |K(\ell_1)_{q,-q+\ell+\ell_1}|^2 \Bigg)^{\half}
+	\norm{ a_{-q} \xi_\lambda }^2 \nonumber\\
+	&\leq \Bigg( \sum_{\ell\in \Z^3_*} \hat{V}(\ell)^{2m} k_{\F}^{-1} e(q)^{-1} \Bigg)^{\half}
+		\Bigg( \sum_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1)^2 k_{\F}^{-1} e(q)^{-1} \Bigg)^{\half}
+	\Xi
+	\leq C^m
+		k_{\F}^{-1} e(q)^{-1} \Xi \;.\label{eq:estEQ2181_bis}
+\end{align}
+
 \end{proof}
 
 
