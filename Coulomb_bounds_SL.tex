@@ -1122,7 +1122,7 @@ with $ K^0 = 1 $ being the identity matrix, we obtain
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r-\ell} \xi_\lambda} \;. \\
 \end{aligned}
 \end{equation}
-We will need to employ three different estimation strategies for $ j = 0 $, for $ 1 \le j \le m-1 $ and $ j = m $. For $ j = 0 $, we start with splitting $1 = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$ to be fixed later. Then we use the Cauchy--Schwarz inequality and Lemma~\ref{lem:normsk}.
+We will need to employ three different estimation strategies for $ j = 0 $, for $ 1 \le j \le m-1 $ and $ j = m $. For $ j = 0 $, we start with splitting $\mathds{1} = (\NN+1)^{\alpha}(\NN+1)^{-\alpha}$ for some $\alpha \in \R$ to be fixed later. Then we use the Cauchy--Schwarz inequality and Lemma~\ref{lem:normsk}.
 \textcolor{green!30!black}{
 \begin{align}
 	&\sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) |\I_0(\ell, \ell_1)| \nonumber\\
@@ -1225,7 +1225,7 @@ As in the proof of Lemma~\ref{lem:EQ111}, we split
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s}K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell-\ell_1} a_{r-\ell_1} b_{s}(\ell) \xi_\lambda} \;. \\
 \end{aligned}
 \end{equation}
-We again employ three different bounding strategies for $ j = 0 $, for $ 1 \le j \le m-1 $, and $ j = m $. For $ j = 0 $, we write again $1 = (\NN+1)^{-\half}(\NN+1)^{\half}$. Together with the Cauchy--Schwarz inequality, $ \norm{a_p} \le 1 $, and Lemma~\ref{lem:normsk}
+We again employ three different bounding strategies for $ j = 0 $, for $ 1 \le j \le m-1 $, and $ j = m $. For $ j = 0 $, we write again $\mathds{1} = (\NN+1)^{-\half}(\NN+1)^{\half}$. Together with the Cauchy--Schwarz inequality, $ \norm{a_p} \le 1 $, and Lemma~\ref{lem:normsk}
 \textcolor{green!30!black}{
 \begin{align}
 	&\sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) |\I_0(\ell, \ell_1)| \nonumber\\
@@ -1348,7 +1348,7 @@ Adding up all bounds yields the claimed result.
 
 
 \begin{proof}[Proof of Proposition~\ref{prop:finEQ1est}]
-We add together the bounds from Lemmas~\ref{lem:EQ111} and~\ref{lem:EQ112} and use the Gr\"onwall bound, Lemma \ref{lem:gronNest}, to get $ \norm{(\NN+1)^{\frac a2} \xi_\lambda} \le C_a \norm{(\NN+1)^{\frac a2} \Omega} = C_a $ for any $ a \in \NN $.
+We add together the bounds from Lemmas~\ref{lem:EQ111} and~\ref{lem:EQ112} and use the Gr\"onwall bound, Lemma \ref{lem:gronNest}, to get $ \norm{(\NN+1)^{\frac a2} \xi_\lambda} \le C_a \norm{(\NN+1)^{\frac a2} \Omega} = C_a $ for any $ a \in \N $.
 \end{proof}
 
 
@@ -1414,7 +1414,7 @@ As in~\eqref{eq:EQ1111}, we split the anticommutator in $ E^{m,1}_{Q_2} $~\eqref
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{-s_1}(-\ell_1) b_{-s}(-\ell) a_{r-\ell} \xi_\lambda} \;. \\
 \end{aligned}
 \end{equation}
-The estimation for $ j = 0 $ is again done with \textcolor{green!30!black}{$1 = (\NN+1)(\NN+1)^{-1}$}, the Cauchy--Schwarz inequality and Lemmas~\ref{lem:normsk} and~\ref{lem:pairest}. However, as $ m = 1 $ may occur, we must now also do a Cauchy--Schwarz split in $ \sum_\ell $:
+The estimation for $ j = 0 $ is again done with \textcolor{green!30!black}{$\mathds{1} = (\NN+1)(\NN+1)^{-1}$}, the Cauchy--Schwarz inequality and Lemmas~\ref{lem:normsk} and~\ref{lem:pairest}. However, as $ m = 1 $ may occur, we must now also do a Cauchy--Schwarz split in $ \sum_\ell $:
 \textcolor{green!30!black}{
 \begin{align}
 	\sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) |\I_0(\ell, \ell_1)|
@@ -1568,7 +1568,7 @@ Using the Cauchy--Schwarz inequality, Lemmas~\ref{lem:normsk} and~\ref{lem:paire
 		k_{\F}^{-1} e(q)^{-1} \sum\limits_{r \in \Z^3} e(r)^{-1} k_{\F}^{-1}
 		\Bigg( \sum_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1)^2 \Bigg)^{\half} \times \nonumber\\
 	&\quad \times \norm{(\NN+1) \xi_\lambda}
-		\Bigg( \sum_{\ell \in \Z^3} \norm{ a_{-q} a_{-q-\ell} (\NN+1)^{-\half} \xi_\lambda}^2 \Bigg)^{\half} \nonumber\\
+		\Bigg( \sum_{\ell \in \Z^3} \norm{ a_{-q} a_{-q+\ell} (\NN+1)^{-\half} \xi_\lambda}^2 \Bigg)^{\half} \nonumber\\
 	&\leq C_\varepsilon C^m k_{\F}^{-1 + \varepsilon} e(q)^{-1}
 		\norm{ (\NN+1) \xi_\lambda } \Xi^{\half} \;. \label{eq:estEQ2151_Coulomb}
 \end{align}
@@ -1892,7 +1892,7 @@ Splitting the multi-anticommutator in $ E^{m,10}_{Q_2} $~\eqref{eq:expandedEQ2} 
 \begin{aligned}
 	\abs{\eva{\xi_\lambda,\left(E^{m,10}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }} 
 	&= 2\abs{\eva{\xi_\lambda, E^{m,10}_{Q_2} \xi_\lambda }}
-	\le 4 \sum_{j=0}^{m+1} {{m+1}\choose j} \sum\limits_{\ell,\ell_1  \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell)| \;,\\
+	\le 4 \sum_{j=0}^{m+1} {{m+1}\choose j} \sum\limits_{\ell  \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell)| \;,\\
 	\I_j(\ell)
 	&\coloneq \sum\limits_{r\in L_{\ell}}
 		\eva{\xi_\lambda, K^{m+1-j}(\ell)_{r,q} K^{j}(\ell)_{q,r} a^*_{r-\ell} a_{r-\ell} \xi_\lambda} \;. \\
