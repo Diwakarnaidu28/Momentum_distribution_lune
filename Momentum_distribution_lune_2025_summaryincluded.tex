@@ -278,7 +278,7 @@ The vector  $ \Psi_{\FS} $ is called the Fermi ball state. Obviously its momentu
 
 \todo{quick literature recap}
 
-\subsection{Main Results}
+\subsection{Main Result}
 \label{subsec:mainresult}
 
 We also introduce the complement of the Fermi ball
@@ -295,7 +295,7 @@ where the lense $ L_\ell \in \Z^3 $, the excitation energy $ \lambda_{\ell,p} > 
 \begin{equation} \label{eq:Lell}
 	L_\ell \coloneq B_{\F}^c \cap (B_{\F} + \ell) \;, \qquad
 	\lambda_{\ell,p} \coloneq \half (|p|^2 - |p-\ell|^2) \;, \qquad
-	g_\ell \coloneq \frac{\hat{V}(\ell) k_{\F}^{-1}}{2 (2 \pi)^3} \;,
+	g_\ell \coloneq \frac{k_{\F}^{-1} \hat{V}(\ell) }{2 (2 \pi)^3} \;,
 \end{equation}
 and where \todo{Do we need $\Z^3_*$? Anyway $L_0 = \emptyset$.}
 \begin{equation}
@@ -423,7 +423,7 @@ These operators satisfy the canonical anticommutation relations (CAR)
 	\{a_q, a_{q'}\} = \{a_q^*, a_{q'}^*\} = 0 \qquad \text{for all } q, q' \in \ZZZ^3\;.
 \end{equation}
 Moreover they are bounded in operator norm by $ \Vert a_q^* \Vert \leq 1$ and $\Vert a_q \Vert \le 1 $.
-The Fermi ball state can be written as $ \Psi_{\FS} = R \Omega $ where $ R: \cF \to \cF $ is the unitary particle--hole transformation acting by
+The Fermi ball state can be written as $ \Psi_{\FS} = R \Omega $ where $ R: \cF \to \cF $ is the unitary (called particle--hole transformation) acting by
 \begin{equation} \label{eq:R}
 	R^* a_q^* R 	= \mathds{1}_{B_{\F}^c}(q) \, a_q^* 	+ \mathds{1}_{B_{\F}}(q) \, a_q \;.
 \end{equation}
@@ -431,15 +431,16 @@ Note that $ R^{-1} = R = R^* $. The trial state of~\cite{CHN23} is constructed a
 \begin{equation} \label{eq:Psitrial}
 	\Psi_N := R T \Omega \;,
 \end{equation}
-where $ T: \cF \to \cF $ is another unitary transformation motivated as follows: We expect the interaction to act predominantly by generating pair excitations, where a particle from inside the Fermi ball $ B_{\F} $ is moved by some momentum $ k \in \Z^3 \setminus \{ 0 \} $ to another momentum $ p \in B_{\F}^c $, leaving a ``hole'' in the Fermi ball at $ p-k \in B_{\F} $. After the particle--hole transformation $ R $, this corresponds to a creation of a pair of excitations at $ p $ and $ p-k $, described by the pair creation operator
+where $ T: \cF \to \cF $ is another unitary motivated as follows: We expect the interaction to act predominantly by generating pair excitations, where a particle from inside the Fermi ball $ B_{\F} $ is moved by some momentum $ k \in \Z^3 \setminus \{ 0 \} $ to another momentum $ p \in B_{\F}^c $, leaving a ``hole'' in the Fermi ball at $ p-k \in B_{\F} $. After the particle--hole transformation $ R $, this corresponds to a creation of a pair of excitations at $ p $ and $ p-k $, described by the pair creation operator
 \begin{equation} \label{eq:b}
 	b^*_p(k) \coloneq a_p^* a_{p-k}^* 
 	\qquad \textnormal{with adjoint} \qquad
 	b_p(k) \coloneq a_{p-k} a_p \;.
 \end{equation}
-The constraint on $ (p,k) $ can be written as $ p \in L_k $, where we recall $ L_k = B_{\F}^c \cap (B_{\F} + k) $.
+The constraint on $ (p,k) $ can be written as $ p \in L_k $.
+% , where we recall $ L_k = B_{\F}^c \cap (B_{\F} + k) $.
 % with $ L_{-k} = - L_k $.
-Dropping other contributions to the interaction, $ H_N $ is formally reduced to a Bogoliubov-type Hamiltonian~\cite[(1.34)]{CHN23}
+Dropping other contributions, $ H_N $ is formally reduced to a Bogoliubov-type Hamiltonian~\cite[(1.34)]{CHN23}
 \begin{equation} \label{eq:HBog}
 \begin{split}
 	H_{\Bog}
@@ -450,14 +451,14 @@ Dropping other contributions to the interaction, $ H_N $ is formally reduced to 
 with matrices $ h(k) \in \CCC^{|L_k| \times |L_k|}$ and $P(k) \in \CCC^{|L_k| \times |L_k|} $ defined by
 \begin{equation} \label{eq:HkPk}
 \begin{aligned}
-	h(k)_{p,q} &\coloneq \delta_{p,q} \lambda_{k,p} \;, \qquad
-	P(k)_{p,q} &\coloneq \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^3} \;.
+	h(k)_{p,q} \coloneq \delta_{p,q} \lambda_{k,p} \;, \qquad
+	P(k)_{p,q} \coloneq \frac{k_{\F}^{-1}\hat{V}(k) }{2 (2 \pi)^3} \;.
 \end{aligned}
 \end{equation}
 The matrix $ P(k) $ is rank-one and can also be written as
-\begin{equation}P(k) = \lvert v_k \rangle \langle v_k \rvert \;, \quad \textnormal{where} \quad v_{k,p} \coloneq g_k^{1/2} = \Big( \frac{\hat{V}(k) k_{\F}^{-1}}{2 (2 \pi)^3} \Big)^\half \;.
+\begin{equation}P(k) = \lvert v_k \rangle \langle v_k \rvert \;, \quad \textnormal{where} \quad v_{k,p} \coloneq g_k^{1/2} = \Big( \frac{k_{\F}^{-1} \hat{V}(k) }{2 (2 \pi)^3} \Big)^\half \;.
 \end{equation}
- As the pair operators satisfy approximate bosonic commutation relations (see Lemma~\ref{lem:paircomm}), $ H_{\Bog} $ can be approximately diagonalized by an approximate Bogoliubov transformation ~\cite[Thm.~1.4]{CHN23}.
+ As the pair operators satisfy approximate bosonic commutation relations (see Lemma~\ref{lem:paircomm}), $ H_{\Bog} $ can be approximately diagonalized by an approximate Bogoliubov transformation \cite[Thm.~1.4]{CHN23} of the explicit form
 \begin{equation} \label{eq:T}
 	T \coloneq e^{-S} \;, \qquad
 	S \coloneq \frac{1}{2}\sum_{\ell\in \mathbb{Z}^3_*}\sum_{r,s\in L_\ell}K(\ell)_{r,s}\left(b_r(\ell)b_{-s}(-\ell)-b^*_{-s}(-\ell)b^*_{r}(\ell)\right) \;,
@@ -469,13 +470,14 @@ with the Bogoliubov kernel
 		h(\ell)^{-\half} \Big) \;.
 \end{equation}
 (The exponent $ S $ corresponds to $ R^* \cK R $ in the notation of~\cite{CHN23} since we prefer to use a particle-hole transformation instead of the normal ordering with respect to the Fermi ball state.)
-One observes that $K(\ell)$ is a symmetric matrix and moreover posesses the reflection invariance $ K(-\ell)_{-p,-q} = K(\ell)_{p,q} $. This concludes the definition of the trial state.
+One observes that $K(\ell)$ is a symmetric matrix and moreover posesses the reflection invariance $ K(-\ell)_{-p,-q} = K(\ell)_{p,q} $.
+% This concludes the definition of the trial state.
 
 
 
-\section{Duhamel Expansion of the Momentum Distribution}\label{sec:extraction}
+\section{Duhamel Expansion}\label{sec:extraction}
 
-In this section we expand the momentum distribution $ \langle \Psi_N, a_q^* a_q \Psi_N \rangle $ of the trial state $ \Psi_N = R e^{-S} \Omega $ constructed in the previous section. In the expansion we then identify the explicit contributions of $ n^{\RPA}(q) $ and $ n^{\ex}(q) $.
+In this section we expand the momentum distribution $ \langle \Psi_N, a_q^* a_q \Psi_N \rangle $ of the trial state $ \Psi_N = R e^{-S} \Omega $ constructed in the previous section. In the expansion we identify the explicit contributions of $ n^{\RPA}(q) $ and $ n^{\ex}(q) $.
 
 The particle--hole transformation $ R $ acts in a simple way: by~\eqref{eq:R} we have
 \begin{equation} \label{eq:momentum_dist_R_trafo}
@@ -490,7 +492,7 @@ So it suffices to consider the excitation vector $ \xi \coloneq e^{-S} \Omega $ 
 % 	& = a_q^* a_q
 % 		+ \int_0^1 \di \lambda_1  e^{\lambda_1 S} [S, a_q^* a_q] e^{-\lambda_1 S}
 & = a_q^* a_q
-		+ \int_0^1 \di \lambda_1   [S, e^{\lambda_1 S} a_q^* a_q e^{-\lambda_1 S}] \;.
+		+ \int_0^1 \di \lambda_1 \,   [S, e^{\lambda_1 S} a_q^* a_q e^{-\lambda_1 S}] \;.
 		% 	&=  \langle \Omega, a_q^* a_q \Omega \rangle
 % % 		+ \langle \Omega, [S, a_q^* a_q] \Omega \rangle
 % 		+ \int_0^1 \di \lambda_1 \int_0^{\lambda_1} \di \lambda_2 \langle \Omega, e^{\lambda_2 S} [S,[S, a_q^* a_q]] e^{-\lambda_2 S} \Omega \rangle \;.
@@ -513,7 +515,7 @@ Let $A=(A(\ell))_{\ell \in \Z^3_*} $ be a family of symmetric operators with $A(
 \end{aligned}
 \end{equation} 
 \end{definition}
-Our $ Q_1 $ corresponds to $ 2 \tilde Q_1 $ in~\cite{CHN21}, while the definition of $ Q_2 $ is identical to \cite{CHN21}. (Due to the particle-hole transformation, our $ a_p $ agrees with $ R^* c_p R $ in~\cite{CHN21,CHN23,CHN24}. We will use the following approximate CCR for the pair operators (compare to \cite[(1.66)]{CHN21}):
+Our $ Q_1 $ corresponds to $ 2 \tilde Q_1 $ in~\cite{CHN21}, while the definition of $ Q_2 $ is identical to \cite{CHN21}. (Due to the particle-hole transformation, our $ a_p $ agrees with $ R^* c_p R $ in~\cite{CHN21,CHN23,CHN24}.) The pair operators satisfy the following approximate CCR (compare to \cite[(1.66)]{CHN21}:
 
 \begin{lemma}[Approximate CCR]\label{lem:paircomm}
 For $k,\ell \in \Z^3_*$ and $p \in L_{k}$, $q\in L_{\ell}$, we have
@@ -529,11 +531,13 @@ For $k,\ell \in \Z^3_*$ and $p \in L_{k}$, $q\in L_{\ell}$, we have
 	\coloneq -\left(\delta_{p,q}a^*_{q-\ell}a_{p-k} + \delta_{p-k,q-\ell}a^*_{q}a_{p}\right) \;.
 \end{equation}
 We have
-\[\epsilon_{p,q}(\ell,k) = \epsilon^*_{q,p}(k,\ell) \qquad \text{and} \qquad \epsilon_{p,p}(k,k)\leq 0 \;.\]
+\begin{equation}
+\epsilon_{p,q}(\ell,k) = \epsilon^*_{q,p}(k,\ell) \qquad \text{and} \qquad \epsilon_{p,p}(k,k)\leq 0 \;.
+\end{equation}
 \end{lemma}
 The proof is a simple computation with the CAR. As a consequence we obtain the following lemma.
 
-\begin{lemma}[Commutator of $S $ and $b^*_p(k)$]
+\begin{lemma}[Commutators of $S $ and $b^*_p(k)$]
 For $k \in \Z^3_*$ and $p \in L_k$ we have
 \begin{equation} \label{eq:comm_Kb}
 	[S, b^*_p(k)]
@@ -586,9 +590,10 @@ To simplify the expansion, we introduce the $n$-fold anticommutator
 	\Theta_K^0 (A)
 	\coloneq A \;,
 \end{equation}
-understood pointwise for every $\ell \in \Zbb^3_\ast$.
+understood pointwise for families of operators as above.
 % where $ A, K $ are understood either as matrices $ A: \ell^2(L_\ell) \to \ell^2(L_\ell) $, or families thereof, i.e., $ A = (A(\ell))_{\ell \in \Z^3_*} $.
-We further introduce the projection matrix
+Given $q \in \Zbb^3$ we define
+% the projection matrix
 \begin{equation} \label{eq:Pq}
 	P^q(\ell) : \ell^2(L_\ell) \to \ell^2(L_\ell) \;, \qquad
 	P^q(\ell)_{r,s} \coloneq \delta_{q,r} \delta_{q,s} \qquad
@@ -601,7 +606,7 @@ Moreover we define the simplex integral
 	\coloneq \int_0^1 \di \lambda_1 \int_0^{\lambda_1} \di \lambda_2 \ldots \int_0^{\lambda_{n-1}} \di \lambda_n \;, \qquad
 	\ulambda \coloneq (\lambda_1, \ldots, \lambda_n) \;.
 \end{equation}
- The final expansion is then the following.
+ The final Duhamel expansion can then be written in the following way.
 
 \begin{proposition}[Duhamel expansion]\label{prop:finexpan}
 For $q \in B^c_{\F}$ we have
@@ -619,12 +624,12 @@ where $ \sigma(n) = 1 $ if $ n $ is even and $ \sigma(n) = 2 $ if $n$ is odd, an
 \end{equation}
 \end{proposition}
 
-In Lemma~\ref{lem:nqb_integralrecovery}, we will see that the first term on the r.~h.~s. of~\eqref{eq:finexpan} converges to $ n^{\RPA}(q) $ as $ n \to \infty $. The other two terms are error terms which we estimate.
+In Lemma~\ref{lem:nqb_integralrecovery}, we will see that the first term on the r.~h.~s. of~\eqref{eq:finexpan} converges to $ n^{\RPA}(q) $ as $ n \to \infty $. \todo{mention exchange contribution origin} The other two terms are error terms which we estimate.
 
 
 \begin{proof}
 \todo{write how the iteration is done exactly}
-Our trial state and excitation density are reflection symmetric, that is, if we define the reflection transformation $ \fR: \cF \to \cF $ by $ \fR^* a_q^* \fR = a^*_{-q} $ and $ \fR \Omega = \Omega $, then
+Our trial state and excitation density are reflection symmetric, that is, if we define the spatial reflection $ \fR: \cF \to \cF $ by $ \fR^* a_q^* \fR = a^*_{-q} $ and $ \fR \Omega = \Omega $, then
 \begin{equation} \label{eq:reflectionsymmetry}
 	\fR e^{-S} \Omega = e^{-S} \Omega
 \end{equation}
@@ -632,7 +637,7 @@ and therefore
 \begin{equation}
 	\eva{\Omega, e^{S} a^*_q a_q e^{-S}\Omega} = \eva{\Omega, e^{S} a^*_{-q} a_{-q} e^{-S} \Omega} \;.
 \end{equation}
-Hence, we have the identity
+Hence
 \begin{equation}
 	\eva{\Omega, e^{S} a_q^* a_q e^{-S} \Omega} = \half \eva{\Omega, e^{S} (a_q^* a_q + a_{-q}^* a_{-q}) e^{-S} \Omega} \;.
 \end{equation}
@@ -643,18 +648,16 @@ The first commutator in the Duhamel expansion then takes the convenient form
 	\tilde{P}^q \coloneq \half(P^q + P^{-q}) \;.
 \end{equation}
 We then iteratively Duhamel-expand the $ Q_1$-- and $ Q_2 $--terms using Lemma~\ref{lem:Q1Kcomm} as
-\begin{equation}
-\begin{aligned}
+\begin{align*}
 	e^{\lambda S} Q_1(A) e^{-\lambda S}
 	&= Q_1(A) + \int_0^{\lambda} \di \lambda' e^{\lambda' S} Q_2(\{A,K\}) e^{-\lambda' S}
 		+ \int_0^{\lambda} \di \lambda' e^{\lambda' S} E_{Q_1}(A) e^{-\lambda' S} \;, \\
 	e^{\lambda S} Q_2(A) e^{-\lambda S}
 	&= Q_2(A) + \int_0^{\lambda} \di \lambda' e^{\lambda' S} Q_1(\{A,K\}) e^{-\lambda' S}
 		+ \int_0^{\lambda} \di \lambda' e^{\lambda' S} E_{Q_2}(A) e^{-\lambda' S} \\
-	&\quad + \lambda \sum_{\ell \in \Z^3_*} \sum_{r \in L_{\ell}} \big\{ A(\ell), K(\ell) \big\}_{r,r} \;.
-\end{aligned}
-\end{equation}
-The $ E_{Q_1} $ and $ E_{Q_2} $-terms are not further expanded but collected in the error operator, and the $ \{A,K\} $-terms are extracted as leading-order contributions. The result after $ n $ expansion steps is
+	&\quad + \lambda \sum_{\ell \in \Z^3_*} \sum_{r \in L_{\ell}} \big\{ A(\ell), K(\ell) \big\}_{r,r} \;. \tagg{eq:expand}
+\end{align*}
+The $ E_{Q_1}$-- and $ E_{Q_2} $--terms are not expanded further but collected in the error operator, and the $ \{A,K\} $-terms are extracted as leading-order contributions. The result after $ n $ expansion steps is
 \begin{equation}
 \begin{aligned}
 	&e^{S} (a_q^* a_q + a_{-q}^* a_{-q}) e^{-S} \\
@@ -957,7 +960,7 @@ We conclude the bound using Gr\"onwall's lemma and $ (\cN+1)^m \le (\cN+4)^m \le
 We now turn to bounding the two errors of the expansion in Proposition~\ref{prop:finexpan}, namely the bosonization error comprising $ E_m $ and the ``tail term'' including the simplex integral $ \int_{\Delta^n} \di^n \ulambda $.
 
 
-\subsection{Tail Term Estimate}
+\subsection{Expansion Tail}
 \label{subsec:tailestimate}
 
 We will show that the tail term vanishes as $ n \to \infty $. The following simple bound, despite not being optimal, will turn out to be sufficient to establish this fact.
@@ -1798,7 +1801,7 @@ As a potential, we now choose $ \hat{V}((1,0,0)) = \hat{V}((-1,0,0)) = 1 $ and $
 
 
 
-\section{Conclusion of Theorem~\ref{thm:main}}
+\section{Conclusion of the Proof of Theorem~\ref{thm:main}}
 \label{sec:mainthmproof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
@@ -1867,22 +1870,22 @@ N. Benedikter, D. Desio:
 \bibitem{BL25}
 N. Benedikter, S. Lill:
 	Momentum Distribution of a Fermi Gas in the Random Phase Approximation.
-	\emph{To appear in: J. Math. Phys.} (2023)
+	\emph{J. Math. Phys.} \textbf{66}: 081901 (2025)
 
 \bibitem{BNPSS20}
 N. Benedikter, P. T. Nam, M. Porta, B. Schlein, R. Seiringer:
 	Optimal Upper Bound for the Correlation Energy of a Fermi Gas in the Mean-Field Regime.
-	\emph{Commun. Math. Phys.} {\bf 374}: 2097--2150 (2020)
+	\emph{Commun. Math. Phys.} \textbf{374}: 2097--2150 (2020)
 
 \bibitem{BNPSS21}
 N. Benedikter, P. T. Nam, M. Porta, B. Schlein, R. Seiringer:
 	Correlation Energy of a Weakly Interacting Fermi Gas.
-	\emph{Invent. Math.} {\bf 225}: 885--979 (2021)
+	\emph{Invent. Math.} \textbf{225}: 885--979 (2021)
 	
 \bibitem{BNPSS21dyn}
 N. Benedikter, P. T. Nam, M. Porta, B. Schlein, R. Seiringer:
 	Bosonization of Fermionic Many-Body Dynamics.
-	\emph{Ann. Henri Poincar\'e} {\bf 23}: 1725--1764 (2022)
+	\emph{Ann. Henri Poincar\'e} \textbf{23}: 1725--1764 (2022)
 
 \bibitem{BPSS22}
 N. Benedikter, M. Porta, B. Schlein, R. Seiringer:
@@ -1897,13 +1900,13 @@ N. Benedikter, M. Porta, B. Schlein:
 \bibitem{BL23}
 M. Brooks, S. Lill:
 	Friedrichs diagrams: bosonic and fermionic.
-	\emph{Lett. Math. Phys.} {\bf 113}: article number 101 (2023)
+	\emph{Lett. Math. Phys.} \textbf{113}: article number 101 (2023)
 
 
 \bibitem{CF94}
 A. H. Castro-Neto, E. Fradkin:
 	Bosonization of {{Fermi}} liquids.
-	\emph{Phys. Rev. B}, \textbf{49}(16):10877--10892, (1994)
+	\emph{Phys. Rev. B}, \textbf{49}(16): 10877--10892, (1994)
 
 \bibitem{CHN21}
 M. R. Christiansen, C. Hainzl, P. T. Nam:
@@ -1940,7 +1943,7 @@ E. Daniel, S. H. Vosko:
 M. Disertori, J. Magnen, V. Rivasseau:
 	Interacting {{Fermi Liquid}} in {{Three Dimensions}} at {{Finite
   Temperature}}: {{Part I}}: {{Convergent Contributions}}.
-	\emph{Ann. Henri Poincar\'e}, \textbf{2}(4):733--806 (2001)
+	\emph{Ann. Henri Poincar\'e}, \textbf{2}(4): 733--806 (2001)
 
 \bibitem{FGHP21}
 M. Falconi, E. L. Giacomelli, C. Hainzl, M. Porta:
@@ -1951,12 +1954,12 @@ M. Falconi, E. L. Giacomelli, C. Hainzl, M. Porta:
 J. Feldman, H. Kn{\"o}rrer, E. Trubowitz:
 	Asymmetric fermi surfaces for magnetic schr\"odinger operators.
 	\emph{Commun. PDE},
-  \textbf{25}(1-2):319--336 (2000)
+  \textbf{25}(1-2): 319--336 (2000)
 
 \bibitem{FKT04}
 J. Feldman, H. Kn{\"o}rrer,  E. Trubowitz:
 	A {{Two Dimensional Fermi Liquid}}. {{Part}} 1: {{Overview}}.
-	\emph{Commun. Math. Phys.}, \textbf{247}(1):1--47, (2004)
+	\emph{Commun. Math. Phys.}, \textbf{247}(1): 1--47, (2004)
 
 \bibitem{GB57}
 M. Gell-Mann, K. A. Brueckner:
@@ -2005,7 +2008,7 @@ J. Lam:
 L.~D. Landau:
 	The theory of a Fermi Liquid.
 	\emph{Soviet Physics\textendash JETP [translation of Zhurnal
-  Eksperimentalnoi i Teoreticheskoi Fiziki]}, \textbf{3}(6):920 (1956)
+  Eksperimentalnoi i Teoreticheskoi Fiziki]}, \textbf{3}(6): 920 (1956)
 
 \bibitem{Lil23}
 S. Lill:
@@ -2015,17 +2018,17 @@ S. Lill:
 \bibitem{Lut60}
 J. M. Luttinger:
 	Fermi Surface and Some Simple Equilibrium Properties of a System of Interacting Fermions.
-	\emph{Phys. Rev.} {\bf 119}: 1153--1163 (1960)
+	\emph{Phys. Rev.} \textbf{119}: 1153--1163 (1960)
 
 \bibitem{NS81}
 H. Narnhofer, G. L. Sewell:
 	Vlasov hydrodynamics of a quantum mechanical model.
-	\emph{Commun. Math. Phys.} {\bf 79}: 9--24 (1981)
+	\emph{Commun. Math. Phys.} \textbf{79}: 9--24 (1981)
 
 \bibitem{Sal98}
 M. Salmhofer:
 	Continuous Renormalization for Fermions and Fermi Liquid Theory.
-	\emph{Commun. Math. Phys.} \textbf{194}, 249--295 (1998)
+	\emph{Commun. Math. Phys.} \textbf{194}: 249--295 (1998)
 
 \bibitem{Saw57}
 K. Sawada:
