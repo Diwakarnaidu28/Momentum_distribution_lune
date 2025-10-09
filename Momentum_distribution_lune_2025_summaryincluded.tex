@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 
-\usepackage{amsmath, amssymb, amsfonts, physics, braket, hhline, mathtools, cancel, bigints,geometry}
+\usepackage{amsmath, amssymb, amsfonts, physics, braket, mathtools, bigints, geometry}
 \usepackage{amsthm}
 \usepackage{pgfplots, subcaption, floatrow, footnote, adjustbox,float,fancyvrb, colonequals}
 \usepackage{graphicx, grffile, epsfig, listings}
@@ -16,15 +16,18 @@
 \usepackage[bookmarksnumbered=true]{hyperref}
 \usepackage{tikz}
 \usetikzlibrary{decorations.pathreplacing, patterns}
+
 \usepackage{capt-of, caption} %for captions in minipages
 \usepackage[capitalise]{cleveref}
 \crefname{equation}{}{}
-\usepackage[textsize=footnotesize,textwidth=2cm]{todonotes}
+\usepackage[textsize=footnotesize,textwidth=2.7cm]{todonotes}
 % \usepackage[color]{showkeys}
 
 \numberwithin{equation}{section}
 \setcounter{tocdepth}{1}
 \renewcommand\Affilfont{\itshape\footnotesize}
+
+
 
 
 
@@ -89,8 +92,8 @@
 \newcommand{\eff}{\mathrm{eff}}
 \newcommand{\ex}{\mathrm{ex}}
 \newcommand{\F}{\mathrm{F}}
-\newcommand{\FS}{\mathrm{FS}}
-\newcommand{\GS}{\mathrm{GS}}
+\newcommand{\FS}{\mathrm{F}}
+\newcommand{\GS}{\mathrm{gs}}
 \newcommand{\HF}{\mathrm{HF}}
 \newcommand{\HS}{\mathrm{HS}}
 \newcommand{\I}{\mathrm{I}}
@@ -127,20 +130,20 @@
 
 \newcommand{\Rbb}{\mathbb{R}}
 
-\DeclareMathOperator{\R}{\mathbb{R}}
-\DeclareMathOperator{\C}{\mathbb{C}}
-\DeclareMathOperator{\N}{\mathbb{N}}
-\DeclareMathOperator{\Z}{\mathbb{Z}}
-\DeclareMathOperator{\T}{\mathbb{T}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\T}{\mathbb{T}}
 
-\DeclareMathOperator{\QQ}{\mathcal{Q}}
-\DeclareMathOperator{\HH}{\mathcal{H}}
-\DeclareMathOperator{\LL}{\mathcal{L}}
-\DeclareMathOperator{\KK}{\mathcal{K}}
-\DeclareMathOperator{\NN}{\mathcal{N}}
+\newcommand{\QQ}{\mathcal{Q}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\KK}{\mathcal{K}}
+\newcommand{\NN}{\mathcal{N}}
 
-\DeclareMathOperator{\SH}{\mathscr{H}}
-\DeclareMathOperator{\Psis}{\Psi^*}
+\newcommand{\SH}{\mathscr{H}}
+\newcommand{\Psis}{\Psi^*}
 \newcommand{\bint}{\bigintssss}
 \newcommand\Item[1][]{%
   \ifx\relax#1\relax  \item \else \item[#1] \fi
@@ -238,7 +241,7 @@ We consider the mean-field scaling limit, i.\,e., we are interested in the asymp
 \begin{equation}
 	\hbar\coloneq N^{-\frac{1}{3}}, \quad\text{and}\quad \lambda \coloneq N^{-1} \;.
 \end{equation}
-\todo{state scaling using $k_F^{-1}$}
+\todo{State scaling using coupling $k_F^{-1}$ and no $\hbar^2$.}
 At zero temperature, the system will be in a ground state, that is, a vector $ \Psi_{\GS} \in L^2_{\mathrm{a}}(\T^{3N}) $ which attains the ground state energy
 \begin{equation} \label{eq:EGS}
 	E_{\GS}
@@ -248,11 +251,11 @@ In this article we are interested in the momentum distribution of states $ \Psi 
 \begin{align}
 	n(q) \coloneq \eva{\Psi, a^*_q a_q \Psi} \;,
 \end{align}
-where $ a_q^*$ and $a_q $ are the fermionic creation and annihilation operators. As the true ground state is very difficult to access, we focus our attention on a trial state $ \Psi_N $ which is expected to capture the ground state's properties at least to the first non-trivial order beyond mean-field theory. This is analogous to the analysis conducted in \cite{BL25} based on the collective bosonization methods of \cite{BNPSS20,BNPSS21}, however we now consider the ``patchless'' trial state of~\cite{CHN23}. As long as the analysis of the true ground state remains elusive, we believe that studying two different constructions of low-energy states and obtaining consistent expressions for the momentum distribution adds plausability to the conjecture that the obtained momentum distribution is actually close to the one of the true ground state. Both methods, that of \cite{BL25} and \cite{CHN23}, are based on the idea of considering particle-hole pairs as approximately bosonic quasiparticles. The approach of \cite{BNPSS20,BNPSS21}, based on collective degrees of freedom averaged over patches on the Fermi surface, leads to simpler estimates with a more pronounced bosonic nature; the approach of \cite{CHN23} avoids the use of cutoffs which in \cite{BL25} somewhat obscured the result at momenta very close to the Fermi surface.
+where $ a_q^*$ and $a_q $ are the fermionic creation and annihilation operators. As the ground state of interacting many-body systems is very difficult to access, we focus our attention on a trial state $ \Psi_N $ which is expected to capture the ground state's properties at least to the first non-trivial order beyond mean-field theory. This is analogous to the analysis conducted in \cite{BL25} based on the collective bosonization methods of \cite{BNPSS20,BNPSS21}, however we now consider the ``patchless'' trial state of~\cite{CHN23}. As long as the analysis of the true ground state remains elusive, we believe that studying two different constructions of low-energy states and obtaining consistent expressions for the momentum distribution adds plausability to the conjecture that the obtained momentum distribution is actually close to the one of the true ground state. Both methods, that of \cite{BL25} and \cite{CHN23}, are based on the idea of considering particle-hole pairs as approximately bosonic quasiparticles. The approach of \cite{BNPSS20,BNPSS21}, based on collective degrees of freedom averaged over patches on the Fermi surface, leads to simpler estimates with a more pronounced bosonic nature; the approach of \cite{CHN23} avoids the use of cutoffs which in \cite{BL25} somewhat obscured the result at momenta very close to the Fermi surface.
 
-In the non-interacting case (where $ V=0 $), the ground state is given by a Slater determinant of $ N $ plane waves
+In the non-interacting case ($ V=0 $), the ground state is given by a Slater determinant of $ N $ plane waves
 \begin{equation}
-	\Psi_{\FS}(x_1, x_2, \ldots, x_N) \coloneq \frac{1}{\sqrt{N!}}\text{det}\left(\frac{1}{(2\pi)^{3/2}}e^{ik_j\cdot x_i}\right)^N_{j,i=1} \;.
+	\Psi_{\F}(x_1, x_2, \ldots, x_N) \coloneq \frac{1}{\sqrt{N!}}\text{det}\left(\frac{1}{(2\pi)^{3/2}}e^{ik_j\cdot x_i}\right)^N_{j,i=1} \;.
 \end{equation}
 The momenta $ k_j \in \Zbb^3$ are chosen to minimize the kinetic energy $ \sum_{j=1}^N |k_j|^2 $. To avoid a degenerate ground state, we assume that they fill up a Fermi ball
 \begin{equation}
@@ -272,18 +275,18 @@ The vector  $ \Psi_{\FS} $ is called the Fermi ball state. Obviously its momentu
 	\langle \Psi_{\FS}, a_q^* a_q \Psi_{\FS} \rangle
 	= \mathds{1}_{B_{\F}}(q) \;.
 \end{equation}
-We also introduce the complement of the Fermi ball
-\begin{equation}
-   B_\text{F}^c := \Zbb^3 \setminus B_\text{F} \;.
-\end{equation}
 
 \todo{quick literature recap}
 
 \subsection{Main Results}
 \label{subsec:mainresult}
 
+We also introduce the complement of the Fermi ball
+\begin{equation}
+   B_\text{F}^c := \Zbb^3 \setminus B_\text{F} \;.
+\end{equation}
 
-We will prove that the momentum distribution $ n(q) $ of a specific trial state energetically very close to the ground state for $ q \in B_{\F}^c $ is approximately given by the random phase approximation
+We will prove that the momentum distribution $ n(q) $ of a specific trial state energetically very close to the ground state, for $ q \in B_{\F}^c $ is approximately given by the random phase approximation
 \begin{equation} \label{eq:nqb}
 	n^{\RPA}(q)
 	\coloneq \sum_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \; \frac{1}{\pi}\int_0^\infty \frac{g_\ell (t^2-\lambda^2_{\ell,q}) (t^2 + \lambda^2_{\ell,q})^{-2}}{1 + 2g_\ell \sum_{p \in L_{\ell}}\lambda_{\ell,p} (t^2+\lambda^2_{\ell,p})^{-1}} \mathrm{d}t \;,
@@ -294,8 +297,12 @@ where the lense $ L_\ell \in \Z^3 $, the excitation energy $ \lambda_{\ell,p} > 
 	\lambda_{\ell,p} \coloneq \half (|p|^2 - |p-\ell|^2) \;, \qquad
 	g_\ell \coloneq \frac{\hat{V}(\ell) k_{\F}^{-1}}{2 (2 \pi)^3} \;,
 \end{equation}
-and where $ \Z^3_* := \Z^3 \setminus \{0\} $. For $ q \in B_{\F} $, we analogously have
+and where \todo{Do we need $\Z^3_*$? Anyway $L_0 = \emptyset$.}
 \begin{equation}
+\Z^3_* := \Z^3 \setminus \{0\} \;.
+\end{equation}
+For $ q \in B_{\F} $, we analogously have
+\begin{equation}\label{eq:inside}
 \begin{split}
 	n(q) & \approx 1 - n^{\RPA}(q) \;, \\
 	n^{\RPA}(q) & 	\coloneq \sum_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q+\ell) \; \frac{1}{\pi}\int_0^\infty \frac{g_\ell (t^2-\lambda^2_{\ell,q+\ell}) (t^2 + \lambda^2_{\ell,q+\ell})^{-2}}{1 + 2g_\ell \sum_{p \in L_{\ell}}\lambda_{\ell,p} (t^2+\lambda^2_{\ell,p})^{-1}} \mathrm{d}t \;.
@@ -303,26 +310,26 @@ and where $ \Z^3_* := \Z^3 \setminus \{0\} $. For $ q \in B_{\F} $, we analogous
 \end{equation}
 Therefore $ n^{\RPA}(q) $ represents the deviation of $ n(q) $ from the indicator function $ \mathds{1}_{B_{\F}}(q) $ we found in the non-interacting case.
 
-The scaling of $ n^{\RPA}(q) $ and of the error terms will depend on
+The scaling of $ n^{\RPA}(q) $ and the error terms will depend on
 \begin{equation} \label{eq:eq}
 	e(q)
 	\coloneq \abs{|q|^2 - \inf_{p \in B_{\F}^c} |p|^2 + \half}
 	= \abs{|q|^2 - \sup_{h \in B_{\F}} |h|^2 - \half} \;.
 \end{equation}
-Since we work in fixed finite volume, the minimal distance between a momentum inside and a momentum outside the Fermi ball is $1$, and therefore $ e(q) \ge \half $.
+Since we work in fixed volume, the minimal distance between a momentum inside and a momentum outside the Fermi ball is $1$, and therefore $ e(q) \ge \half $.
 
-We state and prove the main result for $q \in B_F^c$. To prove the result for $q \in B_F$ only minor modifications are needed, which are sketched in the remarks below.
+% We state and prove the main result for $q \in B_F^c$. To prove the result for $q \in B_F$ only minor modifications are needed, which are sketched in the remarks below.
 
 \begin{theorem}[Main result] \label{thm:main}
-Assume that the Fourier transform of the interaction potential satisfies $ \hat{V} \in \ell^1(\Z^3) $, $ \hat{V} \ge 0 $, $ \hat{V}(0) = 0 $ \todo{Why assume $ \hat{V}(0) = 0 $?} and $ \hat{V}(k) = \hat{V}(-k) $.
+Assume that the Fourier transform of the interaction potential satisfies $ \hat{V} \in \ell^1(\Z^3) $, $ \hat{V} \ge 0 $, and $ \hat{V}(k) = \hat{V}(-k) $ for all $k \in \Zbb^3$.
 Then, for any sequence of $ k_{\F} $ with $ k_{\F} \to \infty $ and $ N := |B_{k_{\F}}(0)| $, there exists a sequence of trial states  $ \Psi_N \in L^2_{\mathrm{a}}(\T^{3N}) $ such that
 \begin{itemize}
-\item $ \Psi_N $ is energetically close to the ground state in the sense that for any $ \varepsilon > 0 $ there exists a $ C_\varepsilon > 0 $ such that for all $ k_{\F} $ we have
+\item $ \Psi_N $ is energetically close to the ground state in the sense that for any $ \varepsilon > 0 $ there exists a $ C_\varepsilon > 0 $ such that for all $k_\F$ we have
 \begin{equation} \label{eq:main1}
 	\eva{\Psi_N, H_N \Psi_N} - E_{\GS}
 	\le C_\varepsilon k_{\F}^{1-\frac 16 + \varepsilon} \;,
 \end{equation}
-\item and given $ \varepsilon > 0 $, there exist constants $ C, C_\varepsilon > 0 $, depending on $ \Vert \hat{V} \Vert_1 $, such that for all $ k_{\F} $ and $ q \in \Z^3 $, the momentum distribution in $ \Psi_N $ satisfies
+\item and there exist constants $ C, C_\varepsilon > 0 $, depending on $ \Vert \hat{V} \Vert_1 $, such that for all $ k_{\F} $ and $ q \in \Z^3 $, the momentum distribution in $ \Psi_N $ satisfies
 \begin{equation} \label{eq:main2}
 	n(q) = \eva{\Psi_N, a_q^* a_q \Psi_N}
 	= \begin{cases}
@@ -336,26 +343,27 @@ where the error term is controlled by
 \begin{equation}
 	\lvert \cE(q)\rvert \le C_\varepsilon k_{\F}^{-2 +\varepsilon} e(q)^{-1} \;.
 \end{equation}
-Moreover we have \todo{move to Remark}
+Moreover we have \todo{Move to Remark 1?}
 \begin{equation}
 \lvert n^{\RPA}(q)\rvert \le C k_{\F}^{-1} e(q)^{-1} \;.
 \end{equation}
-\end{itemize} 
+\end{itemize}
+% The analogous statements hold for $q \in B_F$, confirming \cref{eq:inside}.
 \end{theorem}
 
 
 \begin{remarks}
 \begin{enumerate}
 
-\item In Lemma~\ref{lem:nqb_bounds}, we show that the scaling $ n^{\RPA}(q) \sim k_{\F}^{-1} e(q)^{-1} $ is sharp, in the sense that there exist $ V $ and $ q $ \todo{(sequence of $q$?)} for which $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $. \todo{Make sure that $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $ is true.}
+\item In Lemma~\ref{lem:nqb_bounds}, we show that the scaling $ n^{\RPA}(q) \sim k_{\F}^{-1} e(q)^{-1} $ is sharp, in the sense that there exist $ V $ and $ q $ \todo{Give precise statement in terms of a sequence.} for which $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $. \todo{Make sure that $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $ is true.}
 
-\item In~\cite{BL25}, the scaling of the leading term is $ n^{\RPA}(q) \sim k_{\F}^{-2} $ without any factors of $ e(q) $. This is because~\cite{BL25} assumes $ |\ell| \le C $ and $ |\ell \cdot q| \ge c $ in the analogue of~\eqref{eq:nqb}, leading to $ e(q) \sim k_{\F} $. In other words, it considers only momenta at distances $ ||q|-k_{\F}| \sim 1 $ from the Fermi surface, while the present result admits distances as small as $ k_{\F}^{-1} $.
+\item In~\cite{BL25}, the scaling of the leading term is $ n^{\RPA}(q) \sim k_{\F}^{-2} $ without any $ e(q) $. This is because~\cite{BL25} assumes $ |\ell| \le C $ and $ |\ell \cdot q| \ge c $ in the analogue of~\eqref{eq:nqb}, leading to $ e(q) \sim k_{\F} $. In other words, it includes only momenta at distances $ ||q|-k_{\F}| \sim 1 $ from the Fermi surface, while the present result admits distances as small as $ k_{\F}^{-1} $.
 % (and up to arbitrarily large distances.\\
 
-To study the momentum distribution even closer to the Fermi surface, one would need to increase the size of the torus, as to refine the momentum lattice. It is expected \cite{DV60} that the analogue of $ n^{\RPA}(q) $ in continuous momentum space attains a value scaling like $ \lim_{||q|-k_{\F}| \to \pm 0} n^{\RPA}(q) \sim k_{\F}^{-1} $ at the Fermi surface. We therefore expect that for a large-volume limit, $ e(q)^{-1} $ both in the leading term and in the error estimate should be replaced by $ (e(q)+1)^{-1} $.
+To study the momentum distribution even closer to the Fermi surface, one would need to increase the size of the torus to refine the momentum lattice. It is expected \cite{DV60} that the analogue of $ n^{\RPA}(q) $ in continuous momentum space scales like $ \lim_{||q|-k_{\F}| \to \pm 0} n^{\RPA}(q) \sim k_{\F}^{-1} $ at the Fermi surface. We therefore expect that for a large-volume limit, $ e(q)^{-1} $ both in the leading term and in the error estimate can be replaced by $ (e(q)+1)^{-1} $.
 
 
-\item In~\cite{CHN23,CHN24}, both a bosonized and an exchange contribution were extracted for the correlation energy. For the momentum distribution likewise, in addition to the bosonization contribution $ n^{\RPA}(q) $, we find an exchange contribution $ n^{\ex}(q) $, according to Lemma~\ref{lem:normalordering_errors} given by
+\item In~\cite{CHN23,CHN24}, a bosonized and an exchange contribution were extracted for the correlation energy. For the momentum distribution likewise, in addition to the bosonization contribution $ n^{\RPA}(q) $, we find an exchange contribution $ n^{\ex}(q) $, according to Lemma~\ref{lem:normalordering_errors} given by
 \begin{equation} \label{eq:nqex}
 	n^{\ex}(q)
 	\coloneq \sum_{\substack{m=1\\m:\textnormal{ odd}}}^\infty \frac{1}{(m+1)!} \sum_{j=0}^m {{m} \choose {j}}
@@ -379,21 +387,10 @@ From Lemma~\ref{lem:estnqex}, it follows that $ n^{\ex}(q) \le C k_{\F}^{-2} e(q
 \end{aligned}
 \end{equation}
 This agrees with \cite{BL25} up to a factor $ (2 \pi)^3 \kappa $ multiplying $\hat{V}$, explained by the choice of coupling constant $k_\F^{-1}$ here compared to $N^{-1/3}$ there.
-
-\item
-% \textit{Proof strategy:} The proof for main result for $q \in B_F^c$ follows firstly from a lengthy computation involving iterated application of Duhamel's formula and commutation relations detailed below. This results in an expansion containing a leading order term, errors generated at every iteration and a tail term which depends on the order of iteration. Then, we take the infinite $n$ limit, where $n$ is the number of iteration to infinity, which results in an expansion containing the leading order term and the errors, where the tail term goes to zero in the limit. Next we bound the errors against a bootstrap quantity which in turn depends on the momentum distribution itself. Then we recover the integral representation of the leading order and establish the scaling of the leading order. Finally with the use of a bootstrap argument,  we show that our errors are much smaller than the leading order.
-
-For $q \in B_F$, the proof is very similar to the case $q \in B_F^c$. Sums over lenses are shifted inside the Fermi ball to
-\begin{equation}
-	T_\ell \coloneq L_\ell -\ell = B_F \cap (B_F^c-\ell)\,.
-\end{equation}
-The quasi-bosonic creation-annihilation operators are defined in these crescent sets as well and all the other quantities defined with a sum over the momenta gets changed to be summed over the crescent sets.
-\todo{The pair operators and trial state don't change, also definition of $S$ remains the same as before!}
-Next, due to the difference in the definition of $\mathcal{S}$, the commutation relation between $a^*_qa_q$ and $\mathcal{S}$ changes and it now fixes the momentum within the Fermi ball.
 \end{enumerate}
 \end{remarks}
 
-In Section~\ref{sec:trialstate}, we review the construction of the trial state from \cite{CHN23}. In Section~\ref{sec:extraction}, we derive the iterated Duhamel expansion for the momentum distribution and identify the leading order. Section~\ref{sec:prelim_bounds} provides preliminary error estimates which we use in the later sections. In Section~\ref{subsec:manybody_estimates} we bound the error terms using $\sup_q n(q)$. In Section \ref{sec:leading_order_analysis} we compute the leading order. The proof is concluded in Section~\ref{sec:mainthmproof} by a bootstrap of $\sup_q n(q)$.
+In Section~\ref{sec:trialstate}, we review the construction of the trial state from \cite{CHN23}. In Section~\ref{sec:extraction}, we derive the iterated Duhamel expansion for the momentum distribution and identify the leading order. Section~\ref{sec:prelim_bounds} provides preliminary error estimates used in the later sections. In Section~\ref{subsec:manybody_estimates} we bound the error terms using $\sup_q n(q)$. In Section \ref{sec:leading_order_analysis} we compute the leading order. The proof is concluded in Section~\ref{sec:mainthmproof} by a bootstrap of $\sup_q n(q)$.
 
 
 
