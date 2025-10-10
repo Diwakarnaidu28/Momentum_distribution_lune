@@ -1741,8 +1741,10 @@ Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-
 \begin{equation}
 \begin{aligned}
 	\abs{\eva{\xi_\lambda,\left(E^{m,5}_{Q_2}+E^{m,6}_{Q_2}+E^{m,7}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }}
-	\leq C^m k_{\F}^{-1} \Xi^{\half} e(q)^{-1}
-		\norm { (\NN+1)^{\frac 32} \xi_\lambda } \;. \label{eq:estEQ213_Coulomb}
+	\leq C^m \left( k_{\F}^{-1} \Xi^{\half}
+		+ k_{\F}^{-\frac 32} \right)
+		e(q)^{-1}
+		\norm { (\NN+1)^{\frac 32} \xi_\lambda }^2 \;. \label{eq:estEQ213_Coulomb}
 \end{aligned}
 \end{equation}
 If $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, then we have the even stronger bound
@@ -1758,7 +1760,7 @@ If $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, then we have the even stro
 %Note that for $ \sum_\ell \hat{V}(\ell) < \infty $, we may even achieve a bound of order $ \sim k_{\F}^{-2} \Xi^\half $.
 
 \begin{proof}
-We only focus on $ E^{m,5}_{Q_2} $ as the bounds for $ E^{m,6}_{Q_2} $ and $ E^{m,7}_{Q_2} $ are analogous. Splitting $ E^{m,5}_{Q_2} $~\eqref{eq:expandedEQ2} via~\eqref{eq:q-q} gives
+We start with bounding $ E^{m,5}_{Q_2} $. Splitting $ E^{m,5}_{Q_2} $~\eqref{eq:expandedEQ2} via~\eqref{eq:q-q} gives
 \begin{equation} \label{eq:EQ2131}
 \begin{aligned}
 	\abs{\eva{\xi_\lambda,\left(E^{m,5}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }} 
@@ -1819,6 +1821,28 @@ The bounds for $ |\I_m(\ell, \ell_1)| $ are analogous. For $ 1 \le j \le m-1 $, 
 		\norm{(\NN+1)^{\frac 32} \xi_\lambda} \Xi^{\half} \;. \label{eq:estEQ2132}
 \end{align} 
 }
+\textcolor{blue}{This establishes the desired bound for $ E^{m,5}_{Q_2} $. The bound for $ E^{m,7}_{Q_2} $ is completely analogous. For $ E^{m,6}_{Q_2} $, the estimates~\eqref{eq:estEQ2131} and~\eqref{eq:estEQ2132} are analogous, but~\eqref{eq:estEQ2131_Coulomb} must be modified, as the $ K(\ell_1) $-matrix no longer contains an index $ \ell $ to sum over: After splitting $ E^{m,6}_{Q_2} $ in analogy to~\eqref{eq:EQ2131}, the analogous bound to~\eqref{eq:estEQ2131_Coulomb} for $ j = 0 $ reads:
+\begin{align}
+	&\sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) |\I_0(\ell, \ell_1)| \nonumber\\
+	&\leq \sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell \cap L_{\ell_1}}(q) \sum\limits_{r\in L_{\ell_1} \cap L_\ell}
+		\norm{ K(\ell_1)_{r,q} a_{-q+\ell_1} a_{r-\ell_1} \xi_\lambda}
+		\norm{ K^m(\ell)_{r,q} a_{-q+\ell}a_{r-\ell} \xi_\lambda } \nonumber\\
+	&\leq \sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_{\ell_1}}(q) 
+		\Bigg( \sum_{r\in L_{\ell_1}} |K(\ell_1)_{r,q}|^2 \Bigg)^{\half}
+		\norm{  a_{-q+\ell_1} \xi_\lambda}
+		e(q) k_{\F}^{-1} (C \hat{V}(\ell))^m 
+	\Bigg( \sum_{r\in \Z^3} \norm{a_{-q+\ell}a_{r-\ell} \xi_\lambda }^2 \Bigg)^{\half} \nonumber\\
+	&\leq e(q) k_{\F}^{-\frac 32}
+		\Bigg( \sum_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1)^2 \Bigg)^{\half}
+		\Bigg( \sum_{\ell \in \Z^3_*} (C \hat{V}(\ell))^{2m} \Bigg)^{\half}
+		\Bigg( \sum_{r, \ell, \ell_1 \in \Z^3} \norm{ a_{-q+\ell_1} \xi_\lambda}
+		\norm{a_{-q+\ell}a_{r-\ell} \xi_\lambda }^2 \Bigg)^{\half} \nonumber\\
+	&\leq C^m e(q) k_{\F}^{-\frac 32}
+		\norm{(\NN+1) \xi_\lambda }^2
+		\;. \label{eq:estEQ2131_Coulomb_bis}
+\end{align}
+The case $ j = m $ is then again treated analogously to this estimate.
+}
 \end{proof}
 
 
@@ -1826,7 +1850,9 @@ The bounds for $ |\I_m(\ell, \ell_1)| $ are analogous. For $ 1 \le j \le m-1 $, 
 Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $,
 \begin{align}
 	\abs{\eva{\xi_\lambda,\left(E^{m,8}_{Q_2}+E^{m,9}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }}
-	\leq C^m k_{\F}^{-\frac 32} \Xi^\half e(q)^{-1} \norm{(\NN+1)^{\half} \xi_\lambda} \;.\label{eq:estEQ218}
+	\leq C^m \left( k_{\F}^{-\frac 32} \Xi^\half
+		+ k_{\F}^{-1} \Xi \right)
+		e(q)^{-1} \norm{(\NN+1)^{\half} \xi_\lambda} \;.\label{eq:estEQ218}
 \end{align}
 \end{lemma}
 
@@ -1874,9 +1900,9 @@ An analogous bound holds for $ j = m $. Finally, for $ 1 \le j \le m-1 $, which 
 	&\leq C^m k_{\F}^{-2} \Xi^{\half} e(q)^{-1} \norm{(\NN+1)^{\half} \xi_\lambda} \;. \label{eq:estEQ2182}
 \end{align}
 }
-For $ E_{Q_2}^{m,9} $, the bound is analogous up to the following modification: The term for $ j = 0 $ is
+\textcolor{blue}{For $ E_{Q_2}^{m,9} $, the bound is analogous up to the following modification: The term for $ j = 0 $ is
 \begin{equation}
-	I_0(\ell,\ell_1)
+	\I_0(\ell,\ell_1)
 	\coloneq \mathds{1}_{L_{\ell_1} \cap (-L_{\ell_1} + \ell+\ell_1) \cap (-L_\ell + \ell+\ell_1)}(q)
 		K(\ell)^m_{q,-q+\ell+\ell_1}
 		K(\ell_1)_{q,-q+\ell+\ell_1}
@@ -1894,7 +1920,7 @@ and we bound it as
 	\leq C^m
 		k_{\F}^{-1} e(q)^{-1} \Xi \;.\label{eq:estEQ2181_bis}
 \end{align}
-
+}
 \end{proof}
 
 
