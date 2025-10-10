@@ -1394,9 +1394,10 @@ Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-
 If $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, given $ \varepsilon > 0 $, there exists $ C_\varepsilon > 0 $ such that we have the even stronger bound
 \begin{align}
 	\abs{\eva{\xi_\lambda,\left(E^{m,1}_{Q_2}+E^{m,2}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }}
-	\leq C_\varepsilon C^m \left( k_{\F}^{-\frac{3}{2}} \Xi^\half 
+	&\leq C_\varepsilon C^m \left( k_{\F}^{-\frac{3}{2}} \Xi^\half 
 		+ k_{\F}^{-1}\Xi^{1-\varepsilon} \right) e(q)^{-1} 
-		\norm { (\NN+1)^{\frac 52} \xi_\lambda } \;. \label{eq:estEQ211}
+		\norm { (\NN+1)^{\frac 52} \xi_\lambda } \nonumber\\
+	&\quad + C_\varepsilon C^m k_{\F}^{-1} \Xi^{\half - \varepsilon} \eva{a_q^* a_q}^{\half} e(q)^{-\half} \;. \label{eq:estEQ211}
 \end{align}
 \end{lemma}
 
@@ -1518,7 +1519,7 @@ For $ \sum_\ell \hat{V}(\ell) < \infty $, no splitting of the sum over $ \ell_1 
 \end{align}
 Summing up the three bounds, respectively, concludes the proof for $ E^{m,1}_{Q_2} $.\\
 \textcolor{blue}{
-The bound for $ E^{m,2}_{Q_2} $ (compare~\eqref{eq:expandedEQ2}) is analogous, except for $ j = m $: Splitting $ E^{m,2}_{Q_2} $ as in~\eqref{eq:EQ2111}, and bounding the analogous $ \I_m $-term via~\eqref{eq:estEQ2113_Coulomb_1} and~\eqref{eq:estEQ2113_Coulomb_2} would result in a factor of $ e(q)^{-\half} e(q-\ell+\ell_1)^{\half} $ instead of $ e(q)^{-1} $. However, $ a_{q-\ell} $ gets replaced by $ a_q $, so we can recover a $ \eva{a_q^* a_q}^{\half} $, which we expect to finally scale like $ \sim (n_q^{\b})^{\half} \sim k_{\F}^{-\half} e(q)^{-\half} $: 
+The bound for $ E^{m,2}_{Q_2} $ (compare~\eqref{eq:expandedEQ2}) is analogous, except for $ j = m $: Splitting $ E^{m,2}_{Q_2} $ as in~\eqref{eq:EQ2111}, and bounding the analogous $ \I_m $-term via~\eqref{eq:estEQ2113_Coulomb_1} and~\eqref{eq:estEQ2113_Coulomb_2} would result in a factor of $ e(q)^{-\half} e(q-\ell+\ell_1)^{\half} $ instead of $ e(q)^{-1} $. However, $ a_{q-\ell_1} $ gets replaced by $ a_q $, so we can recover a $ \eva{a_q^* a_q}^{\half} $, which we expect to finally scale like $ \sim (n_q^{\b})^{\half} \sim k_{\F}^{-\half} e(q)^{-\half} $: 
 \begin{align}
 	&\sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) |\I_m(\ell, \ell_1)| \nonumber\\
 	&\leq \sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell \cap (L_{\ell_1}+\ell-\ell_1) }(q)
@@ -1533,7 +1534,20 @@ The bound for $ E^{m,2}_{Q_2} $ (compare~\eqref{eq:expandedEQ2}) is analogous, e
 		\sum_{\ell_1,s_1 \in \Z^3} \norm{ a_{-s_1} a_{-s_1+\ell_1} (\NN+1) \xi_\lambda }^2 \Bigg)^{\half} \nonumber\\
 	&\leq C^m k_{\F}^{-1} e(q)^{-\frac 12} \eva{a_q^* a_q}^{\half} \norm{ (\NN+1)^2 \xi_\lambda } \;. \label{eq:estEQ2113_Coulomb_bis}
 \end{align}
-In case $ \sum_\ell \hat{V}(\ell) < \infty $, the term $ |\I_m(\ell, \ell_1)| $ for $ E^{m,2}_{Q_2} $ is bounded as in~\eqref{eq:estEQ2113}.
+In case $ \sum_\ell \hat{V}(\ell) < \infty $, with Lemma~\ref{lem:Xi_halfminusepsilon}, we may again obtain a stronger bound, while still extracting $ \eva{a_q^* a_q}^{\half} $:
+\begin{align}
+	|\I_m(\ell, \ell_1)|
+	&\leq \Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half
+		\Bigg(\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{q-\ell+\ell_1,s_1}}^2\Bigg)^\half
+		\norm{ a_{q-\ell+\ell_1} (\NN+1) \xi_\lambda}
+		\norm{ a_q \xi_\lambda }\nonumber\\
+	&\leq (C \hat{V}(\ell))^m \hat{V}(\ell_1) k_{\F}^{-1} e(q)^{-\half}
+		\sup_{q \in \Z^3} \norm{ a_q (\NN+1) \xi_\lambda }
+		\eva{a_q^* a_q}^{\half} \nonumber\\
+	&\leq C_\varepsilon (C \hat{V}(\ell))^m
+		\hat{V}(\ell_1)
+		k_{\F}^{-1} e(q)^{-\half} \Xi^{\half-\varepsilon} \eva{a_q^* a_q}^{\half} \;. \label{eq:estEQ2113_bis}
+\end{align}
 }
 \end{proof}
 
