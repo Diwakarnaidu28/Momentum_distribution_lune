@@ -1385,10 +1385,11 @@ If $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, we have the even stronger 
 Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $, the following bound is true for any $ \alpha \ge 0 $:
 \begin{align}
 	\abs{\eva{\xi_\lambda,\left(E^{m,1}_{Q_2}+E^{m,2}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }}
-	\leq C^m \left( k_{\F}^{-\frac 32}
+	&\leq C^m \left( k_{\F}^{-\frac 32}
 		+ k_{\F}^{-1-\frac{\alpha}{2}} 
 		+ k_{\F}^{-1+\alpha} \Xi^{\half} \right) e(q)^{-1}
-		\norm { (\NN+1)^{\frac 52} \xi_\lambda }^2 \;. \label{eq:estEQ211_Coulomb}
+		\norm{ (\NN+1)^{\frac 52} \xi_\lambda }^2 \nonumber\\
+	&\quad + C^m k_{\F}^{-1} \eva{a_q^* a_q}^{\half} e(q)^{-\half} \norm{ (\NN+1)^2 \xi_\lambda } \;. \label{eq:estEQ211_Coulomb}
 \end{align}
 If $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, given $ \varepsilon > 0 $, there exists $ C_\varepsilon > 0 $ such that we have the even stronger bound
 \begin{align}
@@ -1402,7 +1403,7 @@ If $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, given $ \varepsilon > 0 $,
 %As mentioned above, we expect $ \Xi \sim k_{\F}^{-1} $, so an optimization yields $ \alpha = \frac 13 $. The Coulomb bound~\eqref{eq:estEQ211_Coulomb} is therefore of order $ \sim k_{\F}^{-1-\frac 16} $, whereas~\eqref{eq:estEQ211} is $ \sim k_{\F}^{-2 + \varepsilon} $.
 
 \begin{proof}
-The proof strategy is very similar to the one of Lemma~\ref{lem:EQ111}. We only focus on bounding $ E^{m,1}_{Q_2} $, since $ E^{m,2}_{Q_2} $ is controlled analogously.
+The proof strategy is very similar to the one of Lemma~\ref{lem:EQ111}. We start with $ E^{m,1}_{Q_2} $.
 As in~\eqref{eq:EQ1111}, we split the anticommutator in $ E^{m,1}_{Q_2} $~\eqref{eq:expandedEQ2} using~\eqref{eq:q-q}:
 \begin{equation} \label{eq:EQ2111}
 \begin{aligned}
@@ -1515,7 +1516,25 @@ For $ \sum_\ell \hat{V}(\ell) < \infty $, no splitting of the sum over $ \ell_1 
 		\hat{V}(\ell_1)
 		k_{\F}^{-1} e(q)^{-1} \Xi^{1-\varepsilon} \;. \label{eq:estEQ2113}
 \end{align}
-Summing up the three bounds, respectively, concludes the proof.
+Summing up the three bounds, respectively, concludes the proof for $ E^{m,1}_{Q_2} $.\\
+\textcolor{blue}{
+The bound for $ E^{m,2}_{Q_2} $ (compare~\eqref{eq:expandedEQ2}) is analogous, except for $ j = m $: Splitting $ E^{m,2}_{Q_2} $ as in~\eqref{eq:EQ2111}, and bounding the analogous $ \I_m $-term via~\eqref{eq:estEQ2113_Coulomb_1} and~\eqref{eq:estEQ2113_Coulomb_2} would result in a factor of $ e(q)^{-\half} e(q-\ell+\ell_1)^{\half} $ instead of $ e(q)^{-1} $. However, $ a_{q-\ell} $ gets replaced by $ a_q $, so we can recover a $ \eva{a_q^* a_q}^{\half} $, which we expect to finally scale like $ \sim (n_q^{\b})^{\half} \sim k_{\F}^{-\half} e(q)^{-\half} $: 
+\begin{align}
+	&\sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) |\I_m(\ell, \ell_1)| \nonumber\\
+	&\leq \sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell \cap (L_{\ell_1}+\ell-\ell_1) }(q)
+		\Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half
+		\Bigg(\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{q-\ell+\ell_1,s_1}}^2\Bigg)^\half \times \nonumber\\
+	&\quad \times \Bigg( \sum_{s,s_1 \in \Z^3} \norm{ a_{-s} a_{-s+\ell} a_q (\NN+1)^{-1} \xi_\lambda}^2
+		\norm{ a_{-s_1} a_{-s_1+\ell_1} a_{q-\ell+\ell_1} (\NN+1) \xi_\lambda }^2 \Bigg)^{\half} \nonumber\\
+	&\leq k_{\F}^{-1} e(q)^{-\frac 12}
+		\Bigg(\sum_{\ell \in \Z^3_*} (C \hat{V}(\ell))^{2m} \Bigg)^\half
+		\Bigg(\sum_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1)^2 \Bigg)^\half \times \nonumber\\
+	&\quad \times \Bigg( \sum_{\ell,s \in \Z^3} \norm{ a_{-s} a_{-s+\ell} a_q (\NN+1)^{-1} \xi_\lambda}^2
+		\sum_{\ell_1,s_1 \in \Z^3} \norm{ a_{-s_1} a_{-s_1+\ell_1} (\NN+1) \xi_\lambda }^2 \Bigg)^{\half} \nonumber\\
+	&\leq C^m k_{\F}^{-1} e(q)^{-\frac 12} \eva{a_q^* a_q}^{\half} \norm{ (\NN+1)^2 \xi_\lambda } \;. \label{eq:estEQ2113_Coulomb_bis}
+\end{align}
+In case $ \sum_\ell \hat{V}(\ell) < \infty $, the term $ |\I_m(\ell, \ell_1)| $ for $ E^{m,2}_{Q_2} $ is bounded as in~\eqref{eq:estEQ2113}.
+}
 \end{proof}
 
 
