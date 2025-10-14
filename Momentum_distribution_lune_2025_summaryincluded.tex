@@ -924,8 +924,7 @@ Let $A = (A(\ell))_{\ell \in \Z^3_*}$ be a family of symmetric operators $ A(\el
 For the first bound, see \cite[Prop.~4.7]{CHN21}; the second follows analogously.
 \end{proof}
 
-
-The next estimate generalizes \cite[Prop.~5.8]{CHN21}, conceptually going back to \cite{BJPSS16,BPS14}. It shows that the expectation value $ \langle \Omega, e^{\lambda S} (\mathcal{N} + 1)^m e^{-\lambda S} \Omega \rangle$ does not grow with $N$.
+The next estimate generalizes \cite[Prop.~5.8]{CHN21}, conceptually going back to \cite{BJPSS16,BPS14} in the context of the derivation of the time-dependent Hartree--Fock equation. It shows that the expectation value $ \langle \Omega, e^{\lambda S} (\mathcal{N} + 1)^m e^{-\lambda S} \Omega \rangle$ does not grow with $N$.
 
 \begin{lemma}[Gr\"onwall estimate]\label{lem:gronNest}
 For every $ m \in \NNN $, there exists a constant $ C_m > 0 $ such that for all $ \lambda\in [0,1]$ we have
@@ -1152,11 +1151,11 @@ We need three different strategies for $ j = 0 $, for $ 1 \le j \le m-1 $, and f
 \begin{align*}
 	&|\I_0(\ell, \ell_1)| \nonumber\\
 	&\le \sum_{r \in L_\ell \cap L_{\ell_1}} \abs{\eva{ \sum_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+1) (\NN+1)^{-1} \xi_\lambda, K^{m}(\ell)_{r,q} a_{r-\ell} \xi_\lambda }}\nonumber\\
-	&\leq \Bigg( \sum_{r \in L_{\ell_1}} \Bigg\Vert \sum_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{-\alpha}\xi_\lambda \Bigg\Vert^2\Bigg)^\half \nonumber\\
-	&\quad \times \Bigg( \sum_{r \in L_\ell} \norm{  K^{m}(\ell)_{r,q} a_{r-\ell} (\NN+5)^{\alpha}\xi_\lambda }^2\Bigg)^\half \nonumber\\
-	&\leq \Bigg( \sum_{r,s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r,s_1}}^2 \sum_{s_1' \in L_{\ell_1}} \norm{ b_{-s_1'}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{-\alpha}\xi_\lambda}^2\Bigg)^\half \nonumber\\
-	& \quad \times (C \hat{V}(\ell))^m k_{\F}^{-1} e(q)^{-1} \norm{ \NN^\half(\NN+5)^{\alpha}\xi_\lambda } \nonumber\\
-	&\leq (C \hat{V}(\ell))^m k_{\F}^{-1} e(q)^{-1}  \norm{K(\ell_1)}_{\mathrm{max,2}} \norm{ a_{q}(\NN+1)^{1-\alpha}\xi_\lambda} \norm{ (\NN+5)^{\half+\alpha}\xi_\lambda } \tagg{eq:notimportant2} \;.
+	&\leq \Bigg( \sum_{r \in L_{\ell_1}} \Bigg\Vert \sum_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{-1}\xi_\lambda \Bigg\Vert^2\Bigg)^\half \nonumber\\
+	&\quad \times \Bigg( \sum_{r \in L_\ell} \norm{  K^{m}(\ell)_{r,q} a_{r-\ell} (\NN+5)\xi_\lambda }^2\Bigg)^\half \nonumber\\
+	&\leq \Bigg( \sum_{r,s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r,s_1}}^2 \sum_{s_1' \in L_{\ell_1}} \norm{ b_{-s_1'}(-\ell_1) b_{q}(\ell) a_{r-\ell_1} (\NN+1)^{-1}\xi_\lambda}^2\Bigg)^\half \nonumber\\
+	& \quad \times (C \hat{V}(\ell))^m k_{\F}^{-1} e(q)^{-1} \norm{ \NN^\half(\NN+5)\xi_\lambda } \nonumber\\
+	&\leq (C \hat{V}(\ell))^m k_{\F}^{-1} e(q)^{-1}  \norm{K(\ell_1)}_{\mathrm{max,2}} \norm{ a_{q}\xi_\lambda} \norm{ (\NN+5)^{\frac{3}{2}}\xi_\lambda } \tagg{eq:notimportant2} \;.
 \end{align*}
 Using Lemma~\ref{lem:normsk} and $ (\cN+5)^m \le C (\cN+1)^m $, we get
 \begin{equation}
