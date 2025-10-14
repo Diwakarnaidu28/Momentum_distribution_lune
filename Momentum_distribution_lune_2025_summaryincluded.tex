@@ -373,7 +373,7 @@ Moreover we have \todo{Move to Remark 1?}
 \begin{remarks}
 \begin{enumerate}
 
-\item In Lemma~\ref{lem:nqb_bounds}, we show that the scaling $ n^{\RPA}(q) \sim k_{\F}^{-1} e(q)^{-1} $ is sharp, in the sense that there exist $ V $ and $ q $ \todo{Give precise statement in terms of a sequence.} for which $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $. \todo{Make sure that $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $ is true.}
+\item In Lemma~\ref{lem:nqb_bounds}, we show that the scaling $ n^{\RPA}(q) \sim k_{\F}^{-1} e(q)^{-1} $ is sharp, in the sense that there exist $ V $ and $ q $ for which $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $. \todo{Make sure that $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $ is true.}
 
 \item In~\cite{BL25}, the scaling of the leading term is $ n^{\RPA}(q) \sim k_{\F}^{-2} $ without any $ e(q) $. This is because~\cite{BL25} assumes $ |\ell| \le C $ and $ |\ell \cdot q| \ge c $ in the analogue of~\eqref{eq:nqb}, leading to $ e(q) \sim k_{\F} $. In other words, it includes only momenta at distances $ ||q|-k_{\F}| \sim 1 $ from the Fermi surface, while the present result admits distances as small as $ k_{\F}^{-1} $.
 % (and up to arbitrarily large distances.\\
@@ -647,7 +647,6 @@ In Lemma~\ref{lem:nqb_integralrecovery}, we will see that the first term on the 
 
 
 \begin{proof}
-\todo{write how the iteration is done exactly}
 Our trial state and excitation density are reflection symmetric, that is, if we define the spatial reflection $ \fR: \cF \to \cF $ by $ \fR^* a_q^* \fR = a^*_{-q} $ and $ \fR \Omega = \Omega $, then
 \begin{equation} \label{eq:reflectionsymmetry}
 	\fR e^{-S} \Omega = e^{-S} \Omega
@@ -666,7 +665,7 @@ The first commutator in the Duhamel expansion takes the convenient form
 	= Q_2(\{K,\tilde{P}^q\}) \;, \qquad
 	\tilde{P}^q \coloneq \half(P^q + P^{-q}) \;.
 \end{equation}
-We then iteratively Duhamel-expand the $ Q_1$-- and $ Q_2 $--terms using Lemma~\ref{lem:Q1Kcomm} as
+We then iteratively Duhamel-expand the $ Q_1$-- and $ Q_2 $--terms using Lemma~\ref{lem:Q1Kcomm} as \todo{write how the Duhamel iteration is done exactly}
 \begin{align*}
 	e^{\lambda S} Q_1(A) e^{-\lambda S}
 	&= Q_1(A) + \int_0^{\lambda} \di \lambda' e^{\lambda' S} Q_2(\{A,K\}) e^{-\lambda' S}
@@ -722,7 +721,6 @@ Recall the definition~\eqref{eq:errKQ} of $ E_{Q_1} $ and $ E_{Q_2} $. Then, for
 	= \Bigg( \sum_{j=1}^{11} E_{Q_2}^{m,j}(q) \Bigg) + \mathrm{h.c.} + n^{\ex,m}(q) \;,
 \end{split}
 \end{equation}
-\todo{maybe make $q$-dependence of the $E$-terms explicit}
 with
 \begin{align}
 	E_{Q_1}^{m,1}(q)
@@ -1139,7 +1137,12 @@ with $ K(\ell)^0 = \mathds{1} $, we obtain
 \begin{equation} \label{eq:EQ1111}
 \begin{aligned}
 	& \abs{\eva{\xi_\lambda,\left(E^{m,1}_{Q_1}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
-	\le 4 \sum_{j=0}^m {{m}\choose j} \sum_{\ell,\ell_1  \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) | \I_j(\ell, \ell_1)| \;,\\
+	\le 4 \sum_{j=0}^m {{m}\choose j} \sum_{\ell,\ell_1  \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) | \I_j(\ell, \ell_1)| \;,
+	\end{aligned}
+\end{equation}
+where
+\begin{equation}
+\begin{aligned}
 & 	\I_j(\ell, \ell_1)
 	\coloneq \sum_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r-\ell} \xi_\lambda} \;. \\
@@ -1217,7 +1220,12 @@ As in the proof of Lemma~\ref{lem:EQ111}, we split
 \begin{aligned}
 	& \abs{\eva{\xi_\lambda,\left(E^{m,3}_{Q_1}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
 % 	= 2\abs{\eva{\xi_\lambda, E^{m,3}_{Q_1}(q) \xi_\lambda }}
-	\le 4 \sum_{j=0}^m {{m}\choose j} \sum_{\ell,\ell_1 \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,\\
+	\le 4 \sum_{j=0}^m {{m}\choose j} \sum_{\ell,\ell_1 \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,
+	\end{aligned}
+\end{equation}
+where
+\begin{equation}
+\begin{aligned}
 	& \I_j(\ell, \ell_1)
 	\coloneq \sum_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell_1}+\ell+\ell_1)\\ s \in L_{\ell}}}
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s}K(\ell_1)_{r,-r+\ell+\ell_1} a_{r-\ell-\ell_1} a_{r-\ell_1} b_{s}(\ell) \xi_\lambda} \;. \\
@@ -1335,7 +1343,12 @@ The proof is similar to the one of Lemma~\ref{lem:EQ111}: we split the anticommu
 \begin{aligned}
 	& \abs{\eva{\xi_\lambda,\left(E^{m,1}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
 % 	= 2\abs{\eva{\xi_\lambda, E^{m,1}_{Q_2}(q) \xi_\lambda }}
-	\le 4 \sum_{j=0}^m {{m}\choose j} \sum_{\ell,\ell_1 \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,\\
+	\le 4 \sum_{j=0}^m {{m}\choose j} \sum_{\ell,\ell_1 \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,
+	\end{aligned}
+\end{equation}
+where
+\begin{equation}
+\begin{aligned}
 	& \I_j(\ell, \ell_1)
 	\coloneq \sum_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},s_1\in L_{\ell_1}}}
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{-s_1}(-\ell_1) b_{-s}(-\ell) a_{r-\ell} \xi_\lambda} \;. \\
@@ -1409,7 +1422,12 @@ Splitting the anticommutator in $ E^{m,3}_{Q_2}(q) $ by \eqref{eq:q-q} yields
 \begin{aligned}
 	&\abs{\eva{\xi_\lambda,\left(E^{m,3}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
 % 	= 2\abs{\eva{\xi_\lambda, E^{m,3}_{Q_2}(q) \xi_\lambda }}
-	\le 4 \sum_{j=0}^m {{m}\choose j} \sum_{\ell,\ell_1 \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,\\
+	\le 4 \sum_{j=0}^m {{m}\choose j} \sum_{\ell,\ell_1 \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,
+	\end{aligned}
+\end{equation}
+where
+\begin{equation}
+\begin{aligned}
 	& \I_j(\ell, \ell_1)
 	\coloneq \sum_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell_1}+\ell+\ell_1)\\ s \in L_{\ell}}}
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,-r+\ell+\ell_1} a^*_{r-\ell_1} a^*_{r-\ell-\ell_1} b_{-s}(-\ell) \xi_\lambda} \;. \\
@@ -1476,7 +1494,12 @@ Splitting the anticommutator in $ E^{m,4}_{Q_2}(q) $ by \eqref{eq:q-q} gives
 \begin{aligned}
 	& \abs{\eva{\xi_\lambda,\left(E^{m,4}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
 % 	= 2\abs{\eva{\xi_\lambda, E^{m,4}_{Q_2}(q) \xi_\lambda }}
-	\le 4 \sum_{j=0}^m {{m}\choose j} \sum_{\ell,\ell_1 \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,\\
+	\le 4 \sum_{j=0}^m {{m}\choose j} \sum_{\ell,\ell_1 \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,
+	\end{aligned}
+\end{equation}
+where
+\begin{equation}
+\begin{aligned}
 	& \I_j(\ell, \ell_1)
 	\coloneq \sum_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell_1}+\ell+\ell_1)\\ s_1 \in L_{\ell_1}}}
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,-r+\ell+\ell_1} K(\ell_1)_{r,s_1} b^*_{-s_1}(-\ell_1) a_{r-\ell-\ell_1} a_{r-\ell} \xi_\lambda} \;. \\
@@ -1534,7 +1557,12 @@ We only prove the estimate $ E^{m,5}_{Q_2}(q) $ explicitly; the bounds for $ E^{
 \begin{aligned}
 	& \abs{\eva{\xi_\lambda,\left(E^{m,5}_{Q_2}(q) +\mathrm{h.c.}\right) \xi_\lambda }}
 % 	= 2\abs{\eva{\xi_\lambda, E^{m,5}_{Q_2}(q) \xi_\lambda }}
-	\le 4 \sum_{j=0}^m {{m}\choose j} \sum_{\ell,\ell_1  \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,\\
+	\le 4 \sum_{j=0}^m {{m}\choose j} \sum_{\ell,\ell_1  \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,
+	\end{aligned}
+\end{equation}
+where
+\begin{equation}
+\begin{aligned}
 	& \I_j(\ell, \ell_1)
 	\coloneq \sum_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in (L_{\ell} - \ell) \cap (L_{\ell_1} - \ell_1)}}
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s+\ell} K(\ell_1)_{r,s+\ell_1} a^*_{r-\ell_1} a^*_{-s-\ell_1} a_{-s-\ell} a_{r-\ell} \xi_\lambda} \;. \\
@@ -1585,7 +1613,12 @@ Splitting the anticommutator in $ E^{m,8}_{Q_2}(q) $ by \eqref{eq:q-q} we get
 \begin{aligned}
 	& \abs{\eva{\xi_\lambda,\left(E^{m,8}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
 % 	= 2\abs{\eva{\xi_\lambda, E^{m,8}_{Q_2}(q) \xi_\lambda }}
-	\le 4 \sum_{j=0}^m {{m}\choose j} \sum_{\ell,\ell_1 \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,\\
+	\le 4 \sum_{j=0}^m {{m}\choose j} \sum_{\ell,\ell_1 \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,
+	\end{aligned}
+\end{equation}
+where
+\begin{equation}
+\begin{aligned}
 	& \I_j(\ell, \ell_1)
 	\coloneq \sum_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\\cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1)}}
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,-r+\ell+\ell_1} K(\ell_1)_{r,-r+\ell+\ell_1} a^*_{r-\ell_1} a_{r-\ell_1} \xi_\lambda} \;. \\
@@ -1629,7 +1662,12 @@ Splitting the multi-anticommutator in $ E^{m,10}_{Q_2}(q) $ by \eqref{eq:q-q} yi
 \begin{aligned}
 	& \abs{\eva{\xi_\lambda,\left(E^{m,10}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
 % 	&= 2\abs{\eva{\xi_\lambda, E^{m,10}_{Q_2}(q) \xi_\lambda }}
-	\le 4 \sum_{j=0}^{m+1} {{m+1}\choose j} \sum_{\ell,\ell_1  \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell)| \;,\\
+	\le 4 \sum_{j=0}^{m+1} {{m+1}\choose j} \sum_{\ell,\ell_1  \in \Z^3_*}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell)| \;,
+\end{aligned}
+\end{equation}
+where
+\begin{equation}
+\begin{aligned}
 	& \I_j(\ell)
 	\coloneq \sum_{r\in L_{\ell}}
 		\eva{\xi_\lambda, K^{m+1-j}(\ell)_{r,q} K^{j}(\ell)_{q,r} a^*_{r-\ell} a_{r-\ell} \xi_\lambda} \;. \\
@@ -1900,6 +1938,7 @@ The authors have no competing interests to declare.
 \section*{Data Availability}
 As purely mathematical research, there are no datasets related to this article.
 
+\todo{reference list to be cleaned of unused entries}
 \begin{thebibliography}{29}
 \bibitem{BJPSS16}
 N. Benedikter, V. Jakšić, M. Porta, C. Saffirio, B. Schlein:
@@ -1946,10 +1985,10 @@ M. Brooks, S. Lill:
 	\emph{Lett. Math. Phys.} \textbf{113}: article number 101 (2023)
 
 
-\bibitem{CF94}
-A. H. Castro-Neto, E. Fradkin:
-	Bosonization of {{Fermi}} liquids.
-	\emph{Phys. Rev. B}, \textbf{49}(16): 10877--10892, (1994)
+% \bibitem{CF94}
+% A. H. Castro-Neto, E. Fradkin:
+% 	Bosonization of {{Fermi}} liquids.
+% 	\emph{Phys. Rev. B}, \textbf{49}(16): 10877--10892, (1994)
 
 \bibitem{CHN21}
 M. R. Christiansen, C. Hainzl, P. T. Nam:
