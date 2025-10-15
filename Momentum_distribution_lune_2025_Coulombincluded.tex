@@ -1047,21 +1047,24 @@ Evidently, $ 0 \le a_q^* a_q \le 1 $ implies the trivial bound $ 0 \le \Xi \le 1
 
 \begin{proposition} \label{prop:finalEmest}
 Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 < \infty $. Recall the bosonization error term $E_m(P^q)$~\eqref{eq:errEm} with $ \Theta^n_K $, $ P^q $, $ \int_{\Delta^n} \di^n \ulambda $ and $ \sigma(n) $ defined within and above Proposition~\ref{prop:finexpan}. Then, given $ \varepsilon > 0 $, there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $ and $ q \in B_{\F}^c $,
-\begin{equation} \label{eq:finalEmest_Coulomb}
-	\abs{\eva{\Omega, E_m(P^q) \Omega} - \delta_{m,1} \frac 12 n_q^{\ex,1}}
-	\leq C_\varepsilon \frac{C^m}{m!} \left( k_{\F}^{-\frac 32 + \varepsilon} 
+\begin{align} \label{eq:finalEmest_Coulomb}
+	&\abs{\eva{\Omega, E_m(P^q) \Omega} - \delta_{m,1} \frac 12 n_q^{\ex,1}} \nonumber\\
+	&\leq C_\varepsilon \frac{C^m}{m!}
+		\left( e(q)^{-1}\left( k_{\F}^{-\frac 32 + \varepsilon} 
 		+ k_{\F}^{-1 - \frac{\alpha}{2}} 
 		+ k_{\F}^{-1+\alpha} \Xi^\half
 		+ k_{\F}^{-1+\varepsilon} \Xi^\half
-		+ k_{\F}^{-1} \Xi \right) e(q)^{-1} \;,
-\end{equation}
+		+ k_{\F}^{-1} \Xi \right) 
+		+ e(q)^{-\half} k_{\F}^{-1} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} \right) \;,
+\end{align}
 where $ n_q^{\ex,m} = 0 $ for $ m $ being odd.
 Moreover, if $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, we have the bound
 \begin{equation} \label{eq:finalEmest}
 	\abs{\eva{\Omega, E_m(P^q) \Omega}}
 	\leq C_\varepsilon \frac{C^m}{m!}
-		e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
-		+ k_{\F}^{-1}\Xi^{1-\varepsilon} \right) \;.
+		\left( e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
+		+ k_{\F}^{-1} \Xi^{1-\varepsilon} \right)
+		+ e(q)^{-\half} k_{\F}^{-1} \Xi^{\half - \varepsilon} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half}  \right)\;.
 \end{equation}
 \end{proposition}
 
@@ -1085,19 +1088,21 @@ Here, only the case $ m \ge 2 $ occurs, which will make bounds slightly easier, 
 
 \begin{proposition}[Estimate for $E_{Q_1}(\Theta^m_{K}(P^q))$]\label{prop:finEQ1est}
 Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $, there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $, $ m \ge 2 $, $ \lambda \in [0,1] $, and $ q \in B_{\F}^c $,
-\begin{equation} \label{eq:finalEQ1est_Coulomb}
+\begin{align} \label{eq:finalEQ1est_Coulomb}
 	\abs{\eva{\xi_\lambda, E_{Q_1}\!\left(\Theta^m_K(P^q)\right) \xi_\lambda}}
-	\leq C_\varepsilon C^m \left( k_{\F}^{-\frac 32 + \varepsilon}
+	&\leq C_\varepsilon C^m \left( k_{\F}^{-\frac 32 + \varepsilon}
 		+ k_{\F}^{-1 + \varepsilon} \Xi^\half \right)
-		e(q)^{-1} \;.
-\end{equation}
+		e(q)^{-1}
+		+ C^m k_{\F}^{-1} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} e(q)^{-\half} \;.
+\end{align}
 If $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, we have the even stronger bound
-\begin{equation} \label{eq:finalEQ1est}
+\begin{align} \label{eq:finalEQ1est}
 	\abs{\eva{\xi_\lambda, E_{Q_1}\!\left(\Theta^m_K(P^q)\right) \xi_\lambda}}
-	\leq C_\varepsilon C^m \left(
+	&\leq C_\varepsilon C^m \left(
 		k_{\F}^{-\frac{3}{2}} \Xi^\half
-		+ k_{\F}^{-1}\Xi^{1-\varepsilon} \right) e(q)^{-1} \;.
-\end{equation}
+		+ k_{\F}^{-1}\Xi^{1-\varepsilon} \right) e(q)^{-1} \nonumber\\
+	&\quad + C_\varepsilon C^m k_{\F}^{-1} \Xi^{\half - \varepsilon} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} e(q)^{-\half} \;.
+\end{align}
 \end{proposition}
 
 To prove this proposition, we need to estimate the terms $ E^{m,1}_{Q_1}(q) $, $ E^{m,2}_{Q_1}(q) $, and $ E^{m,3}_{Q_1}(q) $. We rely on the following lemma.
@@ -1416,7 +1421,7 @@ Adding up all bounds and using $ e(q) \ge \half $ yields the result.
 
 
 \begin{proof}[Proof of Proposition~\ref{prop:finEQ1est}]
-We sum the estimates from Lemmas~\ref{lem:EQ111} and~\ref{lem:EQ112} and use that $ \norm{(\NN+1)^{\frac 32} \xi_\lambda} \le C $ according to Lemma \ref{lem:gronNest}.
+We sum the estimates from Lemmas~\ref{lem:EQ111} and~\ref{lem:EQ112} and use that $ \norm{(\NN+1)^2 \xi_\lambda} \le C $ according to Lemma \ref{lem:gronNest}.
 \end{proof}
 
 
@@ -1429,22 +1434,22 @@ We sum the estimates from Lemmas~\ref{lem:EQ111} and~\ref{lem:EQ112} and use tha
 
 \begin{proposition}[Estimate for $E_{Q_2}(\Theta^m_{K}(P^q))$]\label{prop:finEQ2est}
 Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $ there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $, $ \lambda \in [0,1] $, and $ q \in B_{\F}^c $, the following bound is true for any $ \alpha \ge 0 $:
-\begin{equation}\label{eq:finEQ2est_Coulomb}
-\begin{aligned}
-	&\abs{\eva{\xi_\lambda, E_{Q_2}\!\left(\Theta^m_K(P^q)- \delta_{m,1} n_q^{\ex,1} \right) \xi_\lambda}} \\
-	&\leq C_\varepsilon C^m \left( k_{\F}^{-\frac 32} 
+\begin{align}\label{eq:finEQ2est_Coulomb}
+	&\abs{\eva{\xi_\lambda, E_{Q_2}\!\left(\Theta^m_K(P^q)- \delta_{m,1} n_q^{\ex,1} \right) \xi_\lambda}} \nonumber\\
+	&\leq C_\varepsilon C^m \left( k_{\F}^{-\frac 32 + \varepsilon} 
 		+ k_{\F}^{-1 - \frac{\alpha}{2}} 
 		+ k_{\F}^{-1+\alpha} \Xi^\half
 		+ k_{\F}^{-1+\varepsilon} \Xi^\half
-		+ k_{\F}^{-1} \Xi \right) e(q)^{-1} \;. \\
-\end{aligned}
-\end{equation}
+		+ k_{\F}^{-1} \Xi \right) e(q)^{-1} \nonumber\\
+	&\quad + C^m k_{\F}^{-1} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} e(q)^{-\half}  \;.
+\end{align}
 If $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, we have the even stronger bound
-\begin{equation}\label{eq:finEQ2est}
-	\abs{\eva{\xi_\lambda, E_{Q_2}\!\left(\Theta^m_K(P^q)\right) \xi_\lambda}} 
-	\leq C_\varepsilon C^m \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
-		+ k_{\F}^{-1} \Xi^{1-\varepsilon} \right) e(q)^{-1} \;. \\
-\end{equation}
+\begin{align}\label{eq:finEQ2est}
+	&\abs{\eva{\xi_\lambda, E_{Q_2}\!\left(\Theta^m_K(P^q)\right) \xi_\lambda}} \nonumber\\
+	&\leq C_\varepsilon C^m \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
+		+ k_{\F}^{-1} \Xi^{1-\varepsilon} \right) e(q)^{-1} 
+		+ C_\varepsilon C^m k_{\F}^{-1} \Xi^{\half - \varepsilon} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} e(q)^{-\half} \;. \\
+\end{align}
 \end{proposition}
 
 \textcolor{blue}{
