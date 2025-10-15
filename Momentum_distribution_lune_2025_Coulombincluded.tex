@@ -1129,26 +1129,24 @@ We conclude using $ \Vert a_q \Vert \le 1 $ and Lemma~\ref{lem:gronNest}, and ch
 
 \begin{lemma} \label{lem:EQ111}
 Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, $ m \ge 2 $ and $ q \in B_{\F}^c $,
-\begin{equation} \label{eq:estEQ111_Coulomb}
-\begin{aligned}
+\begin{align} \label{eq:estEQ111_Coulomb}
 	\abs{\eva{\xi_\lambda,\left(E^{m,1}_{Q_1}+E^{m,2}_{Q_1}+\mathrm{h.c.}\right) \xi_\lambda }} 
-	\leq C^m k_{\F}^{-1} \Xi^{\half} e(q)^{-1}
-		\norm{ (\NN+1)^2 \xi_\lambda} \;.
-\end{aligned}
-\end{equation}
+	&\leq C^m k_{\F}^{-1} \Xi^{\half} e(q)^{-1}
+		\norm{ (\NN+1)^2 \xi_\lambda}  \nonumber\\
+	&\quad + C^m k_{\F}^{-1} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} e(q)^{-\half} \norm{(\NN+1)^2 \xi_\lambda} \;.
+\end{align}
 If $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, given $ \varepsilon > 0 $, there exists $ C_\varepsilon > 0 $ such that we have the even stronger bound
-\begin{equation} \label{eq:estEQ111}
-\begin{aligned}
+\begin{align} \label{eq:estEQ111}
 	\abs{\eva{\xi_\lambda,\left(E^{m,1}_{Q_1}+E^{m,2}_{Q_1}+\mathrm{h.c.}\right) \xi_\lambda }} 
-	\leq C_\varepsilon C^m \left(
+	&\leq C_\varepsilon C^m \left(
 		k_{\F}^{-\frac{3}{2}} \Xi^\half
 		+ k_{\F}^{-1}\Xi^{1-\varepsilon} \right) e(q)^{-1}
-		\norm{ (\NN+1)^2 \xi_\lambda} \;.
-\end{aligned}
-\end{equation}
+		\norm{ (\NN+1)^2 \xi_\lambda} \nonumber\\
+	&\quad + C_\varepsilon C^m k_{\F}^{-1} \Xi^{\half - \varepsilon} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} e(q)^{-\half} \;.
+\end{align}
 \end{lemma}
- \begin{proof}
-We prove the estimate for $ E^{m,1}_{Q_1}(q) $, the estimate for $ E^{m,2}_{Q_1}(q) $ is analogous. Splitting the anticommutator in $ E^{m,1}_{Q_1}(q) $ as
+\begin{proof}
+We start with the estimate for $ E^{m,1}_{Q_1}(q) $. Splitting the anticommutator in $ E^{m,1}_{Q_1}(q) $ as
 \begin{equation} \label{eq:q-q}
 	\Theta^m_K(P^q)(\ell)
 	= \sum_{j=0}^m {{m}\choose j} K(\ell)^{m-j} P^q(\ell) K(\ell)^{j} \;,
@@ -1222,7 +1220,39 @@ As later, $ \Xi \sim k_{\F}^{-1} $, the r.~h.~s. here is only of order $ \sim k_
 	&\leq (C \hat{V}(\ell))^m \hat{V}(\ell_1) k_{\F}^{-1} e(q)^{-1} \sup_{q \in \Z^3}\norm{ a_{q} (\NN+1) \xi_\lambda}\Xi^\half\nonumber\\
 	&\leq C_\varepsilon (C \hat{V}(\ell))^m \hat{V}(\ell_1) k_{\F}^{-1} e(q)^{-1} \Xi^{1-\varepsilon} \;. \label{eq:estEQ1113}
 \end{align}
-Summing up the bounds and using $\sum_{j=1}^{m-1} {{m}\choose j} \le C^m $ concludes the proof.
+Summing up the bounds and using $\sum_{j=1}^{m-1} {{m}\choose j} \le C^m $ concludes the proof for $ E^{m,1}_{Q_1} $.\\
+
+The bound for $ E^{m,2}_{Q_1} $ (compare~\eqref{eq:expandedEQ1}) is analogous, except for $ j = m $: Splitting $ E^{m,2}_{Q_1} $ as in~\eqref{eq:EQ1111}, and bounding the analogous $ \I_m $-term via~\eqref{eq:estEQ1113_Coulomb} would result in a factor of $ e(q)^{-\half} e(q-\ell+\ell_1)^{\half} $ instead of $ e(q)^{-1} $. However, $ a_{q-\ell_1} $ gets replaced by $ a_q $, so we can recover a $ \eva{a_q^* a_q}^{\half} $, which we expect to finally scale like $ \sim (n_q^{\b})^{\half} \sim k_{\F}^{-\half} e(q)^{-\half} $: 
+\begin{align}
+		&\sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) |\I_m(\ell, \ell_1)| \nonumber\\
+		&\leq \sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell \cap (L_{\ell_1}+\ell-\ell_1) }(q)
+		\Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half
+		\Bigg(\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{q-\ell+\ell_1,s_1}}^2\Bigg)^\half \times \nonumber\\
+		&\quad \times \Bigg( \sum_{s,s_1 \in \Z^3} \norm{ a_{-s_1} a_{-s_1+\ell_1} a_s a_{s-\ell} a_{q-\ell+\ell_1} \xi_\lambda}^2
+		\norm{ a_q \xi_\lambda }^2 \Bigg)^{\half} \nonumber\\
+		&\leq k_{\F}^{-1} e(q)^{-\frac 12}
+		\Bigg(\sum_{\ell \in \Z^3_*} (C \hat{V}(\ell))^{2m} \Bigg)^\half
+		\Bigg(\sum_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1)^2 \Bigg)^\half \times \nonumber\\
+		&\quad \times \Bigg( \sum_{\ell, \ell_1,s, s_1 \in \Z^3} \norm{ a_{-s_1} a_{-s_1+\ell_1} a_s a_{s-\ell}  \xi_\lambda}^2\Bigg)^{\half}
+		\norm{ a_q \xi_\lambda }  \nonumber\\
+		&\leq C^m k_{\F}^{-1} e(q)^{-\frac 12}
+			\norm{ (\NN+1)^2 \xi_\lambda }
+			\eva{\xi_{\lambda},a_q^* a_q\xi_{\lambda}}^{\half} \;. \label{eq:estEQ1113_Coulomb_bis}
+\end{align}
+In case $ \sum_\ell \hat{V}(\ell) < \infty $, with Lemma~\ref{lem:Xi_halfminusepsilon}, we may again obtain a stronger bound, while still extracting $ \eva{a_q^* a_q}^{\half} $:
+\begin{align}
+		|\I_m(\ell, \ell_1)|
+		&\leq \Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half
+		\Bigg(\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{q-\ell+\ell_1,s_1}}^2\Bigg)^\half
+		\norm{ a_{q-\ell+\ell_1} (\NN+1) \xi_\lambda}
+		\norm{ a_q \xi_\lambda }\nonumber\\
+		&\leq (C \hat{V}(\ell))^m \hat{V}(\ell_1) k_{\F}^{-1} e(q)^{-\half}
+		\sup_{q \in \Z^3} \norm{ a_q (\NN+1) \xi_\lambda }
+		\eva{\xi_{\lambda},a_q^* a_q\xi_{\lambda}}^{\half} \nonumber\\
+		&\leq C_\varepsilon (C \hat{V}(\ell))^m
+		\hat{V}(\ell_1)
+		k_{\F}^{-1} e(q)^{-\half} \Xi^{\half-\varepsilon} \eva{\xi_{\lambda},a_q^* a_q\xi_{\lambda}}^{\half} \;. \label{eq:estEQ1113_bis}
+\end{align}
 \end{proof}
 
 
@@ -1558,7 +1588,7 @@ For $ \sum_\ell \hat{V}(\ell) < \infty $, no splitting of the sum over $ \ell_1 
 \end{align}
 Summing up the three bounds, respectively, concludes the proof for $ E^{m,1}_{Q_2} $.\\
 
-The bound for $ E^{m,2}_{Q_2} $ (compare~\eqref{eq:expandedEQ2}) is analogous, except for $ j = m $: Splitting $ E^{m,2}_{Q_2} $ as in~\eqref{eq:EQ2111}, and bounding the analogous $ \I_m $-term via~\eqref{eq:estEQ2113_Coulomb_1} and~\eqref{eq:estEQ2113_Coulomb_2} would result in a factor of $ e(q)^{-\half} e(q-\ell+\ell_1)^{\half} $ instead of $ e(q)^{-1} $. However, $ a_{q-\ell_1} $ gets replaced by $ a_q $, so we can recover a $ \eva{a_q^* a_q}^{\half} $, which we expect to finally scale like $ \sim n^{\RPA}(q)^{\half} \sim k_{\F}^{-\half} e(q)^{-\half} $: 
+The bound for $ E^{m,2}_{Q_2} $ is analogous, except for $ j = m $ where we proceed as in~\eqref{eq:estEQ1113_Coulomb_bis}
 \begin{align}
 	&\sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) |\I_m(\ell, \ell_1)| \nonumber\\
 	&\leq \sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell \cap (L_{\ell_1}+\ell-\ell_1) }(q)
@@ -1573,7 +1603,7 @@ The bound for $ E^{m,2}_{Q_2} $ (compare~\eqref{eq:expandedEQ2}) is analogous, e
 		\sum_{\ell_1,s_1 \in \Z^3} \norm{ a_{-s_1} a_{-s_1+\ell_1} (\NN+1) \xi_\lambda }^2 \Bigg)^{\half} \nonumber\\
 	&\leq C^m k_{\F}^{-1} e(q)^{-\frac 12} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} \norm{ (\NN+1)^2 \xi_\lambda } \;. \label{eq:estEQ2113_Coulomb_bis}
 \end{align}
-In case $ \sum_\ell \hat{V}(\ell) < \infty $, with Lemma~\ref{lem:Xi_halfminusepsilon}, we may again obtain a stronger bound, while still extracting $ \eva{a_q^* a_q}^{\half} $:
+In case $ \sum_\ell \hat{V}(\ell) < \infty $, we proceed similarly to~\eqref{eq:estEQ1113_bis}
 \begin{align}
 	|\I_m(\ell, \ell_1)|
 	&\leq \Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half
