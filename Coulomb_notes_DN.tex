@@ -205,10 +205,49 @@
 \begin{document}
 \maketitle
 \section{Coulomb estimates}
-\begin{lemma}[$E_{Q_2}^{\,1}$]\label{lem:EQ211}
+\begin{lemma}[$E_{Q_1}^{\,1}$]\label{lem:EQ111}
 	For any $\psi \in \HH_N$, we have
 	\begin{align}
-		\abs{\eva{\psi,\left(E^{\,1}_{Q_2}+E^{\,2}_{Q_2}+\mathrm{h.c.}\right) \psi }}
+		\abs{\eva{\psi,\left(E^{\,m,1}_{Q_1}+E^{\,m,2}_{Q_1}+\mathrm{h.c.}\right) \psi }}
+		\leq \label{eq:estEQ211}
+	\end{align}
+\end{lemma}
+\begin{proof}
+	I write the corresponding blue estimate for $E_{Q_1}^{m,2}(q)$ for $j=m$:
+	\begin{align}
+		&\sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) |\I_m(\ell, \ell_1)| \nonumber\\
+		&\leq \sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell \cap (L_{\ell_1}+\ell-\ell_1) }(q)
+		\Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half
+		\Bigg(\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{q-\ell+\ell_1,s_1}}^2\Bigg)^\half \times \nonumber\\
+		&\quad \times \Bigg( \sum_{s,s_1 \in \Z^3} \norm{ a_{-s_1} a_{-s_1+\ell_1}a_{-s} a_{-s+\ell} a_q (\NN+1)^{-2} \xi_\lambda}^2
+		\norm{  a_{q-\ell+\ell_1} (\NN+1)^{2} \xi_\lambda }^2 \Bigg)^{\half} \nonumber\\
+		&\leq k_{\F}^{-1} e(q)^{-\frac 12}
+		\Bigg(\sum_{\ell \in \Z^3_*} (C \hat{V}(\ell))^{2m} \Bigg)^\half
+		\Bigg(\sum_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1)^2 \Bigg)^\half \times \nonumber\\
+		&\quad \times \Bigg( \sum_{\ell, \ell_1,s, s_1 \in \Z^3} \norm{ a_{-s_1} a_{-s_1+\ell_1} a_{-s} a_{-s+\ell} a_q (\NN+1)^{-2} \xi_\lambda}^2\Bigg)^{\half}
+		\norm{ (\NN+1)^{2} \xi_\lambda }  \nonumber\\
+		&\leq C^m k_{\F}^{-1} e(q)^{-\frac 12} \eva{\xi_{\lambda},a_q^* a_q\xi_{\lambda}}^{\half} \norm{ (\NN+1)^2 \xi_\lambda } \;. \label{eq:estEQ2113_Coulomb_bis}
+	\end{align}
+	In case $ \sum_\ell \hat{V}(\ell) < \infty $, with Lemma~\ref{lem:Xi_halfminusepsilon}, we may again obtain a stronger bound, while still extracting $ \eva{a_q^* a_q}^{\half} $:
+	\begin{align}
+		|\I_m(\ell, \ell_1)|
+		&\leq \Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half
+		\Bigg(\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{q-\ell+\ell_1,s_1}}^2\Bigg)^\half
+		\norm{ a_{q-\ell+\ell_1} (\NN+1) \xi_\lambda}
+		\norm{ a_q \xi_\lambda }\nonumber\\
+		&\leq (C \hat{V}(\ell))^m \hat{V}(\ell_1) k_{\F}^{-1} e(q)^{-\half}
+		\sup_{q \in \Z^3} \norm{ a_q (\NN+1) \xi_\lambda }
+		\eva{\xi_{\lambda},a_q^* a_q\xi_{\lambda}}^{\half} \nonumber\\
+		&\leq C_\varepsilon (C \hat{V}(\ell))^m
+		\hat{V}(\ell_1)
+		k_{\F}^{-1} e(q)^{-\half} \Xi^{\half-\varepsilon} \eva{\xi_{\lambda},a_q^* a_q\xi_{\lambda}}^{\half} \;. \label{eq:estEQ2113_bis}
+	\end{align}
+
+\end{proof}
+\begin{lemma}[$E_{Q_2}^{\,m,1}$]\label{lem:EQ211}
+	For any $\psi \in \HH_N$, we have
+	\begin{align}
+		\abs{\eva{\psi,\left(E^{\,m,1}_{Q_2}+E^{\,m,2}_{Q_2}+\mathrm{h.c.}\right) \psi }}
 		\leq \label{eq:estEQ211}
 	\end{align}
 \end{lemma}
@@ -239,7 +278,7 @@
 	\begin{align}
 		&\leq C \Xi^{\half} \Bigg(\sum\limits_{\ell \in \Z^3_*} \!\!\mathds{1}_{L_\ell}(q) \abs{  K^{m}(\ell)_{r,q}}\Bigg)  \Bigg( \sum\limits_{ \ell_1 \in S}    \normmaxii{K(\ell_1)}^2\Bigg)^\half  \norm{    (\NN+1)^{2}\psi} 
 	\end{align}
-	wherein we use $\NN<(\NN+1)$. For $\ell_1 \in S^c$. 
+	wherein we use $\NN<(\NN+1)$. For $\ell_1 \in S^c$
 	\begin{align}
 		&\eqref{eq:EQ2111}\nonumber\\
 		&\leq\sum\limits_{\substack{\ell \in \Z^3_*,\\\ell_1 \in S^c}} \!\!\mathds{1}_{L_\ell}(q) \sum\limits_{ r \in L_\ell \cap L_{\ell_1}}    \norm{ \sum\limits_{s_1 \in L_{\ell_1}} K(\ell_1)_{r,s_1} b_{-s_1}(-\ell_1)  a_{r-\ell_1} (\NN+1)^{\alpha}\psi}\norm{ K^{m}(\ell)_{r,q}   b_{-q}(-\ell) a_{r-\ell} (\NN+1)^{-\alpha}\psi } \nonumber\\
@@ -298,7 +337,7 @@ Similarly for $\ell_1 \in S^c$, one only needs to do an extra Cauchy-Schwarz in 
 	\end{align}
 	We know that $\NN<(\NN+1)$, then for $\alpha = 1$, we have
 	\begin{align}
-		&\leq Ct  \Bigg(\sum\limits_{\ell\in \Z^3_*}  \mathds{1}_{L_{\ell}}(q) \sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half \Bigg(\sum\limits_{ \ell_1\in S} \mathds{1}_{L_{\ell_1}}(q)\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{q,s_1}}^2\Bigg)^\half\norm{ (\NN+1)^2\psi}  \label{eq:estEQ2113c}
+		&\leq  C\Bigg(\sum\limits_{\ell\in \Z^3_*}  \mathds{1}_{L_{\ell}}(q) \sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half \Bigg(\sum\limits_{ \ell_1\in S} \mathds{1}_{L_{\ell_1}}(q)\sum\limits_{s_1 \in L_{\ell_1}} \abs{K(\ell_1)_{q,s_1}}^2\Bigg)^\half\norm{ (\NN+1)^2\psi}  \label{eq:estEQ2113c}
 	\end{align}
 	Then adding \eqref{eq:estEQ2111},\eqref{eq:estEQ2112} and \eqref{eq:estEQ2113} and using Lemma \ref{lem:normsk}, we arrive at the bound above \eqref{eq:estEQ211}. One can bound $\abs{\eva{\psi,\left(E^{\,2}_{Q_2}+\mathrm{h.c.}\right) \psi }}$ similarly.
 \end{proof}
