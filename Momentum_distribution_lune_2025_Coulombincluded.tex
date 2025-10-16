@@ -779,7 +779,17 @@ Summing \eqref{eq:nqexm} over all odd $m \in \Nbb$ yields the exchange contribut
 \label{sec:prelim_bounds}
 
 We now compile some estimates for bounding the error terms in~\eqref{eq:finexpan}.
-% We start with some bounds on norms of powers of the correlation structure $ K(\ell) $.
+
+\begin{lemma} \label{lem:lambdainverse}
+Let $ \ell \in \Z^3_* $ and recall the definitions~\eqref{eq:Lell} and~\eqref{eq:eq} of the energies $ \lambda_{\ell,r} $ and $ e(r) $. Consider any set $ S \subset \Z^3 $ with $ |S| \le C k_{\F}^3 $. Then, given $ \varepsilon > 0 $, there exists $ C_\varepsilon > 0 $ such that
+\begin{equation} \label{eq:lambdainverse}
+	\sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \le C k_{\F} \;, \qquad
+	\sum_{r \in S} e(r)^{-1} \le C_\varepsilon k_{\F}^{1+\varepsilon} \;.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The first statement is~\cite[Prop.~A.2]{CHN21}. The second statement was proven with $ C k_{\F}^3 $ replaced by $ |\overline{B_{2 k_{\F}}(0)} \cap \Z^3| $ in~\cite[Lemma~3.2]{CHN24}. \textcolor{blue}{It obviously extends to any set with $ |S| \le C k_{\F}^3 $, by writing $ S $ as a disjoint union of $ \le C $ sets with $ \le |\overline{B_{2 k_{\F}}}(0) \cap \Z^3| $ points.}
+\end{proof}
 
 \begin{definition}
 For $ \ell \in \Z^3_*$ and $A(\ell) : \ell^2(L_\ell) \to \ell^2(L_\ell)$ we define the norms
@@ -831,7 +841,7 @@ as well as for $ q \in L_\ell $ the estimates
 \end{equation}
 \end{lemma}
 \begin{proof}
-From~\cite[Prop.~7.10]{CHN23} we retrieve \eqref{eq:K_element_bounds} for $ m = 1 $. For $ m \ge 2 $, we proceed by induction: Suppose \eqref{eq:K_element_bounds} holds until $ m-1 $. Then, using $ \lambda_{\ell,r} > 0 $ and the key estimate $ \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \le C k_{\F} $ from \cite[Prop.~A.2]{CHN21}, we get
+From~\cite[Prop.~7.10]{CHN23} we retrieve \eqref{eq:K_element_bounds} for $ m = 1 $. For $ m \ge 2 $, we proceed by induction: Suppose \eqref{eq:K_element_bounds} holds until $ m-1 $. Then, using $ \lambda_{\ell,r} > 0 $ and~\eqref{eq:lambdainverse}, we get
 \begin{align*}
 		|(K(\ell)^m)_{r,s}|
 		&\le \sum_{r' \in L_\ell}
@@ -1069,7 +1079,7 @@ Moreover, if $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, we have the boun
 \end{proposition}
 
 \textcolor{blue}{
-Note that since we expect $ \Xi \sim k_{\F}^{-1} $, the ``Coulomb bound''~\eqref{eq:finalEQ1est_Coulomb} is finally of order $ \sim k_{\F}^{-\frac 32 + \varepsilon} $, while~\eqref{eq:finalEQ1est} is even of order $ \sim k_{\F}^{-2 + \varepsilon} $.
+Note that since we expect $ \Xi \sim k_{\F}^{-1} $, the ``Coulomb bound''~\eqref{eq:finalEQ1est_Coulomb} is finally of order $ \sim k_{\F}^{-\frac 32 + \varepsilon} $, while~\eqref{eq:finalEQ1est} is even of order $ \sim k_{\F}^{-2 + \varepsilon} $. Moreover, we eventually have $ \eva{\xi_\lambda, a_q^* a_q \xi_\lambda} \sim n^{\RPA}(q) \sim k_{\F}^{-1} e(q)^{-1} $, whence all errors effectively scale like $ e(q)^{-1} $.
 }
 
 To prove this bound, we introduce $ \xi_\lambda \coloneq e^{- \lambda S} \Omega $ to write
@@ -1315,7 +1325,7 @@ Again we need three slightly different strategies for $ j = 0 $, for $ 1 \le j \
 	 	\norm{ (\NN+5)^{\half} \xi_\lambda}
 	 	\sum_{r \in L_\ell} e(r)^{-1} k_{\F}^{-1} \Bigg( \sum_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1)^2 \Bigg)^{\half} \Xi^\half \;,
 \end{align}
-where we used $ \lambda_{\ell_1,r} \ge C e(r) $ and $ \norm{ a_q \xi_\lambda} \le \Xi^\half $, compare~\eqref{eq:Xi}. From~\cite[Lemma~3.2]{CHN24}, we retrieve $ \sum_{r \in L_\ell} e(r)^{-1} \le C_\varepsilon k_{\F}^{1+\varepsilon} $, so
+where we used $ \lambda_{\ell_1,r} \ge C e(r) $ and $ \norm{ a_q \xi_\lambda} \le \Xi^\half $, compare~\eqref{eq:Xi}. Then, with~\eqref{eq:lambdainverse}
 \begin{align}
 	\sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) |\I_0(\ell, \ell_1)|
 	\leq C_\varepsilon C^m k_{\F}^{-1+\varepsilon} e(q)^{-1}
@@ -1338,7 +1348,7 @@ As $ \Xi \sim k_{\F}^{-1} $, this bound will later be of order $ \sim k_{\F}^{-\
 	 	\Xi^{\half} \;.
 \label{eq:estEQ1121}
 \end{align}
-The estimate for the second case $ 1 \le j \le m-1 $ follows a similar strategy, using $ \lambda_{\ell_1,r} \ge C e(r) $ and $ \sum_{r \in L_\ell} e(r)^{-1} \le C_\varepsilon k_{\F}^{1+\varepsilon} $:
+The estimate for the second case $ 1 \le j \le m-1 $ follows a similar strategy, using $ \lambda_{\ell_1,r} \ge C e(r) $ and~\eqref{eq:lambdainverse}:
 \begin{align}
 	&\sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \nonumber\\
 	&\leq \norm{ \xi_\lambda} \sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q)
@@ -1681,7 +1691,7 @@ For the case $j=0$, using Lemma~\ref{lem:normsk} we get
 	&\leq C_\varepsilon C^m k_{\F}^{-1 + \varepsilon} e(q)^{-1}
 		\norm{ (\NN+1) \xi_\lambda } \Xi^{\half} \;. \label{eq:estEQ2151_Coulomb}
 \end{align}
-Note that we used $ |K(\ell_1)_{r,-r+\ell+\ell_1}| \le C k_{\F}^{-1} \hat{V}(\ell_1) \lambda_{\ell_1,r}^{-1} $ with $ \lambda_{\ell_1,r} \ge C e(r) $ and that~\cite[Lemma~3.2]{CHN24} $ \sum_{r \in L_\ell} e(r)^{-1} \le C_\varepsilon k_{\F}^{1+\varepsilon} $.\\
+Note that we used $ |K(\ell_1)_{r,-r+\ell+\ell_1}| \le C k_{\F}^{-1} \hat{V}(\ell_1) \lambda_{\ell_1,r}^{-1} $ with $ \lambda_{\ell_1,r} \ge C e(r) $ and then~\eqref{eq:lambdainverse}.\\
 The bound for $ \sum_{\ell} \hat{V}(\ell) < \infty $ is considerably easier and stronger:
 \begin{align}
 	|\I_0(\ell, \ell_1)|
@@ -2131,7 +2141,7 @@ We first consider $ m > 1 $, so $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^m < \inft
 		\lambda_{\ell,-q+\ell+\ell_1}^{-1} \Bigg)^{\half} \nonumber\\
 	&\leq C k_{\F}^{-\frac 32} e(q)^{-\frac 32} \;,
 \end{align}
-where we used~\cite[Prop.~A.2]{CHN21} $ \sum_{s \in L_\ell} \lambda_{\ell,s}^{-1} \le C k_{\F} $ with $ s = -q+\ell+\ell_1 $. Likewise, for $ \II $ with $ \lambda_{\ell_1,r} \ge C e(r) $:
+where we used~\eqref{eq:lambdainverse}. Likewise, for $ \II $ with $ \lambda_{\ell_1,r} \ge C e(r) $:
 \begin{align}
 	&\sum_{\ell,\ell_1 \in \Z^3_*}
 		\mathds{1}_{L_\ell}(q)
@@ -2152,7 +2162,7 @@ where we used~\cite[Prop.~A.2]{CHN21} $ \sum_{s \in L_\ell} \lambda_{\ell,s}^{-1
 	\sum_{r \in L_\ell} e(r)^{-1}
 	\leq C_\varepsilon k_{\F}^{-\frac 32 + \varepsilon} e(q)^{-\frac 32} \;,
 \end{align}
-where in the last line, we used~\cite[Lemma~3.2]{CHN24} $ \sum_{r \in L_\ell} e(r)^{-1} \le C_\varepsilon k_{\F}^{1+\varepsilon} $. Summing over $ j $, with $ \sum_{0 \le j \le m} {{m}\choose j} = 2^m $, concludes the estimate for $ \II $ and thus~\eqref{eq:estnqex_Coulomb}.\\
+where in the last line, we used~\eqref{eq:lambdainverse}. Summing over $ j $, with $ \sum_{0 \le j \le m} {{m}\choose j} = 2^m $, concludes the estimate for $ \II $ and thus~\eqref{eq:estnqex_Coulomb}.\\
 Next, we consider $ m = 1 $, where $ \II = 0 $, as the sum over $ j $ is empty. Hence, with Lemma~\ref{lem:normsk} and $ \lambda_{\ell,q} \ge C e(q)^{\half} e(q-\ell)^{\half} $,
 \begin{align}
 	|n_q^{\ex,1}|
@@ -2196,7 +2206,7 @@ Finally, for $ \ell \in S_3 $, we have $ |\ell|^{-\alpha} \le C k_{\F}^{-\alpha 
 	\le k_{\F}^{-\alpha \beta} \sum_{\ell \in S_1} e(q-\ell)^{-1}
 	\le C_\varepsilon k_{\F}^{1 + \varepsilon - \alpha \beta} \;,
 \end{equation}
-where we used again~\cite[Lemma~3.2]{CHN24} in the last step. Optimizing $ \beta = \frac 12 $, we get
+where we used again~\eqref{eq:lambdainverse} in the last step. Optimizing $ \beta = \frac 12 $, we get
 \begin{equation}
 	\Bigg( \sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) e(q-\ell)^{-1} |\ell|^{-\alpha} \Bigg)
 	\le C_\varepsilon k_{\F}^{1 + \varepsilon - \frac{\alpha}{2}} \qquad \Rightarrow \qquad
