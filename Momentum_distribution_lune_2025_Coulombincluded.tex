@@ -1056,13 +1056,13 @@ Evidently, $ 0 \le a_q^* a_q \le 1 $ implies the trivial bound $ 0 \le \Xi \le 1
 
 
 \begin{proposition} \label{prop:finalEmest}
-Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 < \infty $. Recall the bosonization error term $E_m(P^q)$~\eqref{eq:errEm} with $ \Theta^n_K $, $ P^q $, $ \int_{\Delta^n} \di^n \ulambda $ and $ \sigma(n) $ defined within and above Proposition~\ref{prop:finexpan}. Then, given $ \varepsilon > 0 $, there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $ and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $ \alpha \ge 0 $. Recall the bosonization error term $E_m(P^q)$~\eqref{eq:errEm} with $ \Theta^n_K $, $ P^q $, $ \int_{\Delta^n} \di^n \ulambda $ and $ \sigma(n) $ defined within and above Proposition~\ref{prop:finexpan}. Then, given $ \varepsilon > 0 $, there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $ and $ q \in B_{\F}^c $, and any $ \gamma \ge 0 $
 \begin{align} \label{eq:finalEmest_Coulomb}
 	&\abs{\eva{\Omega, E_m(P^q) \Omega} - \delta_{m,1} \frac 12 n_q^{\ex,1}} \nonumber\\
 	&\leq C_\varepsilon \frac{C^m}{m!}
 		\left( e(q)^{-1}\left( k_{\F}^{-\frac 32 + \varepsilon} 
-		+ k_{\F}^{-1 - \frac{\alpha}{2}} 
-		+ k_{\F}^{-1+\alpha} \Xi^\half
+		+ k_{\F}^{-1 - \frac{\alpha \gamma}{2}} 
+		+ k_{\F}^{-1 + \frac{3-\alpha}{2} \gamma} \Xi^\half
 		+ k_{\F}^{-1+\varepsilon} \Xi^\half
 		+ k_{\F}^{-1} \Xi \right) 
 		+ e(q)^{-\half} k_{\F}^{-1} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} \right) \;,
@@ -1079,7 +1079,8 @@ Moreover, if $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, we have the boun
 \end{proposition}
 
 \textcolor{blue}{
-Note that since we expect $ \Xi \sim k_{\F}^{-1} $, the ``Coulomb bound''~\eqref{eq:finalEQ1est_Coulomb} is finally of order $ \sim k_{\F}^{-\frac 32 + \varepsilon} $, while~\eqref{eq:finalEQ1est} is even of order $ \sim k_{\F}^{-2 + \varepsilon} $. Moreover, we eventually have $ \eva{\xi_\lambda, a_q^* a_q \xi_\lambda} \sim n^{\RPA}(q) \sim k_{\F}^{-1} e(q)^{-1} $, whence all errors effectively scale like $ e(q)^{-1} $.
+Note that the Coulomb potential is covered by any $ \alpha < 1 $, while the case $ \sum_\ell \hat{V}(\ell) < \infty $ covers all $ \alpha > 3 $.
+Since we expect $ \Xi \sim k_{\F}^{-1} $, the first bound~\eqref{eq:finalEQ1est_Coulomb} is finally of order $ \sim k_{\F}^{-\frac 32 + \varepsilon} $, while~\eqref{eq:finalEQ1est} is even of order $ \sim k_{\F}^{-2 + \varepsilon} $. Moreover, we eventually have $ \eva{\xi_\lambda, a_q^* a_q \xi_\lambda} \sim n^{\RPA}(q) \sim k_{\F}^{-1} e(q)^{-1} $, whence all errors effectively scale like $ e(q)^{-1} $.
 }
 
 To prove this bound, we introduce $ \xi_\lambda \coloneq e^{- \lambda S} \Omega $ to write
@@ -1445,12 +1446,12 @@ We sum the estimates from Lemmas~\ref{lem:EQ111} and~\ref{lem:EQ112} and use tha
 
 
 \begin{proposition}[Estimate for $E_{Q_2}(\Theta^m_{K}(P^q))$]\label{prop:finEQ2est}
-Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $ there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $, $ \lambda \in [0,1] $, and $ q \in B_{\F}^c $, the following bound is true for any $ \alpha \ge 0 $:
+Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $ \alpha \ge 0 $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $ there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $, $ \lambda \in [0,1] $, and $ q \in B_{\F}^c $, the following bound is true for any $ \gamma \ge 0 $:
 \begin{align}\label{eq:finEQ2est_Coulomb}
 	&\abs{\eva{\xi_\lambda, E_{Q_2}\!\left(\Theta^m_K(P^q)- \delta_{m,1} n_q^{\ex,1} \right) \xi_\lambda}} \nonumber\\
 	&\leq C_\varepsilon C^m \left( k_{\F}^{-\frac 32 + \varepsilon} 
-		+ k_{\F}^{-1 - \frac{\alpha}{2}} 
-		+ k_{\F}^{-1+\alpha} \Xi^\half
+		+ k_{\F}^{-1 - \frac{\alpha \gamma}{2}} 
+		+ k_{\F}^{-1+ \frac{3-\alpha}{2} \gamma} \Xi^\half
 		+ k_{\F}^{-1+\varepsilon} \Xi^\half
 		+ k_{\F}^{-1} \Xi \right) e(q)^{-1} \nonumber\\
 	&\quad + C^m k_{\F}^{-1} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} e(q)^{-\half}  \;.
@@ -1465,17 +1466,17 @@ If $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, we have the even stronger 
 \end{proposition}
 
 \textcolor{blue}{
-Note that here, $ m = 1 $ and thus $ \sum_\ell \hat{V}(\ell)^m = \infty $ can occur if only $ \sum_\ell \hat{V}(\ell)^2 < \infty $ is known. In the end, we will choose $ \alpha = \frac 13 $ as explained below. Then, the error in~\eqref{eq:finEQ2est_Coulomb} is $ \sim k_{\F}^{-1-\frac 16} $, whereas the exchange contribution grows up to $ n_q^{\ex,1} \le C k_{\F}^{-1 + \varepsilon} $ (see Lemma~\ref{lem:estnqex}), so we cannot treat $ n_q^{\ex,m} $ as an error. By contrast, for $ \sum_\ell \hat{V}(\ell) < \infty $, the bound~\eqref{eq:finEQ2est} scales like $ \sim k_{\F}^{-2+\varepsilon} $, while $ n_q^{\ex,m} \le C k_{\F}^{-2} $, so the exchange contribution is an error.
+Note that here, $ m = 1 $ and thus $ \sum_\ell \hat{V}(\ell)^m = \infty $ can occur if only $ \sum_\ell \hat{V}(\ell)^2 < \infty $ is known. In the end, we will choose $ \gamma = \frac 13 $ as explained below. Then, the error in~\eqref{eq:finEQ2est_Coulomb} is $ \sim k_{\F}^{-1-\frac 16} $, whereas the exchange contribution grows up to $ n_q^{\ex,1} \le C k_{\F}^{-1 + \varepsilon} $ (see Lemma~\ref{lem:estnqex}), so we cannot treat $ n_q^{\ex,m} $ as an error. By contrast, for $ \sum_\ell \hat{V}(\ell) < \infty $, the bound~\eqref{eq:finEQ2est} scales like $ \sim k_{\F}^{-2+\varepsilon} $, while $ n_q^{\ex,m} \le C k_{\F}^{-2} $, so the exchange contribution is an error.
 }
 To prove this proposition, we estimate $ E^{m,1}_{Q_2}(q) $ through $ E^{m,11}_{Q_2} (q)$ and $ n^{\ex,m}(q) $.
 
 \begin{lemma} \label{lem:EQ211}
-Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $, the following bound is true for any $ \alpha \ge 0 $:
+Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $ \alpha \ge 0 $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $, the following bound is true for any $ \gamma \ge 0 $:
 \begin{align}
 	\abs{\eva{\xi_\lambda,\left(E^{m,1}_{Q_2}+E^{m,2}_{Q_2}+\mathrm{h.c.}\right) \xi_\lambda }}
 	&\leq C^m \left( k_{\F}^{-\frac 32}
-		+ k_{\F}^{-1-\frac{\alpha}{2}} 
-		+ k_{\F}^{-1+\alpha} \Xi^{\half} \right) e(q)^{-1}
+		+ k_{\F}^{-1-\frac{\alpha \gamma}{2}} 
+		+ k_{\F}^{-1+ \frac{3-\alpha}{2} \gamma} \Xi^{\half} \right) e(q)^{-1}
 		\norm{ (\NN+1)^{\frac 52} \xi_\lambda }^2 \nonumber\\
 	&\quad + C^m k_{\F}^{-1} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} e(q)^{-\half} \norm{ (\NN+1)^2 \xi_\lambda } \;. \label{eq:estEQ211_Coulomb}
 \end{align}
@@ -1553,7 +1554,7 @@ For $ \sum_{\ell_1} \hat{V}(\ell_1) < \infty $, we may even achieve a bound of o
 		k_{\F}^{-\frac 32} e(q)^{-1}
 		\norm{ (\NN+1)^{\frac 32}\xi_\lambda } \Xi^{\half} \;. \label{eq:estEQ2112}
 \end{align}
-Finally, let us consider the case $ j = m $. For Coulomb potentials, this is the most difficult term to bound. In analogy to~\cite{CHN24}, we introduce the ball $ S := \Z^3_* \cap B_{k_{\F}^{\alpha}}(0) $. For $ \ell_1 $ outside the ball, we proceed as follows:
+Finally, let us consider the case $ j = m $. For Coulomb potentials, this is the most difficult term to bound. In analogy to~\cite{CHN24}, we introduce the ball $ S := \Z^3_* \cap B_{k_{\F}^{\gamma}}(0) $. For $ \ell_1 $ outside the ball, we proceed as follows:
 \begin{align}
 	&\sum_{\ell \in \Z^3_*} \sum_{\ell_1 \in \Z^3_* \setminus S} \mathds{1}_{L_\ell}(q) |\I_m(\ell, \ell_1)| \nonumber\\
 	&\leq \sum_{\ell \in \Z^3_*} \sum_{\ell_1 \in \Z^3_* \setminus S} \mathds{1}_{L_\ell \cap L_{\ell_1}}(q) \Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half
@@ -1569,10 +1570,11 @@ Finally, let us consider the case $ j = m $. For Coulomb potentials, this is the
 	&\leq k_{\F}^{-1} e(q)^{-1}
 		\Bigg( \sum_{\ell \in \Z^3_*} (C \hat{V}(\ell))^{2m} \Bigg)^{\half}
 		\Bigg( \sum_{\ell_1 \in \Z^3_* \setminus S} \hat{V}(\ell_1)^2 \Bigg)^{\half} \norm{(\NN+1) \xi_\lambda}^2 \nonumber\\
-	&\leq C^m k_{\F}^{-1-\frac{\alpha}{2}} e(q)^{-1}
+	&\leq C^m k_{\F}^{-1-\frac{\alpha \gamma}{2}} e(q)^{-1}
 		\norm{(\NN+1) \xi_\lambda}^2 \;. \label{eq:estEQ2113_Coulomb_1}
 \end{align}
-If the sum ran over $ \ell_1 \in \Z^3_* $, this bound would scale like $ k_{\F}^{-1} e(q)^{-1} $ and therefore be as large as the leading-order contribution $ n^{\RPA}(q) $. For $ \ell_1 \in S $, we can achieve a better bound by extracting an additional $ \Xi^{\half} $, which finally turns out to scale like $ \sim k_{\F}^{-\half} $:
+Here we used that $ \sum_{|\ell_1| \ge k_{\F}^\gamma} \hat{V}(\ell_1)^2 \le k_{\F}^{-\alpha \gamma} \sum_{\ell_1 \in \Z^3_*} |\ell_1|^\alpha \hat{V}(\ell_1)^2 \le C k_{\F}^{-\alpha \gamma} $.
+If the sum ran over $ \ell_1 \in \Z^3_* $, the bound~\eqref{eq:estEQ2113_Coulomb_1} would scale like $ k_{\F}^{-1} e(q)^{-1} $ and therefore be as large as the leading order contribution $ n^{\RPA}(q) $. For $ \ell_1 \in S $, we can achieve a better bound by extracting an additional $ \Xi^{\half} $, which finally turns out to scale like $ \sim k_{\F}^{-\half} $:
 \begin{align}
 	&\sum_{\ell \in \Z^3_*} \sum_{\ell_1 \in S} \mathds{1}_{L_\ell}(q) |\I_m(\ell, \ell_1)| \nonumber\\
 	&\leq \sum_{\ell \in \Z^3_*} \sum_{\ell_1 \in S} \mathds{1}_{L_\ell \cap L_{\ell_1}}(q) \Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half
@@ -1587,9 +1589,10 @@ If the sum ran over $ \ell_1 \in \Z^3_* $, this bound would scale like $ k_{\F}^
 	&\leq k_{\F}^{-1} e(q)^{-1}
 		\Bigg( \sum_{\ell \in \Z^3_*} (C \hat{V}(\ell))^{2m} \Bigg)^{\half}
 		\Bigg( \sum_{\ell_1 \in S} \hat{V}(\ell_1) \Bigg) \norm{(\NN+1)^{\frac 32} \xi_\lambda} \Xi^{\half} \nonumber\\
-	&\leq C^m k_{\F}^{-1 + \alpha} e(q)^{-1}
+	&\leq C^m k_{\F}^{-1 + \frac{3-\alpha}{2} \gamma} e(q)^{-1}
 		\norm{(\NN+1)^{\frac 32} \xi_\lambda} \Xi^{\half} \;. \label{eq:estEQ2113_Coulomb_2}
 \end{align}
+Here, we used $ \sum_{|\ell_1| < k_{\F}^\gamma} \hat{V}(\ell_1) \le \left( \sum_{\ell_1 \in \Z^3_*} |\ell_1|^\alpha \hat{V}(\ell_1)^2 \right)^{\half} \left( \sum_{|\ell_1| < k_{\F}^\gamma} |\ell_1|^{-\alpha} \right)^{\half} \le C k_{\F}^{\frac{3-\alpha}{2} \gamma} $.\\
 For $ \sum_\ell \hat{V}(\ell) < \infty $, no splitting of the sum over $ \ell_1 $ is required and we directly extract a $ \Xi^{1-\varepsilon} $ via Lemma~\ref{lem:Xi_halfminusepsilon}:
 \begin{align}
 	|\I_m(\ell, \ell_1)|
@@ -2092,7 +2095,7 @@ Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-
 	\abs{\eva{\xi_\lambda, n_q^{\ex,m} \xi_\lambda }}
 	\leq C_\varepsilon C^m k_{\F}^{-\frac 32 + \varepsilon} e(q)^{-\frac 32} \;. \label{eq:estnqex_Coulomb}
 \end{equation}
-In case $ m = 1 $, if $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |k|^\alpha < \infty $ with $ \alpha \in [0,2] $, then we have
+In case $ m = 1 $, if $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ with $ \alpha \in [0,2] $, then we have
 \begin{equation}
 	\abs{\eva{\xi_\lambda, n_q^{\ex,1} \xi_\lambda }}
 	\leq C_\varepsilon k_{\F}^{-1 - \frac{\alpha}{2} + \varepsilon} e(q)^{-1} \;. \label{eq:estnqex_Coulomb_1}
