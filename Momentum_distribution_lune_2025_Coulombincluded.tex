@@ -326,17 +326,29 @@ For $ q \in B_{\F} $, we analogously have
 	n^{\RPA}(q) & 	\coloneq \sum_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q+\ell) \; \frac{1}{\pi}\int_0^\infty \frac{g_\ell (t^2-\lambda^2_{\ell,q+\ell}) (t^2 + \lambda^2_{\ell,q+\ell})^{-2}}{1 + 2g_\ell \sum_{p \in L_{\ell}}\lambda_{\ell,p} (t^2+\lambda^2_{\ell,p})^{-1}} \mathrm{d}t \;.
 \end{split}
 \end{equation}
-Therefore $ n^{\RPA}(q) $ represents the deviation of $ n(q) $ from the indicator function $ \mathds{1}_{B_{\F}}(q) $ we found in the non-interacting case.
+Therefore $ n^{\RPA}(q) $ represents the deviation of $ n(q) $ from the indicator function $ \mathds{1}_{B_{\F}}(q) $ we found in the non-interacting case.\\
 
-The scaling of $ n^{\RPA}(q) $ and the error terms will depend on
+For more singular interaction potentials, we find that $ n^{\RPA}(q) $ is to be corrected by an exchange contribution
+\begin{equation} \label{eq:nqex}
+\begin{split}
+	n^{\ex}(q)
+	\coloneq 
+	\sum_{\ell,\ell_1 \in \Z^3_*}
+		\mathds{1}_{L_\ell \cap L_{\ell_1} \cap (-L_{\ell}+\ell+\ell_1) \cap (-L_{\ell_1}+\ell+\ell_1)}(q)
+		K(\ell)_{q,-q+\ell+\ell_1}
+		K(\ell_1)_{q,-q+\ell+\ell_1} \;.
+\end{split}
+\end{equation}
+
+\todo{Define $ K $ at this stage or approximate $ n^{\ex}(q) $?}
+
+The scaling of $ n^{\RPA}(q) $, $ n^{\ex}(q) $, and the error terms will depend on
 \begin{equation} \label{eq:eq}
 	e(q)
 	\coloneq \abs{|q|^2 - \inf_{p \in B_{\F}^c} |p|^2 + \half}
 	= \abs{|q|^2 - \sup_{h \in B_{\F}} |h|^2 - \half} \;.
 \end{equation}
 Since we work in fixed volume, the minimal distance between a momentum inside and a momentum outside the Fermi ball is $1$, and therefore $ e(q) \ge \half $.\\
-
-\todo{Define and comment on $ n_q^{\ex} $.}
 
 \todo{Put hypotheses for the potential, here.}
 
@@ -353,23 +365,19 @@ Then, for any sequence of $ k_{\F} $ with $ k_{\F} \to \infty $ and $ N := |B_{k
 \begin{equation} \label{eq:main2}
 	n(q) = \eva{\Psi_N, a_q^* a_q \Psi_N}
 	= \begin{cases}
-	n^{\RPA}(q) + n^{ex}(q) + \cE(q) & \quad
+	n^{\RPA}(q) + n^{\ex}(q) + \cE(q) & \quad
 		\textnormal{for } |q| \ge k_{\F} \\
-	1 - n^{\RPA}(q) + n^{ex}(q) + \cE(q) & \quad
+	1 - n^{\RPA}(q) + n^{\ex}(q) + \cE(q) & \quad
 		\textnormal{for } |q| < k_{\F} 
 	\end{cases}
 \end{equation}
-where the error term is controlled by
+with $ n^{\RPA}(q) $ and $ n^{\ex}(q) $ defined in~\eqref{eq:nqb} and~\eqref{eq:nqex}, and where the error term is controlled by
 \begin{equation}
 	\lvert \cE(q)\rvert \le C_\varepsilon k_{\F}^{-1 - \frac 16 \alpha} e(q)^{-1} \;.
 \end{equation}
 In the special case ???, the error term is even controlled by
 \begin{equation} \label{eq:main_improvederror}
 	\lvert \cE(q)\rvert \le C_\varepsilon k_{\F}^{-2 +\varepsilon} e(q)^{-1} \;.
-\end{equation}
-Moreover we have \todo{Move to Remark 1?}
-\begin{equation}
-\lvert n^{\RPA}(q)\rvert \le C k_{\F}^{-1} e(q)^{-1} \;.
 \end{equation}
 \end{itemize}
 \end{theorem}
@@ -378,7 +386,21 @@ Moreover we have \todo{Move to Remark 1?}
 \begin{remarks}
 \begin{enumerate}
 
-\item In Lemma~\ref{lem:nqb_bounds}, we show that the scaling $ n^{\RPA}(q) \sim k_{\F}^{-1} e(q)^{-1} $ is sharp, in the sense that there exist $ V $ and $ q $ for which $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $. \todo{Make sure that $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $ is true.}
+\item In Lemma~\ref{lem:nqb_bounds}, we show that the bosonization contribution is bounded by
+\begin{equation}
+	\lvert n^{\RPA}(q)\rvert \le C k_{\F}^{-1} e(q)^{-1} \;.
+\end{equation}
+Moreover, we show that this scaling is sharp, in the sense that there exist $ V $ and $ q $ for which $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $. \todo{Make sure that $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $ is true.}
+By contrast the exchange contribution is bounded by Lemma~\ref{lem:estnqex} as
+\begin{equation}
+	\lvert n^{\ex}(q)\rvert
+	\le \begin{cases}
+		C_\varepsilon k_{\F}^{-1-\frac{\alpha}{2} + \varepsilon } e(q)^{-1} \quad&\textnormal{for } \sum_{\ell \in \Z^3_*} |\ell|^\alpha \hat{V}(\ell)^2 < \infty \;, \quad \alpha \in [0,2] \\
+		C k_{\F}^{-2} e(q)^{-2} \quad&\textnormal{for } \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty
+	\end{cases} \;.
+\end{equation}
+This situation is similar to the ground state energy: In~\cite{CHN23,CHN24}, a bosonized and an exchange contribution to $ E_{\GS} $ were extracted, with the exchange contribution gaining significance for singular interaction potentials. Just as for the ground state energy, $ n^{\ex}(q) $ follows from normal ordering bosonization errors in Lemma~\eqref{lem:normalordering_errors}.
+
 
 \item In~\cite{BL25}, the scaling of the leading term is $ n^{\RPA}(q) \sim k_{\F}^{-2} $ without any $ e(q) $. This is because~\cite{BL25} assumes $ |\ell| \le C $ and $ |\ell \cdot q| \ge c $ in the analogue of~\eqref{eq:nqb}, leading to $ e(q) \sim k_{\F} $. In other words, it includes only momenta at distances $ ||q|-k_{\F}| \sim 1 $ from the Fermi surface, while the present result admits distances as small as $ k_{\F}^{-1} $.
 % (and up to arbitrarily large distances.\\
@@ -386,19 +408,19 @@ Moreover we have \todo{Move to Remark 1?}
 To study the momentum distribution even closer to the Fermi surface, one would need to increase the size of the torus to refine the momentum lattice. It is expected \cite{DV60} that the analogue of $ n^{\RPA}(q) $ in continuous momentum space scales like $ \lim_{||q|-k_{\F}| \to \pm 0} n^{\RPA}(q) \sim k_{\F}^{-1} $ at the Fermi surface. We therefore expect that for a large-volume limit, $ e(q)^{-1} $ both in the leading term and in the error estimate can be replaced by $ (e(q)+1)^{-1} $.
 
 
-\item In~\cite{CHN23,CHN24}, a bosonized and an exchange contribution were extracted for the correlation energy. For the momentum distribution likewise, in addition to the bosonization contribution $ n^{\RPA}(q) $, we find an exchange contribution $ n^{\ex}(q) $, according to Lemma~\ref{lem:normalordering_errors} given by
-\begin{equation} \label{eq:nqex}
-\begin{split}
-	n^{\ex}(q)
-	\coloneq \sum_{\substack{m=1\\m:\textnormal{ odd}}}^\infty \frac{1}{(m+1)!} \sum_{j=0}^m {{m} \choose {j}}
-		& \sum_{\ell,\ell_1 \in \Z^3_*}\sum_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}}
-		K^{m-j}(\ell)_{r,q} \\
-		& \times
-		K^j(\ell)_{q,-r+\ell+\ell_1}
-		K(\ell_1)_{r,-r+\ell+\ell_1} \;.
-\end{split}
-\end{equation}
-From Lemma~\ref{lem:estnqex}, it follows that $ n^{\ex}(q) \le C k_{\F}^{-2} e(q)^{-2} $ for $ \hat{V} \in \ell^1 $, so $ n^{\ex}(q) $ is subleading. However, for the Coulomb potential $ \hat{V}(k) \sim |k|^{-2} $, we expect $ n^{\ex}(q) \le C k_{\F}^{-1} e(q)^{-2} $, so the exchange term should become observable close to the Fermi surface.
+%\item In~\cite{CHN23,CHN24}, a bosonized and an exchange contribution were extracted for the correlation energy. For the momentum distribution likewise, in addition to the bosonization contribution $ n^{\RPA}(q) $, we find an exchange contribution $ n^{\ex}(q) $, according to Lemma~\ref{lem:normalordering_errors} given by
+%\begin{equation} \label{eq:nqex}
+%\begin{split}
+%	n^{\ex}(q)
+%	\coloneq \sum_{\substack{m=1\\m:\textnormal{ odd}}}^\infty \frac{1}{(m+1)!} \sum_{j=0}^m {{m} \choose {j}}
+%		& \sum_{\ell,\ell_1 \in \Z^3_*}\sum_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ \cap (-L_{\ell}+\ell+\ell_1) \\ \cap (-L_{\ell_1}+\ell+\ell_1 )}}
+%		K^{m-j}(\ell)_{r,q} \\
+%		& \times
+%		K^j(\ell)_{q,-r+\ell+\ell_1}
+%		K(\ell_1)_{r,-r+\ell+\ell_1} \;.
+%\end{split}
+%\end{equation}
+%From Lemma~\ref{lem:estnqex}, it follows that $ n^{\ex}(q) \le C k_{\F}^{-2} e(q)^{-2} $ for $ \hat{V} \in \ell^1 $, so $ n^{\ex}(q) $ is subleading. However, for the Coulomb potential $ \hat{V}(k) \sim |k|^{-2} $, we expect $ n^{\ex}(q) \le C k_{\F}^{-1} e(q)^{-2} $, so the exchange term should become observable close to the Fermi surface.
 
 % This situation is analogous to the correlation energy: For $ \sum_k \hat{V}(k) |k| $ (as in~\cite{CHN21}), one has $ E_{\corr,\b} \sim \hbar^2 k_{\F} $ and $ E_{\corr,\ex} \sim \hbar^2 k_{\F}^{-1} $, so the exchange term is an error. However, for Coulomb potentials~\cite{CHN23,CHN24}, $ E_{\corr,\b} \sim \hbar^2 k_{\F} \log(k_{\F}) $ and $ E_{\corr,\ex} \sim \hbar^2 k_{\F} $, so the exchange contribution is only marginally subleading to the bosonized one.
 
@@ -769,13 +791,7 @@ as well as
 Follows by a lengthy but straightforward computation with the CAR. (Alternatively, this can be conveniently computed using Friedrichs diagrams~\cite{BL23}.)
 \end{proof}
 
-Summing \eqref{eq:nqexm} over all odd $m \in \Nbb$ yields the exchange contribution $ n^{\ex}(q) $.
-% \begin{equation*}
-% 	n^{\ex}(q)
-% 	= \half \sum_{\substack{m=1\\m:\textnormal{ odd}}}^\infty \frac{1}{(m+1)!} n^{\ex,m}(q) \;.
-% \end{equation*}
-
-
+Note that the exchange contribution~\eqref{eq:nqex} follows as $ n^{\ex}(q) = \frac 14 n^{\ex,1}(q) $.
 
 
 
@@ -2412,7 +2428,7 @@ for any $ n \in \N $. As $ n \to \infty $, the third term vanishes by Propositio
 	\half\sum_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \big( \cosh(2K(\ell)) - 1 \big)_{q,q}
 	= n^{\RPA}(q) \;.
 \end{equation*}
-In the general case $ \sum_{\ell \in \Z^3_*} |\ell|^\alpha \hat{V}(\ell)^2 < \infty $, Estimating the $ E_m(P^q) $-term by Proposition~\ref{prop:finalEmest} renders
+In the general case $ \sum_{\ell \in \Z^3_*} |\ell|^\alpha \hat{V}(\ell)^2 < \infty $, we estimate the $ E_m(P^q) $-term by Proposition~\ref{prop:finalEmest}, noting that $ n^{\ex,1}(q) = 4 n^{\ex}(q) $ (compare~\eqref{eq:nqex} and~\eqref{eq:nqexm}):
 \begin{align} \label{eq:main_errorbound_with_Xi}
 	& \abs{\eva{\Omega, e^{S} a_q^* a_q e^{-S} \Omega} - n^{\textnormal{RPA}}(q) - n^{\ex}(q)} \nonumber\\
 	&\le C_\varepsilon \sum_{m=1}^\infty \frac{C^m}{m!}
