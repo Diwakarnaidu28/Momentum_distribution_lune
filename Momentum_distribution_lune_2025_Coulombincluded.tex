@@ -177,6 +177,7 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{problem}[theorem]{Problem}
 \newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
 \newtheorem{example}[theorem]{Example}
 \newtheorem*{remarks}{Remarks}
 
@@ -349,19 +350,29 @@ The scaling of $ n^{\RPA}(q) $, $ n^{\ex}(q) $, and the error terms will depend 
 	= \abs{|q|^2 - \sup_{h \in B_{\F}} |h|^2 - \half} \;.
 \end{equation}
 Since we work in fixed volume, the minimal distance between a momentum inside and a momentum outside the Fermi ball is $1$, and therefore $ e(q) \ge \half $.\\
+Also, they will depend on the regularity of the potential $ \hat{V} $, for which we investigate three cases:
+\begin{hypothesis}~\label{hyp:alpha}
+$ \hat{V} \ge 0 $, $ \hat{V}(\ell) = \hat{V}(-\ell) \quad \forall \ell \in \Z^3 \setminus \{0\} $, and $ \sum_{\ell \in \Z^3_*} |\ell|^\alpha \hat{V}(\ell)^2 < \infty $ for some $ \alpha \in [0,\infty) $.
+\end{hypothesis}
+\begin{hypothesis}~\label{hyp:ell1}
+$ \hat{V} \ge 0 $, $ \hat{V}(\ell) = \hat{V}(-\ell) \quad \forall \ell \in \Z^3 \setminus \{0\} $, and $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $.
+\end{hypothesis}
+\begin{hypothesis}~\label{hyp:Coulomb}
+$ \hat{V} \ge 0 $ is radial, decreasing, and there exists $ C > 0 $ such that\\
+$ \hat{V}(\ell) \le C |\ell|^{-2} \quad \forall \ell \in \Z^3 \setminus \{0\} $.
+\end{hypothesis}
+Note that Hypothesis~\ref{hyp:ell1} is a special case of Hypothesis~\ref{hyp:alpha} whenever $ \alpha \in [0,3] $. Hypothesis~\ref{hyp:ell1} addresses the Coulomb potential, and is a special case of Hypothesis~\ref{hyp:alpha} whenever $ \alpha \in [0,1) $.
 
-\todo{Put hypotheses for the potential, here.}
 
 \begin{theorem}[Main result] \label{thm:main}
-Assume that the Fourier transform of the interaction potential satisfies $ \hat{V} \in \ell^1(\Z^3) $, $ \hat{V} \ge 0 $, and $ \hat{V}(k) = \hat{V}(-k) $ for all $k \in \Zbb^3$.
-Then, for any sequence of $ k_{\F} $ with $ k_{\F} \to \infty $ and $ N := |B_{k_{\F}}(0)| $, there exists a sequence of trial states  $ \Psi_N \in L^2_{\mathrm{a}}(\T^{3N}) $ such that
+For any sequence of $ k_{\F} $ with $ k_{\F} \to \infty $ and $ N := |B_{k_{\F}}(0)| $, there exists a sequence of trial states  $ \Psi_N \in L^2_{\mathrm{a}}(\T^{3N}) $ such that
 \begin{itemize}
-\item $ \Psi_N $ is energetically close to the ground state in the sense that for any $ \varepsilon > 0 $ there exists a $ C_\varepsilon > 0 $ such that for all $k_\F$ we have
+\item If Hypothesis~\ref{hyp:Coulomb} holds, then $ \Psi_N $ is energetically close to the ground state in the sense that for any $ \varepsilon > 0 $ there exists a $ C_\varepsilon > 0 $ such that for all $k_\F$ we have
 \begin{equation} \label{eq:main1}
 	\eva{\Psi_N, H_N \Psi_N} - E_{\GS}
 	\le C_\varepsilon k_{\F}^{1-\frac 16 + \varepsilon} \;,
 \end{equation}
-\item and there exist constants $ C, C_\varepsilon > 0 $, depending on $ \hat{V} $, such that for all $ k_{\F} $ and $ q \in \Z^3 $, the momentum distribution in $ \Psi_N $ satisfies
+\item and if Hypothesis~\ref{hyp:alpha} holds, then there exist constants $ C, C_\varepsilon > 0 $, depending on $ \hat{V} $, such that for all $ k_{\F} $ and $ q \in \Z^3 $, the momentum distribution in $ \Psi_N $ satisfies
 \begin{equation} \label{eq:main2}
 	n(q) = \eva{\Psi_N, a_q^* a_q \Psi_N}
 	= \begin{cases}
@@ -375,7 +386,7 @@ with $ n^{\RPA}(q) $ and $ n^{\ex}(q) $ defined in~\eqref{eq:nqb} and~\eqref{eq:
 \begin{equation}
 	\lvert \cE(q)\rvert \le C_\varepsilon k_{\F}^{-1 - \frac 16 \alpha} e(q)^{-1} \;.
 \end{equation}
-In the special case ???, the error term is even controlled by
+If the even stronger Hypothesis~\ref{hyp:ell1} holds, then the error term is even controlled by
 \begin{equation} \label{eq:main_improvederror}
 	\lvert \cE(q)\rvert \le C_\varepsilon k_{\F}^{-2 +\varepsilon} e(q)^{-1} \;.
 \end{equation}
@@ -2412,10 +2423,10 @@ As the potential, we choose $ \hat{V}((1,0,0)) = \hat{V}((-1,0,0)) = 1 $ and $ \
 \label{sec:mainthmproof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
-As trial state we take $ \Psi_N = R e^{-S} \Omega $, as constructed in \cite{CHN23} and reviewed in Section~\ref{sec:trialstate}. From~\cite[Corr.~1.3]{CHN24}, under the assumption $ \sum_k \hat{V}(k)^2 < \infty $, we know that \textcolor{blue}{[SL: Is there a reason why we call things $ E_{\F} $ and $ E_{\textnormal{gs}} $ instead of $ E_{\textnormal{FS}} $ and $ E_{\textnormal{N}} $?]}$ E_{\GS} = E_{\F} + E_{\corr} + \cO(k_{\F}^{1 - 1/6 + \varepsilon}) $, where $ E_{\F} $ is the Hartree--Fock energy and $ E_{\corr}$ the correlation energy, defined in~\cite[(1.2) and (1.11)]{CHN24}. Moreover, \cite[Thm.~1.1]{CHN23} gives us $ \eva{\Psi_N, H_N \Psi_N} \le E_{\F} + E_{\corr} + \cO(k_{\F}^{1 - 1/2}) $, hence $ \eva{\Psi_N, H_N \Psi_N} \le E_{\GS} + \cO(k_{\F}^{1 - 1/6+ \varepsilon}) $. \textcolor{red}{[SL: The lower bound only holds if $ \hat{V}(\ell) \le C |\ell|^{-2} $.]}
+As trial state we take $ \Psi_N = R e^{-S} \Omega $, as constructed in \cite{CHN23} and reviewed in Section~\ref{sec:trialstate}. From~\cite[Corr.~1.3]{CHN24}, \textcolor{blue}{assuming Hypothesis~\ref{hyp:Coulomb}}, we know that \textcolor{blue}{[SL: Is there a reason why we call things $ E_{\F} $ and $ E_{\textnormal{gs}} $ instead of $ E_{\textnormal{FS}} $ and $ E_{\textnormal{N}} $?]}$ E_{\GS} = E_{\F} + E_{\corr} + \cO(k_{\F}^{1 - 1/6 + \varepsilon}) $, where $ E_{\F} $ is the Hartree--Fock energy and $ E_{\corr}$ the correlation energy, defined in~\cite[(1.2) and (1.11)]{CHN24}. Moreover, \cite[Thm.~1.1]{CHN23} gives us $ \eva{\Psi_N, H_N \Psi_N} \le E_{\F} + E_{\corr} + \cO(k_{\F}^{1 - 1/2}) $, hence $ \eva{\Psi_N, H_N \Psi_N} \le E_{\GS} + \cO(k_{\F}^{1 - 1/6+ \varepsilon}) $. \textcolor{red}{[SL: The lower bound only holds if $ \hat{V}(\ell) \le C |\ell|^{-2} $.]}
 % By definition of the ground state energy, $ E_{\GS} \le \eva{\Psi_N, H_N \Psi_N} $, which concludes the energy estimate~\eqref{eq:main1}.\\
 
-It remains to prove the momentum distribution formula~\eqref{eq:main2}, where we focus on the case $ q \in B_{\F}^c $, since $ q \in B_{\F} $ is completely analogous. Here, $ \eva{\Psi_N, a_q^* a_q \Psi_N} = \eva{\Omega, e^{S} a_q^* a_q e^{-S} \Omega} $, where Proposition~\ref{prop:finexpan} gives us
+It remains to prove the momentum distribution formula~\eqref{eq:main2}, where we focus on the case $ q \in B_{\F}^c $, since $ q \in B_{\F} $ is completely analogous. Assume Hypothesis~\ref{hyp:alpha} (which includes Hypotheses~\ref{hyp:ell1} and~\ref{hyp:Coulomb} as special cases). Here, $ \eva{\Psi_N, a_q^* a_q \Psi_N} = \eva{\Omega, e^{S} a_q^* a_q e^{-S} \Omega} $, where Proposition~\ref{prop:finexpan} gives us
 \begin{align*}
 	\eva{\Omega, e^{S} a_q^* a_q e^{-S} \Omega} 
 	&= \half\sum_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \sum_{\substack{m=2\\m:\textnormal{ even}}}^n \frac{((2K(\ell))^m)_{q,q}}{m!}
@@ -2428,7 +2439,7 @@ for any $ n \in \N $. As $ n \to \infty $, the third term vanishes by Propositio
 	\half\sum_{\ell\in \Z^3_*}\mathds{1}_{L_\ell}(q) \big( \cosh(2K(\ell)) - 1 \big)_{q,q}
 	= n^{\RPA}(q) \;.
 \end{equation*}
-In the general case $ \sum_{\ell \in \Z^3_*} |\ell|^\alpha \hat{V}(\ell)^2 < \infty $, we estimate the $ E_m(P^q) $-term by Proposition~\ref{prop:finalEmest}, noting that $ n^{\ex,1}(q) = 4 n^{\ex}(q) $ (compare~\eqref{eq:nqex} and~\eqref{eq:nqexm}):
+We estimate the $ E_m(P^q) $-term by Proposition~\ref{prop:finalEmest}, noting that $ n^{\ex,1}(q) = 4 n^{\ex}(q) $ (compare~\eqref{eq:nqex} and~\eqref{eq:nqexm}):
 \begin{align} \label{eq:main_errorbound_with_Xi}
 	& \abs{\eva{\Omega, e^{S} a_q^* a_q e^{-S} \Omega} - n^{\textnormal{RPA}}(q) - n^{\ex}(q)} \nonumber\\
 	&\le C_\varepsilon \sum_{m=1}^\infty \frac{C^m}{m!}
@@ -2463,7 +2474,7 @@ Plugging this bound again into~\eqref{eq:main_errorbound_with_Xi} and taking onl
 \end{align}
 Inserting both bounds~\eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} into again into~\eqref{eq:main_errorbound_with_Xi} and optimizing $ \gamma = \frac 13 $ renders the final result~\eqref{eq:main2}.\\
 
-In the special case $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, Proposition~\ref{prop:finalEmest} provides us with
+In the special case of Hypothesis~\ref{hyp:ell1} ($ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $), Proposition~\ref{prop:finalEmest} provides us with
 \begin{align} \label{eq:main_errorbound_with_Xi}
 	& \abs{\eva{\Omega, e^{S} a_q^* a_q e^{-S} \Omega} - n^{\textnormal{RPA}}(q) - n^{\ex}(q)} \nonumber\\
 	&\le n^{\ex}(q) + C_\varepsilon \frac{C^m}{m!}
