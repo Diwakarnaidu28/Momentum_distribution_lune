@@ -334,14 +334,13 @@ For more singular interaction potentials, we find that $ n^{\RPA}(q) $ is to be 
 \begin{split}
 	n^{\ex}(q)
 	\coloneq 
-	\sum_{\ell,\ell_1 \in \Z^3_*}
+	\frac{k_{\F}^{-2}}{4 (2 \pi)^6} \sum_{\ell,\ell_1 \in \Z^3_*}
 		\mathds{1}_{L_\ell \cap L_{\ell_1} \cap (-L_{\ell}+\ell+\ell_1) \cap (-L_{\ell_1}+\ell+\ell_1)}(q)
-		K(\ell)_{q,-q+\ell+\ell_1}
-		K(\ell_1)_{q,-q+\ell+\ell_1} \;.
+		\frac{\hat{V}(\ell)}{\lambda_{\ell,q} + \lambda_{\ell,-q+\ell+\ell_1}}
+		\frac{\hat{V}(\ell_1)}{\lambda_{\ell_1,q} + \lambda_{\ell_1,-q+\ell+\ell_1}} \;.
 \end{split}
 \end{equation}
 
-\todo{Define $ K $ at this stage or approximate $ n^{\ex}(q) $?}
 
 The scaling of $ n^{\RPA}(q) $, $ n^{\ex}(q) $, and the error terms will depend on
 \begin{equation} \label{eq:eq}
@@ -802,7 +801,7 @@ as well as
 Follows by a lengthy but straightforward computation with the CAR. (Alternatively, this can be conveniently computed using Friedrichs diagrams~\cite{BL23}.)
 \end{proof}
 
-Note that the exchange contribution~\eqref{eq:nqex} follows as $ n^{\ex}(q) = \frac 14 n^{\ex,1}(q) $.
+Note that the exchange contribution~\eqref{eq:nqex} follows as $ n^{\ex}(q) \approx \frac 14 n^{\ex,1}(q) $.
 
 
 
@@ -1090,7 +1089,7 @@ Evidently, $ 0 \le a_q^* a_q \le 1 $ implies the trivial bound $ 0 \le \Xi \le 1
 \begin{proposition} \label{prop:finalEmest}
 Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $ \alpha \ge 0 $. Recall the bosonization error term $E_m(P^q)$~\eqref{eq:errEm} with $ \Theta^n_K $, $ P^q $, $ \int_{\Delta^n} \di^n \ulambda $ and $ \sigma(n) $ defined within and above Proposition~\ref{prop:finexpan}. Then, given $ \varepsilon > 0 $, there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $ and $ q \in B_{\F}^c $, and any $ \gamma \ge 0 $
 \begin{align} \label{eq:finalEmest_Coulomb}
-	&\abs{\eva{\Omega, E_m(P^q) \Omega} - \delta_{m,1} \frac 12 n_q^{\ex,1}} \nonumber\\
+	&\abs{\eva{\Omega, E_m(P^q) \Omega} - \delta_{m,1} \frac 12 n^{\ex,1}(q)} \nonumber\\
 	&\leq C_\varepsilon \frac{C^m}{m!}
 		\left( e(q)^{-1}\left( k_{\F}^{-\frac 32 + \varepsilon} 
 		+ k_{\F}^{-1 - \frac{\alpha \gamma}{2}} 
@@ -1099,7 +1098,7 @@ Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $
 		+ k_{\F}^{-1} \Xi \right) 
 		+ e(q)^{-\half} k_{\F}^{-1} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} \right) \;,
 \end{align}
-where $ n_q^{\ex,m} = 0 $ for $ m $ being odd.
+where $ n^{\ex,m}(q) = 0 $ for $ m $ being odd.
 Moreover, if $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, we have the bound
 \begin{equation} \label{eq:finalEmest}
 	\abs{\eva{\Omega, E_m(P^q) \Omega}}
@@ -1480,7 +1479,7 @@ We sum the estimates from Lemmas~\ref{lem:EQ111} and~\ref{lem:EQ112} and use tha
 \begin{proposition}[Estimate for $E_{Q_2}(\Theta^m_{K}(P^q))$]\label{prop:finEQ2est}
 Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $ \alpha \ge 0 $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $ there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $, $ \lambda \in [0,1] $, and $ q \in B_{\F}^c $, the following bound is true for any $ \gamma \ge 0 $:
 \begin{align}\label{eq:finEQ2est_Coulomb}
-	&\abs{\eva{\xi_\lambda, E_{Q_2}\!\left(\Theta^m_K(P^q)- \delta_{m,1} n_q^{\ex,1} \right) \xi_\lambda}} \nonumber\\
+	&\abs{\eva{\xi_\lambda, E_{Q_2}\!\left(\Theta^m_K(P^q)- \delta_{m,1} n^{\ex,1}(q) \right) \xi_\lambda}} \nonumber\\
 	&\leq C_\varepsilon C^m \left( k_{\F}^{-\frac 32 + \varepsilon} 
 		+ k_{\F}^{-1 - \frac{\alpha \gamma}{2}} 
 		+ k_{\F}^{-1+ \frac{3-\alpha}{2} \gamma} \Xi^\half
@@ -1498,7 +1497,7 @@ If $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, we have the even stronger 
 \end{proposition}
 
 \textcolor{blue}{
-Note that here, $ m = 1 $ and thus $ \sum_\ell \hat{V}(\ell)^m = \infty $ can occur if only $ \sum_\ell \hat{V}(\ell)^2 < \infty $ is known. In the end, we will choose $ \gamma = \frac 13 $ as explained below. Then, the error in~\eqref{eq:finEQ2est_Coulomb} is $ \sim k_{\F}^{-1-\frac 16} $, whereas the exchange contribution grows up to $ n_q^{\ex,1} \le C k_{\F}^{-1 + \varepsilon} $ (see Lemma~\ref{lem:estnqex}), so we cannot treat $ n_q^{\ex,m} $ as an error. By contrast, for $ \sum_\ell \hat{V}(\ell) < \infty $, the bound~\eqref{eq:finEQ2est} scales like $ \sim k_{\F}^{-2+\varepsilon} $, while $ n_q^{\ex,m} \le C k_{\F}^{-2} $, so the exchange contribution is an error.
+Note that here, $ m = 1 $ and thus $ \sum_\ell \hat{V}(\ell)^m = \infty $ can occur if only $ \sum_\ell \hat{V}(\ell)^2 < \infty $ is known. In the end, we will choose $ \gamma = \frac 13 $ as explained below. Then, the error in~\eqref{eq:finEQ2est_Coulomb} is $ \sim k_{\F}^{-1-\frac 16} $, whereas the exchange contribution grows up to $ n^{\ex,1}(q) \le C k_{\F}^{-1 + \varepsilon} $ (see Lemma~\ref{lem:estnqex}), so we cannot treat $ n^{\ex,m}(q) $ as an error. By contrast, for $ \sum_\ell \hat{V}(\ell) < \infty $, the bound~\eqref{eq:finEQ2est} scales like $ \sim k_{\F}^{-2+\varepsilon} $, while $ n^{\ex,m}(q) \le C k_{\F}^{-2} $, so the exchange contribution is an error.
 }
 To prove this proposition, we estimate $ E^{m,1}_{Q_2}(q) $ through $ E^{m,11}_{Q_2} (q)$ and $ n^{\ex,m}(q) $.
 
@@ -2121,31 +2120,115 @@ Since $ m+1 \ge 2 $, we get $ \sum_{\ell \in \Z^3_*} (C \hat{V}(\ell))^{m+1} \le
 This concludes the proof.
 \end{proof}
 
-\begin{lemma}[Exchange contribution] \label{lem:estnqex}
-Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $, there exist $ C, C_\varepsilon > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, $ m > 1 $ and $ q \in B_{\F}^c $,
-\begin{equation}
-	\abs{\eva{\xi_\lambda, n_q^{\ex,m} \xi_\lambda }}
-	\leq C_\varepsilon C^m k_{\F}^{-\frac 32 + \varepsilon} e(q)^{-\frac 32} \;. \label{eq:estnqex_Coulomb}
+Before bounding the exchange contribution, we establish the following lemma, which is used to extract $ n^{\ex}(q) $ from $ n^{\ex,1}(q) $:
+\begin{lemma} \label{lem:extract_nqex}
+Let $ \hat{V} \in \ell^\infty(\Z^3_*) $. Then, there exists $  $ such that for any $ \ell \in \Z^3_* $ and $ r,s \in L_\ell $,
+\begin{equation} \label{eq:extract_nqex}
+	\abs{K(\ell)_{r,s} - \frac{1}{2 (2 \pi)^3} \frac{\hat{V}(\ell) k_{\F}^{-1}}{\lambda_{\ell,r} + \lambda_{\ell,s}}}
+	\leq C \frac{\hat{V}(\ell)^2 k_{\F}^{-1}}{\lambda_{\ell,r} + \lambda_{\ell,s}} \;.
 \end{equation}
-In case $ m = 1 $, if $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ with $ \alpha \in [0,2] $, then we have
+\end{lemma}
+\begin{proof}
+From~\cite[Prop.~3.10]{CHN24}, we recover
 \begin{equation}
-	\abs{\eva{\xi_\lambda, n_q^{\ex,1} \xi_\lambda }}
+	\abs{\sinh(K(\ell))_{r,s} - \frac{1}{2 (2 \pi)^3} \frac{\hat{V}(\ell) k_{\F}^{-1}}{\lambda_{\ell,r} + \lambda_{\ell,s}}}
+	\leq C \frac{\hat{V}(\ell)^2 k_{\F}^{-1}}{\lambda_{\ell,r} + \lambda_{\ell,s}} \;.
+\end{equation}
+Expanding and bounding the sinh-series via~\eqref{eq:K_element_bounds}, we get
+\begin{equation}
+	\abs{\sinh(K(\ell))_{r,s} - K(\ell)_{r,s}}
+	\le \sum_{n = 3}^\infty \frac{1}{n!} |(K(\ell)^n)_{r,s}|
+	\le \sum_{n = 3}^\infty \frac{(C \hat{V}(\ell))^n}{n!}
+		\frac{k_{\F}^{-1}}{\lambda_{\ell,r} + \lambda_{\ell,s}}
+	\le C \frac{\hat{V}(\ell)^2 k_{\F}^{-1}}{\lambda_{\ell,r} + \lambda_{\ell,s}} \;.
+\end{equation}
+Then,~\eqref{eq:extract_nqex} follows by the triangle inequality.
+\end{proof}
+
+
+\begin{lemma}[Exchange contribution] \label{lem:estnqex}
+Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ with $ \alpha \in [0,2] $, and recall the definitions~\eqref{eq:nqex} and~\eqref{eq:nqexm} of $ n^{\ex}(q) $ and $ n^{\ex,m}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $, there exists $ C > 0 $ such that for all $ q \in B_{\F}^c $
+\begin{equation}
+	\abs{n^{\ex}(q)}
 	\leq C_\varepsilon k_{\F}^{-1 - \frac{\alpha}{2} + \varepsilon} e(q)^{-1} \;. \label{eq:estnqex_Coulomb_1}
+\end{equation}
+Further, for $ m \in \NNN $, $ m > 1 $, we have the bounds
+\begin{equation}
+\begin{aligned}
+	\abs{n^{\ex,m}(q)}
+	&\leq C_\varepsilon C^m k_{\F}^{-\frac 32 + \varepsilon} e(q)^{-\frac 32} \;, \\
+	\abs{n^{\ex}(q) - \frac 14 n^{\ex,1}(q)}
+	&\leq C_\varepsilon k_{\F}^{-\frac 32 + \varepsilon} e(q)^{-\frac 32} \;. \label{eq:estnqex_Coulomb}
+\end{aligned}
 \end{equation}
 Further, if $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, we have the following stronger bound for any $ m \in \mathbb{N} $:
 \begin{equation}
-	\abs{\eva{\xi_\lambda, n_q^{\ex,m} \xi_\lambda }}
+	\abs{n^{\ex}(q)},
+	\abs{n^{\ex,m}(q)}
 	\leq C^m k_{\F}^{-2} e(q)^{-2} \;. \label{eq:estnqex}
 \end{equation}
 \end{lemma}
 
-Note that since by definition, $ n_q^{\ex,m} $ and $ \norm{\xi_\lambda} = 1 $, we have $ \abs{\eva{\xi_\lambda, n_q^{\ex,m} \xi_\lambda }} = |n_q^{\ex,m}| $.
+Note that since $ n^{\ex,m}(q) \in \mathbb{R} $ and $ \norm{\xi_\lambda} = 1 $ for any $ \lambda \in [0,1] $, we have $ |n^{\ex,m}(q)| =  \abs{\eva{\xi_\lambda, n^{\ex,m}(q) \xi_\lambda }} $. Also, note that Lemma~\ref{lem:estnqex} also applies to $ \alpha \in (2,\infty) $, since those are included in the case $ \alpha = 2 $. The bound~\eqref{eq:estnqex_Coulomb_1} is then always $ \abs{n^{\ex}(q)} \leq C_\varepsilon k_{\F}^{-\frac 32 + \varepsilon} e(q)^{-1} $, regardless of $ \alpha $.
 
 \begin{proof}
-We recall definition~\eqref{eq:nqexm} of $ n_q^{\ex,m} \in \RRR $ and expand the multi-anticommutator via~\eqref{eq:q-q}:
+We start bounding $ n^{\ex}(q) $~\eqref{eq:nqex} by Lemma~\ref{lem:normsk} and $ \lambda_{\ell,q} \ge C e(q)^{\half} e(q-\ell)^{\half} $,
+\begin{align}
+	|n^{\ex}(q)|
+	&\leq C k_{\F}^{-2}
+		\sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) \frac{\hat{V}(\ell)}{\lambda_{\ell,q}}
+		\sum_{\ell_1 \in \Z^3_*} \mathds{1}_{L_{\ell_1}}(q) \frac{\hat{V}(\ell_1)}{\lambda_{\ell_1,q}}
+	= C k_{\F}^{-2}
+		\Bigg( \sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) \frac{\hat{V}(\ell)}{\lambda_{\ell,q}} \Bigg)^2 \nonumber\\
+	&\leq C k_{\F}^{-2} e(q)^{-1}
+		\Bigg( \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |k|^{\alpha} \Bigg)
+		\Bigg( \sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) e(q-\ell)^{-1} |\ell|^{-\alpha} \Bigg) \;.
+\end{align}
+The first bracket on the r.~h.~s. was assumed to be finite. To bound the second bracket, we split the summation region as $ S := \{ \ell \in \Z^3_* : q \in L_\ell \} = S_1 \cup S_2 \cup S_3 $ with
+\begin{equation}
+	S_1 := \{ \ell \in S : |\ell| \le k_{\F}^\beta, \; ||q-\ell|-k_{\F}| \le 2 \} \;, \quad
+	S_2 := \{ \ell \in S \setminus S_1 : |\ell| \le k_{\F}^\beta \} \;, \quad
+	S_3 := S \setminus (S_1 \cup S_2) \;,
+\end{equation}
+for some $ \beta > 0 $ to be optimized later. For $ \ell \in S_1 $, we use $ e(q-\ell) \ge C $ and that the area of the intersection with a sphere around $ q $ is bounded by
+\begin{equation*}
+	\textnormal{Area} \big( \big\{ \ell' \in \R^3 : |\ell'| \le k_{\F}^\beta, \; ||q-\ell'|-k_{\F}| \le 2, \; |\ell'| = |\ell| \big\} \big)
+	\leq C |\ell| \;,
+\end{equation*}
+whence
+\begin{equation}
+	\sum_{\ell \in S_1} e(q-\ell)^{-1} |\ell|^{-\alpha}
+	\leq \sum_{\ell \in S_1} |\ell|^{-\alpha}
+	\leq C + C \int_C^{k_{\F}^\beta} |\ell|^{1-\alpha}  \di |\ell|
+	\le C k_{\F}^{2 \beta - \alpha \beta} \;.
+\end{equation}
+Note that $ \alpha \in [0,2] $ is needed for the discretization error $ C $ to be smaller than $C k_{\F}^{2 \beta - \alpha \beta} $.\\
+For $ \ell \in S_2 $, we have $ e(q-\ell) \ge C k_{\F} $, while the sphere intersection area is now $ \leq C |\ell|^2 $:
+\begin{equation}
+	\sum_{\ell \in S_2} e(q-\ell)^{-1} |\ell|^{-\alpha}
+	\leq C k_{\F}^{-1} \Bigg( 1 + \int_C^{k_{\F}^\beta} |\ell|^{2-\alpha} \di |\ell| \Bigg)
+	\le C k_{\F}^{-1 + 3 \beta - \alpha \beta} \;.
+\end{equation}
+Finally, for $ \ell \in S_3 $, we have $ |\ell|^{-\alpha} \le C k_{\F}^{-\alpha \beta} $:
+\begin{equation}
+	\sum_{\ell \in S_3} e(q-\ell)^{-1} |\ell|^{-\alpha}
+	\le k_{\F}^{-\alpha \beta} \sum_{\ell \in S_1} e(q-\ell)^{-1}
+	\le C_\varepsilon k_{\F}^{1 + \varepsilon - \alpha \beta} \;,
+\end{equation}
+where we used again~\eqref{eq:lambdainverse} in the last step. Optimizing $ \beta = \frac 12 $, we get
+\begin{equation}
+	\Bigg( \sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) e(q-\ell)^{-1} |\ell|^{-\alpha} \Bigg)
+	\le C_\varepsilon k_{\F}^{1 + \varepsilon - \frac{\alpha}{2}} \qquad \Rightarrow \qquad
+	|n^{\ex}(q)|
+	\leq C_\varepsilon k_{\F}^{-1 - \frac{\alpha}{2} + \varepsilon} \;.
+\end{equation}
+\textcolor{red}{[SL: The above estimate may require some additional attention if $ q \in B_{\F} $.]}
+
+
+Next, we turn to $ n^{\ex,m}(q) $: For $ m > 1 $ we expand the multi-anticommutator in~\eqref{eq:nqexm} via~\eqref{eq:q-q}:
 \begin{equation}
 \begin{aligned}
-	|n_q^{\ex,m}|
+	|n^{\ex,m}(q)|
 	&\leq \I + \II \\
 	\I
 	&:= 4 \sum_{\ell,\ell_1 \in \Z^3_*}
@@ -2197,58 +2280,27 @@ where we used~\eqref{eq:lambdainverse}. Likewise, for $ \II $ with $ \lambda_{\e
 	\sum_{r \in L_\ell} e(r)^{-1}
 	\leq C_\varepsilon k_{\F}^{-\frac 32 + \varepsilon} e(q)^{-\frac 32} \;,
 \end{align}
-where in the last line, we used~\eqref{eq:lambdainverse}. Summing over $ j $, with $ \sum_{0 \le j \le m} {{m}\choose j} = 2^m $, concludes the estimate for $ \II $ and thus~\eqref{eq:estnqex_Coulomb}.\\
-Next, we consider $ m = 1 $, where $ \II = 0 $, as the sum over $ j $ is empty. Hence, with Lemma~\ref{lem:normsk} and $ \lambda_{\ell,q} \ge C e(q)^{\half} e(q-\ell)^{\half} $,
-\begin{align}
-	|n_q^{\ex,1}|
-	&\leq C k_{\F}^{-2}
-		\sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) \frac{\hat{V}(\ell)}{\lambda_{\ell,q}}
-		\sum_{\ell_1 \in \Z^3_*} \mathds{1}_{L_{\ell_1}}(q) \frac{\hat{V}(\ell_1)}{\lambda_{\ell_1,q}}
-	= C k_{\F}^{-2}
-		\Bigg( \sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) \frac{\hat{V}(\ell)}{\lambda_{\ell,q}} \Bigg)^2 \nonumber\\
-	&\leq C k_{\F}^{-2} e(q)^{-1}
-		\Bigg( \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |k|^{\alpha} \Bigg)
-		\Bigg( \sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) e(q-\ell)^{-1} |\ell|^{-\alpha} \Bigg) \;.
-\end{align}
-The first bracket on the r.~h.~s. was assumed to be finite. To bound the second bracket, we split the summation region as $ S := \{ \ell \in \Z^3_* : q \in L_\ell \} = S_1 \cup S_2 \cup S_3 $ with
-\begin{equation}
-	S_1 := \{ \ell \in S : |\ell| \le k_{\F}^\beta, \; ||q-\ell|-k_{\F}| \le 2 \} \;, \quad
-	S_2 := \{ \ell \in S \setminus S_1 : |\ell| \le k_{\F}^\beta \} \;, \quad
-	S_3 := S \setminus (S_1 \cup S_2) \;,
-\end{equation}
-for some $ \beta > 0 $ to be optimized later. For $ \ell \in S_1 $, we use $ e(q-\ell) \ge C $ and that the area of the intersection with a sphere around $ q $ is bounded by
-\begin{equation*}
-	\textnormal{Area} \big( \big\{ \ell' \in \R^3 : |\ell'| \le k_{\F}^\beta, \; ||q-\ell'|-k_{\F}| \le 2, \; |\ell'| = |\ell| \big\} \big)
-	\leq C |\ell| \;,
-\end{equation*}
-whence
-\begin{equation}
-	\sum_{\ell \in S_1} e(q-\ell)^{-1} |\ell|^{-\alpha}
-	\leq \sum_{\ell \in S_1} |\ell|^{-\alpha}
-	\leq C + C \int_C^{k_{\F}^\beta} |\ell|^{1-\alpha}  \di |\ell|
-	\le C k_{\F}^{2 \beta - \alpha \beta} \;.
-\end{equation}
-Note that $ \alpha \in [0,2] $ is needed for the discretization error $ C $ to be smaller than $C k_{\F}^{2 \beta - \alpha \beta} $.\\
-For $ \ell \in S_2 $, we have $ e(q-\ell) \ge C k_{\F} $, while the sphere intersection area is now $ \leq C |\ell|^2 $:
-\begin{equation}
-	\sum_{\ell \in S_2} e(q-\ell)^{-1} |\ell|^{-\alpha}
-	\leq C k_{\F}^{-1} \Bigg( 1 + \int_C^{k_{\F}^\beta} |\ell|^{2-\alpha} \di |\ell| \Bigg)
-	\le C k_{\F}^{-1 + 3 \beta - \alpha \beta} \;.
-\end{equation}
-Finally, for $ \ell \in S_3 $, we have $ |\ell|^{-\alpha} \le C k_{\F}^{-\alpha \beta} $:
-\begin{equation}
-	\sum_{\ell \in S_3} e(q-\ell)^{-1} |\ell|^{-\alpha}
-	\le k_{\F}^{-\alpha \beta} \sum_{\ell \in S_1} e(q-\ell)^{-1}
-	\le C_\varepsilon k_{\F}^{1 + \varepsilon - \alpha \beta} \;,
-\end{equation}
-where we used again~\eqref{eq:lambdainverse} in the last step. Optimizing $ \beta = \frac 12 $, we get
-\begin{equation}
-	\Bigg( \sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) e(q-\ell)^{-1} |\ell|^{-\alpha} \Bigg)
-	\le C_\varepsilon k_{\F}^{1 + \varepsilon - \frac{\alpha}{2}} \qquad \Rightarrow \qquad
-	|n_q^{\ex,1}|
-	\leq C_\varepsilon k_{\F}^{-1 - \frac{\alpha}{2} + \varepsilon} \;.
-\end{equation}
-\textcolor{red}{[SL: The above estimate may require some additional attention if $ q \in B_{\F} $.]}
+where in the last line, we used~\eqref{eq:lambdainverse}. Summing over $ j $, with $ \sum_{0 \le j \le m} {{m}\choose j} = 2^m $, concludes the estimate for $ \II $ and thus~\eqref{eq:estnqex_Coulomb} for $ m > 1 $.\\
+For $ m = 1 $, we bound the difference between $ n^{\ex}(q) $~\eqref{eq:nqex} and $ \frac 14 n^{\ex,1}(q) $~\eqref{eq:nqexm} by Lemma~\ref{lem:extract_nqex} and~\eqref{eq:K_element_bounds}, using that both terms are symmetric under exchanging $ \ell \leftrightarrow \ell_1 $:
+\begin{align*}
+	\abs{n^{\ex}(q) - \frac 14 n^{\ex,1}(q)}
+	&\leq C \sum_{\ell,\ell_1 \in \Z^3_*} 
+		\mathds{1}_{L_\ell \cap L_{\ell_1} \cap (-L_{\ell}+\ell+\ell_1) \cap (-L_{\ell_1}+\ell+\ell_1)}(q) \times \nonumber\\
+	&\quad \times \abs{K(\ell)_{q,-q+\ell+\ell_1}
+		- \frac{1}{2 (2 \pi)^3} \frac{\hat{V}(\ell) k_{\F}^{-1}}{\lambda_{\ell,q} + \lambda_{\ell,-q+\ell-\ell_1}}}
+		\frac{\hat{V}(\ell_1) k_{\F}^{-1}}{\lambda_{\ell_1,q} + \lambda_{\ell_1,-q+\ell+\ell_1}} \nonumber\\
+	&\leq C k_{\F}^{-2} \sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q)
+		\frac{\hat{V}(\ell)^2}{\lambda_{\ell,q}}
+		\sum_{\ell_1 \in \Z^3_*} \mathds{1}_{L_{\ell_1}}(q)
+		\frac{\hat{V}(\ell_1)}{\lambda_{\ell_1,q}} \nonumber\\
+	&\leq C k_{\F}^{-2} e(q)^{-\frac 32}
+		\Bigg( \sum_{\ell_1 \in \Z^3_*} \mathds{1}_{L_{\ell_1}}(q) e(q-\ell)^{-1} \Bigg)^{\half}
+		\Bigg( \sum_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1) \Bigg)^{\half} \nonumber\\
+	&\leq C_\varepsilon k_{\F}^{-\frac 32 + \varepsilon} e(q)^{-\frac 32} \;.
+\end{align*}
+
+
+
 Finally, in case $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, we get the simpler bound~\eqref{eq:estnqex} using Lemma~\ref{lem:normsk} and $ \sum_{0 \le j \le m} {{m}\choose j} = 2^m $:
 \begin{align}
 	\I + \II
