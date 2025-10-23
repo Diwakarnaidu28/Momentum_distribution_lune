@@ -812,10 +812,10 @@ Note that the exchange contribution~\eqref{eq:nqex} follows as $ n^{\ex}(q) \app
 We now compile some estimates for bounding the error terms in~\eqref{eq:finexpan}.
 
 \begin{lemma} \label{lem:lambdainverse}
-Let $ \ell \in \Z^3_* $ and recall the definitions~\eqref{eq:Lell} and~\eqref{eq:eq} of the energies $ \lambda_{\ell,r} $ and $ e(r) $. Consider any set $ S \subset \Z^3 $ with $ |S| \le C k_{\F}^3 $. Then, given $ \varepsilon > 0 $, there exists $ C_\varepsilon > 0 $ such that
+Let $ \ell \in \Z^3_* $ and recall the definitions~\eqref{eq:Lell} and~\eqref{eq:eq} of the energies $ \lambda_{\ell,r} $ and $ e(r) $. Consider any set $ S \subset \Z^3 $ with $ |S| \le C_0 k_{\F}^3 $ for some $ C_0 > 0 $. Then, given $ \varepsilon > 0 $, there exist $ C, C_{C_0, \varepsilon} > 0 $ such that
 \begin{equation} \label{eq:lambdainverse}
 	\sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \le C k_{\F} \;, \qquad
-	\sum_{r \in S} e(r)^{-1} \le C_\varepsilon k_{\F}^{1+\varepsilon} \;.
+	\sum_{r \in S} e(r)^{-1} \le C_{\varepsilon, C_0} k_{\F}^{1+\varepsilon} \;.
 \end{equation}
 \end{lemma}
 \begin{proof}
@@ -826,14 +826,12 @@ The first statement is~\cite[Prop.~A.2]{CHN21}. The second statement was proven 
 For $ \ell \in \Z^3_*$ and $A(\ell) : \ell^2(L_\ell) \to \ell^2(L_\ell)$ we define the norms
 \begin{equation}
 \begin{aligned}
-	\norm{A(\ell)}_{\max}
-	&\coloneq \sup\limits_{p,q \in L_\ell}\abs{A(\ell)_{p,q}} \;, \qquad
 	\norm{A(\ell)}_{\max,2}
 	\coloneq \bigg(\sum_{p \in L_\ell}
 	\sup\limits_{q \in L_\ell}
-	\abs{A(\ell)_{p,q}}^2\bigg)^\half \;, \\
+	\abs{A(\ell)_{p,q}}^2\bigg)^\half \;, \qquad
 	\norm{A(\ell)}_{\mathrm{max,1}}
-	&\coloneq \sum_{p \in L_\ell}
+	\coloneq \sum_{p \in L_\ell}
 	\sup\limits_{q \in L_\ell}
 	\abs{A(\ell)_{p,q}} \;.
 \end{aligned}
@@ -851,14 +849,12 @@ Let $ \ell \in \Z^3_* $, $ m \in \mathbb{N} $, and $ r,s \in L_\ell $. Then
 Moreover, we have the estimates
 \begin{equation} \label{eq:K_max_bounds}
 \begin{aligned}
-	&\Vert K(\ell)^m \Vert_{\max}
-	&\le \; &(C \hat{V}(\ell))^m k_{\F}^{-1} \;, \qquad
-	&&\Vert K(\ell)^m \Vert_{\max,2}
-	&&\le (C \hat{V}(\ell))^m k_{\F}^{-\half} \;, \\
-	&\normmaxi{K(\ell)^m}
-	&\le \; &(C \hat{V}(\ell))^m \;, \qquad
-	&&\norm{K(\ell)^m}_{\HS}
-	&&\le (C \hat{V}(\ell))^m \;,
+	&\Vert K(\ell)^m \Vert_{\max,2}
+	&\le \; &(C \hat{V}(\ell))^m k_{\F}^{-\half} \;, \qquad
+	&&\Vert K(\ell)^m \Vert_{\max,1}
+	&&\le (C \hat{V}(\ell))^m \;, \\
+	&\norm{K(\ell)^m}_{\HS}
+	&\le \; &(C \hat{V}(\ell))^m \;,
 \end{aligned} 
 \end{equation}
 as well as for $ q \in L_\ell $ the estimates
@@ -877,8 +873,8 @@ From~\cite[Prop.~7.10]{CHN23} we retrieve \eqref{eq:K_element_bounds} for $ m = 
 		|(K(\ell)^m)_{r,s}|
 		&\le \sum_{r' \in L_\ell}
 		|(K(\ell)^{m-1})_{r,r'}| \;
-		|K(\ell)_{r',s}| \tagg{eq:notimportant1} \\
-			& \le (C \hat{V}(\ell))^m k_{\F}^{-2} \sum_{r' \in L_\ell}
+		|K(\ell)_{r',s}| \tagg{eq:notimportant1}
+		\le (C \hat{V}(\ell))^m k_{\F}^{-2} \sum_{r' \in L_\ell}
 		\frac{1}{\lambda_{\ell, r} + \lambda_{\ell, r'}}
 		\frac{1}{\lambda_{\ell, r'} + \lambda_{\ell, s}} \\
 		&\le (C \hat{V}(\ell))^m k_{\F}^{-2} \sum_{r' \in L_\ell}
@@ -886,29 +882,29 @@ From~\cite[Prop.~7.10]{CHN23} we retrieve \eqref{eq:K_element_bounds} for $ m = 
 		\le (C \hat{V}(\ell))^m k_{\F}^{-1}
 		\frac{1}{\lambda_{\ell, r} + \lambda_{\ell, s}} \;.
 \end{align*}
-The first bounds in~\eqref{eq:K_max_bounds} and~\eqref{eq:e(q)_extraction_bounds} follow  noting that $ 2 \lambda_{\ell,q} \ge e(q) \ge \half $. The second bound in~\eqref{eq:e(q)_extraction_bounds} follows from
+The first bound in~\eqref{eq:K_max_bounds} follows from
 \begin{align*}
 	\sum_{r \in L_\ell} |(K(\ell)^m)_{q,r}|^2
 	&\le \sum_{r \in L_\ell} (C \hat{V}(\ell))^{2m} k_{\F}^{-2} (\lambda_{\ell,r} + \lambda_{\ell,q})^{-2}
 	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \lambda_{\ell,q}^{-1} \\
 	&\le (C \hat{V}(\ell))^{2m} k_{\F}^{-1} e(q)^{-1} \;, \tagg{eq:notimportant}
 \end{align*}
-and the second one in~\eqref{eq:K_max_bounds} by
-\begin{equation*}
-	\sum_{r \in L_\ell} \sup_{q \in L_\ell} |(K(\ell)^m)_{q,r}|^2
-	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} 
-		\sup_{q \in L_\ell} \lambda_{\ell,q}^{-1}
-	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-1} \;.
-\end{equation*}
-Finally, the third and fourth bound in~\eqref{eq:K_max_bounds} follow from
+and the first one in~\eqref{eq:K_max_bounds} analogously using $ \lambda_{\ell,q}^{-1} \ge 1 $.
+%\begin{equation*}
+%	\sum_{r \in L_\ell} \sup_{q \in L_\ell} |(K(\ell)^m)_{q,r}|^2
+%	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} 
+%		\sup_{q \in L_\ell} \lambda_{\ell,q}^{-1}
+%	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-1} \;.
+%\end{equation*}
+The second and third bound in~\eqref{eq:K_max_bounds} follow from
 \begin{align}
 	\norm{K(\ell)^m}_{\HS}^2
-	&\le \sum_{r,s \in L_\ell} (C \hat{V}(\ell))^{2m} k_{\F}^{-2} (\lambda_{\ell,r} + \lambda_{\ell,s})^{-2} \nonumber\\
-	&	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} \Big( \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \Big)^2
+	&\le \sum_{r,s \in L_\ell} (C \hat{V}(\ell))^{2m} k_{\F}^{-2} (\lambda_{\ell,r} + \lambda_{\ell,s})^{-2} 
+	\le (C \hat{V}(\ell))^{2m} k_{\F}^{-2} \Big( \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \Big)^2
 	\le (C \hat{V}(\ell))^{2m} \;, \nonumber\\
 	\normmaxi{K(\ell)^m} 
-	&\leq \sum_{r \in L_\ell} \sup_{q \in L_\ell} (C \hat{V}(\ell))^{m} k_{\F}^{-1} (\lambda_{\ell,r} + \lambda_{\ell,q})^{-1} \nonumber\\
-	& \le (C \hat{V}(\ell))^{m} k_{\F}^{-1} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \leq (C \hat{V}(\ell))^{m} \;.\nonumber	\qedhere
+	&\leq \sum_{r \in L_\ell} \sup_{q \in L_\ell} (C \hat{V}(\ell))^{m} k_{\F}^{-1} (\lambda_{\ell,r} + \lambda_{\ell,q})^{-1}
+	\le (C \hat{V}(\ell))^{m} k_{\F}^{-1} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \leq (C \hat{V}(\ell))^{m} \;.\nonumber	\qedhere
 \end{align}
 \end{proof}
 
@@ -977,30 +973,41 @@ First, by the pull-through formula $a^*_k \Ncal = (\Ncal - 1) a^*_k$, we have
 	&= \left( (\NN+4)^m - \NN^m \right) b^*_{-s}(-\ell)b^*_{r}(\ell) \nonumber\\
 	&= \left( \left(\NN+4\right)^m - \NN^m \right)^\half b^*_{-s}(-\ell)b^*_{r}(\ell) \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \;.
 \end{align}
-Moreover, there exists $ C > 0 $ depending on $ m $, such that
-\begin{equation}
-	\left( \left(\NN+4\right)^m - \NN^m \right)
-	\leq \left(\NN+4\right)^{m-1} \;, \quad
-	\left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)
-	\leq C \left(\NN+4\right)^{m-1} \;.
-\end{equation}
-For $ \Psi_0 \in \cF $ and $ \Psi_\lambda \coloneq e^{-\lambda S} \Psi_0 $, using the definition~\eqref{eq:T} of $ S $, then the Cauchy--Schwarz inequality and then Lemma~\ref{lem:normsk}, we get
-\begin{align}
+For $ \Psi_0 \in \cF $ and $ \Psi_\lambda \coloneq e^{-\lambda S} \Psi_0 $, using the definition~\eqref{eq:T} of $ S $, then the Cauchy--Schwarz inequality, and then $ b_{-s}(-\ell) = a_{-s+\ell} a_{-s} $ with $ \Vert a_{-s+\ell} \Vert_{\textnormal{op}} \le 1 $, we get
+\begin{align*}
 	&\left|\frac{\di}{\di\lambda}\eva{\Psi_0, e^{\lambda S} (\mathcal{N}+4)^m e^{-\lambda S} \Psi_0 }\right|
 	= \left| \eva{\Psi_0, e^{\lambda S} \left[S, (\NN+4)^m\right] e^{-\lambda S} \Psi_0}\right|\nonumber\\
 	&\leq \sum_{\ell\in \mathbb{Z}^3_*}
 		\sum_{r,s\in L_\ell} \abs{\eva{ b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half \Psi_\lambda, K(\ell)_{r,s} b^*_{r}(\ell) \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \Psi_\lambda }}\nonumber\\
 	&\leq \sum_{\ell\in \mathbb{Z}^3_*}
-		\Bigg( \sum_{s\in L_\ell} \norm{ b_{-s}(-\ell) \left( \left(\NN+4\right)^m - \NN^m \right)^\half \Psi_\lambda}^2 \Bigg)^{\half}
-		\Bigg( \sum_{r,s\in L_\ell} |K(\ell)_{r,s}|^2 \Bigg)^{\half} \nonumber\\
-		&\quad \times \Bigg( \sum_{r\in L_\ell} \norm {b^*_{r}(\ell) \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \Psi_\lambda}^2 \Bigg)^{\half} \nonumber\\
+		\Bigg( \sum_{s\in L_\ell} \norm{ a_{-s} \left( \left(\NN+4\right)^m - \NN^m \right)^\half \Psi_\lambda}^2 \Bigg)^{\half} \nonumber\\
+		&\quad \times \Bigg( \sum_{s\in L_\ell}
+			\norm { \sum_{r\in L_\ell} K(\ell)_{r,s} b^*_{r}(\ell) \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \Psi_\lambda}^2 \Bigg)^{\half} \;. \nonumber\\
+\end{align*}
+Now, $ \sum_{s \in L_\ell} \norm{a_{-s} \Phi}^2 \leq \Vert \cN^{\half} \Phi \Vert^2 $ for $ \Phi \in \cF $, and from~\cite[Prop.~4.2]{CHN21} we recover
+\begin{equation}
+	\norm{\sum_{r\in L_\ell} K(\ell)_{r,s} b^*_{r}(\ell) \Phi}^2
+	\le \sum_{r\in L_\ell} |K(\ell)_{r,s}|
+		\norm{(\cN + 1)^{\half} \Phi}^2 \;.
+\end{equation}
+Moreover, there exists $ C > 0 $ depending on $ m $, such that
+\begin{equation}
+	\left( \left(\NN+4\right)^m - \NN^m \right)
+	\leq \left(\NN+4\right)^{m-1} \;, \quad
+	\left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)
+	\leq C \left(\NN+4\right)^{m-1} \;,
+\end{equation}
+so with Lemma~\ref{lem:normsk}, we get
+\begin{align}
+	&\left|\frac{\di}{\di\lambda}\eva{\Psi_0, e^{\lambda S} (\mathcal{N}+4)^m e^{-\lambda S} \Psi_0 }\right| \nonumber\\
 	&\leq \sum_{\ell\in \mathbb{Z}^3_*}
 		\norm{ \NN^\half \left( \left(\NN+4\right)^m - \NN^m \right)^\half \Psi_\lambda}
 		\norm{K(\ell)}_{\HS}
 		\norm{ (\NN+1)^\half \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \Psi_\lambda } \nonumber\\
 	&\leq C \sum_{\ell\in \mathbb{Z}^3_*}
 		\norm{K(\ell)}_{\HS}
-		\norm{ \left(\NN+4\right)^\frac{m}{2} \Psi_\lambda}^2 \;.
+		\norm{ \left(\NN+4\right)^\frac{m}{2} \Psi_\lambda}^2
+	\leq C \eva{\Psi_0, e^{\lambda S} (\mathcal{N}+4)^m e^{-\lambda S} \Psi_0 } \;.
 \end{align}
 We conclude using Gr\"onwall's lemma and $ (\cN+1)^m \le (\cN+4)^m \le C (\cN+1)^m $.
 \end{proof}
