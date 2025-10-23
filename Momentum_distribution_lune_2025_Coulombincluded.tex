@@ -479,7 +479,7 @@ These operators satisfy the canonical anticommutation relations (CAR)
 	\{a_q, a_{q'}\} = \{a_q^*, a_{q'}^*\} = 0 \qquad \text{for all } q, q' \in \ZZZ^3\;.
 \end{equation}
 Moreover they are bounded in operator norm by $ \Vert a_q^* \Vert \leq 1$ and $\Vert a_q \Vert \le 1 $.
-The Fermi ball state can be written as $ \Psi_{\FS} = R \Omega $ where $ R: \cF \to \cF $ is the unitary (called particle--hole transformation) acting by
+The Fermi ball state can be written as $ \Psi_{\FS} = R \Omega $ where $ R: \cF \to \cF $ is the unitary particle--hole transformation, acting by
 \begin{equation} \label{eq:R}
 	R^* a_q^* R 	= \mathds{1}_{B_{\F}^c}(q) \, a_q^* 	+ \mathds{1}_{B_{\F}}(q) \, a_q \;.
 \end{equation}
@@ -487,7 +487,7 @@ Note that $ R^{-1} = R = R^* $. The trial state of~\cite{CHN23} is constructed a
 \begin{equation} \label{eq:Psitrial}
 	\Psi_N := R T \Omega \;,
 \end{equation}
-where $ T: \cF \to \cF $ is another unitary motivated as follows: We expect the interaction to act predominantly by generating pair excitations, where a particle from inside the Fermi ball $ B_{\F} $ is moved by some momentum $ k \in \Z^3 \setminus \{ 0 \} $ to another momentum $ p \in B_{\F}^c $, leaving a ``hole'' in the Fermi ball at $ p-k \in B_{\F} $. After the particle--hole transformation $ R $, this corresponds to a creation of a pair of excitations at $ p $ and $ p-k $, described by the pair creation operator
+where $ T: \cF \to \cF $ is another unitary operator motivated as follows: We expect the interaction to act predominantly by generating pair excitations, where a particle from inside the Fermi ball $ B_{\F} $ is moved by some momentum $ k \in \Z^3 \setminus \{ 0 \} $ to another momentum $ p \in B_{\F}^c $, leaving a ``hole'' in the Fermi ball at $ p-k \in B_{\F} $. After the particle--hole transformation $ R $, this corresponds to a creation of a pair of excitations at $ p $ and $ p-k $, described by the pair creation operator
 \begin{equation} \label{eq:b}
 	b^*_p(k) \coloneq a_p^* a_{p-k}^* 
 	\qquad \textnormal{with adjoint} \qquad
@@ -522,7 +522,7 @@ The matrix $ P(k) $ is rank-one and can also be written as
 with the Bogoliubov kernel
 \begin{equation} \label{eq:K}
 	K(\ell) \coloneq - \half \log \Big( h(\ell)^{-\half}
-		\big( h(\ell)^{\half} \big( h(\ell) + 2 P(\ell) \big)^{\half} h(\ell)^{\half}\big)
+		\big( h(\ell)^{\half} \big( h(\ell) + 2 P(\ell) \big)^{\half} h(\ell)^{\half}\big)^{\half}
 		h(\ell)^{-\half} \Big) \;.
 \end{equation}
 (The exponent $ S $ corresponds to $ R^* \cK R $ in the notation of~\cite{CHN23} since we prefer to use a particle-hole transformation instead of the normal ordering with respect to the Fermi ball state.)
@@ -535,13 +535,13 @@ One observes that $K(\ell)$ is a symmetric matrix and moreover posesses the refl
 
 In this section we expand the momentum distribution $ \langle \Psi_N, a_q^* a_q \Psi_N \rangle $ of the trial state $ \Psi_N = R e^{-S} \Omega $ constructed in the previous section. In the expansion we identify the explicit contributions of $ n^{\RPA}(q) $ and $ n^{\ex}(q) $.
 
-The particle--hole transformation $ R $ acts in a simple way: by~\eqref{eq:R} we have
+The particle--hole transformation $ R $ acts in a simple way: By~\eqref{eq:R} we have
 \begin{equation} \label{eq:momentum_dist_R_trafo}
 	R^* a_q^* a_q R
 	= \mathds{1}_{B_{\F}}(q) \big( 1 - a_q^* a_q  \big)
 		+ \mathds{1}_{B_{\F}^c}(q)  a_q^* a_q \;.
 \end{equation}
-So it suffices to consider the excitation vector $ \xi \coloneq e^{-S} \Omega $ and compute the excitation distribution $ \langle \xi, a_q^* a_q \xi \rangle $. The fundamental theorem of calculus implies the Duhamel formula
+So it suffices to consider the excitation vector $ \xi \coloneq e^{-S} \Omega $ and to compute the excitation distribution $ \langle \xi, a_q^* a_q \xi \rangle $. The fundamental theorem of calculus implies the Duhamel formula
 \begin{equation} \label{eq:duhamelexpansion_blueprint}
 \begin{aligned}
 	e^{S} a_q^* a_q e^{-S}
@@ -554,7 +554,8 @@ So it suffices to consider the excitation vector $ \xi \coloneq e^{-S} \Omega $ 
 % 		+ \int_0^1 \di \lambda_1 \int_0^{\lambda_1} \di \lambda_2 \langle \Omega, e^{\lambda_2 S} [S,[S, a_q^* a_q]] e^{-\lambda_2 S} \Omega \rangle \;.
 \end{aligned}
 \end{equation}
-Iteration of this formula leads to the series expansion given in Proposition~\ref{prop:finexpan}, the main result of this section. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n^{\RPA}(q) $ as the terms that could be expected treating the pair operators as exactly bosonic, similarly as in~\cite{BL25}. The term $ n^{\ex}(q) $ instead appears when normal ordering the remaining terms. This is similar to the exchange contribution to the correlation energy appearing in~\cite{CHN23}.
+Iterating this formula leads to the series expansion given in Proposition~\ref{prop:finexpan}, the main result of this section. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n^{\RPA}(q) $ as the terms that could be expected treating the pair operators as exactly bosonic, similarly as in~\cite{BL25}. The term $ n^{\ex}(q) $ instead appears when normal ordering the remaining terms.
+
 
 
 \subsection{Extraction of the Bosonized Contribution}
@@ -571,7 +572,7 @@ Let $A=(A(\ell))_{\ell \in \Z^3_*} $ be a family of symmetric operators with $A(
 \end{aligned}
 \end{equation} 
 \end{definition}
-Our $ Q_1 $ corresponds to $ 2 \tilde Q_1 $ in~\cite{CHN21}, while the definition of $ Q_2 $ is identical to \cite{CHN21}. (Due to the particle-hole transformation, our $ a_p $ agrees with $ R^* c_p R $ in~\cite{CHN21,CHN23,CHN24}.) The pair operators satisfy the following approximate CCR (compare to \cite[(1.66)]{CHN21}:
+Our $ Q_1 $ corresponds to $ 2 \tilde Q_1 $ in~\cite{CHN21}, while the definition of $ Q_2 $ is identical to \cite{CHN21}. (Due to the particle-hole transformation, our $ a_p $ agrees with $ R^* c_p R $ in~\cite{CHN21,CHN23,CHN24}.) The pair operators satisfy the following approximate CCR (compare to \cite[(1.66)]{CHN21}):
 
 \begin{lemma}[Approximate CCR]\label{lem:paircomm}
 For $k,\ell \in \Z^3_*$ and $p \in L_{k}$, $q\in L_{\ell}$, we have
@@ -680,7 +681,7 @@ where $ \sigma(n) = 1 $ if $n$ is even and $ \sigma(n) = 2 $ if $n$ is odd, and 
 \end{equation}
 \end{proposition}
 
-In Lemma~\ref{lem:nqb_integralrecovery}, we will see that the first term on the r.~h.~s. of~\eqref{eq:finexpan} converges to $ n^{\RPA}(q) $ as $ n \to \infty $. \todo{mention exchange contribution origin} The other two terms are error terms which we estimate.
+In Lemma~\ref{lem:nqb_integralrecovery}, we will see that the first term on the r.~h.~s. of~\eqref{eq:finexpan} converges to $ n^{\RPA}(q) $ as $ n \to \infty $. $ n^{\ex}(q) $ follows from the normal ordering constant of the second term, and all other terms are errors, which we estimate.
 
 
 \begin{proof}
@@ -712,7 +713,7 @@ We then iteratively Duhamel-expand the $ Q_1$-- and $ Q_2 $--terms using Lemma~\
 		+ \int_0^{\lambda} \di \lambda' e^{\lambda' S} E_{Q_2}(A) e^{-\lambda' S} \\
 	&\quad + \lambda \sum_{\ell \in \Z^3_*} \sum_{r \in L_{\ell}} \big\{ A(\ell), K(\ell) \big\}_{r,r} \;. \tagg{eq:expand}
 \end{align*}
-The $ E_{Q_1}$-- and $ E_{Q_2} $--terms are not expanded further but collected in the error operator, while the $ \{A,K\} $-terms are the leading-order. The result after $ n $ steps is
+The $ E_{Q_1}$-- and $ E_{Q_2} $--terms are not expanded further but collected in $ E_m(P^q) $, while the $ \{A,K\} $-terms are the leading-order. The result after $ n $ steps is
 \begin{align}
 	&e^{S} (a_q^* a_q + a_{-q}^* a_{-q}) e^{-S} \nonumber\\
 	&= a_q^* a_q + a_{-q}^* a_{-q}
@@ -742,7 +743,7 @@ Using reflection symmetry, we may replace $ \tilde{P}^q $ by $ P^q $ and restric
 \subsection{Normal Ordering the Error Operators}
 \label{sec:extraction_ex}
 
-To be able to estimate the error operators $ E_{Q_1} $ and $ E_{Q_2} $, we need to normal-order them. The exchange contribution $ n^{\ex}(q) $ appears in this process.
+To be able to $ E_{Q_1} $ and $ E_{Q_2} $, we need to normal-order them. As a by-product, we extract the exchange contribution $ n^{\ex}(q) $.
 
 \begin{lemma}[Normal ordering many-body errors] \label{lem:normalordering_errors}
 Recall the definition~\eqref{eq:errKQ} of $ E_{Q_1} $ and $ E_{Q_2} $. Then, for $ m \in \NNN $ and $ q \in B_{\F}^c $, we may write
@@ -801,7 +802,7 @@ as well as
 Follows by a lengthy but straightforward computation with the CAR. (Alternatively, this can be conveniently computed using Friedrichs diagrams~\cite{BL23}.)
 \end{proof}
 
-Note that the exchange contribution~\eqref{eq:nqex} follows as $ n^{\ex}(q) \approx \frac 14 n^{\ex,1}(q) $.
+Note that the exchange contribution~\eqref{eq:nqex} follows as $ n^{\ex}(q) \approx \frac 14 n^{\ex,1}(q) $, see Lemma~\ref{lem:estnqex}.
 
 
 
