@@ -270,7 +270,7 @@ In this article we are interested in the momentum distribution of states $ \Psi 
 \begin{align}
 	n(q) \coloneq \eva{\Psi, a^*_q a_q \Psi} \;,
 \end{align}
-where $ a_q^*$ and $a_q $ are the fermionic creation and annihilation operators. As the ground state of interacting many-body systems is very difficult to access, we focus our attention on a trial state $ \Psi_N $ which is expected to capture the ground state's properties at least to the first non-trivial order beyond mean-field theory. This is analogous to the analysis conducted in \cite{BL25} based on the collective bosonization methods of \cite{BNPSS20,BNPSS21}, however we now consider the ``patchless'' trial state of~\cite{CHN23}. As long as the analysis of the true ground state remains elusive, we believe that studying two different constructions of low-energy states and obtaining consistent expressions for the momentum distribution adds plausability to the conjecture that the obtained momentum distribution is actually close to the one of the true ground state. Both methods, that of \cite{BL25} and \cite{CHN23}, are based on the idea of considering particle-hole pairs as approximately bosonic quasiparticles. The approach of \cite{BNPSS20,BNPSS21}, based on collective degrees of freedom averaged over patches on the Fermi surface, leads to simpler estimates with a more pronounced bosonic nature; the approach of \cite{CHN23} avoids the use of cutoffs which in \cite{BL25} somewhat obscured the result at momenta very close to the Fermi surface.
+where $ a_q^*$ and $a_q $ are the fermionic creation and annihilation operators. As the ground state of interacting many-body systems is very difficult to access, we focus our attention on a trial state $ \Psi_N $ which is expected to capture the ground state's properties at least to the first non-trivial order beyond mean-field theory. This is analogous to the analysis conducted in \cite{BL25} based on the collective bosonization methods of \cite{BNPSS20,BNPSS21}, however we now consider the ``patchless'' trial state of~\cite{CHN23}. As long as the analysis of the true ground state remains elusive, we believe that studying two different constructions of low-energy states and obtaining consistent expressions for the momentum distribution adds plausability to the conjecture that the obtained momentum distribution is actually close to the one of the true ground state. Both methods, that of \cite{BL25} and \cite{CHN23}, are based on the idea of considering particle--hole pairs as approximately bosonic quasiparticles. The approach of \cite{BNPSS20,BNPSS21}, based on collective degrees of freedom averaged over patches on the Fermi surface, leads to simpler estimates with a more pronounced bosonic nature; the approach of \cite{CHN23} avoids the use of cutoffs which in \cite{BL25} somewhat obscured the result at momenta very close to the Fermi surface.
 
 In the non-interacting case ($ V=0 $), the ground state is given by a Slater determinant of $ N $ plane waves
 \begin{equation}
@@ -310,15 +310,16 @@ We will prove that the momentum distribution $ n(q) $ of a specific trial state 
 	n^{\RPA}(q)
 	\coloneq \sum_{\ell \in \Z^3_*}\mathds{1}_{L_{\ell}}(q) \; \frac{1}{\pi}\int_0^\infty \frac{g_\ell (t^2-\lambda^2_{\ell,q}) (t^2 + \lambda^2_{\ell,q})^{-2}}{1 + 2g_\ell \sum_{p \in L_{\ell}}\lambda_{\ell,p} (t^2+\lambda^2_{\ell,p})^{-1}} \mathrm{d}t \;,
 \end{equation}
-where the lense $ L_\ell \in \Z^3 $, the excitation energy $ \lambda_{\ell,p} > 0 $, and $ g_\ell > 0 $ are defined by
+where the lense $ L_\ell \in \Z^3 $, the excitation energy $ \lambda_{\ell,p} > 0 $, and $ g_\ell \ge 0 $ are defined by
 \begin{equation} \label{eq:Lell}
 	L_\ell \coloneq B_{\F}^c \cap (B_{\F} + \ell) \;, \qquad
 	\lambda_{\ell,p} \coloneq \half (|p|^2 - |p-\ell|^2) \;, \qquad
 	g_\ell \coloneq \frac{k_{\F}^{-1} \hat{V}(\ell) }{2 (2 \pi)^3} \;,
 \end{equation}
 and where \todo{Do we need $\Z^3_*$? Anyway $L_0 = \emptyset$.}
-\begin{equation}
-\Z^3_* := \Z^3 \setminus \{0\} \;.
+\begin{equation} \label{eq:Fourierconvention}
+	\Z^3_* := \Z^3 \setminus \{0\} \;, \qquad
+	\hat{V}(\ell) := \int V(x) e^{-i k \cdot x} \di x \;.
 \end{equation}
 For $ q \in B_{\F} $, we analogously have
 \begin{equation}\label{eq:inside}
@@ -328,7 +329,6 @@ For $ q \in B_{\F} $, we analogously have
 \end{split}
 \end{equation}
 Therefore $ n^{\RPA}(q) $ represents the deviation of $ n(q) $ from the indicator function $ \mathds{1}_{B_{\F}}(q) $ we found in the non-interacting case.\\
-
 For more singular interaction potentials, we find that $ n^{\RPA}(q) $ is to be corrected by an exchange contribution
 \begin{equation} \label{eq:nqex}
 \begin{split}
@@ -340,16 +340,13 @@ For more singular interaction potentials, we find that $ n^{\RPA}(q) $ is to be 
 		\frac{\hat{V}(\ell_1)}{\lambda_{\ell_1,q} + \lambda_{\ell_1,-q+\ell+\ell_1}} \;.
 \end{split}
 \end{equation}
-
-
 The scaling of $ n^{\RPA}(q) $, $ n^{\ex}(q) $, and the error terms will depend on
 \begin{equation} \label{eq:eq}
 	e(q)
-	\coloneq \abs{|q|^2 - \inf_{p \in B_{\F}^c} |p|^2 + \half}
-	= \abs{|q|^2 - \sup_{h \in B_{\F}} |h|^2 - \half} \;.
+	\coloneq \abs{|q|^2 - \inf_{p \in B_{\F}^c} |p|^2 + \half} \;.
 \end{equation}
-Since we work in fixed volume, the minimal distance between a momentum inside and a momentum outside the Fermi ball is $1$, and therefore $ e(q) \ge \half $.\\
-Also, they will depend on the regularity of the potential $ \hat{V} $, for which we investigate three cases:
+Since $ q \in \Z^3 $, the number $ |q|^2 $ is an integer and thus $ e(q) \ge \half $.
+Also, scalings will depend on the regularity of the potential $ V $, for which we investigate three cases:
 \begin{hypothesis}~\label{hyp:alpha}
 $ \hat{V} \ge 0 $, $ \hat{V}(\ell) = \hat{V}(-\ell) \quad \forall \ell \in \Z^3 \setminus \{0\} $, and $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $ \alpha \in [0,\infty) $.
 \end{hypothesis}
@@ -377,7 +374,7 @@ For any sequence of $ k_{\F} $ with $ k_{\F} \to \infty $ and $ N := |B_{k_{\F}}
 	= \begin{cases}
 	n^{\RPA}(q) + n^{\ex}(q) + \cE(q) & \quad
 		\textnormal{for } |q| \ge k_{\F} \\
-	1 - n^{\RPA}(q) + n^{\ex}(q) + \cE(q) & \quad
+	1 - n^{\RPA}(q) - n^{\ex}(q) + \cE(q) & \quad
 		\textnormal{for } |q| < k_{\F} 
 	\end{cases}
 \end{equation}
@@ -409,7 +406,7 @@ By contrast the exchange contribution is bounded by Lemma~\ref{lem:estnqex} as
 		C k_{\F}^{-2} e(q)^{-2} \quad&\textnormal{for } \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty
 	\end{cases} \;.
 \end{equation}
-This situation is similar to the ground state energy: In~\cite{CHN23,CHN24}, a bosonized and an exchange contribution to $ E_{\GS} $ were extracted, with the exchange contribution gaining significance for singular interaction potentials. Just as for the ground state energy, $ n^{\ex}(q) $ follows from normal ordering bosonization errors in Lemma~\eqref{lem:normalordering_errors}.
+This situation is similar to the ground state energy: In~\cite{CHN23,CHN24}, a bosonized and an exchange contribution to $ E_{\textnormal{corr}} $ were extracted, with the exchange contribution gaining significance for singular interaction potentials, just as $ n^{\ex}(q) $ gains significance as $ \alpha $ decreases. And just as for the ground state energy, $ n^{\ex}(q) $ follows from normal ordering bosonization errors (see Lemma~\eqref{lem:normalordering_errors}).
 
 
 \item In~\cite{BL25}, the scaling of the leading term is $ n^{\RPA}(q) \sim k_{\F}^{-2} $ without any $ e(q) $. This is because~\cite{BL25} assumes $ |\ell| \le C $ and $ |\ell \cdot q| \ge c $ in the analogue of~\eqref{eq:nqb}, leading to $ e(q) \sim k_{\F} $. In other words, it includes only momenta at distances $ ||q|-k_{\F}| \sim 1 $ from the Fermi surface, while the present result admits distances as small as $ k_{\F}^{-1} $.
@@ -435,14 +432,14 @@ To study the momentum distribution even closer to the Fermi surface, one would n
 % This situation is analogous to the correlation energy: For $ \sum_k \hat{V}(k) |k| $ (as in~\cite{CHN21}), one has $ E_{\corr,\b} \sim \hbar^2 k_{\F} $ and $ E_{\corr,\ex} \sim \hbar^2 k_{\F}^{-1} $, so the exchange term is an error. However, for Coulomb potentials~\cite{CHN23,CHN24}, $ E_{\corr,\b} \sim \hbar^2 k_{\F} \log(k_{\F}) $ and $ E_{\corr,\ex} \sim \hbar^2 k_{\F} $, so the exchange contribution is only marginally subleading to the bosonized one.
 
 
-\item In analogy to~\cite[Section~1.1]{BL25} we may approximate $ \lambda_{\ell,q} \approx 2 k_{\F} |\ell| |\hat{\ell} \cdot \hat{q}| $ with $ \hat{q} := {q}/{|q|} $, then set $ \mu := t (2 k_{\F} |\ell|) $ and take the continuum limit $ \sum_{p \in L_\ell} \approx \int_{L_\ell} \di p $ and $ \sum_\ell \approx \int \di \ell $. The result is
+\item In analogy to~\cite[Section~1.1]{BL25} we may approximate $ \lambda_{\ell,q} \approx k_{\F} |\ell| |\hat{\ell} \cdot \hat{q}| $ with $ \hat{q} := {q}/{|q|} $, then set $ \mu := t (k_{\F} |\ell|) $ and take the continuum limit $ \sum_{p \in L_\ell} \approx \int_{L_\ell} \di p $ and $ \sum_\ell \approx \int \di \ell $. The result is
 \begin{align*}
 	n^{\RPA}(q)
-	&\approx \int_{\R^3} \di \ell \; \mathds{1}_{L_{\ell}}(q) \; \frac{\hat{V}(\ell) k_{\F}^{-2}}{4 \pi (2 \pi)^3 |\ell|}
+	&\approx \int_{\R^3} \di \ell \; \mathds{1}_{L_{\ell}}(q) \; \frac{\hat{V}(\ell) k_{\F}^{-2}}{(2 \pi)^4 |\ell|}
 		\int_0^\infty \di \mu \frac{(\mu^2-|\hat{\ell} \cdot \hat{q}|^2) (\mu^2 + |\hat{\ell} \cdot \hat{q}|^2)^{-2}}{1 + Q_\ell(\mu)} \;, \\
-	Q_\ell(\mu) &:= \frac{\hat{V}(\ell)}{2 (2 \pi)^2} \left( 1 - \mu \arctan \left( \frac{1}{\mu} \right) \right) \;. \tagg{eq:Q}
+	Q_\ell(\mu) &:= \frac{\hat{V}(\ell)}{(2 \pi)^2} \left( 1 - \mu \arctan \left( \frac{1}{\mu} \right) \right) \;. \tagg{eq:Q}
 \end{align*}
-This agrees with \cite{BL25} up to a factor $ (2 \pi)^3 \kappa $ multiplying $\hat{V}$, explained by the choice of coupling constant $k_\F^{-1}$ here compared to $N^{-1/3}$ there.
+This agrees with \cite{BL25} up to a factor $ (2 \pi)^3 \kappa $ multiplying $\hat{V}$, explained by the choice of coupling constant $k_\F^{-1}$ here compared to $N^{-1/3} = \kappa^{-1} k_{\F}^{-1}$ there, as well as the absent factor of $ (2 \pi)^{-3} $ in the Fourier convention~\eqref{eq:Fourierconvention}.
 \end{enumerate}
 \end{remarks}
 
@@ -457,9 +454,9 @@ In Section~\ref{sec:trialstate}, we review the construction of the trial state f
 
 In this section we review the trial state construction of~\cite{CHN23}. We introduce the fermionic Fock space
 \begin{equation}
-	\cF \coloneq \bigoplus_{N=0}^\infty L^2_{\mathrm{a}}(\T^{3N}) \;.
+	\cF \coloneq \bigoplus_{N=0}^\infty L^2(\T^3)^{\otimes_{\mathrm{a}} N} \;,
 \end{equation}
-The vector
+with $ \otimes_{\mathrm{a}} $ being the antisymmetric tensor product. The vector
 \begin{equation}
 \Omega = (1,0,0,\ldots) \in \cF
 \end{equation}
@@ -1107,14 +1104,16 @@ Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $
 	&\quad + e(q)^{-\half} k_{\F}^{-1} \sup_{\lambda \in [0,1]} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} \Big) \;,
 \end{align}
 Moreover, if $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, we have the bound
-\begin{equation} \label{eq:finalEmest}
-	\abs{\eva{\Omega, E_m(P^q) \Omega}}
-	\leq C_\varepsilon \frac{C^m}{m!}
-		\left( e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
-		+ k_{\F}^{-1} \Xi^{1-\varepsilon} \right)
+\begin{align} \label{eq:finalEmest}
+	&\abs{\eva{\Omega, E_m(P^q) \Omega}} \nonumber\\
+	&\leq C_\varepsilon \frac{C^m}{m!}
+		\left( e(q)^{-1}
+		\Big( k_{\F}^{-2}
+		+ k_{\F}^{-\frac{3}{2}} \Xi^\half
+		+ k_{\F}^{-1} \Xi^{1-\varepsilon} \Big)
 		+ e(q)^{-\half} k_{\F}^{-1} \Xi^{\half - \varepsilon} 
 		\sup_{\lambda \in [0,1]} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half}  \right)\;.
-\end{equation}
+\end{align}
 \end{proposition}
 
 To prove this bound, we write
@@ -1146,7 +1145,8 @@ If $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, we have the even stronger 
 \begin{align} \label{eq:finalEQ1est}
 	\abs{\eva{\xi_\lambda, E_{Q_1}\!\left(\Theta^m_K(P^q)\right) \xi_\lambda}}
 	&\leq C_\varepsilon C^m \left(
-		k_{\F}^{-\frac{3}{2}} \Xi^\half
+		k_{\F}^{-2}
+		+ k_{\F}^{-\frac{3}{2}} \Xi^\half
 		+ k_{\F}^{-1}\Xi^{1-\varepsilon} \right) e(q)^{-1} \nonumber\\
 	&\quad + C_\varepsilon C^m k_{\F}^{-1} \Xi^{\half - \varepsilon} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} e(q)^{-\half} \;.
 \end{align}
@@ -1490,14 +1490,15 @@ Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $
 If $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, we have the even stronger bound
 \begin{align}\label{eq:finEQ2est}
 	&\abs{\eva{\xi_\lambda, E_{Q_2}\!\left(\Theta^m_K(P^q)\right) \xi_\lambda}} \nonumber\\
-	&\leq C_\varepsilon C^m \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
+	&\leq C_\varepsilon C^m \left( k_{\F}^{-2}
+		+ k_{\F}^{-\frac{3}{2}} \Xi^\half
 		+ k_{\F}^{-1} \Xi^{1-\varepsilon} \right) e(q)^{-1} 
 		+ C_\varepsilon C^m k_{\F}^{-1} \Xi^{\half - \varepsilon} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} e(q)^{-\half} \;. \\
 \end{align}
 \end{proposition}
 
 \textcolor{blue}{
-Note that here, $ m = 1 $ and thus $ \sum_\ell \hat{V}(\ell)^m = \infty $ can occur if only $ \sum_\ell \hat{V}(\ell)^2 < \infty $ is known. In the end, we will choose $ \gamma = \frac 13 $ as explained below. Then, the error in~\eqref{eq:finEQ2est_Coulomb} is $ \sim k_{\F}^{-1-\frac 16} $, whereas the exchange contribution grows up to $ n^{\ex,1}(q) \le C k_{\F}^{-1 + \varepsilon} $ (see Lemma~\ref{lem:estnqex}), so we cannot treat $ n^{\ex,m}(q) $ as an error. By contrast, for $ \sum_\ell \hat{V}(\ell) < \infty $, the bound~\eqref{eq:finEQ2est} scales like $ \sim k_{\F}^{-2+\varepsilon} $, while $ n^{\ex,m}(q) \le C k_{\F}^{-2} $, so the exchange contribution is an error.
+Note that here, $ m = 1 $ and thus $ \sum_\ell \hat{V}(\ell)^m = \infty $ can occur for $ \alpha = 0 $. In the end, we will choose $ \gamma = \frac 13 $ as explained below. Then, the error in~\eqref{eq:finEQ2est_Coulomb} is $ \sim k_{\F}^{-1-\frac 16} $, whereas the exchange contribution grows up to $ n^{\ex,1}(q) \le C k_{\F}^{-1 + \varepsilon} $ (see Lemma~\ref{lem:estnqex}), so we cannot treat $ n^{\ex,1}(q) $ as an error. By contrast, in case $ \sum_\ell \hat{V}(\ell) < \infty $, the bound~\eqref{eq:finEQ2est} scales like $ \sim k_{\F}^{-2+\varepsilon} $, while $ n^{\ex,m}(q) \le C k_{\F}^{-2} $, so the exchange contribution is an error for any $ m \ge 1 $.
 }
 To prove this proposition, we estimate $ E^{m,1}_{Q_2}(q) $ through $ E^{m,11}_{Q_2} (q)$ and $ n^{\ex,m}(q) $.
 
@@ -1514,14 +1515,15 @@ Let $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $
 If $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, given $ \varepsilon > 0 $, there exists some $ C_\varepsilon > 0 $ such that
 \begin{align}
 	\abs{\eva{\xi_\lambda,\left(E^{m,1}_{Q_2}(q) + E^{m,2}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
-	&\leq C_\varepsilon C^m \left( k_{\F}^{-\frac{3}{2}} \Xi^\half 
+	&\leq C_\varepsilon C^m \left( k_{\F}^{-2}
+		+ k_{\F}^{-\frac{3}{2}} \Xi^\half 
 		+ k_{\F}^{-1}\Xi^{1-\varepsilon} \right) e(q)^{-1} 
 		\norm { (\NN+1)^{\frac 52} \xi_\lambda } \nonumber\\
 	&\quad + C_\varepsilon C^m k_{\F}^{-1} \Xi^{\half - \varepsilon} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} e(q)^{-\half} \;. \label{eq:estEQ211}
 \end{align}
 \end{lemma}
 \begin{proof}
-The proof is similar to the one of Lemma~\ref{lem:EQ111}: We start with $ E^{m,1}_{Q_2}(q) $, where we split the anticommutator using~\eqref{eq:q-q} to get
+The proof is similar to the one of Lemma~\ref{lem:EQ111}: We start with $ E^{m,1}_{Q_2}(q) $~\eqref{eq:expandedEQ2}, where we split the anticommutator using~\eqref{eq:q-q} to get
 \begin{equation} \label{eq:EQ2111}
 \begin{aligned}
 	& \abs{\eva{\xi_\lambda,\left(E^{m,1}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
@@ -1547,11 +1549,11 @@ For the case $ j = 0 $ we use $1 = (\NN+1) (\NN+1)^{-1}$ and Lemma~\ref{lem:norm
  		\sum\limits_{r, \ell_1, s_1 \in \Z^3} \norm{a_{r-\ell_1} a_{-s_1+\ell_1} a_{-s_1} (\NN+1) \xi_\lambda}^2\Bigg)^\half \times\nonumber\\
  	&\quad \times \Bigg( \sum\limits_{\ell \in \Z^3_*}(C \hat{V}(\ell))^{2m} \Bigg)^{\half}
  		k_{\F}^{-1} e(q)^{-1}
- 		\Bigg( \sum\limits_{\ell \in \Z^3} \norm{a_{-q + \ell} a_{-q} (\NN+1)^{-\half} \xi_\lambda } \Bigg)^{\half} \nonumber\\
+ 		\Bigg( \sum\limits_{\ell \in \Z^3} \norm{a_{-q + \ell} (\NN+1)^{-\half} \xi_\lambda } \Bigg)^{\half} \nonumber\\
  	&\leq C^m \norm{ (\NN+1)^{\frac 52}\xi_\lambda}
  		k_{\F}^{-\frac 32} e(q)^{-1} \Xi^{\half} \;. \label{eq:estEQ2111} 
 \end{align}
-The case $ 1 \le j \le m-1 $ only occurs for $ m \ge 2 $, so $ \sum_\ell \hat{V}(\ell)^m < \infty $ is always true:
+The case $ 1 \le j \le m-1 $ only occurs for $ m \ge 2 $, so $ \sum_\ell \hat{V}(\ell)^m < \infty $ is true for any $ \alpha \ge 0 $:
 \begin{align}
 	\sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)|
 	&\leq \sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) \sum\limits_{r\in L_{\ell} \cap L_{\ell_1}}\! \Bigg( \sum\limits_{s \in L_\ell} \abs{K^{j}(\ell)_{q,s}}^2\Bigg)^\half \bigg( \sum\limits_{s \in L_\ell}\norm{b_{-s}(-\ell) a_{r-\ell} \xi_\lambda}^2\bigg)^\half \times\nonumber\\
@@ -1565,26 +1567,26 @@ The case $ 1 \le j \le m-1 $ only occurs for $ m \ge 2 $, so $ \sum_\ell \hat{V}
 	\bigg(
 		\sum\limits_{r, \ell_1, s_1 \in \Z^3} \norm{ a_{r-\ell_1} a_{-s_1 + \ell_1} a_{-s_1} \xi_\lambda }^2\bigg)^\half
 	\nonumber\\
-	&\leq C^m k_{\F}^{-\frac 32} e(q)^{-1}
+	&\leq C^m k_{\F}^{-2} e(q)^{-1}
 	\norm{ (\NN+1)^{\frac 32} \xi_\lambda}^2 \;. \label{eq:estEQ2112_Coulomb}
 \end{align}
-For $ \sum_{\ell_1} \hat{V}(\ell_1) < \infty $, we may even achieve a bound of order $ \sim k_{\F}^{-2} $:
-\begin{align}
-	|\I_j(\ell, \ell_1)|
-	&\leq \sum_{r\in L_{\ell} \cap L_{\ell_1}}\! \Bigg( \sum_{s \in L_\ell} \abs{K^{j}(\ell)_{q,s}}^2\Bigg)^\half \bigg( \sum_{s \in L_\ell}\norm{b_{-s}(-\ell) a_{r-\ell} (\NN+1)^{\half}\xi_\lambda}^2\bigg)^\half \nonumber\\
-		&\quad \times \Bigg( \sum_{s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r,s_1}}^2\Bigg)^\half \bigg(\sum_{s_1 \in L_{\ell_1}}\norm{ K^{m-j}(\ell)_{r,q} b_{-s_1}(-\ell_1)  a_{r-\ell_1} (\NN+1)^{-\half}\xi_\lambda }^2\bigg)^\half
-	\nonumber\\
-	&\leq (C \hat{V}(\ell))^j \hat{V}(\ell_1) k_{\F}^{-1} e(q)^{-\half}
-	\bigg( \sum_{r\in \Z^3} \norm{ a_{r-\ell} (\NN+1) \xi_\lambda}^2\bigg)^\half  \nonumber\\
-		&\quad \times 
-	\bigg(\sum_{r\in L_{\ell}} |K^{m-j}(\ell)_{r,q} |^2
-		\sum_{s_1 \in L_{\ell_1}}\norm{ b_{-s_1}(-\ell_1) a_{r-\ell_1} (\NN+1)^{-\half}\xi_\lambda }^2\bigg)^\half
-	\nonumber\\
-	&\leq (C \hat{V}(\ell))^m
-		\hat{V}(\ell_1)
-		k_{\F}^{-\frac 32} e(q)^{-1}
-		\norm{ (\NN+1)^{\frac 32}\xi_\lambda } \Xi^{\half} \;. \label{eq:estEQ2112}
-\end{align}
+%For $ \sum_{\ell_1} \hat{V}(\ell_1) < \infty $, we may even achieve a bound of order $ \sim k_{\F}^{-2} $:
+%\begin{align}
+%	|\I_j(\ell, \ell_1)|
+%	&\leq \sum_{r\in L_{\ell} \cap L_{\ell_1}}\! \Bigg( \sum_{s \in L_\ell} \abs{K^{j}(\ell)_{q,s}}^2\Bigg)^\half \bigg( \sum_{s \in L_\ell}\norm{b_{-s}(-\ell) a_{r-\ell} (\NN+1)^{\half}\xi_\lambda}^2\bigg)^\half \nonumber\\
+%		&\quad \times \Bigg( \sum_{s_1 \in L_{\ell_1}}\abs{K(\ell_1)_{r,s_1}}^2\Bigg)^\half \bigg(\sum_{s_1 \in L_{\ell_1}}\norm{ K^{m-j}(\ell)_{r,q} b_{-s_1}(-\ell_1)  a_{r-\ell_1} (\NN+1)^{-\half}\xi_\lambda }^2\bigg)^\half
+%	\nonumber\\
+%	&\leq (C \hat{V}(\ell))^j \hat{V}(\ell_1) k_{\F}^{-1} e(q)^{-\half}
+%	\bigg( \sum_{r\in \Z^3} \norm{ a_{r-\ell} (\NN+1) \xi_\lambda}^2\bigg)^\half  \nonumber\\
+%		&\quad \times 
+%	\bigg(\sum_{r\in L_{\ell}} |K^{m-j}(\ell)_{r,q} |^2
+%		\sum_{s_1 \in L_{\ell_1}}\norm{ b_{-s_1}(-\ell_1) a_{r-\ell_1} (\NN+1)^{-\half}\xi_\lambda }^2\bigg)^\half
+%	\nonumber\\
+%	&\leq (C \hat{V}(\ell))^m
+%		\hat{V}(\ell_1)
+%		k_{\F}^{-\frac 32} e(q)^{-1}
+%		\norm{ (\NN+1)^{\frac 32}\xi_\lambda } \Xi^{\half} \;. \label{eq:estEQ2112}
+%\end{align}
 Finally, let us consider the case $ j = m $. For Coulomb potentials, this is the most difficult term to bound. In analogy to~\cite{CHN24}, we introduce the ball $ S := \Z^3_* \cap B_{k_{\F}^{\gamma}}(0) $. For $ \ell_1 $ outside the ball, we proceed as follows:
 \begin{align}
 	&\sum_{\ell \in \Z^3_*} \sum_{\ell_1 \in \Z^3_* \setminus S} \mathds{1}_{L_\ell}(q) |\I_m(\ell, \ell_1)| \nonumber\\
@@ -1615,10 +1617,9 @@ If the sum ran over $ \ell_1 \in \Z^3_* $, the bound~\eqref{eq:estEQ2113_Coulomb
 	&\leq k_{\F}^{-1} e(q)^{-1}
 		\Bigg( \sum_{\ell \in \Z^3_*} (C \hat{V}(\ell))^{2m} \Bigg)^{\half}
 		\sum_{\ell_1 \in S} \hat{V}(\ell_1)
-		\Bigg( \sum_{\ell \in \Z^3_*} \norm{ a_{q-\ell} (\NN+1) \xi_\lambda}^2 \Bigg)^{\half}
+		\Bigg( \sum_{\ell \in \Z^3} \norm{ a_{q-\ell} (\NN+1) \xi_\lambda}^2 \Bigg)^{\half}
 		\Xi^{\half} \nonumber\\
-	&\leq k_{\F}^{-1} e(q)^{-1}
-		\Bigg( \sum_{\ell \in \Z^3_*} (C \hat{V}(\ell))^{2m} \Bigg)^{\half}
+	&\leq C^m k_{\F}^{-1} e(q)^{-1}
 		\Bigg( \sum_{\ell_1 \in S} \hat{V}(\ell_1) \Bigg) \norm{(\NN+1)^{\frac 32} \xi_\lambda} \Xi^{\half} \nonumber\\
 	&\leq C^m k_{\F}^{-1 + \frac{3-\alpha}{2} \gamma} e(q)^{-1}
 		\norm{(\NN+1)^{\frac 32} \xi_\lambda} \Xi^{\half} \;. \label{eq:estEQ2113_Coulomb_2}
@@ -1639,7 +1640,7 @@ For $ \sum_\ell \hat{V}(\ell) < \infty $, no splitting of the sum over $ \ell_1 
 \end{align}
 Summing up the three bounds, respectively, concludes the proof for $ E^{m,1}_{Q_2}(q) $.\\
 
-The bound for $ E^{m,2}_{Q_2}(q) $ is analogous, except for $ j = m $ where we proceed as in~\eqref{eq:estEQ1113_Coulomb_bis}
+The bound for $ E^{m,2}_{Q_2}(q) $~\eqref{eq:expandedEQ2} is analogous, except for $ j = m $ where we proceed as in~\eqref{eq:estEQ1113_Coulomb_bis}
 \begin{align}
 	&\sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell}(q) |\I_m(\ell, \ell_1)| \nonumber\\
 	&\leq \sum_{\ell,\ell_1 \in \Z^3_*} \mathds{1}_{L_\ell \cap (L_{\ell_1}+\ell-\ell_1) }(q)
