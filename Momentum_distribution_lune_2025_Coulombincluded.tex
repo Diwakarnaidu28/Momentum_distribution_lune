@@ -702,7 +702,7 @@ The first commutator in the Duhamel expansion takes the convenient form
 	= Q_2(\{K,\tilde{P}^q\}) \;, \qquad
 	\tilde{P}^q \coloneq \half(P^q + P^{-q}) \;.
 \end{equation}
-We then iteratively Duhamel-expand the $ Q_1$-- and $ Q_2 $--terms using Lemma~\ref{lem:Q1Kcomm} as \todo{write how the Duhamel iteration is done exactly}
+We then iteratively Duhamel-expand the $ Q_1$-- and $ Q_2 $--terms using Lemma~\ref{lem:Q1Kcomm} as
 \begin{align*}
 	e^{\lambda S} Q_1(A) e^{-\lambda S}
 	&= Q_1(A) + \int_0^{\lambda} \di \lambda' e^{\lambda' S} Q_2(\{A,K\}) e^{-\lambda' S}
@@ -819,7 +819,7 @@ Let $ \ell \in \Z^3_* $ and recall the definitions~\eqref{eq:Lell} and~\eqref{eq
 \end{equation}
 \end{lemma}
 \begin{proof}
-The first statement is~\cite[Prop.~A.2]{CHN21}. The second statement was proven with $ C k_{\F}^3 $ replaced by $ |\overline{B_{2 k_{\F}}(0)} \cap \Z^3| $ in~\cite[Lemma~3.2]{CHN24}. \textcolor{blue}{It obviously extends to any set with $ |S| \le C k_{\F}^3 $, by writing $ S $ as a disjoint union of $ \le C $ sets with $ \le |\overline{B_{2 k_{\F}}}(0) \cap \Z^3| $ points.}
+The first statement is~\cite[Prop.~A.2]{CHN21}. The second statement was proven with $ C k_{\F}^3 $ replaced by $ |\overline{B_{2 k_{\F}}(0)} \cap \Z^3| $ in~\cite[Lemma~3.2]{CHN24}. It obviously extends to any set with $ |S| \le C k_{\F}^3 $, by writing $ S $ as a disjoint union of less or equal than $ C_0 $ sets with less or equal than $ |\overline{B_{2 k_{\F}}}(0) \cap \Z^3| $ points.
 \end{proof}
 
 \begin{definition}
@@ -1047,7 +1047,7 @@ Let $ \ell \in \Z^3_* $. For any symmetric operator $ A(\ell): \ell^2(L_\ell) \t
 \begin{proof}
 Using $\norm{AB}_{\HS} \leq \norm{A}_{\mathrm{op}} \norm{B}_{\HS}$, the bound follows by induction from
 \[
-	\half \norm{\Theta^{n}_K(A)(\ell)}_{\HS}
+	\norm{\Theta^{n}_K(A)(\ell)}_{\HS}
 	= \norm{\left\{K(\ell),\Theta^{n-1}_K(A)(\ell)\right\}}_{\HS}
 % 	\leq 2 \norm{K(\ell)\Theta^{n-1}_K(A)(\ell) }_{\HS} \\
 	\leq 2 \norm{K(\ell)}_{\mathrm{op}}\norm{\Theta^{n-1}_K(A)(\ell)}_{\HS} \;. \qedhere
@@ -1057,7 +1057,7 @@ Using $\norm{AB}_{\HS} \leq \norm{A}_{\mathrm{op}} \norm{B}_{\HS}$, the bound fo
 \begin{proof}[Proof of Proposition~\ref{prop:headerr}]
 Combining Lemmas~\ref{lem:estQ2} and~\ref{lem:multicommest}, we have
 \begin{align}
-	&\abs{\int_{\Delta^n} \di^n \ulambda \;
+	&\half \abs{\int_{\Delta^n} \di^n \ulambda \;
 		\eva{\Omega, e^{\lambda_n S} Q_{\sigma(n)}(\Theta^n_{K}(P^q)) e^{-\lambda_n S} \Omega} } \nonumber\\
 	&\leq 2^n \int_{\Delta^n} \di^n \ulambda \sum_{\ell \in \Z^3_*} \norm{K(\ell)}^n_{\mathrm{op}} \norm{P^q(\ell)}_{\HS} 
 		\abs{\eva{\Omega, e^{\lambda_n S} (\NN +1) e^{-\lambda_n S} \Omega}} \;.
@@ -1065,7 +1065,7 @@ Combining Lemmas~\ref{lem:estQ2} and~\ref{lem:multicommest}, we have
 With $ \norm{P^q}_{\HS} = 1$, Lemma~\ref{lem:gronNest}, and $ \int_{\Delta^n} \di^n\underline{\lambda} = \frac{1}{n!} $, we get
 % \begin{equation}
 \begin{align*}
-	&\abs{\int_{\Delta^n} \di^n \ulambda \;
+	&\half \abs{\int_{\Delta^n} \di^n \ulambda \;
 		\eva{\Omega, e^{\lambda_n S} Q_{\sigma(n)}(\Theta^n_{K}(P^q)) e^{-\lambda_n S} \Omega} }
 	\\
 	& \leq C 2^n \int_{\Delta^n} \di^n \ulambda \sum_{\ell \in \Z^3_*} \norm{K(\ell)}^n_{\mathrm{op}} \eva{\Omega,(\NN+1)\Omega} =  C \frac{2^n}{n!} \sum_{\ell \in \Z^3_*} \norm{K(\ell)}^n_{\mathrm{op}} \;. \qedhere
@@ -1125,9 +1125,8 @@ To prove this bound, we write
 		\abs{\eva{\xi_{\lambda_{m+1}}, E_{Q_{\sigma(m)}}\left(\Theta^{m}_{K}(P^q)\right) \xi_{\lambda_{m+1}}}} \;,
 \end{equation}
 where we recall the terms \eqref{eq:EQ1EQ2extension} of $ E_{Q_1}(\Theta^m_{K}(P^q)) $ and $ E_{Q_2}(\Theta^m_{K}(P^q)) $. We will consecutively estimate these terms.
-\textcolor{blue}{
-Note that we eventually have $ \eva{\xi_\lambda, a_q^* a_q \xi_\lambda} \sim n^{\RPA}(q) \sim k_{\F}^{-1} e(q)^{-1} $, whence all errors effectively scale like $ e(q)^{-1} $.
-}
+Note that after the bootstrap, we have $ \eva{\xi_\lambda, a_q^* a_q \xi_\lambda} \sim n^{\RPA}(q) \sim k_{\F}^{-1} e(q)^{-1} $, hence all errors effectively scale like $ e(q)^{-1} $.
+
 
 
 \subsubsection{Estimates for $E_{Q_1}$}
@@ -1251,7 +1250,7 @@ In the second case $ 1 \le j \le m-1 $, we convert an operator $ a_{r-\ell} $ in
 	&\quad \times \mathds{1}_{L_\ell}(q) \Bigg( \sum\limits_{r\in L_{\ell}} \abs{K^{m-j}(\ell)_{r,q}}^2 \norm{a_{r-\ell} \xi_\lambda }^2 \Bigg)^\half\nonumber\\
 	&\leq k_{\F}^{-\frac 32} e(q)^{-1}
 		\sum_{\ell \in \Z^3_*} (C \hat{V}(\ell))^m
-		\Bigg( \sum_{\ell_1 \in \Z^3_*} \hat{V}(\ell_1)^2 \Bigg)^{\half} 
+		\Bigg( \sum_{\ell_1 \in \Z^3_*} \norm{K(\ell_1)}_{\max,2}^2 \Bigg)^{\half} 
 		\Bigg( \sum\limits_{r,\ell_1,s_1',s' \in \Z^3} \norm{a_{r-\ell_1} a_{-s_1'+\ell_1} a_{-s_1'} a_{s'} \xi_\lambda}^2 \Bigg)^\half
 		\Xi^\half \nonumber\\
 	&\leq C^m k_{\F}^{-\frac 32} e(q)^{-1}
@@ -1499,9 +1498,8 @@ If $ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $, we have the even stronger 
 \end{align}
 \end{proposition}
 
-\textcolor{blue}{
+
 Note that here, $ m = 1 $ and thus $ \sum_\ell \hat{V}(\ell)^m = \infty $ can occur for $ \alpha = 0 $. In the end, we will choose $ \gamma = \frac 13 $ as explained below. Then, the error in~\eqref{eq:finEQ2est_Coulomb} is $ \sim k_{\F}^{-1-\frac 16} $, whereas the exchange contribution grows up to $ n^{\ex,1}(q) \le C k_{\F}^{-1 + \varepsilon} $ (see Lemma~\ref{lem:estnqex}), so we cannot treat $ n^{\ex,1}(q) $ as an error. By contrast, in case $ \sum_\ell \hat{V}(\ell) < \infty $, the bound~\eqref{eq:finEQ2est} scales like $ \sim k_{\F}^{-2+\varepsilon} $, while $ n^{\ex,m}(q) \le C k_{\F}^{-2} $, so the exchange contribution is an error for any $ m \ge 1 $.
-}
 To prove this proposition, we estimate $ E^{m,1}_{Q_2}(q) $ through $ E^{m,11}_{Q_2} (q)$ and $ n^{\ex,m}(q) $.
 
 \begin{lemma} \label{lem:EQ211}
@@ -2184,7 +2182,7 @@ We start bounding $ n^{\ex}(q) $~\eqref{eq:nqex} by Lemma~\ref{lem:normsk} and $
 	= C k_{\F}^{-2}
 		\Bigg( \sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) \frac{\hat{V}(\ell)}{\lambda_{\ell,q}} \Bigg)^2 \nonumber\\
 	&\leq C k_{\F}^{-2} e(q)^{-1}
-		\Bigg( \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |k|^{\alpha} \Bigg)
+		\Bigg( \sum_{\ell \in \Z^3_*} \hat{V}(\ell)^2 |\ell|^{\alpha} \Bigg)
 		\Bigg( \sum_{\ell \in \Z^3_*} \mathds{1}_{L_\ell}(q) e(q-\ell)^{-1} |\ell|^{-\alpha} \Bigg) \;.
 \end{align}
 The first bracket on the r.~h.~s. was assumed to be finite. To bound the second bracket, we split the summation region as $ S := \{ \ell \in \Z^3_* : q \in L_\ell \} = S_1 \cup S_2 \cup S_3 $ with
@@ -2193,9 +2191,9 @@ The first bracket on the r.~h.~s. was assumed to be finite. To bound the second 
 	S_2 := \{ \ell \in S \setminus S_1 : |\ell| \le k_{\F}^\beta \} \;, \quad
 	S_3 := S \setminus (S_1 \cup S_2) \;,
 \end{equation}
-for some $ \beta > 0 $ to be optimized later. For $ \ell \in S_1 $, we use $ e(q-\ell) \ge C $ and that the area of the intersection with a sphere around $ q $ is bounded by
+for some $ \beta > 0 $ to be optimized later. For $ \ell \in S_1 $, we use $ e(q-\ell) \ge C $ and that the volume of the intersection with a sphere around $ q $ is bounded by
 \begin{equation*}
-	\textnormal{Area} \big( \big\{ \ell' \in \R^3 : |\ell'| \le k_{\F}^\beta, \; ||q-\ell'|-k_{\F}| \le 2, \; |\ell'| = |\ell| \big\} \big)
+	\textnormal{Vol} \big( \big\{ \ell' \in \R^3 : |\ell'| \le k_{\F}^\beta, \; ||q-\ell'|-k_{\F}| \le 2, \; |\ell'| = |\ell| \big\} \big)
 	\leq C |\ell| \;,
 \end{equation*}
 whence
@@ -2206,7 +2204,7 @@ whence
 	\le C k_{\F}^{2 \beta - \alpha \beta} \;.
 \end{equation}
 Note that $ \alpha \in [0,2] $ is needed for the discretization error $ C $ to be smaller than $C k_{\F}^{2 \beta - \alpha \beta} $.\\
-For $ \ell \in S_2 $, we have $ e(q-\ell) \ge C k_{\F} $, while the sphere intersection area is now $ \leq C |\ell|^2 $:
+For $ \ell \in S_2 $, we have $ e(q-\ell) \ge C k_{\F} $, while the sphere intersection volume is now $ \leq C |\ell|^2 $:
 \begin{equation}
 	\sum_{\ell \in S_2} e(q-\ell)^{-1} |\ell|^{-\alpha}
 	\leq C k_{\F}^{-1} \Bigg( 1 + \int_C^{k_{\F}^\beta} |\ell|^{2-\alpha} \di |\ell| \Bigg)
