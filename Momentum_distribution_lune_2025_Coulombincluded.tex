@@ -2355,7 +2355,7 @@ Let $q \in B^c_{\F}$, then
 \end{lemma}
 
 \begin{proof}
-We drop the $ \ell $-dependence of $K(\ell) $, $ h(\ell) $ and $ P(\ell) = |v_\ell \rangle \langle v_\ell| $, where not explicitly needed. Obviously
+We drop the $ \ell $-dependence of $K(\ell) $, $ h(\ell) $ and $ P(\ell) = |v_\ell \rangle \langle v_\ell| $~\eqref{eq:HkPk}, where not explicitly needed. Obviously
 \begin{equation} \label{eq:coshrewriting}
 	\cosh(2K)-1
 	= \half\big((e^{-2K}-1)-(1-e^{2K})\big) \;.
@@ -2370,15 +2370,15 @@ We then express $ (e^{-2K}-1)_{q,q} $ and $ (1-e^{2K})_{q,q} $ using the identit
 	A^\half = \frac{2}{\pi} \int_0^\infty \left(1- \frac{t^2}{A+t^2}\right) \mathrm{d}t \;,\qquad
 	A^{-\half} = \frac{2}{\pi} \int_0^\infty \frac{\mathrm{d}t}{A+t^2} \;,
 \end{equation}
-for any symmetric matrix $ A $, as well as the Sherman--Morrison formula
+for any symmetric, invertible matrix $ A $, as well as the Sherman--Morrison formula
 \begin{equation} \label{eq:shermor}
 	(A+cP_w)^{-1} = A^{-1} - \frac{c}{1+c\eva{w, A^{-1}w}}P_{A^{-1}w} \;,
 \end{equation}
-for any $ c \in \C $ and $ w \in \ell^2(L_\ell) $. We begin with 
+for any $ c \in \C $ and $ w \in \ell^2(L_\ell) $ such that the denominator is nonzero. We begin with 
 \begin{align}
 	\big(h^2 +2P_{h^{\half} v}\big)^{\half}
 % 	&= \frac{2}{\pi} \int_0^\infty \Bigg( 1- \frac{t^2}{t^2+h^2 +2P_{h^{\half} v}}\Bigg)\mathrm{d}t\nonumber\\
-	&= \frac{2}{\pi} \int_0^\infty \Bigg( 1- \frac{t^2}{t^2+h^2} - \frac{2 t^2}{1+ 2 \big\langle h^{\half} v ,(t^2+h^2)^{-1} h^\half v \big\rangle } P_{(t^2+h^2)^{-1}h^{\half} v} \Bigg) \mathrm{d}t \nonumber\\
+	&= \frac{2}{\pi} \int_0^\infty \Bigg( 1- \frac{t^2}{t^2+h^2} + \frac{2 t^2}{1+ 2 \big\langle h^{\half} v ,(t^2+h^2)^{-1} h^\half v \big\rangle } P_{(t^2+h^2)^{-1}h^{\half} v} \Bigg) \mathrm{d}t \nonumber\\
 	&= h + \frac{2}{\pi} \int_0^\infty \frac{2t^2}{1+ 2 \big\langle h^{\half} v ,(t^2+h^2)^{-1} h^\half v \big\rangle }  P_{(t^2+h^2)^{-1}h^{\half} v}\mathrm{d}t \;.
 \end{align}
 Recalling the definition~\eqref{eq:Lell} of $ \lambda_{\ell,q} $ and $ g_\ell $, and using the canonical basis vectors $ (e_p)_{p \in L_\ell} $ with $ h e_q = \lambda_{\ell,q} e_q $ and $ g_\ell = \langle e_p,v \rangle^2 $, this implies
@@ -2415,7 +2415,7 @@ Summing both terms we obtain the claimed result.
 \label{subsec:control_nqb}
 
 \begin{lemma}[Bosonized momentum distribution] \label{lem:nqb_bounds}
-For any potential $ \hat{V} \in \ell^1(\Z^3_*) $, there exists $ C > 0 $
+For any potential $ \hat{V} \in \ell^1(\Z^3_*) $, there exists some $ C > 0 $
 % such that for all particle numbers $ N = |B_{\F}| \sim k_{\F}^3 $ and
 such that for all $ q \in \Z^3 $ we have
 \begin{equation} \label{eq:nqb_upperbound}
@@ -2467,7 +2467,7 @@ As the potential, we choose $ \hat{V}((1,0,0)) = \hat{V}((-1,0,0)) = 1 $ and $ \
 \label{sec:mainthmproof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
-As trial state we take $ \Psi_N = R e^{-S} \Omega $, as constructed in \cite{CHN23} and reviewed in Section~\ref{sec:trialstate}. From~\cite[Corr.~1.3]{CHN24}, \textcolor{blue}{assuming Hypothesis~\ref{hyp:Coulomb}}, we know that \textcolor{blue}{[SL: Is there a reason why we call things $ E_{\F} $ and $ E_{\textnormal{gs}} $ instead of $ E_{\textnormal{FS}} $ and $ E_{\textnormal{N}} $?]}$ E_{\GS} = E_{\F} + E_{\corr} + \cO(k_{\F}^{1 - 1/6 + \varepsilon}) $, where $ E_{\F} $ is the Hartree--Fock energy and $ E_{\corr}$ the correlation energy, defined in~\cite[(1.2) and (1.11)]{CHN24}. Moreover, \cite[Thm.~1.1]{CHN23} gives us $ \eva{\Psi_N, H_N \Psi_N} \le E_{\F} + E_{\corr} + \cO(k_{\F}^{1 - 1/2}) $, hence $ \eva{\Psi_N, H_N \Psi_N} \le E_{\GS} + \cO(k_{\F}^{1 - 1/6+ \varepsilon}) $. \textcolor{red}{[SL: The lower bound only holds if $ \hat{V}(\ell) \le C |\ell|^{-2} $.]}
+As trial state we take $ \Psi_N = R e^{-S} \Omega $, as constructed in \cite{CHN23} and reviewed in Section~\ref{sec:trialstate}. From~\cite[Corr.~1.3]{CHN24}, \textcolor{blue}{assuming Hypothesis~\ref{hyp:Coulomb}}, we know that $ E_{\GS} = E_{\FS} + E_{\corr} + \cO(k_{\F}^{1 - 1/6 + \varepsilon}) $, where $ E_{\FS} $ is the Hartree--Fock energy and $ E_{\corr}$ the correlation energy, defined in~\cite[(1.2) and (1.11)]{CHN24}. Moreover, \cite[Thm.~1.1]{CHN23} gives us $ \eva{\Psi_N, H_N \Psi_N} \le E_{\FS} + E_{\corr} + \cO(k_{\F}^{1 - 1/2}) $, hence $ \eva{\Psi_N, H_N \Psi_N} \le E_{\GS} + \cO(k_{\F}^{1 - 1/6+ \varepsilon}) $. 
 % By definition of the ground state energy, $ E_{\GS} \le \eva{\Psi_N, H_N \Psi_N} $, which concludes the energy estimate~\eqref{eq:main1}.\\
 
 It remains to prove the momentum distribution formula~\eqref{eq:main2}, where we focus on the case $ q \in B_{\F}^c $, since $ q \in B_{\F} $ is completely analogous. Assume Hypothesis~\ref{hyp:alpha} (which includes Hypotheses~\ref{hyp:ell1} and~\ref{hyp:Coulomb} as special cases). Here, $ \eva{\Psi_N, a_q^* a_q \Psi_N} = \eva{\Omega, e^{S} a_q^* a_q e^{-S} \Omega} $, where Proposition~\ref{prop:finexpan} gives us
@@ -2490,11 +2490,10 @@ We estimate the $ E_m(P^q) $-term by Proposition~\ref{prop:finalEmest}, noting t
 		\Big( e(q)^{-1}\left( k_{\F}^{-\frac 32 + \varepsilon} 
 		+ k_{\F}^{-1 - \frac{\alpha \gamma}{2}} 
 		+ k_{\F}^{-1 + \frac{3-\alpha}{2} \gamma} \Xi^\half
-		+ k_{\F}^{-1+\varepsilon} \Xi^\half
-		+ k_{\F}^{-1} \Xi \right) \nonumber\\
+		+ k_{\F}^{-1+\varepsilon} \Xi^\half \right) \nonumber\\
 	&\quad + e(q)^{-\half} k_{\F}^{-1} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega}^{\half} \Big) \;.
 \end{align}
-To control $ \Xi = \sup_{q \in \Z^3} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{- \lambda S} \Omega} $, observe that \eqref{eq:main_errorbound_with_Xi} holds uniformly in $ q \in B_{\F}^c $, and it is not difficult to show that it remains true for $ q \in B_{\F} $ or with $ S $ replaced by $ \lambda S $ with $ \lambda \in [0,1] $. Moreover $ e(q) \ge 1/2 $ and evidently, $ \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} \le \Xi^{\half} $. So setting $ \gamma = 0 $ in~\eqref{eq:main_errorbound_with_Xi}, taking the supremum over $ q \in \Z^3 $ and $ \lambda \in [0,1] $, and bounding $ n^{\RPA}(q) $ and $ n^{\ex}(q) $ by Lemmas~\ref{lem:nqb_bounds} and~\ref{lem:estnqex}, we get
+To control $ \Xi = \sup_{q \in \Z^3} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{- \lambda S} \Omega} $, observe that \eqref{eq:main_errorbound_with_Xi} holds uniformly in $ q \in B_{\F}^c $, and it is not difficult to show that it remains true for $ q \in B_{\F} $ or with $ S $ replaced by $ \lambda S $ with $ \lambda \in [0,1] $. Moreover $ e(q) \ge \half $ and evidently, $ \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} \le \Xi $. So setting $ \gamma = 0 $ in~\eqref{eq:main_errorbound_with_Xi}, taking the supremum over $ q \in \Z^3 $ and $ \lambda \in [0,1] $, and bounding $ n^{\RPA}(q) $ and $ n^{\ex}(q) $ by Lemmas~\ref{lem:nqb_bounds} and~\ref{lem:estnqex}, we get
 \begin{align} \label{eq:Xibound}
 	\Xi
 	&\le \sup_{q \in \Z^3} n^{\RPA}(q)
@@ -2519,14 +2518,15 @@ Plugging this bound again into~\eqref{eq:main_errorbound_with_Xi} and taking onl
 Inserting both bounds~\eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} into again into~\eqref{eq:main_errorbound_with_Xi} and optimizing $ \gamma = \frac 13 $ renders the final result~\eqref{eq:main2}.\\
 
 In the special case of Hypothesis~\ref{hyp:ell1} ($ \sum_{\ell \in \Z^3_*} \hat{V}(\ell) < \infty $), Proposition~\ref{prop:finalEmest} provides us with
-\begin{align} \label{eq:main_errorbound_with_Xi}
-	& \abs{\eva{\Omega, e^{S} a_q^* a_q e^{-S} \Omega} - n^{\textnormal{RPA}}(q) - n^{\ex}(q)} \nonumber\\
+\begin{align} \label{eq:main_errorbound_with_Xi_subcoulomb}
+	\abs{\eva{\Omega, e^{S} a_q^* a_q e^{-S} \Omega} - n^{\textnormal{RPA}}(q) - n^{\ex}(q)}
 	&\le n^{\ex}(q) + C_\varepsilon \frac{C^m}{m!}
-		\left( e(q)^{-1} \left( k_{\F}^{-\frac{3}{2}} \Xi^\half
-		+ k_{\F}^{-1} \Xi^{1-\varepsilon} \right)
-		+ e(q)^{-\half} k_{\F}^{-1} \Xi^{\half - \varepsilon} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half}  \right) \;.
+		\Big( e(q)^{-1} \left( k_{\F}^{-2}
+		+ k_{\F}^{-\frac{3}{2}} \Xi^\half
+		+ k_{\F}^{-1} \Xi^{1-\varepsilon} \right) \nonumber\\
+	&\quad + e(q)^{-\half} k_{\F}^{-1} \Xi^{\half - \varepsilon} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} \Big) \;.
 \end{align}
-Bounding $ n^{\ex}(q) $, $ \Xi $, and $ \eva{\xi_\lambda, a_q^* a_q \xi_\lambda} $ by Lemma~\ref{lem:estnqex},~\eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} readily yields the improved error bound~\eqref{eq:main_improvederror}.
+Bounding $ n^{\ex}(q) $, $ \Xi $, and $ \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} $ by Lemma~\ref{lem:estnqex},~\eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} readily yields the improved error bound~\eqref{eq:main_improvederror}.
 %The claim $ |n^{\RPA}(q)| \le C k_{\F}^{-1} e(q)^{-1} $ was proven in Lemma~\ref{lem:nqb_bounds}.
 \end{proof}
 
