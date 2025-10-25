@@ -398,7 +398,7 @@ If additionally Hypothesis~\ref{hyp:ell1} holds, then the error term is even con
 \begin{equation}
 	\lvert n^{\RPA}(q)\rvert \le C k_{\F}^{-1} e(q)^{-1} \;.
 \end{equation}
-Moreover, we show that this scaling is sharp, in the sense that there exist $ V $ and $ q $ for which $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $. \todo{Make sure that $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $ is true.}
+%Moreover, we show that this scaling is sharp, in the sense that there exist $ V $ and $ q $ for which $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $. \todo{Make sure that $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $ is true.}
 By contrast the exchange contribution is bounded by Lemma~\ref{lem:estnqex} as
 \begin{equation}
 	\lvert n^{\ex}(q)\rvert
@@ -2169,7 +2169,7 @@ Then,~\eqref{eq:extract_nqex} follows by the triangle inequality.
 
 
 \begin{lemma}[Exchange contribution] \label{lem:estnqex}
-Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ with $ \alpha \in [0,2] $, and recall the definitions~\eqref{eq:nqex} of $ n^{\ex}(q) $ and~\eqref{eq:nqexm} of $ n^{\ex,m}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $, there exist $ C, C_\varepsilon > 0 $ such that for all $ q \in B_{\F}^c $\todo{Also do $ q \in B_{\F} $.}
+Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ with $ \alpha \in [0,2] $, and recall the definitions~\eqref{eq:nqex} of $ n^{\ex}(q) $ and~\eqref{eq:nqexm} of $ n^{\ex,m}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $, there exist $ C, C_\varepsilon > 0 $ such that for all $ q \in B_{\F}^c $
 \begin{equation}
 	\abs{n^{\ex}(q)}
 	\leq C_\varepsilon k_{\F}^{-1 - \frac{\alpha}{2} + \varepsilon} e(q)^{-1} \;. \label{eq:estnqex_Coulomb_1}
@@ -2441,11 +2441,11 @@ such that for all $ q \in \Z^3 $ we have
 	n^{\RPA}(q)
 	\le C k_{\F}^{-1} e(q)^{-1} \;.
 \end{equation}
-There exists a potential $ \hat{V} \in \ell^1(\Zstar) $, some $ c > 0 $, and two sequences $ (k_{\F}^{(n)})_{n \in \NNN}$ with $ k_{\F}^{(n)} \to \infty $ and $ (q_n)_{n \in \NNN}$ with all $q_n \in \Z^3 $, such that for all $ n \in \NNN $ we have
-\begin{equation} \label{eq:nqb_lowerbound}
-	n^{\textnormal{RPA}}(q_n)
-	\ge c (k_{\F}^{(n)})^{-1} e(q_n)^{-1} \;.
-\end{equation}
+%There exists a potential $ \hat{V} \in \ell^1(\Zstar) $, some $ c > 0 $, and two sequences $ (k_{\F}^{(n)})_{n \in \NNN}$ with $ k_{\F}^{(n)} \to \infty $ and $ (q_n)_{n \in \NNN}$ with all $q_n \in \Z^3 $, such that for all $ n \in \NNN $ we have
+%\begin{equation} \label{eq:nqb_lowerbound}
+%	n^{\textnormal{RPA}}(q_n)
+%	\ge c (k_{\F}^{(n)})^{-1} e(q_n)^{-1} \;.
+%\end{equation}
 \end{lemma}
 
 \begin{proof}
@@ -2456,28 +2456,28 @@ We focus on the case $ q \in B_{\F}^c $; $ q \in B_{\F} $ is treated analogously
 	\le \sum_{\ell \in \Zstar} \frac{k_{\F}^{-1}}{\lambda_{\ell,q}} \sum_{m=1}^{\infty} \frac{C^m \hat{V}(\ell)^{2m}}{(2m)!}
 	\le C \frac{k_{\F}^{-1}}{e(q)} \;.
 \end{equation}
-For the lower bound, first observe that~\cite[Prop.~7.8]{CHN21} implies the matrix element bound \textcolor{red}{[SL: I would expect that the following bound holds true, but it might be cumbersome to show. Maybe, we do a numerical evaluation using the corresponding integral formula, instead.]} \todo{[11] is not sufficient?}
-\begin{equation}
-	(\cosh(2K(\ell)) - 1)_{q,q}
-	\ge \frac{c \hat{V}(\ell)^2 k_{\F}^{-1}}{\lambda_{\ell,q}}
-		\frac{1}{1 + \langle v_\ell, h(\ell)^{-1} v_\ell \rangle} \;,
-\end{equation}
-with $ v_\ell $ and $ h(\ell) $ defined in~\eqref{eq:HkPk}. In the denominator we have
-\begin{equation}
-	\langle v_\ell, h(\ell)^{-1} v_\ell \rangle \le C \sum_{r \in L_\ell} \frac{\hat{V}(\ell) k_{\F}^{-1}}{\lambda_{\ell,r}} \le C
-\end{equation}
-and thus
-\begin{equation}
-	n^{\RPA}(q)
-	\ge c \sum_{\ell \in \Zstar} \mathds{1}_{L_\ell}(q)
-		\frac{\hat{V}(\ell) k_{\F}^{-1}}{\lambda_{\ell,q}} \;.
-\end{equation}
-As the potential, we choose $ \hat{V}((1,0,0)) = \hat{V}((-1,0,0)) = 1 $ and $ \hat{V}(\ell) = 0 $ on all other momenta $ \ell \in \ZZZ^3 $. Then, we choose $ k_{\F}^{(n)} $ slightly larger than $ n $, such that $ (0,0,n) \in B_{\F} $ while $ q_n \coloneq (1,0,n) \notin B_{\F} $ with $ e(q_n) \ge \half $. Evidently, with $ \ell^* \coloneq (1,0,0) $, we get $ \lambda_{\ell^*, q_n} = 1 $, so
-\[
-	n^{\RPA}(q)
-	\ge c \hat{V}(\ell^*) (k_{\F}^{(n)})^{-1}
-	\ge c (k_{\F}^{(n)})^{-1} e(q_n)^{-1} \;. \qedhere
-\]
+%For the lower bound, first observe that~\cite[Prop.~7.8]{CHN21} implies the matrix element bound \textcolor{red}{[SL: I would expect that the following bound holds true, but it might be cumbersome to show. Maybe, we do a numerical evaluation using the corresponding integral formula, instead.]} \todo{[11] is not sufficient?}
+%\begin{equation}
+%	(\cosh(2K(\ell)) - 1)_{q,q}
+%	\ge \frac{c \hat{V}(\ell)^2 k_{\F}^{-1}}{\lambda_{\ell,q}}
+%		\frac{1}{1 + \langle v_\ell, h(\ell)^{-1} v_\ell \rangle} \;,
+%\end{equation}
+%with $ v_\ell $ and $ h(\ell) $ defined in~\eqref{eq:HkPk}. In the denominator we have
+%\begin{equation}
+%	\langle v_\ell, h(\ell)^{-1} v_\ell \rangle \le C \sum_{r \in L_\ell} \frac{\hat{V}(\ell) k_{\F}^{-1}}{\lambda_{\ell,r}} \le C
+%\end{equation}
+%and thus
+%\begin{equation}
+%	n^{\RPA}(q)
+%	\ge c \sum_{\ell \in \Zstar} \mathds{1}_{L_\ell}(q)
+%		\frac{\hat{V}(\ell) k_{\F}^{-1}}{\lambda_{\ell,q}} \;.
+%\end{equation}
+%As the potential, we choose $ \hat{V}((1,0,0)) = \hat{V}((-1,0,0)) = 1 $ and $ \hat{V}(\ell) = 0 $ on all other momenta $ \ell \in \ZZZ^3 $. Then, we choose $ k_{\F}^{(n)} $ slightly larger than $ n $, such that $ (0,0,n) \in B_{\F} $ while $ q_n \coloneq (1,0,n) \notin B_{\F} $ with $ e(q_n) \ge \half $. Evidently, with $ \ell^* \coloneq (1,0,0) $, we get $ \lambda_{\ell^*, q_n} = 1 $, so
+%\[
+%	n^{\RPA}(q)
+%	\ge c \hat{V}(\ell^*) (k_{\F}^{(n)})^{-1}
+%	\ge c (k_{\F}^{(n)})^{-1} e(q_n)^{-1} \;. \qedhere
+%\]
 \end{proof}
 
 
