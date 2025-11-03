@@ -344,7 +344,7 @@ $ \hat{V}(\ell) = \hat{V}(-\ell) \ge 0 \quad \forall \ell \in \Z^3 $, and $ \sum
 $ \hat{V} \ge 0 $ is radial, decreasing, and there exists $ C > 0 $ such that\\
 $ \hat{V}(\ell) \le C |\ell|^{-2} \quad \forall \ell \in \Z^3 $.
 \end{hypothesis}
-Note that Hypothesis~\ref{hyp:alpha} is implied for $ \alpha \in (0,3] $ by Hypothesis~\eqref{hyp:ell1} and for $ \alpha \in (0,1) $ by Hypothesis~\eqref{hyp:Coulomb}, the latter addressing the Coulomb potential.
+Note that Hypothesis~\ref{hyp:alpha} is implied for $ \alpha \in (0,3] $ by Hypothesis~\ref{hyp:ell1} and for $ \alpha \in (0,1) $ by Hypothesis~\ref{hyp:Coulomb}, the latter addressing the Coulomb potential.
 
 
 \begin{theorem}[Main result] \label{thm:main}
@@ -367,7 +367,7 @@ Let $ V $ satisfy Hypothesis~\ref{hyp:Coulomb}. Then, for any sequence of $ k_{\
 \end{equation}
 with $ n^{\RPA}(q) $ defined in~\eqref{eq:nqb}, and where the error term is controlled by
 \begin{equation}
-	\lvert \cE(q)\rvert \le C k_{\F}^{-1 - \frac 16 +\varepsilon} e(q)^{-1} \;.
+	\lvert \cE(q)\rvert \le C_\varepsilon k_{\F}^{-1 - \frac 16 +\varepsilon} e(q)^{-1} \;.
 \end{equation}
 If additionally Hypothesis~\ref{hyp:ell1} holds, then the error term is even controlled by
 \begin{equation} \label{eq:main_improvederror}
@@ -385,7 +385,6 @@ If additionally Hypothesis~\ref{hyp:ell1} holds, then the error term is even con
 	\lvert n^{\RPA}(q)\rvert \le C k_{\F}^{-1} e(q)^{-1} \;,
 \end{equation}
 which we expect to be optimal in the mean-field scaling.\\
-
 For comparison, in~\cite{BL25}, the scaling of the leading term is $ n^{\RPA}(q) \sim k_{\F}^{-2} $ without any $ e(q) $. This is because~\cite{BL25} assumes $ |\ell| \le C $ and $ |\ell \cdot q| \ge c $ in the analogue of~\eqref{eq:nqb}, leading to $ e(q) \sim k_{\F} $. In other words, it includes only momenta at distances $ ||q|-k_{\F}| \sim 1 $ from the Fermi surface, while the present result admits distances as small as $ k_{\F}^{-1} $.
 % (and up to arbitrarily large distances.\\
 
@@ -405,8 +404,7 @@ This agrees with \cite{BL25} up to a factor $ (2 \pi)^3 \kappa $ multiplying $\h
 \end{remarks}
 
 
-
-In our main theorem, Hypothesis~\ref{hyp:Coulomb} on $ V $ is only needed to ensure validity of the ground state energy formula~\eqref{eq:main1}, which readily follows from~\cite{CHN23,CHN24}. Our contribution is to analyse the momentum distribution, which does not require $\hat{V} $ to be radial or decreasing. In doing so, we also extract an exchange contribution, which is analogous to the exchange contribution to $ E_{\GS} $ in~\cite{CHN23,CHN24} and also follows from normal ordering the bosonization errors (see Lemma~\eqref{lem:normalordering_errors}).
+We may further extract an exchange contribution, which is subleading to $ n^{\RPA}(q) $, and analogous to the exchange contribution to $ E_{\GS} $ in~\cite{CHN23,CHN24}:
 \begin{equation} \label{eq:nqex}
 \begin{split}
 	n^{\ex}(q)
@@ -419,7 +417,10 @@ In our main theorem, Hypothesis~\ref{hyp:Coulomb} on $ V $ is only needed to ens
 		(\lambda_{\ell_1,q} + \lambda_{\ell_1,-q+\ell+\ell_1})} \;.
 \end{split}
 \end{equation}
+Just as in~\cite{CHN23,CHN24}, the exchange contribution appears when normal ordering the bosonization errors (see Lemma~\eqref{lem:normalordering_errors}).\\
+Moreover, in our main theorem, Hypothesis~\ref{hyp:Coulomb} on $ V $ is only needed to ensure validity of the ground state energy formula~\eqref{eq:main1}, which readily follows from~\cite{CHN23,CHN24}. Our contribution is to analyse the momentum distribution, which does not require $\hat{V} $ to be radial or decreasing.
 
+ 
 \begin{proposition}[Momentum distribution] \label{prop:main}
 Let $ \Psi_N $ be the trial state defined in~\eqref{eq:Psitrial}--\eqref{eq:T}, as constructed in~\cite{CHN23}, and let Hypothesis~\ref{hyp:alpha} hold with $ \alpha > 0 $. Then, there exist $ C, C_\varepsilon > 0 $, such that for all $ k_{\F} $ and $ q \in \Z^3 $,
 \begin{equation} \label{eq:main_prop_2}
@@ -453,8 +454,8 @@ Once this Proposition is established, the main theorem follows immediately.
 
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
 We choose as $ \Psi_N $ the trial state defined in~\eqref{eq:Psitrial}--\eqref{eq:T}.
-From~\cite[Corr.~1.3]{CHN24}, we know that $ E_{\GS} = E_{\FS} + E_{\corr} + \cO(k_{\F}^{1 - 1/6 + \varepsilon}) $, provided Hypothesis~\ref{hyp:Coulomb} holds, where $ E_{\FS} $ is the Hartree--Fock energy and $ E_{\corr}$ the correlation energy, defined in~\cite[(1.2) and (1.11)]{CHN24}. Moreover, \cite[Thm.~1.1]{CHN23} gives us $ \eva{\Psi_N, H_N \Psi_N} \le E_{\FS} + E_{\corr} + \cO(k_{\F}^{1 - 1/2}) $, hence $ \eva{\Psi_N, H_N \Psi_N} \le E_{\GS} + \cO(k_{\F}^{1 - 1/6+ \varepsilon}) $.
-Proposition~\ref{prop:main} then yields the statement about the momentum distribution.
+From~\cite[Corr.~1.3]{CHN24}, we know that $ E_{\GS} = E_{\FS} + E_{\corr} + \cO(k_{\F}^{1 - 1/6 + \varepsilon}) $, provided Hypothesis~\ref{hyp:Coulomb} holds, where $ E_{\FS} $ is the Hartree--Fock energy and $ E_{\corr}$ the correlation energy, defined in~\cite[(1.2) and (1.11)]{CHN24}. Moreover, \cite[Thm.~1.1]{CHN23} gives us $ \eva{\Psi_N, H_N \Psi_N} \le E_{\FS} + E_{\corr} + \cO(k_{\F}^{1 - 1/2}) $, hence $ \eva{\Psi_N, H_N \Psi_N} \le E_{\GS} + \cO(k_{\F}^{1 - 1/6+ \varepsilon}) $.\\
+Proposition~\ref{prop:main} then yields the statement about the momentum distribution, noticing that Hypothesis~\ref{hyp:Coulomb} implies Hypothesis~\ref{hyp:alpha} with $ \alpha = 1-\varepsilon $.
 \end{proof}
 
 
