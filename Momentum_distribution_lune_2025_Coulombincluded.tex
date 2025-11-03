@@ -355,7 +355,7 @@ Let $ V $ satisfy Hypothesis~\ref{hyp:Coulomb}. Then, for any sequence of $ k_{\
 	\eva{\Psi_N, H_N \Psi_N} - E_{\GS}
 	\le C_\varepsilon k_{\F}^{1-\frac 16 + \varepsilon} \;,
 \end{equation}
-\item and there exist constants $ C, C_\varepsilon > 0 $, depending on $ \hat{V} $, such that for all $ k_{\F} $ and $ q \in \Z^3 $, the momentum distribution in $ \Psi_N $ satisfies
+\item and for $ \varepsilon > 0 $, there exists a $ C_\varepsilon > 0 $, depending on $ \hat{V} $, such that for all $ k_{\F} $ and $ q \in \Z^3 $, the momentum distribution in $ \Psi_N $ satisfies
 \begin{equation} \label{eq:main2}
 	n(q) = \eva{\Psi_N, a_q^* a_q \Psi_N}
 	= \begin{cases}
@@ -441,10 +441,10 @@ If the even stronger Hypothesis~\ref{hyp:ell1} holds, then
 	\lvert \cE(q)\rvert \le C_\varepsilon k_{\F}^{-2 +\varepsilon} e(q)^{-1} \;.
 \end{equation}
 Moreover, the exchange term is controlled by
-\begin{equation}
+\begin{equation} \label{eq:main_prop_exchange}
 	\lvert n^{\ex}(q)\rvert
 	\le \begin{cases}
-		C_\varepsilon k_{\F}^{-1 -\frac{\alpha}{2} + \varepsilon } e(q)^{-1} \quad&\textnormal{for } \sum_{\ell \in \Zstar} |\ell|^{\alpha} \hat{V}(\ell)^2 < \infty \;, \alpha \in (0,2) \\
+		C_\varepsilon k_{\F}^{-1 -\frac{\alpha}{2} + \varepsilon } e(q)^{-1} \quad&\textnormal{for } \sum_{\ell \in \Zstar} |\ell|^{\alpha} \hat{V}(\ell)^2 < \infty \;, \alpha \in (0,2] \\
 		C k_{\F}^{-2} e(q)^{-2} \quad&\textnormal{for } \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty
 	\end{cases} \;.
 \end{equation}
@@ -2527,7 +2527,7 @@ Plugging this bound again into~\eqref{eq:main_errorbound_with_Xi} and taking onl
 	&\sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega}
 	\le C k_{\F}^{-1} e(q)^{-1} \;.
 \end{align}
-Inserting both bounds~\eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} into again into~\eqref{eq:main_errorbound_with_Xi} and optimizing $ \gamma = \frac 13 $ renders the final result~\eqref{eq:main2}.\\
+Inserting both bounds~\eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} into again into~\eqref{eq:main_errorbound_with_Xi} and optimizing $ \gamma = \frac 13 $ renders the final result~\eqref{eq:main_prop_2}.\\
 
 In the special case of Hypothesis~\ref{hyp:ell1} ($ \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty $), Proposition~\ref{prop:finalEmest} provides us with
 \begin{align} \label{eq:main_errorbound_with_Xi_subcoulomb}
@@ -2538,8 +2538,8 @@ In the special case of Hypothesis~\ref{hyp:ell1} ($ \sum_{\ell \in \Zstar} \hat{
 		+ k_{\F}^{-1} \Xi^{1-\varepsilon} \right) \nonumber\\
 	&\quad + e(q)^{-\half} k_{\F}^{-1} \Xi^{\half - \varepsilon} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} \Big) \;.
 \end{align}
-Bounding $ n^{\ex}(q) $, $ \Xi $, and $ \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} $ by Lemma~\ref{lem:estnqex},~\eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} readily yields the improved error bound~\eqref{eq:main_improvederror}.
-%The claim $ |n^{\RPA}(q)| \le C k_{\F}^{-1} e(q)^{-1} $ was proven in Lemma~\ref{lem:nqb_bounds}.
+Bounding $ n^{\ex}(q) $, $ \Xi $, and $ \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} $ by Lemma~\ref{lem:estnqex},~\eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} readily yields the improved error bound~\eqref{eq:main_prop_improvederror}.\\
+The bound~\eqref{eq:main_prop_exchange} was proven in~\eqref{eq:estnqex_Coulomb_1} and~\eqref{eq:estnqex}, where only $ m = 1 $ contributes to $ n^{\ex}(q) $.
 \end{proof}
 
 
