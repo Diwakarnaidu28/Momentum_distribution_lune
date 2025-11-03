@@ -31,7 +31,7 @@
 
 
 
-\title{Momentum Distribution of a Fermi Gas in Sawada's Random Phase Approximation}
+\title{Momentum Distribution of a Fermi Gas with Coulomb Interaction in the Random Phase Approximation}
 
 \author[1,*,***]{Niels Benedikter}
 \author[2,**]{Sascha Lill}
@@ -381,7 +381,7 @@ Let $ V $ satisfy Hypothesis~\ref{hyp:Coulomb}. Then, for any sequence of $ k_{\
 \end{equation}
 with $ n^{\RPA}(q) $ and $ n^{\ex}(q) $ defined in~\eqref{eq:nqb} and~\eqref{eq:nqex}, and where the error term is controlled by
 \begin{equation}
-	\lvert \cE(q)\rvert \le C k_{\F}^{-1 - \frac 16 \alpha} e(q)^{-1} \;.
+	\lvert \cE(q)\rvert \le C k_{\F}^{-1 - \frac 16 +\varepsilon} e(q)^{-1} \;.
 \end{equation}
 If additionally Hypothesis~\ref{hyp:ell1} holds, then the error term is even controlled by
 \begin{equation} \label{eq:main_improvederror}
@@ -403,12 +403,11 @@ By contrast the exchange contribution is bounded by Lemma~\ref{lem:estnqex} as
 \begin{equation}
 	\lvert n^{\ex}(q)\rvert
 	\le \begin{cases}
-		C_\varepsilon k_{\F}^{-1-\frac{\alpha}{2} + \varepsilon } e(q)^{-1} \quad&\textnormal{for } \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty \;, \quad \alpha \in (0,2] \\
+		C_\varepsilon k_{\F}^{-1 -\frac 12 + \varepsilon } e(q)^{-1} \quad&\textnormal{for } \hat{V}(\ell) \le C |\ell|^{-2} \\
 		C k_{\F}^{-2} e(q)^{-2} \quad&\textnormal{for } \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty
 	\end{cases} \;.
 \end{equation}
-This situation is similar to the ground state energy: In~\cite{CHN23,CHN24}, a bosonized and an exchange contribution to $ E_{\textnormal{corr}} $ were extracted, with the exchange contribution gaining significance for singular interaction potentials, just as $ n^{\ex}(q) $ gains significance as $ \alpha $ decreases. And just as for the ground state energy, $ n^{\ex}(q) $ follows from normal ordering bosonization errors (see Lemma~\eqref{lem:normalordering_errors}).\\
-Note that the Coulomb potential corresponds to the case $ \alpha = 1 - \varepsilon $
+This situation is similar to the ground state energy: In~\cite{CHN23,CHN24}, a bosonized and an exchange contribution to $ E_{\textnormal{corr}} $ were extracted, with the exchange contribution gaining significance for singular interaction potentials, just as $ n^{\ex}(q) $ gains significance as $ \alpha $ decreases. And just as for the ground state energy, $ n^{\ex}(q) $ follows from normal ordering bosonization errors (see Lemma~\eqref{lem:normalordering_errors}).
 
 
 \item In~\cite{BL25}, the scaling of the leading term is $ n^{\RPA}(q) \sim k_{\F}^{-2} $ without any $ e(q) $. This is because~\cite{BL25} assumes $ |\ell| \le C $ and $ |\ell \cdot q| \ge c $ in the analogue of~\eqref{eq:nqb}, leading to $ e(q) \sim k_{\F} $. In other words, it includes only momenta at distances $ ||q|-k_{\F}| \sim 1 $ from the Fermi surface, while the present result admits distances as small as $ k_{\F}^{-1} $.
