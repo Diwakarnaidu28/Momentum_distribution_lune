@@ -273,7 +273,7 @@ In this article we are interested in the momentum distribution of states $ \Psi 
 \begin{align}
 	n(q) \coloneq \eva{\Psi, a^*_q a_q \Psi} \;,
 \end{align}
-where $ a_q^*$ and $a_q $ are the fermionic creation and annihilation operators. As the ground state of interacting many-body systems is very difficult to compute, we focus our attention on a trial state $ \Psi_N $ which is expected to capture the ground state's properties at least to the first non-trivial order beyond mean-field theory. This is analogous to the analysis conducted in \cite{BL25} based on the collective bosonization methods of \cite{BNPSS20,BNPSS21}, however we now consider the ``patchless'' trial state of~\cite{CHN23}. As long as the analysis of the true ground state remains elusive, we believe that studying two different constructions of low-energy states and obtaining consistent expressions for the momentum distribution adds plausability to the conjecture that the obtained momentum distribution is actually close to the one of the true ground state. Both methods, that of \cite{BL25} and \cite{CHN23}, are based on the idea of considering particle--hole pairs as approximately bosonic quasiparticles. The approach of \cite{BNPSS20,BNPSS21}, based on collective degrees of freedom averaged over patches on the Fermi surface, leads to estimates with a more pronounced bosonic nature; the approach of \cite{CHN23} avoids the use of cutoffs which in \cite{BL25} somewhat obscured the result at momenta very close to the Fermi surface.
+where $ a_q^*$ and $a_q $ are the fermionic creation and annihilation operators. As the ground state of interacting many-body systems is very difficult to compute, we focus our attention on a trial state $ \Psi_N $ which is expected to capture the ground state's properties at least to the first non-trivial order beyond mean-field theory. This is analogous to the analysis conducted in \cite{BL25} based on the collective bosonization methods of \cite{BNPSS20,BNPSS21}, however we now consider the ``patchless'' trial state of~\cite{CHN23}. As long as the analysis of the true ground state remains elusive, we believe that studying two different constructions of low-energy states and obtaining consistent expressions for the momentum distribution adds plausibility to the conjecture that the obtained momentum distribution is actually close to the one of the true ground state. Both methods, that of \cite{BL25} and \cite{CHN23}, are based on the idea of considering particle--hole pairs as approximately bosonic quasiparticles. The approach of \cite{BNPSS20,BNPSS21}, based on collective degrees of freedom averaged over patches on the Fermi surface, leads to estimates with a more pronounced bosonic nature; the approach of \cite{CHN23} avoids the use of cutoffs which in \cite{BL25} somewhat obscured the result at momenta very close to the Fermi surface.
 
 In the non-interacting case ($ V=0 $), the ground state is given by a Slater determinant of $ N $ plane waves (which we also call the Fermi ball state)
 \begin{equation}
@@ -405,7 +405,7 @@ For comparison, in~\cite{BL25}, the scaling of the leading term is $ n^{\RPA}(q)
 
 
 
-\item In analogy to~\cite[Section~1.1]{BL25} we may approximate $ \lambda_{\ell,q} \approx \kF |\ell| |\hat{\ell} \cdot \hat{q}| $ with $ \hat{q} := {q}/{|q|} $, then set $ \mu := t \kF |\ell| $ and formally take the continuum limit $ \sum_{p \in L_\ell} \approx \int_{L_\ell} \di p $ and $ \sum_\ell \approx \int \di \ell $. The result is
+\item In analogy to~\cite[Section~1.1]{BL25} we may approximate $ \lambda_{\ell,q} \approx \kF |\ell| |\hat{\ell} \cdot \hat{q}| $ with $ \hat{q} := {q}/{|q|} $, then substitute $ \mu := t \kF |\ell| $ and formally take the continuum limit $ \sum_{p \in L_\ell} \approx \int_{L_\ell} \di p $ and $ \sum_\ell \approx \int \di \ell $. The result is
 \begin{align*}
 	n^{\RPA}(q)
 	&\approx \int_{\R^3} \di \ell \; \mathds{1}_{L_{\ell}}(q) \; \frac{\hat{V}(\ell) \kF^{-2}}{(2 \pi)^4 |\ell|}
@@ -538,7 +538,7 @@ where $ T: \cF \to \cF $ is another unitary operator motivated as follows: We ex
 The constraint on $ (p,k) $ can be written as $ p \in L_k $.
 % , where we recall $ L_k = B_{\F}^c \cap (B_{\F} + k) $.
 % with $ L_{-k} = - L_k $.
-The Hamiltonian can be particle-hole transformed to extract explictly the mean-field contributions $E_{\FS}$ \cite[Eqs.~(1.2) and (1.11)]{CHN24} to its ground state energy
+The Hamiltonian can be particle-hole transformed to extract explicitly the mean-field contributions $E_{\FS}$ \cite[Eqs.~(1.2) and (1.11)]{CHN24} to its ground state energy
 \begin{equation}
    R^* \Hcal_N R = E_{\FS} + H_{\Bog} + \textnormal{non-bosonizable terms}
 \end{equation}
@@ -572,7 +572,7 @@ with the Bogoliubov kernel
 		h(\ell)^{-\half} \Big) \;.
 \end{equation}
 (The exponent $ S $ corresponds to $ R^* \cK R $ in the notation of~\cite{CHN23} since we prefer to use a particle-hole transformation instead of the normal ordering with respect to the Fermi ball state.)
-One observes that $K(\ell)$ is a symmetric matrix and moreover posesses the reflection invariance $ K(-\ell)_{-p,-q} = K(\ell)_{p,q} $.
+One observes that $K(\ell)$ is a symmetric matrix and moreover possesses the reflection invariance $ K(-\ell)_{-p,-q} = K(\ell)_{p,q} $.
 % This concludes the definition of the trial state.
 
 
@@ -2332,7 +2332,8 @@ where we used~\eqref{eq:lambdainverse}. Likewise, for $ \II $ with $ \lambda_{\e
 	\sum_{r \in L_\ell} e(r)^{-1}
 	\leq C^m C_\varepsilon \kF^{-\frac 32 + \varepsilon} e(q)^{-\frac 32} \;,
 \end{align}
-where in the last line, we used~\eqref{eq:lambdainverse}. Summing over $ j $, with $ \sum_{0 \le j \le m} {{m}\choose j} = 2^m $, concludes the estimate for $ \II $ and thus~\eqref{eq:estnqex_Coulomb} for $ m > 1 $.\\
+where in the last line, we used~\eqref{eq:lambdainverse}. Summing over $ j $, with $ \sum_{0 \le j \le m} {{m}\choose j} = 2^m $, concludes the estimate for $ \II $ and thus~\eqref{eq:estnqex_Coulomb} for $ m > 1 $.
+
 For $ m = 1 $, we bound the difference between $ n^{\ex}(q) $~\eqref{eq:nqex} and $ \frac 14 n^{\ex,1}(q) $~\eqref{eq:nqexm} by Lemma~\ref{lem:extract_nqex} and~\eqref{eq:K_element_bounds}, using that both terms are symmetric under exchange $ \ell \leftrightarrow \ell_1 $:
 \begin{align*}
 	\abs{n^{\ex}(q) - \frac 14 n^{\ex,1}(q)}
@@ -2541,7 +2542,7 @@ We estimate the $ E_m(P^q) $-term by Proposition~\ref{prop:finalEmest}, noting t
 		+ \kF^{-1+\varepsilon} \Xi^\half \right) \nonumber\\
 	&\quad + e(q)^{-\half} \kF^{-1} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega}^{\half} \Big) \;.
 \end{align}
-To control $ \Xi = \sup_{q \in \Z^3} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{- \lambda S} \Omega} $, observe that \eqref{eq:main_errorbound_with_Xi} holds uniformly in $ q \in B_{\F}^c $, and it is not difficult to show that it remains true for $ q \in B_{\F} $ or with $ S $ replaced by $ \lambda S $ with $ \lambda \in [0,1] $. Moreover $ e(q) \ge \half $ and evidently, $ \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} \le \Xi $. So setting $ \gamma = 0 $ in~\eqref{eq:main_errorbound_with_Xi}, taking the supremum over $ q \in \Z^3 $ and $ \lambda \in [0,1] $, and bounding $ n^{\RPA}(q) $ and $ n^{\ex}(q) $ by Lemmas~\ref{lem:nqb_bounds} and~\ref{lem:estnqex}, we get
+To estimate $ \Xi = \sup_{q \in \Z^3} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{- \lambda S} \Omega} $, observe that \eqref{eq:main_errorbound_with_Xi} holds uniformly in $ q \in B_{\F}^c $, and it is not difficult to show that it remains true for $ q \in B_{\F} $ or with $ S $ replaced by $ \lambda S $ with $ \lambda \in [0,1] $. Moreover $ e(q) \ge \half $ and evidently, $ \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} \le \Xi $. So setting $ \gamma = 0 $ in~\eqref{eq:main_errorbound_with_Xi}, taking the supremum over $ q \in \Z^3 $ and $ \lambda \in [0,1] $, and bounding $ n^{\RPA}(q) $ and $ n^{\ex}(q) $ by Lemmas~\ref{lem:nqb_bounds} and~\ref{lem:estnqex}, we get
 \begin{align} \label{eq:Xibound}
 	\Xi
 	&\le \sup_{q \in \Z^3} n^{\RPA}(q)
