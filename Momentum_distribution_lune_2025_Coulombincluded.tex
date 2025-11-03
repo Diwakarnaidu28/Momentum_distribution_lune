@@ -327,21 +327,7 @@ For $ q \in B_{\F} $, we analogously have
 	n^{\RPA}(q) & 	\coloneq \sum_{\ell \in \Zstar}\mathds{1}_{L_{\ell}}(q+\ell) \; \frac{1}{\pi}\int_0^\infty \frac{g_\ell (t^2-\lambda^2_{\ell,q+\ell}) (t^2 + \lambda^2_{\ell,q+\ell})^{-2}}{1 + 2g_\ell \sum_{p \in L_{\ell}}\lambda_{\ell,p} (t^2+\lambda^2_{\ell,p})^{-1}} \mathrm{d}t \;.
 \end{split}
 \end{equation}
-Therefore $ n^{\RPA}(q) $ represents the deviation of $ n(q) $ from the indicator function $ \mathds{1}_{B_{\F}}(q) $ we found in the non-interacting case.\\
-For more singular interaction potentials, we find that $ n^{\RPA}(q) $ is to be corrected by an exchange contribution
-\begin{equation} \label{eq:nqex}
-\begin{split}
-	n^{\ex}(q)
-	\coloneq 
-	\frac{k_{\F}^{-2}}{4 (2 \pi)^6} \sum_{\ell,\ell_1 \in \Zstar}
-		\frac{ \mathds{1}_{L_\ell \cap L_{\ell_1} \cap (-L_{\ell}+\ell+\ell_1) \cap (-L_{\ell_1}+\ell+\ell_1)}(q)
-		\hat{V}(\ell)
-		\hat{V}(\ell_1)}
-		{(\lambda_{\ell,q} + \lambda_{\ell,-q+\ell+\ell_1})
-		(\lambda_{\ell_1,q} + \lambda_{\ell_1,-q+\ell+\ell_1})} \;.
-\end{split}
-\end{equation}
-The scaling of $ n^{\RPA}(q) $, $ n^{\ex}(q) $, and the error terms will depend on
+Therefore $ n^{\RPA}(q) $ represents the deviation of $ n(q) $ from the indicator function $ \mathds{1}_{B_{\F}}(q) $ we found in the non-interacting case. The scaling of $ n^{\RPA}(q) $ and the error terms will depend on
 \begin{equation} \label{eq:eq}
 	e(q)
 	\coloneq \abs{|q|^2 - \inf_{p \in B_{\F}^c} |p|^2 + \half} \;.
@@ -373,13 +359,13 @@ Let $ V $ satisfy Hypothesis~\ref{hyp:Coulomb}. Then, for any sequence of $ k_{\
 \begin{equation} \label{eq:main2}
 	n(q) = \eva{\Psi_N, a_q^* a_q \Psi_N}
 	= \begin{cases}
-	n^{\RPA}(q) + n^{\ex}(q) + \cE(q) & \quad
+	n^{\RPA}(q) + \cE(q) & \quad
 		\textnormal{for } |q| \ge k_{\F} \\
-	1 - n^{\RPA}(q) - n^{\ex}(q) + \cE(q) & \quad
+	1 - n^{\RPA}(q) + \cE(q) & \quad
 		\textnormal{for } |q| < k_{\F} 
 	\end{cases}
 \end{equation}
-with $ n^{\RPA}(q) $ and $ n^{\ex}(q) $ defined in~\eqref{eq:nqb} and~\eqref{eq:nqex}, and where the error term is controlled by
+with $ n^{\RPA}(q) $ defined in~\eqref{eq:nqb}, and where the error term is controlled by
 \begin{equation}
 	\lvert \cE(q)\rvert \le C k_{\F}^{-1 - \frac 16 +\varepsilon} e(q)^{-1} \;.
 \end{equation}
@@ -396,24 +382,14 @@ If additionally Hypothesis~\ref{hyp:ell1} holds, then the error term is even con
 
 \item In Lemma~\ref{lem:nqb_bounds}, we show that the bosonization contribution is bounded by
 \begin{equation}
-	\lvert n^{\RPA}(q)\rvert \le C k_{\F}^{-1} e(q)^{-1} \;.
+	\lvert n^{\RPA}(q)\rvert \le C k_{\F}^{-1} e(q)^{-1} \;,
 \end{equation}
-%Moreover, we show that this scaling is sharp, in the sense that there exist $ V $ and $ q $ for which $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $. \todo{Make sure that $ n^{\RPA}(q) \ge c k_{\F}^{-1} e(q)^{-1} $ is true.}
-By contrast the exchange contribution is bounded by Lemma~\ref{lem:estnqex} as
-\begin{equation}
-	\lvert n^{\ex}(q)\rvert
-	\le \begin{cases}
-		C_\varepsilon k_{\F}^{-1 -\frac 12 + \varepsilon } e(q)^{-1} \quad&\textnormal{for } \hat{V}(\ell) \le C |\ell|^{-2} \\
-		C k_{\F}^{-2} e(q)^{-2} \quad&\textnormal{for } \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty
-	\end{cases} \;.
-\end{equation}
-This situation is similar to the ground state energy: In~\cite{CHN23,CHN24}, a bosonized and an exchange contribution to $ E_{\textnormal{corr}} $ were extracted, with the exchange contribution gaining significance for singular interaction potentials, just as $ n^{\ex}(q) $ gains significance as $ \alpha $ decreases. And just as for the ground state energy, $ n^{\ex}(q) $ follows from normal ordering bosonization errors (see Lemma~\eqref{lem:normalordering_errors}).
+which we expect to be optimal in the mean-field scaling.\\
 
-
-\item In~\cite{BL25}, the scaling of the leading term is $ n^{\RPA}(q) \sim k_{\F}^{-2} $ without any $ e(q) $. This is because~\cite{BL25} assumes $ |\ell| \le C $ and $ |\ell \cdot q| \ge c $ in the analogue of~\eqref{eq:nqb}, leading to $ e(q) \sim k_{\F} $. In other words, it includes only momenta at distances $ ||q|-k_{\F}| \sim 1 $ from the Fermi surface, while the present result admits distances as small as $ k_{\F}^{-1} $.
+For comparison, in~\cite{BL25}, the scaling of the leading term is $ n^{\RPA}(q) \sim k_{\F}^{-2} $ without any $ e(q) $. This is because~\cite{BL25} assumes $ |\ell| \le C $ and $ |\ell \cdot q| \ge c $ in the analogue of~\eqref{eq:nqb}, leading to $ e(q) \sim k_{\F} $. In other words, it includes only momenta at distances $ ||q|-k_{\F}| \sim 1 $ from the Fermi surface, while the present result admits distances as small as $ k_{\F}^{-1} $.
 % (and up to arbitrarily large distances.\\
 
-To study the momentum distribution even closer to the Fermi surface, one would need to increase the size of the torus to refine the momentum lattice. It is expected \cite{DV60} that the analogue of $ n^{\RPA}(q) $ in continuous momentum space scales like $ \lim_{||q|-k_{\F}| \to \pm 0} n^{\RPA}(q) \sim k_{\F}^{-1} $ at the Fermi surface. We therefore expect that for a large-volume limit, $ e(q)^{-1} $ both in the leading term and in the error estimate can be replaced by $ (e(q)+1)^{-1} $.
+%To study the momentum distribution even closer to the Fermi surface, one would need to increase the size of the torus to refine the momentum lattice. It is expected \cite{DV60} that the analogue of $ n^{\RPA}(q) $ in continuous momentum space scales like $ \lim_{||q|-k_{\F}| \to \pm 0} n^{\RPA}(q) \sim k_{\F}^{-1} $ at the Fermi surface. We therefore expect that for a large-volume limit, $ e(q)^{-1} $ both in the leading term and in the error estimate can be replaced by $ (e(q)+1)^{-1} $.
 
 
 
@@ -430,7 +406,19 @@ This agrees with \cite{BL25} up to a factor $ (2 \pi)^3 \kappa $ multiplying $\h
 
 
 
-In our main theorem, Hypothesis~\ref{hyp:Coulomb} on $ V $ is only needed to ensure validity of the ground state energy formula~\eqref{eq:main1}, which readily follows from~\cite{CHN23,CHN24}. Our contribution is to analyse the momentum distribution, which does not require $\hat{V} $ to be radial or decreasing.
+In our main theorem, Hypothesis~\ref{hyp:Coulomb} on $ V $ is only needed to ensure validity of the ground state energy formula~\eqref{eq:main1}, which readily follows from~\cite{CHN23,CHN24}. Our contribution is to analyse the momentum distribution, which does not require $\hat{V} $ to be radial or decreasing. In doing so, we also extract an exchange contribution, which is analogous to the exchange contribution to $ E_{\GS} $ in~\cite{CHN23,CHN24} and also follows from normal ordering the bosonization errors (see Lemma~\eqref{lem:normalordering_errors}).
+\begin{equation} \label{eq:nqex}
+\begin{split}
+	n^{\ex}(q)
+	\coloneq 
+	\frac{k_{\F}^{-2}}{4 (2 \pi)^6} \sum_{\ell,\ell_1 \in \Zstar}
+		\frac{ \mathds{1}_{L_\ell \cap L_{\ell_1} \cap (-L_{\ell}+\ell+\ell_1) \cap (-L_{\ell_1}+\ell+\ell_1)}(q)
+		\hat{V}(\ell)
+		\hat{V}(\ell_1)}
+		{(\lambda_{\ell,q} + \lambda_{\ell,-q+\ell+\ell_1})
+		(\lambda_{\ell_1,q} + \lambda_{\ell_1,-q+\ell+\ell_1})} \;.
+\end{split}
+\end{equation}
 
 \begin{proposition}[Momentum distribution] \label{prop:main}
 Let $ \Psi_N $ be the trial state defined in~\eqref{eq:Psitrial}--\eqref{eq:T}, as constructed in~\cite{CHN23}, and let Hypothesis~\ref{hyp:alpha} hold with $ \alpha > 0 $. Then, there exist $ C, C_\varepsilon > 0 $, such that for all $ k_{\F} $ and $ q \in \Z^3 $,
@@ -450,6 +438,14 @@ where the error term is controlled by
 If the even stronger Hypothesis~\ref{hyp:ell1} holds, then
 \begin{equation} \label{eq:main_prop_improvederror}
 	\lvert \cE(q)\rvert \le C_\varepsilon k_{\F}^{-2 +\varepsilon} e(q)^{-1} \;.
+\end{equation}
+Moreover, the exchange term is controlled by
+\begin{equation}
+	\lvert n^{\ex}(q)\rvert
+	\le \begin{cases}
+		C_\varepsilon k_{\F}^{-1 -\frac{\alpha}{2} + \varepsilon } e(q)^{-1} \quad&\textnormal{for } \sum_{\ell \in \Zstar} |\ell|^{\alpha} \hat{V}(\ell)^2 < \infty \;, \alpha \in (0,2) \\
+		C k_{\F}^{-2} e(q)^{-2} \quad&\textnormal{for } \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty
+	\end{cases} \;.
 \end{equation}
 \end{proposition}
 
