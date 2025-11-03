@@ -515,9 +515,9 @@ These operators satisfy the canonical anticommutation relations (CAR)
 Moreover they are bounded in operator norm by $ \Vert a_q^* \Vert \leq 1$ and $\Vert a_q \Vert \le 1 $.
 
 The Hamiltonian may be easily generalized to Fock space by letting $H_n$ act on the $n$-particle sectors $L^2(\T^3)^{\bigwedge n}$ independently for each $n \in  \Nbb$. The advantage of this approach is that we can now construct vectors $\Psi_N \in L^2(\T^3)^{\bigwedge N} \subset \fock$ as well as represent operators using creation and annihilation operators, which admits a convenient way of evaluating expectation values.
-In fact, the generalization of the Hamiltonian to Fock space can be written as \todo{check convention of normalization constant}
+In fact, the generalization of the Hamiltonian to Fock space can be written as
 \begin{equation}
-\Hcal_N = \sum_{p \in \Zbb^3} \lvert p\rvert^2 a^*_p a_p + \frac{1}{\kF^{-1} (2\pi)^3}\sum_{k,p,q \in \Zbb^3} \hat{V}(k) a^*_{p+k} a^*_{q-k} a_q a_k\;.
+\Hcal_N = \sum_{p \in \Zbb^3} \lvert p\rvert^2 a^*_p a_p + \frac{\kF^{-1}}{2 (2\pi)^3}\sum_{k,p,q \in \Zbb^3} \hat{V}(k) a^*_{p+k} a^*_{q-k} a_q a_k\;.
 \end{equation}
 Note that $\Hcal_N$ still depends on $N$ through the coupling constant $\kF^{-1}$, which remains independent of the Fock space sector.
 
