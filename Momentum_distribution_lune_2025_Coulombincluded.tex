@@ -581,13 +581,13 @@ The matrix $K(\ell)$ is symmetric and possesses the reflection invariance $ K(-\
 
 In this section we expand the momentum distribution $ \langle \Psi_N, a_q^* a_q \Psi_N \rangle $ of the trial state $ \Psi_N = R e^{-S} \Omega $ constructed in the previous section. In the expansion we identify the explicit contributions of $ n^{\RPA}(q) $ and $ n^{\ex}(q) $.
 
-The particle--hole transformation $ R $ acts in a simple way: By~\eqref{eq:R} we have
+The particle--hole transformation $ R $ acts in a simple way: by~\eqref{eq:R} we have
 \begin{equation} \label{eq:momentum_dist_R_trafo}
 	R^* a_q^* a_q R
 	= \mathds{1}_{B_{\F}}(q) \big( 1 - a_q^* a_q  \big)
 		+ \mathds{1}_{B_{\F}^c}(q)  a_q^* a_q \;.
 \end{equation}
-So it suffices to consider the excitation vector $ \xi \coloneq e^{-S} \Omega $ and to compute the excitation distribution $ \langle \xi, a_q^* a_q \xi \rangle $. The fundamental theorem of calculus implies the Duhamel formula
+So it suffices to consider the excitation vector $ \xi \coloneq e^{-S} \Omega $ and  compute the excitation distribution $ \langle \xi, a_q^* a_q \xi \rangle $. The fundamental theorem of calculus implies the Duhamel formula
 \begin{equation} \label{eq:duhamelexpansion_blueprint}
 \begin{aligned}
 	e^{S} a_q^* a_q e^{-S}
@@ -600,25 +600,25 @@ So it suffices to consider the excitation vector $ \xi \coloneq e^{-S} \Omega $ 
 % 		+ \int_0^1 \di \lambda_1 \int_0^{\lambda_1} \di \lambda_2 \langle \Omega, e^{\lambda_2 S} [S,[S, a_q^* a_q]] e^{-\lambda_2 S} \Omega \rangle \;.
 \end{aligned}
 \end{equation}
-Iterating this formula leads to the series expansion given in Proposition~\ref{prop:finexpan}, the main result of this section. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n^{\RPA}(q) $ as the terms that could be expected treating the pair operators as exactly bosonic, similarly as in~\cite{BL25}. The term $ n^{\ex}(q) $ instead appears when normal ordering the remaining terms.
+Iterating this formula leads to the series expansion in Proposition~\ref{prop:finexpan}, the main result of this section. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n^{\RPA}(q) $ as the terms that could be expected treating the pair operators as exactly bosonic, similarly to~\cite{BL25}. The term $ n^{\ex}(q) $ instead appears when normal ordering the remaining terms.
 
 
 
 \subsection{Extraction of the Bosonized Contribution}
 \label{sec:extraction_bos}
 
-To compute the multicommutators in~\eqref{eq:duhamelexpansion_blueprint} we use the CAR, which will produce quadratic quasi-bosonic expressions, for which we adopt notation similar to~\cite{CHN21}.
+To compute the multicommutators in~\eqref{eq:duhamelexpansion_blueprint} we use the CAR, which will produce quadratic quasi-bosonic expressions.
 
 \begin{definition} \label{def:Q}
 Let $A=(A(\ell))_{\ell \in \Zstar} $ be a family of symmetric operators with $A(\ell): \ell^2(L_\ell)\rightarrow \ell^2(L_\ell)$. The quadratic quasi-bosonic operators are given by
 \begin{equation} %\label{eq:Q}
-\begin{aligned}
+\begin{split}
 	Q_1(A)&\coloneq 2 \sum_{\ell \in \Zstar}\sum_{r,s \in L_{\ell}}A(\ell)_{r,s} b^*_r(\ell)b_{s}(\ell) \;,\\
 	Q_2(A)&\coloneq \sum_{\ell \in \Zstar}\sum_{r,s \in L_{\ell}}A(\ell)_{r,s} \left(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell)\right) \;.
-\end{aligned}
+\end{split}
 \end{equation} 
 \end{definition}
-Our $ Q_1 $ corresponds to $ 2 \tilde Q_1 $ in~\cite{CHN21}, while the definition of $ Q_2 $ is identical to \cite{CHN21}. (Due to the particle-hole transformation, our $ a_p $ agrees with $ R^* c_p R $ in~\cite{CHN21,CHN23,CHN24}.) The pair operators satisfy the following approximate CCR (compare to \cite[(1.66)]{CHN21}):
+Our $ Q_1 $ corresponds to $ 2 \tilde Q_1 $ in~\cite{CHN21}, while the definition of $ Q_2 $ is identical to \cite{CHN21}. (Due to the particle-hole transformation, our $ a_p $ agrees with $ R^* c_p R $ in~\cite{CHN21,CHN23,CHN24}.) The pair operators satisfy the following approximate CCR (compare to \cite[(1.66)]{CHN21} and \cite[Lemma~4.1]{BNPSS20}):
 
 \begin{lemma}[Approximate CCR]\label{lem:paircomm}
 For $k,\ell \in \Zstar$ and $p \in L_{k}$, $q\in L_{\ell}$, we have
@@ -633,15 +633,15 @@ For $k,\ell \in \Zstar$ and $p \in L_{k}$, $q\in L_{\ell}$, we have
 	\epsilon_{p,q}(k,\ell)
 	\coloneq -\left(\delta_{p,q}a^*_{q-\ell}a_{p-k} + \delta_{p-k,q-\ell}a^*_{q}a_{p}\right) \;.
 \end{equation}
-We have
+The error operator satisfies
 \begin{equation}
 \epsilon_{p,q}(\ell,k) = \epsilon^*_{q,p}(k,\ell) \qquad \text{and} \qquad \epsilon_{p,p}(k,k)\leq 0 \;.
 \end{equation}
 \end{lemma}
-The proof is a simple computation with the CAR. As a consequence we obtain the following lemma.
+The proof is a computation with the CAR. As a consequence we obtain the next lemma.
 
 \begin{lemma}[Commutators of $S $ and $b^*_p(k)$]
-For $k \in \Zstar$ and $p \in L_k$ we have
+Let the operator $S$ be defined as in \eqref{eq:T}. For $k \in \Zstar$ and $p \in L_k$ we have
 \begin{equation} \label{eq:comm_Kb}
 	[S, b^*_p(k)]
 	= \sum_{s\in L_{k}}K(k)_{p,s}b_{-s}(-k)
@@ -688,8 +688,8 @@ with the family $ \{A,K\} = (\{A(\ell),K(\ell)\})_{\ell \in \Zstar} $ and with t
 To simplify the expansion, we introduce the $n$-fold anticommutator
 \begin{equation} \label{eq:Theta}
 	\Theta_K^n (A)
-	\coloneq \{ K, \Theta_K^{n-1} (A) \} \;, \qquad
-	\textnormal{with }
+	\coloneq \{ K, \Theta_K^{n-1} (A) \} \qquad
+	\textnormal{with} \qquad
 	\Theta_K^0 (A)
 	\coloneq A \;,
 \end{equation}
@@ -720,14 +720,14 @@ For $q \in B^c_{\F}$ we have
 	&\quad +\half \int_{\Delta^n} \di^n\underline{\lambda} \;
 		\eva{\Omega, e^{\lambda_n S}Q_{\sigma(n)}(\Theta^n_{K}(P^q)) e^{-\lambda_n S} \Omega} \;,
 \end{align}
-where $ \sigma(n) = 1 $ if $n$ is even and $ \sigma(n) = 2 $ if $n$ is odd, and with the error operator
+where $ \sigma(n) = 1 $ if $n$ is even and $ \sigma(n) = 2 $ if $n$ is odd, and the error operator is
 \begin{equation}\label{eq:errEm}
 	E_m(P^q) \coloneq \int_{\Delta^{m+1}} \di^{m+1} \underline{\lambda} \;
 		e^{\lambda_{m+1} S} E_{Q_{\sigma(m)}}\left(\Theta^{m}_{K}(P^q)\right) e^{-\lambda_{m+1} S} \;.
 \end{equation}
 \end{proposition}
 
-In Lemma~\ref{lem:nqb_integralrecovery}, we will see that the first term on the r.~h.~s. of~\eqref{eq:finexpan} converges to $ n^{\RPA}(q) $ as $ n \to \infty $. $ n^{\ex}(q) $ follows from the normal ordering constant of the second term, and all other terms are errors, which we estimate.
+In Lemma~\ref{lem:nqb_integralrecovery}, we will see that the first term on the r.~h.~s. of~\eqref{eq:finexpan} converges to $ n^{\RPA}(q) $ as $ n \to \infty $. The exchange contribution $ n^{\ex}(q) $ emerges by normal ordering the second term. The other terms are remainders that we will estimate.
 
 
 \begin{proof}
@@ -759,7 +759,7 @@ We then iteratively Duhamel-expand the $ Q_1$-- and $ Q_2 $--terms using Lemma~\
 		+ \int_0^{\lambda} \di \lambda' e^{\lambda' S} E_{Q_2}(A) e^{-\lambda' S} \\
 	&\quad + \lambda \sum_{\ell \in \Zstar} \sum_{r \in L_{\ell}} \big\{ A(\ell), K(\ell) \big\}_{r,r} \;. \tagg{eq:expand}
 \end{align*}
-The $ E_{Q_1}$-- and $ E_{Q_2} $--terms are not expanded further but collected in $ E_m(P^q) $, while the $ \{A,K\} $-terms are the leading-order. The result after $ n $ steps is
+The $ E_{Q_1}$-- and $ E_{Q_2} $--terms are not expanded further but collected in $ E_m(P^q) $. The term on the last line can be written as a trace and constitutes the leading order (the random phase approximation). The result after $ n $ expansion steps is
 \begin{align}
 	&e^{S} (a_q^* a_q + a_{-q}^* a_{-q}) e^{-S} \nonumber\\
 	&= a_q^* a_q + a_{-q}^* a_{-q}
@@ -778,7 +778,7 @@ In the vacuum expectation value, $ a_q^* a_q + a_{-q}^* a_{-q} $ and the $ Q_{\s
 	&\quad + \half \int_{\Delta^n} \di^n \underline{\lambda} \;
 		\langle \Omega, e^{\lambda_n S}Q_{\sigma(n)}(\Theta^n_{K}(\tilde{P}^q)) e^{-\lambda_n S} \Omega \rangle \;.
 \end{align}
-Using reflection symmetry, we may replace $ \tilde{P}^q $ by $ P^q $ and restrict to $ q \in L_\ell $ because $ q \notin L_\ell$ implies $P^q(\ell) = 0 $. The result follows since by cyclicity of the trace $ \mathrm{Tr} \big(\Theta^m_{K(\ell)} \big( P^q(\ell) \big) \big) = ((2K(\ell))^m)_{q,q} $.
+Using reflection symmetry, we may replace $ \tilde{P}^q $ by $ P^q $ and restrict to $ q \in L_\ell $ because $ q \notin L_\ell$ implies $P^q(\ell) = 0 $. The result follows since by cyclicity $ \mathrm{Tr} \big(\Theta^m_{K(\ell)} \big( P^q(\ell) \big) \big) = ((2K(\ell))^m)_{q,q} $.
 \end{proof}
 
 
@@ -789,7 +789,7 @@ Using reflection symmetry, we may replace $ \tilde{P}^q $ by $ P^q $ and restric
 \subsection{Normal Ordering the Error Operators}
 \label{sec:extraction_ex}
 
-To be able to $ E_{Q_1} $ and $ E_{Q_2} $, we need to normal-order them. As a by-product, we extract the exchange contribution $ n^{\ex}(q) $.
+To be able to estimate $ E_{Q_1} $ and $ E_{Q_2} $, we need to normal order them first. As a by-product, we extract the exchange contribution $ n^{\ex}(q) $.
 
 \begin{lemma}[Normal ordering many-body errors] \label{lem:normalordering_errors}
 Recall the definition~\eqref{eq:errKQ} of $ E_{Q_1} $ and $ E_{Q_2} $. Then, for $ m \in \NNN $ and $ q \in B_{\F}^c $, we may write
@@ -798,7 +798,7 @@ Recall the definition~\eqref{eq:errKQ} of $ E_{Q_1} $ and $ E_{Q_2} $. Then, for
 	E_{Q_1}(\Theta^m_{K}(P^q)) &
 	= \sum_{j=1}^3 E_{Q_1}^{m,j}(q) + \mathrm{h.c.} \;, \\
 	E_{Q_2}(\Theta^m_{K}(P^q)) &
-	= \Bigg( \sum_{j=1}^{11} E_{Q_2}^{m,j}(q) \Bigg) + \mathrm{h.c.} + n^{\ex,m}(q) \;,
+	= \bigg( \sum_{j=1}^{11} E_{Q_2}^{m,j}(q)  + \mathrm{h.c.} \bigg) + n^{\ex,m}(q) \;,
 \end{split}
 \end{equation}
 with
@@ -814,6 +814,7 @@ with
 	&\coloneq  2 \sum_{\ell, \ell_1\in \Zstar}\sum_{\substack{r\in L_{\ell} \cap L_{\ell_1} \cap (-L_{\ell_1}+\ell+\ell_1)\\ s \in L_{\ell}}} \Theta^m_{K}(P^q)(\ell)_{r,s}K(\ell_1)_{r,-r+\ell+\ell_1} b^*_{s}(\ell) a^*_{r-\ell_1}a^*_{r-\ell-\ell_1} \;, \label{eq:expandedEQ1}
 \end{align}
 and
+\allowdisplaybreaks
 \begin{align}
 	E_{Q_2}^{m,1}(q)
 	&\coloneq 2\sum_{\ell,\ell_1 \in \Zstar}\sum_{\substack{r\in L_{\ell} \cap L_{\ell_1}\\ s \in L_{\ell},\,s_1\in L_{\ell_1}}} \Theta^m_{K}(P^q)(\ell)_{r,s}K(\ell_1)_{r,s_1} a^*_{r-\ell_1}b^*_{-s_1}(-\ell_1)b_{-s}(-\ell)a_{r-\ell} \;, \nonumber\\
@@ -838,6 +839,7 @@ and
 	E_{Q_2}^{m,11}(q)
 	&\coloneq \sum_{\ell \in \Zstar} \sum_{r\in L_{\ell}}\Theta^{m+1}_{K}(P^q)(\ell)_{r,r} a^*_{r}a_{r} \;, \label{eq:expandedEQ2}
 \end{align}
+\allowdisplaybreaks[1]
 as well as
 \begin{align}
 	n^{\ex,m}(q)
@@ -849,7 +851,7 @@ Follows by a lengthy but straightforward computation with the CAR. (Alternativel
 \end{proof}
 
 Note that the exchange contribution~\eqref{eq:nqex} follows as $ n^{\ex}(q) \approx \frac 14 n^{\ex,1}(q) $, see Lemma~\ref{lem:estnqex}.
-
+\todo{What about the higher orders of the exchange contribution?}
 
 
 
