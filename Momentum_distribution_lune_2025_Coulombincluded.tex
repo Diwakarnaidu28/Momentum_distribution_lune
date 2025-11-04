@@ -540,7 +540,7 @@ The constraint on $ (p,k) $ can be written as $ p \in L_k $.
 % with $ L_{-k} = - L_k $.
 The Hamiltonian can be particle-hole transformed to extract explicitly the mean-field contributions $E_{\FS}$ \cite[Eqs.~(1.2) and (1.11)]{CHN24} to its ground state energy
 \begin{equation}
-   R^* \Hcal_N R = E_{\FS} + H_{\Bog} + \textnormal{non-bosonizable terms}
+   R^* \Hcal_N R = E_{\FS} + H_{\Bog} + \textnormal{non-bosonizable remainders}
 \end{equation}
 with the bosonizable Bogoliubov-type Hamiltonian (compare \cite[(1.34)]{CHN23})
 \begin{equation} \label{eq:HBog}
@@ -567,12 +567,12 @@ The matrix $ P(k) $ is rank-one and can also be written as
 \end{equation}
 with the Bogoliubov kernel
 \begin{equation} \label{eq:K}
-	K(\ell) \coloneq - \half \log \Big( h(\ell)^{-\half}
-		\big( h(\ell)^{\half} \big( h(\ell) + 2 P(\ell) \big)^{\half} h(\ell)^{\half}\big)^{\half}
-		h(\ell)^{-\half} \Big) \;.
+	K(\ell) \coloneq - \half \log \bigg( h(\ell)^{-\half}
+		\Big( h(\ell)^{\half} \big( h(\ell) + 2 P(\ell) \big) h(\ell)^{\half}\Big)^{\half}
+		h(\ell)^{-\half} \bigg) \;.
 \end{equation}
 (The exponent $ S $ corresponds to $ R^* \cK R $ in the notation of~\cite{CHN23} since we prefer to use a particle-hole transformation instead of the normal ordering with respect to the Fermi ball state.)
-One observes that $K(\ell)$ is a symmetric matrix and moreover possesses the reflection invariance $ K(-\ell)_{-p,-q} = K(\ell)_{p,q} $.
+The matrix $K(\ell)$ is symmetric and possesses the reflection invariance $ K(-\ell)_{-p,-q} = K(\ell)_{p,q} $.
 % This concludes the definition of the trial state.
 
 
