@@ -233,9 +233,7 @@
 \maketitle
 \begin{abstract}
 
-We analyse the momentum distribution of a three-dimensional mean-field Fermi gas in a trial state that was recently proven to reproduce the Gell-Mann--Brueckner energy for Coulomb potentials. Here, we consider potentials with $ \hat{V} \in \ell^2 $ and show that the momentum distribution is given by a step profile, corrected by a random phase approximation (RPA) contribution as predicted by Daniel and Vosko, and an exchange contribution which grows in size as the potential becomes more singular. Moreover, for $ \hat{V} \in \ell^1 $ we provide optimal error bounds for the RPA contribution.\\
-This refines a recent analysis by two of the authors to more singular potentials and momenta closer to the Fermi surface.\\
-\todo{I still want to polish the abstract.}
+We analyse the momentum distribution of a three-dimensional mean-field Fermi gas in a trial state that was recently proven to reproduce the Gell-Mann--Brueckner energy for Coulomb potentials. Here, we consider a class of potentials including the Coulomb potential and show that the momentum distribution is given by a step profile, corrected by a random phase approximation contribution as predicted by Daniel and Vosko, and an exchange contribution which grows in size as the potential becomes more singular. Moreover, for potentials with summable Fourier transform we provide optimal error bounds for the contribution of the random phase approximation. This refines a recent analysis by two of the authors to more singular potentials and momenta closer to the Fermi surface.
 
 \medskip
 
@@ -273,7 +271,7 @@ In this article we are interested in the momentum distribution of states $ \Psi 
 \begin{align}
 	n(q) \coloneq \eva{\Psi, a^*_q a_q \Psi} \;,
 \end{align}
-where $ a_q^*$ and $a_q $ are the fermionic creation and annihilation operators. As the ground state of interacting many-body systems is very difficult to compute, we focus our attention on a trial state $ \Psi_N $ which is expected to capture the ground state's properties at least to the first non-trivial order beyond mean-field theory. This is analogous to the analysis conducted in \cite{BL25} based on the collective bosonization methods of \cite{BNPSS20,BNPSS21}, however we now consider the ``patchless'' trial state of~\cite{CHN23}. As long as the analysis of the true ground state remains elusive, we believe that studying two different constructions of low-energy states and obtaining consistent expressions for the momentum distribution adds plausibility to the conjecture that the obtained momentum distribution is actually close to the one of the true ground state. Both methods, that of \cite{BL25} and \cite{CHN23}, are based on the idea of considering particle--hole pairs as approximately bosonic quasiparticles. The approach of \cite{BNPSS20,BNPSS21}, based on collective degrees of freedom averaged over patches on the Fermi surface, leads to estimates with a more pronounced bosonic nature; the approach of \cite{CHN23} avoids the use of cutoffs which in \cite{BL25} somewhat obscured the result at momenta very close to the Fermi surface.
+where $ a_q^*$ and $a_q $ are the fermionic creation and annihilation operators. As the ground state of interacting many-body systems is very difficult to compute, we focus our attention on a trial state $ \Psi_N $ which is expected to capture the ground state's properties at least to the first non-trivial order beyond mean-field theory. This is analogous to the analysis conducted in \cite{BL25} based on the collective bosonization methods of \cite{BNP+20,BNP+21}, however we now consider the ``patchless'' trial state of~\cite{CHN23}. As long as the analysis of the true ground state remains elusive, we believe that studying two different constructions of low-energy states and obtaining consistent expressions for the momentum distribution adds plausibility to the conjecture that the obtained momentum distribution is actually close to the one of the true ground state. Both methods, that of \cite{BL25} and \cite{CHN23}, are based on the idea of considering particle--hole pairs as approximately bosonic quasiparticles. The approach of \cite{BNP+20,BNP+21}, based on collective degrees of freedom averaged over patches on the Fermi surface, leads to estimates with a more pronounced bosonic nature; the approach of \cite{CHN23} avoids the use of cutoffs which in \cite{BL25} somewhat obscured the result at momenta very close to the Fermi surface.
 
 In the non-interacting case ($ V=0 $), the ground state is given by a Slater determinant of $ N $ plane waves (which we also call the Fermi ball state)
 \begin{equation}
@@ -298,7 +296,13 @@ In the Fermi ball state the momentum distribution is the indicator function
 	= \mathds{1}_{B_{\F}}(q) \;.
 \end{equation}
 
-\todo{quick literature recap}
+\paragraph{Context of the Fermionic Mean-Field Scaling Limit} The mean field scaling of fermionic systems, in the sense of scaling down the interaction by a coupling constant of order $N^{-1/3}$ compared to the kinetic energy, was introduced by \cite{NS81} in the context of the derivation of the Vlasov equation from many-body quantum dynamics. Their result was generalized to a large class of interaction potentials by \cite{Spo81}. For a long time these essentially remained the only result for the quantum dynamics in the mean-field scaling regime, until the short-time derivation of the time-dependent Hartree--Fock equation by \cite{EESY04}. This line of research was continued by \cite{BPS14b} who derived the time-dependent Hartree--Fock equation for arbitrary times. In the following the derivation of the time-dependent Hartree--Fock equation was generalized to fermions with Coulomb interaction \cite{PRSS17}, fermions with relativistic dispersion relation \cite{BPS14a}, fermions in mixed states \cite{BJP+16}, and fermions in magnetic fields \cite{BBMN25}. This gave also new life to research on the derivation of the Vlasov equation, in a series of papers leading to increasingly singular potentials \cite{BPSS16, Saf18,Saf20,Saf20a,LS21,Saf21,CLS24}. Recently results have also been obtained extending the derivation of time-dependent Hartree--Fock theory to extended Fermi gases \cite{FPS23,FPS24}, compared to the mean-field limit considered in fixed volumes.
+
+In parallel, also the static properties of fermionic systems were studied. The ground state energy to the precision of Hartree--Fock theory was obtained by \cite{GS94} based on correlation inequalities developed in \cite{Bac92,Bac93} -- actually for the thermodynamic limit, but the method applies equally to the simpler mean-field scaling regime. The first result beyond Hartree--Fock theory, achieving the precision of the random phase approximation at least as an upper bound was achieved by \cite{BNP+20}. The corresponding lower bounds were proven for small interaction potential by \cite{BNP+21} and then by \cite{BPSS23} for arbitrary interaction potential. All these results relied on collective bosonization of particle--hole pairs delocalized in momentum space over patches on the Fermi surface. An alternative approach avoiding patches and bosonizing directly individual particle--hole pairs was developed by \cite{CHN23,CHN23a} and generalized to Coulomb interaction in \cite{CHN24}. This is the approach which gives rise to the trial state in the present paper.
+
+The progress on the derivation of the random phase approximation for the ground state energy lead also to new results for the dynamics: a Fock space norm approximation for the dynamics of bosonizable degrees of freedom was proven in \cite{BNP+22} (see also the review \cite{Ben22} for a more detailed discussion of this context). Partial results for the spectrum and excited states were obtained by \cite{Ben21,CHN22}.
+
+Apart from the mean-field scaling regime and, of course, the thermodynamic limit, another well-studied case of the interacting Fermi gas is the dilute regime. In this context should be mentioned the analysis of the ground state energy of the spin-balanced case \cite{Gia22,Gia24} which has been inspired by bosonization and Bogoliubov theory \cite{FGHP21a,Gia22a} and recently been pushed to the order of the Huang-Yang formula \cite{GHNS24,GHNS25}, and the study of the ground state energy in the spin-polarized case \cite{LS24,LS24a,LS24b,LS24c}.
 
 \subsection{Main Result}
 \label{subsec:mainresult}
@@ -349,6 +353,7 @@ Since $ q \in \Z^3 $, the number $ |q|^2 $ is an integer and thus $ e(q) \ge \ha
 % \end{hypothesis}
 % Note that Hypothesis~\ref{hyp:alpha} is implied for $ \alpha \in (0,3] $ by Hypothesis~\ref{hyp:ell1} and for $ \alpha \in (0,1) $ by Hypothesis~\ref{hyp:Coulomb}, the latter addressing the Coulomb potential.
 
+Our main result shows the existence of a trial state that both minimizes the energy to the precision of the random phase approximation and have a momentum distribution as expected for a Fermi liquid, with a jump at the Fermi momentum and a correction to the height of the jump as predicted in the physics literature \cite{DV60}.\footnote{Dong Hao (David) Ou Yang kindly informed us just before the present work was submitted as a preprint about an independently obtained similar result \cite{Ou25}.}
 
 \begin{theorem}[Main result] \label{thm:main}
 Assume that
@@ -618,7 +623,7 @@ Let $A=(A(\ell))_{\ell \in \Zstar} $ be a family of symmetric operators with $A(
 \end{split}
 \end{equation} 
 \end{definition}
-Our $ Q_1 $ corresponds to $ 2 \tilde Q_1 $ in~\cite{CHN21}, while the definition of $ Q_2 $ is identical to \cite{CHN21}. (Due to the particle-hole transformation, our $ a_p $ agrees with $ R^* c_p R $ in~\cite{CHN21,CHN23,CHN24}.) The pair operators satisfy the following approximate CCR (compare to \cite[(1.66)]{CHN21} and \cite[Lemma~4.1]{BNPSS20}):
+Our $ Q_1 $ corresponds to $ 2 \tilde Q_1 $ in~\cite{CHN22}, while the definition of $ Q_2 $ is identical to \cite{CHN22}. (Due to the particle-hole transformation, our $ a_p $ agrees with $ R^* c_p R $ in~\cite{CHN22,CHN23,CHN24}.) The pair operators satisfy the following approximate CCR (compare to \cite[(1.66)]{CHN22} and \cite[Lemma~4.1]{BNP+20}):
 
 \begin{lemma}[Approximate CCR]\label{lem:paircomm}
 For $k,\ell \in \Zstar$ and $p \in L_{k}$, $q\in L_{\ell}$, we have
@@ -847,11 +852,11 @@ as well as
 \end{align}
 \end{lemma}
 \begin{proof}
-Follows by a lengthy but straightforward computation with the CAR. (Alternatively, this can be conveniently computed using Friedrichs diagrams~\cite{BL23}.)
+Follows by a lengthy but straightforward computation with the CAR. (Alternatively, this can be conveniently computed using Friedrichs diagrams~\cite{BL25}.)
 \end{proof}
 
 Note that the exchange contribution~\eqref{eq:nqex} follows as $ n^{\ex}(q) \approx \frac 14 n^{\ex,1}(q) $, see Lemma~\ref{lem:estnqex}.
-\todo{What about the higher orders of the exchange contribution?}
+\todo{What about the higher orders of the exchange contribution? What are the orders of first vs. higher terms in case of Coulomb?}
 
 
 
@@ -868,7 +873,7 @@ Let $ \ell \in \Zstar $ and recall the definitions~\eqref{eq:Lell} and~\eqref{eq
 \end{equation}
 \end{lemma}
 \begin{proof}
-The first statement is~\cite[Prop.~A.2]{CHN21}. The second statement was proven with $ C \kF^3 $ replaced by $ |\overline{B_{2 \kF}(0)} \cap \Z^3| $ in~\cite[Lemma~3.2]{CHN24}. It obviously extends to any set with $ |S| \le C \kF^3 $, by writing $ S $ as a disjoint union of less or equal than $ C_0 $ sets with less or equal than $ |\overline{B_{2 \kF}}(0) \cap \Z^3| $ points.
+The first statement is~\cite[Prop.~A.2]{CHN22}. The second statement was proven with $ C \kF^3 $ replaced by $ |\overline{B_{2 \kF}(0)} \cap \Z^3| $ in~\cite[Lemma~3.2]{CHN24}. It obviously extends to any set with $ |S| \le C \kF^3 $, by writing $ S $ as a disjoint union of less or equal than $ C_0 $ sets with less or equal than $ |\overline{B_{2 \kF}}(0) \cap \Z^3| $ points.
 \end{proof}
 
 \begin{definition}
@@ -1002,10 +1007,10 @@ Let $A = (A(\ell))_{\ell \in \Zstar}$ be a family of symmetric operators $ A(\el
 \end{lemma}
 
 \begin{proof}
-For the first bound, see \cite[Prop.~4.7]{CHN21}; the second follows analogously.
+For the first bound, see \cite[Prop.~4.7]{CHN22}; the second follows analogously.
 \end{proof}
 
-The next estimate generalizes \cite[Prop.~5.8]{CHN21}, conceptually going back to \cite{BJPSS16,BPS14} in the context of the derivation of the time-dependent Hartree--Fock equation. It shows that the expectation value $ \langle \Omega, e^{\lambda S} (\mathcal{N} + 1)^m e^{-\lambda S} \Omega \rangle$ does not grow with $N$.
+The next estimate generalizes \cite[Prop.~5.8]{CHN22}, conceptually going back to \cite{BJP+16,BPS14b} in the context of the derivation of the time-dependent Hartree--Fock equation. It shows that the expectation value $ \langle \Omega, e^{\lambda S} (\mathcal{N} + 1)^m e^{-\lambda S} \Omega \rangle$ does not grow with $N$.
 
 \begin{lemma}[Gr\"onwall estimate]\label{lem:gronNest}
 For every $ m \in \NNN $, there exists a constant $ C_m > 0 $ such that for all $ \lambda\in [0,1]$ we have
@@ -1033,7 +1038,7 @@ For $ \Psi_0 \in \cF $ and $ \Psi_\lambda \coloneq e^{-\lambda S} \Psi_0 $, usin
 		&\quad \times \Bigg( \sum_{s\in L_\ell}
 			\norm { \sum_{r\in L_\ell} K(\ell)_{r,s} b^*_{r}(\ell) \left( \left(\NN+8\right)^m - \left(\NN+4\right)^m \right)^\half \Psi_\lambda}^2 \Bigg)^{\half} \;. \nonumber
 \end{align*}
-Now, $ \sum_{s \in L_\ell} \norm{a_{-s} \Phi}^2 \leq \Vert \cN^{\half} \Phi \Vert^2 $ for $ \Phi \in \cF $, and from~\cite[Prop.~4.2]{CHN21} we recover
+Now, $ \sum_{s \in L_\ell} \norm{a_{-s} \Phi}^2 \leq \Vert \cN^{\half} \Phi \Vert^2 $ for $ \Phi \in \cF $, and from~\cite[Prop.~4.2]{CHN22} we recover
 \begin{equation}
 	\norm{\sum_{r\in L_\ell} K(\ell)_{r,s} b^*_{r}(\ell) \Phi}^2
 	\le \sum_{r\in L_\ell} |K(\ell)_{r,s}|^2
@@ -2587,7 +2592,7 @@ The bound~\eqref{eq:main_prop_exchange} was proven in~\eqref{eq:estnqex_Coulomb_
 
 
 \section*{Acknowledgments}
-The authors were supported by the European Union through the ERC Starting Grant \textsc{FermiMath}, grant agreement nr.~101040991. Views and opinions expressed are those of the authors and do not necessarily reflect those of the European Union or the European Research Council Executive Agency. Neither the European Union nor the granting authority can be held responsible for them. The authors were partially supported by Gruppo Nazionale per la Fisica Matematica in Italy.
+SL would like to thank Phan Thành Nam for discussions and for making him aware of the work of Dong Hao (David) Ou Yang. The authors were supported by the European Union through the ERC Starting Grant \textsc{FermiMath}, grant agreement nr.~101040991. Views and opinions expressed are those of the authors and do not necessarily reflect those of the European Union or the European Research Council Executive Agency. Neither the European Union nor the granting authority can be held responsible for them. The authors were partially supported by Gruppo Nazionale per la Fisica Matematica in Italy.
 
 \section*{Statements and Declarations}
 The authors have no competing interests to declare.
@@ -2595,189 +2600,191 @@ The authors have no competing interests to declare.
 \section*{Data Availability}
 As purely mathematical research, there are no datasets related to this article.
 
-\todo{reference list to be cleaned of unused entries}
-\begin{thebibliography}{29}
-\bibitem{BJPSS16}
-N. Benedikter, V. Jakšić, M. Porta, C. Saffirio, B. Schlein:
-	Mean-Field Evolution of Fermionic Mixed States.
-	\emph{Commun. Pure Appl. Math.} \textbf{69}: 2250--2303 (2016)
+\bibliographystyle{abbrv}
+\bibliography{momentumdistribution}{}
 
-\bibitem{BD23}
-N. Benedikter, D. Desio:
-	Two Comments on the Derivation of the Time-Dependent Hartree–Fock Equation, in: Correggi, M., Falconi, M. (Eds.), Quantum Mathematics I, Springer INdAM Series. Springer Nature Singapore, pp. 319--333 (2023)
-
-\bibitem{BL25}
-N. Benedikter, S. Lill:
-	Momentum Distribution of a Fermi Gas in the Random Phase Approximation.
-	\emph{J. Math. Phys.} \textbf{66}: 081901 (2025)
-
-\bibitem{BNPSS20}
-N. Benedikter, P. T. Nam, M. Porta, B. Schlein, R. Seiringer:
-	Optimal Upper Bound for the Correlation Energy of a Fermi Gas in the Mean-Field Regime.
-	\emph{Commun. Math. Phys.} \textbf{374}: 2097--2150 (2020)
-
-\bibitem{BNPSS21}
-N. Benedikter, P. T. Nam, M. Porta, B. Schlein, R. Seiringer:
-	Correlation Energy of a Weakly Interacting Fermi Gas.
-	\emph{Invent. Math.} \textbf{225}: 885--979 (2021)
-	
-\bibitem{BNPSS21dyn}
-N. Benedikter, P. T. Nam, M. Porta, B. Schlein, R. Seiringer:
-	Bosonization of Fermionic Many-Body Dynamics.
-	\emph{Ann. Henri Poincar\'e} \textbf{23}: 1725--1764 (2022)
-
-\bibitem{BPSS22}
-N. Benedikter, M. Porta, B. Schlein, R. Seiringer:
-	Correlation Energy of a Weakly Interacting Fermi Gas with Large Interaction Potential.
-	\emph{Arch. Ration. Mech. Anal.} \textbf{247}: article number 65 (2023)
-
-\bibitem{BPS14}
-N. Benedikter, M. Porta, B. Schlein:
-	Mean–Field Evolution of Fermionic Systems.
-	\emph{Commun. Math. Phys.} \textbf{331}: 1087--1131 (2014)
-
-\bibitem{BL23}
-M. Brooks, S. Lill:
-	Friedrichs diagrams: bosonic and fermionic.
-	\emph{Lett. Math. Phys.} \textbf{113}: article number 101 (2023)
-
-
-% \bibitem{CF94}
-% A. H. Castro-Neto, E. Fradkin:
-% 	Bosonization of {{Fermi}} liquids.
-% 	\emph{Phys. Rev. B}, \textbf{49}(16): 10877--10892, (1994)
-
-\bibitem{CHN21}
-M. R. Christiansen, C. Hainzl, P. T. Nam:
-	The Random Phase Approximation for Interacting Fermi Gases in the Mean-Field Regime.
-	\emph{Forum of Mathematics, Pi}, \textbf{11}:e32 1--131, (2023)
-
-\bibitem{CHN22}
-M. R. Christiansen, C. Hainzl, P. T. Nam:
-	On the Effective Quasi-Bosonic Hamiltonian of the Electron Gas: Collective Excitations and Plasmon Modes.
-	\emph{Lett. Math. Phys.} \textbf{112}: article number 114 (2022)
-
-\bibitem{CHN23}
-M. R. Christiansen, C. Hainzl, P. T. Nam:
-	The Gell-Mann-Brueckner Formula for the Correlation Energy of the Electron Gas: A Rigorous Upper Bound in the Mean-Field Regime.
-	\emph{Commun. Math. Phys.} \textbf{401}: 1469--1529 (2023)
-
-\bibitem{CHN24}
-M. R. Christiansen, C. Hainzl, P. T. Nam:
-	The Correlation Energy of the Electron Gas in the Mean-Field Regime.
-	\url{https://arxiv.org/abs/2405.01386}
-
-\bibitem{Chr23PhD}
-M. R. Christiansen:
-	Emergent Quasi-Bosonicity in Interacting Fermi Gas.
-	\emph{PhD Thesis} (2023)
-	\url{https://arxiv.org/abs/2301.12817v1}
-
-\bibitem{DV60}
-E. Daniel, S. H. Vosko:
-	Momentum Distribution of an Interacting Electron Gas.
-	\emph{Phys. Rev.} \textbf{120}: 2041--2044 (1960)
-
-\bibitem{DMR01}
-M. Disertori, J. Magnen, V. Rivasseau:
-	Interacting {{Fermi Liquid}} in {{Three Dimensions}} at {{Finite
-  Temperature}}: {{Part I}}: {{Convergent Contributions}}.
-	\emph{Ann. Henri Poincar\'e}, \textbf{2}(4): 733--806 (2001)
-
-\bibitem{FGHP21}
-M. Falconi, E. L. Giacomelli, C. Hainzl, M. Porta:
-	The Dilute Fermi Gas via Bogoliubov Theory.
-	\emph{Ann. Henri Poincar\'e} \textbf{22}: 2283--2353 (2021)
-
-\bibitem{FKT00}
-J. Feldman, H. Kn{\"o}rrer, E. Trubowitz:
-	Asymmetric fermi surfaces for magnetic schr\"odinger operators.
-	\emph{Commun. PDE},
-  \textbf{25}(1-2): 319--336 (2000)
-
-\bibitem{FKT04}
-J. Feldman, H. Kn{\"o}rrer,  E. Trubowitz:
-	A {{Two Dimensional Fermi Liquid}}. {{Part}} 1: {{Overview}}.
-	\emph{Commun. Math. Phys.}, \textbf{247}(1): 1--47, (2004)
-
-\bibitem{GB57}
-M. Gell-Mann, K. A. Brueckner:
-	Correlation Energy of an Electron Gas at High Density.
-	\emph{Phys. Rev.} \textbf{106}(2): 364--368 (1957)
-
-\bibitem{Gia22}
-E. L. Giacomelli:
-	Bogoliubov theory for the dilute Fermi gas in three dimensions.
-	In: \emph{M. Correggi, M. Falconi (eds.), Quantum Mathematics II, Springer INdAM Series 58. Springer, Singapore} (2022)
-
-\bibitem{Gia23}
-E. L. Giacomelli:
-	An optimal upper bound for the dilute Fermi gas in three dimensions.
-	\emph{J. Funct. Anal.} \textbf{285}(8), 110073 (2023)
-
-\bibitem{GHNS24}
-E. L. Giacomelli, C. Hainzl, P. T. Nam, R. Seiringer:
-	The Huang-Yang formula for the low-density Fermi gas: upper bound.
-	\url{https://arxiv.org/abs/2409.17914}
-
-\bibitem{GS94}
-G. M. Graf, J. P. Solovej:
-	A correlation estimate with applications to quantum systems with coulomb interactions.
-	\emph{Rev. Math. Phys.} \textbf{06}: 977--997 (1994)
-
-\bibitem{Hal94}
-F. D. M. Haldane:
-	Luttinger's {{Theorem}} and {{Bosonization}} of the {{Fermi Surface}}.
-	In: \emph{Proceedings of the {{International School}} of {{Physics}}
-  ``{{Enrico Fermi}}'', {{Course CXXI}}: ``{{Perspectives}} in
-  {{Many}}-{{Particle Physics}}''}, pages 5--30. {North Holland}, {Amsterdam},
-  1994.
-
-\bibitem{Lam71a}
-J. Lam:
-	Correlation Energy of the Electron Gas at Metallic Densities.
-	\emph{Phys. Rev. B} \textbf{3}(6): 1910--1918 (1971)
-
-\bibitem{Lam71b}
-J. Lam:
-	Momentum Distribution and Pair Correlation of the Electron Gas at Metallic Densities.
-	\emph{Phys. Rev. B} \textbf{3}(10): 3243--3248 (1971)
-
-\bibitem{Lan56}
-L.~D. Landau:
-	The theory of a Fermi Liquid.
-	\emph{Soviet Physics\textendash JETP [translation of Zhurnal
-  Eksperimentalnoi i Teoreticheskoi Fiziki]}, \textbf{3}(6): 920 (1956)
-
-\bibitem{Lil23}
-S. Lill:
-	Bosonized Momentum Distribution of a Fermi Gas via Friedrichs Diagrams.
-	In: \emph{Proceedings of the ``PST Puglia Summer Trimester 2023''} \url{https://arxiv.org/abs/2311.11945} (2025)
-
-\bibitem{Lut60}
-J. M. Luttinger:
-	Fermi Surface and Some Simple Equilibrium Properties of a System of Interacting Fermions.
-	\emph{Phys. Rev.} \textbf{119}: 1153--1163 (1960)
-
-\bibitem{NS81}
-H. Narnhofer, G. L. Sewell:
-	Vlasov hydrodynamics of a quantum mechanical model.
-	\emph{Commun. Math. Phys.} \textbf{79}: 9--24 (1981)
-
-\bibitem{Sal98}
-M. Salmhofer:
-	Continuous Renormalization for Fermions and Fermi Liquid Theory.
-	\emph{Commun. Math. Phys.} \textbf{194}: 249--295 (1998)
-
-\bibitem{Saw57}
-K. Sawada:
-	Correlation Energy of an Electron Gas at High Density.
-	\emph{Phys. Rev.} \textbf{106}(2): 372--383 (1957)
-
-\bibitem{Zie10}
-P. Ziesche:
-	The high-density electron gas: How momentum distribution $n(k)$ and static structure factor $S(q)$ are mutually related through the off-shell self-energy $\Sigma(k,\omega)$.
-	\emph{Annalen der Physik} \textbf{522}(10): 739--765 (2010)
-
-\end{thebibliography}
+% \begin{thebibliography}{29}
+% \bibitem{BJPSS16}
+% N. Benedikter, V. Jakšić, M. Porta, C. Saffirio, B. Schlein:
+% 	Mean-Field Evolution of Fermionic Mixed States.
+% 	\emph{Commun. Pure Appl. Math.} \textbf{69}: 2250--2303 (2016)
+%
+% \bibitem{BD23}
+% N. Benedikter, D. Desio:
+% 	Two Comments on the Derivation of the Time-Dependent Hartree–Fock Equation, in: Correggi, M., Falconi, M. (Eds.), Quantum Mathematics I, Springer INdAM Series. Springer Nature Singapore, pp. 319--333 (2023)
+%
+% \bibitem{BL25}
+% N. Benedikter, S. Lill:
+% 	Momentum Distribution of a Fermi Gas in the Random Phase Approximation.
+% 	\emph{J. Math. Phys.} \textbf{66}: 081901 (2025)
+%
+% \bibitem{BNPSS20}
+% N. Benedikter, P. T. Nam, M. Porta, B. Schlein, R. Seiringer:
+% 	Optimal Upper Bound for the Correlation Energy of a Fermi Gas in the Mean-Field Regime.
+% 	\emph{Commun. Math. Phys.} \textbf{374}: 2097--2150 (2020)
+%
+% \bibitem{BNPSS21}
+% N. Benedikter, P. T. Nam, M. Porta, B. Schlein, R. Seiringer:
+% 	Correlation Energy of a Weakly Interacting Fermi Gas.
+% 	\emph{Invent. Math.} \textbf{225}: 885--979 (2021)
+%
+% \bibitem{BNPSS21dyn}
+% N. Benedikter, P. T. Nam, M. Porta, B. Schlein, R. Seiringer:
+% 	Bosonization of Fermionic Many-Body Dynamics.
+% 	\emph{Ann. Henri Poincar\'e} \textbf{23}: 1725--1764 (2022)
+%
+% \bibitem{BPSS22}
+% N. Benedikter, M. Porta, B. Schlein, R. Seiringer:
+% 	Correlation Energy of a Weakly Interacting Fermi Gas with Large Interaction Potential.
+% 	\emph{Arch. Ration. Mech. Anal.} \textbf{247}: article number 65 (2023)
+%
+% \bibitem{BPS14b}
+% N. Benedikter, M. Porta, B. Schlein:
+% 	Mean–Field Evolution of Fermionic Systems.
+% 	\emph{Commun. Math. Phys.} \textbf{331}: 1087--1131 (2014)
+%
+% \bibitem{BL23}
+% M. Brooks, S. Lill:
+% 	Friedrichs diagrams: bosonic and fermionic.
+% 	\emph{Lett. Math. Phys.} \textbf{113}: article number 101 (2023)
+%
+%
+% % \bibitem{CF94}
+% % A. H. Castro-Neto, E. Fradkin:
+% % 	Bosonization of {{Fermi}} liquids.
+% % 	\emph{Phys. Rev. B}, \textbf{49}(16): 10877--10892, (1994)
+%
+% \bibitem{CHN21}
+% M. R. Christiansen, C. Hainzl, P. T. Nam:
+% 	The Random Phase Approximation for Interacting Fermi Gases in the Mean-Field Regime.
+% 	\emph{Forum of Mathematics, Pi}, \textbf{11}:e32 1--131, (2023)
+%
+% \bibitem{CHN22}
+% M. R. Christiansen, C. Hainzl, P. T. Nam:
+% 	On the Effective Quasi-Bosonic Hamiltonian of the Electron Gas: Collective Excitations and Plasmon Modes.
+% 	\emph{Lett. Math. Phys.} \textbf{112}: article number 114 (2022)
+%
+% \bibitem{CHN23}
+% M. R. Christiansen, C. Hainzl, P. T. Nam:
+% 	The Gell-Mann-Brueckner Formula for the Correlation Energy of the Electron Gas: A Rigorous Upper Bound in the Mean-Field Regime.
+% 	\emph{Commun. Math. Phys.} \textbf{401}: 1469--1529 (2023)
+%
+% \bibitem{CHN24}
+% M. R. Christiansen, C. Hainzl, P. T. Nam:
+% 	The Correlation Energy of the Electron Gas in the Mean-Field Regime.
+% 	\url{https://arxiv.org/abs/2405.01386}
+%
+% \bibitem{Chr23PhD}
+% M. R. Christiansen:
+% 	Emergent Quasi-Bosonicity in Interacting Fermi Gas.
+% 	\emph{PhD Thesis} (2023)
+% 	\url{https://arxiv.org/abs/2301.12817v1}
+%
+% \bibitem{DV60}
+% E. Daniel, S. H. Vosko:
+% 	Momentum Distribution of an Interacting Electron Gas.
+% 	\emph{Phys. Rev.} \textbf{120}: 2041--2044 (1960)
+%
+% \bibitem{DMR01}
+% M. Disertori, J. Magnen, V. Rivasseau:
+% 	Interacting {{Fermi Liquid}} in {{Three Dimensions}} at {{Finite
+%   Temperature}}: {{Part I}}: {{Convergent Contributions}}.
+% 	\emph{Ann. Henri Poincar\'e}, \textbf{2}(4): 733--806 (2001)
+%
+% \bibitem{FGHP21}
+% M. Falconi, E. L. Giacomelli, C. Hainzl, M. Porta:
+% 	The Dilute Fermi Gas via Bogoliubov Theory.
+% 	\emph{Ann. Henri Poincar\'e} \textbf{22}: 2283--2353 (2021)
+%
+% \bibitem{FKT00}
+% J. Feldman, H. Kn{\"o}rrer, E. Trubowitz:
+% 	Asymmetric fermi surfaces for magnetic schr\"odinger operators.
+% 	\emph{Commun. PDE},
+%   \textbf{25}(1-2): 319--336 (2000)
+%
+% \bibitem{FKT04}
+% J. Feldman, H. Kn{\"o}rrer,  E. Trubowitz:
+% 	A {{Two Dimensional Fermi Liquid}}. {{Part}} 1: {{Overview}}.
+% 	\emph{Commun. Math. Phys.}, \textbf{247}(1): 1--47, (2004)
+%
+% \bibitem{GB57}
+% M. Gell-Mann, K. A. Brueckner:
+% 	Correlation Energy of an Electron Gas at High Density.
+% 	\emph{Phys. Rev.} \textbf{106}(2): 364--368 (1957)
+%
+% \bibitem{Gia22}
+% E. L. Giacomelli:
+% 	Bogoliubov theory for the dilute Fermi gas in three dimensions.
+% 	In: \emph{M. Correggi, M. Falconi (eds.), Quantum Mathematics II, Springer INdAM Series 58. Springer, Singapore} (2022)
+%
+% \bibitem{Gia23}
+% E. L. Giacomelli:
+% 	An optimal upper bound for the dilute Fermi gas in three dimensions.
+% 	\emph{J. Funct. Anal.} \textbf{285}(8), 110073 (2023)
+%
+% \bibitem{GHNS24}
+% E. L. Giacomelli, C. Hainzl, P. T. Nam, R. Seiringer:
+% 	The Huang-Yang formula for the low-density Fermi gas: upper bound.
+% 	\url{https://arxiv.org/abs/2409.17914}
+%
+% \bibitem{GS94}
+% G. M. Graf, J. P. Solovej:
+% 	A correlation estimate with applications to quantum systems with coulomb interactions.
+% 	\emph{Rev. Math. Phys.} \textbf{06}: 977--997 (1994)
+%
+% \bibitem{Hal94}
+% F. D. M. Haldane:
+% 	Luttinger's {{Theorem}} and {{Bosonization}} of the {{Fermi Surface}}.
+% 	In: \emph{Proceedings of the {{International School}} of {{Physics}}
+%   ``{{Enrico Fermi}}'', {{Course CXXI}}: ``{{Perspectives}} in
+%   {{Many}}-{{Particle Physics}}''}, pages 5--30. {North Holland}, {Amsterdam},
+%   1994.
+%
+% \bibitem{Lam71a}
+% J. Lam:
+% 	Correlation Energy of the Electron Gas at Metallic Densities.
+% 	\emph{Phys. Rev. B} \textbf{3}(6): 1910--1918 (1971)
+%
+% \bibitem{Lam71b}
+% J. Lam:
+% 	Momentum Distribution and Pair Correlation of the Electron Gas at Metallic Densities.
+% 	\emph{Phys. Rev. B} \textbf{3}(10): 3243--3248 (1971)
+%
+% \bibitem{Lan56}
+% L.~D. Landau:
+% 	The theory of a Fermi Liquid.
+% 	\emph{Soviet Physics\textendash JETP [translation of Zhurnal
+%   Eksperimentalnoi i Teoreticheskoi Fiziki]}, \textbf{3}(6): 920 (1956)
+%
+% \bibitem{Lil23}
+% S. Lill:
+% 	Bosonized Momentum Distribution of a Fermi Gas via Friedrichs Diagrams.
+% 	In: \emph{Proceedings of the ``PST Puglia Summer Trimester 2023''} \url{https://arxiv.org/abs/2311.11945} (2025)
+%
+% \bibitem{Lut60}
+% J. M. Luttinger:
+% 	Fermi Surface and Some Simple Equilibrium Properties of a System of Interacting Fermions.
+% 	\emph{Phys. Rev.} \textbf{119}: 1153--1163 (1960)
+%
+% \bibitem{NS81}
+% H. Narnhofer, G. L. Sewell:
+% 	Vlasov hydrodynamics of a quantum mechanical model.
+% 	\emph{Commun. Math. Phys.} \textbf{79}: 9--24 (1981)
+%
+% \bibitem{Sal98}
+% M. Salmhofer:
+% 	Continuous Renormalization for Fermions and Fermi Liquid Theory.
+% 	\emph{Commun. Math. Phys.} \textbf{194}: 249--295 (1998)
+%
+% \bibitem{Saw57}
+% K. Sawada:
+% 	Correlation Energy of an Electron Gas at High Density.
+% 	\emph{Phys. Rev.} \textbf{106}(2): 372--383 (1957)
+%
+% \bibitem{Zie10}
+% P. Ziesche:
+% 	The high-density electron gas: How momentum distribution $n(k)$ and static structure factor $S(q)$ are mutually related through the off-shell self-energy $\Sigma(k,\omega)$.
+% 	\emph{Annalen der Physik} \textbf{522}(10): 739--765 (2010)
+%
+% \end{thebibliography}
 \end{document}
