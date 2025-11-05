@@ -1371,7 +1371,7 @@ Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\e
 	\leq C_\varepsilon C^m \left( \kF^{-\frac 32 + \varepsilon}
 		+ \kF^{-1 + \varepsilon} \Xi^\half \right)
 		e(q)^{-1}
-		\norm{(\NN+1) \xi_\lambda }^2 \;.
+		\norm{(\NN+1) \xi_\lambda } \;.
 \end{align}
 If $ \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty $, then
 \begin{align} \label{eq:estEQ112}
@@ -1456,7 +1456,7 @@ The estimate for the second case $ 1 \le j \le m-1 $ follows a similar strategy,
 		(C \hat{V}(\ell))^{m-j} \kF^{-1+\varepsilon} e(q)^{-1}
 		\norm{K^j(\ell)}_{\max,2}
 		\Bigg( \sum\limits_{s\in L_{\ell}} \norm{a_s (\NN+1)^{\half} \xi_\lambda }^2 \Bigg)^{\half} \nonumber\\
-	&\leq C_\varepsilon C^m \kF^{-\frac 32 + \varepsilon} e(q)^{-1} \norm{(\NN+1) \xi_\lambda }^2 \;. \label{eq:estEQ1122_Coulomb}
+	&\leq C_\varepsilon C^m \kF^{-\frac 32 + \varepsilon} e(q)^{-1} \norm{(\NN+1) \xi_\lambda } \;. \label{eq:estEQ1122_Coulomb}
 \end{align}
 Again, for $ \sum_{\ell \in \Zstar} \hat{V}(\ell) $, we get a simpler and stronger bound:
 \begin{align}
@@ -1497,7 +1497,7 @@ Finally, for the case $ j = m $,
 		\Bigg( \sum_{\ell_1 \in \Zstar} \hat{V}(\ell_1)^2 \Bigg)^{\half}
 		\kF^{-\frac 32} e(q)^{-1}
 		\Bigg(\sum\limits_{\ell_1,s \in \Z^3} \norm{ a_{q-\ell_1} a_s \xi_\lambda }^2\Bigg)^\half \nonumber\\
-	&\leq C^m \kF^{-\frac 32} e(q)^{-1} \norm{(\NN+1) \xi_\lambda }^2 \;, \label{eq:estEQ1123_Coulomb}
+	&\leq C^m \kF^{-\frac 32} e(q)^{-1} \norm{(\NN+1) \xi_\lambda } \;, \label{eq:estEQ1123_Coulomb}
 \end{align}
 and for $ \sum_{\ell} \hat{V}(\ell) < \infty $, we again get a stronger bound:
 \begin{align}
@@ -1555,7 +1555,8 @@ If $ \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty $, we have the even stronger 
 \end{proposition}
 
 
-Note that here, $ m = 1 $ and thus $ \sum_\ell \hat{V}(\ell)^m = \infty $ can occur for $ \alpha \to 0 $. In the end, we will choose $ \gamma = \frac 13 $ as explained below. Then, the error in~\eqref{eq:finEQ2est_Coulomb} is $ \sim \kF^{-1-\frac 16} $, whereas the exchange contribution grows up to $ n^{\ex,1}(q) \le C \kF^{-1 + \varepsilon} $ (see Lemma~\ref{lem:estnqex}), so we cannot treat $ n^{\ex,1}(q) $ as an error. By contrast, in case $ \sum_\ell \hat{V}(\ell) < \infty $, the bound~\eqref{eq:finEQ2est} scales like $ \sim \kF^{-2+\varepsilon} $, while $ n^{\ex,m}(q) \le C \kF^{-2} $, so the exchange contribution is an error for any $ m \ge 1 $.
+Note that here, $ m = 1 $ and thus $ \sum_\ell \hat{V}(\ell)^m = \infty $ can occur for $ \alpha \to 0 $. In the end, we will choose $ \gamma = \frac 13 $ as explained below. Then, the error in~\eqref{eq:finEQ2est_Coulomb} is $ \sim \kF^{-1-\frac {\alpha}{6}} $.
+%, whereas the exchange contribution grows up to $ n^{\ex,1}(q) \le C \kF^{-1 + \varepsilon} $ (see Lemma~\ref{lem:estnqex}), so we cannot treat $ n^{\ex,1}(q) $ as an error. By contrast, in case $ \sum_\ell \hat{V}(\ell) < \infty $, the bound~\eqref{eq:finEQ2est} scales like $ \sim \kF^{-2+\varepsilon} $, while $ n^{\ex,m}(q) \le C \kF^{-2} $, so the exchange contribution is an error for any $ m \ge 1 $.
 To prove this proposition, we estimate $ E^{m,1}_{Q_2}(q) $ through $ E^{m,11}_{Q_2} (q)$ and $ n^{\ex,m}(q) $.
 
 \begin{lemma} \label{lem:EQ211}
@@ -1574,7 +1575,7 @@ If $ \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty $, given $ \varepsilon > 0 $,
 	&\leq C_\varepsilon C^m \left( \kF^{-2}
 		+ \kF^{-\frac{3}{2}} \Xi^\half
 		+ \kF^{-1}\Xi^{1-\varepsilon} \right) e(q)^{-1}
-		\norm { (\NN+1)^{\frac 52} \xi_\lambda } \nonumber\\
+		\norm { (\NN+1)^{\frac 52} \xi_\lambda }^2 \nonumber\\
 	&\quad + C_\varepsilon C^m \kF^{-1} \Xi^{\half - \varepsilon} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} e(q)^{-\half} \;. \label{eq:estEQ211}
 \end{align}
 \end{lemma}
@@ -1605,7 +1606,7 @@ For the case $ j = 0 $ we use $1 = (\NN+1) (\NN+1)^{-1}$ and Lemma~\ref{lem:norm
  		\sum\limits_{r, \ell_1, s_1 \in \Z^3} \norm{a_{r-\ell_1} a_{-s_1+\ell_1} a_{-s_1} (\NN+1) \xi_\lambda}^2\Bigg)^\half \times\nonumber\\
  	&\quad \times \Bigg( \sum\limits_{\ell \in \Zstar}(C \hat{V}(\ell))^{2m} \Bigg)^{\half}
  		\kF^{-1} e(q)^{-1}
- 		\Bigg( \sum\limits_{\ell \in \Z^3} \norm{a_{-q + \ell} (\NN+1)^{-\half} \xi_\lambda } \Bigg)^{\half} \nonumber\\
+ 		\Bigg( \sum\limits_{\ell \in \Z^3} \norm{a_{-q + \ell} a_q (\NN+1)^{-\half} \xi_\lambda } \Bigg)^{\half} \nonumber\\
  	&\leq C^m \norm{ (\NN+1)^{\frac 52}\xi_\lambda}
  		\kF^{-\frac 32} e(q)^{-1} \Xi^{\half} \;. \label{eq:estEQ2111}
 \end{align}
@@ -1643,7 +1644,7 @@ The case $ 1 \le j \le m-1 $ only occurs for $ m \ge 2 $, so $ \sum_\ell \hat{V}
 %		\kF^{-\frac 32} e(q)^{-1}
 %		\norm{ (\NN+1)^{\frac 32}\xi_\lambda } \Xi^{\half} \;. \label{eq:estEQ2112}
 %\end{align}
-Finally, let us consider the case $ j = m $. For Coulomb potentials, this is the most difficult term to bound. In analogy to~\cite{CHN24}, we introduce the ball $ S := \Zstar \cap B_{\kF^{\gamma}}(0) $. For $ \ell_1 $ outside the ball, we proceed as follows:
+Finally, let us consider the case $ j = m $. For Coulomb potentials, this is the most difficult term to bound. In analogy to~\cite{CHN24}, we introduce the ball $ S := \Zstar \cap B_{\kF^{\gamma}}(0) $ with $ \gamma \ge 0 $. For $ \ell_1 $ outside the ball, we proceed as follows:
 \begin{align}
 	&\sum_{\ell \in \Zstar} \sum_{\ell_1 \in \Zstar \setminus S} \mathds{1}_{L_\ell}(q) |\I_m(\ell, \ell_1)| \nonumber\\
 	&\leq \sum_{\ell \in \Zstar} \sum_{\ell_1 \in \Zstar \setminus S} \mathds{1}_{L_\ell \cap L_{\ell_1}}(q) \Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half
@@ -1888,7 +1889,7 @@ where
 \begin{equation}
 \begin{aligned}
 	& \I_j(\ell, \ell_1)
-	\coloneq \sum_{\substack{r\in L_{\ell} \cap L_{\ell_1} \cap (-L_{\ell_1}+\ell+\ell_1)\\ s_1 \in L_{\ell_1}}} \!\!
+	\coloneq \sum_{\substack{r\in L_{\ell} \cap L_{\ell_1} \cap (-L_{\ell}+\ell+\ell_1)\\ s_1 \in L_{\ell_1}}} \!\!
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,-r+\ell+\ell_1} K(\ell_1)_{r,s_1} b^*_{-s_1}(-\ell_1) a_{r-\ell-\ell_1} a_{r-\ell} \xi_\lambda} \;. \\
 \end{aligned}
 \end{equation}
@@ -2019,17 +2020,17 @@ In the case $ j = m $, we proceed as follows:
 	&\leq \sum_{\ell,\ell_1 \in \Zstar} \mathds{1}_{L_\ell \cap L_{\ell_1}}(q) \sum\limits_{s \in (L_{\ell_1} - \ell_1) \cap (L_\ell - \ell)}
 		\norm{ K(\ell_1)_{q,s+\ell_1} a_{-s-\ell_1} a_{q-\ell_1} \xi_\lambda}
 		\norm{ K^m(\ell)_{q,s+\ell} a_{-s-\ell} a_{q-\ell} \xi_\lambda } \nonumber\\
-	&\leq \sum_{\ell,\ell_1 \in \Zstar} \mathds{1}_{L_{\ell_1}}(q) 
+	&\leq \sum_{\ell,\ell_1 \in \Zstar}
 		\norm{K(\ell_1)}_{\max,2}
 		\norm{  a_{q-\ell_1} \xi_\lambda}
-		e(q) \kF^{-1} (C \hat{V}(\ell))^m
+		e(q)^{-1} \kF^{-1} (C \hat{V}(\ell))^m
 	\Bigg( \sum_{s\in \Z^3} \norm{a_{-s-\ell} a_{q-\ell} \xi_\lambda }^2 \Bigg)^{\half} \nonumber\\
-	&\leq e(q) \kF^{-\frac 32}
+	&\leq e(q)^{-1} \kF^{-\frac 32}
 		\Bigg( \sum_{\ell_1 \in \Zstar} \hat{V}(\ell_1)^2 \Bigg)^{\half}
 		\Bigg( \sum_{\ell \in \Zstar} (C \hat{V}(\ell))^{2m} \Bigg)^{\half}
-		\Bigg( \sum_{s, \ell, \ell_1 \in \Z^3} \norm{ a_{q-\ell_1} \xi_\lambda}
+		\Bigg( \sum_{s, \ell, \ell_1 \in \Z^3} \norm{ a_{q-\ell_1} \xi_\lambda}^2
 		\norm{a_{-s-\ell} a_{q-\ell} \xi_\lambda }^2 \Bigg)^{\half} \nonumber\\
-	&\leq C^m e(q) \kF^{-\frac 32}
+	&\leq C^m e(q)^{-1} \kF^{-\frac 32}
 		\norm{(\NN+1) \xi_\lambda }^2
 		\;. \label{eq:estEQ2131_Coulomb_bis}
 \end{align}
