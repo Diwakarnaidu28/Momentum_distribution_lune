@@ -18,9 +18,9 @@
 \usetikzlibrary{decorations.pathreplacing, patterns}
 
 \usepackage{capt-of, caption} %for captions in minipages
-\usepackage[capitalise]{cleveref}
-\crefname{equation}{}{}
-\usepackage[textsize=footnotesize,textwidth=2.7cm]{todonotes}
+% \usepackage[capitalise]{cleveref}
+% \crefname{equation}{}{}
+% \usepackage[textsize=footnotesize,textwidth=2.7cm]{todonotes}
 % \usepackage[color]{showkeys}
 
 \numberwithin{equation}{section}
@@ -112,7 +112,6 @@
 \newcommand{\SR}{\mathrm{SR}}
 \newcommand{\supp}{\mathrm{supp}}
 \newcommand{\trial}{\mathrm{trial}}
-%\newcommand{\tr}{\mathrm{Tr}}
 \newcommand{\kF}{k_\F}
 \newcommand{\BF}{B_\F}
 \newcommand{\BFc}{B_\F^c}
@@ -205,27 +204,7 @@
 \theoremstyle{remark}
 \newtheorem*{claim*}{Claim}
 \newtheorem*{remark*}{Remark}
-%%\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
-%% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
 
-%
-% % declare alias for cleveref
-% \AddToHook{env/proposition/begin}{\crefalias{lemma}{proposition}}
-% \AddToHook{env/theorem/begin}{\crefalias{lemma}{theorem}}
-%
-%
-% \crefname{lemma}{lemma}{lemmas}
-% \crefformat{lemma}{#2lemma~#1#3}
-% \Crefformat{lemma}{#2Lemma~#1#3}
-%
-% \crefname{theorem}{theorem}{theorems}
-% \crefformat{theorem}{#2theorem~#1#3}
-% \Crefformat{theorem}{#2Theorem~#1#3}
-%
-% \crefname{proposition}{proposition}{propositions}
-% \crefformat{proposition}{#2proposition~#1#3}
-% \Crefformat{proposition}{#2Proposition~#1#3}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
@@ -286,10 +265,6 @@ The relation between the Fermi momentum $ \kF \in \Rbb$ and the particle number 
 \begin{equation}
 	\kF = \left(\frac{3}{4\pi}\right)^\frac{1}{3}N^\frac{1}{3} + \mathcal{O}(1) \qquad \textnormal{for } N\to \infty \;.
  \end{equation}
-% and we define the complement of the Fermi ball as
-% \begin{equation}
-% 	B_{\F}^c=\Z^3\backslash B_{\F} \;.
-% \end{equation}
 In the Fermi ball state the momentum distribution is the indicator function
 \begin{equation}
 	\langle \Psi_{\FS}, a_q^* a_q \Psi_{\FS} \rangle
@@ -404,9 +379,6 @@ then the error term is even bounded by
 which we expect to be optimal in the mean-field scaling.
 
 For comparison, in~\cite{BL25}, the scaling of the leading term is $ n^{\RPA}(q) \sim \kF^{-2} $ without any $ e(q) $. This is because~\cite{BL25} assumes $ |\ell| \le C $ and $ |\ell \cdot q| \ge c $ in the analogue of~\eqref{eq:nqb}, leading to $ e(q) \sim \kF $. In other words, it includes only momenta at distances $ ||q|-\kF| \sim 1 $ from the Fermi surface, while the present result admits distances as small as $ \kF^{-1} $.
-% (and up to arbitrarily large distances.\\
-
-%To study the momentum distribution even closer to the Fermi surface, one would need to increase the size of the torus to refine the momentum lattice. It is expected \cite{DV60} that the analogue of $ n^{\RPA}(q) $ in continuous momentum space scales like $ \lim_{||q|-\kF| \to \pm 0} n^{\RPA}(q) \sim \kF^{-1} $ at the Fermi surface. We therefore expect that for a large-volume limit, $ e(q)^{-1} $ both in the leading term and in the error estimate can be replaced by $ (e(q)+1)^{-1} $.
 
 
 
@@ -418,8 +390,7 @@ For comparison, in~\cite{BL25}, the scaling of the leading term is $ n^{\RPA}(q)
 	Q_\ell(\mu) &:= \frac{\hat{V}(\ell)}{(2 \pi)^2} \left( 1 - \mu \arctan \left( \frac{1}{\mu} \right) \right) \;. \tagg{eq:Q}
 \end{align*}
 This agrees with \cite{BL25} up to a factor $ (2 \pi)^3 \kappa $ multiplying $\hat{V}$, explained by the choice of coupling constant $k_\F^{-1}$ here compared to the coupling constant $N^{-1/3} = \kappa^{-1} \kF^{-1}$ in \cite{BL25}, as well as the absent factor of $ (2 \pi)^{-3} $ in the Fourier convention~\eqref{eq:Fourierconvention}.
-
-% \item Note that hypothesis~\eqref{hyp:ell1} implies hypothesis~\eqref{hyp:alpha}  for $ \alpha \in (0,3] $, and hypothesis~\eqref{hyp:Coulomb} implies hypothesis~\eqref{hyp:alpha} for $ \alpha \in (0,1) $. The latter case includes the Coulomb potential.
+%
 \end{enumerate}
 \end{remarks}
 
@@ -541,8 +512,7 @@ where $ T: \cF \to \cF $ is another unitary operator motivated as follows: We ex
 	b_p(k) \coloneq a_{p-k} a_p \;.
 \end{equation}
 The constraint on $ (p,k) $ can be written as $ p \in L_k $.
-% , where we recall $ L_k = B_{\F}^c \cap (B_{\F} + k) $.
-% with $ L_{-k} = - L_k $.
+
 The Hamiltonian can be particle-hole transformed to extract explicitly the mean-field contributions $E_{\FS}$ \cite[Eqs.~(1.2) and (1.11)]{CHN24} to its ground state energy
 \begin{equation}
    R^* \Hcal_N R = E_{\FS} + H_{\Bog} + \textnormal{non-bosonizable remainders}
@@ -578,7 +548,6 @@ with the Bogoliubov kernel
 \end{equation}
 (The exponent $ S $ corresponds to $ R^* \cK R $ in the notation of~\cite{CHN23} since we prefer to use a particle-hole transformation instead of the normal ordering with respect to the Fermi ball state.)
 The matrix $K(\ell)$ is symmetric and possesses the reflection invariance $ K(-\ell)_{-p,-q} = K(\ell)_{p,q} $.
-% This concludes the definition of the trial state.
 
 
 
@@ -616,7 +585,7 @@ To compute the multicommutators in~\eqref{eq:duhamelexpansion_blueprint} we use 
 
 \begin{definition} \label{def:Q}
 Let $A=(A(\ell))_{\ell \in \Zstar} $ be a family of symmetric operators with $A(\ell): \ell^2(L_\ell)\rightarrow \ell^2(L_\ell)$. The quadratic quasi-bosonic operators are given by
-\begin{equation} %\label{eq:Q}
+\begin{equation}
 \begin{split}
 	Q_1(A)&\coloneq 2 \sum_{\ell \in \Zstar}\sum_{r,s \in L_{\ell}}A(\ell)_{r,s} b^*_r(\ell)b_{s}(\ell) \;,\\
 	Q_2(A)&\coloneq \sum_{\ell \in \Zstar}\sum_{r,s \in L_{\ell}}A(\ell)_{r,s} \left(b_r(\ell)b_{-s}(-\ell)+b^*_{-s}(-\ell)b^*_{r}(\ell)\right) \;.
@@ -699,9 +668,7 @@ To simplify the expansion, we introduce the $n$-fold anticommutator
 	\coloneq A \;,
 \end{equation}
 understood pointwise for families of operators as above.
-% where $ A, K $ are understood either as matrices $ A: \ell^2(L_\ell) \to \ell^2(L_\ell) $, or families thereof, i.e., $ A = (A(\ell))_{\ell \in \Zstar} $.
 Given $q \in \Zbb^3$ we define
-% the projection matrix
 \begin{equation} \label{eq:Pq}
 	P^q(\ell) : \ell^2(L_\ell) \to \ell^2(L_\ell) \;, \qquad
 	P^q(\ell)_{r,s} \coloneq \delta_{q,r} \delta_{q,s} \qquad
@@ -741,10 +708,6 @@ Our trial state and excitation density are reflection symmetric, that is, if we 
 	\fR e^{-S} \Omega = e^{-S} \Omega
 \end{equation}
 and therefore
-% \begin{equation}
-% 	\eva{\Omega, e^{S} a^*_q a_q e^{-S}\Omega} = \eva{\Omega, e^{S} a^*_{-q} a_{-q} e^{-S} \Omega} \;.
-% \end{equation}
-% Hence
 \begin{equation}
 	\eva{\Omega, e^{S} a_q^* a_q e^{-S} \Omega} = \half \eva{\Omega, e^{S} (a_q^* a_q + a_{-q}^* a_{-q}) e^{-S} \Omega} \;.
 \end{equation}
@@ -856,8 +819,6 @@ Follows by a lengthy but straightforward computation with the CAR. (Alternativel
 \end{proof}
 
 Note that the exchange contribution~\eqref{eq:nqex} follows as $ n^{\ex}(q) \approx \frac 14 n^{\ex,1}(q) $, see Lemma~\ref{lem:estnqex}.
-\todo{What about the higher orders of the exchange contribution? What are the orders of first vs. higher terms in case of Coulomb?}
-
 
 
 \section{Preliminary Bounds}
@@ -893,7 +854,7 @@ For $ \ell \in \Zstar$ and $A(\ell) : \ell^2(L_\ell) \to \ell^2(L_\ell)$ we defi
 Moreover we have the Hilbert--Schmidt norm $ \norm{A(\ell)}_{\HS} := \Big( \sum_{p,q \in L_\ell} |A(\ell)_{p,q}|^2 \Big)^{\half} $.
 \end{definition}
 
-We have the following estimates for the Bogoliubov kernel \cref{eq:K}.
+We have the following estimates for the Bogoliubov kernel \eqref{eq:K}.
 \begin{lemma}[Bounds on $ K $]\label{lem:normsk}
 Let $ \ell \in \Zstar $, $ m \in \mathbb{N} $, and $ r,s \in L_\ell $. Then
 \begin{equation} \label{eq:K_element_bounds}
@@ -1076,10 +1037,9 @@ We now turn to bounding the two errors of the expansion in Proposition~\ref{prop
 \label{subsec:tailestimate}
 
 The next proposition shows that the expansion tail vanishes as $ n \to \infty $.
-% The following simple bound, despite not being optimal, will turn out to be sufficient to establish this fact.
 %
 \begin{proposition}[Tail]\label{prop:headerr}
-Recall definitions \cref{eq:Theta,eq:Pq,eq:Deltan}. For $q \in B^c_{\F}$ we have
+Recall definitions \eqref{eq:Theta}, \eqref{eq:Pq}, and \eqref{eq:Deltan}. For $q \in B^c_{\F}$ we have
 \begin{equation}\label{eq:headest}
 	\half \abs{\int_{\Delta^n} \di^n\underline{\lambda} \;
 		\eva{\Omega, e^{\lambda_n S}Q_{\sigma(n)}(\Theta^n_{K}(P^q)) e^{-\lambda_n S} \Omega} }
@@ -1117,15 +1077,12 @@ Combining Lemmas~\ref{lem:estQ2} and~\ref{lem:multicommest}, we have
 		\abs{\eva{\Omega, e^{\lambda_n S} (\NN +1) e^{-\lambda_n S} \Omega}} \;.
 \end{align}
 With $ \norm{P^q}_{\HS} = 1$, Lemma~\ref{lem:gronNest}, and $ \int_{\Delta^n} \di^n\underline{\lambda} = \frac{1}{n!} $, we get
-% \begin{equation}
 \begin{align*}
 	&\half \abs{\int_{\Delta^n} \di^n \ulambda \;
 		\eva{\Omega, e^{\lambda_n S} Q_{\sigma(n)}(\Theta^n_{K}(P^q)) e^{-\lambda_n S} \Omega} }
 	\\
 	& \leq C 2^n \int_{\Delta^n} \di^n \ulambda \sum_{\ell \in \Zstar} \norm{K(\ell)}^n_{\mathrm{op}} \eva{\Omega,(\NN+1)\Omega} =  C \frac{2^n}{n!} \sum_{\ell \in \Zstar} \norm{K(\ell)}^n_{\mathrm{op}} \;. \qedhere
 \end{align*}
-% \end{equation}
-% where $ C>0 $ does not depend on $ n $.
 \end{proof}
 
 
@@ -2151,7 +2108,6 @@ Splitting the multi-anticommutator in $ E^{m,10}_{Q_2}(q) $ by \eqref{eq:q-q} yi
 \begin{equation} \label{eq:EQ2121}
 \begin{aligned}
 	& \abs{\eva{\xi_\lambda,\left(E^{m,10}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
-% 	&= 2\abs{\eva{\xi_\lambda, E^{m,10}_{Q_2}(q) \xi_\lambda }}
 	\le 2 \sum_{j=0}^{m+1} {{m+1}\choose j} \sum_{\ell \in \Zstar}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell)| \;,
 \end{aligned}
 \end{equation}
@@ -2461,11 +2417,6 @@ Similarly we arrive at
 	= \frac{2}{\pi} \int_0^\infty \frac{2g_\ell \lambda_{\ell,q}^2 (t^2+\lambda^2_{\ell,q})^{-2}}{1+ 2g_\ell\sum_{p \in L_{\ell}}\lambda_{\ell,p}(t^2+\lambda^2_{\ell,p})^{-1} } \mathrm{d}t \;.
 \end{equation}
 Summing both terms we obtain the claimed result.
-% With~\eqref{eq:coshrewriting} we then finally obtain
-% \begin{equation}
-% 	\half (\cosh(2K(\ell))-1)_{q,q} = \frac{1}{\pi} \int_0^\infty \frac{g_\ell (t^2-\lambda_{\ell,q}^2) (t^2+\lambda^2_{\ell,q})^{-2}}{1+ 2g_\ell\sum_{p \in L_{\ell}}\lambda_{\ell,p}(t^2+\lambda^2_{\ell,p})^{-1} } \mathrm{d}t \;.
-% \end{equation}
-% Summing over $ \ell \in \Zstar $ with $ q \in L_\ell $ and comparing with~\eqref{eq:nqb}, we get the claimed result.
 \end{proof}
 
 
@@ -2476,7 +2427,6 @@ Summing both terms we obtain the claimed result.
 
 \begin{lemma}[Bosonized momentum distribution] \label{lem:nqb_bounds}
 For any potential $ \hat{V} \in \ell^1(\Zstar) $, there exists some $ C > 0 $
-% such that for all particle numbers $ N = |B_{\F}| \sim \kF^3 $ and
 such that for all $ q \in \Z^3 $ we have
 \begin{equation} \label{eq:nqb_upperbound}
 	n^{\RPA}(q)
@@ -2497,7 +2447,6 @@ We focus on the case $ q \in B_{\F}^c $; $ q \in B_{\F} $ is treated analogously
 	\le \sum_{\ell \in \Zstar} \frac{\kF^{-1}}{\lambda_{\ell,q}} \sum_{m=1}^{\infty} \frac{C^m \hat{V}(\ell)^{2m}}{(2m)!}
 	\le C \frac{\kF^{-1}}{e(q)} \;.
 \end{equation}
-%For the lower bound, first observe that~\cite[Prop.~7.8]{CHN21} implies the matrix element bound \textcolor{red}{[SL: I would expect that the following bound holds true, but it might be cumbersome to show. Maybe, we do a numerical evaluation using the corresponding integral formula, instead.]} \todo{[11] is not sufficient?}
 %\begin{equation}
 %	(\cosh(2K(\ell)) - 1)_{q,q}
 %	\ge \frac{c \hat{V}(\ell)^2 \kF^{-1}}{\lambda_{\ell,q}}
@@ -2572,7 +2521,7 @@ Plugging this bound again into~\eqref{eq:main_errorbound_with_Xi} and taking onl
 	&\sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega}
 	\le C \kF^{-1} e(q)^{-1} \;.
 \end{align}
-Inserting both bounds~\eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} into again into~\eqref{eq:main_errorbound_with_Xi} and optimizing $ \gamma = \frac 13 $ renders the final result~\eqref{eq:main_prop_2}.\\
+Inserting both bounds~\eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} into again into~\eqref{eq:main_errorbound_with_Xi} and optimizing $ \gamma = \frac 13 $ renders the final result~\eqref{eq:main_prop_2}.
 
 Under the assumption of \eqref{hyp:ell1} ($ \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty $), Proposition~\ref{prop:finalEmest} provides us with
 \begin{align} \label{eq:main_errorbound_with_Xi_subcoulomb}
@@ -2583,7 +2532,8 @@ Under the assumption of \eqref{hyp:ell1} ($ \sum_{\ell \in \Zstar} \hat{V}(\ell)
 		+ \kF^{-1} \Xi^{1-\varepsilon} \right) \nonumber\\
 	&\quad + e(q)^{-\half} \kF^{-1} \Xi^{\half - \varepsilon} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} \Big) \;.
 \end{align}
-Bounding $ n^{\ex}(q) $, $ \Xi $, and $ \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} $ by Lemma~\ref{lem:estnqex},~\eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} readily yields the improved error bound~\eqref{eq:main_prop_improvederror}.\\
+Bounding $ n^{\ex}(q) $, $ \Xi $, and $ \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} $ by Lemma~\ref{lem:estnqex},~\eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} readily yields the improved error bound~\eqref{eq:main_prop_improvederror}.
+
 The bound~\eqref{eq:main_prop_exchange} was proven in~\eqref{eq:estnqex_Coulomb_1} and~\eqref{eq:estnqex}, where only $ m = 1 $ contributes to $ n^{\ex}(q) $.
 \end{proof}
 
@@ -2593,7 +2543,7 @@ The bound~\eqref{eq:main_prop_exchange} was proven in~\eqref{eq:estnqex_Coulomb_
 
 
 \section*{Acknowledgments}
-SL would like to thank Phan Thành Nam for discussions and for making him aware of the work of Dong Hao (David) Ou Yang. The authors were supported by the European Union through the ERC Starting Grant \textsc{FermiMath}, grant agreement nr.~101040991. Views and opinions expressed are those of the authors and do not necessarily reflect those of the European Union or the European Research Council Executive Agency. Neither the European Union nor the granting authority can be held responsible for them. The authors were partially supported by Gruppo Nazionale per la Fisica Matematica in Italy.
+SL would like to thank Phan Thành Nam for discussions and for putting us in contact with Dong Hao (David) Ou Yang. The authors were supported by the European Union through the ERC Starting Grant \textsc{FermiMath}, grant agreement nr.~101040991. Views and opinions expressed are those of the authors and do not necessarily reflect those of the European Union or the European Research Council Executive Agency. Neither the European Union nor the granting authority can be held responsible for them. The authors were partially supported by Gruppo Nazionale per la Fisica Matematica in Italy.
 
 \section*{Statements and Declarations}
 The authors have no competing interests to declare.
@@ -2604,188 +2554,4 @@ As purely mathematical research, there are no datasets related to this article.
 \bibliographystyle{abbrv}
 \bibliography{momentumdistribution}{}
 
-% \begin{thebibliography}{29}
-% \bibitem{BJPSS16}
-% N. Benedikter, V. Jakšić, M. Porta, C. Saffirio, B. Schlein:
-% 	Mean-Field Evolution of Fermionic Mixed States.
-% 	\emph{Commun. Pure Appl. Math.} \textbf{69}: 2250--2303 (2016)
-%
-% \bibitem{BD23}
-% N. Benedikter, D. Desio:
-% 	Two Comments on the Derivation of the Time-Dependent Hartree–Fock Equation, in: Correggi, M., Falconi, M. (Eds.), Quantum Mathematics I, Springer INdAM Series. Springer Nature Singapore, pp. 319--333 (2023)
-%
-% \bibitem{BL25}
-% N. Benedikter, S. Lill:
-% 	Momentum Distribution of a Fermi Gas in the Random Phase Approximation.
-% 	\emph{J. Math. Phys.} \textbf{66}: 081901 (2025)
-%
-% \bibitem{BNPSS20}
-% N. Benedikter, P. T. Nam, M. Porta, B. Schlein, R. Seiringer:
-% 	Optimal Upper Bound for the Correlation Energy of a Fermi Gas in the Mean-Field Regime.
-% 	\emph{Commun. Math. Phys.} \textbf{374}: 2097--2150 (2020)
-%
-% \bibitem{BNPSS21}
-% N. Benedikter, P. T. Nam, M. Porta, B. Schlein, R. Seiringer:
-% 	Correlation Energy of a Weakly Interacting Fermi Gas.
-% 	\emph{Invent. Math.} \textbf{225}: 885--979 (2021)
-%
-% \bibitem{BNPSS21dyn}
-% N. Benedikter, P. T. Nam, M. Porta, B. Schlein, R. Seiringer:
-% 	Bosonization of Fermionic Many-Body Dynamics.
-% 	\emph{Ann. Henri Poincar\'e} \textbf{23}: 1725--1764 (2022)
-%
-% \bibitem{BPSS22}
-% N. Benedikter, M. Porta, B. Schlein, R. Seiringer:
-% 	Correlation Energy of a Weakly Interacting Fermi Gas with Large Interaction Potential.
-% 	\emph{Arch. Ration. Mech. Anal.} \textbf{247}: article number 65 (2023)
-%
-% \bibitem{BPS14b}
-% N. Benedikter, M. Porta, B. Schlein:
-% 	Mean–Field Evolution of Fermionic Systems.
-% 	\emph{Commun. Math. Phys.} \textbf{331}: 1087--1131 (2014)
-%
-% \bibitem{BL23}
-% M. Brooks, S. Lill:
-% 	Friedrichs diagrams: bosonic and fermionic.
-% 	\emph{Lett. Math. Phys.} \textbf{113}: article number 101 (2023)
-%
-%
-% % \bibitem{CF94}
-% % A. H. Castro-Neto, E. Fradkin:
-% % 	Bosonization of {{Fermi}} liquids.
-% % 	\emph{Phys. Rev. B}, \textbf{49}(16): 10877--10892, (1994)
-%
-% \bibitem{CHN21}
-% M. R. Christiansen, C. Hainzl, P. T. Nam:
-% 	The Random Phase Approximation for Interacting Fermi Gases in the Mean-Field Regime.
-% 	\emph{Forum of Mathematics, Pi}, \textbf{11}:e32 1--131, (2023)
-%
-% \bibitem{CHN22}
-% M. R. Christiansen, C. Hainzl, P. T. Nam:
-% 	On the Effective Quasi-Bosonic Hamiltonian of the Electron Gas: Collective Excitations and Plasmon Modes.
-% 	\emph{Lett. Math. Phys.} \textbf{112}: article number 114 (2022)
-%
-% \bibitem{CHN23}
-% M. R. Christiansen, C. Hainzl, P. T. Nam:
-% 	The Gell-Mann-Brueckner Formula for the Correlation Energy of the Electron Gas: A Rigorous Upper Bound in the Mean-Field Regime.
-% 	\emph{Commun. Math. Phys.} \textbf{401}: 1469--1529 (2023)
-%
-% \bibitem{CHN24}
-% M. R. Christiansen, C. Hainzl, P. T. Nam:
-% 	The Correlation Energy of the Electron Gas in the Mean-Field Regime.
-% 	\url{https://arxiv.org/abs/2405.01386}
-%
-% \bibitem{Chr23PhD}
-% M. R. Christiansen:
-% 	Emergent Quasi-Bosonicity in Interacting Fermi Gas.
-% 	\emph{PhD Thesis} (2023)
-% 	\url{https://arxiv.org/abs/2301.12817v1}
-%
-% \bibitem{DV60}
-% E. Daniel, S. H. Vosko:
-% 	Momentum Distribution of an Interacting Electron Gas.
-% 	\emph{Phys. Rev.} \textbf{120}: 2041--2044 (1960)
-%
-% \bibitem{DMR01}
-% M. Disertori, J. Magnen, V. Rivasseau:
-% 	Interacting {{Fermi Liquid}} in {{Three Dimensions}} at {{Finite
-%   Temperature}}: {{Part I}}: {{Convergent Contributions}}.
-% 	\emph{Ann. Henri Poincar\'e}, \textbf{2}(4): 733--806 (2001)
-%
-% \bibitem{FGHP21}
-% M. Falconi, E. L. Giacomelli, C. Hainzl, M. Porta:
-% 	The Dilute Fermi Gas via Bogoliubov Theory.
-% 	\emph{Ann. Henri Poincar\'e} \textbf{22}: 2283--2353 (2021)
-%
-% \bibitem{FKT00}
-% J. Feldman, H. Kn{\"o}rrer, E. Trubowitz:
-% 	Asymmetric fermi surfaces for magnetic schr\"odinger operators.
-% 	\emph{Commun. PDE},
-%   \textbf{25}(1-2): 319--336 (2000)
-%
-% \bibitem{FKT04}
-% J. Feldman, H. Kn{\"o}rrer,  E. Trubowitz:
-% 	A {{Two Dimensional Fermi Liquid}}. {{Part}} 1: {{Overview}}.
-% 	\emph{Commun. Math. Phys.}, \textbf{247}(1): 1--47, (2004)
-%
-% \bibitem{GB57}
-% M. Gell-Mann, K. A. Brueckner:
-% 	Correlation Energy of an Electron Gas at High Density.
-% 	\emph{Phys. Rev.} \textbf{106}(2): 364--368 (1957)
-%
-% \bibitem{Gia22}
-% E. L. Giacomelli:
-% 	Bogoliubov theory for the dilute Fermi gas in three dimensions.
-% 	In: \emph{M. Correggi, M. Falconi (eds.), Quantum Mathematics II, Springer INdAM Series 58. Springer, Singapore} (2022)
-%
-% \bibitem{Gia23}
-% E. L. Giacomelli:
-% 	An optimal upper bound for the dilute Fermi gas in three dimensions.
-% 	\emph{J. Funct. Anal.} \textbf{285}(8), 110073 (2023)
-%
-% \bibitem{GHNS24}
-% E. L. Giacomelli, C. Hainzl, P. T. Nam, R. Seiringer:
-% 	The Huang-Yang formula for the low-density Fermi gas: upper bound.
-% 	\url{https://arxiv.org/abs/2409.17914}
-%
-% \bibitem{GS94}
-% G. M. Graf, J. P. Solovej:
-% 	A correlation estimate with applications to quantum systems with coulomb interactions.
-% 	\emph{Rev. Math. Phys.} \textbf{06}: 977--997 (1994)
-%
-% \bibitem{Hal94}
-% F. D. M. Haldane:
-% 	Luttinger's {{Theorem}} and {{Bosonization}} of the {{Fermi Surface}}.
-% 	In: \emph{Proceedings of the {{International School}} of {{Physics}}
-%   ``{{Enrico Fermi}}'', {{Course CXXI}}: ``{{Perspectives}} in
-%   {{Many}}-{{Particle Physics}}''}, pages 5--30. {North Holland}, {Amsterdam},
-%   1994.
-%
-% \bibitem{Lam71a}
-% J. Lam:
-% 	Correlation Energy of the Electron Gas at Metallic Densities.
-% 	\emph{Phys. Rev. B} \textbf{3}(6): 1910--1918 (1971)
-%
-% \bibitem{Lam71b}
-% J. Lam:
-% 	Momentum Distribution and Pair Correlation of the Electron Gas at Metallic Densities.
-% 	\emph{Phys. Rev. B} \textbf{3}(10): 3243--3248 (1971)
-%
-% \bibitem{Lan56}
-% L.~D. Landau:
-% 	The theory of a Fermi Liquid.
-% 	\emph{Soviet Physics\textendash JETP [translation of Zhurnal
-%   Eksperimentalnoi i Teoreticheskoi Fiziki]}, \textbf{3}(6): 920 (1956)
-%
-% \bibitem{Lil23}
-% S. Lill:
-% 	Bosonized Momentum Distribution of a Fermi Gas via Friedrichs Diagrams.
-% 	In: \emph{Proceedings of the ``PST Puglia Summer Trimester 2023''} \url{https://arxiv.org/abs/2311.11945} (2025)
-%
-% \bibitem{Lut60}
-% J. M. Luttinger:
-% 	Fermi Surface and Some Simple Equilibrium Properties of a System of Interacting Fermions.
-% 	\emph{Phys. Rev.} \textbf{119}: 1153--1163 (1960)
-%
-% \bibitem{NS81}
-% H. Narnhofer, G. L. Sewell:
-% 	Vlasov hydrodynamics of a quantum mechanical model.
-% 	\emph{Commun. Math. Phys.} \textbf{79}: 9--24 (1981)
-%
-% \bibitem{Sal98}
-% M. Salmhofer:
-% 	Continuous Renormalization for Fermions and Fermi Liquid Theory.
-% 	\emph{Commun. Math. Phys.} \textbf{194}: 249--295 (1998)
-%
-% \bibitem{Saw57}
-% K. Sawada:
-% 	Correlation Energy of an Electron Gas at High Density.
-% 	\emph{Phys. Rev.} \textbf{106}(2): 372--383 (1957)
-%
-% \bibitem{Zie10}
-% P. Ziesche:
-% 	The high-density electron gas: How momentum distribution $n(k)$ and static structure factor $S(q)$ are mutually related through the off-shell self-energy $\Sigma(k,\omega)$.
-% 	\emph{Annalen der Physik} \textbf{522}(10): 739--765 (2010)
-%
-% \end{thebibliography}
 \end{document}
