@@ -416,7 +416,6 @@ Let $ \Psi_N $ be the trial state defined in~\eqref{eq:Psitrial}--\eqref{eq:T} a
 \begin{equation}\label{hyp:alpha}
 \hat{V}(\ell) = \hat{V}(-\ell) \ge 0 \quad \forall \ell \in \Z^3 \text{ and } \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty \text{ for some } \alpha > 0 \;.
 \end{equation}
-% let Hypothesis~\ref{hyp:alpha} hold with $ \alpha > 0 $.
 Then, there exist $ C, C_\varepsilon > 0 $, such that for all $ \kF $ and $ q \in \Z^3 $ we have
 \begin{equation} \label{eq:main_prop_2}
 	n(q) = \eva{\Psi_N, a_q^* a_q \Psi_N}
@@ -632,7 +631,6 @@ For the quadratic quasi-bosonic operators, this implies the following formulas.
 
 \begin{lemma}[Commutator of $S$ and $Q$]\label{lem:Q1Kcomm}
 Let $ A = (A(\ell))_{\ell \in \Zstar} $ be a family of symmetric operators $ A(\ell) : \ell^2(L_\ell) \to \ell^2(L_\ell) $ satisfying $A(\ell)_{r,s} = A(-\ell)_{-r,-s}$. Then
-% , with definition~\eqref{eq:T} of $ S $ and~\eqref{eq:Q} of $ Q_1(A) $ and $ Q_2(A) $, we have
 \begin{equation}
 \begin{aligned}
 	[S, Q_1(A)] 
@@ -928,32 +926,6 @@ Next, we collect some elementary estimates involving the fermionic number operat
 \begin{equation} \label{eq:cN}
 	\cN \coloneq \sum_{q \in \Z^3} a_q^* a_q \;.
 \end{equation}
-%
-%\begin{lemma}[Bounds on pair operators]\label{lem:pairest}
-%Let $\ell \in \Zstar$ and $ \Psi \in \cF $. Then,
-%\begin{equation}\label{eq:estopb}
-%	\sum_{p \in L_\ell}\norm{b_p(\ell)\Psi}^2
-%	\leq \norm{\NN^\half \Psi}^2  \;.
-%\end{equation}
-%Moreovermore, for $f \in \ell^2(L_\ell)$ we have
-%\begin{equation} \label{eq:estb}
-%	\sum_{p\in L_\ell} |f_p| \norm{b_p(\ell) \Psi}
-%	\leq \norm{f}_2 \norm{\NN^\half\Psi} \;, \quad
-%	\sum_{p\in L_\ell} |f_p| \norm{b^*_p(\ell) \Psi}
-%	\leq \norm{f}_2 \norm{(\NN+1)^\half\Psi} \;.
-%\end{equation}
-%\end{lemma}
-%\begin{proof}
-%The bounds are well-known \cite[Prop.~4.2]{CHN21}. For example, by $a^*_{p-\ell}a_{p-\ell} \leq 1$:
-%\[
-%	\sum_{p \in L_\ell}\norm{b_p(\ell)\Psi}^2
-%	= \sum_{p \in L_\ell} \eva{\Psi,a^*_{p} a^*_{p-\ell}a_{p-\ell} a_{p}\Psi}
-%	\leq \sum_{p \in \Zstar} \eva{\Psi, a^*_{p} a_{p}\Psi}
-%	= \eva{\Psi, \NN \Psi} \;. \qedhere
-%\]
-%\end{proof}
-
-% The following bounds were proven in a very similar form in~\cite[Prop.~4.7]{CHN21}.
 
 \begin{lemma}\label{lem:estQ2}
 Let $A = (A(\ell))_{\ell \in \Zstar}$ be a family of symmetric operators $ A(\ell) : \ell^2(L_\ell) \to \ell^2(L_\ell) $. Then for $ \Psi \in \cF $ we have
@@ -974,7 +946,7 @@ For the first bound, see \cite[Prop.~4.7]{CHN22}; the second follows analogously
 The next estimate generalizes \cite[Prop.~5.8]{CHN22}, conceptually going back to \cite{BJP+16,BPS14b} in the context of the derivation of the time-dependent Hartree--Fock equation. It shows that the expectation value $ \langle \Omega, e^{\lambda S} (\mathcal{N} + 1)^m e^{-\lambda S} \Omega \rangle$ does not grow with $N$.
 
 \begin{lemma}[Gr\"onwall estimate]\label{lem:gronNest}
-For every $ m \in \NNN $, there exists a constant $ C_m > 0 $ such that for all $ \lambda\in [0,1]$ we have
+Let $S$ be defined as in \eqref{eq:T}. For every $ m \in \NNN $, there exists a constant $ C_m > 0 $ such that for all $ \lambda\in [0,1]$ we have
 \begin{equation}\label{eq:gronest}
 	e^{\lambda S} (\mathcal{N} +1)^m e^{-\lambda S}
 	\leq C_m (\NN+1)^m \;.
@@ -1039,7 +1011,7 @@ We now turn to bounding the two errors of the expansion in Proposition~\ref{prop
 The next proposition shows that the expansion tail vanishes as $ n \to \infty $.
 %
 \begin{proposition}[Tail]\label{prop:headerr}
-Recall definitions \eqref{eq:Theta}, \eqref{eq:Pq}, and \eqref{eq:Deltan}. For $q \in B^c_{\F}$ we have
+Let $S$ be defined as in \eqref{eq:T} and recall definitions \eqref{eq:Theta}, \eqref{eq:Pq}, and \eqref{eq:Deltan}. For $q \in B^c_{\F}$ we have
 \begin{equation}\label{eq:headest}
 	\half \abs{\int_{\Delta^n} \di^n\underline{\lambda} \;
 		\eva{\Omega, e^{\lambda_n S}Q_{\sigma(n)}(\Theta^n_{K}(P^q)) e^{-\lambda_n S} \Omega} }
@@ -1229,7 +1201,7 @@ where
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{s}(\ell) b^*_{-s_1}(-\ell_1) a_{r-\ell} \xi_\lambda} \;. \\
 \end{aligned}
 \end{equation}
-We need three different strategies for $ j = 0 $, for $ 1 \le j \le m-1 $, and for $ j = m $. The general strategy is to carefully apply the Cauchy--Schwarz inequality, estimate the $ K $-matrices by Lemma~\ref{lem:normsk} and then either eliminate annihilation operators by $ \norm{a_p} \le 1 $ or turn them into number operators via $ \sum_{p \in \Z^3} \norm{a_p \Psi}^2 = \Vert \cN^{\half} \Psi \Vert^2 $. In the first case $ j = 0 $, we start by
+We need three different strategies for $ j = 0 $, for $ 1 \le j \le m-1 $, and for $ j = m $. The general strategy is to apply the Cauchy--Schwarz inequality, estimate the $ K $-matrices by Lemma~\ref{lem:normsk} and then either eliminate annihilation operators by $ \norm{a_p} \le 1 $ or bound them by number operators using $ \sum_{p \in \Z^3} \norm{a_p \Psi}^2 = \Vert \cN^{\half} \Psi \Vert^2 $. In the first case $ j = 0 $, we start by
 \begin{align}
 	&\sum_{\ell,\ell_1 \in \Zstar} \mathds{1}_{L_\ell}(q) |\I_0(\ell, \ell_1)| \nonumber\\
 	&\le \sum_{\ell,\ell_1 \in \Zstar} \mathds{1}_{L_\ell}(q) \times \nonumber\\
@@ -1249,8 +1221,9 @@ We need three different strategies for $ j = 0 $, for $ 1 \le j \le m-1 $, and f
 	 	\norm { (\NN+1)^2 \xi_\lambda } \;.\label{eq:estEQ1111}
 \end{align}
 Note that in the second last line, we were able to use $ \sum_\ell \hat{V}(\ell)^m < \infty $, since $ m \ge 2 $.
-Also, the order in which we convert $ a $ into $ \cN^\half $ matters: We first resolved $ \sum_{r \in \Z^3} $, then $ \sum_{\ell_1 \in \Z^3} $  and then $ \sum_{s_1' \in \Z^3} $.
-Moreover, we were able to absorb an arbitrary constant $ C $ into $ C^m $, and in the last line, we used $ (\cN+5)^m \le C (\cN+1)^m $ and the definition~\eqref{eq:Xi} of the bootstrap quantity $ \Xi $.\\
+The order in which we estimate annihilation operators by $ \cN^\half $ matters: We first took care of the sum over $r$ and the operator $a_{r-\ell_1}$, then the sum over $\ell_1$ with the second annihilation operator, and finally the sum over $ s_1' $.
+Moreover, we absorbed a constant $ C $ into $ C^m $, and in the last line, we used $ (\cN+5)^m \le C (\cN+1)^m $ and the definition~\eqref{eq:Xi} of the bootstrap quantity $ \Xi $.
+
 In the second case $ 1 \le j \le m-1 $, we convert an operator $ a_{r-\ell} $ instead of $ a_q $ into $ \Xi $:
 \begin{align}
 	&\sum_{\ell,\ell_1 \in \Zstar} \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \nonumber\\
@@ -1343,7 +1316,6 @@ As in the proof of Lemma~\ref{lem:EQ111}, we split
 \begin{equation} \label{eq:EQ1121}
 \begin{aligned}
 	& \abs{\eva{\xi_\lambda,\left(E^{m,3}_{Q_1}(q) +  \mathrm{h.c.}\right) \xi_\lambda }}
-% 	= 2\abs{\eva{\xi_\lambda, E^{m,3}_{Q_1}(q) \xi_\lambda }}
 	\le 4 \sum_{j=0}^m {{m}\choose j} \sum_{\ell,\ell_1 \in \Zstar}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,
 	\end{aligned}
 \end{equation}
@@ -1373,13 +1345,12 @@ Again we need three slightly different strategies for $ j = 0 $, for $ 1 \le j \
 	 	\sum_{r \in L_\ell} e(r)^{-1} \kF^{-1} \Bigg( \sum_{\ell_1 \in \Zstar} \hat{V}(\ell_1)^2 \Bigg)^{\half} \Xi^\half \;,
 \end{align}
 where we used $ \lambda_{\ell_1,r} \ge C e(r) $ and $ \norm{ a_q \xi_\lambda} \le \Xi^\half $, compare~\eqref{eq:Xi}. Then, with~\eqref{eq:lambdainverse}
-\begin{align}
+\begin{equation}\label{eq:estEQ1121_Coulomb}
 	\sum_{\ell,\ell_1 \in \Zstar} \mathds{1}_{L_\ell}(q) |\I_0(\ell, \ell_1)|
 	\leq C_\varepsilon C^m \kF^{-1+\varepsilon} e(q)^{-1}
 	 	\norm{ (\NN+5)^{\half} \xi_\lambda}
 	 	\Xi^{\half}	\;.
-\label{eq:estEQ1121_Coulomb}
-\end{align}
+\end{equation}
 As $ \Xi \sim \kF^{-1} $, this bound will later be of order $ \sim \kF^{-\frac 32 + \varepsilon} $. For $ \sum_{\ell_1} \hat{V}(\ell_1) < \infty $, we can even achieve a bound of order $ \sim \kF^{-2} $ via
 \begin{align}
 	&|\I_0(\ell, \ell_1)| \nonumber\\
@@ -1484,7 +1455,7 @@ We sum the estimates from Lemmas~\ref{lem:EQ111} and~\ref{lem:EQ112} and use tha
 
 
 
-\subsubsection{Bounding $E_{Q_2}$}
+\subsubsection{Estimates for $E_{Q_2}$}
 
 
 \begin{proposition}[Estimate for $E_{Q_2}(\Theta^m_{K}(P^q))$]\label{prop:finEQ2est}
@@ -1553,7 +1524,7 @@ where
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{-s_1}(-\ell_1) b_{-s}(-\ell) a_{r-\ell} \xi_\lambda} \;. \\
 \end{aligned}
 \end{equation}
-For the case $ j = 0 $ we use $1 = (\NN+1) (\NN+1)^{-1}$ and Lemma~\ref{lem:normsk}. Note that since $ m = 1 $ may occur, we must now also do a Cauchy--Schwarz split in $ \sum_\ell $
+For the case $ j = 0 $ we use $1 = (\NN+1) (\NN+1)^{-1}$ and Lemma~\ref{lem:normsk}. Note that since $ m = 1 $ may occur, we have to use the Cauchy--Schwarz inequality for the sum over $\ell$ so that we get at least $\sum_{\ell} \hat{V}(\ell)^2$ and not just $\sum_{\ell} \hat{V}(\ell)$.
 \begin{align}
 	\sum_{\ell,\ell_1 \in \Zstar} \mathds{1}_{L_\ell}(q) |\I_0(\ell, \ell_1)|
  	&\leq \sum\limits_{\ell,\ell_1 \in \Zstar} \mathds{1}_{L_\ell}(q) \Bigg( \sum\limits_{r \in L_{\ell_1}} 
@@ -1638,7 +1609,8 @@ If the sum ran over $ \ell_1 \in \Zstar $, the bound~\eqref{eq:estEQ2113_Coulomb
 	&\leq C^m \kF^{-1 + \frac{3-\alpha}{2} \gamma} e(q)^{-1}
 		\norm{(\NN+1)^{\frac 32} \xi_\lambda} \Xi^{\half} \;. \label{eq:estEQ2113_Coulomb_2}
 \end{align}
-Here, we used $ \sum_{|\ell_1| < \kF^\gamma} \hat{V}(\ell_1) \le \left( \sum_{\ell_1 \in \Zstar} \hat{V}(\ell_1)^2 |\ell_1|^\alpha \right)^{\half} \left( \sum_{|\ell_1| < \kF^\gamma} |\ell_1|^{-\alpha} \right)^{\half} \le C \kF^{\frac{3-\alpha}{2} \gamma} $.\\
+Here, we used $ \sum_{|\ell_1| < \kF^\gamma} \hat{V}(\ell_1) \le \left( \sum_{\ell_1 \in \Zstar} \hat{V}(\ell_1)^2 |\ell_1|^\alpha \right)^{\half} \left( \sum_{|\ell_1| < \kF^\gamma} |\ell_1|^{-\alpha} \right)^{\half} \le C \kF^{\frac{3-\alpha}{2} \gamma} $.
+
 For $ \sum_\ell \hat{V}(\ell) < \infty $, no splitting of the sum over $ \ell_1 $ is required and we directly extract a $ \Xi^{1-\varepsilon} $ via Lemma~\ref{lem:Xi_halfminusepsilon}:
 \begin{align}
 	|\I_m(\ell, \ell_1)|
@@ -1652,7 +1624,7 @@ For $ \sum_\ell \hat{V}(\ell) < \infty $, no splitting of the sum over $ \ell_1 
 		\hat{V}(\ell_1)
 		\kF^{-1} e(q)^{-1} \Xi^{1-\varepsilon} \;. \label{eq:estEQ2113}
 \end{align}
-Summing up the three bounds, respectively, concludes the proof for $ E^{m,1}_{Q_2}(q) $.\\
+Summing up the three bounds, respectively, concludes the proof for $ E^{m,1}_{Q_2}(q) $.
 
 The bound for $ E^{m,2}_{Q_2}(q) $ is analogous, except for $ j = m $ where we proceed as in~\eqref{eq:estEQ1113_Coulomb_bis}
 \begin{align}
@@ -1709,7 +1681,6 @@ Splitting the anticommutator in $ E^{m,3}_{Q_2}(q) $ by \eqref{eq:q-q} yields
 \begin{equation} \label{eq:EQ2151}
 \begin{aligned}
 	&\abs{\eva{\xi_\lambda,\left(E^{m,3}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
-% 	= 2\abs{\eva{\xi_\lambda, E^{m,3}_{Q_2}(q) \xi_\lambda }}
 	\le 4 \sum_{j=0}^m {{m}\choose j} \sum_{\ell,\ell_1 \in \Zstar}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,
 	\end{aligned}
 \end{equation}
@@ -1740,7 +1711,8 @@ For the case $j=0$, using Lemma~\ref{lem:normsk} we get
 	&\leq C_\varepsilon C^m \kF^{-1 + \varepsilon} e(q)^{-1}
 		\norm{ (\NN+1) \xi_\lambda } \Xi^{\half} \;. \label{eq:estEQ2151_Coulomb}
 \end{align}
-Note that we used~\eqref{eq:K_element_bounds} $ |K(\ell_1)_{r,-r+\ell+\ell_1}| \le C \kF^{-1} \hat{V}(\ell_1) \lambda_{\ell_1,r}^{-1} $ with $ \lambda_{\ell_1,r} \ge C e(r) $ and then~\eqref{eq:lambdainverse}.\\
+Note that we used~\eqref{eq:K_element_bounds} $ |K(\ell_1)_{r,-r+\ell+\ell_1}| \le C \kF^{-1} \hat{V}(\ell_1) \lambda_{\ell_1,r}^{-1} $ with $ \lambda_{\ell_1,r} \ge C e(r) $ and then~\eqref{eq:lambdainverse}.
+
 The bound for $ \sum_{\ell} \hat{V}(\ell) < \infty $ is considerably easier and stronger:
 \begin{align}
 	|\I_0(\ell, \ell_1)|
@@ -1838,7 +1810,6 @@ Splitting the anticommutator in $ E^{m,4}_{Q_2}(q) $ by \eqref{eq:q-q} gives
 \begin{equation} \label{eq:EQ2171}
 \begin{aligned}
 	& \abs{\eva{\xi_\lambda,\left(E^{m,4}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
-% 	= 2\abs{\eva{\xi_\lambda, E^{m,4}_{Q_2}(q) \xi_\lambda }}
 	\le 4 \sum_{j=0}^m {{m}\choose j} \sum_{\ell,\ell_1 \in \Zstar}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,
 	\end{aligned}
 \end{equation}
@@ -1933,7 +1904,6 @@ We start with bounding $ E^{m,5}_{Q_2}(q) $: Splitting via \eqref{eq:q-q} yields
 \begin{equation} \label{eq:EQ2131}
 \begin{aligned}
 	& \abs{\eva{\xi_\lambda,\left(E^{m,5}_{Q_2}(q) +\mathrm{h.c.}\right) \xi_\lambda }}
-% 	= 2\abs{\eva{\xi_\lambda, E^{m,5}_{Q_2}(q) \xi_\lambda }}
 	\le 4 \sum_{j=0}^m {{m}\choose j} \sum_{\ell,\ell_1  \in \Zstar}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,
 	\end{aligned}
 \end{equation}
@@ -2011,7 +1981,8 @@ For $ \sum_\ell \hat{V}(\ell) < \infty $, an analogous bound to~\eqref{eq:estEQ2
 	&\leq C^m \kF^{-2} e(q)^{-1}
 		\norm{(\NN+1)^{\frac 32} \xi_\lambda} \Xi^{\half} \;. \label{eq:estEQ2132}
 \end{align} 
-This establishes the desired bound for $ E^{m,5}_{Q_2}(q) $.\\
+This establishes the desired bound for $ E^{m,5}_{Q_2}(q) $.
+
 Regarding $ E^{m,6}_{Q_2}(q) $ and $ E^{m,7}_{Q_2}(q) $, the case $ 1 \le j \le m-1 $ is treated as in~\eqref{eq:estEQ2132} and the case $ j \in \{0,m\} $ for $ \sum_\ell \hat{V}(\ell) < \infty $ is treated as in~\eqref{eq:estEQ2131}. The general case $ j \in \{0,m\} $ is treated as in~\eqref{eq:estEQ2131_Coulomb_bis} for $ E^{m,6}_{Q_2}(q) $ and as in~\eqref{eq:estEQ2131_Coulomb} for $ E^{m,7}_{Q_2}(q) $. 
 \end{proof}
 
@@ -2032,7 +2003,6 @@ Splitting the anticommutator in $ E^{m,8}_{Q_2}(q) $ by \eqref{eq:q-q} we get
 \begin{equation} \label{eq:EQ2181}
 \begin{aligned}
 	& \abs{\eva{\xi_\lambda,\left(E^{m,8}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
-% 	= 2\abs{\eva{\xi_\lambda, E^{m,8}_{Q_2}(q) \xi_\lambda }}
 	\le 4 \sum_{j=0}^m {{m}\choose j} \sum_{\ell,\ell_1 \in \Zstar}\!\! \mathds{1}_{L_\ell}(q) |\I_j(\ell, \ell_1)| \;,
 	\end{aligned}
 \end{equation}
@@ -2361,9 +2331,9 @@ We then use Propositions~\ref{prop:finEQ1est} and~\ref{prop:finEQ2est}, taking t
 In this section we show that the first term in~\eqref{eq:finexpan} equals $ n^{\RPA}(q) $ defined in \eqref{eq:nqb}. Moreover we establish the scaling $ n^{\RPA}(q) \sim C \kF^{-1} $.
 
 
-\subsection{Recovering the Integral Representation for $ n^{\RPA}(q) $}\label{subsec:integralrep}
+% \subsection{Recovering the Integral Representation for $ n^{\RPA}(q) $}\label{subsec:integralrep}
 
-\begin{lemma}[Recovering $ n^{\RPA}(q) $] \label{lem:nqb_integralrecovery}
+\begin{lemma}[Integral formula for $ n^{\RPA}(q) $] \label{lem:nqb_integralrecovery}
 Let $q \in B^c_{\F}$, then
 \begin{equation} \label{eq:nqb_integralrecovery}
 	\half\sum_{\ell\in \Zstar}\mathds{1}_{L_\ell}(q) \big( \cosh(2K(\ell)) - 1 \big)_{q,q} = n^{\RPA}(q)\;.
@@ -2393,7 +2363,6 @@ for any symmetric, invertible matrix $ A $, as well as the Sherman--Morrison for
 for any $ c \in \C $ and $ w \in \ell^2(L_\ell) $ such that the denominator is nonzero. We begin with 
 \begin{align}
 	\big(h^2 +2P_{h^{\half} v}\big)^{\half}
-% 	&= \frac{2}{\pi} \int_0^\infty \Bigg( 1- \frac{t^2}{t^2+h^2 +2P_{h^{\half} v}}\Bigg)\mathrm{d}t\nonumber\\
 	&= \frac{2}{\pi} \int_0^\infty \Bigg( 1- \frac{t^2}{t^2+h^2} + \frac{2 t^2}{1+ 2 \big\langle h^{\half} v ,(t^2+h^2)^{-1} h^\half v \big\rangle } P_{(t^2+h^2)^{-1}h^{\half} v} \Bigg) \mathrm{d}t \nonumber\\
 	&= h + \frac{2}{\pi} \int_0^\infty \frac{2t^2}{1+ 2 \big\langle h^{\half} v ,(t^2+h^2)^{-1} h^\half v \big\rangle }  P_{(t^2+h^2)^{-1}h^{\half} v}\mathrm{d}t \;.
 \end{align}
@@ -2422,10 +2391,10 @@ Summing both terms we obtain the claimed result.
 
 
 
-\subsection{Controlling the Leading-Order Term}
-\label{subsec:control_nqb}
+% \subsection{Controlling the Leading-Order Term}
+% \label{subsec:control_nqb}
 
-\begin{lemma}[Bosonized momentum distribution] \label{lem:nqb_bounds}
+\begin{lemma}[Estimate for the RPA contribution] \label{lem:nqb_bounds}
 For any potential $ \hat{V} \in \ell^1(\Zstar) $, there exists some $ C > 0 $
 such that for all $ q \in \Z^3 $ we have
 \begin{equation} \label{eq:nqb_upperbound}
@@ -2533,7 +2502,7 @@ Under the assumption of \eqref{hyp:ell1} ($ \sum_{\ell \in \Zstar} \hat{V}(\ell)
 	&\quad + e(q)^{-\half} \kF^{-1} \Xi^{\half - \varepsilon} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} \Big) \;.
 \end{align}
 Bounding $ n^{\ex}(q) $, $ \Xi $, and $ \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} $ by Lemma~\ref{lem:estnqex},~\eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} readily yields the improved error bound~\eqref{eq:main_prop_improvederror}.
-
+%
 The bound~\eqref{eq:main_prop_exchange} was proven in~\eqref{eq:estnqex_Coulomb_1} and~\eqref{eq:estnqex}, where only $ m = 1 $ contributes to $ n^{\ex}(q) $.
 \end{proof}
 
