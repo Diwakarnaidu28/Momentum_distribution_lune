@@ -23,6 +23,8 @@
 % \usepackage[textsize=footnotesize,textwidth=2.7cm]{todonotes}
 % \usepackage[color]{showkeys}
 
+\usepackage{todonotes}
+
 \numberwithin{equation}{section}
 \setcounter{tocdepth}{1}
 \renewcommand\Affilfont{\itshape\footnotesize}
@@ -271,7 +273,7 @@ In the Fermi ball state the momentum distribution is the indicator function
 	= \mathds{1}_{B_{\F}}(q) \;.
 \end{equation}
 
-\paragraph{Context of the Fermionic Mean-Field Scaling Limit} The mean field scaling of fermionic systems, in the sense of scaling down the interaction by a coupling constant of order $N^{-1/3}$ compared to the kinetic energy, was introduced by \cite{NS81} in the context of the derivation of the Vlasov equation from many-body quantum dynamics. Their result was generalized to a large class of interaction potentials by \cite{Spo81}. For a long time these essentially remained the only result for the fermionic quantum dynamics in the mean-field scaling regime, until the short-time derivation of the time-dependent Hartree--Fock equation by \cite{EESY04}. This line of research was continued by \cite{BPS14b} who derived the time-dependent Hartree--Fock equation for arbitrary times (that proof was later simplified by \cite{BD23}). In the following the derivation of the time-dependent Hartree--Fock equation was generalized to fermions with Coulomb interaction \cite{PRSS17}, fermions with relativistic dispersion relation \cite{BPS14a}, fermions in mixed states \cite{BJP+16}, and fermions in magnetic fields \cite{BBMN25}. This also reinvigorated research on the derivation of the Vlasov equation, yielding results admitting increasingly singular potentials \cite{BPSS16, Saf18,Saf20,Saf20a,LS23,Saf21,CLS24}. Recently results have also been obtained extending the derivation of time-dependent Hartree--Fock theory to extended Fermi gases \cite{FPS23,FPS25}, compared to the mean-field limit in fixed volume.
+\paragraph{The Fermionic Mean-Field Scaling Limit in Context} The mean field scaling of fermionic systems, in the sense of scaling down the interaction by a coupling constant of order $N^{-1/3}$ compared to the kinetic energy, was introduced by \cite{NS81} in the context of the derivation of the Vlasov equation from many-body quantum dynamics. Their result was generalized to a large class of interaction potentials by \cite{Spo81}. For a long time these essentially remained the only result for the fermionic quantum dynamics in the mean-field scaling regime, until the short-time derivation of the time-dependent Hartree--Fock equation by \cite{EESY04}. This line of research was continued by \cite{BPS14b} who derived the time-dependent Hartree--Fock equation for arbitrary times (that proof was later simplified by \cite{BD23}). In the following the derivation of the time-dependent Hartree--Fock equation was generalized to fermions with Coulomb interaction \cite{PRSS17}, fermions with relativistic dispersion relation \cite{BPS14a}, fermions in mixed states \cite{BJP+16}, and fermions in magnetic fields \cite{BBMN25}. This also reinvigorated research on the derivation of the Vlasov equation, yielding results admitting increasingly singular potentials \cite{BPSS16, Saf18,Saf20,Saf20a,LS23,Saf21,CLS24}. Recently results have also been obtained extending the derivation of time-dependent Hartree--Fock theory to extended Fermi gases \cite{FPS23,FPS25}, compared to the mean-field limit in fixed volume.
 
 In parallel, also the static properties of fermionic systems were studied. The ground state energy to the precision of Hartree--Fock theory was obtained by \cite{GS94} based on correlation inequalities developed in \cite{Bac92,Bac93} -- actually for the thermodynamic limit, but the method applies equally to the simpler mean-field scaling regime. The first result beyond Hartree--Fock theory, was achieved by a rigorous version of second order perturbation theory by \cite{HPR20}. A systematic treatment of the dominant correction to Hartree--Fock theory to all perturbative orders, in agreement with the random phase approximation, was achieved as an upper bound by \cite{BNP+20}. The corresponding lower bounds were proven for small interaction potential by \cite{BNP+21} and then by \cite{BPSS23} for arbitrary interaction potential. All these results relied on collective bosonization of particle--hole pairs delocalized in momentum space over patches on the Fermi surface. An alternative approach avoiding patches and bosonizing directly individual particle--hole pairs was developed by \cite{CHN23,CHN23a} and generalized to Coulomb interaction in \cite{CHN24}. This is the approach which gives rise to the trial state in the present paper.
 
@@ -343,7 +345,7 @@ Then, for $\kF \to \infty $, there exists a sequence of trial states  $ \Psi_N \
 	\eva{\Psi_N, H_N \Psi_N} - E_{\GS}
 	\le C_\varepsilon \kF^{1-\frac 16 + \varepsilon} \;,
 \end{equation}
-\item and for $ \varepsilon > 0 $, there exists a $ C_\varepsilon > 0 $ (depending on $ \hat{V} $) such that for all $ \kF $ and $ q \in \Z^3 $, the momentum distribution in $ \Psi_N $ satisfies
+\item and for all $ \varepsilon > 0 $, there exists a $ C_\varepsilon > 0 $ such that for all $ \kF $ and $ q \in \Z^3 $, we have
 \begin{equation} \label{eq:main2}
 	n(q) = \eva{\Psi_N, a_q^* a_q \Psi_N}
 	= \begin{cases}
@@ -360,7 +362,7 @@ with $ n^{\RPA}(q) $ defined in~\eqref{eq:nqb}, and where the error term is boun
 \end{itemize}
 If additionally
 \begin{equation}\label{hyp:ell1}
-   \hat{V}(\ell) \ge 0 \quad \forall \ell \in \Z^3 \text{ and } \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty\;,
+   \hat{V}(\ell) \ge 0 \quad \text{for all } \ell \in \Z^3 \qquad \text{ and } \qquad \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty\;,
 \end{equation}
 then the error term is even bounded by
 \begin{equation} \label{eq:main_improvederror}
@@ -377,38 +379,41 @@ then the error term is even bounded by
 	\lvert n^{\RPA}(q)\rvert \le C \kF^{-1} e(q)^{-1} \;,
 \end{equation}
 which we expect to be optimal in the mean-field scaling.
-
+%
 For comparison, in~\cite{BL25}, the scaling of the leading term is $ n^{\RPA}(q) \sim \kF^{-2} $ without $ e(q)^{-1} $. This is because~\cite{BL25} assumes $ |\ell| \le C $ and $ |\ell \cdot q| \ge c $ in the analogue of~\eqref{eq:nqb}, leading to $ e(q) \sim \kF $. In other words, it includes only momenta at distances $ ||q|-\kF| \sim 1 $ from the Fermi surface, while the present result admits distances as small as $ \kF^{-1} $.
 
 
 
-\item In analogy to~\cite[Section~1.1]{BL25} we may approximate $ \lambda_{\ell,q} \approx \kF |\ell| |\hat{\ell} \cdot \hat{q}| $ with $ \hat{q} := {q}/{|q|} $, then substitute $ \mu := t \kF |\ell| $ and formally take the continuum limit $ \sum_{p \in L_\ell} \approx \int_{L_\ell} \di p $ and $ \sum_\ell \approx \int \di \ell $. The result is
+\item In analogy to~\cite[Section~1.1]{BL25} we may approximate $ \lambda_{\ell,q} \approx \kF |\ell| |\hat{\ell} \cdot \hat{q}| $ with $ \hat{q} := {q}/{|q|} $, then substitute $ \mu := t \kF |\ell| $ and formally take the continuum limit of sums to integrals.
+% $ \sum_{p \in L_\ell} \approx \int_{L_\ell} \di p $ and $ \sum_\ell \approx \int \di \ell $.
+Thus
 \begin{align*}
 	n^{\RPA}(q)
 	&\approx \int_{\R^3} \di \ell \; \mathds{1}_{L_{\ell}}(q) \; \frac{\hat{V}(\ell) \kF^{-2}}{(2 \pi)^4 |\ell|}
 		\int_0^\infty \di \mu \frac{(\mu^2-|\hat{\ell} \cdot \hat{q}|^2) (\mu^2 + |\hat{\ell} \cdot \hat{q}|^2)^{-2}}{1 + Q_\ell(\mu)} \;, \\
 	Q_\ell(\mu) &:= \frac{\hat{V}(\ell)}{(2 \pi)^2} \left( 1 - \mu \arctan \left( \frac{1}{\mu} \right) \right) \;. \tagg{eq:Q}
 \end{align*}
-This agrees with \cite{BL25} up to a factor $ (2 \pi)^3 \kappa $ multiplying $\hat{V}$, explained by the choice of coupling constant $k_\F^{-1}$ here compared to the coupling constant $N^{-1/3} = \kappa^{-1} \kF^{-1}$ in \cite{BL25}, as well as the absent factor of $ (2 \pi)^{-3} $ in the Fourier convention~\eqref{eq:Fourierconvention}.
+This agrees with \cite{BL25} up to a factor $ (2 \pi)^3 \kappa $ multiplying $\hat{V}$, explained by the choice of coupling constant $k_\F^{-1}$ here compared to the coupling constant $N^{-1/3} = \kappa^{-1} \kF^{-1}$ in \cite{BL25}, as well as the absent $ (2 \pi)^{-3} $ in the Fourier convention~\eqref{eq:Fourierconvention}.
 %
 \item
-One can compute an exchange contribution to the momentum distribution, which is however smaller than our error terms, as we show in Proposition~\ref{prop:main}. Analogously to the exchange contribution to $ E_{\GS} $ in~\cite{CHN23,CHN24} it appears by normal ordering the bosonization errors (see Lemma~\eqref{lem:normalordering_errors}) and is found to be
-\begin{equation} \label{eq:nqex}
-\begin{split}
-	n^{\ex}(q)
-	\coloneq 
-	\frac{\kF^{-2}}{4 (2 \pi)^6} \sum_{\ell,\ell_1 \in \Zstar}
-		\frac{ \mathds{1}_{L_\ell \cap L_{\ell_1} \cap (-L_{\ell}+\ell+\ell_1) \cap (-L_{\ell_1}+\ell+\ell_1)}(q)
-		\hat{V}(\ell)
-		\hat{V}(\ell_1)}
-		{(\lambda_{\ell,q} + \lambda_{\ell,-q+\ell+\ell_1})
-		(\lambda_{\ell_1,q} + \lambda_{\ell_1,-q+\ell+\ell_1})} \;.
-\end{split}
-\end{equation}
-\item Our result is obtained as the vacuum expectation value of an explicit operator expansion \eqref{eq:operatorexpansion} of the conjugation of $a^*_q a_q$ with a unitary operator constructed to approximately diagonalize the Hamiltonian. Given sufficiently precise bounds on the number of excitations in the true ground state, this expansion will permit to compute its momentum distribution. However, such bounds can only be expected if the computation of the ground state energy is pushed from the currently known order $N^{1/3}$ to order $N^0$ since the gap of the kinetic energy is very small, namely $\lambda_{\ell,p} \geq \frac{1}{2}$ (since $\lvert p\rvert^2$ and $\lvert p-\ell \rvert^2$ are unequal integers).
+Analogously to the exchange contribution to to the ground state energy derived in~\cite{CHN23,CHN24}, an exchange contribution $n^{\ex}(q)$ appears by normal ordering the bosonization errors, see Lemma~\eqref{lem:normalordering_errors}. However it is smaller than our error terms, as shown in Proposition~\ref{prop:main}.
+% ) and is found to be
+% \begin{equation} \label{eq:nqex}
+% \begin{split}
+% 	n^{\ex}(q)
+% 	\coloneq
+% 	\frac{\kF^{-2}}{4 (2 \pi)^6} \sum_{\ell,\ell_1 \in \Zstar}
+% 		\frac{ \mathds{1}_{L_\ell \cap L_{\ell_1} \cap (-L_{\ell}+\ell+\ell_1) \cap (-L_{\ell_1}+\ell+\ell_1)}(q)
+% 		\hat{V}(\ell)
+% 		\hat{V}(\ell_1)}
+% 		{(\lambda_{\ell,q} + \lambda_{\ell,-q+\ell+\ell_1})
+% 		(\lambda_{\ell_1,q} + \lambda_{\ell_1,-q+\ell+\ell_1})} \;.
+% \end{split}
+% \end{equation}
+\item Our result is obtained as the vacuum expectation value of an explicit operator expansion \eqref{eq:operatorexpansion} of the conjugation of $a^*_q a_q$ with a unitary operator constructed to approximately diagonalize the Hamiltonian. Given sufficiently precise bounds on the number of excitations in the true ground state, this expansion will permit to compute the true ground state's momentum distribution. However, such bounds can only be expected if the computation of the ground state energy is pushed from the currently known order $N^{1/3}$ to order $N^0$ since the gap of the kinetic energy is very small, namely $\lambda_{\ell,p} \geq \frac{1}{2}$.
 \end{enumerate}
 \end{remarks}
-In our main theorem, Hypothesis~\ref{hyp:Coulomb} on $ V $ is only needed to ensure validity of the ground state energy formula~\eqref{eq:main1}, which readily follows from~\cite{CHN23,CHN24}. Our main work is the computation of the momentum distribution, which does not require $\hat{V} $ to be radial or decreasing.
+Hypothesis~\ref{hyp:Coulomb} on $ V $ is only needed to ensure validity of the ground state energy formula~\eqref{eq:main1}, which readily follows from~\cite{CHN23,CHN24}. Our main work is the computation of the momentum distribution, which does not require $\hat{V} $ to be radial or decreasing.
 
  
 \begin{proposition}[Momentum distribution] \label{prop:main}
@@ -426,21 +431,15 @@ Then, there exist $ C, C_\varepsilon > 0 $, such that for all $ \kF $ and $ q \i
 		\textnormal{for } |q| < \kF\;,
 	\end{cases}
 \end{equation}
-where the error term is controlled by
+with the error bounds
 \begin{equation}
-	\lvert \cE(q)\rvert \le C \kF^{-1 - \frac 16 \alpha} e(q)^{-1} \;.
+	\lvert \cE(q)\rvert \le C \kF^{-1 - \frac 16 \alpha} e(q)^{-1} \qquad \text{and} \qquad \lvert n^{\ex}(q)\rvert \leq C_\varepsilon \kF^{-1 -\frac{\alpha}{2} + \varepsilon } e(q)^{-1} \quad \text{for } \alpha \in (0,2) \;.
 \end{equation}
 If the stronger hypothesis~\eqref{hyp:ell1} holds, then
 \begin{equation} \label{eq:main_prop_improvederror}
-	\lvert \cE(q)\rvert \le C_\varepsilon \kF^{-2 +\varepsilon} e(q)^{-1} \;.
-\end{equation}
-Moreover, the exchange term is controlled by
-\begin{equation} \label{eq:main_prop_exchange}
-	\lvert n^{\ex}(q)\rvert
-	\le \begin{cases}
-		C_\varepsilon \kF^{-1 -\frac{\alpha}{2} + \varepsilon } e(q)^{-1} \quad&\textnormal{for } \sum_{\ell \in \Zstar} |\ell|^{\alpha} \hat{V}(\ell)^2 < \infty \;, \alpha \in (0,2) \\
-		C \kF^{-2} e(q)^{-2} \quad&\textnormal{for } \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty
-	\end{cases} \;.
+	\lvert \cE(q)\rvert \le C_\varepsilon \kF^{-2 +\varepsilon} e(q)^{-1} \qquad \text{and} \qquad
+	\lvert n^{\ex}(q)\rvert \le
+		C \kF^{-2} e(q)^{-2} \;.
 \end{equation}
 \end{proposition}
 
@@ -449,8 +448,8 @@ Once this proposition is established, the main theorem follows immediately.
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
 We choose as $ \Psi_N $ the trial state defined in~\eqref{eq:Psitrial}--\eqref{eq:T}.
 From~\cite[Corr.~1.3]{CHN24}, we know that $ E_{\GS} = E_{\FS} + E_{\corr} + \cO(\kF^{1 - 1/6 + \varepsilon}) $, provided hypothesis~\eqref{hyp:Coulomb} holds, where $ E_{\FS} $ is the Hartree--Fock energy and $ E_{\corr}$ the correlation energy, see~\cite[Eqs.~(1.2) and (1.11)]{CHN24}. Moreover, \cite[Thm.~1.1]{CHN23} gives us $ \eva{\Psi_N, H_N \Psi_N} \le E_{\FS} + E_{\corr} + \cO(\kF^{1 - 1/2}) $, hence $ \eva{\Psi_N, H_N \Psi_N} \le E_{\GS} + \cO(\kF^{1 - 1/6+ \varepsilon}) $.
-
-Proposition~\ref{prop:main} then yields the statement about the momentum distribution, noticing that hypothesis~\eqref{hyp:Coulomb} implies hypothesis~\eqref{hyp:alpha} with $ \alpha = 1-\varepsilon $.
+%
+Proposition~\ref{prop:main} then yields the statement about the momentum distribution, noticing that \eqref{hyp:Coulomb} implies \eqref{hyp:alpha} with $ \alpha = 1-\varepsilon $.
 \end{proof}
 
 
@@ -534,7 +533,8 @@ with matrices $ h(k) \in \CCC^{|L_k| \times |L_k|}$ and $P(k) \in \CCC^{|L_k| \t
 The matrix $ P(k) $ is rank-one and can also be written as
 \begin{equation}P(k) = \lvert v_k \rangle \langle v_k \rvert \;, \quad \textnormal{where} \quad v_{k,p} \coloneq g_k^{1/2} = \Big( \frac{\kF^{-1} \hat{V}(k) }{2 (2 \pi)^3} \Big)^\half \;.
 \end{equation}
- As the pair operators satisfy approximate bosonic commutation relations (see Lemma~\ref{lem:paircomm}), $ H_{\Bog} $ can be approximately diagonalized to obtain the next order of the ground state energy (the random phase approximation to the correlation energy, required to obtain the precision \eqref{eq:main1} of the ground state energy) by an approximate Bogoliubov transformation \cite[Thm.~1.4]{CHN23} of the explicit form
+ As the pair operators satisfy approximate bosonic commutation relations (see Lemma~\ref{lem:paircomm}), $ H_{\Bog} $ can be approximately diagonalized to obtain the next order of the ground state energy (the random phase approximation to the correlation energy, required to obtain the precision \eqref{eq:main1} of the ground state energy) by an approximate Bogoliubov transformation \cite[Thm.~1.4]{CHN23}
+%  of the explicit form
 \begin{equation} \label{eq:T}
 	T \coloneq e^{-S} \;, \qquad
 	S \coloneq \frac{1}{2}\sum_{\ell\in \Zstar}\sum_{r,s\in L_\ell}K(\ell)_{r,s}\left(b_r(\ell)b_{-s}(-\ell)-b^*_{-s}(-\ell)b^*_{r}(\ell)\right) \;,
@@ -552,8 +552,9 @@ The matrix $K(\ell)$ is symmetric and possesses the reflection invariance $ K(-\
 
 \section{Duhamel Expansion}\label{sec:extraction}
 
-In this section we expand the momentum distribution $ \langle \Psi_N, a_q^* a_q \Psi_N \rangle $ of the trial state $ \Psi_N = R e^{-S} \Omega $ constructed in the previous section. In the expansion we identify the explicit contributions of $ n^{\RPA}(q) $ and $ n^{\ex}(q) $.
-
+In this section we expand the momentum distribution $ \langle \Psi_N, a_q^* a_q \Psi_N \rangle $ of the trial state $ \Psi_N = R e^{-S} \Omega $ constructed in the previous section.
+% In the expansion we identify the explicit contributions of $ n^{\RPA}(q) $ and $ n^{\ex}(q) $.
+%
 The particle--hole transformation $ R $ acts in a simple way: by~\eqref{eq:R} we have
 \begin{equation} \label{eq:momentum_dist_R_trafo}
 	R^* a_q^* a_q R
@@ -573,7 +574,8 @@ So it suffices to consider the excitation vector $ \xi \coloneq e^{-S} \Omega $ 
 % 		+ \int_0^1 \di \lambda_1 \int_0^{\lambda_1} \di \lambda_2 \langle \Omega, e^{\lambda_2 S} [S,[S, a_q^* a_q]] e^{-\lambda_2 S} \Omega \rangle \;.
 \end{aligned}
 \end{equation}
-Iterating this formula leads to the series expansion in Proposition~\ref{prop:finexpan}, the main result of this section. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n^{\RPA}(q) $ as the terms that could be expected treating the pair operators as exactly bosonic, similarly to~\cite{BL25}. The term $ n^{\ex}(q) $ instead appears when normal ordering the remaining terms.
+Iterating this formula leads to the expansion in Proposition~\ref{prop:finexpan}, the main result of this section. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n^{\RPA}(q) $ as the terms that could be expected treating the pair operators as exactly bosonic, similarly to~\cite{BL25}.
+% The term $ n^{\ex}(q) $ instead appears when normal ordering the remaining terms.
 
 
 
@@ -754,17 +756,17 @@ Using reflection symmetry, we may replace $ \tilde{P}^q $ by $ P^q $ and restric
 
 \subsection{Normal Ordering the Error Operators}
 \label{sec:extraction_ex}
+As shown in \eqref{eq:errEm}, $E_m(P_q)$ depends on $E_{Q_1}$ for $m$ even and on $E_{Q_2}$ for $m$ odd. To estimate $ E_{Q_1} $ and $ E_{Q_2} $, we need to normal order them first. In this step the exchange contribution $ n^{\ex}(q) $ emerges.
 
-To be able to estimate $ E_{Q_1} $ and $ E_{Q_2} $, we need to normal order them first. As a by-product, we extract the exchange contribution $ n^{\ex}(q) $.
-
-\begin{lemma}[Normal ordering many-body errors] \label{lem:normalordering_errors}
-Recall the definition~\eqref{eq:errKQ} of $ E_{Q_1} $ and $ E_{Q_2} $. Then, for $ m \in \NNN $ and $ q \in B_{\F}^c $, we may write
+\begin{lemma}[Error terms] \label{lem:normalordering_errors}
+Recall definition~\eqref{eq:errKQ}.
+ For $ q \in B_{\F}^c $, we may write
 \begin{equation} \label{eq:EQ1EQ2extension}
 \begin{split}
 	E_{Q_1}(\Theta^m_{K}(P^q)) &
-	= \sum_{j=1}^3 E_{Q_1}^{m,j}(q) + \mathrm{h.c.} \;, \\
+	= \sum_{j=1}^3 E_{Q_1}^{m,j}(q) + \mathrm{h.c.} 	\qquad (\text{for even }m \in \NNN)\;, \\
 	E_{Q_2}(\Theta^m_{K}(P^q)) &
-	= \bigg( \sum_{j=1}^{11} E_{Q_2}^{m,j}(q)  + \mathrm{h.c.} \bigg) + n^{\ex,m}(q) \;,
+	= \bigg( \sum_{j=1}^{11} E_{Q_2}^{m,j}(q)  + \mathrm{h.c.} \bigg) + n^{\ex,m}(q) \qquad (\text{for odd }m \in \NNN)\;,
 \end{split}
 \end{equation}
 with
@@ -815,8 +817,6 @@ as well as
 \begin{proof}
 Follows by a lengthy but straightforward computation with the CAR. (Alternatively, this can be conveniently computed using Friedrichs diagrams~\cite{BL25}.)
 \end{proof}
-
-Note that the exchange contribution~\eqref{eq:nqex} follows as $ n^{\ex}(q) \approx \frac 14 n^{\ex,1}(q) $, see Lemma~\ref{lem:estnqex}.
 
 
 \section{Preliminary Bounds}
@@ -1065,7 +1065,7 @@ With $ \norm{P^q}_{\HS} = 1$, Lemma~\ref{lem:gronNest}, and $ \int_{\Delta^n} \d
 \subsection{Bosonization Error Estimates}
 \label{subsec:bos_error}
 
-The largest part of our analysis addresses the error terms $ E_m $ in Proposition~\ref{prop:finexpan}. In similarity to~\cite{BL25}, we estimate the error terms by a  bootstrap quantity $ \Xi $.
+The largest part of our analysis addresses the error terms $ E_m $ in Proposition~\ref{prop:finexpan}. Following \cite{BL25}, we estimate them by a bootstrap argument.
 
 \begin{definition}[Bootstrap Quantity] We define the \emph{bootstrap quantity} as
 \begin{equation} \label{eq:Xi}
@@ -1077,9 +1077,9 @@ Evidently, $ 0 \le a_q^* a_q \le 1 $ implies the trivial bound $ 0 \le \Xi \le 1
 
 
 \begin{proposition} \label{prop:finalEmest}
-Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $ \alpha > 0 $. Recall the bosonization error term $E_m(P^q)$~\eqref{eq:errEm} with $ \Theta^n_K $, $ P^q $, $ \int_{\Delta^n} \di^n \ulambda $ and $ \sigma(n) $ defined within and above Proposition~\ref{prop:finexpan}, and $ n^{\ex,m}(q) $~\eqref{eq:nqexm}. Then, for $ \xi_\lambda \coloneq e^{- \lambda S} \Omega $, given $ \varepsilon > 0 $, there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $ and $ q \in B_{\F}^c $, and any $ \gamma \ge 0 $,
+Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $ \alpha > 0 $. Recall $E_m(P^q)$ from \eqref{eq:errEm} with $ \Theta^n_K $, $ P^q $, and $ \sigma(n) $ defined within and above Proposition~\ref{prop:finexpan}. Then, for $ \xi_\lambda \coloneq e^{- \lambda S} \Omega $, given $ \varepsilon > 0 $, there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $ and $ q \in B_{\F}^c $, and any $ \gamma \ge 0 $,
 \begin{align} \label{eq:finalEmest_Coulomb}
-	\abs{\half \eva{\Omega, E_m(P^q) \Omega} - \frac{\delta_{m,1}}{4} n^{\ex,1}(q)}
+	\abs{\half \eva{\Omega, E_m(P^q) \Omega}}
 	&\leq C_\varepsilon \frac{C^m}{m!}
 		\Big( e(q)^{-1}\left( \kF^{-\frac 32 + \varepsilon}
 		\!+ \kF^{-1 - \frac{\alpha \gamma}{2}}
@@ -1087,6 +1087,7 @@ Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $
 		\!+ \kF^{-1+\varepsilon} \Xi^\half \right) \nonumber\\
 	&\hspace{4.5em} + e(q)^{-\half} \kF^{-1} \sup_{\lambda \in [0,1]} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} \Big) \;,
 \end{align}
+\todo{add enex bound on rhs}
 Moreover, if $ \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty $, we have the bound
 \begin{align} \label{eq:finalEmest}
 	&\abs{\eva{\Omega, E_m(P^q) \Omega}} \nonumber\\
@@ -1109,14 +1110,14 @@ To prove this bound, we write
 where we recall the terms \eqref{eq:EQ1EQ2extension} of $ E_{Q_1}(\Theta^m_{K}(P^q)) $ and $ E_{Q_2}(\Theta^m_{K}(P^q)) $. We will consecutively estimate these terms.
 Note that after the bootstrap, we have $ \eva{\xi_\lambda, a_q^* a_q \xi_\lambda} \sim n^{\RPA}(q) \sim \kF^{-1} e(q)^{-1} $, hence all errors effectively scale like $ e(q)^{-1} $.
 
-
+In Proposition~\ref{prop:finEQ1est} to Lemma~\ref{lem:estnqex} we estimate the individual contributions before summarizing them to complete the proof of Proposition~\ref{prop:finalEmest}.
 
 \subsubsection{Estimates for $E_{Q_1}$}
 
 Here, only the case $ m \ge 2 $ occurs, which will make bounds slightly easier, since $ \sum_\ell \hat{V}(\ell)^m < \infty $ is always true for our assumptions on the potential.
 
 \begin{proposition}[Estimate for $E_{Q_1}(\Theta^m_{K}(P^q))$]\label{prop:finEQ1est}
-Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $, there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $, $ m \ge 2 $, $ \lambda \in [0,1] $, and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $, there exist constants $ C, C_\varepsilon > 0 $ such that for all even $ m \in \NNN $, $ m \ge 2 $, $ \lambda \in [0,1] $, and $ q \in B_{\F}^c $,
 \begin{align} \label{eq:finalEQ1est_Coulomb}
 	\abs{\eva{\xi_\lambda, E_{Q_1}\!\left(\Theta^m_K(P^q)\right) \xi_\lambda}}
 	&\leq C_\varepsilon C^m \left( \kF^{-\frac 32 + \varepsilon}
@@ -1134,9 +1135,9 @@ If $ \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty $, we have the even stronger 
 \end{align}
 \end{proposition}
 
-To prove this proposition, we need to estimate the terms $ E^{m,1}_{Q_1}(q) $, $ E^{m,2}_{Q_1}(q) $, and $ E^{m,3}_{Q_1}(q) $. We rely on the following lemma.
+To prove this proposition, we need to estimate the terms $ E^{m,1}_{Q_1}(q) $, $ E^{m,2}_{Q_1}(q) $, and $ E^{m,3}_{Q_1}(q) $, which is done in Lemma~\ref{lem:EQ111} and Lemma~\ref{lem:EQ112}. These two lemmas in turn rely on the following lemma.
 
-\begin{lemma} \label{lem:Xi_halfminusepsilon}
+\begin{lemma}[H\"older estimate using the bootstrap quantity] \label{lem:Xi_halfminusepsilon}
 For any $ \varepsilon > 0 $ and $ a \in \N $, there exists some $ C_{a,\varepsilon} > 0 $ such that for all $ \lambda \in [0,1] $ and all $ q \in \Z^3 $ we have
 \begin{equation} \label{eq:Xi_halfminusepsilon}
 	\Vert a_q (\cN + 1)^a \xi_\lambda \Vert
@@ -1162,7 +1163,7 @@ We conclude using $ \Vert a_q \Vert \le 1 $ and Lemma~\ref{lem:gronNest}, and ch
 
 
 \begin{lemma} \label{lem:EQ111}
-Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ1} of $ E_{Q_1}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists some $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, $ m \ge 2 $, and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ1} of $ E_{Q_1}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists some $ C > 0 $ such that for all $ \lambda \in [0,1] $, even $ m \in \NNN $, $ m \ge 2 $, and $ q \in B_{\F}^c $,
 \begin{align} \label{eq:estEQ111_Coulomb}
 	\abs{\eva{\xi_\lambda,\left(E^{m,1}_{Q_1}(q) + E^{m,2}_{Q_1}(q) + \mathrm{h.c.}\right) \xi_\lambda }} 
 	&\leq C^m \kF^{-1} \Xi^{\half} e(q)^{-1}
@@ -1295,7 +1296,7 @@ This concludes the proof.
 
 
 \begin{lemma} \label{lem:EQ112}
-Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ1} of $ E_{Q_1}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $, there exist $ C, C_\varepsilon > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, $ m \ge 2 $, and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ1} of $ E_{Q_1}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $, there exist $ C, C_\varepsilon > 0 $ such that for all $ \lambda \in [0,1] $, even $ m \in \NNN $, $ m \ge 2 $, and $ q \in B_{\F}^c $,
 \begin{align} \label{eq:estEQ112_Coulomb}
 	\abs{\eva{\xi_\lambda,\left(E^{m,3}_{Q_1}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
 	\leq C_\varepsilon C^m \left( \kF^{-\frac 32 + \varepsilon}
@@ -1459,10 +1460,10 @@ We sum the estimates from Lemmas~\ref{lem:EQ111} and~\ref{lem:EQ112} and use tha
 
 
 \begin{proposition}[Estimate for $E_{Q_2}(\Theta^m_{K}(P^q))$]\label{prop:finEQ2est}
-Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $ \alpha > 0 $ and recall $ E_{Q_2}(\Theta^m_K(P^q)) $ and $ n^{\ex,m}(q) $ from~\eqref{eq:EQ1EQ2extension} and~\eqref{eq:nqexm}. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $ there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $, $ \lambda \in [0,1] $, and $ q \in B_{\F}^c $, the following bound is true for any $ \gamma \ge 0 $:
+Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $ \alpha > 0 $ and recall $ E_{Q_2}(\Theta^m_K(P^q)) $ from~\eqref{eq:EQ1EQ2extension}. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $ there exist constants $ C, C_\varepsilon > 0 $ such that for all odd $ m \in \NNN $, $ \lambda \in [0,1] $, and $ q \in B_{\F}^c $, the following bound is true for any $ \gamma \ge 0 $:
 \begin{equation}\label{eq:finEQ2est_Coulomb}
 \begin{split}
-	&\abs{\eva{\xi_\lambda, \left( E_{Q_2}(\Theta^m_K(P^q))- \delta_{m,1} n^{\ex,1}(q) \right) \xi_\lambda}} \\
+	&\abs{\eva{\xi_\lambda,  E_{Q_2}(\Theta^m_K(P^q)) \xi_\lambda}} \\
 	&\leq C_\varepsilon C^m \left( \kF^{-\frac 32 + \varepsilon}
 		+ \kF^{-1 - \frac{\alpha \gamma}{2}}
 		+ \kF^{-1+ \frac{3-\alpha}{2} \gamma} \Xi^\half
@@ -1470,6 +1471,7 @@ Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $
 	& \quad		+ C^m \kF^{-1} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} e(q)^{-\half}  \;.
 \end{split}
 \end{equation}
+\todo{add potential exchange estimate on the RHS}
 If $ \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty $, we have the even stronger bound
 \begin{equation}\label{eq:finEQ2est}
 \begin{split}
@@ -1488,7 +1490,7 @@ Note that here, $ m = 1 $ and thus $ \sum_\ell \hat{V}(\ell)^m = \infty $ can oc
 To prove this proposition, we estimate $ E^{m,1}_{Q_2}(q) $ through $ E^{m,11}_{Q_2} (q)$ and $ n^{\ex,m}(q) $.
 
 \begin{lemma} \label{lem:EQ211}
-Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $ \alpha > 0 $ and recall definition~\eqref{eq:expandedEQ2} of $ E_{Q_2}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $, the following bound is true for any $ \gamma \ge 0 $:
+Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $ \alpha > 0 $ and recall definition~\eqref{eq:expandedEQ2} of $ E_{Q_2}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists $ C > 0 $ such that for all $ \lambda \in [0,1] $, odd $ m \in \NNN $, and $ q \in B_{\F}^c $, the following bound is true for any $ \gamma \ge 0 $:
 \begin{align}
 	& \abs{\eva{\xi_\lambda,\left(E^{m,1}_{Q_2}(q) + E^{m,2}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }} \label{eq:estEQ211_Coulomb}\\
 	&\leq C^m \left( \kF^{-\frac 32}
@@ -1611,7 +1613,7 @@ If the sum ran over $ \ell_1 \in \Zstar $, the bound~\eqref{eq:estEQ2113_Coulomb
 \end{align}
 Here, we used $ \sum_{|\ell_1| < \kF^\gamma} \hat{V}(\ell_1) \le \left( \sum_{\ell_1 \in \Zstar} \hat{V}(\ell_1)^2 |\ell_1|^\alpha \right)^{\half} \left( \sum_{|\ell_1| < \kF^\gamma} |\ell_1|^{-\alpha} \right)^{\half} \le C \kF^{\frac{3-\alpha}{2} \gamma} $.
 
-For $ \sum_\ell \hat{V}(\ell) < \infty $, no splitting of the sum over $ \ell_1 $ is required and we directly extract a $ \Xi^{1-\varepsilon} $ via Lemma~\ref{lem:Xi_halfminusepsilon}:
+For $ \sum_\ell \hat{V}(\ell) < \infty $, no splitting of the sum over $ \ell_1 $ is required and we extract a $ \Xi^{1-\varepsilon} $ via Lemma~\ref{lem:Xi_halfminusepsilon}:
 \begin{align}
 	|\I_m(\ell, \ell_1)|
 	&\leq \mathds{1}_{L_{\ell_1}}(q) \Bigg(\sum_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half
@@ -1661,7 +1663,7 @@ This concludes the proof.
 
 
 \begin{lemma} \label{lem:EQ215}
-Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ2} of $ E_{Q_2}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $, there exist $ C, C_\varepsilon > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ2} of $ E_{Q_2}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $, there exist $ C, C_\varepsilon > 0 $ such that for all $ \lambda \in [0,1] $, odd $ m \in \NNN $, and $ q \in B_{\F}^c $,
 \begin{align} \label{eq:estEQ215_Coulomb}
 	\abs{\eva{\xi_\lambda,\left(E^{m,3}_{Q_2}(q) +\mathrm{h.c.}\right) \xi_\lambda }}
 	\leq C_\varepsilon C^m \left( \kF^{-\frac 32}
@@ -1792,7 +1794,7 @@ The improved bound for $ \sum_\ell \hat{V}(\ell) < \infty $ works as follows:
 
 
 \begin{lemma} \label{lem:EQ217}
-Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ2} of $ E_{Q_2}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ2} of $ E_{Q_2}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, odd $ m \in \NNN $, and $ q \in B_{\F}^c $,
 \begin{align}
 	\abs{\eva{\xi_\lambda,\left(E^{m,4}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
 	\leq C^m \kF^{-1} \Xi^{\half}  e(q)^{-1}
@@ -1895,7 +1897,7 @@ As later, $ \Xi \sim \kF^{-1} $, this bound will be $ \sim \kF^{-2} $, which is 
 
 
 \begin{lemma} \label{lem:EQ213}
-Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ2} of $ E_{Q_2}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ2} of $ E_{Q_2}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, odd $ m \in \NNN $, and $ q \in B_{\F}^c $,
 \begin{equation}
 \begin{aligned}
 	\abs{\eva{\xi_\lambda,\left(E^{m,5}_{Q_2}(q) + E^{m,6}_{Q_2}(q) + E^{m,7}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
@@ -2004,7 +2006,7 @@ Regarding $ E^{m,6}_{Q_2}(q) $ and $ E^{m,7}_{Q_2}(q) $, the case $ 1 \le j \le 
 
 
 \begin{lemma} \label{lem:EQ218}
-Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ2} of $ E_{Q_2}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ2} of $ E_{Q_2}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, odd $ m \in \NNN $, and $ q \in B_{\F}^c $,
 \begin{align}
 	\abs{\eva{\xi_\lambda,\left(E^{m,8}_{Q_2}(q) + E^{m,9}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
 	\leq C^m \left( \kF^{-\frac 32} \Xi^\half
@@ -2082,7 +2084,7 @@ This concludes the proof.
 
 
 \begin{lemma} \label{lem:EQ212}
-Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ2} of $ E_{Q_2}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, $ m \in \NNN $, and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ2} of $ E_{Q_2}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, odd $ m \in \NNN $, and $ q \in B_{\F}^c $,
 \begin{equation}
 	\abs{\eva{\xi_\lambda,\left(E^{m,10}_{Q_2}(q) + E^{m,11}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
 	\leq C^m \kF^{-1} \Xi e(q)^{-1} \;. \label{eq:estEQ212}
@@ -2152,90 +2154,97 @@ Then,~\eqref{eq:extract_nqex} follows by the triangle inequality.
 
 
 \begin{lemma}[Exchange contribution] \label{lem:estnqex}
-Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ with $ \alpha \in (0,2) $, and recall the definitions~\eqref{eq:nqex} of $ n^{\ex}(q) $ and~\eqref{eq:nqexm} of $ n^{\ex,m}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $, there exists $ C_\varepsilon > 0 $ such that for all $ q \in B_{\F}^c $
-\begin{equation}
-	\abs{n^{\ex}(q)}
-	\leq C_\varepsilon \kF^{-1 - \frac{\alpha}{2} + \varepsilon} e(q)^{-1} \;. \label{eq:estnqex_Coulomb_1}
-\end{equation}
-Further, there exists $ C > 0 $ such that
+Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ with $ \alpha \in (0,2) $, and recall the definition  \eqref{eq:nqexm} of $ n^{\ex,m}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $, there exists $ C_\varepsilon, C > 0 $ such that for all $ q \in B_{\F}^c $ we have
+% \begin{equation}
+% 	\abs{n^{\ex}(q)}
+% 	\leq C_\varepsilon \kF^{-1 - \frac{\alpha}{2} + \varepsilon} e(q)^{-1} \;. \label{eq:estnqex_Coulomb_1}
+% \end{equation}
+% Further, there exists $ C > 0 $ such that
 \begin{equation}
 \begin{aligned}
 	\abs{n^{\ex,m}(q)}
 	&\leq C_\varepsilon C^m \kF^{-\frac 32 + \varepsilon} e(q)^{-\frac 32} \qquad \textnormal{for } m > 1 \;, \\
-	\abs{n^{\ex}(q) - \frac 14 n^{\ex,1}(q)}
-	&\leq C_\varepsilon \kF^{-\frac 32 + \varepsilon} e(q)^{-\frac 32} \;. \label{eq:estnqex_Coulomb}
+	\abs{n^{\ex,1}(q)}
+	&\leq C_\varepsilon \kF^{-\frac 32 + \varepsilon} e(q)^{-\frac 32} \textcolor{red}{TODO} \;. \label{eq:estnqex_Coulomb}
 \end{aligned}
 \end{equation}
+\todo{RHS}
 If $ \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty $, we have the following stronger bound for any $ m \in \mathbb{N} $:
 \begin{equation}
-	\abs{n^{\ex}(q)},
 	\abs{n^{\ex,m}(q)}
 	\leq C^m \kF^{-2} e(q)^{-2} \;. \label{eq:estnqex}
 \end{equation}
 \end{lemma}
 
-Note that since $ n^{\ex,m}(q) \in \mathbb{R} $ and $ \norm{\xi_\lambda} = 1 $ for any $ \lambda \in [0,1] $, we have $ \abs{\eva{\xi_\lambda, n^{\ex,m}(q) \xi_\lambda }} = |n^{\ex,m}(q)| $. Further, note that Lemma~\ref{lem:estnqex} also applies to $ \alpha \in [2,\infty) $, since those are included in the case $ \alpha = 2 - \varepsilon $. The bound~\eqref{eq:estnqex_Coulomb_1} is then always $ \abs{n^{\ex}(q)} \leq C_\varepsilon \kF^{-2 + \varepsilon} e(q)^{-1} $.
+% Note that since $ n^{\ex,m}(q) \in \mathbb{R} $ and $ \norm{\xi_\lambda} = 1 $ for any $ \lambda \in [0,1] $, we have $ \abs{\eva{\xi_\lambda, n^{\ex,m}(q) \xi_\lambda }} = |n^{\ex,m}(q)| $. Further, note that
+Lemma~\ref{lem:estnqex} also applies to $ \alpha \in [2,\infty) $, since those are included in the case $ \alpha = 2 - \varepsilon $.
+% The bound~\eqref{eq:estnqex_Coulomb_1} is then always $ \abs{n^{\ex}(q)} \leq C_\varepsilon \kF^{-2 + \varepsilon} e(q)^{-1} $.
 
 \begin{proof}
-We start estimating $ n^{\ex}(q) $ by Lemma~\ref{lem:normsk} and $ \lambda_{\ell,q} \ge C e(q)^{\half} e(q-\ell)^{\half} $,
-\begin{align}
-	|n^{\ex}(q)|
-	&\leq C \kF^{-2}
-		\sum_{\ell \in \Zstar} \mathds{1}_{L_\ell}(q) \frac{\hat{V}(\ell)}{\lambda_{\ell,q}}
-		\sum_{\ell_1 \in \Zstar} \mathds{1}_{L_{\ell_1}}(q) \frac{\hat{V}(\ell_1)}{\lambda_{\ell_1,q}}
-	= C \kF^{-2}
-		\Bigg( \sum_{\ell \in \Zstar} \mathds{1}_{L_\ell}(q) \frac{\hat{V}(\ell)}{\lambda_{\ell,q}} \Bigg)^2 \nonumber\\
-	&\leq C \kF^{-2} e(q)^{-1}
-		\Bigg( \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^{\alpha} \Bigg)
-		\Bigg( \sum_{\ell \in \Zstar} \mathds{1}_{L_\ell}(q) e(q-\ell)^{-1} |\ell|^{-\alpha} \Bigg) \;.
-\end{align}
-The first bracket on the r.~h.~s. was assumed to be finite. To bound the second bracket, we split the summation region as $ S := \{ \ell \in \Zstar : q \in L_\ell \} = S_1 \cup S_2 \cup S_3 $ with
-\begin{equation}
-	S_1 := \{ \ell \in S : |\ell| \le \kF^\beta, \; ||q-\ell|-\kF| \le 2 \} \;, \quad
-	S_2 := \{ \ell \in S \setminus S_1 : |\ell| \le \kF^\beta \} \;, \quad
-	S_3 := S \setminus (S_1 \cup S_2) \;,
-\end{equation}
-for some $ \beta > 0 $ to be optimized. For $ \ell \in S_1 $, we use $ e(q-\ell) \ge C $ and that the surface area of the intersection with a sphere of radius $ |\ell| $ around $ q $ is bounded by
-\begin{equation*}
-	\textnormal{Area} \big( \big\{ \ell' \in \R^3 : |\ell'| = |\ell| \textnormal{ and } ||q-\ell'|-\kF| \le 2 \big\} \big)
-	\leq C |\ell| \;,
-\end{equation*}
-hence
-\begin{equation}
-	\sum_{\ell \in S_1} e(q-\ell)^{-1} |\ell|^{-\alpha}
-	\leq \sum_{\ell \in S_1} |\ell|^{-\alpha}
-	\leq C + C \int_0^{\kF^\beta} |\ell|^{1-\alpha}  \di |\ell|
-	\le C \kF^{2 \beta - \alpha \beta} \;.
-\end{equation}
-Note that $ \alpha \in (0,2) $ is needed for the integral to converge.\\
-For $ \ell \in S_2 $, we have $ e(q-\ell) \ge C \kF $, while the sphere intersection volume is now less than~$ C |\ell|^2 $:
-\begin{equation}
-	\sum_{\ell \in S_2} e(q-\ell)^{-1} |\ell|^{-\alpha}
-	\leq C \kF^{-1} \Bigg( 1 + \int_C^{\kF^\beta} |\ell|^{2-\alpha} \di |\ell| \Bigg)
-	\le C \kF^{-1 + 3 \beta - \alpha \beta} \;.
-\end{equation}
-Finally, for $ \ell \in S_3 $, we have $ |\ell|^{-\alpha} \le \kF^{-\alpha \beta} $:
-\begin{equation}
-	\sum_{\ell \in S_3} e(q-\ell)^{-1} |\ell|^{-\alpha}
-	\le \kF^{-\alpha \beta} \sum_{\ell \in S_3} e(q-\ell)^{-1}
-	\le C_\varepsilon \kF^{1 + \varepsilon - \alpha \beta} \;,
-\end{equation}
-where we used again~\eqref{eq:lambdainverse} in the last step. The optimal choice is $ \beta = \frac 12 $, so we get
-\begin{equation}
-	\Bigg( \sum_{\ell \in \Zstar} \mathds{1}_{L_\ell}(q) e(q-\ell)^{-1} |\ell|^{-\alpha} \Bigg)
-	\le C_\varepsilon \kF^{1 + \varepsilon - \frac{\alpha}{2}}
-\end{equation}
-	which implies
-\begin{equation}
-	|n^{\ex}(q)|
-	\leq C_\varepsilon \kF^{-1 - \frac{\alpha}{2} + \varepsilon} e(q)^{-1} \;.
-\end{equation}
+% We start estimating $ n^{\ex}(q) $ by Lemma~\ref{lem:normsk} and $ \lambda_{\ell,q} \ge C e(q)^{\half} e(q-\ell)^{\half} $,
+% \begin{align}
+% 	|n^{\ex}(q)|
+% 	&\leq C \kF^{-2}
+% 		\sum_{\ell \in \Zstar} \mathds{1}_{L_\ell}(q) \frac{\hat{V}(\ell)}{\lambda_{\ell,q}}
+% 		\sum_{\ell_1 \in \Zstar} \mathds{1}_{L_{\ell_1}}(q) \frac{\hat{V}(\ell_1)}{\lambda_{\ell_1,q}}
+% 	= C \kF^{-2}
+% 		\Bigg( \sum_{\ell \in \Zstar} \mathds{1}_{L_\ell}(q) \frac{\hat{V}(\ell)}{\lambda_{\ell,q}} \Bigg)^2 \nonumber\\
+% 	&\leq C \kF^{-2} e(q)^{-1}
+% 		\Bigg( \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^{\alpha} \Bigg)
+% 		\Bigg( \sum_{\ell \in \Zstar} \mathds{1}_{L_\ell}(q) e(q-\ell)^{-1} |\ell|^{-\alpha} \Bigg) \;.
+% \end{align}
+% The first bracket on the r.~h.~s. was assumed to be finite. To bound the second bracket, we split the summation region as $ S := \{ \ell \in \Zstar : q \in L_\ell \} = S_1 \cup S_2 \cup S_3 $ with
+% \begin{equation}
+% 	S_1 := \{ \ell \in S : |\ell| \le \kF^\beta, \; ||q-\ell|-\kF| \le 2 \} \;, \quad
+% 	S_2 := \{ \ell \in S \setminus S_1 : |\ell| \le \kF^\beta \} \;, \quad
+% 	S_3 := S \setminus (S_1 \cup S_2) \;,
+% \end{equation}
+% for some $ \beta > 0 $ to be optimized. For $ \ell \in S_1 $, we use $ e(q-\ell) \ge C $ and that the surface area of the intersection with a sphere of radius $ |\ell| $ around $ q $ is bounded by
+% \begin{equation*}
+% 	\textnormal{Area} \big( \big\{ \ell' \in \R^3 : |\ell'| = |\ell| \textnormal{ and } ||q-\ell'|-\kF| \le 2 \big\} \big)
+% 	\leq C |\ell| \;,
+% \end{equation*}
+% hence
+% \begin{equation}
+% 	\sum_{\ell \in S_1} e(q-\ell)^{-1} |\ell|^{-\alpha}
+% 	\leq \sum_{\ell \in S_1} |\ell|^{-\alpha}
+% 	\leq C + C \int_0^{\kF^\beta} |\ell|^{1-\alpha}  \di |\ell|
+% 	\le C \kF^{2 \beta - \alpha \beta} \;.
+% \end{equation}
+% Note that $ \alpha \in (0,2) $ is needed for the integral to converge.\\
+% For $ \ell \in S_2 $, we have $ e(q-\ell) \ge C \kF $, while the sphere intersection volume is now less than~$ C |\ell|^2 $:
+% \begin{equation}
+% 	\sum_{\ell \in S_2} e(q-\ell)^{-1} |\ell|^{-\alpha}
+% 	\leq C \kF^{-1} \Bigg( 1 + \int_C^{\kF^\beta} |\ell|^{2-\alpha} \di |\ell| \Bigg)
+% 	\le C \kF^{-1 + 3 \beta - \alpha \beta} \;.
+% \end{equation}
+% Finally, for $ \ell \in S_3 $, we have $ |\ell|^{-\alpha} \le \kF^{-\alpha \beta} $:
+% \begin{equation}
+% 	\sum_{\ell \in S_3} e(q-\ell)^{-1} |\ell|^{-\alpha}
+% 	\le \kF^{-\alpha \beta} \sum_{\ell \in S_3} e(q-\ell)^{-1}
+% 	\le C_\varepsilon \kF^{1 + \varepsilon - \alpha \beta} \;,
+% \end{equation}
+% where we used again~\eqref{eq:lambdainverse} in the last step. The optimal choice is $ \beta = \frac 12 $, so we get
+% \begin{equation}
+% 	\Bigg( \sum_{\ell \in \Zstar} \mathds{1}_{L_\ell}(q) e(q-\ell)^{-1} |\ell|^{-\alpha} \Bigg)
+% 	\le C_\varepsilon \kF^{1 + \varepsilon - \frac{\alpha}{2}}
+% \end{equation}
+% 	which implies
+% \begin{equation}
+% 	|n^{\ex}(q)|
+% 	\leq C_\varepsilon \kF^{-1 - \frac{\alpha}{2} + \varepsilon} e(q)^{-1} \;.
+% \end{equation}
 
-Next, we turn to $ n^{\ex,m}(q) $: For $ m > 1 $ we expand the multi-anticommutator in~\eqref{eq:nqexm} via~\eqref{eq:q-q}:
+For $ m > 1 $, to estimate to $ n^{\ex,m}(q) $, we expand using \eqref{eq:q-q} to get
 \begin{equation}
 \begin{aligned}
-	&|n^{\ex,m}(q)|
-	\leq \I + \II \\
+	|n^{\ex,m}(q)|
+	\leq \I + \II
+\end{aligned}
+\end{equation}
+with
+\begin{displaymath}
+\begin{aligned}
 	\I
 	&:= 4 \sum_{\ell,\ell_1 \in \Zstar}
 		\mathds{1}_{L_\ell \cap L_{\ell_1} \cap (-L_\ell + \ell + \ell_1) \cap (-L_{\ell_1} + \ell + \ell_1)}(q)
@@ -2249,8 +2258,8 @@ Next, we turn to $ n^{\ex,m}(q) $: For $ m > 1 $ we expand the multi-anticommuta
 		\abs{K^j(\ell)_{q,-r+\ell+\ell_1}}
 		\abs{K(\ell_1)_{r,-r+\ell+\ell_1}} \;.
 \end{aligned}
-\end{equation}
-Since $ m > 1 $, $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^m < \infty $ always holds true. Here, Lemma~\ref{lem:normsk} and $  \lambda_{\ell,q} \geq C e(q) $ give
+\end{displaymath}
+Since $ m > 1 $, $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^m < \infty $ holds. Lemma~\ref{lem:normsk} and $  \lambda_{\ell,q} \geq C e(q) $ imply
 \begin{align}
 	\I
 	&\leq C \sum_{\ell,\ell_1 \in \Zstar}
@@ -2265,7 +2274,7 @@ Since $ m > 1 $, $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^m < \infty $ always hold
 		\lambda_{\ell,-q+\ell+\ell_1}^{-1} \Bigg)^{\half} \nonumber\\
 	&\leq C \kF^{-\frac 32} e(q)^{-\frac 32} \;,
 \end{align}
-where we used~\eqref{eq:lambdainverse}. Likewise, for $ \II $ with $ \lambda_{\ell_1,r} \ge C e(r) $:
+where we used~\eqref{eq:lambdainverse}. Likewise, for the summands of $ \II $, with $ \lambda_{\ell_1,r} \ge C e(r) $ we have
 \begin{align}
 	&\sum_{\ell,\ell_1 \in \Zstar}
 		\mathds{1}_{L_\ell}(q)
@@ -2284,18 +2293,17 @@ where we used~\eqref{eq:lambdainverse}. Likewise, for $ \II $ with $ \lambda_{\e
 		 e(r)^{-1} \nonumber\\
 	&\leq \kF^{-\frac 52} e(q)^{-\frac 32} \sum_{\ell \in \Zstar} (C \hat{V}(\ell))^m
 	\sum_{r \in L_\ell} e(r)^{-1}
-	\leq C^m C_\varepsilon \kF^{-\frac 32 + \varepsilon} e(q)^{-\frac 32} \;,
+	\leq C^m C_\varepsilon \kF^{-\frac 32 + \varepsilon} e(q)^{-\frac 32} \;.
 \end{align}
-where in the last line, we used~\eqref{eq:lambdainverse}. Summing over $ j $, with $ \sum_{0 \le j \le m} {{m}\choose j} = 2^m $, concludes the estimate for $ \II $ and thus~\eqref{eq:estnqex_Coulomb} for $ m > 1 $.
+Summing over $ j $, with $ \sum_{0 \le j \le m} {{m}\choose j} = 2^m $, concludes the estimate for $ \II $.
 
-For $ m = 1 $, we bound the difference between $ n^{\ex}(q) $~\eqref{eq:nqex} and $ \frac 14 n^{\ex,1}(q) $~\eqref{eq:nqexm} by Lemma~\ref{lem:extract_nqex} and~\eqref{eq:K_element_bounds}, using that both terms are symmetric under exchange $ \ell \leftrightarrow \ell_1 $:
+For $ m = 1 $ we have
 \begin{align*}
-	\abs{n^{\ex}(q) - \frac 14 n^{\ex,1}(q)}
+	\abs{n^{\ex,1}(q)}
 	&\leq C \sum_{\ell,\ell_1 \in \Zstar} 
-		\mathds{1}_{L_\ell \cap L_{\ell_1} \cap (-L_{\ell}+\ell+\ell_1) \cap (-L_{\ell_1}+\ell+\ell_1)}(q) \times \nonumber\\
-	&\quad \times \abs{K(\ell)_{q,-q+\ell+\ell_1}
-		- \frac{1}{2 (2 \pi)^3} \frac{\hat{V}(\ell) \kF^{-1}}{\lambda_{\ell,q} + \lambda_{\ell,-q+\ell+\ell_1}}}
-		\frac{\hat{V}(\ell_1) \kF^{-1}}{\lambda_{\ell_1,q} + \lambda_{\ell_1,-q+\ell+\ell_1}} \nonumber\\
+		\mathds{1}_{L_\ell \cap L_{\ell_1} \cap (-L_{\ell}+\ell+\ell_1) \cap (-L_{\ell_1}+\ell+\ell_1)}(q)
+		\frac{\abs{K(\ell)_{q,-q+\ell+\ell_1}
+		} \hat{V}(\ell_1) \kF^{-1}}{\lambda_{\ell_1,q} + \lambda_{\ell_1,-q+\ell+\ell_1}} \nonumber\\
 	&\leq C \kF^{-2} \sum_{\ell \in \Zstar} \mathds{1}_{L_\ell}(q)
 		\frac{\hat{V}(\ell)^2}{\lambda_{\ell,q}}
 		\sum_{\ell_1 \in \Zstar} \mathds{1}_{L_{\ell_1}}(q)
@@ -2306,7 +2314,7 @@ For $ m = 1 $, we bound the difference between $ n^{\ex}(q) $~\eqref{eq:nqex} an
 	&\leq C_\varepsilon \kF^{-\frac 32 + \varepsilon} e(q)^{-\frac 32} \;.
 \end{align*}
 
-Finally, in case $ \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty $, we get the simpler bound~\eqref{eq:estnqex} for $ |n^{\ex,m}(q)| $ using Lemma~\ref{lem:normsk} and $ \sum_{0 \le j \le m} {{m}\choose j} = 2^m $ via
+Finally, if $ \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty $, we get \eqref{eq:estnqex} using Lemma~\ref{lem:normsk} and $ \sum_{0 \le j \le m} {{m}\choose j} = 2^m $ via
 \begin{align}
 	\I + \II
 	&\leq C^m \kF^{-2} e(q)^{-2} \sum_{\ell,\ell_1 \in \Zstar}
@@ -2319,9 +2327,8 @@ Finally, in case $ \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty $, we get the s
 		\Bigg( \sum\limits_{\ell \in \Zstar} \hat{V}(\ell)^m \Bigg)
 		\Bigg( \sum\limits_{\ell_1 \in \Zstar} \hat{V}(\ell_1) \Bigg)
 		\kF^{-2} e(q)^{-2}
-	\leq C^m \kF^{-2} e(q)^{-2} \;.
+	\leq C^m \kF^{-2} e(q)^{-2} \;. \qedhere \nonumber
 \end{align}
-The bound for $ |n^{\ex}(q)| $ is analogous.
 \end{proof}
 
 
@@ -2339,7 +2346,8 @@ Recall from~\eqref{eq:errEm2} that
 	\le \int_{\Delta^{m+1}} \di^{m+1}\underline{\lambda} \;
 		\abs{\eva{\xi_{\lambda_{m+1}}, E_{Q_{\sigma(m)}}\left(\Theta^{m}_{K}(P^q)\right) \xi_{\lambda_{m+1}}}} \;.
 \end{equation}		
-We then use Propositions~\ref{prop:finEQ1est} and~\ref{prop:finEQ2est}, taking the supremum over $ \lambda \in [0,1] $ and noting $ \int_{\Delta^{m+1}} \di^{m+1} \underline{\lambda} = \frac{1}{(m+1)!} \le \frac{1}{m!} $.
+We then use Propositions~\ref{prop:finEQ1est} and~\ref{prop:finEQ2est}, taking the supremum over $ \lambda \in [0,1] $.
+% and noting $ \int_{\Delta^{m+1}} \di^{m+1} \underline{\lambda} = \frac{1}{(m+1)!} \le \frac{1}{m!} $.
 \end{proof}
 
 
@@ -2526,7 +2534,7 @@ Under the assumption of \eqref{hyp:ell1} ($ \sum_{\ell \in \Zstar} \hat{V}(\ell)
 \end{align}
 Bounding $ n^{\ex}(q) $, $ \Xi $, and $ \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} $ by Lemma~\ref{lem:estnqex},~\eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} readily yields the improved error bound~\eqref{eq:main_prop_improvederror}.
 %
-The bound~\eqref{eq:main_prop_exchange} was proven in~\eqref{eq:estnqex_Coulomb_1} and~\eqref{eq:estnqex}, where only $ m = 1 $ contributes to $ n^{\ex}(q) $.
+The bound~\eqref{eq:main_prop_improvederror} was proven in~\eqref{eq:estnqex_Coulomb_1} and~\eqref{eq:estnqex}, where only $ m = 1 $ contributes to $ n^{\ex}(q) $.
 \end{proof}
 
 
