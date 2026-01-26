@@ -1291,7 +1291,7 @@ This concludes the proof.
 
 
 \begin{lemma} \label{lem:EQ112}
-Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ1} of $ E_{Q_1}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $, there exist $ C, C_\varepsilon > 0 $ such that for all $ \lambda \in [0,1] $, even $ m \in \NNN $, $ m \ge 2 $, and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $, there exist $ C, C_\varepsilon > 0 $ such that for all $ \lambda \in [0,1] $, even $ m \in \NNN $, $ m \ge 2 $, and $ q \in B_{\F}^c $,
 \begin{align} \label{eq:estEQ112_Coulomb}
 	\abs{\eva{\xi_\lambda,\left(E^{m,3}_{Q_1}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
 	\leq C_\varepsilon C^m \left( \kF^{-\frac 32 + \varepsilon}
@@ -1520,7 +1520,7 @@ where
 		\eva{\xi_\lambda, K^{m-j}(\ell)_{r,q} K^{j}(\ell)_{q,s} K(\ell_1)_{r,s_1} a^*_{r-\ell_1} b^*_{-s_1}(-\ell_1) b_{-s}(-\ell) a_{r-\ell} \xi_\lambda} \;. \\
 \end{aligned}
 \end{equation}
-For the case $ j = 0 $ we use $1 = (\NN+1) (\NN+1)^{-1}$ and Lemma~\ref{lem:normsk}. Note that since $ m = 1 $ may occur, we have to use the Cauchy--Schwarz inequality for the sum over $\ell$ to ensure that we get at least the second power $\sum_{\ell} \hat{V}(\ell)^2$ and not just $\sum_{\ell} \hat{V}(\ell)$.
+For the case $ j = 0 $ we use $1 = (\NN+1) (\NN+1)^{-1}$ and Lemma~\ref{lem:normsk}. Since $ m = 1 $ may occur, we have to use the Cauchy--Schwarz inequality for the sum over $\ell$ to ensure that we get at least the second power $\sum_{\ell} \hat{V}(\ell)^2$ and not just $\sum_{\ell} \hat{V}(\ell)$. Then
 \begin{align}
 	\sum_{\ell,\ell_1 \in \Zstar} \mathds{1}_{L_\ell}(q) |\I_0(\ell, \ell_1)|
  	&\leq \sum\limits_{\ell,\ell_1 \in \Zstar} \mathds{1}_{L_\ell}(q) \Bigg( \sum\limits_{r \in L_{\ell_1}} 
@@ -1607,7 +1607,7 @@ If the sum ran over $ \ell_1 \in \Zstar $, the bound~\eqref{eq:estEQ2113_Coulomb
 \end{align}
 Here, we used $ \sum_{|\ell_1| < \kF^\gamma} \hat{V}(\ell_1) \le \left( \sum_{\ell_1 \in \Zstar} \hat{V}(\ell_1)^2 |\ell_1|^\alpha \right)^{\half} \left( \sum_{|\ell_1| < \kF^\gamma} |\ell_1|^{-\alpha} \right)^{\half} \le C \kF^{\frac{3-\alpha}{2} \gamma} $.
 
-For $ \sum_\ell \hat{V}(\ell) < \infty $, no splitting of the sum over $ \ell_1 $ is required and we extract a $ \Xi^{1-\varepsilon} $ via Lemma~\ref{lem:Xi_halfminusepsilon}:
+For $ \sum_\ell \hat{V}(\ell) < \infty $, no splitting of the sum over $ \ell_1 $ is required and we gain a factor $ \Xi^{1-\varepsilon} $ by using Lemma~\ref{lem:Xi_halfminusepsilon}:
 \begin{align}
 	|\I_m(\ell, \ell_1)|
 	&\leq \mathds{1}_{L_{\ell_1}}(q) \Bigg(\sum_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half
@@ -1620,9 +1620,9 @@ For $ \sum_\ell \hat{V}(\ell) < \infty $, no splitting of the sum over $ \ell_1 
 		\hat{V}(\ell_1)
 		\kF^{-1} e(q)^{-1} \Xi^{1-\varepsilon} \;. \label{eq:estEQ2113}
 \end{align}
-Summing up the three bounds, respectively, concludes the proof for $ E^{m,1}_{Q_2}(q) $.
-
-The bound for $ E^{m,2}_{Q_2}(q) $ is analogous, except for $ j = m $ where we proceed as in~\eqref{eq:estEQ1113_Coulomb_bis}
+Summing up the three bounds concludes the proof for $ E^{m,1}_{Q_2}(q) $.
+%
+The bound for $ E^{m,2}_{Q_2}(q) $ is analogous, except for $ j = m $ where we proceed as in~\eqref{eq:estEQ1113_Coulomb_bis}:
 \begin{align}
 	&\sum_{\ell,\ell_1 \in \Zstar} \mathds{1}_{L_\ell}(q) |\I_m(\ell, \ell_1)| \nonumber\\
 	&\leq \sum_{\ell,\ell_1 \in \Zstar} \mathds{1}_{L_\ell \cap (L_{\ell_1}+\ell-\ell_1) }(q)
@@ -1637,7 +1637,7 @@ The bound for $ E^{m,2}_{Q_2}(q) $ is analogous, except for $ j = m $ where we p
 		\sum_{\ell_1,s_1 \in \Z^3} \norm{a_{-s_1+\ell_1} a_{-s_1} (\NN+1) \xi_\lambda }^2 \Bigg)^{\half} \nonumber\\
 	&\leq C^m \kF^{-1} e(q)^{-\frac 12} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} \norm{ (\NN+1)^2 \xi_\lambda } \;. \label{eq:estEQ2113_Coulomb_bis}
 \end{align}
-In case $ \sum_\ell \hat{V}(\ell) < \infty $, we proceed similarly to~\eqref{eq:estEQ1113_bis}
+In case $ \sum_\ell \hat{V}(\ell) < \infty $, we proceed similarly to~\eqref{eq:estEQ1113_bis}:
 \begin{align}
 	|\I_m(\ell, \ell_1)|
 	&\leq \Bigg(\sum\limits_{s \in L_{\ell}} \abs{K^m(\ell)_{q,s}}^2\Bigg)^\half
@@ -1657,7 +1657,7 @@ This concludes the proof.
 
 
 \begin{lemma} \label{lem:EQ215}
-Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ2} of $ E_{Q_2}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $, there exist $ C, C_\varepsilon > 0 $ such that for all $ \lambda \in [0,1] $, odd $ m \in \NNN $, and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty$. For $\xi_\lambda = e^{-\lambda S} \Omega$, given $ \varepsilon > 0 $, there exist $ C, C_\varepsilon > 0 $ such that for all $ \lambda \in [0,1] $, odd $ m \in \NNN $, and $ q \in B_{\F}^c $,
 \begin{align} \label{eq:estEQ215_Coulomb}
 	\abs{\eva{\xi_\lambda,\left(E^{m,3}_{Q_2}(q) +\mathrm{h.c.}\right) \xi_\lambda }}
 	\leq C_\varepsilon C^m \left( \kF^{-\frac 32}
@@ -1788,7 +1788,7 @@ The improved bound for $ \sum_\ell \hat{V}(\ell) < \infty $ works as follows:
 
 
 \begin{lemma} \label{lem:EQ217}
-Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ2} of $ E_{Q_2}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, odd $ m \in \NNN $, and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, odd $ m \in \NNN $, and $ q \in B_{\F}^c $,
 \begin{align}
 	\abs{\eva{\xi_\lambda,\left(E^{m,4}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
 	\leq C^m \kF^{-1} \Xi^{\half}  e(q)^{-1}
@@ -1891,7 +1891,7 @@ As later we will show $ \Xi \sim \kF^{-1} $, the bound \eqref{eq:estEQ2172} will
 
 
 \begin{lemma} \label{lem:EQ213}
-Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ2} of $ E_{Q_2}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, odd $ m \in \NNN $, and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, odd $ m \in \NNN $, and $ q \in B_{\F}^c $,
 \begin{equation}
 \begin{aligned}
 	\abs{\eva{\xi_\lambda,\left(E^{m,5}_{Q_2}(q) + E^{m,6}_{Q_2}(q) + E^{m,7}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
@@ -2000,7 +2000,7 @@ Regarding $ E^{m,6}_{Q_2}(q) $ and $ E^{m,7}_{Q_2}(q) $, the case $ 1 \le j \le 
 
 
 \begin{lemma} \label{lem:EQ218}
-Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ2} of $ E_{Q_2}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, odd $ m \in \NNN $, and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, odd $ m \in \NNN $, and $ q \in B_{\F}^c $,
 \begin{align}
 	\abs{\eva{\xi_\lambda,\left(E^{m,8}_{Q_2}(q) + E^{m,9}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
 	\leq C^m \left( \kF^{-\frac 32} \Xi^\half
@@ -2078,7 +2078,7 @@ This concludes the proof.
 
 
 \begin{lemma} \label{lem:EQ212}
-Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $ and recall definition~\eqref{eq:expandedEQ2} of $ E_{Q_2}^{m,j}(q) $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, odd $ m \in \NNN $, and $ q \in B_{\F}^c $,
+Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 < \infty $. For $\xi_\lambda = e^{-\lambda S} \Omega$, there exists a constant $ C > 0 $ such that for all $ \lambda \in [0,1] $, odd $ m \in \NNN $, and $ q \in B_{\F}^c $,
 \begin{equation}
 	\abs{\eva{\xi_\lambda,\left(E^{m,10}_{Q_2}(q) + E^{m,11}_{Q_2}(q) + \mathrm{h.c.}\right) \xi_\lambda }}
 	\leq C^m \kF^{-1} \Xi e(q)^{-1} \;. \label{eq:estEQ212}
@@ -2370,7 +2370,7 @@ Let $q \in B^c_{\F}$, then
 \end{lemma}
 
 \begin{proof}
-We drop the $ \ell $-dependence of $K(\ell) $, $ h(\ell) $ and $ P(\ell) = |v_\ell \rangle \langle v_\ell| $~\eqref{eq:HkPk}, where not explicitly needed. Obviously
+We drop the $ \ell $-dependence of $K(\ell) $, $ h(\ell) $ and $ P(\ell) = |v_\ell \rangle \langle v_\ell| $. Obviously
 \begin{equation} \label{eq:coshrewriting}
 	\cosh(2K)-1
 	= \half\big((e^{-2K}-1)-(1-e^{2K})\big) \;.
@@ -2389,13 +2389,13 @@ for any symmetric, invertible matrix $ A $, as well as the Sherman--Morrison for
 \begin{equation} \label{eq:shermor}
 	(A+cP_w)^{-1} = A^{-1} - \frac{c}{1+c\eva{w, A^{-1}w}}P_{A^{-1}w} \;,
 \end{equation}
-for any $ c \in \C $ and $ w \in \ell^2(L_\ell) $ such that the denominator is nonzero. We begin with 
+for any $ c \in \C $ and $ w \in \ell^2(L_\ell) $ such that the denominator is non-vanishing. We begin with
 \begin{align}
 	\big(h^2 +2P_{h^{\half} v}\big)^{\half}
 	&= \frac{2}{\pi} \int_0^\infty \Bigg( 1- \frac{t^2}{t^2+h^2} + \frac{2 t^2}{1+ 2 \big\langle h^{\half} v ,(t^2+h^2)^{-1} h^\half v \big\rangle } P_{(t^2+h^2)^{-1}h^{\half} v} \Bigg) \mathrm{d}t \nonumber\\
 	&= h + \frac{2}{\pi} \int_0^\infty \frac{2t^2}{1+ 2 \big\langle h^{\half} v ,(t^2+h^2)^{-1} h^\half v \big\rangle }  P_{(t^2+h^2)^{-1}h^{\half} v}\mathrm{d}t \;.
 \end{align}
-Recalling the definition~\eqref{eq:Lell} of $ \lambda_{\ell,q} $ and $ g_\ell $, and using the canonical basis vectors $ (e_p)_{p \in L_\ell} $ with $ h e_q = \lambda_{\ell,q} e_q $ and $ g_\ell = \langle e_p,v \rangle^2 $, this implies
+Using the canonical basis vectors $ (e_p)_{p \in L_\ell} $ with $ h e_q = \lambda_{\ell,q} e_q $ and $ g_\ell = \langle e_p,v \rangle^2 $, this implies
 \begin{align}
 	(e^{-2K}-1)_{q,q}
 	&= \eva{e_q, h^{-\half} \big(h^2 +2P_{h^{\half} v}\big)^{\half} h^{-\half} e_q} - 1\nonumber\\
