@@ -214,7 +214,7 @@
 \maketitle
 \begin{abstract}
 
-We analyse the momentum distribution of a three-dimensional Fermi gas in the mean-field scaling regime in a trial state that was recently proven to reproduce the Gell-Mann--Brueckner correlation energy for Coulomb potentials. For a class of potentials including the Coulomb potential we show that the momentum distribution is given by a step profile corrected by a random phase approximation contribution as predicted by Daniel and Vosko. Moreover, for potentials with summable Fourier transform we provide optimal error bounds for the deviation from the random phase approximation. This refines a recent analysis by two of the authors to the physically most relevant potentials and to momenta closer to the Fermi surface.
+We analyse the momentum distribution of a three-dimensional Fermi gas in the mean-field scaling regime in a trial state that was recently proven to reproduce the Gell-Mann--Brueckner correlation energy for Coulomb potentials. For a class of potentials including the Coulomb potential we show that the momentum distribution is given by a step profile corrected by a random phase approximation contribution. Moreover, for potentials with summable Fourier transform we provide optimal error bounds for the deviation from the random phase approximation. This refines a recent analysis by two of the authors to the physically most relevant potentials and to momenta closer to the Fermi surface. The proof relies on an double bootstrap method, improved over the earlier approach to estimate the momentum distribution both pointwise and globally over all momenta.
 
 \medskip
 
@@ -317,7 +317,6 @@ Therefore $ n^{\RPA}(q) $ represents the deviation of $ n(q) $ from the indicato
 	\coloneq \abs{|q|^2 - \inf_{p \in B_{\F}^c} |p|^2 + \half} \;.
 \end{equation}
 Since $ q \in \Z^3 $, the number $ |q|^2 $ is an integer and thus $ e(q) \ge \half $. We introduce $ e(q) $ because it gives rise to the very useful lower bound \[\lambda_{\ell,q} \ge \half e(q) \;.\]
-\todo{check factors of $1/2$. Is $e(q) \geq 1$? Factors $1/4$?}
 % Also, scalings will depend on the regularity of the potential $ V $, for which we distinguish three cases:
 % \begin{hypothesis}~\label{hyp:alpha}
 % $ \hat{V}(\ell) = \hat{V}(-\ell) \ge 0 \quad \forall \ell \in \Z^3 $, and $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $ \alpha > 0 $.
@@ -346,7 +345,7 @@ Then, for $\kF \to \infty $, there exists a sequence of trial states  $ \Psi_N \
 	\eva{\Psi_N, H_N \Psi_N} - E_{\GS}
 	\le C_\varepsilon \kF^{1-\frac 16 + \varepsilon} \;,
 \end{equation}
-\item and for all $ \varepsilon > 0 $, there exists a $ C_\varepsilon > 0 $ such that for all $ \kF $ and $ q \in \Z^3 $, we have
+\item and for all $ \varepsilon > 0 $, there exists a family of operators $\mathcal{E}(q)$ on Fock space and a $ C_\varepsilon > 0 $ such that for all $ \kF $ and $ q \in \Z^3 $, we have
 \begin{equation} \label{eq:main2}
 	n(q) = \eva{\Psi_N, a_q^* a_q \Psi_N}
 	= \begin{cases}
@@ -357,7 +356,7 @@ Then, for $\kF \to \infty $, there exists a sequence of trial states  $ \Psi_N \
 	\end{cases}
 \end{equation}
 with $ n^{\RPA}(q) $ defined in~\eqref{eq:nqb}, and where the error term is bounded by
-\begin{equation}
+\begin{equation}\label{eq:main_error}
 	\lvert \cE(q)\rvert \le C_\varepsilon \kF^{-1 - \frac 16 +\varepsilon} e(q)^{-1} \;.
 \end{equation}
 \end{itemize}
@@ -397,7 +396,7 @@ Thus
 This agrees with \cite{BL25} up to a factor $ (2 \pi)^3 \kappa $ multiplying $\hat{V}$, explained by the choice of coupling constant $k_\F^{-1}$ here compared to the coupling constant $N^{-1/3} = \kappa^{-1} \kF^{-1}$ in \cite{BL25}, as well as the absent $ (2 \pi)^{-3} $ in the Fourier convention~\eqref{eq:Fourierconvention}.
 %
 \item
-Analogously to the exchange contribution to to the ground state energy derived in~\cite{CHN23,CHN24}, an exchange contribution $n^{\ex}(q)$ appears by normal ordering the bosonization errors, see Lemma~\eqref{lem:normalordering_errors}. However it is smaller than our error terms, as shown in Proposition~\ref{prop:main}.
+Analogously to the exchange contribution to the ground state energy derived in~\cite{CHN23,CHN24}, an exchange contribution $n^{\ex}(q)$ appears by normal ordering the bosonization errors, see Lemma~\eqref{lem:normalordering_errors}. However, Proposition~\ref{prop:main} shows that it is smaller than the error terms.
 % ) and is found to be
 % \begin{equation} \label{eq:nqex}
 % \begin{split}
@@ -422,7 +421,7 @@ Let $ \Psi_N $ be the trial state defined in~\eqref{eq:Psitrial}--\eqref{eq:T} a
 \begin{equation}\label{hyp:alpha}
 \hat{V}(\ell) = \hat{V}(-\ell) \ge 0 \quad \forall \ell \in \Z^3 \text{ and } \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty \text{ for some } \alpha > 0 \;.
 \end{equation}
-Then, there exist $ C, C_\varepsilon > 0 $, such that for all $ \kF $ and $ q \in \Z^3 $ we have \todo{possibly we should define $n^\ex$}
+Then, there exist a family of operators $\mathcal{E}(q)$ on Fock space and $n^\textnormal{ex}(q) \in \Rbb $  as well as constants $C, C_\varepsilon > 0 $, such that for all $ \kF $ and $ q \in \Z^3 $ we have
 \begin{equation} \label{eq:main_prop_2}
 	n(q) = \eva{\Psi_N, a_q^* a_q \Psi_N}
 	= \begin{cases}
@@ -451,14 +450,12 @@ Once this proposition is established, the main theorem follows immediately.
 We choose as $ \Psi_N $ the trial state defined in~\eqref{eq:Psitrial}--\eqref{eq:T}.
 From~\cite[Corr.~1.3]{CHN24}, we know that $ E_{\GS} = E_{\FS} + E_{\corr} + \cO(\kF^{1 - 1/6 + \varepsilon}) $, provided hypothesis~\eqref{hyp:Coulomb} holds, where $ E_{\FS} $ is the Hartree--Fock energy and $ E_{\corr}$ the correlation energy, see~\cite[Eqs.~(1.2) and (1.11)]{CHN24}. Moreover, \cite[Thm.~1.1]{CHN23} gives us $ \eva{\Psi_N, H_N \Psi_N} \le E_{\FS} + E_{\corr} + \cO(\kF^{1 - 1/2}) $, hence $ \eva{\Psi_N, H_N \Psi_N} \le E_{\GS} + \cO(\kF^{1 - 1/6+ \varepsilon}) $.
 %
-Proposition~\ref{prop:main} then yields the statement about the momentum distribution, noticing that \eqref{hyp:Coulomb} implies \eqref{hyp:alpha} with $ \alpha = 1-\varepsilon $.
+Proposition~\ref{prop:main} then yields the statement about the momentum distribution, noticing that \eqref{hyp:Coulomb} implies \eqref{hyp:alpha} with $ \alpha = 1-\varepsilon $. The exchange contribution $n^\textnormal{ex}(q)$ can trivially be absorbed in the error bounds \eqref{eq:main_error} and \eqref{eq:main_improvederror}.
 \end{proof}
 
 
 The rest of this article is dedicated to proving Proposition~\ref{prop:main}.
-In Section~\ref{sec:trialstate}, we review the construction of the trial state from \cite{CHN23}. In Section~\ref{sec:extraction}, we derive the iterated Duhamel expansion for the momentum distribution and identify the leading order. Section~\ref{sec:prelim_bounds} provides preliminary error estimates used in the later sections. In Section~\ref{subsec:manybody_estimates} we bound the error terms using $\sup_q n(q)$. In Section \ref{sec:leading_order_analysis} we compute the leading order. The proof is concluded in Section~\ref{sec:mainthmproof} by a bootstrap of $\sup_q n(q)$.
-
-
+In Section~\ref{sec:trialstate}, we review the construction of the trial state from \cite{CHN23}. In Section~\ref{sec:extraction}, we derive the iterated Duhamel expansion for the momentum distribution and identify the leading order. Section~\ref{sec:prelim_bounds} provides preliminary error estimates used in the later sections. In Section~\ref{subsec:manybody_estimates} we bound the error terms using $\sup_q n(q)$. In Section \ref{sec:leading_order_analysis} we compute the leading order. The proof is concluded in Section~\ref{sec:mainthmproof} by a novel double bootstrap, which first achieves strong bounds globally, i.\,e., on $\sup_{q \in \Zbb^3} n(q)$, then locally, on $n(q)$.
 
 
 
@@ -547,7 +544,7 @@ with the Bogoliubov kernel
 		\Big( h(\ell)^{\half} \big( h(\ell) + 2 P(\ell) \big) h(\ell)^{\half}\Big)^{\half}
 		h(\ell)^{-\half} \bigg) \;.
 \end{equation}
-(The exponent $ S $ corresponds to $ R^* \cK R $ in the notation of~\cite{CHN23} since we prefer to use a particle-hole transformation instead of the normal ordering with respect to the Fermi ball state.)
+(The exponent $ S $ corresponds to $ R^* \cK R $ in \cite{CHN23} since we prefer to use a particle-hole transformation instead of the normal ordering with respect to the Fermi ball.)
 The matrix $K(\ell)$ is symmetric and possesses the reflection invariance $ K(-\ell)_{-p,-q} = K(\ell)_{p,q} $.
 
 
@@ -555,7 +552,6 @@ The matrix $K(\ell)$ is symmetric and possesses the reflection invariance $ K(-\
 \section{Duhamel Expansion}\label{sec:extraction}
 
 In this section we expand the momentum distribution $ \langle \Psi_N, a_q^* a_q \Psi_N \rangle $ of the trial state $ \Psi_N = R e^{-S} \Omega $ constructed in the previous section.
-% In the expansion we identify the explicit contributions of $ n^{\RPA}(q) $ and $ n^{\ex}(q) $.
 %
 The particle--hole transformation $ R $ acts in a simple way: by~\eqref{eq:R} we have
 \begin{equation} \label{eq:momentum_dist_R_trafo}
@@ -576,7 +572,7 @@ So it suffices to consider the excitation vector $ \xi \coloneq e^{-S} \Omega $ 
 % 		+ \int_0^1 \di \lambda_1 \int_0^{\lambda_1} \di \lambda_2 \langle \Omega, e^{\lambda_2 S} [S,[S, a_q^* a_q]] e^{-\lambda_2 S} \Omega \rangle \;.
 \end{aligned}
 \end{equation}
-Iterating this formula leads to the expansion in Proposition~\ref{prop:finexpan}, the main result of this section. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n^{\RPA}(q) $ as the terms that could be expected treating the pair operators as exactly bosonic, similarly to~\cite{BL25}.
+Iterating this formula leads to the expansion in Proposition~\ref{prop:finexpan}, the main result of this section. The multicommutators are computed using the CAR~\eqref{eq:CAR}, where we extract $ n^{\RPA}(q) $ as the terms that could be expected treating the pair operators as exactly bosonic.
 % The term $ n^{\ex}(q) $ instead appears when normal ordering the remaining terms.
 
 
