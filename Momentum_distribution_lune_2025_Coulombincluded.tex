@@ -697,8 +697,7 @@ where $ \sigma(n) = 1 $ if $n$ is even and $ \sigma(n) = 2 $ if $n$ is odd, and 
 \end{equation}
 \end{proposition}
 
-In Lemma~\ref{lem:nqb_integralrecovery}, we will see that the first term on the r.~h.~s. of~\eqref{eq:finexpan} converges to $ n^{\RPA}(q) $ as $ n \to \infty $. The exchange contribution $ n^{\ex}(q) $ emerges by normal ordering the second term. The other terms are remainders that we will estimate.
-
+In Lemma~\ref{lem:nqb_integralrecovery}, we will see that the first term on the r.~h.~s. of~\eqref{eq:finexpan} converges to $ n^{\RPA}(q) $ as $ n \to \infty $. The exchange contribution $ n^{\ex}(q) $ emerges by normal ordering the operators $E_m(P^q)$.
 
 \begin{proof}
 Our trial state and excitation density are reflection symmetric, that is, if we define the spatial reflection $ \fR: \cF \to \cF $ by $ \fR^* a_q^* \fR = a^*_{-q} $ and $ \fR \Omega = \Omega $, then
@@ -725,7 +724,7 @@ We then iteratively Duhamel-expand the $ Q_1$-- and $ Q_2 $--terms using Lemma~\
 		+ \int_0^{\lambda} \di \lambda' e^{\lambda' S} E_{Q_2}(A) e^{-\lambda' S} \\
 	&\quad + \lambda \sum_{\ell \in \Zstar} \sum_{r \in L_{\ell}} \big\{ A(\ell), K(\ell) \big\}_{r,r} \;. \tagg{eq:expand}
 \end{align*}
-The $ E_{Q_1}$-- and $ E_{Q_2} $--terms are not expanded further but collected in $ E_m(P^q) $. The term on the last line can be written as a trace and constitutes the leading order (the random phase approximation). The result after $ n $ expansion steps is
+The $ E_{Q_1}$-- and $ E_{Q_2} $--terms are not expanded further but collected in $ E_m(P^q) $. The term on the last line can be written as a trace and contributes to $n^\textnormal{RPA}(q)$. After $ n $ expansion steps
 \begin{align}
 	&e^{S} (a_q^* a_q + a_{-q}^* a_{-q}) e^{-S} \nonumber\\
 	&= a_q^* a_q + a_{-q}^* a_{-q}
@@ -823,7 +822,7 @@ Follows by a lengthy but straightforward computation with the CAR. (Alternativel
 We collect some estimates to be used for estimating the error terms in~\eqref{eq:finexpan}.
 
 \begin{lemma} \label{lem:lambdainverse}
-Let $ \ell \in \Zstar $ and recall the definitions~\eqref{eq:Lell} and~\eqref{eq:eq} of the energies $ \lambda_{\ell,r} $ and $ e(r) $. Consider any set $ S \subset \Z^3 $ with $ |S| \le C_0 \kF^3 $ for some $ C_0 > 0 $. Then, given $ \varepsilon > 0 $, there exist $ C, C_{C_0, \varepsilon} > 0 $ such that
+Let $ \ell \in \Zstar $ and recall the definitions~\eqref{eq:Lell} and~\eqref{eq:eq} of $ \lambda_{\ell,r} $ and $ e(r) $. Consider any set $ S \subset \Z^3 $ with $ |S| \le C_0 \kF^3 $ for some $ C_0 > 0 $. Then, given $ \varepsilon > 0 $, there exist $ C, C_{C_0, \varepsilon} > 0 $ such that
 \begin{equation} \label{eq:lambdainverse}
 	\sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \le C \kF \;, \qquad
 	\sum_{r \in S} e(r)^{-1} \le C_{\varepsilon, C_0} \kF^{1+\varepsilon} \;.
@@ -852,7 +851,7 @@ Moreover we have the Hilbert--Schmidt norm $ \norm{A(\ell)}_{\HS} := \Big( \sum_
 
 We have the following estimates for the Bogoliubov kernel \eqref{eq:K}.
 \begin{lemma}[Bounds on $ K $]\label{lem:normsk}
-Let $ \ell \in \Zstar $, $ m \in \mathbb{N} $, and $ r,s \in L_\ell $. Then
+Let $ \ell \in \Zstar $, $ m \in \mathbb{N} \setminus \{0\}$, and $ r,s \in L_\ell $. Then
 \begin{equation} \label{eq:K_element_bounds}
 	|(K(\ell)^m)_{r,s}|
 	\le \frac{(C \hat{V}(\ell))^m \kF^{-1}}{\lambda_{\ell,r} + \lambda_{\ell,s}} \;.
@@ -1063,7 +1062,7 @@ With $ \norm{P^q}_{\HS} = 1$, Lemma~\ref{lem:gronNest}, and $ \int_{\Delta^n} \d
 \subsection{Bosonization Error Estimates}
 \label{subsec:bos_error}
 
-The largest part of our analysis addresses the error terms $ E_m $ in Proposition~\ref{prop:finexpan}. Following \cite{BL25}, we estimate them by a bootstrap argument.
+The largest part of our analysis addresses the error terms $ E_m $ in Proposition~\ref{prop:finexpan}. Following \cite{BL25}, we estimate them by a double bootstrap argument.
 
 \begin{definition}[Bootstrap Quantity] We define the \emph{bootstrap quantity} as
 \begin{equation} \label{eq:Xi}
@@ -1073,6 +1072,7 @@ The largest part of our analysis addresses the error terms $ E_m $ in Propositio
 
 Evidently, $ 0 \le a_q^* a_q \le 1 $ implies the trivial bound $ 0 \le \Xi \le 1 $. Obviously $n(q) \leq \Xi$. In the proof of the main result we will expand $n(q)$ and control the error terms using $\Xi$. Then taking a supremum over $q$ we can resolve for the improved bound $\Xi \leq C \kF^{-1}$ (this is the bootstrap step). Using that improved bound in the previously obtained expansion for $n(q)$ yields our main result.
 
+\todo{add discussion of double bootstrap}
 
 \begin{proposition} \label{prop:finalEmest}
 Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $ \alpha > 0 $. Recall $E_m(P^q)$ from \eqref{eq:errEm} with $ \Theta^n_K $, $ P^q $, and $ \sigma(n) $ defined within and above Proposition~\ref{prop:finexpan}. Then, for $ \xi_\lambda \coloneq e^{- \lambda S} \Omega $, given $ \varepsilon > 0 $, there exist constants $ C, C_\varepsilon > 0 $ such that for all $ m \in \NNN $ and $ q \in B_{\F}^c $, and any $ \gamma \ge 0 $,
