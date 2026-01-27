@@ -316,7 +316,11 @@ Therefore $ n^{\RPA}(q) $ represents the deviation of $ n(q) $ from the indicato
 	e(q)
 	\coloneq \abs{|q|^2 - \inf_{p \in B_{\F}^c} |p|^2 + \half} \;.
 \end{equation}
-Since $ q \in \Z^3 $, the number $ |q|^2 $ is an integer and thus $ e(q) \ge \half $. We introduce $ e(q) $ because it gives rise to the very useful lower bound \[\lambda_{\ell,q} \ge \half e(q) \;.\]
+Since $ q \in \Z^3 $, the number $ |q|^2 $ is an integer and thus
+\[
+e(q) \ge \half \;.
+\]
+We introduce $ e(q) $ because it gives rise to the very useful lower bound \[\lambda_{\ell,q} \ge \half e(q) \;.\]
 % Also, scalings will depend on the regularity of the potential $ V $, for which we distinguish three cases:
 % \begin{hypothesis}~\label{hyp:alpha}
 % $ \hat{V}(\ell) = \hat{V}(-\ell) \ge 0 \quad \forall \ell \in \Z^3 $, and $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $ \alpha > 0 $.
@@ -340,7 +344,7 @@ Assume that
 \end{equation}
 Then, for $\kF \to \infty $, there exists a sequence of trial states  $ \Psi_N \in L^2_{\mathrm{a}}(\T^{3N}) $ such that
 \begin{itemize}
-\item $ \Psi_N $ is energetically close to the ground state in the sense that for any $ \varepsilon > 0 $ there exists a $ C_\varepsilon > 0 $ such that for all $k_\F$ we have
+\item $ \Psi_N $ is energetically close to the ground state in the sense that for any $ \varepsilon > 0 $ there exists a constant $ C_\varepsilon > 0 $ such that for all $k_\F$ we have
 \begin{equation} \label{eq:main1}
 	\eva{\Psi_N, H_N \Psi_N} - E_{\GS}
 	\le C_\varepsilon \kF^{1-\frac 16 + \varepsilon} \;,
@@ -1077,22 +1081,22 @@ Let $ \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty $ for some $
 \begin{align} \label{eq:finalEmest_Coulomb}
 	\abs{\half \eva{\Omega, E_m(P^q) \Omega}}
 	&\leq C_\varepsilon \frac{C^m}{m!}
-		\Big( e(q)^{-1}\left( \kF^{-\frac 32 + \varepsilon}
+		\bigg( e(q)^{-1}\left( \kF^{-\frac 32 + \varepsilon}
 		\!+ \kF^{-1 - \frac{\alpha \gamma}{2}}
 		\!+ \kF^{-1 + \frac{3-\alpha}{2} \gamma} \Xi^\half
 		\!+ \kF^{-1+\varepsilon} \Xi^\half \right) \nonumber\\
-	&\hspace{4.5em} + e(q)^{-\half} \kF^{-1} \sup_{\lambda \in [0,1]} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} \Big) \;,
+	&\hspace{4.5em} + e(q)^{-\half} \kF^{-1} \sup_{\lambda \in [0,1]} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half} \bigg) \;,
 \end{align}
 Moreover, if $ \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty $, we have the bound
 \begin{align} \label{eq:finalEmest}
 	&\abs{\eva{\Omega, E_m(P^q) \Omega}} \nonumber\\
 	&\leq C_\varepsilon \frac{C^m}{m!}
-		\left( e(q)^{-1}
+		\bigg( e(q)^{-1}
 		\Big( \kF^{-2}
 		+ \kF^{-\frac{3}{2}} \Xi^\half
 		+ \kF^{-1} \Xi^{1-\varepsilon} \Big)
 		+ e(q)^{-\half} \kF^{-1} \Xi^{\half - \varepsilon}
-		\sup_{\lambda \in [0,1]} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half}  \right)\;.
+		\sup_{\lambda \in [0,1]} \eva{\xi_\lambda, a_q^* a_q \xi_\lambda}^{\half}  \bigg)\;.
 \end{align}
 \end{proposition}
 
@@ -2474,7 +2478,7 @@ We focus on the case $ q \in B_{\F}^c $; $ q \in B_{\F} $ is treated analogously
 \label{sec:mainthmproof}
 
 \begin{proof}[Proof of Proposition~\ref{prop:main}]
-We now establish~\eqref{eq:main_prop_2}, where we focus on the case $ q \in B_{\F}^c $, since $ q \in B_{\F} $ is completely analogous. Recall that the trial state~\eqref{eq:Psitrial}--\eqref{eq:T} is $ \Psi_N = R e^{-S} \Omega $, so $ \eva{\Psi_N, a_q^* a_q \Psi_N} = \eva{\Omega, e^{S} a_q^* a_q e^{-S} \Omega} $, where Proposition~\ref{prop:finexpan} gives us
+We focus on the case $ q \in B_{\F}^c $, since $ q \in B_{\F} $ is completely analogous. Recall the trial state $ \Psi_N = R e^{-S} \Omega $, so Proposition~\ref{prop:finexpan} yields
 \begin{align*}
 	\eva{\Omega, e^{S} a_q^* a_q e^{-S} \Omega} 
 	&= \half\sum_{\ell\in \Zstar}\mathds{1}_{L_\ell}(q) \sum_{\substack{m=2\\m:\textnormal{ even}}}^n \frac{((2K(\ell))^m)_{q,q}}{m!}
@@ -2492,58 +2496,72 @@ We estimate the $ E_m(P^q) $-terms by Proposition~\ref{prop:finalEmest} to get
 \begin{align} \label{eq:main_errorbound_with_Xi}
 	& \abs{\eva{\Omega, e^{S} a_q^* a_q e^{-S} \Omega} - n^{\textnormal{RPA}}(q) } \nonumber\\
 	&\le C_\varepsilon \sum_{m=1}^\infty \frac{C^m}{m!}
-		\Big( e(q)^{-1}\left( \kF^{-\frac 32 + \varepsilon}
+		\bigg( e(q)^{-1}\left( \kF^{-\frac 32 + \varepsilon}
 		+ \kF^{-1 - \frac{\alpha \gamma}{2}}
 		+ \kF^{-1 + \frac{3-\alpha}{2} \gamma} \Xi^\half
 		+ \kF^{-1+\varepsilon} \Xi^\half \right) \nonumber\\
-	&\quad + e(q)^{-\half} \kF^{-1} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega}^{\half} \Big) \;.
+	&\hspace{7em} + e(q)^{-\half} \kF^{-1} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega}^{\half} \bigg) \;.
 \end{align}
-To estimate $ \Xi = \sup_{q \in \Z^3} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{- \lambda S} \Omega} $, observe that \eqref{eq:main_errorbound_with_Xi} holds uniformly in $ q \in B_{\F}^c $, and it is not difficult to show that it remains true for $ q \in B_{\F} $ or with $ S $ replaced by $ \lambda S $ with $ \lambda \in [0,1] $. Moreover, $ \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} \le \Xi $. So setting $ \gamma = 0 $ in~\eqref{eq:main_errorbound_with_Xi}, taking the supremum over $ q \in \Z^3 $ and $ \lambda \in [0,1] $, and estimating $ n^{\RPA}(q) $ by Lemmas~\ref{lem:nqb_bounds} , we get
+\paragraph{Global bootstrap:} To estimate $ \Xi = \sup_{q \in \Z^3} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{- \lambda S} \Omega} $, observe that \eqref{eq:main_errorbound_with_Xi} holds uniformly in $ q \in B_{\F}^c $, and it remains true for $ q \in B_{\F} $ or with $ S $ replaced by $ \lambda S $ with $ \lambda \in [0,1] $. Moreover, $ \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} \le \Xi $. So setting $ \gamma = 0 $ and $\varepsilon = \frac{1}{3}$ in~\eqref{eq:main_errorbound_with_Xi}, taking the supremum over $ q \in \Z^3 $ and $ \lambda \in [0,1] $, and estimating $ n^{\RPA}(q) $ by Lemma~\ref{lem:nqb_bounds}, we get
 \begin{align} \label{eq:Xibound}
 	\Xi
 	&\le \sup_{q \in \Z^3} n^{\RPA}(q)
 % 		+ \textcolor{red}{\sup_{q \in \Z^3} n^{\ex}(q)}
 		+ C_\varepsilon \left( \kF^{-1}
 		+ \kF^{-1 + \varepsilon} \Xi^\half \right)
-	\le C \kF^{-1} + C \Xi \nonumber
+	\le C ( \kF^{-1} + C \kF^{-\frac{2}{3}} \Xi^{1/2} ) \nonumber
 \end{align}
 which implies
 \begin{align}
 	\Xi
 	 \le C \kF^{-1} \;.
 \end{align}
-Plugging this bound again into~\eqref{eq:main_errorbound_with_Xi} and taking only the supremum over $ \lambda \in [0,1] $ gives
-\begin{align} \label{eq:aqaq_bound}
+\paragraph{Local bootstrap:} Plugging this bound into~\eqref{eq:main_errorbound_with_Xi}, again with $\gamma=0$ and $\varepsilon = \frac{1}{3}$, and taking only the supremum over $ \lambda \in [0,1] $ gives
+\begin{align}
 	&\sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} \nonumber\\
 	&\le n^{\RPA}(q)
 % 	+ \textcolor{red}{n^{\ex}(q)}
 	+ C \kF^{-1} e(q)^{-1}
 		+ C \kF^{-1} e(q)^{-\half} \Big(\sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} \Big)^{\half}
 \end{align}
-which implies
-\begin{align}
+which by the Cauchy--Schwartz inequality and estimating $ n^{\RPA}(q) $ by Lemma~\ref{lem:nqb_bounds} implies
+\begin{displaymath}
 	\sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega}
-	\le C \kF^{-1} e(q)^{-1} \;.
+	\le % 	+ \textcolor{red}{n^{\ex}(q)}
+	C \kF^{-1} e(q)^{-1}
+		+ C \kF^{-1} \Big( e(q)^{-1}  + \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} \Big) \;.
+\end{displaymath}
+This can be resolved for $\sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega}$ to yield
+\begin{align}\label{eq:aqaq_bound}
+	\sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega}
+	\le \frac{2C}{1-C \kF^{-1}} \kF^{-1} e(q)^{-1} \leq C \kF^{-1} e(q)^{-1} \;,
 \end{align}
-Inserting both bounds~\eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} into again into~\eqref{eq:main_errorbound_with_Xi} and choosing the optimal value $ \gamma = \frac 13 $ renders the final result~\eqref{eq:main_prop_2}.
+where in the last step we replaced the fraction by a (larger) constant, which is valid for any $\kF^{-1}$ large enough.
+
+\paragraph{Conclusion of the bootstrap:} Inserting \eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} into~\eqref{eq:main_errorbound_with_Xi} and choosing the optimal value $ \gamma = \frac 13 $ implies that for all $\varepsilon > 0$ we have
+\begin{align}
+	\abs{\eva{\Omega, e^{S} a_q^* a_q e^{-S} \Omega} - n^{\textnormal{RPA}}(q) } \le C_\varepsilon
+		\kF^{-1} e(q)^{-1}\left( \kF^{-\frac{1}{2} + \varepsilon}
+		+ \kF^{- \frac{\alpha}{6}}\right) \;.
+\end{align}
+This is the final result~\eqref{eq:main_prop_2}.
+
+\bigskip
 
 Under the assumption of \eqref{hyp:ell1}, Proposition~\ref{prop:finalEmest} provides us with
-\begin{align}
+\begin{align} \label{eq:main_errorbound_with_Xi_subcoulomb}
 	& \abs{\eva{\Omega, e^{S} a_q^* a_q e^{-S} \Omega} - n^{\textnormal{RPA}}(q)
 % 	\textcolor{red}{- n^{\ex}(q)}
-	} \label{eq:main_errorbound_with_Xi_subcoulomb} \\
-	\le
+	}  \\
+	& \le
 % 	\textcolor{red}{ n^{\ex}(q)} +
 	C_\varepsilon \sum_{m=0}^\infty \frac{C^m}{m!}
-		\Big( & e(q)^{-1} \left( \kF^{-2}
+		\Big(  e(q)^{-1} \left( \kF^{-2}
 		+ \kF^{-\frac{3}{2}} \Xi^\half
 		+ \kF^{-1} \Xi^{1-\varepsilon} \right) \nonumber\\
-	& + e(q)^{-\half} \kF^{-1} \Xi^{\half - \varepsilon} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega}^{\half} \Big) \;. \nonumber
+	& \hspace{7em} + e(q)^{-\half} \kF^{-1} \Xi^{\half - \varepsilon} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega}^{\half} \Big) \;. \nonumber
 \end{align}
-Bounding $ \Xi $, and $ \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} $ by Lemma~\ref{lem:estnqex},~\eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} readily yields the improved error bound~\eqref{eq:main_prop_improvederror}.
-%
-The bound~\eqref{eq:main_prop_improvederror} was proven in~\eqref{eq:estnqex_Coulomb_1}.
-% and~\eqref{eq:estnqex}, where only $ m = 1 $ contributes to $ n^{\ex}(q) $.}
+Estimating $ \Xi $, and $ \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} $ by Lemma~\ref{lem:estnqex},~\eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} yields the improved error bound~\eqref{eq:main_prop_improvederror}.
 \end{proof}
 
 
@@ -2558,6 +2576,7 @@ The authors have no competing interests to declare.
 \section*{Data Availability}
 As purely mathematical research, there are no datasets related to this article.
 
+\footnotesize
 \bibliographystyle{alpha}
 \bibliography{momentumdistribution}{}
 
