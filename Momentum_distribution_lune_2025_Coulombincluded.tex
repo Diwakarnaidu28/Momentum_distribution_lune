@@ -446,6 +446,7 @@ If the stronger hypothesis~\eqref{hyp:ell1} holds, then
 	\lvert n^{\ex}(q)\rvert \le
 		C \kF^{-2} e(q)^{-2} \;.
 \end{equation}
+Note that if \eqref{hyp:alpha} holds for some $\alpha > 3$, then this implies hypothesis \eqref{hyp:ell1}.
 \end{proposition}
 
 Once this proposition is established, the main theorem follows immediately.
@@ -911,15 +912,19 @@ and the first one in~\eqref{eq:K_max_bounds} analogously using $ \lambda_{\ell,q
 %	\le (C \hat{V}(\ell))^{2m} \kF^{-1} \;.
 %\end{equation*}
 The second and third bound in~\eqref{eq:K_max_bounds} follow from
-\begin{align}
+\begin{displaymath}
 	\norm{K(\ell)^m}_{\HS}^2
-	&\le \sum_{r,s \in L_\ell} (C \hat{V}(\ell))^{2m} \kF^{-2} (\lambda_{\ell,r} + \lambda_{\ell,s})^{-2}
+	\le \sum_{r,s \in L_\ell} (C \hat{V}(\ell))^{2m} \kF^{-2} (\lambda_{\ell,r} + \lambda_{\ell,s})^{-2}
 	\le (C \hat{V}(\ell))^{2m} \kF^{-2} \Big( \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \Big)^2
-	\le (C \hat{V}(\ell))^{2m} \;, \nonumber\\
+	\le (C \hat{V}(\ell))^{2m}
+\end{displaymath}
+and
+\begin{displaymath}
 	\normmaxi{K(\ell)^m} 
-	&\leq \sum_{r \in L_\ell} \sup_{q \in L_\ell} (C \hat{V}(\ell))^{m} \kF^{-1} (\lambda_{\ell,r} + \lambda_{\ell,q})^{-1}
-	\le (C \hat{V}(\ell))^{m} \kF^{-1} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \leq (C \hat{V}(\ell))^{m} \;.\nonumber	\qedhere
-\end{align}
+	\leq \sum_{r \in L_\ell} \sup_{q \in L_\ell} (C \hat{V}(\ell))^{m} \kF^{-1} (\lambda_{\ell,r} + \lambda_{\ell,q})^{-1}
+	\le (C \hat{V}(\ell))^{m} \kF^{-1} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \leq (C \hat{V}(\ell))^{m} \,.\nonumber
+\end{displaymath}
+This concludes the proof.
 \end{proof}
 
 
@@ -2555,13 +2560,12 @@ Under the assumption of \eqref{hyp:ell1}, Proposition~\ref{prop:finalEmest} prov
 	}  \\
 	& \le
 % 	\textcolor{red}{ n^{\ex}(q)} +
-	C_\varepsilon \sum_{m=0}^\infty \frac{C^m}{m!}
+	C_\varepsilon
 		\Big(  e(q)^{-1} \left( \kF^{-2}
 		+ \kF^{-\frac{3}{2}} \Xi^\half
-		+ \kF^{-1} \Xi^{1-\varepsilon} \right) \nonumber\\
-	& \hspace{7em} + e(q)^{-\half} \kF^{-1} \Xi^{\half - \varepsilon} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega}^{\half} \Big) \;. \nonumber
+		+ \kF^{-1} \Xi^{1-\varepsilon} \right)  + e(q)^{-\half} \kF^{-1} \Xi^{\half - \varepsilon} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega}^{\half} \Big) \,. \nonumber
 \end{align}
-Estimating $ \Xi $, and $ \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} $ by Lemma~\ref{lem:estnqex},~\eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} yields the improved error bound~\eqref{eq:main_prop_improvederror}.
+Estimating $ \Xi $ and $ \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} $ by Lemma~\ref{lem:estnqex},~\eqref{eq:Xibound}, and~\eqref{eq:aqaq_bound}, we obtain the improved error bound~\eqref{eq:main_prop_improvederror}.
 \end{proof}
 
 
