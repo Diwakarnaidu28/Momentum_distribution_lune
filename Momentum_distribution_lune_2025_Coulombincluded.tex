@@ -344,12 +344,12 @@ Assume that
 \end{equation}
 Then, for $\kF \to \infty $, there exists a sequence of trial states  $ \Psi_N \in L^2_{\mathrm{a}}(\T^{3N}) $ such that
 \begin{itemize}
-\item $ \Psi_N $ is energetically close to the ground state in the sense that for any $ \varepsilon > 0 $ there exists a constant $ C_\varepsilon > 0 $ such that for all $k_\F$ we have
+\item $ \Psi_N $ is energetically close to the ground state in the sense that for any $ \delta \in (0,\frac{1}{6}) $ there exists a constant $ C_\delta > 0 $ such that for all $k_\F$ we have
 \begin{equation} \label{eq:main1}
 	\eva{\Psi_N, H_N \Psi_N} - E_{\GS}
-	\le C_\varepsilon \kF^{1-\frac 16 + \varepsilon} \;,
+	\le C_\delta \kF^{1-\frac 16 + \delta} \;,
 \end{equation}
-\item and for all $ \varepsilon > 0 $, there exists a family of operators $\mathcal{E}(q)$ on Fock space and a $ C_\varepsilon > 0 $ such that for all $ \kF $ and $ q \in \Z^3 $, we have
+\item and there exists a family of operators $\mathcal{E}(q)$ on Fock space such that for all $ \kF $ and $ q \in \Z^3 $, we have
 \begin{equation} \label{eq:main2}
 	n(q) = \eva{\Psi_N, a_q^* a_q \Psi_N}
 	= \begin{cases}
@@ -361,16 +361,17 @@ Then, for $\kF \to \infty $, there exists a sequence of trial states  $ \Psi_N \
 \end{equation}
 with $ n^{\RPA}(q) $ defined in~\eqref{eq:nqb}, and where the error term is bounded by
 \begin{equation}\label{eq:main_error}
-	\lvert \cE(q)\rvert \le C_\varepsilon \kF^{-1 - \frac 16 +\varepsilon} e(q)^{-1} \;.
+	\lvert \cE(q)\rvert \le C_\delta \kF^{-1 - \frac 16 + \delta} e(q)^{-1} \;.
 \end{equation}
 \end{itemize}
-If additionally
+If additionally we have
 \begin{equation}\label{hyp:ell1}
-   \hat{V}(\ell) \ge 0 \quad \text{for all } \ell \in \Z^3 \qquad \text{ and } \qquad \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty\;,
+%    \hat{V}(\ell) \ge 0 \quad \text{for all } \ell \in \Z^3 \qquad \text{ and } \qquad
+   \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty\;,
 \end{equation}
 then the error term is even bounded by
 \begin{equation} \label{eq:main_improvederror}
-	\lvert \cE(q)\rvert \le C_\varepsilon \kF^{-2 +\varepsilon} e(q)^{-1} \;.
+	\lvert \cE(q)\rvert \le C_\delta \kF^{-2 +\delta} e(q)^{-1} \;.
 \end{equation}
 \end{theorem}
 
@@ -423,9 +424,9 @@ Hypothesis~\ref{hyp:Coulomb} on $ V $ is only needed to ensure validity of the g
 \begin{proposition}[Momentum distribution] \label{prop:main}
 Let $ \Psi_N $ be the trial state defined in~\eqref{eq:Psitrial}--\eqref{eq:T} and assume that
 \begin{equation}\label{hyp:alpha}
-\hat{V}(\ell) = \hat{V}(-\ell) \ge 0 \quad \forall \ell \in \Z^3 \text{ and } \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty \text{ for some } \alpha > 0 \;.
+\hat{V}(\ell) = \hat{V}(-\ell) \ge 0 \quad \forall \ell \in \Z^3 \text{ and } \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^\alpha < \infty \text{ for some } \alpha \in (0,2) \;.
 \end{equation}
-Then, there exist a family of operators $\mathcal{E}(q)$ on Fock space and $n^{\textnormal{ex},1}(q) \in \Rbb $  as well as constants $C, C_\varepsilon > 0 $, such that for all $ \kF $ and $ q \in \Z^3 $ we have
+Let $\varepsilon > 0$. Then, there exist a family of operators $\mathcal{E}(q)$ on Fock space and $n^{\textnormal{ex},1}(q) \in \Rbb $  as well as constants $C, C_\varepsilon > 0 $, such that for all $ \kF $ and $ q \in \Z^3 $ we have
 \begin{equation} \label{eq:main_prop_2}
 	n(q) = \eva{\Psi_N, a_q^* a_q \Psi_N}
 	= \begin{cases}
@@ -437,25 +438,24 @@ Then, there exist a family of operators $\mathcal{E}(q)$ on Fock space and $n^{\
 \end{equation}
 with the error bounds
 \begin{equation}
-	\lvert \cE(q)\rvert \le C \kF^{-1 - \frac 16 \alpha} e(q)^{-1} \qquad \text{and} \qquad \lvert n^{\ex,1}(q)\rvert \leq C_\varepsilon \kF^{-1 -\frac{\alpha}{2} + \varepsilon } e(q)^{-1} \quad \text{for } \alpha \in (0,2) \;.
+	\lvert \cE(q)\rvert \le C \kF^{-1 - \frac 16 \alpha} e(q)^{-1} \qquad \text{and} \qquad \lvert n^{\ex,1}(q)\rvert \leq C_\varepsilon \kF^{-1 -\frac{\alpha}{2} + \varepsilon } e(q)^{-1} \;.
 \end{equation}
-\todo{What about $\alpha \in (2,3)$?}
-If the stronger hypothesis~\eqref{hyp:ell1} holds, then
+If the additional hypothesis~\eqref{hyp:ell1} holds, then
 \begin{equation} \label{eq:main_prop_improvederror}
 	\lvert \cE(q)\rvert \le C_\varepsilon \kF^{-2 +\varepsilon} e(q)^{-1} \qquad \text{and} \qquad
 	\lvert n^{\ex,1}(q)\rvert \le
 		C \kF^{-2} e(q)^{-2} \;.
 \end{equation}
-Note that if \eqref{hyp:alpha} holds for some $\alpha > 3$, then this implies hypothesis \eqref{hyp:ell1}.
+% Note that if \eqref{hyp:alpha} holds for some $\alpha > 3$, then this implies hypothesis \eqref{hyp:ell1}. If, for example, $\alpha = 5/2$ is admissible, of course we can also take $\alpha = 2/3$ (as an example), there is no need to take the largest $\alpha$.
 \end{proposition}
 
 Once this proposition is established, the main theorem follows immediately.
 
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
 We choose as $ \Psi_N $ the trial state defined in~\eqref{eq:Psitrial}--\eqref{eq:T}.
-From~\cite[Corr.~1.3]{CHN24}, we know that $ E_{\GS} = E_{\FS} + E_{\corr} + \cO(\kF^{1 - 1/6 + \varepsilon}) $, provided hypothesis~\eqref{hyp:Coulomb} holds, where $ E_{\FS} $ is the Hartree--Fock energy and $ E_{\corr}$ the correlation energy, see~\cite[Eqs.~(1.2) and (1.11)]{CHN24}. Moreover, \cite[Thm.~1.1]{CHN23} gives us $ \eva{\Psi_N, H_N \Psi_N} \le E_{\FS} + E_{\corr} + \cO(\kF^{1 - 1/2}) $, hence $ \eva{\Psi_N, H_N \Psi_N} \le E_{\GS} + \cO(\kF^{1 - 1/6+ \varepsilon}) $.
-%
-Proposition~\ref{prop:main} then yields the statement about the momentum distribution, noticing that \eqref{hyp:Coulomb} implies \eqref{hyp:alpha} with $ \alpha = 1-\varepsilon $. The exchange contribution $n^\textnormal{ex}(q)$ can trivially be absorbed in the error bounds \eqref{eq:main_error} and \eqref{eq:main_improvederror}.
+From~\cite[Corr.~1.3]{CHN24}, we know that $ E_{\GS} = E_{\FS} + E_{\corr} + \cO(\kF^{1 - \frac{1}{6} + \delta}) $, provided hypothesis~\eqref{hyp:Coulomb} holds, where $ E_{\FS} $ is the Hartree--Fock energy and $ E_{\corr}$ the correlation energy, see~\cite[Eqs.~(1.2) and (1.11)]{CHN24}. Moreover, \cite[Thm.~1.1]{CHN23} gives us $ \eva{\Psi_N, H_N \Psi_N} \le E_{\FS} + E_{\corr} + \cO(\kF^{1 - \frac{1}{2}}) $, hence $ \eva{\Psi_N, H_N \Psi_N} \le E_{\GS} + \cO(\kF^{1 - \frac{1}{6}+ \delta}) $.
+
+Proposition~\ref{prop:main} yields the statement about the momentum distribution because \eqref{hyp:Coulomb} implies \eqref{hyp:alpha} for $\alpha = 1-6\delta$. Thereafter we choose $\varepsilon = \frac{\alpha}{3}$. The exchange contribution $n^\textnormal{ex}(q)$ can trivially be absorbed in the error bounds \eqref{eq:main_error} and \eqref{eq:main_improvederror}.
 \end{proof}
 
 
@@ -2183,12 +2183,11 @@ If $ \sum_{\ell \in \Zstar} \hat{V}(\ell) < \infty $, we have the following boun
 	\leq C^m \kF^{-2} e(q)^{-2} \;. \label{eq:estnqex}
 \end{equation}
 \end{lemma}
-\textcolor{red}{
 %
 % Note that since $ n^{\ex,m}(q) \in \mathbb{R} $ and $ \norm{\xi_\lambda} = 1 $ for any $ \lambda \in [0,1] $, we have $ \abs{\eva{\xi_\lambda, n^{\ex,m}(q) \xi_\lambda }} = |n^{\ex,m}(q)| $. Further, note that
-Lemma~\ref{lem:estnqex} also applies to $ \alpha > 2 $, since
-% those are included in the case $ \alpha = 2 - \varepsilon $.
-then the bound~\eqref{eq:estnqex_Coulomb} is always $ \abs{n^{\ex,m}(q)} \leq C_\varepsilon \kF^{-2 + \varepsilon} e(q)^{-1} $. \todo{I don't understand this comment.}}
+% Lemma~\ref{lem:estnqex} also applies to $ \alpha > 2 $, since
+% % those are included in the case $ \alpha = 2 - \varepsilon $.
+% then the bound~\eqref{eq:estnqex_Coulomb} is always $ \abs{n^{\ex,m}(q)} \leq C_\varepsilon \kF^{-2 + \varepsilon} e(q)^{-1} $.
 %
 \begin{proof}
 For $ m > 1 $, we expand $ n^{\ex,m}(q) $ using \eqref{eq:q-q} to get
@@ -2503,21 +2502,28 @@ We estimate the $ E_m(P^q) $-terms by Proposition~\ref{prop:finalEmest} to get
 		+ \kF^{-1+\varepsilon} \Xi^\half \right) \nonumber\\
 	&\hspace{7em} + e(q)^{-\half} \kF^{-1} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega}^{\half} \bigg) \;.
 \end{align}
-\paragraph{Global bootstrap:} To estimate $ \Xi = \sup_{q \in \Z^3} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{- \lambda S} \Omega} $, observe that \eqref{eq:main_errorbound_with_Xi} holds uniformly in $ q \in B_{\F}^c $, and it remains true for $ q \in B_{\F} $ or with $ S $ replaced by $ \lambda S $ with $ \lambda \in [0,1] $. Moreover, $ \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} \le \Xi $. So setting $ \gamma = 0 $ and $\varepsilon = \frac{1}{3}$ in~\eqref{eq:main_errorbound_with_Xi}, taking the supremum over $ q \in \Z^3 $ and $ \lambda \in [0,1] $, and estimating $ n^{\RPA}(q) $ by Lemma~\ref{lem:nqb_bounds} and $n^{\ex,1}(q)$ by Lemma~\ref{lem:estnqex}, we get
-\todo{$\varepsilon = 1/3$ does not work for the exchange term}
+\paragraph{Global bootstrap:} To estimate $ \Xi = \sup_{q \in \Z^3} \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{- \lambda S} \Omega} $, observe that \eqref{eq:main_errorbound_with_Xi} holds uniformly in $ q \in B_{\F}^c $, and it remains true for $ q \in B_{\F} $ or with $ S $ replaced by $ \lambda S $ with $ \lambda \in [0,1] $. Moreover, $ \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} \le \Xi $. So setting $ \gamma := 0 $ and $\varepsilon := \frac{\alpha}{4}$ in~\eqref{eq:main_errorbound_with_Xi}, using $e(q)^{-1} \leq 2$, taking the supremum over $ q \in \Z^3 $ and $ \lambda \in [0,1] $, and estimating $ n^{\RPA}(q) $ by Lemma~\ref{lem:nqb_bounds} and $n^{\ex,1}(q)$ by Lemma~\ref{lem:estnqex}, we get
+\todo{$\lambda$-dependence}
 \begin{align} \label{eq:Xibound}
 	\Xi
 	&\le \sup_{q \in \Z^3} n^{\RPA}(q) + \sup_{q \in \Z^3} \frac{n^{\ex,1}(q)}{4}
 		+ C_\varepsilon \left( \kF^{-1}
 		+ \kF^{-1 + \varepsilon} \Xi^\half \right)
-	\le C ( \kF^{-1} + C \kF^{-\frac{2}{3}} \Xi^{1/2} ) + \textcolor{red}{C_\varepsilon \kF^{-1 - \frac{\alpha}{2} + \varepsilon} e(q)^{-1}} \nonumber
+	\le  \left( \kF^{-1} + C \kF^{-1 + \frac{\alpha}{4}} \Xi^{1/2}
+% 	+  C \kF^{-1 - \frac{\alpha}{4}}
+	\right) \nonumber
 \end{align}
-which implies
+which by the Cauchy--Schwartz inequality implies
+\begin{align}
+		\Xi \leq C \kF^{-1} + C \kF^{-1+\frac{\alpha}{2}} \Xi \;.
+\end{align}
+This can be resolved for
 \begin{align}
 	\Xi
-	 \le C \kF^{-1} \;.
+	 \le \frac{C}{1-C \kF^{-1 + \frac{\alpha}{2}}} \kF^{-1} \leq C \kF^{-1}
 \end{align}
-\paragraph{Local bootstrap:} Plugging this bound into~\eqref{eq:main_errorbound_with_Xi}, again with $\gamma=0$ and $\varepsilon = \frac{1}{3}$, and taking only the supremum over $ \lambda \in [0,1] $ gives
+where in the last step we replaced the fraction by a (larger) constant, which is a valid upper bound for any $\kF^{-1}$ large enough.
+\paragraph{Local bootstrap:} Plugging this bound into~\eqref{eq:main_errorbound_with_Xi}, again with $\gamma=0$ and $\varepsilon = \frac{\alpha}{4}$, and taking only the supremum over $ \lambda \in [0,1] $ (not over $q$), gives
 \begin{align}
 	&\sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} \nonumber\\
 	&\le n^{\RPA}(q) + \frac{n^{\ex,1}(q)}{4}
@@ -2528,18 +2534,20 @@ which, estimating $ n^{\RPA}(q) $ by Lemma~\ref{lem:nqb_bounds}  and $n^{\ex,1}(
 \begin{displaymath}
 	\sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega}
 	\le % 	+ \textcolor{red}{n^{\ex}(q)}
-	C \kF^{-1} e(q)^{-1} + \textcolor{red}{C_\varepsilon \kF^{-1 - \frac{\alpha}{2} + \varepsilon} e(q)^{-1}}
+	C \kF^{-1} e(q)^{-1}
+% 	+ {C \kF^{-1 - \frac{\alpha}{4}} e(q)^{-1}}
 		+ C \kF^{-1} \Big( e(q)^{-1}  + \sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega} \Big) \;.
 \end{displaymath}
 This can be resolved for $\sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega}$ to yield
 \begin{align}\label{eq:aqaq_bound}
 	\sup_{\lambda \in [0,1]} \eva{\Omega, e^{\lambda S} a_q^* a_q e^{-\lambda S} \Omega}
-	\le \frac{2C}{1-C \kF^{-1}} \kF^{-1} e(q)^{-1} \leq C \kF^{-1} e(q)^{-1} \;,
+% 	\le \frac{2C}{1-C \kF^{-1}} \kF^{-1} e(q)^{-1}
+	\leq C \kF^{-1} e(q)^{-1} \;.
 \end{align}
-where in the last step we replaced the fraction by a (larger) constant, which is valid for any $\kF^{-1}$ large enough.
+% where in the last step we replaced the fraction by a (larger) constant, which is a valid upper bound for any $\kF^{-1}$ large enough.
 \todo{$\lambda$-dependence of $n^{RPA}$ and $n^{ex,1}$ for the bootstrap? Monotonicity?}
 
-\paragraph{Conclusion of the bootstrap:} Inserting \eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} into~\eqref{eq:main_errorbound_with_Xi} and choosing the optimal value $ \gamma = \frac 13 $ implies that for all $\varepsilon > 0$ we have
+\paragraph{Conclusion of the bootstrap:} Inserting \eqref{eq:Xibound} and~\eqref{eq:aqaq_bound} into~\eqref{eq:main_errorbound_with_Xi} and choosing the optimal value $ \gamma = \frac 13 $ implies that for all $\varepsilon > 0$ there exists $C_\varepsilon$ such that we have
 \begin{align}
 	\abs{\eva{\Omega, e^{S} a_q^* a_q e^{-S} \Omega} - n^{\textnormal{RPA}}(q) -\frac{n^{\ex,1}}{4}} \le C_\varepsilon
 		\kF^{-1} e(q)^{-1}\left( \kF^{-\frac{1}{2} + \varepsilon}
