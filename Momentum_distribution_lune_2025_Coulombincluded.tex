@@ -801,7 +801,7 @@ Let $ \ell \in \Zstar $ and recall the definitions~\eqref{eq:Lell} and~\eqref{eq
 \end{equation}
 \end{lemma}
 \begin{proof}
-The first statement is~\cite[Prop.~A.2]{CHN22}, the second was proven with $ C \kF^3 $ replaced by $ |\overline{B_{2 \kF}(0)} \cap \Z^3| $ in~\cite[Lemma~3.2]{CHN24}. It generalizes to any set $S$ with $ |S| \le C_0 \kF^3 $ by writing $ S $ as a disjoint union of less or equal than $ C_0 $ sets with less or equal than $ |\overline{B_{2 \kF}}(0) \cap \Z^3| $ points.
+The first statement is~\cite[Prop.~A.2]{CHN22}, the second was proven with $ C \kF^3 $ replaced by $ |\overline{B_{2 \kF}(0)} \cap \Z^3| $ in~\cite[Lemma~3.2]{CHN24}. It generalizes to any set $S$ with $ |S| \le C_0 \kF^3 $ by writing $ S $ as a disjoint union of a uniformly bounded numbers of sets each with at most $ |\overline{B_{2 \kF}}(0) \cap \Z^3| $ points.
 \end{proof}
 
 \begin{definition}
@@ -2186,45 +2186,44 @@ Using $ \lambda_{\ell,q} \ge C e(q)^{\half} e(q-\ell)^{\half} $ and the Cauchy--
 		\Bigg( \sum_{\ell \in \Zstar} \hat{V}(\ell)^2 |\ell|^{\alpha} \Bigg)
 		\Bigg( \sum_{\ell \in \Zstar} \mathds{1}_{L_\ell}(q) e(q-\ell)^{-1} |\ell|^{-\alpha} \Bigg) \;.
 \end{align}
-The first sum on the r.~h.~s. is finite according to the hypothesis. To bound the second sum, we split the summation region as $ S := \{ \ell \in \Zstar : q \in L_\ell \} = S_1 \cup S_2 \cup S_3 $ with
+The first sum is finite by assumption. To bound the second sum, we write the summation region as a union of pairwise disjoint sets, $ S := \{ \ell \in \Zstar : q \in L_\ell \} = S_1 \cup S_2 \cup S_3 $, where
 \begin{displaymath}
 \begin{split}
-	S_1 & := \{ \ell \in S : |\ell| \le \kF^\beta \textnormal{ and } ||q-\ell|-\kF| \le 2 \} \;, \\
-	S_2 & := \{ \ell \in S \setminus S_1 : |\ell| \le \kF^\beta \} \;, \\
-	S_3 & := S \setminus (S_1 \cup S_2) \;,
+	S_1 & := \{ \ell \in S : |\ell| \le \kF^{1/2} \textnormal{ and } ||q-\ell|-\kF| \le 2 \} \;, \\
+	S_2 & := \{ \ell \in S : |\ell| \le \kF^{1/2}  \textnormal{ and } ||q-\ell|-\kF| > 2  \} \;, \\
+	S_3 & := \{ \ell \in S : |\ell| > \kF^{1/2} \} \;.
 \end{split}
 \end{displaymath}
-for some $ \beta > 0 $ to be optimized.
 
 For $ \ell \in S_1 $, we use $ e(q-\ell) \ge C $ and that the surface area of the intersection of $S_1$ with a sphere of radius $ |\ell| $ around $ q $ can be estimated according to
-\begin{equation*}
+\begin{equation} \label{eq:intersection}
 	\textnormal{Area} \big( \big\{ \ell' \in \R^3 : |\ell'| = |\ell| \textnormal{ and } ||q-\ell'|-\kF| \le 2 \big\} \big)
 	\leq C |\ell| \;,
-\end{equation*}
+\end{equation}
 hence
 \begin{equation}
 	\sum_{\ell \in S_1} e(q-\ell)^{-1} |\ell|^{-\alpha}
 	\leq \sum_{\ell \in S_1} |\ell|^{-\alpha}
-	\leq C + C \int_0^{\kF^\beta} |\ell|^{1-\alpha}  \di |\ell|
-	\le C \kF^{2 \beta - \alpha \beta} \;.
+	\leq C + C \int_0^{\kF^{1/2}} |\ell|^{1-\alpha}  \di |\ell|
+	\le C \kF^{1 - \frac{\alpha}{2}} \;.
 \end{equation}
 Note that $ \alpha \in (0,2) $ is required for the integral to converge.
 
-For $ \ell \in S_2 $, we have $ e(q-\ell) \ge C \kF $, while the sphere intersection volume is now less than~$ C |\ell|^2 $, implying the estimate
+For $ \ell \in S_2 $, we have $ e(q-\ell) \ge C \kF $, while the sphere intersection volume as defined in \eqref{eq:intersection} is now less than~$ C |\ell|^2 $, implying the estimate
 \begin{equation}
 	\sum_{\ell \in S_2} e(q-\ell)^{-1} |\ell|^{-\alpha}
-	\leq C \kF^{-1} \Bigg( 1 + \int_C^{\kF^\beta} |\ell|^{2-\alpha} \di |\ell| \Bigg)
-	\le C \kF^{-1 + 3 \beta - \alpha \beta} \;.
+	\leq C \kF^{-1} \Bigg( 1 + \int_C^{\kF^{1/2}} |\ell|^{2-\alpha} \di |\ell| \Bigg)
+	\le C \kF^{-1 + 3/2 - \alpha/2} \;.
 \end{equation}
 
-Finally, for $ \ell \in S_3 $, we have $ |\ell|^{-\alpha} \le \kF^{-\alpha \beta} $ and thus, using \eqref{eq:lambdainverse}, the estimate
+Finally, for $ \ell \in S_3 $, we have $ |\ell|^{-\alpha} \le \kF^{-\alpha/2} $ and thus, using \eqref{eq:lambdainverse}, the estimate
 \begin{equation}
 	\sum_{\ell \in S_3} e(q-\ell)^{-1} |\ell|^{-\alpha}
-	\le \kF^{-\alpha \beta} \sum_{\ell \in S_3} e(q-\ell)^{-1}
-	\le C_\varepsilon \kF^{1 + \varepsilon - \alpha \beta} \;.
+	\le \kF^{-\alpha/2} \sum_{\ell \in S_3} e(q-\ell)^{-1}
+	\le C_\varepsilon \kF^{1 + \varepsilon - \alpha/2} \;.
 \end{equation}
 
-Taking together the three cases, the optimal choice is $ \beta = \frac 12 $, so we get
+Taking together the three cases we get
 \begin{equation}
 	\sum_{\ell \in \Zstar} \mathds{1}_{L_\ell}(q) e(q-\ell)^{-1} |\ell|^{-\alpha}
 	\le C_\varepsilon \kF^{1 + \varepsilon - \frac{\alpha}{2}}
