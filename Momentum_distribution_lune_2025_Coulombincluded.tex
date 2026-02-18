@@ -309,14 +309,14 @@ Therefore $ n^{\RPA}(q) $ represents the deviation of $ n(q) $ from the indicato
 \begin{equation} \label{eq:eq}
 	e(q) \coloneq \abs{|q|^2 - \inf_{p \in B_{\F}^c} |p|^2 + \half} \;.
 \end{equation}
-Since $ q \in \Z^3 $, the number $ |q|^2 $ is an integer and thus
-\[
-	e(q) \ge \half \;.
-\]
-We introduce $ e(q) $ because it gives rise to the very useful lower bound
-\[
-	\lambda_{\ell,q} \ge \half e(q) \;.
-\]
+Since $ q \in \Z^3 $, the numbers $|p|^2$, $|p-\ell|^2$, and $|q|^2 $ are integer and thus
+\begin{equation}
+	\lambda_{\ell,p} \geq \half \;, \qquad \textnormal{and} \qquad e(q) \ge \half \;.
+\end{equation}
+We introduce $ e(q) $ because it gives rise to the important improved lower bound
+\begin{equation}
+   \lambda_{\ell,q} \ge \half e(q) \;.
+\end{equation}
 
 Our main result shows the existence of a trial state that both minimizes the energy to the precision of the random phase approximation and has a momentum distribution as expected for a Fermi liquid, with a jump at the Fermi momentum and a correction to the height of the jump as predicted in the physics literature \cite{DV60}.
 
@@ -850,7 +850,7 @@ as well as for $ q \in L_\ell $ the estimates
 \end{equation}
 \end{lemma}
 \begin{proof}
-From~\cite[Prop.~7.10]{CHN23} we retrieve \eqref{eq:K_element_bounds} for $ m = 1 $. For $ m \ge 2 $, we proceed by induction: Suppose \eqref{eq:K_element_bounds} holds until $ m-1 $. Then, using $ \lambda_{\ell,r} \ge \half $ and~\eqref{eq:lambdainverse}, we get
+From~\cite[Prop.~7.10]{CHN23} we retrieve \eqref{eq:K_element_bounds} for $ m = 1 $. For $ m \ge 2 $, we proceed by induction: Suppose \eqref{eq:K_element_bounds} holds until $ m-1 $. Then, using \eqref{eq:lambdainverse}, we get
 \begin{align*}
 		|(K(\ell)^m)_{r,s}|
 		&\le \sum_{r' \in L_\ell}
@@ -860,32 +860,35 @@ From~\cite[Prop.~7.10]{CHN23} we retrieve \eqref{eq:K_element_bounds} for $ m = 
 		\frac{1}{\lambda_{\ell, r} + \lambda_{\ell, r'}}
 		\frac{1}{\lambda_{\ell, r'} + \lambda_{\ell, s}} \\
 		&\le (C \hat{V}(\ell))^m \kF^{-2} \sum_{r' \in L_\ell}
-		\frac{1}{\lambda_{\ell, r'} (\lambda_{\ell, r} + \lambda_{\ell, s})}
+		\frac{1}{\lambda_{\ell, r'}} \frac{1}{\lambda_{\ell, r} + \lambda_{\ell, s}}
 		\le (C \hat{V}(\ell))^m \kF^{-1}
 		\frac{1}{\lambda_{\ell, r} + \lambda_{\ell, s}} \;.
 \end{align*}
-The first bound in~\eqref{eq:K_max_bounds} follows from
+The first bound in \eqref{eq:e(q)_extraction_bounds} follows analogously, using $\lambda_{\ell,q}^{-1} \leq 2 e(q)^{-1}$.
+
+The first bound in~\eqref{eq:K_max_bounds} follows using $ \lambda_{\ell,q}^{-1} \le 2 $ by
 \begin{align*}
-	\sum_{r \in L_\ell} |(K(\ell)^m)_{q,r}|^2
-	&\le \sum_{r \in L_\ell} (C \hat{V}(\ell))^{2m} \kF^{-2} (\lambda_{\ell,r} + \lambda_{\ell,q})^{-2}
-	\le (C \hat{V}(\ell))^{2m} \kF^{-2} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \lambda_{\ell,q}^{-1} \\
-	&\le (C \hat{V}(\ell))^{2m} \kF^{-1} e(q)^{-1} \;, \tagg{eq:notimportant}
+	\sum_{q \in L_\ell} \sup_{r \in L_\ell} |(K(\ell)^m)_{q,r}|^2
+	&\le \sum_{q \in L_\ell} (C \hat{V}(\ell))^{2m} \kF^{-2} \sup_{r \in L_\ell} (\lambda_{\ell,q} + \lambda_{\ell,r})^{-2} \\
+	&
+	\le (C \hat{V}(\ell))^{2m} \kF^{-2} \sum_{q \in L_\ell} \lambda_{\ell,q}^{-1} \sup_{r \in L_\ell} \lambda_{\ell,q}^{-1} \le (C \hat{V}(\ell))^{2m} \kF^{-1} \;. \tagg{eq:notimportant}
 \end{align*}
-and the first one in~\eqref{eq:K_max_bounds} analogously using $ \lambda_{\ell,q}^{-1} \le 2 $.
-The second and third bound in~\eqref{eq:K_max_bounds} follow from
-\begin{displaymath}
-	\norm{K(\ell)^m}_{\HS}^2
-	\le \sum_{r,s \in L_\ell} (C \hat{V}(\ell))^{2m} \kF^{-2} (\lambda_{\ell,r} + \lambda_{\ell,s})^{-2}
-	\le (C \hat{V}(\ell))^{2m} \kF^{-2} \Big( \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \Big)^2
-	\le (C \hat{V}(\ell))^{2m}
-\end{displaymath}
-and
-\begin{displaymath}
-	\normmaxi{K(\ell)^m} 
-	\leq \sum_{r \in L_\ell} \sup_{q \in L_\ell} (C \hat{V}(\ell))^{m} \kF^{-1} (\lambda_{\ell,r} + \lambda_{\ell,q})^{-1}
-	\le (C \hat{V}(\ell))^{m} \kF^{-1} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \leq (C \hat{V}(\ell))^{m} \,.\nonumber
-\end{displaymath}
-This concludes the proof.
+The second bound in \eqref{eq:e(q)_extraction_bounds} follows analogously using $\lambda_{\ell,q}^{-1} \leq 2 e(q)^{-1}$.
+The second and third bound in~\eqref{eq:K_max_bounds} are easier.
+% from
+% \begin{displaymath}
+% 	\norm{K(\ell)^m}_{\HS}^2
+% 	\le \sum_{r,s \in L_\ell} (C \hat{V}(\ell))^{2m} \kF^{-2} (\lambda_{\ell,r} + \lambda_{\ell,s})^{-2}
+% 	\le (C \hat{V}(\ell))^{2m} \kF^{-2} \Big( \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \Big)^2
+% 	\le (C \hat{V}(\ell))^{2m}
+% \end{displaymath}
+% and
+% \begin{displaymath}
+% 	\normmaxi{K(\ell)^m}
+% 	\leq \sum_{r \in L_\ell} \sup_{q \in L_\ell} (C \hat{V}(\ell))^{m} \kF^{-1} (\lambda_{\ell,r} + \lambda_{\ell,q})^{-1}
+% 	\le (C \hat{V}(\ell))^{m} \kF^{-1} \sum_{r \in L_\ell} \lambda_{\ell,r}^{-1} \leq (C \hat{V}(\ell))^{m} \,.\nonumber
+% \end{displaymath}
+% This concludes the proof.
 \end{proof}
 
 
