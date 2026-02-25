@@ -2235,54 +2235,36 @@ Taking together the three cases we get
 
 \noindent \textcolor{red}{\hrulefill END OF ORIGINAL PROOF \hrulefill}
 
-\noindent \textcolor{green}{\hrulefill ALTERNATIVE PROOF \hrulefill}
-
-To bound the second sum, we write the summation region as a union of pairwise disjoint sets, $ S := \{ \ell \in \Zstar : q \in L_\ell \} = S_1 \cup S_3$, where
-\begin{align}
-	S_1 & := \{ \ell \in S : |\ell| \le \kF^{1/2} \} \;, &
-	S_3 & := \{ \ell \in S : |\ell| > \kF^{1/2} \} \;.
-\end{align}
-
-For $ \ell \in S_1 $, we use $ e(q-\ell) \ge \frac{1}{2} $ and write
+%
+\footnote{Alternatively we can use the following, simpler argument. The estimate it yields is sufficient for a non-trivial result, however with a weaker estimate. Write  $ S = S_1 \cup S_3$, where $	S_1  := \{ \ell \in S : |\ell| \le \kF^{1/3} \} $ and $	S_3  := \{ \ell \in S : |\ell| > \kF^{1/3} \} $. For $ \ell \in S_1 $, we use $ e(q-\ell) \ge \frac{1}{2} $ and the sum--of--squares function $r_3(n)$, which counts the number of representations of an integer $n$ as the sum of three squares, to write
 \begin{equation}
 	\sum_{\ell \in S_1} e(q-\ell)^{-1} |\ell|^{-\alpha} \leq 2 \sum_{\ell \in S_1}  |\ell|^{-\alpha}
-	\leq 2 \sum_{m = 1}^{\kF}  m^{-\alpha/2} \sum_{\ell \in S_1} \delta_{|\ell|^2, m}
-	\leq 2 \sum_{m = 1}^{\kF}  m^{-\alpha/2} r_3(m) \;.
+	= 2 \sum_{m = 1}^{\kF^{2/3}}  m^{-\alpha/2} \sum_{\ell \in S_1} \delta_{|\ell|^2, m}
+	\leq 2 \sum_{m = 1}^{\kF^{2/3}}  m^{-\alpha/2} r_3(m) \;.
 % 	\leq C + C \int_0^{\kF^{1/2}} |\ell|^{1-\alpha}  \di |\ell|
 % 	\le C \kF^{1 - \frac{\alpha}{2}} \;.
 \end{equation}
-According to famous lattice point counting (see, e.\,g., \cite[Appendix~1]{CHN24}), we have
-\[
-	r_3(m) \leq C_\varepsilon m^{1/2 + \varepsilon} \;.
-\]
-Therefore \textcolor{green}{one $\kF^{1/2}$ too much compared to the other result}
+(The last inequality is far from optimal because it ignores the restriction of $\ell$ to $S_1$.) It is a classic result (see, e.\,g., \cite{BRS17}) that $r_3(m) \leq C_\varepsilon m^{1/2 + \varepsilon}$. Thus
 \begin{equation}
 	\sum_{\ell \in S_1} e(q-\ell)^{-1} |\ell|^{-\alpha}
-	\leq 2 C_\varepsilon \sum_{m = 1}^{\kF}  m^{-\alpha/2}  m^{1/2 + \varepsilon}
-	\leq C_\varepsilon \int_1^{\kF} m^{-\alpha/2 + 1/2 + \varepsilon} \di m
-	\leq C_\varepsilon \kF^{-\alpha/2 + 3/2 + \varepsilon}
+	\leq 2 C_\varepsilon \sum_{m = 1}^{\kF^{2/3}}  m^{-\alpha/2}  m^{1/2 + \varepsilon}
+	\leq C_\varepsilon \int_1^{\kF^{2/3}} m^{-\alpha/2 + 1/2 + \varepsilon} \di m
+	\leq C_\varepsilon \kF^{-\alpha/3 + 1 + \varepsilon} \;.
 % 	\leq C + C \int_0^{\kF^{1/2}} |\ell|^{1-\alpha}  \di |\ell|
 % 	\le C \kF^{1 - \frac{\alpha}{2}} \;.
 \end{equation}
 %
-Finally, for $ \ell \in S_3 $, we have $ |\ell|^{-\alpha} \le \kF^{-\alpha/2} $ and thus, using \eqref{eq:lambdainverse}, the estimate
+For $ \ell \in S_3 $, we have $ |\ell|^{-\alpha} \le \kF^{-\alpha/3} $ and thus, using \eqref{eq:lambdainverse}, the estimate
 \begin{equation}
 	\sum_{\ell \in S_3} e(q-\ell)^{-1} |\ell|^{-\alpha}
-	\le \kF^{-\alpha/2} \sum_{\ell \in S_3} e(q-\ell)^{-1}
-	\le C_\varepsilon \kF^{1 + \varepsilon - \alpha/2} \;.
+	\le \kF^{-\alpha/3} \sum_{\ell \in S_3} e(q-\ell)^{-1}
+	\le C_\varepsilon \kF^{1 + \varepsilon - \alpha/3} \;.
 \end{equation}
-
-Taking together the three cases we get
-\begin{equation}
-	\sum_{\ell \in \Zstar} \mathds{1}_{L_\ell}(q) e(q-\ell)^{-1} |\ell|^{-\alpha}
-	\le C_\varepsilon \kF^{1 + \varepsilon - \frac{\alpha}{2}}
-\end{equation}
-\textcolor{green}{We can still have a valid bound but with $\alpha/3$ instead of $\alpha/2$, by putting in $\kF^{1/3}$ instead of $\kF^{1/2}$ initially. THis is slightly worse but not a game changer.}
-
-\noindent \textcolor{green}{\hrulefill END OF ALTERNATIVE PROOF \hrulefill}
+Summing the two cases implies \eqref{eq:nex-final} with $\alpha/2$ replaced by $\alpha/3$.
+}
 
 	which implies
-\begin{equation}
+\begin{equation}	\label{eq:nex-final}
 	|n^{\ex,1}(q)|
 	\leq C_\varepsilon \kF^{-1 - \frac{\alpha}{2} + \varepsilon} e(q)^{-1} \;.
 \end{equation}
