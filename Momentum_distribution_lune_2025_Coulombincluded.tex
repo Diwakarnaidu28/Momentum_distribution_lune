@@ -2237,53 +2237,49 @@ For any cube $C_\ell$ that has non-empty intersection with $S_1$ we have $C_\ell
 \end{equation}
 where we bounded $\lvert \ell - \ell' \rvert$ by half the length of the diagonal of the cube $C_\ell$ containing $\ell'$.
 
-We can  now estimate the integral over $f$ as follows. Close to the origin we have
+We estimate the integral over $f$ as follows. Close to the origin we have
 \begin{equation}\label{eq:A}
 	\int_{\lvert \ell'\rvert \leq 1} f(\ell') \di \ell' \leq \int_{\lvert \ell'\rvert \leq 1} g(\ell') \di \ell' \leq C \;;
 \end{equation}
-instead for larger $\ell'$, by means of \eqref{eq:flessg} and a substitution $\tilde{\ell} = -\ell' +q$ \textcolor{red}{can we get rid of the substitution?}, we have
+instead for larger $\ell'$, by means of \eqref{eq:flessg}, we have
 \[
-	\int_{\lvert \ell' \rvert > 1} f(\ell') \di \ell' \leq 2 \int_{S_1'} g(\ell') \di \ell'  = 2 \int_{-S_1' + q} g(-\tilde{\ell} +q) \di \tilde{\ell}\;.
+	\int_{\lvert \ell' \rvert > 1} f(\ell') \di \ell' \leq 2 \int_{S_1'} g(\ell') \di \ell'\;.
 \]
-We now introduce spherical coordinates centered in $q$, with the angle $\varphi \in [0,2\pi)$ corresponding to rotation around the axis defined by $q$ \textcolor{red}{check correct definition of coordinate system}, that is
+\textcolor{red}{include $\lvert \ell'\rvert \geq 1$ in integration set explicitly, $\sqrt{3}$-extension should only be outward}
+Without loss of generality \textcolor{red}{rotational symmetry problem with the cubes?} we can assume $q = \lvert q \rvert e_3$, with $e_3$ the canonical unit vector. We introduce spherical coordinates
 \[
-   \tilde{\ell} = q - \begin{pmatrix}r \sin \theta \cos \varphi\\ r \sin \theta \sin \varphi \\ r \cos\theta\end{pmatrix} \;, \quad r \in (0,\infty),\ \theta \in [0,\pi],\ \varphi \in [0,2\pi) \;.
+   \ell' = \begin{pmatrix}r \sin \theta \cos \varphi\\ r \sin \theta \sin \varphi \\ r \cos\theta\end{pmatrix} \;, \quad r \in (0,\infty),\ \theta \in [0,\pi],\ \varphi \in [0,2\pi) \;.
 \]
-Then, noting that the set has been enlarged up to points that maybe distant up to the length of one cube diagonal (i.\,e., $\sqrt{3}$) from $S_1''$, we have
+\textcolor{red}{set enlargement $S_1''$ to $S_1'$: better add $\sqrt{3}$ in the parametrization instead of using dist-function} and recalling the condition $1 \leq \lvert \ell'\rvert = r$ we get
+\begin{align}\label{eq:inte}
+ \int_{S_1'} g(\ell') \di \ell' = \int_1^{\infty} \di r\; r^2 \left( r - \frac{\sqrt{3}}{2} \right)^{-\alpha} \int_{0}^\theta \di \theta \sin(\theta) \int_0^{2\pi} \di\varphi\; \chi_{S_1'}\Big(\begin{pmatrix}r \sin \theta \cos \varphi\\ r \sin \theta \sin \varphi \\ r \cos\theta\end{pmatrix}\Big) \;.
+\end{align}
+To prove that the integral over $\theta$ is of order $1/r$, consider \eqref{eq:S1primeprime}:  obviously
 \begin{align*}
-& \int_{-S_1' + q} g(-\tilde{\ell} +q) \di \tilde{\ell} \tagg{eq:B}\\
-& = \int_0^{\kF^{1/2} + \sqrt{3}} \di r \left( r - \frac{\sqrt{3}}{2} \right)^{-\alpha} r^2 \int_{0}^\theta \di \theta \sin(\theta) \int_0^{2\pi} \di\varphi\; \chi_{-S_1' + q}\Big(\begin{pmatrix}r \sin \theta \cos \varphi\\ r \sin \theta \sin \varphi \\ r \cos\theta\end{pmatrix}\Big) \;.
+   S_1''
+   & = \{ \ell  = \begin{pmatrix}r \sin \theta \cos \varphi\\ r \sin \theta \sin \varphi \\ r \cos\theta\end{pmatrix}: \kF - 2 \leq \lvert q - \ell \rvert \leq \kF \textnormal{ and } r \leq \kF^{1/2}\} \;.
 \end{align*}
-To prove that the integral over $\theta$ is of order $1/r$, let us study the geometry of the set $-S_1' +q$. In a first step, we ingore the enlargement of the set and return to \eqref{eq:S1primeprime}, then obviously
-\begin{align*}
-   - S''_1 + q & := \{ - \ell + q \in \Rbb^3:  \lvert q - \ell \rvert \leq \kF \textnormal{ and } \lvert \ell \rvert \leq \kF^{1/2} \textnormal{ and } \lvert \lvert q-\ell \rvert -\kF\rvert \leq 2\} \\
-   & = \{ x  = \begin{pmatrix}r \sin \theta \cos \varphi\\ r \sin \theta \sin \varphi \\ r \cos\theta\end{pmatrix}: \kF - 2 \leq r \leq \kF \textnormal{ and } \lvert q-x \rvert \leq \kF^{1/2}\} \;.
-\end{align*}
-The first conditions describes an annulus of width $2$ centered on the origin, the second condition describes a ball centered on $q$. This is represented in Figure~\ref{fig:balls}.
-\textcolor{red}{insert figure}
-The integration over $\varphi$ amounts only to a factor $2\pi$. We consider $r$ fixed and execute the integration over $\theta$. The points $A$ and $B$ in the figure can be projected onto the axis connecting the origin and $q$; their coordinate along this axis (i.\,e., the projection on this axis) are given by the radius $r$ times the cosine of the angle, so the difference of the coordinates is $r \cos(\theta_1) - r \cos(\theta_2)$. According to the width of the annulus, $\lvert A - B \rvert = 2$, and the difference of their coordinates cannot be larger, therefore $r \cos(\theta_1) - r \cos(\theta_2) \leq \lvert A -B\rvert = 2$. This implies
+Expanding the square of $\lvert q -\ell \rvert$, the first condition of this set becomes
 \[
-   \cos(\theta_1) - \cos(\theta_2) \leq \frac{2}{r} \;.
+		(\kF-2)^2 \leq r^2 + \lvert q\rvert^2 - 2 \lvert q\rvert r \cos \theta \leq \kF^2 \;.
 \]
-Therefore we obtain
+Solving the two inequalities for $\cos(\theta)$ we get
 \[
-\begin{split}
-   \int_{0}^\theta \di \theta \sin(\theta) \int_0^{2\pi} \di\varphi\; \chi_{-S_1' + q}\Big(\begin{pmatrix}r \sin \theta \cos \varphi\\ r \sin \theta \sin \varphi \\ r \cos\theta\end{pmatrix}\Big)
-   \leq 2\pi \int_{\theta_1}^{\theta_2} \sin(\theta) \di \theta \leq \frac{4\pi}{r} \;.
-\end{split}
+   \frac{r^2 + q^2 - \kF^2}{2 \lvert q\rvert  r} \leq \cos \theta \leq \frac{r^2 + q^2 - \kF^2}{2 \lvert q\rvert  r} + 2 \frac{\kF - 1}{\lvert q\rvert r} \;.
 \]
-The same estimate holds, up to multiplication with a constant, if $S_1''$ is replaced by $S_1'$, because this only permits radii larger by a $+ \sqrt{3}$. \textcolor{red}{check step to enlarged set}
-Summarizing
+Note that from the beginning we assumed $q \in L_\ell$, which contains the condition $q \in \BFc$, and therefore $\lvert q \rvert \geq \kF - 1$. Therefore $u_0 \leq \cos \theta \leq u_0 + 2/r$, where the value $u_0 = (r^2 + q^2 - \kF^2)(2 \lvert q\rvert  r)^{-1}$ will not be of any further relevance. The integrand is independent of $\varphi$, so integration over it just provides a factor $2\pi$.
+Thus
+\begin{align} \label{eq:B}
+ \int_{S_1'} g(\ell') \di \ell' = \int_1^{\kF^{1/2}} \di r\; r^2 \left( r - \frac{\sqrt{3}}{2} \right)^{-\alpha} \int_{u_0}^{u_0 + 2/r} \di u \;  2\pi = \int_0^{\kF^{1/2}} \di r\; r^2 \left( r - \frac{\sqrt{3}}{2} \right)^{-\alpha} \frac{4\pi}{r} \;.
+\end{align}
+Summing \eqref{eq:A} and \eqref{eq:B} we get \textcolor{red}{simplify a bit the formulas, remove redundancy}
 \begin{align*}
-	& \sum_{\ell \in S_1} e(q-\ell)^{-1} |\ell|^{-\alpha}
-	\leq \int_{\mathbb{R}^3} f(\ell') \di \ell' \leq \eqref{eq:A} + \eqref{eq:B} \\
-& \leq C + 2 \int_0^{\kF^{1/2} + \sqrt{3}} \di r \left( r - \frac{\sqrt{3}}{2} \right)^{-\alpha} r^2 \frac{4\pi}{r}
-\\	&	\leq C + C \int_0^{\kF^{1/2} + \sqrt{3}} \di r \, r^{1-\alpha}  \Big( 1 - \frac{\sqrt{3}}{2} \Big)^{-\alpha}
+	 \sum_{\ell \in S_1} e(q-\ell)^{-1} |\ell|^{-\alpha}
+	& \leq \int_{\mathbb{R}^3} f(\ell') \di \ell'
+\leq C + 2 \int_1^{\kF^{1/2} + \sqrt{3}} \di r \left( r - \frac{\sqrt{3}}{2} \right)^{-\alpha} r^2 \frac{4\pi}{r}
+\\	&	\leq C + C \int_1^{\kF^{1/2} + \sqrt{3}} \di r \, r^{1-\alpha}  \Big( 1 - \frac{\sqrt{3}}{2} \Big)^{-\alpha}
 	\le C \kF^{1 - \frac{\alpha}{2}} \;.
 \end{align*}
-\textcolor{red}{track the restriction $r > 1$}
-
-\medskip
 
 For $ \ell \in S_2 $, we have $ e(q-\ell) \ge C \kF $ and use the sum--of--squares function $r_3(n)$, which counts the number of representations of an integer $n$ as the sum of three squares, to write
 \begin{equation}
