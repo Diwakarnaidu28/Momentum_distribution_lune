@@ -2211,14 +2211,17 @@ where we introduced a function $f: \Rbb^3 \to \Rbb$ which is constant on cubes c
 Next we construct a function $g: \Rbb^3 \to \Rbb$ a follows:
 \begin{itemize}
    \item If $\lvert \ell'\rvert \leq 1$, define $g(\ell') := f(\ell')$. Note that $\ell \in S_1$ in particular requires $L_\ell \not= \emptyset$; this implies $\ell \not= 0$ and therefore, having integer coordinates, $\lvert \ell \rvert \geq 1$. So $g$ is bounded.
-   \item If $\lvert \ell' \rvert > 1$, we extend $S_1$ from discrete momenta to continuous momenta, namely
+   \item If $\lvert \ell' \rvert > 1$, we extend $S_1$ from discrete momenta to continuous momenta, and then enlarge it further by a distance $\sqrt{3}/2$, namely
 \begin{equation}\label{eq:S1primeprime}
-   S''_1 := \{ \ell \in \Rbb^3: \lvert q - \ell \rvert \leq \kF \textnormal{ and } \lvert \ell \rvert \leq \kF^{1/2} \textnormal{ and } \lvert \lvert q-\ell \rvert -\kF\rvert \leq 2\} \;,
+\begin{split}
+   S'_1 := \bigg\{ \ell \in \Rbb^3: & \ \lvert q - \ell \rvert \leq \kF + \tfrac{\sqrt{3}}{2} \textnormal{ and } \lvert \ell \rvert \leq \kF^{1/2} + \tfrac{\sqrt{3}}{2} \\
+   & \ \textnormal{ and } \lvert \lvert q-\ell \rvert -\kF\rvert \leq 2 + \tfrac{\sqrt{3}}{2} \bigg\} \;.
+\end{split}
 \end{equation}
- and moreover enlarge it by including all points of distance at most $\sqrt{3}/2$; this means
-\[
-	S_1' := \Big\{ \ell \in \Rbb^3: \operatorname{dist}(\ell, S_1'') \leq \frac{\sqrt{3}}{2} \Big\} \;.
-\]
+%  and moreover enlarge it by including all points of distance at most $\sqrt{3}/2$; this means
+% \[
+% 	S_1' := \Big\{ \ell \in \Rbb^3: \operatorname{dist}(\ell, S_1'') \leq \frac{\sqrt{3}}{2} \Big\} \;.
+% \]
 Then we set
 	\[
 	   g(\ell') := \begin{cases}
@@ -2227,7 +2230,7 @@ Then we set
 	               \end{cases}
 	\]
 \end{itemize}
-For any cube $C_\ell$ that has non-empty intersection with $S_1$ we have $C_\ell \subset S_1'$; thus for all $\ell' \in \operatorname{supp}(f) = \bigcup_{\ell \in S_1} C_\ell$ with $\lvert \ell'\rvert > 1$, we obtain
+Enlarging the set by $\sqrt{3}/2$ is important because this way, for any cube $C_\ell$ that intersects $S_1$ we have $C_\ell \subset S_1'$. This implies that for all $\ell' \in \operatorname{supp}(f) = \bigcup_{\ell \in S_1} C_\ell$ with $\lvert \ell'\rvert > 1$ we have
 \begin{equation}\label{eq:flessg}
 \begin{split}
    f(\ell') & \leq 2 \sum_{\ell \in S_1} \big\lvert \lvert \ell' \rvert  -  \lvert \ell - \ell' \rvert \big\rvert^{-\alpha} \chi_{C_\ell}(\ell')
@@ -2235,7 +2238,7 @@ For any cube $C_\ell$ that has non-empty intersection with $S_1$ we have $C_\ell
    \leq 2  \Big( \lvert \ell' \rvert  -  \tfrac{\sqrt{3}}{2} \Big)^{-\alpha} \chi_{S_1'}(\ell') = 2 g(\ell') \;,
 \end{split}
 \end{equation}
-where we bounded $\lvert \ell - \ell' \rvert$ by half the length of the diagonal of the cube $C_\ell$ containing $\ell'$.
+where we bounded $\lvert \ell - \ell' \rvert$ by half the length of the diagonal of the cube $C_\ell$ which contains $\ell'$.
 
 We estimate the integral over $f$ as follows. Close to the origin we have
 \begin{equation}\label{eq:A}
@@ -2243,41 +2246,51 @@ We estimate the integral over $f$ as follows. Close to the origin we have
 \end{equation}
 instead for larger $\ell'$, by means of \eqref{eq:flessg}, we have
 \[
-	\int_{\lvert \ell' \rvert > 1} f(\ell') \di \ell' \leq 2 \int_{S_1'} g(\ell') \di \ell'\;.
+	\int_{\lvert \ell' \rvert > 1} f(\ell') \di \ell' \leq 2 \int_{S_1' \cap \{\lvert
+	\ell' \rvert > 1\}} g(\ell') \di \ell' \;.
 \]
-\textcolor{red}{include $\lvert \ell'\rvert \geq 1$ in integration set explicitly, $\sqrt{3}$-extension should only be outward}
-Without loss of generality \textcolor{red}{rotational symmetry problem with the cubes?} we can assume $q = \lvert q \rvert e_3$, with $e_3$ the canonical unit vector. We introduce spherical coordinates
+Without loss of generality we can assume $q = \lvert q \rvert e_3$, with $e_3$ the canonical unit vector. We introduce spherical coordinates
 \[
    \ell' = \begin{pmatrix}r \sin \theta \cos \varphi\\ r \sin \theta \sin \varphi \\ r \cos\theta\end{pmatrix} \;, \quad r \in (0,\infty),\ \theta \in [0,\pi],\ \varphi \in [0,2\pi) \;.
 \]
-\textcolor{red}{set enlargement $S_1''$ to $S_1'$: better add $\sqrt{3}$ in the parametrization instead of using dist-function} and recalling the condition $1 \leq \lvert \ell'\rvert = r$ we get
+and thus obtain
 \begin{align}\label{eq:inte}
- \int_{S_1'} g(\ell') \di \ell' = \int_1^{\infty} \di r\; r^2 \left( r - \frac{\sqrt{3}}{2} \right)^{-\alpha} \int_{0}^\theta \di \theta \sin(\theta) \int_0^{2\pi} \di\varphi\; \chi_{S_1'}\Big(\begin{pmatrix}r \sin \theta \cos \varphi\\ r \sin \theta \sin \varphi \\ r \cos\theta\end{pmatrix}\Big) \;.
+\begin{split}
+ & \int_{S_1' \cap \{\lvert
+	\ell' \rvert > 1\}} g(\ell') \di \ell' \\
+	& = \int_1^{\infty} \di r\; r^2 \left( r - \frac{\sqrt{3}}{2} \right)^{-\alpha} \int_{0}^\theta \di \theta \sin(\theta) \int_0^{2\pi} \di\varphi\; \chi_{S_1'}\Big(\begin{pmatrix}r \sin \theta \cos \varphi\\ r \sin \theta \sin \varphi \\ r \cos\theta\end{pmatrix}\Big) \;.
+\end{split}
 \end{align}
 To prove that the integral over $\theta$ is of order $1/r$, consider \eqref{eq:S1primeprime}:  obviously
-\begin{align*}
-   S_1''
-   & = \{ \ell  = \begin{pmatrix}r \sin \theta \cos \varphi\\ r \sin \theta \sin \varphi \\ r \cos\theta\end{pmatrix}: \kF - 2 \leq \lvert q - \ell \rvert \leq \kF \textnormal{ and } r \leq \kF^{1/2}\} \;.
-\end{align*}
+ \begin{align*}
+   S_1' = \Big\{ \ell  = \begin{pmatrix}r \sin \theta \cos \varphi\\ r \sin \theta \sin \varphi \\ r \cos\theta\end{pmatrix}: \kF - 2 - \tfrac{\sqrt{3}}{2} \leq \lvert q - \ell \rvert \leq \kF + \tfrac{\sqrt{3}}{2} \textnormal{ and } r \leq \kF^{1/2} + \tfrac{\sqrt{3}}{2} \Big\} \;.
+ \end{align*}
 Expanding the square of $\lvert q -\ell \rvert$, the first condition of this set becomes
 \[
-		(\kF-2)^2 \leq r^2 + \lvert q\rvert^2 - 2 \lvert q\rvert r \cos \theta \leq \kF^2 \;.
+		\left( \kF-2 - \tfrac{\sqrt{3}}{2} \right)^2 \leq r^2 + \lvert q\rvert^2 - 2 \lvert q\rvert r \cos \theta \leq \left( \kF+ \tfrac{\sqrt{3}}{2} \right)^2 \;.
 \]
 Solving the two inequalities for $\cos(\theta)$ we get
 \[
-   \frac{r^2 + q^2 - \kF^2}{2 \lvert q\rvert  r} \leq \cos \theta \leq \frac{r^2 + q^2 - \kF^2}{2 \lvert q\rvert  r} + 2 \frac{\kF - 1}{\lvert q\rvert r} \;.
+   u_0 \leq \cos \theta \leq u_0 + \frac{(4 + 2\sqrt{3})(\kF - 1)}{2 \lvert q\rvert r} \;,
 \]
-Note that from the beginning we assumed $q \in L_\ell$, which contains the condition $q \in \BFc$, and therefore $\lvert q \rvert \geq \kF - 1$. Therefore $u_0 \leq \cos \theta \leq u_0 + 2/r$, where the value $u_0 = (r^2 + q^2 - \kF^2)(2 \lvert q\rvert  r)^{-1}$ will not be of any further relevance. The integrand is independent of $\varphi$, so integration over it just provides a factor $2\pi$.
+where $u_0 := (r^2 + q^2 - \kF^2 - \tfrac{3}{4} - \kF \sqrt{3})(2 \lvert q\rvert  r)^{-1}$. From the beginning we assumed $q \in L_\ell$, which contains the condition $q \in \BFc$, and thus $\lvert q \rvert \geq \kF - 1$. Therefore $u_0 \leq \cos \theta \leq u_0 + (2 + \sqrt{3})/r$. The integrand is independent of $\varphi$, so integration over it just provides a factor $2\pi$.
 Thus
 \begin{align} \label{eq:B}
- \int_{S_1'} g(\ell') \di \ell' = \int_1^{\kF^{1/2}} \di r\; r^2 \left( r - \frac{\sqrt{3}}{2} \right)^{-\alpha} \int_{u_0}^{u_0 + 2/r} \di u \;  2\pi = \int_1^{\kF^{1/2}} \di r\; r^2 \left( r - \frac{\sqrt{3}}{2} \right)^{-\alpha} \frac{4\pi}{r} \;.
+\begin{split}
+\int_{S_1' \cap \{\lvert
+	\ell' \rvert > 1\}} g(\ell') \di \ell'
+	& = \int_1^{\kF^{1/2} + \frac{\sqrt{3}}{2}} \di r\; r^2 \left( r - \frac{\sqrt{3}}{2} \right)^{-\alpha} \int_{u_0}^{u_0 + (2+\sqrt{3})/r} \di u \;  2\pi \\
+	& = \int_1^{\kF^{1/2} + \frac{\sqrt{3}}{2}} \di r\; r^2 \left( r - \frac{\sqrt{3}}{2} \right)^{-\alpha} \frac{2\pi(2 + \sqrt{3})}{r} \;.
+\end{split}
 \end{align}
-Summing \eqref{eq:A} and \eqref{eq:B} we get \textcolor{red}{simplify a bit the formulas, remove redundancy}
+Summing \eqref{eq:A} and \eqref{eq:B}, and using $r \geq 1$, we get
 \begin{align*}
 	 \sum_{\ell \in S_1} e(q-\ell)^{-1} |\ell|^{-\alpha}
-	& \leq \int_{\mathbb{R}^3} f(\ell') \di \ell'
-\leq C + 2 \int_1^{\kF^{1/2} + \sqrt{3}} \di r \left( r - \frac{\sqrt{3}}{2} \right)^{-\alpha} r^2 \frac{4\pi}{r}
-\\	&	\leq C + C \int_1^{\kF^{1/2} + \sqrt{3}} \di r \, r^{1-\alpha}  \Big( 1 - \frac{\sqrt{3}}{2} \Big)^{-\alpha}
+	&
+% 	\leq \int_{\mathbb{R}^3} f(\ell') \di \ell'
+% \leq C + 2 \int_1^{\kF^{1/2} + \frac{\sqrt{3}}{2}} \di r \left( r - \frac{\sqrt{3}}{2} \right)^{-\alpha} r^2 \frac{2\pi(2+\sqrt{3})}{r}
+% \\	&
+\leq C + C \int_1^{\kF^{1/2} + \frac{\sqrt{3}}{2}} \di r \, r^{1-\alpha}  \Big( 1 - \frac{\sqrt{3}}{2} \Big)^{-\alpha}
 	\le C \kF^{1 - \frac{\alpha}{2}} \;.
 \end{align*}
 
@@ -2319,7 +2332,7 @@ Taking together the three cases we get
 	\leq C_\varepsilon \kF^{-1 - \frac{\alpha}{2} + \varepsilon} e(q)^{-1} \;.
 \end{equation}
 A weaker, but still sufficient and simpler estimate is given in the footnote\footnote{
-Write  $ S = S_1 \cup S_2$, where $S_1  := \{ \ell \in S : |\ell| \le \kF^{1/3} \} $ and $S_2  := \{ \ell \in S : |\ell| > \kF^{1/3} \} $. For $ \ell \in S_1 $, we use $ e(q-\ell) \ge \frac{1}{2} $ and write
+Write  $ S = S_1 \cup S_2$, where $S_1  := \{ \ell \in S : |\ell| \le \kF^{1/3} \} $ and $S_2  := \{ \ell \in S : |\ell| > \kF^{1/3} \} $. For $ \ell \in S_1 $, we use $ e(q-\ell) \ge \frac{1}{2} $ to obtain
 \begin{equation}
 	\sum_{\ell \in S_1} e(q-\ell)^{-1} |\ell|^{-\alpha} \leq 2 \sum_{\ell \in S_1}  |\ell|^{-\alpha}
 	= 2 \sum_{m = 1}^{\kF^{2/3}}  m^{-\alpha/2} \sum_{\ell \in S_1} \delta_{|\ell|^2, m}
