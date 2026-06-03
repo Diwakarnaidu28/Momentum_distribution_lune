@@ -370,6 +370,10 @@ which we expect to be optimal in the mean-field scaling.
 %
 For comparison, in~\cite{BL25}, the scaling of the leading term is $ n^{\RPA}(q) \sim \kF^{-2} $ without $ e(q)^{-1} $. This is because~\cite{BL25} assumes $ |\ell| \le C $ and $ |\ell \cdot q| \ge c $ in the analogue of~\eqref{eq:nqb}, leading to $ e(q) \sim \kF $. In other words, it includes only momenta at distances $ ||q|-\kF| \sim 1 $ from the Fermi surface, while the present result admits distances as small as $ \kF^{-1} $.
 
+Even though our result is only a computation in a trial state, we have strong reason to expect that it captures the behavior of the ground state correctly. The contribution of particle excitations to the expectation value of the kinetic energy of excitations $\mathbb{H}_0$ may be written as $\sum_{p \in \BFc} \lvert \lvert p\rvert^2 - \kF^2 \rvert n(p)$; the contribution of hole excitations is a similar non-negative contribution. By the a-priori bounds shown, e.\,g., in \cite{BPSS23}, we know that this expectation value in the ground state is at most of order $\kF$. Now assume that rotational symmetry of the momentum distribution was not broken (this is non-trivial to prove). Then the number of excitations at distance $f$ from the Fermi surface at $\kF$ is at most of order
+\[
+	n(\lvert p\rvert) \leq \frac{\kF}{\lvert \lvert p\rvert - \kF \rvert \lvert \lvert p\rvert + \kF \rvert}
+\]
 
 
 \item In analogy to~\cite[Section~1.1]{BL25} we may approximate $ \lambda_{\ell,q} \approx \kF |\ell| |\hat{\ell} \cdot \hat{q}| $ with $ \hat{q} := {q}/{|q|} $, then substitute $ \mu := t \kF |\ell| $ and formally take the continuum limit of sums to integrals.
