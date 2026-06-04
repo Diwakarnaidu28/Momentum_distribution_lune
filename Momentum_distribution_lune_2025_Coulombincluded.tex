@@ -374,6 +374,10 @@ Even though our result is only a computation in a trial state, we have strong re
 \[
 	n(\lvert p\rvert) \leq \frac{\kF}{\lvert \lvert p\rvert - \kF \rvert \lvert \lvert p\rvert + \kF \rvert}
 \]
+\textcolor{red}{complete this comment}
+
+\item Our result is obtained as the vacuum expectation value of an explicit operator expansion \eqref{eq:operatorexpansion} of the conjugation of $a^*_q a_q$ with a unitary operator constructed to approximately diagonalize the Hamiltonian. Given sufficiently precise bounds on the number of excitations in the true ground state, this expansion will permit to compute the true ground state's momentum distribution. However, such bounds can only be expected if the computation of the ground state energy is pushed from the currently known order $N^{1/3}$ to order $N^0$ since the gap of the kinetic energy is very small, namely $\lambda_{\ell,p} \geq \frac{1}{2}$.
+\textcolor{red}{rewrite in view of the previous comment}
 
 
 \item In analogy to~\cite[Section~1.1]{BL25} we may approximate $ \lambda_{\ell,q} \approx \kF |\ell| |\hat{\ell} \cdot \hat{q}| $ with $ \hat{q} := {q}/{|q|} $, then substitute $ \mu := t \kF |\ell| $ and formally take the continuum limit of sums to integrals.
@@ -388,8 +392,6 @@ This agrees with \cite{BL25} up to a factor $ (2 \pi)^3 \kappa $ multiplying $\h
 %
 \item
 Analogously to the exchange contribution to the ground state energy derived in~\cite{CHN23,CHN24}, an exchange contribution $\frac{1}{4}n^{\ex,1}(q)$ appears by normal ordering the bosonization errors, see Lemma~\eqref{lem:normalordering_errors}. However, Proposition~\ref{prop:main} shows that it is subleading.
-%
-\item Our result is obtained as the vacuum expectation value of an explicit operator expansion \eqref{eq:operatorexpansion} of the conjugation of $a^*_q a_q$ with a unitary operator constructed to approximately diagonalize the Hamiltonian. Given sufficiently precise bounds on the number of excitations in the true ground state, this expansion will permit to compute the true ground state's momentum distribution. However, such bounds can only be expected if the computation of the ground state energy is pushed from the currently known order $N^{1/3}$ to order $N^0$ since the gap of the kinetic energy is very small, namely $\lambda_{\ell,p} \geq \frac{1}{2}$.
 \end{enumerate}
 \end{remarks}
 Hypothesis~\eqref{hyp:Coulomb} on $ V $ is only needed to ensure validity of the ground state energy formula~\eqref{eq:main1}, which readily follows from~\cite{CHN23,CHN24}. Our main work is the computation of the momentum distribution, which does not require $\hat{V} $ to be radial or decreasing.
