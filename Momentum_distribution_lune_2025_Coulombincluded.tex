@@ -370,18 +370,33 @@ which we expect to be optimal in the mean-field scaling.
 %
 For comparison, in~\cite{BL25}, the scaling of the leading term is $ n^{\RPA}(q) \sim \kF^{-2} $ without $ e(q)^{-1} $. This is because~\cite{BL25} assumes $ |\ell| \le C $ and $ |\ell \cdot q| \ge c $ in the analogue of~\eqref{eq:nqb}, leading to $ e(q) \sim \kF $. In other words, it includes only momenta at distances $ ||q|-\kF| \sim 1 $ from the Fermi surface, while the present result admits distances as small as $ \kF^{-1} $.
 
-Even though our result is only a computation in a trial state, we have strong reason to expect that it captures the behavior of the ground state correctly. The contribution of particle excitations to the expectation value of the kinetic energy of excitations $\mathbb{H}_0$ may be written as $\sum_{p \in \BFc} \lvert \lvert p\rvert^2 - \kF^2 \rvert n(p)$; the contribution of hole excitations is a similar non-negative contribution. By the a-priori bounds shown, e.\,g., in \cite{BPSS23}, we know that this expectation value in the ground state is at most of order $\kF$. Now assume that rotational symmetry of the momentum distribution was not broken (this is non-trivial to prove). Then the number of excitations at distance $f$ from the Fermi surface at $\kF$ is at most of order
+
+\item While the formula \eqref{eq:nqb} can formally be obtained by a rather straight-forward computation under the assumption that bosonization was exact, the proof requires a control of the error terms that is much more subtle than previously developed in the studies of the ground state energy. This is due to the requirement of controlling the momentum distribution \emph{pointwise}, for which we have developed a novel bootstrap method in \cite{SL23}, which in the present paper we further refine to a double bootstrap argument.
+
+\item Even though our result concerns a trial state, we expect that it captures the behavior of the ground state correctly. In fact, our result is obtained as the vacuum expectation value of the \emph{operator} expansion \eqref{eq:operatorexpansion}. The main difference in evaluating this expansion for the ground state is that we have to add $\langle \psi, (a^*_q a_q + a^*_{-q} a_{-q})\psi \rangle$ where $\psi := e^{S} \Psi_\textnormal{gs}$, instead of $\psi = \Omega$ for the trial state. As a consequence of the results on the ground state energy, e.\,g., \cite[Eq.~(11.9)]{BNPSS20}, one has bounds of the form (adapted to the current convention of coupling constants)
 \[
-	n(\lvert p\rvert) \leq \frac{\kF}{\lvert \lvert p\rvert - \kF \rvert \lvert \lvert p\rvert + \kF \rvert}
+	\langle \psi, \mathbb{H}_0 \psi \rangle \leq C \kF^{1- \frac{1}{48}}	\;.
+\]
+
+The contribution of particle excitations to the expectation value of $\mathbb{H}_0$ may be written as $\sum_{p \in \BFc} \lvert \lvert p\rvert^2 - \kF^2 \rvert n(p)$; holes have a similar non-negative contribution. \emph{Assuming} that rotational symmetry was not broken (which is non-trivial to prove), we reorganize the sum over shells in momentum space of thickness less than one to get
+\[
+C \kF^{1-\frac{1}{48}} \geq \langle \psi, \mathbb{H}_0 \psi \rangle = \sum_{|p|} \lvert \lvert p\rvert^2 - \kF^2 \rvert |p|^{1 + \varepsilon} n(|p|) \;,
+\]
+where we rely on the number-theoretic result that the number of lattice points in shells of thickness less than one is of order $\text{(radius)}^{1+\varepsilon}$. This can be resolved for
+the number of excitations at distance $f$ from the Fermi surface at $\kF$ is at most of order
+\[
+	n(\lvert p\rvert) \leq \frac{\kF}{\lvert \lvert p\rvert - \kF \rvert \lvert \lvert p\rvert + \kF \rvert \lvert p\rvert^{1+\varepsilon}}
 \]
 \textcolor{red}{complete this comment}
 
-\item Our result is obtained as the vacuum expectation value of an explicit operator expansion \eqref{eq:operatorexpansion} of the conjugation of $a^*_q a_q$ with a unitary operator constructed to approximately diagonalize the Hamiltonian. Given sufficiently precise bounds on the number of excitations in the true ground state, this expansion will permit to compute the true ground state's momentum distribution. However, such bounds can only be expected if the computation of the ground state energy is pushed from the currently known order $N^{1/3}$ to order $N^0$ since the gap of the kinetic energy is very small, namely $\lambda_{\ell,p} \geq \frac{1}{2}$.
-\textcolor{red}{rewrite in view of the previous comment}
+\item In absence of rotational symmetry, to get meaningful bounds by this approach one would have to push the computation of the ground state energy from the currently known order $N^{1/3}$ to order $N^0$ since the gap of the kinetic energy is very small, namely $\lambda_{\ell,p} \geq \frac{1}{2}$.
 
-\item While the formula for the momentum distribution can formally be obtained by a relatively straight-forward computation under the assumption that bosonization was exact, the rigorous proof requires a control of the error terms that is much more subtle than the method developed in \textcolor{red}{blg}. This is due to the requirement of controlling the momentum distribution pointwise, for which we have developed a novel bootstrap method in \cite{}, which in the present paper we further refine to a double bootstrap argument.
+\end{enumerate}
+\end{remarks}
 
-\item In analogy to~\cite[Section~1.1]{BL25} we may approximate $ \lambda_{\ell,q} \approx \kF |\ell| |\hat{\ell} \cdot \hat{q}| $ with $ \hat{q} := {q}/{|q|} $, then substitute $ \mu := t \kF |\ell| $ and formally take the continuum limit of sums to integrals.
+%%%%%%%%%%%%%
+
+In analogy to~\cite[Section~1.1]{BL25} we may approximate $ \lambda_{\ell,q} \approx \kF |\ell| |\hat{\ell} \cdot \hat{q}| $ with $ \hat{q} := {q}/{|q|} $, then substitute $ \mu := t \kF |\ell| $ and formally take the continuum limit of sums to integrals.
 Thus
 \begin{align*}
 	n^{\RPA}(q)
@@ -390,11 +405,15 @@ Thus
 	Q_\ell(\mu) &:= \frac{\hat{V}(\ell)}{(2 \pi)^2} \left( 1 - \mu \arctan \left( \frac{1}{\mu} \right) \right) \;. \tagg{eq:Q}
 \end{align*}
 This agrees with \cite{BL25} up to a factor $ (2 \pi)^3 \kappa $ multiplying $\hat{V}$, explained by our choice of coupling constant $k_\F^{-1}$ compared to the coupling constant $N^{-1/3} = \kappa^{-1} \kF^{-1}$ in \cite{BL25}, as well as the absent $ (2 \pi)^{-3} $ in the Fourier convention~\eqref{eq:Fourierconvention}.
-%
-\item
+
+\medskip
+
 Analogously to the exchange contribution to the ground state energy derived in~\cite{CHN23,CHN24}, an exchange contribution $\frac{1}{4}n^{\ex,1}(q)$ appears by normal ordering the bosonization errors, see Lemma~\eqref{lem:normalordering_errors}. However, Proposition~\ref{prop:main} shows that it is subleading.
-\end{enumerate}
-\end{remarks}
+
+\medskip
+
+%%%%%%%%%%%%%%
+
 Hypothesis~\eqref{hyp:Coulomb} on $ V $ is only needed to ensure validity of the ground state energy formula~\eqref{eq:main1}, which readily follows from~\cite{CHN23,CHN24}. Our main work is the computation of the momentum distribution, which does not require $\hat{V} $ to be radial or decreasing.
 
  
